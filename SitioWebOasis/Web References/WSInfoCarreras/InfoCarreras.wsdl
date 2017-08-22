@@ -1,0 +1,646 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx?schema=dtstBDCarreras" namespace="http://tempuri.org/dtstBDCarreras.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx?schema=dtstCarreras" namespace="http://www.tempuri.org/dtstCarreras.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx?schema=dtstPeriodoVigente" namespace="http://www.tempuri.org/dtstPeriodoVigente.xsd" />
+      <s:element name="GetUbicacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUbicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUbicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUbicacion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetUbicacionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCarrerasAbiertas">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCarrerasAbiertasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarrerasAbiertasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstBDCarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarreras">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarrerasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarrerasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstBDCarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarrerasEscuela">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEscuela" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarrerasEscuelaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarrerasEscuelaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstCarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstBDCarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTodasCarreras">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTodasCarrerasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTodasCarrerasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstBDCarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTodasCarrerasActivas">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetTodasCarrerasActivasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTodasCarrerasActivasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstBDCarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParametrosCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetParametrosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetParametrosCarreraResult" type="tns:ParametrosCarrera" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ParametrosCarrera">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NombreInstitucion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CodCarrera" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreCarrera" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreEscuela" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NombreFacultad" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCodEscuelaCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCodEscuelaCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCodEscuelaCarreraResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValorParametroCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParametro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValorParametroCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetValorParametroCarreraResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TieneAjusteBasico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="TieneAjusteBasicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TieneAjusteBasicoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBDCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetBDCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetBDCarreraResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodoVigenteCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodoVigenteCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeriodoVigenteCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstPeriodoVigente.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="GetUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:SetUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="SetUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:SetUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarrerasAbiertasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarrerasAbiertas" />
+  </wsdl:message>
+  <wsdl:message name="GetCarrerasAbiertasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarrerasAbiertasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarrerasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarreras" />
+  </wsdl:message>
+  <wsdl:message name="GetCarrerasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarrerasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarrerasEscuelaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarrerasEscuela" />
+  </wsdl:message>
+  <wsdl:message name="GetCarrerasEscuelaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarrerasEscuelaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCarrera" />
+  </wsdl:message>
+  <wsdl:message name="GetCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTodasCarrerasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTodasCarreras" />
+  </wsdl:message>
+  <wsdl:message name="GetTodasCarrerasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTodasCarrerasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTodasCarrerasActivasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTodasCarrerasActivas" />
+  </wsdl:message>
+  <wsdl:message name="GetTodasCarrerasActivasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTodasCarrerasActivasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetParametrosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:GetParametrosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="GetParametrosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:GetParametrosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCodEscuelaCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCodEscuelaCarrera" />
+  </wsdl:message>
+  <wsdl:message name="GetCodEscuelaCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCodEscuelaCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetValorParametroCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:GetValorParametroCarrera" />
+  </wsdl:message>
+  <wsdl:message name="GetValorParametroCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:GetValorParametroCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="TieneAjusteBasicoSoapIn">
+    <wsdl:part name="parameters" element="tns:TieneAjusteBasico" />
+  </wsdl:message>
+  <wsdl:message name="TieneAjusteBasicoSoapOut">
+    <wsdl:part name="parameters" element="tns:TieneAjusteBasicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetBDCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:GetBDCarrera" />
+  </wsdl:message>
+  <wsdl:message name="GetBDCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:GetBDCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodoVigenteCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPeriodoVigenteCarrera" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodoVigenteCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPeriodoVigenteCarreraResponse" />
+  </wsdl:message>
+  <wsdl:portType name="InfoCarrerasSoap">
+    <wsdl:operation name="GetUbicacion">
+      <wsdl:input message="tns:GetUbicacionSoapIn" />
+      <wsdl:output message="tns:GetUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetUbicacion">
+      <wsdl:input message="tns:SetUbicacionSoapIn" />
+      <wsdl:output message="tns:SetUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrerasAbiertas">
+      <wsdl:input message="tns:GetCarrerasAbiertasSoapIn" />
+      <wsdl:output message="tns:GetCarrerasAbiertasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarreras">
+      <wsdl:input message="tns:GetCarrerasSoapIn" />
+      <wsdl:output message="tns:GetCarrerasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrerasEscuela">
+      <wsdl:input message="tns:GetCarrerasEscuelaSoapIn" />
+      <wsdl:output message="tns:GetCarrerasEscuelaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrera">
+      <wsdl:input message="tns:GetCarreraSoapIn" />
+      <wsdl:output message="tns:GetCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasCarreras">
+      <wsdl:input message="tns:GetTodasCarrerasSoapIn" />
+      <wsdl:output message="tns:GetTodasCarrerasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasCarrerasActivas">
+      <wsdl:input message="tns:GetTodasCarrerasActivasSoapIn" />
+      <wsdl:output message="tns:GetTodasCarrerasActivasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetParametrosCarrera">
+      <wsdl:input message="tns:GetParametrosCarreraSoapIn" />
+      <wsdl:output message="tns:GetParametrosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodEscuelaCarrera">
+      <wsdl:input message="tns:GetCodEscuelaCarreraSoapIn" />
+      <wsdl:output message="tns:GetCodEscuelaCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametroCarrera">
+      <wsdl:input message="tns:GetValorParametroCarreraSoapIn" />
+      <wsdl:output message="tns:GetValorParametroCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="TieneAjusteBasico">
+      <wsdl:input message="tns:TieneAjusteBasicoSoapIn" />
+      <wsdl:output message="tns:TieneAjusteBasicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBDCarrera">
+      <wsdl:input message="tns:GetBDCarreraSoapIn" />
+      <wsdl:output message="tns:GetBDCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodoVigenteCarrera">
+      <wsdl:input message="tns:GetPeriodoVigenteCarreraSoapIn" />
+      <wsdl:output message="tns:GetPeriodoVigenteCarreraSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="InfoCarrerasSoap" type="tns:InfoCarrerasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUbicacion">
+      <soap:operation soapAction="http://tempuri.org/GetUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUbicacion">
+      <soap:operation soapAction="http://tempuri.org/SetUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrerasAbiertas">
+      <soap:operation soapAction="http://tempuri.org/GetCarrerasAbiertas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarreras">
+      <soap:operation soapAction="http://tempuri.org/GetCarreras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrerasEscuela">
+      <soap:operation soapAction="http://tempuri.org/GetCarrerasEscuela" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrera">
+      <soap:operation soapAction="http://tempuri.org/GetCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasCarreras">
+      <soap:operation soapAction="http://tempuri.org/GetTodasCarreras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasCarrerasActivas">
+      <soap:operation soapAction="http://tempuri.org/GetTodasCarrerasActivas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParametrosCarrera">
+      <soap:operation soapAction="http://tempuri.org/GetParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodEscuelaCarrera">
+      <soap:operation soapAction="http://tempuri.org/GetCodEscuelaCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametroCarrera">
+      <soap:operation soapAction="http://tempuri.org/GetValorParametroCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TieneAjusteBasico">
+      <soap:operation soapAction="http://tempuri.org/TieneAjusteBasico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBDCarrera">
+      <soap:operation soapAction="http://tempuri.org/GetBDCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodoVigenteCarrera">
+      <soap:operation soapAction="http://tempuri.org/GetPeriodoVigenteCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="InfoCarrerasSoap12" type="tns:InfoCarrerasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/GetUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/SetUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrerasAbiertas">
+      <soap12:operation soapAction="http://tempuri.org/GetCarrerasAbiertas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarreras">
+      <soap12:operation soapAction="http://tempuri.org/GetCarreras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrerasEscuela">
+      <soap12:operation soapAction="http://tempuri.org/GetCarrerasEscuela" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCarrera">
+      <soap12:operation soapAction="http://tempuri.org/GetCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasCarreras">
+      <soap12:operation soapAction="http://tempuri.org/GetTodasCarreras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTodasCarrerasActivas">
+      <soap12:operation soapAction="http://tempuri.org/GetTodasCarrerasActivas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetParametrosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/GetParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodEscuelaCarrera">
+      <soap12:operation soapAction="http://tempuri.org/GetCodEscuelaCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametroCarrera">
+      <soap12:operation soapAction="http://tempuri.org/GetValorParametroCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TieneAjusteBasico">
+      <soap12:operation soapAction="http://tempuri.org/TieneAjusteBasico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBDCarrera">
+      <soap12:operation soapAction="http://tempuri.org/GetBDCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodoVigenteCarrera">
+      <soap12:operation soapAction="http://tempuri.org/GetPeriodoVigenteCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="InfoCarreras">
+    <wsdl:port name="InfoCarrerasSoap" binding="tns:InfoCarrerasSoap">
+      <soap:address location="http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx" />
+    </wsdl:port>
+    <wsdl:port name="InfoCarrerasSoap12" binding="tns:InfoCarrerasSoap12">
+      <soap12:address location="http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

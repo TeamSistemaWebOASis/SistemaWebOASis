@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" id="dtstNotasPeriodoEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstNotasPeriodoEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="fltPromedio" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Materias_Evaluadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodEstud" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="intEvaluacionAcumulativa" type="xs:int" />
+              <xs:element minOccurs="0" name="intExamenPrincipal" type="xs:int" />
+              <xs:element minOccurs="0" name="intPromedioCiclo" type="xs:int" />
+              <xs:element minOccurs="0" name="intExamenSuspension" type="xs:int" />
+              <xs:element minOccurs="0" name="intComputoTotal" type="xs:int" />
+              <xs:element minOccurs="0" name="strEquivalencia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstNotasPeriodoEstudianteKey1">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodigo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+    </xs:unique>
+    <xs:unique name="dtstNotasPeriodoEstudianteKey2">
+      <xs:selector xpath=".//mstns:Materias_Evaluadas" />
+      <xs:field xpath="mstns:strCodEstud" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:keyref name="EstudiantesMaterias_Asignadas" refer="mstns:dtstNotasPeriodoEstudianteKey1">
+      <xs:selector xpath=".//mstns:Materias_Evaluadas" />
+      <xs:field xpath="mstns:strCodEstud" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

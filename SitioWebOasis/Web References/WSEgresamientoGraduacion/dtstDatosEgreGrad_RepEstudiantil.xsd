@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" id="dtstDatosEgreGrad_RepEstudiantil" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_RepEstudiantil">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Tipos_de_Rep_Estudiantil">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+              <xs:element minOccurs="0" default="0" name="fltPuntos" type="xs:float" />
+              <xs:element minOccurs="0" default="0" name="fltMaxPuntos" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombres" type="xs:string" />
+              <xs:element name="strApellidos" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Representaciones_Estudiantiles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodigo" type="xs:int" />
+              <xs:element name="strCodEstud" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+              <xs:element name="dtFechaAprob" type="xs:dateTime" />
+              <xs:element name="strResolucion" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaAsentada" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="NombreEstudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="TipoRepresentacion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_RepEstudiantilKey1">
+      <xs:selector xpath=".//mstns:Tipos_de_Rep_Estudiantil" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_RepEstudiantilKey3">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_RepEstudiantilKey2">
+      <xs:selector xpath=".//mstns:Representaciones_Estudiantiles" />
+      <xs:field xpath="mstns:intCodigo" />
+    </xs:unique>
+    <xs:keyref name="Tipos_de_Rep_EstudiantilRepresentaciones_Estudiantiles" refer="mstns:dtstDatosEgreGrad_RepEstudiantilKey1">
+      <xs:selector xpath=".//mstns:Representaciones_Estudiantiles" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+    <xs:keyref name="EstudiantesRepresentaciones_Estudiantiles" refer="mstns:dtstDatosEgreGrad_RepEstudiantilKey3">
+      <xs:selector xpath=".//mstns:Representaciones_Estudiantiles" />
+      <xs:field xpath="mstns:strCodEstud" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

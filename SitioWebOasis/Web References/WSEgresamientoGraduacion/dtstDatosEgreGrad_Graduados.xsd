@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" id="dtstDatosEgreGrad_Graduados" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_Graduados">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_GraduadosActuales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="NombreCompleto" type="xs:string" />
+              <xs:element name="fltPromNotas" type="xs:float" />
+              <xs:element name="fltNotaPromEsc" type="xs:float" />
+              <xs:element name="fltNotaPromOral" type="xs:float" />
+              <xs:element name="fltNotaPromGrado" type="xs:float" />
+              <xs:element minOccurs="0" name="fltCreditos" type="xs:float" />
+              <xs:element name="strCodTitulo" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaGrado" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="intCodProyecto" type="xs:int" />
+              <xs:element minOccurs="0" name="NumActa" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="v_ProyectosGrado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodigo" type="xs:int" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="Area" type="xs:string" />
+              <xs:element name="FormaGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaDefensa" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

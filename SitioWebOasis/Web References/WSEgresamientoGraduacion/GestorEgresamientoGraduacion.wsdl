@@ -1,0 +1,3540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_ActaGrado.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_ActaCalificacionGrado.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_Egresados.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstCertificadoPromocionEgresamiento.xsd" />
+      <s:import namespace="http://tempuri.org/dtstMateriasRetiradasPeriodos.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_Estudiantes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_Graduacion.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_ListadosGraduacion.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_MejoresEgresados.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_Periodos.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_CurriculumAcademico.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstDatosEgreGrad_ConfiguracionInstitucion.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstDatosEgreGrad_Niveles.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEstudiantes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEgrerGrad_AgregarMiembrosProyecto.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstTesisSinMatricular.xsd" />
+      <s:import namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstRepTesis.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstGetIntegratesTesis.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstGetTesisVigentes.xsd" />
+      <s:import namespace="http://www.tempuri.org/ds_mattesisperiodo.xsd" />
+      <s:import namespace="http://www.tempuri.org/dsTesis.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=ds_mattesisperiodo" namespace="http://www.tempuri.org/ds_mattesisperiodo.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstGetTesisVigentes" namespace="http://www.tempuri.org/dtstGetTesisVigentes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_Graduacion" namespace="http://tempuri.org/dtstDatosEgreGrad_Graduacion.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstEstudiantes" namespace="http://tempuri.org/dtstEstudiantes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstRepTesis" namespace="http://www.tempuri.org/dtstRepTesis.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_Egresados" namespace="http://tempuri.org/dtstDatosEgreGrad_Egresados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstMateriasRetiradasPeriodos" namespace="http://tempuri.org/dtstMateriasRetiradasPeriodos.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_Graduados" namespace="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_TitulosCarrera" namespace="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_ActaCalificacionGrado" namespace="http://tempuri.org/dtstDatosEgreGrad_ActaCalificacionGrado.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstTesisSinMatricular" namespace="http://www.tempuri.org/dtstTesisSinMatricular.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_ConfiguracionInstitucion" namespace="http://www.tempuri.org/dtstDatosEgreGrad_ConfiguracionInstitucion.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dstsGetRepMatTesis" namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_RepEstudiantil" namespace="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgrerGrad_AgregarMiembrosProyecto" namespace="http://tempuri.org/dtstDatosEgrerGrad_AgregarMiembrosProyecto.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_CurriculumAcademico" namespace="http://tempuri.org/dtstDatosEgreGrad_CurriculumAcademico.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstCertificadoPromocionEgresamiento" namespace="http://www.tempuri.org/dtstCertificadoPromocionEgresamiento.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_Periodos" namespace="http://tempuri.org/dtstDatosEgreGrad_Periodos.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_RecordAcademico" namespace="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_ListadosGraduacion" namespace="http://tempuri.org/dtstDatosEgreGrad_ListadosGraduacion.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_Niveles" namespace="http://www.tempuri.org/dtstDatosEgreGrad_Niveles.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstGetIntegratesTesis" namespace="http://www.tempuri.org/dtstGetIntegratesTesis.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_OtrosDatosEstudiante" namespace="http://tempuri.org/dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEstudiantes" namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_ActaGrado" namespace="http://tempuri.org/dtstDatosEgreGrad_ActaGrado.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_MejoresEgresados" namespace="http://tempuri.org/dtstDatosEgreGrad_MejoresEgresados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_Estudiantes" namespace="http://tempuri.org/dtstDatosEgreGrad_Estudiantes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dtstDatosEgreGrad_ProyectosGrado" namespace="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx?schema=dsTesis" namespace="http://www.tempuri.org/dsTesis.xsd" />
+      <s:element name="getTextoActaGrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="NumActa" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="LetrasPromedio" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTextoActaGradoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTextoActaGradoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_ActaGrado.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="NumActa" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosActaCalificacionGrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosActaCalificacionGradoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosActaCalificacionGradoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_ActaCalificacionGrado.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeEgresar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeEgresarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PuedeEgresarResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Msg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DatosFuturoEgresado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PromNotas" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="CredAprobados" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="PuntosRepEstud" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DatosFuturoEgresadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PromNotas" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="CredAprobados" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="PuntosRepEstud" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EgresarEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FechaAprobacion" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Resolucion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EgresarEstudianteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetValorParametro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strParametro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValorParametroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetValorParametroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosTitulosCarrera">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosTitulosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosTitulosCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosEgresados">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosEgresadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosEgresadosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_Egresados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarEgresado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Codigo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarEgresadoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosEgresamiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iCodigo" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FAprob" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Res" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PromNotas" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Creditos" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosEgresamientoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FAprob" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Res" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PromNotas" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Creditos" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarEgresamiento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="iCodigo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="fAprobacion" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="sResolucion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="PromNotas" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="Creditos" type="s:float" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarEgresamientoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EsEgresado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsEgresadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EsEgresadoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCertificadoPromocionEgresar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCertificadoPromocionEgresarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosCertificadoPromocionEgresarResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstCertificadoPromocionEgresamiento.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosRetirosPeriodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosRetirosPeriodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosRetirosPeriodosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstMateriasRetiradasPeriodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosEstudiantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strApellidos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosEstudiantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosEstudiantesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_Estudiantes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsMigradoEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsMigradoEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EsMigradoEstudianteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOtrosDatosEstudianteMaster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetOtrosDatosEstudianteMasterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetOtrosDatosEstudianteMasterResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDatosEstudiantesMaster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarDatosEstudiantesMasterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarDatosEstudiantesMasterResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosNuevoGrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsGrados">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_Graduacion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosNuevoGradoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNumActaNuevoGraduado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumActaNuevoGraduadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNumActaNuevoGraduadoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosGraduados">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosGraduadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosGraduadosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosProyectos">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosProyectosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosProyectosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_Graduados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarProyectoGrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCodProyecto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarProyectoGradoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="EliminarGraduado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTitulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarGraduadoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosListadosGraduacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosListadosGraduacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosListadosGraduacionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_ListadosGraduacion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosListadosGraduacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsListado">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_ListadosGraduacion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosListadosGraduacionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getMejoresEgresados">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Cant" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFDesde" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFHasta" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="bOpcion" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMejoresEgresadosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMejoresEgresadosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_MejoresEgresados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getTitulosCarrera">
+        <s:complexType />
+      </s:element>
+      <s:element name="getTitulosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getTitulosCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPeriodos">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPeriodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPeriodosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosRepEstudiantil">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosRepEstudiantilResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosRepEstudiantilResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosRepEstudiantil">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsRepEstudiantil">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosRepEstudiantilResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsRepEstudiantil">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_RepEstudiantil.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFechasPeriodoVigente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Inicio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fin" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getFechasPeriodoVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Inicio" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="Fin" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosUnidadAcademica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strInstitucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFacultad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEscuela" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosUnidadAcademicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strInstitucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strFacultad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEscuela" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosPersonalUnidadAcademica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strDecano" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strVicedecano" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDirectorEscuela" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSecretariaAcademica" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosPersonalUnidadAcademicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strDecano" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strVicedecano" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDirectorEscuela" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSecretariaAcademica" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCodSexoAutoridadUnidadAcademica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strTipoAutoridad" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCodSexoAutoridadUnidadAcademicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCodSexoAutoridadUnidadAcademicaResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValorParametroMaster">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strParametro" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetValorParametroMasterResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetValorParametroMasterResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosRecordAcademico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodNivel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosRecordAcademicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosRecordAcademicoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCurriculumAcademico">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCurriculumAcademicoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosCurriculumAcademicoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_CurriculumAcademico.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCurriculumAcademicoNoEgresado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodTitulo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCurriculumAcademicoNoEgresadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosCurriculumAcademicoNoEgresadoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_CurriculumAcademico.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosRecordAcademicoMateriasAprobadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodNivel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosRecordAcademicoMateriasAprobadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosRecordAcademicoMateriasAprobadasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosConfiguracionInstitucion">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDatosConfiguracionInstitucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosConfiguracionInstitucionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosEgreGrad_ConfiguracionInstitucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosNiveles">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDatosNivelesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosNivelesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosEgreGrad_Niveles.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosProyectosGrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCodProyecto" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosProyectosGradoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosProyectosGradoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosProyectosGrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsProyectos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosProyectosGradoResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosEstudiantes_matricula">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosEstudiantes_matriculaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosEstudiantes_matriculaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEstudiantes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_Ubicacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_UbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_UbicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_Ubicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_UbicacionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_BaseDatos">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_BaseDatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_BaseDatosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_BaseDatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_BaseDatosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="setDatosNuevaTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="txttema" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTitulo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="StrCodArea" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodFormaGrado" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgrerGrad_AgregarMiembrosProyecto.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="dsest">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEstudiantes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strestado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosNuevaTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setDatosNuevaTesisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisSinMatriculas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisSinMatriculasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisSinMatriculasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstTesisSinMatricular.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisCaducadasFechas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisCaducadasFechasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisCaducadasFechasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisCaducadasFechasconTA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisCaducadasFechasconTAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisCaducadasFechasconTAResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisVigentesFechas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisVigentesFechasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisVigentesFechasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisVigentesFechasconTA">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisVigentesFechasconTAResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisVigentesFechasconTAResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatriculasTesisFechasTodas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatriculasTesisFechasTodasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatriculasTesisFechasTodasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisTerminadasFechas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisTerminadasFechasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisTerminadasFechasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstRepTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisAnuldasFechas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ini" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="fin" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="cod" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisAnuldasFechasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisAnuldasFechasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstRepTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIntegratesTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigoTesis" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIntegratesTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIntegratesTesisResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstGetIntegratesTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MatriculaTesisPeriodo_insertar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCodMatTesis_1" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResolucion_2" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFecha_3" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="intCodTesis_4" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo_5" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="intMatricula_6" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Creditos_7" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MatriculaTesisPeriodo_insertarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MatriculaTesisPeriodo_insertarResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnularTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCodTesis" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strResolucion_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="motivo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFecha_3" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AnularTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AnularTesisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisVigentes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigoTesis" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisVigentesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisVigentesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstGetTesisVigentes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisCaducadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigoTesis" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisCaducadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisCaducadasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstGetTesisVigentes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatTesisPeriodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoTesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMatTesisPeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMatTesisPeriodoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/ds_mattesisperiodo.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoTesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dsTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisAnuldadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoTesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisAnuldadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisAnuldadasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dsTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codigoTesis" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisIdResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarTesisAnuladas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intcodtes" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarTesisAnuladasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarTesisAnuladasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCodTesis_1" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="txtTema_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTitulo_3" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodArea_4" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodForGrado_5" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strEstado_6" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEgrerGrad_AgregarMiembrosProyecto.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateTesisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BorrarTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intCodTesis_1" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="codmatricula" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BorrarTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="BorrarTesisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetnumeroTesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intcodtesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetnumeroTesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetnumeroTesisResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiarTesisTerminadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="intcodtes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tipo" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="fecha" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambiarTesisTerminadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CambiarTesisTerminadasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisTerminadas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoTesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTesisTerminadasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTesisTerminadasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dsTesis.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMiembrostesis">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoTesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMiembrostesisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMiembrostesisResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMiembrostesisI">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="codigoTesis" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMiembrostesisIResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMiembrostesisIResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getTextoActaGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:getTextoActaGrado" />
+  </wsdl:message>
+  <wsdl:message name="getTextoActaGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:getTextoActaGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosActaCalificacionGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosActaCalificacionGrado" />
+  </wsdl:message>
+  <wsdl:message name="getDatosActaCalificacionGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosActaCalificacionGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="PuedeEgresarSoapIn">
+    <wsdl:part name="parameters" element="tns:PuedeEgresar" />
+  </wsdl:message>
+  <wsdl:message name="PuedeEgresarSoapOut">
+    <wsdl:part name="parameters" element="tns:PuedeEgresarResponse" />
+  </wsdl:message>
+  <wsdl:message name="DatosFuturoEgresadoSoapIn">
+    <wsdl:part name="parameters" element="tns:DatosFuturoEgresado" />
+  </wsdl:message>
+  <wsdl:message name="DatosFuturoEgresadoSoapOut">
+    <wsdl:part name="parameters" element="tns:DatosFuturoEgresadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EgresarEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:EgresarEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="EgresarEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:EgresarEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetValorParametroSoapIn">
+    <wsdl:part name="parameters" element="tns:GetValorParametro" />
+  </wsdl:message>
+  <wsdl:message name="GetValorParametroSoapOut">
+    <wsdl:part name="parameters" element="tns:GetValorParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosTitulosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosTitulosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="getDatosTitulosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosTitulosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEgresadosSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosEgresados" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEgresadosSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosEgresadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarEgresadoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarEgresado" />
+  </wsdl:message>
+  <wsdl:message name="EliminarEgresadoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarEgresadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEgresamientoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosEgresamiento" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEgresamientoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosEgresamientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarEgresamientoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarEgresamiento" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarEgresamientoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarEgresamientoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EsEgresadoSoapIn">
+    <wsdl:part name="parameters" element="tns:EsEgresado" />
+  </wsdl:message>
+  <wsdl:message name="EsEgresadoSoapOut">
+    <wsdl:part name="parameters" element="tns:EsEgresadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCertificadoPromocionEgresarSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosCertificadoPromocionEgresar" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCertificadoPromocionEgresarSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosCertificadoPromocionEgresarResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosRetirosPeriodosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosRetirosPeriodos" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosRetirosPeriodosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosRetirosPeriodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEstudiantesSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosEstudiantes" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEstudiantesSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosEstudiantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="EsMigradoEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:EsMigradoEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="EsMigradoEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:EsMigradoEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetOtrosDatosEstudianteMasterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetOtrosDatosEstudianteMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetOtrosDatosEstudianteMasterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetOtrosDatosEstudianteMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDatosEstudiantesMasterSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarDatosEstudiantesMaster" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarDatosEstudiantesMasterSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarDatosEstudiantesMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosNuevoGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosNuevoGrado" />
+  </wsdl:message>
+  <wsdl:message name="setDatosNuevoGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosNuevoGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNumActaNuevoGraduadoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNumActaNuevoGraduado" />
+  </wsdl:message>
+  <wsdl:message name="GetNumActaNuevoGraduadoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNumActaNuevoGraduadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosGraduadosSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosGraduados" />
+  </wsdl:message>
+  <wsdl:message name="getDatosGraduadosSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosGraduadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosProyectosSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosProyectos" />
+  </wsdl:message>
+  <wsdl:message name="getDatosProyectosSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosProyectosResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarProyectoGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarProyectoGrado" />
+  </wsdl:message>
+  <wsdl:message name="EliminarProyectoGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarProyectoGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarGraduadoSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarGraduado" />
+  </wsdl:message>
+  <wsdl:message name="EliminarGraduadoSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarGraduadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosListadosGraduacionSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosListadosGraduacion" />
+  </wsdl:message>
+  <wsdl:message name="getDatosListadosGraduacionSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosListadosGraduacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosListadosGraduacionSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosListadosGraduacion" />
+  </wsdl:message>
+  <wsdl:message name="setDatosListadosGraduacionSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosListadosGraduacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMejoresEgresadosSoapIn">
+    <wsdl:part name="parameters" element="tns:getMejoresEgresados" />
+  </wsdl:message>
+  <wsdl:message name="getMejoresEgresadosSoapOut">
+    <wsdl:part name="parameters" element="tns:getMejoresEgresadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getTitulosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:getTitulosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="getTitulosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:getTitulosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodosSoapIn">
+    <wsdl:part name="parameters" element="tns:getPeriodos" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodosSoapOut">
+    <wsdl:part name="parameters" element="tns:getPeriodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosRepEstudiantilSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosRepEstudiantil" />
+  </wsdl:message>
+  <wsdl:message name="getDatosRepEstudiantilSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosRepEstudiantilResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosRepEstudiantilSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosRepEstudiantil" />
+  </wsdl:message>
+  <wsdl:message name="setDatosRepEstudiantilSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosRepEstudiantilResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFechasPeriodoVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getFechasPeriodoVigente" />
+  </wsdl:message>
+  <wsdl:message name="getFechasPeriodoVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getFechasPeriodoVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosUnidadAcademicaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosUnidadAcademica" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosUnidadAcademicaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosUnidadAcademicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosPersonalUnidadAcademicaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosPersonalUnidadAcademica" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosPersonalUnidadAcademicaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosPersonalUnidadAcademicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCodSexoAutoridadUnidadAcademicaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCodSexoAutoridadUnidadAcademica" />
+  </wsdl:message>
+  <wsdl:message name="GetCodSexoAutoridadUnidadAcademicaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCodSexoAutoridadUnidadAcademicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetValorParametroMasterSoapIn">
+    <wsdl:part name="parameters" element="tns:GetValorParametroMaster" />
+  </wsdl:message>
+  <wsdl:message name="GetValorParametroMasterSoapOut">
+    <wsdl:part name="parameters" element="tns:GetValorParametroMasterResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosRecordAcademicoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosRecordAcademico" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosRecordAcademicoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosRecordAcademicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCurriculumAcademicoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosCurriculumAcademico" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCurriculumAcademicoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosCurriculumAcademicoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCurriculumAcademicoNoEgresadoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosCurriculumAcademicoNoEgresado" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCurriculumAcademicoNoEgresadoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosCurriculumAcademicoNoEgresadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosRecordAcademicoMateriasAprobadasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosRecordAcademicoMateriasAprobadas" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosRecordAcademicoMateriasAprobadasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosRecordAcademicoMateriasAprobadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosConfiguracionInstitucionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosConfiguracionInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosConfiguracionInstitucionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosConfiguracionInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosNivelesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosNiveles" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosNivelesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosNivelesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosProyectosGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosProyectosGrado" />
+  </wsdl:message>
+  <wsdl:message name="getDatosProyectosGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosProyectosGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosProyectosGradoSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosProyectosGrado" />
+  </wsdl:message>
+  <wsdl:message name="setDatosProyectosGradoSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosProyectosGradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEstudiantes_matriculaSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosEstudiantes_matricula" />
+  </wsdl:message>
+  <wsdl:message name="getDatosEstudiantes_matriculaSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosEstudiantes_matriculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_UbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:get_Ubicacion" />
+  </wsdl:message>
+  <wsdl:message name="get_UbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:get_UbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_UbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:set_Ubicacion" />
+  </wsdl:message>
+  <wsdl:message name="set_UbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:set_UbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_BaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:get_BaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="get_BaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:get_BaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_BaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:set_BaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="set_BaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:set_BaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosNuevaTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosNuevaTesis" />
+  </wsdl:message>
+  <wsdl:message name="setDatosNuevaTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosNuevaTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisSinMatriculasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisSinMatriculas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisSinMatriculasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisSinMatriculasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisCaducadasFechasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisCaducadasFechas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisCaducadasFechasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisCaducadasFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisCaducadasFechasconTASoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisCaducadasFechasconTA" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisCaducadasFechasconTASoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisCaducadasFechasconTAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisVigentesFechasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisVigentesFechas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisVigentesFechasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisVigentesFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisVigentesFechasconTASoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisVigentesFechasconTA" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisVigentesFechasconTASoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisVigentesFechasconTAResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatriculasTesisFechasTodasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatriculasTesisFechasTodas" />
+  </wsdl:message>
+  <wsdl:message name="GetMatriculasTesisFechasTodasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatriculasTesisFechasTodasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisTerminadasFechasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisTerminadasFechas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisTerminadasFechasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisTerminadasFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisAnuldasFechasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisAnuldasFechas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisAnuldasFechasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisAnuldasFechasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIntegratesTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIntegratesTesis" />
+  </wsdl:message>
+  <wsdl:message name="GetIntegratesTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIntegratesTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="MatriculaTesisPeriodo_insertarSoapIn">
+    <wsdl:part name="parameters" element="tns:MatriculaTesisPeriodo_insertar" />
+  </wsdl:message>
+  <wsdl:message name="MatriculaTesisPeriodo_insertarSoapOut">
+    <wsdl:part name="parameters" element="tns:MatriculaTesisPeriodo_insertarResponse" />
+  </wsdl:message>
+  <wsdl:message name="AnularTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:AnularTesis" />
+  </wsdl:message>
+  <wsdl:message name="AnularTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:AnularTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisVigentesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisVigentes" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisVigentesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisVigentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisCaducadasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisCaducadas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisCaducadasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisCaducadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMatTesisPeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMatTesisPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="GetMatTesisPeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMatTesisPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesis" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisAnuldadasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisAnuldadas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisAnuldadasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisAnuldadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisId" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarTesisAnuladasSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarTesisAnuladas" />
+  </wsdl:message>
+  <wsdl:message name="EliminarTesisAnuladasSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarTesisAnuladasResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateTesis" />
+  </wsdl:message>
+  <wsdl:message name="UpdateTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="BorrarTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:BorrarTesis" />
+  </wsdl:message>
+  <wsdl:message name="BorrarTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:BorrarTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetnumeroTesisSoapIn">
+    <wsdl:part name="parameters" element="tns:GetnumeroTesis" />
+  </wsdl:message>
+  <wsdl:message name="GetnumeroTesisSoapOut">
+    <wsdl:part name="parameters" element="tns:GetnumeroTesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="CambiarTesisTerminadasSoapIn">
+    <wsdl:part name="parameters" element="tns:CambiarTesisTerminadas" />
+  </wsdl:message>
+  <wsdl:message name="CambiarTesisTerminadasSoapOut">
+    <wsdl:part name="parameters" element="tns:CambiarTesisTerminadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisTerminadasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTesisTerminadas" />
+  </wsdl:message>
+  <wsdl:message name="GetTesisTerminadasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTesisTerminadasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMiembrostesisSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMiembrostesis" />
+  </wsdl:message>
+  <wsdl:message name="GetMiembrostesisSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMiembrostesisResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMiembrostesisISoapIn">
+    <wsdl:part name="parameters" element="tns:GetMiembrostesisI" />
+  </wsdl:message>
+  <wsdl:message name="GetMiembrostesisISoapOut">
+    <wsdl:part name="parameters" element="tns:GetMiembrostesisIResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GestorEgresamientoGraduacionSoap">
+    <wsdl:operation name="getTextoActaGrado">
+      <wsdl:input message="tns:getTextoActaGradoSoapIn" />
+      <wsdl:output message="tns:getTextoActaGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosActaCalificacionGrado">
+      <wsdl:input message="tns:getDatosActaCalificacionGradoSoapIn" />
+      <wsdl:output message="tns:getDatosActaCalificacionGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PuedeEgresar">
+      <wsdl:input message="tns:PuedeEgresarSoapIn" />
+      <wsdl:output message="tns:PuedeEgresarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DatosFuturoEgresado">
+      <wsdl:input message="tns:DatosFuturoEgresadoSoapIn" />
+      <wsdl:output message="tns:DatosFuturoEgresadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EgresarEstudiante">
+      <wsdl:input message="tns:EgresarEstudianteSoapIn" />
+      <wsdl:output message="tns:EgresarEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametro">
+      <wsdl:input message="tns:GetValorParametroSoapIn" />
+      <wsdl:output message="tns:GetValorParametroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosTitulosCarrera">
+      <wsdl:input message="tns:getDatosTitulosCarreraSoapIn" />
+      <wsdl:output message="tns:getDatosTitulosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEgresados">
+      <wsdl:input message="tns:getDatosEgresadosSoapIn" />
+      <wsdl:output message="tns:getDatosEgresadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEgresado">
+      <wsdl:input message="tns:EliminarEgresadoSoapIn" />
+      <wsdl:output message="tns:EliminarEgresadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEgresamiento">
+      <wsdl:input message="tns:getDatosEgresamientoSoapIn" />
+      <wsdl:output message="tns:getDatosEgresamientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEgresamiento">
+      <wsdl:input message="tns:ActualizarEgresamientoSoapIn" />
+      <wsdl:output message="tns:ActualizarEgresamientoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EsEgresado">
+      <wsdl:input message="tns:EsEgresadoSoapIn" />
+      <wsdl:output message="tns:EsEgresadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCertificadoPromocionEgresar">
+      <wsdl:input message="tns:GetDatosCertificadoPromocionEgresarSoapIn" />
+      <wsdl:output message="tns:GetDatosCertificadoPromocionEgresarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRetirosPeriodos">
+      <wsdl:input message="tns:GetDatosRetirosPeriodosSoapIn" />
+      <wsdl:output message="tns:GetDatosRetirosPeriodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEstudiantes">
+      <wsdl:input message="tns:getDatosEstudiantesSoapIn" />
+      <wsdl:output message="tns:getDatosEstudiantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EsMigradoEstudiante">
+      <wsdl:input message="tns:EsMigradoEstudianteSoapIn" />
+      <wsdl:output message="tns:EsMigradoEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOtrosDatosEstudianteMaster">
+      <wsdl:input message="tns:GetOtrosDatosEstudianteMasterSoapIn" />
+      <wsdl:output message="tns:GetOtrosDatosEstudianteMasterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDatosEstudiantesMaster">
+      <wsdl:input message="tns:ActualizarDatosEstudiantesMasterSoapIn" />
+      <wsdl:output message="tns:ActualizarDatosEstudiantesMasterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosNuevoGrado">
+      <wsdl:input message="tns:setDatosNuevoGradoSoapIn" />
+      <wsdl:output message="tns:setDatosNuevoGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumActaNuevoGraduado">
+      <wsdl:input message="tns:GetNumActaNuevoGraduadoSoapIn" />
+      <wsdl:output message="tns:GetNumActaNuevoGraduadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosGraduados">
+      <wsdl:input message="tns:getDatosGraduadosSoapIn" />
+      <wsdl:output message="tns:getDatosGraduadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosProyectos">
+      <wsdl:input message="tns:getDatosProyectosSoapIn" />
+      <wsdl:output message="tns:getDatosProyectosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProyectoGrado">
+      <wsdl:input message="tns:EliminarProyectoGradoSoapIn" />
+      <wsdl:output message="tns:EliminarProyectoGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGraduado">
+      <wsdl:input message="tns:EliminarGraduadoSoapIn" />
+      <wsdl:output message="tns:EliminarGraduadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosListadosGraduacion">
+      <wsdl:input message="tns:getDatosListadosGraduacionSoapIn" />
+      <wsdl:output message="tns:getDatosListadosGraduacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosListadosGraduacion">
+      <wsdl:input message="tns:setDatosListadosGraduacionSoapIn" />
+      <wsdl:output message="tns:setDatosListadosGraduacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMejoresEgresados">
+      <wsdl:input message="tns:getMejoresEgresadosSoapIn" />
+      <wsdl:output message="tns:getMejoresEgresadosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getTitulosCarrera">
+      <wsdl:input message="tns:getTitulosCarreraSoapIn" />
+      <wsdl:output message="tns:getTitulosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodos">
+      <wsdl:input message="tns:getPeriodosSoapIn" />
+      <wsdl:output message="tns:getPeriodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosRepEstudiantil">
+      <wsdl:input message="tns:getDatosRepEstudiantilSoapIn" />
+      <wsdl:output message="tns:getDatosRepEstudiantilSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosRepEstudiantil">
+      <wsdl:input message="tns:setDatosRepEstudiantilSoapIn" />
+      <wsdl:output message="tns:setDatosRepEstudiantilSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getFechasPeriodoVigente">
+      <wsdl:input message="tns:getFechasPeriodoVigenteSoapIn" />
+      <wsdl:output message="tns:getFechasPeriodoVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosUnidadAcademica">
+      <wsdl:input message="tns:GetDatosUnidadAcademicaSoapIn" />
+      <wsdl:output message="tns:GetDatosUnidadAcademicaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosPersonalUnidadAcademica">
+      <wsdl:input message="tns:GetDatosPersonalUnidadAcademicaSoapIn" />
+      <wsdl:output message="tns:GetDatosPersonalUnidadAcademicaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodSexoAutoridadUnidadAcademica">
+      <wsdl:input message="tns:GetCodSexoAutoridadUnidadAcademicaSoapIn" />
+      <wsdl:output message="tns:GetCodSexoAutoridadUnidadAcademicaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametroMaster">
+      <wsdl:input message="tns:GetValorParametroMasterSoapIn" />
+      <wsdl:output message="tns:GetValorParametroMasterSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRecordAcademico">
+      <wsdl:input message="tns:GetDatosRecordAcademicoSoapIn" />
+      <wsdl:output message="tns:GetDatosRecordAcademicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCurriculumAcademico">
+      <wsdl:input message="tns:GetDatosCurriculumAcademicoSoapIn" />
+      <wsdl:output message="tns:GetDatosCurriculumAcademicoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCurriculumAcademicoNoEgresado">
+      <wsdl:input message="tns:GetDatosCurriculumAcademicoNoEgresadoSoapIn" />
+      <wsdl:output message="tns:GetDatosCurriculumAcademicoNoEgresadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRecordAcademicoMateriasAprobadas">
+      <wsdl:input message="tns:GetDatosRecordAcademicoMateriasAprobadasSoapIn" />
+      <wsdl:output message="tns:GetDatosRecordAcademicoMateriasAprobadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosConfiguracionInstitucion">
+      <wsdl:input message="tns:GetDatosConfiguracionInstitucionSoapIn" />
+      <wsdl:output message="tns:GetDatosConfiguracionInstitucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosNiveles">
+      <wsdl:input message="tns:GetDatosNivelesSoapIn" />
+      <wsdl:output message="tns:GetDatosNivelesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosProyectosGrado">
+      <wsdl:input message="tns:getDatosProyectosGradoSoapIn" />
+      <wsdl:output message="tns:getDatosProyectosGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosProyectosGrado">
+      <wsdl:input message="tns:setDatosProyectosGradoSoapIn" />
+      <wsdl:output message="tns:setDatosProyectosGradoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEstudiantes_matricula">
+      <wsdl:input message="tns:getDatosEstudiantes_matriculaSoapIn" />
+      <wsdl:output message="tns:getDatosEstudiantes_matriculaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_Ubicacion">
+      <wsdl:input message="tns:get_UbicacionSoapIn" />
+      <wsdl:output message="tns:get_UbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_Ubicacion">
+      <wsdl:input message="tns:set_UbicacionSoapIn" />
+      <wsdl:output message="tns:set_UbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_BaseDatos">
+      <wsdl:input message="tns:get_BaseDatosSoapIn" />
+      <wsdl:output message="tns:get_BaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_BaseDatos">
+      <wsdl:input message="tns:set_BaseDatosSoapIn" />
+      <wsdl:output message="tns:set_BaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosNuevaTesis">
+      <wsdl:input message="tns:setDatosNuevaTesisSoapIn" />
+      <wsdl:output message="tns:setDatosNuevaTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisSinMatriculas">
+      <wsdl:input message="tns:GetTesisSinMatriculasSoapIn" />
+      <wsdl:output message="tns:GetTesisSinMatriculasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadasFechas">
+      <wsdl:input message="tns:GetTesisCaducadasFechasSoapIn" />
+      <wsdl:output message="tns:GetTesisCaducadasFechasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadasFechasconTA">
+      <wsdl:input message="tns:GetTesisCaducadasFechasconTASoapIn" />
+      <wsdl:output message="tns:GetTesisCaducadasFechasconTASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentesFechas">
+      <wsdl:input message="tns:GetTesisVigentesFechasSoapIn" />
+      <wsdl:output message="tns:GetTesisVigentesFechasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentesFechasconTA">
+      <wsdl:input message="tns:GetTesisVigentesFechasconTASoapIn" />
+      <wsdl:output message="tns:GetTesisVigentesFechasconTASoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatriculasTesisFechasTodas">
+      <wsdl:input message="tns:GetMatriculasTesisFechasTodasSoapIn" />
+      <wsdl:output message="tns:GetMatriculasTesisFechasTodasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisTerminadasFechas">
+      <wsdl:input message="tns:GetTesisTerminadasFechasSoapIn" />
+      <wsdl:output message="tns:GetTesisTerminadasFechasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisAnuldasFechas">
+      <wsdl:input message="tns:GetTesisAnuldasFechasSoapIn" />
+      <wsdl:output message="tns:GetTesisAnuldasFechasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIntegratesTesis">
+      <wsdl:input message="tns:GetIntegratesTesisSoapIn" />
+      <wsdl:output message="tns:GetIntegratesTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MatriculaTesisPeriodo_insertar">
+      <wsdl:input message="tns:MatriculaTesisPeriodo_insertarSoapIn" />
+      <wsdl:output message="tns:MatriculaTesisPeriodo_insertarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AnularTesis">
+      <wsdl:input message="tns:AnularTesisSoapIn" />
+      <wsdl:output message="tns:AnularTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentes">
+      <wsdl:input message="tns:GetTesisVigentesSoapIn" />
+      <wsdl:output message="tns:GetTesisVigentesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadas">
+      <wsdl:input message="tns:GetTesisCaducadasSoapIn" />
+      <wsdl:output message="tns:GetTesisCaducadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMatTesisPeriodo">
+      <wsdl:input message="tns:GetMatTesisPeriodoSoapIn" />
+      <wsdl:output message="tns:GetMatTesisPeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesis">
+      <wsdl:input message="tns:GetTesisSoapIn" />
+      <wsdl:output message="tns:GetTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisAnuldadas">
+      <wsdl:input message="tns:GetTesisAnuldadasSoapIn" />
+      <wsdl:output message="tns:GetTesisAnuldadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisId">
+      <wsdl:input message="tns:GetTesisIdSoapIn" />
+      <wsdl:output message="tns:GetTesisIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTesisAnuladas">
+      <wsdl:input message="tns:EliminarTesisAnuladasSoapIn" />
+      <wsdl:output message="tns:EliminarTesisAnuladasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTesis">
+      <wsdl:input message="tns:UpdateTesisSoapIn" />
+      <wsdl:output message="tns:UpdateTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BorrarTesis">
+      <wsdl:input message="tns:BorrarTesisSoapIn" />
+      <wsdl:output message="tns:BorrarTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetnumeroTesis">
+      <wsdl:input message="tns:GetnumeroTesisSoapIn" />
+      <wsdl:output message="tns:GetnumeroTesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambiarTesisTerminadas">
+      <wsdl:input message="tns:CambiarTesisTerminadasSoapIn" />
+      <wsdl:output message="tns:CambiarTesisTerminadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisTerminadas">
+      <wsdl:input message="tns:GetTesisTerminadasSoapIn" />
+      <wsdl:output message="tns:GetTesisTerminadasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMiembrostesis">
+      <wsdl:input message="tns:GetMiembrostesisSoapIn" />
+      <wsdl:output message="tns:GetMiembrostesisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMiembrostesisI">
+      <wsdl:input message="tns:GetMiembrostesisISoapIn" />
+      <wsdl:output message="tns:GetMiembrostesisISoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestorEgresamientoGraduacionSoap" type="tns:GestorEgresamientoGraduacionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getTextoActaGrado">
+      <soap:operation soapAction="http://tempuri.org/getTextoActaGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosActaCalificacionGrado">
+      <soap:operation soapAction="http://tempuri.org/getDatosActaCalificacionGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeEgresar">
+      <soap:operation soapAction="http://tempuri.org/PuedeEgresar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosFuturoEgresado">
+      <soap:operation soapAction="http://tempuri.org/DatosFuturoEgresado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EgresarEstudiante">
+      <soap:operation soapAction="http://tempuri.org/EgresarEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametro">
+      <soap:operation soapAction="http://tempuri.org/GetValorParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosTitulosCarrera">
+      <soap:operation soapAction="http://tempuri.org/getDatosTitulosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEgresados">
+      <soap:operation soapAction="http://tempuri.org/getDatosEgresados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEgresado">
+      <soap:operation soapAction="http://tempuri.org/EliminarEgresado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEgresamiento">
+      <soap:operation soapAction="http://tempuri.org/getDatosEgresamiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEgresamiento">
+      <soap:operation soapAction="http://tempuri.org/ActualizarEgresamiento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsEgresado">
+      <soap:operation soapAction="http://tempuri.org/EsEgresado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCertificadoPromocionEgresar">
+      <soap:operation soapAction="http://tempuri.org/GetDatosCertificadoPromocionEgresar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRetirosPeriodos">
+      <soap:operation soapAction="http://tempuri.org/GetDatosRetirosPeriodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEstudiantes">
+      <soap:operation soapAction="http://tempuri.org/getDatosEstudiantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsMigradoEstudiante">
+      <soap:operation soapAction="http://tempuri.org/EsMigradoEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOtrosDatosEstudianteMaster">
+      <soap:operation soapAction="http://tempuri.org/GetOtrosDatosEstudianteMaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDatosEstudiantesMaster">
+      <soap:operation soapAction="http://tempuri.org/ActualizarDatosEstudiantesMaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosNuevoGrado">
+      <soap:operation soapAction="http://tempuri.org/setDatosNuevoGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumActaNuevoGraduado">
+      <soap:operation soapAction="http://tempuri.org/GetNumActaNuevoGraduado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosGraduados">
+      <soap:operation soapAction="http://tempuri.org/getDatosGraduados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosProyectos">
+      <soap:operation soapAction="http://tempuri.org/getDatosProyectos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProyectoGrado">
+      <soap:operation soapAction="http://tempuri.org/EliminarProyectoGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGraduado">
+      <soap:operation soapAction="http://tempuri.org/EliminarGraduado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosListadosGraduacion">
+      <soap:operation soapAction="http://tempuri.org/getDatosListadosGraduacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosListadosGraduacion">
+      <soap:operation soapAction="http://tempuri.org/setDatosListadosGraduacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMejoresEgresados">
+      <soap:operation soapAction="http://tempuri.org/getMejoresEgresados" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitulosCarrera">
+      <soap:operation soapAction="http://tempuri.org/getTitulosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodos">
+      <soap:operation soapAction="http://tempuri.org/getPeriodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosRepEstudiantil">
+      <soap:operation soapAction="http://tempuri.org/getDatosRepEstudiantil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosRepEstudiantil">
+      <soap:operation soapAction="http://tempuri.org/setDatosRepEstudiantil" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFechasPeriodoVigente">
+      <soap:operation soapAction="http://tempuri.org/getFechasPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosUnidadAcademica">
+      <soap:operation soapAction="http://tempuri.org/GetDatosUnidadAcademica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosPersonalUnidadAcademica">
+      <soap:operation soapAction="http://tempuri.org/GetDatosPersonalUnidadAcademica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodSexoAutoridadUnidadAcademica">
+      <soap:operation soapAction="http://tempuri.org/GetCodSexoAutoridadUnidadAcademica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametroMaster">
+      <soap:operation soapAction="http://tempuri.org/GetValorParametroMaster" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRecordAcademico">
+      <soap:operation soapAction="http://tempuri.org/GetDatosRecordAcademico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCurriculumAcademico">
+      <soap:operation soapAction="http://tempuri.org/GetDatosCurriculumAcademico" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCurriculumAcademicoNoEgresado">
+      <soap:operation soapAction="http://tempuri.org/GetDatosCurriculumAcademicoNoEgresado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRecordAcademicoMateriasAprobadas">
+      <soap:operation soapAction="http://tempuri.org/GetDatosRecordAcademicoMateriasAprobadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosConfiguracionInstitucion">
+      <soap:operation soapAction="http://tempuri.org/GetDatosConfiguracionInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosNiveles">
+      <soap:operation soapAction="http://tempuri.org/GetDatosNiveles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosProyectosGrado">
+      <soap:operation soapAction="http://tempuri.org/getDatosProyectosGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosProyectosGrado">
+      <soap:operation soapAction="http://tempuri.org/setDatosProyectosGrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEstudiantes_matricula">
+      <soap:operation soapAction="http://tempuri.org/getDatosEstudiantes_matricula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Ubicacion">
+      <soap:operation soapAction="http://tempuri.org/get_Ubicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_Ubicacion">
+      <soap:operation soapAction="http://tempuri.org/set_Ubicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_BaseDatos">
+      <soap:operation soapAction="http://tempuri.org/get_BaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_BaseDatos">
+      <soap:operation soapAction="http://tempuri.org/set_BaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosNuevaTesis">
+      <soap:operation soapAction="http://tempuri.org/setDatosNuevaTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisSinMatriculas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisSinMatriculas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadasFechas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisCaducadasFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadasFechasconTA">
+      <soap:operation soapAction="http://tempuri.org/GetTesisCaducadasFechasconTA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentesFechas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisVigentesFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentesFechasconTA">
+      <soap:operation soapAction="http://tempuri.org/GetTesisVigentesFechasconTA" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatriculasTesisFechasTodas">
+      <soap:operation soapAction="http://tempuri.org/GetMatriculasTesisFechasTodas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisTerminadasFechas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisTerminadasFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisAnuldasFechas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisAnuldasFechas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntegratesTesis">
+      <soap:operation soapAction="http://tempuri.org/GetIntegratesTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatriculaTesisPeriodo_insertar">
+      <soap:operation soapAction="http://tempuri.org/MatriculaTesisPeriodo_insertar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularTesis">
+      <soap:operation soapAction="http://tempuri.org/AnularTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentes">
+      <soap:operation soapAction="http://tempuri.org/GetTesisVigentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisCaducadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatTesisPeriodo">
+      <soap:operation soapAction="http://tempuri.org/GetMatTesisPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesis">
+      <soap:operation soapAction="http://tempuri.org/GetTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisAnuldadas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisAnuldadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisId">
+      <soap:operation soapAction="http://tempuri.org/GetTesisId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTesisAnuladas">
+      <soap:operation soapAction="http://tempuri.org/EliminarTesisAnuladas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTesis">
+      <soap:operation soapAction="http://tempuri.org/UpdateTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarTesis">
+      <soap:operation soapAction="http://tempuri.org/BorrarTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetnumeroTesis">
+      <soap:operation soapAction="http://tempuri.org/GetnumeroTesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarTesisTerminadas">
+      <soap:operation soapAction="http://tempuri.org/CambiarTesisTerminadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisTerminadas">
+      <soap:operation soapAction="http://tempuri.org/GetTesisTerminadas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMiembrostesis">
+      <soap:operation soapAction="http://tempuri.org/GetMiembrostesis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMiembrostesisI">
+      <soap:operation soapAction="http://tempuri.org/GetMiembrostesisI" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GestorEgresamientoGraduacionSoap12" type="tns:GestorEgresamientoGraduacionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getTextoActaGrado">
+      <soap12:operation soapAction="http://tempuri.org/getTextoActaGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosActaCalificacionGrado">
+      <soap12:operation soapAction="http://tempuri.org/getDatosActaCalificacionGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeEgresar">
+      <soap12:operation soapAction="http://tempuri.org/PuedeEgresar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DatosFuturoEgresado">
+      <soap12:operation soapAction="http://tempuri.org/DatosFuturoEgresado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EgresarEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/EgresarEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametro">
+      <soap12:operation soapAction="http://tempuri.org/GetValorParametro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosTitulosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/getDatosTitulosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEgresados">
+      <soap12:operation soapAction="http://tempuri.org/getDatosEgresados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEgresado">
+      <soap12:operation soapAction="http://tempuri.org/EliminarEgresado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEgresamiento">
+      <soap12:operation soapAction="http://tempuri.org/getDatosEgresamiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEgresamiento">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarEgresamiento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsEgresado">
+      <soap12:operation soapAction="http://tempuri.org/EsEgresado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCertificadoPromocionEgresar">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosCertificadoPromocionEgresar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRetirosPeriodos">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosRetirosPeriodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEstudiantes">
+      <soap12:operation soapAction="http://tempuri.org/getDatosEstudiantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsMigradoEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/EsMigradoEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOtrosDatosEstudianteMaster">
+      <soap12:operation soapAction="http://tempuri.org/GetOtrosDatosEstudianteMaster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarDatosEstudiantesMaster">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarDatosEstudiantesMaster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosNuevoGrado">
+      <soap12:operation soapAction="http://tempuri.org/setDatosNuevoGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumActaNuevoGraduado">
+      <soap12:operation soapAction="http://tempuri.org/GetNumActaNuevoGraduado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosGraduados">
+      <soap12:operation soapAction="http://tempuri.org/getDatosGraduados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosProyectos">
+      <soap12:operation soapAction="http://tempuri.org/getDatosProyectos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProyectoGrado">
+      <soap12:operation soapAction="http://tempuri.org/EliminarProyectoGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarGraduado">
+      <soap12:operation soapAction="http://tempuri.org/EliminarGraduado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosListadosGraduacion">
+      <soap12:operation soapAction="http://tempuri.org/getDatosListadosGraduacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosListadosGraduacion">
+      <soap12:operation soapAction="http://tempuri.org/setDatosListadosGraduacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMejoresEgresados">
+      <soap12:operation soapAction="http://tempuri.org/getMejoresEgresados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTitulosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/getTitulosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodos">
+      <soap12:operation soapAction="http://tempuri.org/getPeriodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosRepEstudiantil">
+      <soap12:operation soapAction="http://tempuri.org/getDatosRepEstudiantil" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosRepEstudiantil">
+      <soap12:operation soapAction="http://tempuri.org/setDatosRepEstudiantil" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFechasPeriodoVigente">
+      <soap12:operation soapAction="http://tempuri.org/getFechasPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosUnidadAcademica">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosUnidadAcademica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosPersonalUnidadAcademica">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosPersonalUnidadAcademica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodSexoAutoridadUnidadAcademica">
+      <soap12:operation soapAction="http://tempuri.org/GetCodSexoAutoridadUnidadAcademica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetValorParametroMaster">
+      <soap12:operation soapAction="http://tempuri.org/GetValorParametroMaster" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRecordAcademico">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosRecordAcademico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCurriculumAcademico">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosCurriculumAcademico" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCurriculumAcademicoNoEgresado">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosCurriculumAcademicoNoEgresado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosRecordAcademicoMateriasAprobadas">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosRecordAcademicoMateriasAprobadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosConfiguracionInstitucion">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosConfiguracionInstitucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosNiveles">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosNiveles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosProyectosGrado">
+      <soap12:operation soapAction="http://tempuri.org/getDatosProyectosGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosProyectosGrado">
+      <soap12:operation soapAction="http://tempuri.org/setDatosProyectosGrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosEstudiantes_matricula">
+      <soap12:operation soapAction="http://tempuri.org/getDatosEstudiantes_matricula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_Ubicacion">
+      <soap12:operation soapAction="http://tempuri.org/get_Ubicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_Ubicacion">
+      <soap12:operation soapAction="http://tempuri.org/set_Ubicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_BaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/get_BaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_BaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/set_BaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosNuevaTesis">
+      <soap12:operation soapAction="http://tempuri.org/setDatosNuevaTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisSinMatriculas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisSinMatriculas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadasFechas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisCaducadasFechas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadasFechasconTA">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisCaducadasFechasconTA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentesFechas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisVigentesFechas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentesFechasconTA">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisVigentesFechasconTA" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatriculasTesisFechasTodas">
+      <soap12:operation soapAction="http://tempuri.org/GetMatriculasTesisFechasTodas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisTerminadasFechas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisTerminadasFechas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisAnuldasFechas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisAnuldasFechas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntegratesTesis">
+      <soap12:operation soapAction="http://tempuri.org/GetIntegratesTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MatriculaTesisPeriodo_insertar">
+      <soap12:operation soapAction="http://tempuri.org/MatriculaTesisPeriodo_insertar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AnularTesis">
+      <soap12:operation soapAction="http://tempuri.org/AnularTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisVigentes">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisVigentes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisCaducadas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisCaducadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMatTesisPeriodo">
+      <soap12:operation soapAction="http://tempuri.org/GetMatTesisPeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesis">
+      <soap12:operation soapAction="http://tempuri.org/GetTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisAnuldadas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisAnuldadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisId">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTesisAnuladas">
+      <soap12:operation soapAction="http://tempuri.org/EliminarTesisAnuladas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateTesis">
+      <soap12:operation soapAction="http://tempuri.org/UpdateTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BorrarTesis">
+      <soap12:operation soapAction="http://tempuri.org/BorrarTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetnumeroTesis">
+      <soap12:operation soapAction="http://tempuri.org/GetnumeroTesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambiarTesisTerminadas">
+      <soap12:operation soapAction="http://tempuri.org/CambiarTesisTerminadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTesisTerminadas">
+      <soap12:operation soapAction="http://tempuri.org/GetTesisTerminadas" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMiembrostesis">
+      <soap12:operation soapAction="http://tempuri.org/GetMiembrostesis" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMiembrostesisI">
+      <soap12:operation soapAction="http://tempuri.org/GetMiembrostesisI" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestorEgresamientoGraduacion">
+    <wsdl:port name="GestorEgresamientoGraduacionSoap" binding="tns:GestorEgresamientoGraduacionSoap">
+      <soap:address location="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GestorEgresamientoGraduacionSoap12" binding="tns:GestorEgresamientoGraduacionSoap12">
+      <soap12:address location="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

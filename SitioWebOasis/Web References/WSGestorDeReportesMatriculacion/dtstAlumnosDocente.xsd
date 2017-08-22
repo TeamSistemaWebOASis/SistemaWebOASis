@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstAlumnosDocente.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstAlumnosDocente.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstAlumnosDocente.xsd" id="dtstAlumnosDocente" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstAlumnosDocente">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cursos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="strAula" type="xs:string" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstAlumnosDocenteKey1">
+      <xs:selector xpath=".//mstns:Cursos" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:unique name="dtstAlumnosDocenteKey2">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="CursosEstudiantes" refer="mstns:dtstAlumnosDocenteKey1">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_ActaCalificacionGrado.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_ActaCalificacionGrado.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_ActaCalificacionGrado.xsd" id="dtstDatosEgreGrad_ActaCalificacionGrado" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_ActaCalificacionGrado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Graduado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cedula" type="xs:string" />
+              <xs:element minOccurs="0" name="Nombre" type="xs:string" />
+              <xs:element minOccurs="0" name="FormaGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="Titulo" type="xs:string" />
+              <xs:element minOccurs="0" name="Fecha" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="TotalE" type="xs:float" />
+              <xs:element minOccurs="0" name="PromedioE" type="xs:float" />
+              <xs:element minOccurs="0" name="PorcentajeE" type="xs:string" />
+              <xs:element minOccurs="0" name="TotalO" type="xs:float" />
+              <xs:element minOccurs="0" name="PromedioO" type="xs:float" />
+              <xs:element minOccurs="0" name="PorcentajeO" type="xs:string" />
+              <xs:element minOccurs="0" name="PromedioRA" type="xs:float" />
+              <xs:element minOccurs="0" name="PorcentajeRA" type="xs:string" />
+              <xs:element minOccurs="0" name="Total" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EvaluacionesEscritas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Cedula" type="xs:string" />
+              <xs:element minOccurs="0" name="FuncionMiembro" type="xs:string" />
+              <xs:element minOccurs="0" name="Evaluacion" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EvaluacionesOrales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Cedula" type="xs:string" />
+              <xs:element minOccurs="0" name="FuncionMiembro" type="xs:string" />
+              <xs:element minOccurs="0" name="Evaluacion" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_ActaCalificacionGradoKey1">
+      <xs:selector xpath=".//mstns:Graduado" />
+      <xs:field xpath="mstns:Cedula" />
+    </xs:unique>
+    <xs:keyref name="GraduadoEvaluacionesOrales" refer="mstns:dtstDatosEgreGrad_ActaCalificacionGradoKey1">
+      <xs:selector xpath=".//mstns:EvaluacionesOrales" />
+      <xs:field xpath="mstns:Cedula" />
+    </xs:keyref>
+    <xs:keyref name="GraduadoEvaluacionesEscritas" refer="mstns:dtstDatosEgreGrad_ActaCalificacionGradoKey1">
+      <xs:selector xpath=".//mstns:EvaluacionesEscritas" />
+      <xs:field xpath="mstns:Cedula" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

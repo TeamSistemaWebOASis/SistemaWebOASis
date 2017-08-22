@@ -1,0 +1,18 @@
+﻿@{
+    var usrNombre = string.Empty;
+    var usrCarreraActual = string.Empty;
+
+    SitioWebOasis.Models.UsuarioCarreras modUsrCarrera = new SitioWebOasis.Models.UsuarioCarreras();
+
+    if (modUsrCarrera.UsuarioActual != null && modUsrCarrera.UsuarioActual.CarreraActual != null)
+    {
+        var usuario = modUsrCarrera.UsuarioActual;
+        usrNombre = usuario.Nombre.ToString();
+        usrCarreraActual = usuario.CarreraActual.ToString();
+    }
+}
+
+<div class="main-header">
+    <h2><b>@usrNombre</b></h2>
+    <em><b>@usrCarreraActual</b></em>
+</div>

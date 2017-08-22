@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_TitulosCarrera.xsd" id="dtstDatosEgreGrad_TitulosCarrera" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_TitulosCarrera">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_TitulosDadoCarrera">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="fltCreditosEgre" type="xs:float" />
+              <xs:element name="fltCreditosGrado" type="xs:float" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_TitulosCarreraKey1">
+      <xs:selector xpath=".//mstns:v_TitulosDadoCarrera" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

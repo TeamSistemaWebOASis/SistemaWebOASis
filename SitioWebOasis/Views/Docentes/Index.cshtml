@@ -1,0 +1,52 @@
+﻿@model SitioWebOasis.Models.DatosAcademicosDocente
+
+@{
+    ViewBag.Title = "Docente";
+}
+
+
+<div class="main-content">
+    
+    <div class="widget widget-table">
+        <div class="widget-header">
+            <h3><i class="fa fa-book"></i> @Language.es_ES.DOC_LBL_ASIGNATURAS &nbsp;</h3>
+
+            <div class="widget-header-toolbar">
+                <div class="label label-default" style="font-size: small;">
+                    <i class="fa fa-clock-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO: &nbsp;
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-content">
+            <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+
+                @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                <table  id="asignaturasDocente" 
+                        class="table colored-header datatable project-list" 
+                        role="grid">
+
+                    <thead>
+                        <tr>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NUMERO </th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ASIGNATURA</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NIVEL</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARALELO</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARCIAL_ACTIVO</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PROMEDIO_GENERAL</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ACCION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @* ASIGNATURAS DOCENTE *@
+                        @Html.Raw(Model.getHTMLAsignaturasDocente())
+                    </tbody>
+
+                </table>
+
+                <div class="row"></div>
+            </div>
+        </div>
+    </div>
+</div>

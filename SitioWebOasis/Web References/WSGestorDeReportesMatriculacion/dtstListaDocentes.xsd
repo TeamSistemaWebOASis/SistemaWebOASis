@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstListaDocentes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstListaDocentes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstListaDocentes.xsd" id="dtstListaDocentes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstListaDocentes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Carreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodFacultad" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreFacultad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEscuela" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreEscuela" type="xs:string" />
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreCarrera" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaMil" type="xs:string" />
+              <xs:element minOccurs="0" name="strCarnetSeg" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaNac" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaIng" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strDir" type="xs:string" />
+              <xs:element minOccurs="0" name="strTel" type="xs:string" />
+              <xs:element minOccurs="0" name="strEmail" type="xs:string" />
+              <xs:element minOccurs="0" name="strWww" type="xs:string" />
+              <xs:element minOccurs="0" name="strTitulos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCargos" type="xs:string" />
+              <xs:element minOccurs="0" name="strLugarNac" type="xs:string" />
+              <xs:element minOccurs="0" name="strNacionalidad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoTit" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionTipoTit" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodSexo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreSexo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoSan" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionTipoSan" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoDoc" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionTipoDoc" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEstCiv" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionEstCiv" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodDed" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionDed" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodCateg" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionCateg" type="xs:string" />
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" msdata:Expression="strCodigo + strCodCarrera" minOccurs="0" name="strKeyDocente" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dictado_Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodDocente" type="xs:string" />
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strNombreMateria" type="xs:string" />
+              <xs:element name="strDescripcionNivel" type="xs:string" />
+              <xs:element name="intCargaHoraria" type="xs:int" />
+              <xs:element msdata:ReadOnly="true" msdata:Expression="strCodDocente + strCodCarrera + strCodMateria + strCodParalelo" minOccurs="0" name="strKeyMaterias" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstListaDocentesKey1">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strCodCarrera" />
+    </xs:unique>
+    <xs:unique name="dtstListaDocentesKey2">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+      <xs:field xpath="mstns:strCodCarrera" />
+    </xs:unique>
+    <xs:keyref name="DocentesDictado_Materias" refer="mstns:dtstListaDocentesKey2">
+      <xs:selector xpath=".//mstns:Dictado_Materias" />
+      <xs:field xpath="mstns:strCodDocente" />
+      <xs:field xpath="mstns:strCodCarrera" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

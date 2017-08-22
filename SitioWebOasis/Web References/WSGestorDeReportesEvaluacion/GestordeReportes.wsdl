@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" />
+      <s:import namespace="http://tempuri.org/dtstHorarioExamenes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstNotasPeriodoEstudiante" namespace="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorarioExamenes" namespace="http://tempuri.org/dtstHorarioExamenes.xsd" />
+      <s:element name="get_CodCarrera">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_CodCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_CodCarreraResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_CodCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_CodCarreraResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetNotasPeriodoEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotasPeriodoEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotasPeriodoEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorarioExamenesEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorarioExamenesEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHorarioExamenesEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstHorarioExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorarioExamenesDocente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHorarioExamenesDocenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHorarioExamenesDocenteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstHorarioExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActaExPrincipal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActaExPrincipalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActaExPrincipalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActaExSuspension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetActaExSuspensionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetActaExSuspensionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="get_CodCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:get_CodCarrera" />
+  </wsdl:message>
+  <wsdl:message name="get_CodCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:get_CodCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_CodCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:set_CodCarrera" />
+  </wsdl:message>
+  <wsdl:message name="set_CodCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:set_CodCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotasPeriodoEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotasPeriodoEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetNotasPeriodoEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotasPeriodoEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHorarioExamenesEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHorarioExamenesEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetHorarioExamenesEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHorarioExamenesEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHorarioExamenesDocenteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHorarioExamenesDocente" />
+  </wsdl:message>
+  <wsdl:message name="GetHorarioExamenesDocenteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHorarioExamenesDocenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActaExPrincipalSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActaExPrincipal" />
+  </wsdl:message>
+  <wsdl:message name="GetActaExPrincipalSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActaExPrincipalResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetActaExSuspensionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetActaExSuspension" />
+  </wsdl:message>
+  <wsdl:message name="GetActaExSuspensionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetActaExSuspensionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GestordeReportesSoap">
+    <wsdl:operation name="get_CodCarrera">
+      <wsdl:input message="tns:get_CodCarreraSoapIn" />
+      <wsdl:output message="tns:get_CodCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_CodCarrera">
+      <wsdl:input message="tns:set_CodCarreraSoapIn" />
+      <wsdl:output message="tns:set_CodCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotasPeriodoEstudiante">
+      <wsdl:input message="tns:GetNotasPeriodoEstudianteSoapIn" />
+      <wsdl:output message="tns:GetNotasPeriodoEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioExamenesEstudiante">
+      <wsdl:input message="tns:GetHorarioExamenesEstudianteSoapIn" />
+      <wsdl:output message="tns:GetHorarioExamenesEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioExamenesDocente">
+      <wsdl:input message="tns:GetHorarioExamenesDocenteSoapIn" />
+      <wsdl:output message="tns:GetHorarioExamenesDocenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActaExPrincipal">
+      <wsdl:input message="tns:GetActaExPrincipalSoapIn" />
+      <wsdl:output message="tns:GetActaExPrincipalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetActaExSuspension">
+      <wsdl:input message="tns:GetActaExSuspensionSoapIn" />
+      <wsdl:output message="tns:GetActaExSuspensionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestordeReportesSoap" type="tns:GestordeReportesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_CodCarrera">
+      <soap:operation soapAction="http://tempuri.org/get_CodCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_CodCarrera">
+      <soap:operation soapAction="http://tempuri.org/set_CodCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotasPeriodoEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetNotasPeriodoEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioExamenesEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetHorarioExamenesEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioExamenesDocente">
+      <soap:operation soapAction="http://tempuri.org/GetHorarioExamenesDocente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActaExPrincipal">
+      <soap:operation soapAction="http://tempuri.org/GetActaExPrincipal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActaExSuspension">
+      <soap:operation soapAction="http://tempuri.org/GetActaExSuspension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GestordeReportesSoap12" type="tns:GestordeReportesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="get_CodCarrera">
+      <soap12:operation soapAction="http://tempuri.org/get_CodCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_CodCarrera">
+      <soap12:operation soapAction="http://tempuri.org/set_CodCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotasPeriodoEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetNotasPeriodoEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioExamenesEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetHorarioExamenesEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHorarioExamenesDocente">
+      <soap12:operation soapAction="http://tempuri.org/GetHorarioExamenesDocente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActaExPrincipal">
+      <soap12:operation soapAction="http://tempuri.org/GetActaExPrincipal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetActaExSuspension">
+      <soap12:operation soapAction="http://tempuri.org/GetActaExSuspension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestordeReportes">
+    <wsdl:port name="GestordeReportesSoap" binding="tns:GestordeReportesSoap">
+      <soap:address location="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GestordeReportesSoap12" binding="tns:GestordeReportesSoap12">
+      <soap12:address location="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

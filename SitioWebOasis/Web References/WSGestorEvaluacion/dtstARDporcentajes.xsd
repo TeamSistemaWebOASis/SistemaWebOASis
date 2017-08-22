@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstARDporcentajes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstARDporcentajes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstARDporcentajes.xsd" id="dtstARDporcentajes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstARDporcentajes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ARD">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="CodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="Aprobados" type="xs:int" />
+              <xs:element minOccurs="0" name="ReprobadosND" type="xs:int" />
+              <xs:element minOccurs="0" name="ReprobadosD" type="xs:int" />
+              <xs:element name="Retirados" type="xs:int" />
+              <xs:element minOccurs="0" name="Matriculados" type="xs:int" />
+              <xs:element minOccurs="0" name="Periodo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

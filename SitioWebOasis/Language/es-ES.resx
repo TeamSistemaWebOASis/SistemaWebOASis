@@ -1,0 +1,534 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="BC_INICIO" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="BTN_GUARDAR" xml:space="preserve">
+    <value>GUARDAR</value>
+  </data>
+  <data name="DOC_GRD_EVALUACION_FORMATIVA" xml:space="preserve">
+    <value>Evaluación formativa</value>
+  </data>
+  <data name="DOC_LBL_ASIGNATURAS" xml:space="preserve">
+    <value>ASIGNATURAS</value>
+  </data>
+  <data name="DOC_TB_COL_ACCION" xml:space="preserve">
+    <value>Acción</value>
+  </data>
+  <data name="DOC_TB_COL_ASIGNATURA" xml:space="preserve">
+    <value>Asignatura</value>
+  </data>
+  <data name="DOC_TB_COL_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="DOC_TB_COL_NUMERO" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="DOC_TB_COL_PARALELO" xml:space="preserve">
+    <value>Paralelo</value>
+  </data>
+  <data name="DOC_TB_COL_PARCIAL_ACTIVO" xml:space="preserve">
+    <value>Parcial Activo</value>
+  </data>
+  <data name="DOC_TB_COL_PROMEDIO_GENERAL" xml:space="preserve">
+    <value>Promedio General</value>
+  </data>
+  <data name="DOC_TB_EV_ACUMULATIVA" xml:space="preserve">
+    <value>Evaluación acumulativa</value>
+  </data>
+  <data name="DOC_TB_EV_FINAL" xml:space="preserve">
+    <value>Evaluación final</value>
+  </data>
+  <data name="DOC_TB_EV_RECUPERACION" xml:space="preserve">
+    <value>Evaluación recuperación</value>
+  </data>
+  <data name="DTIC" xml:space="preserve">
+    <value>ESPOCH - DTIC - 2017</value>
+  </data>
+  <data name="EST_DE_DATOS_USUARIO_NO_DISPONIBLE" xml:space="preserve">
+    <value>Información 'no' disponible</value>
+  </data>
+  <data name="EST_DG_CALLE_PRINCIPAL" xml:space="preserve">
+    <value>CALLE PRINCIPAL</value>
+  </data>
+  <data name="EST_DG_CALLE_SECUNDARIA" xml:space="preserve">
+    <value>CALLE SECUNDARIA</value>
+  </data>
+  <data name="EST_DG_CANTON" xml:space="preserve">
+    <value>CANTON</value>
+  </data>
+  <data name="EST_DG_CORREO_INSTITUCIONAL" xml:space="preserve">
+    <value>CORREO ELECTRONICO INSTITUCIONAL</value>
+  </data>
+  <data name="EST_DG_CORREO_PERSONAL" xml:space="preserve">
+    <value>CORREO PERSONAL</value>
+  </data>
+  <data name="EST_DG_DATOS" xml:space="preserve">
+    <value>DATOS PERSONALES DEL ESTUDIANTE</value>
+  </data>
+  <data name="EST_DG_DIRECCION" xml:space="preserve">
+    <value>DIRECCIÓN</value>
+  </data>
+  <data name="EST_DG_ESTADO_CIVIL" xml:space="preserve">
+    <value>ESTADO CIVIL</value>
+  </data>
+  <data name="EST_DG_ETNIA" xml:space="preserve">
+    <value>ETNIA</value>
+  </data>
+  <data name="EST_DG_FECHA_NACIMIENTO" xml:space="preserve">
+    <value>FECHA NACIMIENTO</value>
+  </data>
+  <data name="EST_DG_GENERO" xml:space="preserve">
+    <value>GENERO</value>
+  </data>
+  <data name="EST_DG_NACIONALIDAD" xml:space="preserve">
+    <value>NACIONALIDAD</value>
+  </data>
+  <data name="EST_DG_NOMBRES" xml:space="preserve">
+    <value>NOMBRES</value>
+  </data>
+  <data name="EST_DG_NUMERO_CASA" xml:space="preserve">
+    <value>NUMERO DE CASA</value>
+  </data>
+  <data name="EST_DG_NUMERO_IDENTIFICACION" xml:space="preserve">
+    <value>NUMERO DE IDENTIFICACION</value>
+  </data>
+  <data name="EST_DG_PAIS" xml:space="preserve">
+    <value>PAIS</value>
+  </data>
+  <data name="EST_DG_PARROQUIA" xml:space="preserve">
+    <value>PARROQUIA</value>
+  </data>
+  <data name="EST_DG_PH_APELLIDO_MATERNO" xml:space="preserve">
+    <value>apellido materno</value>
+  </data>
+  <data name="EST_DG_PH_APELLIDO_PATERNO" xml:space="preserve">
+    <value>apellido paterno</value>
+  </data>
+  <data name="EST_DG_PH_CORREO_PERSONAL" xml:space="preserve">
+    <value>Correo electronico personal</value>
+  </data>
+  <data name="EST_DG_PH_NOMBRES" xml:space="preserve">
+    <value>Nombres completos</value>
+  </data>
+  <data name="EST_DG_PH_NUMERO_IDENTIFICACION" xml:space="preserve">
+    <value>Número de indentificación (cedula de ciudadania / pasaporte)</value>
+  </data>
+  <data name="EST_DG_PH_TELEFONO_FIJO" xml:space="preserve">
+    <value>Número de teléfono convencional</value>
+  </data>
+  <data name="EST_DG_PH_TELEFONO_MOVIL" xml:space="preserve">
+    <value>Número de teléfono celular</value>
+  </data>
+  <data name="EST_DG_PRIMER_APELLIDO" xml:space="preserve">
+    <value>PRIMER APELLIDO</value>
+  </data>
+  <data name="EST_DG_PROVINCIA" xml:space="preserve">
+    <value>PROVINCIA</value>
+  </data>
+  <data name="EST_DG_REFERENCIA" xml:space="preserve">
+    <value>REFERENCIA</value>
+  </data>
+  <data name="EST_DG_SEGUNDO_APELLIDO" xml:space="preserve">
+    <value>SEGUNDO APELLIDO</value>
+  </data>
+  <data name="EST_DG_SEXO" xml:space="preserve">
+    <value>SEXO</value>
+  </data>
+  <data name="EST_DG_TELEFONO_FIJO" xml:space="preserve">
+    <value>TELEFONO FIJO</value>
+  </data>
+  <data name="EST_DG_TELEFONO_MOVIL" xml:space="preserve">
+    <value>TELEFONO MOVIL</value>
+  </data>
+  <data name="EST_DG_TIPO_IDENTIFICACION" xml:space="preserve">
+    <value>TIPO DE IDENTIFICACIÓN</value>
+  </data>
+  <data name="EST_DG_TIPO_SANGRE" xml:space="preserve">
+    <value>TIPO DE SANGRE</value>
+  </data>
+  <data name="EST_DWN_PDF" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="EST_DWN_PDF_BLANCO" xml:space="preserve">
+    <value>PDF - En blanco</value>
+  </data>
+  <data name="EST_DWN_XLS" xml:space="preserve">
+    <value>EXCEL</value>
+  </data>
+  <data name="EST_LBL_APROBADO" xml:space="preserve">
+    <value>Aprobado</value>
+  </data>
+  <data name="EST_LBL_CONVALIDA" xml:space="preserve">
+    <value>Convalida</value>
+  </data>
+  <data name="EST_LBL_EV_ACUMULATIVA" xml:space="preserve">
+    <value>Evaluación acumulativa</value>
+  </data>
+  <data name="EST_LBL_EV_FINAL" xml:space="preserve">
+    <value>Evaluación final</value>
+  </data>
+  <data name="EST_LBL_EV_RECUPERACION" xml:space="preserve">
+    <value>Evaluación recuperación</value>
+  </data>
+  <data name="EST_LBL_EXONERADO" xml:space="preserve">
+    <value>Exonerado</value>
+  </data>
+  <data name="EST_LBL_HORARIOS" xml:space="preserve">
+    <value>Horarios</value>
+  </data>
+  <data name="EST_LBL_HORARIOS_EXAMENES" xml:space="preserve">
+    <value>Horarios examenes</value>
+  </data>
+  <data name="EST_LBL_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="EST_LBL_NOTAS" xml:space="preserve">
+    <value>Notas</value>
+  </data>
+  <data name="EST_LBL_PERIODO_ACADEMICO" xml:space="preserve">
+    <value>Periodo académico</value>
+  </data>
+  <data name="EST_LBL_PROMEDIO" xml:space="preserve">
+    <value>Promedio</value>
+  </data>
+  <data name="EST_LBL_REPROBADO" xml:space="preserve">
+    <value>Reprobado</value>
+  </data>
+  <data name="EST_LBL_SIN_REGISTROS" xml:space="preserve">
+    <value>SIN REGISTROS DISPONIBLES</value>
+  </data>
+  <data name="EST_LBL_VER_MAS" xml:space="preserve">
+    <value>Ver detalle</value>
+  </data>
+  <data name="EST_MN_DATOS_ESTUDIANTE" xml:space="preserve">
+    <value>Datos estudiante</value>
+  </data>
+  <data name="EST_MN_HORARIOS" xml:space="preserve">
+    <value>Horarios</value>
+  </data>
+  <data name="EST_MN_HORARIO_ESTUDIANTE" xml:space="preserve">
+    <value>Horario estudiante</value>
+  </data>
+  <data name="EST_MN_HORARIO_EXAMENES" xml:space="preserve">
+    <value>Horario examenes</value>
+  </data>
+  <data name="EST_MN_INICIO" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="EST_MN_MATRICULACION" xml:space="preserve">
+    <value>Matriculación</value>
+  </data>
+  <data name="EST_MN_NOTAS_ESTUDIANTE" xml:space="preserve">
+    <value>Notas estudiante</value>
+  </data>
+  <data name="EST_SMS_CONSULTA_SECRETARIA_CARRERA" xml:space="preserve">
+    <value>Favor vuelva a intentar, si el problema persiste consultar en secretaria de carrera</value>
+  </data>
+  <data name="EST_SMS_REGISTRO_CORRECTO" xml:space="preserve">
+    <value>INFORMACIÓN REGISTRADA CORRECTAMENTE</value>
+  </data>
+  <data name="EST_SMS_REGISTRO_INCORRECTO" xml:space="preserve">
+    <value>PROBLEMA AL MOMENTO DE REALIZAR EL REGISTRO DE INFORMACIÓN</value>
+  </data>
+  <data name="EST_TB_COL_ACUMULADO" xml:space="preserve">
+    <value>Acumulado</value>
+  </data>
+  <data name="EST_TB_COL_ASIGNATURA" xml:space="preserve">
+    <value>Asignatura</value>
+  </data>
+  <data name="EST_TB_COL_DOMINGO" xml:space="preserve">
+    <value>Domingo</value>
+  </data>
+  <data name="EST_TB_COL_EQUIVALENCIA" xml:space="preserve">
+    <value>Equivalencia</value>
+  </data>
+  <data name="EST_TB_COL_ESTUDIANTE" xml:space="preserve">
+    <value>Estudiante</value>
+  </data>
+  <data name="EST_TB_COL_FECHA_EVALUACION_FINAL" xml:space="preserve">
+    <value>Fecha evaluación final</value>
+  </data>
+  <data name="EST_TB_COL_FECHA_EVALUACION_RECUPERACION" xml:space="preserve">
+    <value>Fecha evaluación recuperación</value>
+  </data>
+  <data name="EST_TB_COL_HORA" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="EST_TB_COL_JUEVES" xml:space="preserve">
+    <value>Jueves</value>
+  </data>
+  <data name="EST_TB_COL_LUNES" xml:space="preserve">
+    <value>Lunes</value>
+  </data>
+  <data name="EST_TB_COL_MARTES" xml:space="preserve">
+    <value>Martes</value>
+  </data>
+  <data name="EST_TB_COL_MATRICULA" xml:space="preserve">
+    <value>Matricula</value>
+  </data>
+  <data name="EST_TB_COL_MIERCOLES" xml:space="preserve">
+    <value>Miercoles</value>
+  </data>
+  <data name="EST_TB_COL_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="EST_TB_COL_NOTA_DOS" xml:space="preserve">
+    <value>Nota dos (2)</value>
+  </data>
+  <data name="EST_TB_COL_NOTA_FINAL" xml:space="preserve">
+    <value>Nota final</value>
+  </data>
+  <data name="EST_TB_COL_NOTA_TRES" xml:space="preserve">
+    <value>Nota tres (3)</value>
+  </data>
+  <data name="EST_TB_COL_NOTA_UNO" xml:space="preserve">
+    <value>Nota uno (1)</value>
+  </data>
+  <data name="EST_TB_COL_NUMERO" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="EST_TB_COL_OBSERVACION" xml:space="preserve">
+    <value>Observación</value>
+  </data>
+  <data name="EST_TB_COL_PORCIENTO_ASISTENCIA" xml:space="preserve">
+    <value>ASISTENCIA (%)</value>
+  </data>
+  <data name="EST_TB_COL_SABADO" xml:space="preserve">
+    <value>Sabado</value>
+  </data>
+  <data name="EST_TB_COL_TOTAL" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="EST_TB_COL_VIERNES" xml:space="preserve">
+    <value>Viernes</value>
+  </data>
+  <data name="EST_TB_HORARIO_ACADEMICO" xml:space="preserve">
+    <value>HORARIO ACADÉMICO</value>
+  </data>
+  <data name="EST_TB_HORARIO_EXAMENES" xml:space="preserve">
+    <value>HORARIO EXAMENES</value>
+  </data>
+  <data name="NOTAS_TB_COL_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="NOTAS_TB_COL_NOMBRE_ESTUDIANTE" xml:space="preserve">
+    <value>Estudiante</value>
+  </data>
+  <data name="NOTAS_TB_COL_NUMERO" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NOTAS_TB_COL_NUMERO_MATRICULA" xml:space="preserve">
+    <value>Matricula</value>
+  </data>
+  <data name="NOTAS_TB_COL_NUMERO_MATRICULA_TOOL_TIP" xml:space="preserve">
+    <value>Número de matricula</value>
+  </data>
+  <data name="NOTAS_TB_COL_OBSERVACION" xml:space="preserve">
+    <value>Observación</value>
+  </data>
+  <data name="NOTAS_TB_COL_PARCIAL_01" xml:space="preserve">
+    <value>Nota uno (1)</value>
+  </data>
+  <data name="NOTAS_TB_COL_PARCIAL_02" xml:space="preserve">
+    <value>Nota dos (2)</value>
+  </data>
+  <data name="NOTAS_TB_COL_PARCIAL_03" xml:space="preserve">
+    <value>Nota tres (3)</value>
+  </data>
+  <data name="NOTAS_TB_COL_PORCIENTO_ASISTENCIA" xml:space="preserve">
+    <value>Asistencia (%)</value>
+  </data>
+  <data name="NOTAS_TB_COL_PROMEDIO" xml:space="preserve">
+    <value>Promedio</value>
+  </data>
+  <data name="NOTAS_TB_COL_PROMEDIO_TOOL_TIP" xml:space="preserve">
+    <value>Promedio: Sumatoria de la Nota uno + Nota dos + Nota tres sobre (/) el numero de parcial vigente</value>
+  </data>
+  <data name="NOTAS_TB_COL_TOTAL" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="NOTAS_TB_COL_TOTAL_TOOL_TIP" xml:space="preserve">
+    <value>Sumatoria: Nota uno + Nota dos + Nota tres</value>
+  </data>
+  <data name="PER_CB_CIUDAD_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE CIUDAD</value>
+  </data>
+  <data name="PER_CB_EST_CIVIL_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE ESTADO CIVIL</value>
+  </data>
+  <data name="PER_CB_ETNIA_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE ETNIA</value>
+  </data>
+  <data name="PER_CB_NACIONALIDAD_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE NACIONALIDAD</value>
+  </data>
+  <data name="PER_CB_PAIS_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE PAIS</value>
+  </data>
+  <data name="PER_CB_PARROQUIA_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE PARROQUIA</value>
+  </data>
+  <data name="PER_CB_PROVINCIA_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE PROVINCIA</value>
+  </data>
+  <data name="PER_CB_SEXO_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE SEXO</value>
+  </data>
+  <data name="PER_CB_SIN_VALOR_REGISTRADO" xml:space="preserve">
+    <value>SIN REGISTROS DISPONIBLES</value>
+  </data>
+  <data name="PER_CB_TIPO_DOCUMENTO_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE TIPO DOCUMENTO</value>
+  </data>
+  <data name="PER_CB_TIPO_SANGRE_SELECCIONE" xml:space="preserve">
+    <value>SELECCIONE TIPO DE SANGRE</value>
+  </data>
+  <data name="PER_TITLE_DATOS_DISCAPACIDAD" xml:space="preserve">
+    <value>DISCAPACIDAD</value>
+  </data>
+  <data name="PER_TITLE_DATOS_UBICACION" xml:space="preserve">
+    <value>DATOS DE LOCALIZACIÓN</value>
+  </data>
+  <data name="PER_TITLE_INFORMACION_GENERAL" xml:space="preserve">
+    <value>INFORMACIÓN GENERAL</value>
+  </data>
+  <data name="PER_TITLE_LUGAR_NACIMIENTO" xml:space="preserve">
+    <value>LUGAR DE NACIMIENTO</value>
+  </data>
+  <data name="SA_VERSION" xml:space="preserve">
+    <value>Sistema académico v3.8.1</value>
+  </data>
+  <data name="STR_FUENTE_REPORTE" xml:space="preserve">
+    <value>Sistema academico - ESPOCH</value>
+  </data>
+  <data name="STR_HORARIO_ACADEMICO" xml:space="preserve">
+    <value>HORARIO ACADEMICO</value>
+  </data>
+  <data name="STR_HORARIO_EXAMENES" xml:space="preserve">
+    <value>HORARIO EXAMENES</value>
+  </data>
+  <data name="STR_INSTITUCION" xml:space="preserve">
+    <value>ESCUELA SUPERIOR POLITECNICA DE CHIMBORAZO</value>
+  </data>
+  <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
+    <value>PERIODO ACADÉMICO</value>
+  </data>
+</root>

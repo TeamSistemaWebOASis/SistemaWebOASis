@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_Egresados.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_Egresados.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_Egresados.xsd" id="dtstDatosEgreGrad_Egresados" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_Egresados">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_EgresadosActuales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="NombEstudiante" type="xs:string" />
+              <xs:element name="NombTitulo" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodigo" type="xs:int" />
+              <xs:element name="strCodEstud" type="xs:string" />
+              <xs:element name="strCodTitulo" type="xs:string" />
+              <xs:element name="fltPromNotas" type="xs:float" />
+              <xs:element minOccurs="0" name="fltCreditos" type="xs:float" />
+              <xs:element minOccurs="0" name="fltPuntosRepEstud" type="xs:float" />
+              <xs:element name="dtFechaAprob" type="xs:dateTime" />
+              <xs:element name="strResolucion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

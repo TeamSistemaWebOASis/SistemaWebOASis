@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstHorario.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstHorario.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstHorario.xsd" id="dtstHorario" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstHorario">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Horario">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodHora" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionHora" type="xs:string" />
+              <xs:element minOccurs="0" name="strInicioFinHora" type="xs:string" />
+              <xs:element minOccurs="0" name="strLunes" type="xs:string" />
+              <xs:element minOccurs="0" name="strMartes" type="xs:string" />
+              <xs:element minOccurs="0" name="strMiercoles" type="xs:string" />
+              <xs:element minOccurs="0" name="strJueves" type="xs:string" />
+              <xs:element minOccurs="0" name="strViernes" type="xs:string" />
+              <xs:element minOccurs="0" name="strSabado" type="xs:string" />
+              <xs:element minOccurs="0" name="strDomingo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="InfoAdicional">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Info" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstHorarioKey1">
+      <xs:selector xpath=".//mstns:Horario" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

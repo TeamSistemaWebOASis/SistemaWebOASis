@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" id="dtstEvaluacion_Acumulados" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstEvaluacion_Acumulados">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Acta">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="sintCodMatricula" type="xs:short" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="bytNumMat" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" default="70" name="bytAsistencia" type="xs:unsignedByte" />
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strObservaciones" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNota1" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="bytNota2" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="bytNota3" type="xs:unsignedByte" />
+              <xs:element msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" name="No" type="xs:int" />
+              <xs:element msdata:ReadOnly="true" msdata:Expression="bytNota1 + bytNota2 + bytNota3" minOccurs="0" name="Total" type="xs:int" />
+              <xs:element minOccurs="0" name="NombreEstudiante" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Materias_Asignadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sintCodMatricula" type="xs:short" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="bytNumMat" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="bytAsistencia" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="strCodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strObservaciones" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Evaluaciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sintCodMatricula" type="xs:short" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="bytNota1" type="xs:unsignedByte" />
+              <xs:element name="bytNota2" type="xs:unsignedByte" />
+              <xs:element name="bytNota3" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="strObservaciones" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacion_AcumuladosKey3">
+      <xs:selector xpath=".//mstns:Acta" />
+      <xs:field xpath="mstns:strCodigo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodParalelo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacion_AcumuladosKey1">
+      <xs:selector xpath=".//mstns:Materias_Asignadas" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacion_AcumuladosKey2">
+      <xs:selector xpath=".//mstns:Evaluaciones" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:keyref name="Materias_AsignadasEvaluaciones" refer="mstns:dtstEvaluacion_AcumuladosKey1">
+      <xs:selector xpath=".//mstns:Evaluaciones" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

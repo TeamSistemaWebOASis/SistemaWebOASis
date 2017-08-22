@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" id="dtstMatriculasFacultadesEscuelasCarreras" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstMatriculasFacultadesEscuelasCarreras">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Carreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodFacultad" type="xs:string" />
+              <xs:element name="strNombreFacultad" type="xs:string" />
+              <xs:element name="strCodEscuela" type="xs:string" />
+              <xs:element name="strNombreEscuela" type="xs:string" />
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element name="strNombreCarrera" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strDescripcionPeriodo" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="intNumMatriculas" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

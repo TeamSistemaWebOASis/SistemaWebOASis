@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstDatosEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstDatosEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstDatosEstudiante.xsd" id="dtstDatosEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dtstDatosEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombres" type="xs:string" />
+              <xs:element name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaMil" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaNac" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strLugarNac" type="xs:string" />
+              <xs:element minOccurs="0" name="strNacionalidad" type="xs:string" />
+              <xs:element minOccurs="0" name="strDir" type="xs:string" />
+              <xs:element minOccurs="0" name="strTel" type="xs:string" />
+              <xs:element minOccurs="0" name="imgFoto" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="strEmail" type="xs:string" />
+              <xs:element name="strCodSexo" type="xs:string" />
+              <xs:element name="strCodEstCiv" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombresPadre" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidosPadres" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombresMadre" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidosMadre" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEstVidP" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEstVidM" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodCiudadProc" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreSexo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionEstCiv" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionEstVidP" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionEstVidM" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreCiudadProc" type="xs:string" />
+              <xs:element minOccurs="0" name="strClave" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

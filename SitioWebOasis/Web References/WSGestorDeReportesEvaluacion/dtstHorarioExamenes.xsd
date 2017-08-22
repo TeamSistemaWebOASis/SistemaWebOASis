@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstHorarioExamenes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstHorarioExamenes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstHorarioExamenes.xsd" id="dtstHorarioExamenes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstHorarioExamenes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaExPrinc" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaExSusp" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" msdata:Expression="strCodMateria + strCodParalelo + strCodNivel" minOccurs="0" name="strKeyMateria" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EstudiantesDocentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionPeriodo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dtstHorarioExamenesKey1">
+      <xs:selector xpath=".//mstns:Materias" />
+      <xs:field xpath="mstns:strCodMateria" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodNivel" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstHorarioExamenesKey2">
+      <xs:selector xpath=".//mstns:EstudiantesDocentes" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:unique>
+    <xs:keyref name="EstudiantesDocentesMaterias" refer="mstns:dtstHorarioExamenesKey2">
+      <xs:selector xpath=".//mstns:Materias" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

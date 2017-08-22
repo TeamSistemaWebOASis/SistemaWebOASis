@@ -1,0 +1,500 @@
+﻿@model SitioWebOasis.Models.DatosPersonalesEstudiantes
+
+@{
+    ViewBag.Title = "Datos personales de estudiante";
+}
+
+@section scripts{
+    <script src="~/Content/js/Estudiantes/Estudiante.js?v1.0.32"> </script>
+    <script src="~/Content/js/Estudiantes/Vinculantes.js?v1.0.1"> </script>
+}
+
+@* ESTADO TRANSACCION *@
+<div id="sms-updDatosEstudiantes" class="@ViewBag.estadoTransaccion" @ViewBag.visibilidad>
+    <strong>@ViewBag.mensaje</strong> &nbsp; @ViewBag.recomendacion
+</div>
+
+<div class="main-content">
+    <!-- HORIZONTAL FORM -->
+    <div class="widget">
+
+        <div class="widget-header">
+            <h3><i class="fa fa-edit"></i> @Language.es_ES.EST_DG_DATOS </h3>
+        </div>
+        <div class="widget-content">
+            @*SI EXISTE PERSONA*@
+            @if (@Model.existePersona){
+                <div class="row">
+                        <div class="col-md-12">
+                        @using (Html.BeginForm( "registrarDatosEstudiante",
+                                                "Estudiantes",
+                                                null,
+                                                FormMethod.Post,
+                                                new {   id="frmDtaPersonalEstudiante",
+                                                        @class = "form-horizontal",
+                                                        @role = "form" }))
+                        {
+                            //  INFORMACION GENERAL
+                            <fieldset id="infGeneral">
+                                <legend> @Language.es_ES.PER_TITLE_INFORMACION_GENERAL </legend>
+
+                                @* Imagen de usuario *@
+                                <div class="col-md-3">
+                                    <div class="row list-group king-gallery">
+                                        <div class="item col-sm-12">
+                                            <img    src="@Url.Content(@Model.dtaEstudiante.defaultImage.ToString())"
+                                                    alt="@Model.dtaEstudiante.per_nombres.ToString()" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @* Datos generales *@
+                                <div class="col-md-9">
+
+                                    @* TIPO DE IDENTIFICACION *@
+                                    <div class="form-group">
+                                        @Html.Label(Language.es_ES.EST_DG_TIPO_IDENTIFICACION, new { @class = "col-sm-3 control-label" })
+                                        <div class="col-sm-9">
+
+                                            @Html.DropDownList( "ddlTipoDocumento",
+                                                                Model.catalogo.getLstTipoDocumento(Model.dtaDocPersonal.tipoDocumentoID.ToString()),
+                                                                new{id = "ddlTipoDocumento",
+                                                                    @class = "form-control",
+                                                                    @readonly = "readonly",
+                                                                    @style = "font-weight: bold;"
+                                                                })
+                                        </div>
+                                    </div>
+
+                                    @* NUMERO DE IDENTIFICACION *@
+                                    <div class="form-group">
+                                        @Html.Label(Language.es_ES.EST_DG_NUMERO_IDENTIFICACION, new { @class = "col-sm-3 control-label" })
+                                        <div class="col-sm-9">
+
+                                            @Html.TextBox(  "estNumeroIndentificacion",
+                                                            Model.dtaDocPersonal.pid_valor,
+                                                            new{id = "estNumeroIndentificacion",
+                                                                @class = "form-control",
+                                                                @readonly = "readonly",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @* NOMBRES *@
+                                    <div class="form-group">
+                                        @Html.Label(Language.es_ES.EST_DG_NOMBRES, new { @class = "col-sm-3 control-label" })
+                                        <div class="col-sm-9">
+
+                                            @Html.TextBox(  "estNombres",
+                                                            Model.dtaEstudiante.per_nombres,
+                                                            new{id = "estNombres",
+                                                                @class = "form-control",
+                                                                placeholder = @Language.es_ES.EST_DG_PH_NOMBRES,
+                                                                @readonly = "readonly",
+                                                                @style = "font-weight: bold;"
+                                                            })
+
+                                        </div>
+                                    </div>
+
+                                    @* PRIMER APELLIDO *@
+                                    <div class="form-group">
+                                        @Html.Label(Language.es_ES.EST_DG_PRIMER_APELLIDO, new { @class = "col-sm-3 control-label" })
+                                        <div class="col-sm-9">
+
+                                            @Html.TextBox(  "estPrimerApellido",
+                                                            Model.dtaEstudiante.per_primerApellido,
+                                                            new{id = "estPrimerApellido",
+                                                                @class = "form-control",
+                                                                placeholder = @Language.es_ES.EST_DG_PH_APELLIDO_PATERNO,
+                                                                @readonly = "readonly",
+                                                                @style = "font-weight: bold;"
+                                                            })
+
+                                        </div>
+                                    </div>
+
+                                    @* SEGUNDO APELLIDO *@
+                                    <div class="form-group">
+                                        @Html.Label(Language.es_ES.EST_DG_SEGUNDO_APELLIDO, new { @class = "col-sm-3 control-label" })
+                                        <div class="col-sm-9">
+
+                                            @Html.TextBox(  "estSegundoApellido",
+                                                            Model.dtaEstudiante.per_segundoApellido,
+                                                            new{id = "estSegundoApellido",
+                                                                @class = "form-control",
+                                                                placeholder = @Language.es_ES.EST_DG_PH_APELLIDO_MATERNO,
+                                                                @readonly = "readonly",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @* NACIONALIDAD *@
+                                    <div class="form-group">
+                                        @Html.Label(Language.es_ES.EST_DG_NACIONALIDAD, new { @class = "col-sm-3 control-label" })
+                                        <div class="col-sm-9">
+
+                                            @Html.DropDownList( "ddlNacionalidadEstudiante",
+                                                                Model.catalogo.getLstNacionalidades(Model.dtaNacionalidadEstudiante.nac_id.ToString()),
+                                                                new{id = "ddlNacionalidadEstudiante",
+                                                                    @class = "form-control",
+                                                                    @readonly = "readonly",
+                                                                    @style = "font-weight: bold;"
+                                                                })
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @*INFORMACION - ESTADO CIVIL / SEXO / ETNIA*@
+
+                                <div class="row">
+                                    @*ESTADO CIVIL*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_ESTADO_CIVIL</label>
+                                            @Html.DropDownList( "ddlEstadoCivil",
+                                                            Model.catalogo.getLstEstadoCivil(Model.dtaEstudiante.eci_id.ToString()),
+                                                            new{id = "ddlEstadoCivil",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @*SEXO*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_SEXO</label>
+                                            @Html.DropDownList( "ddlSexo",
+                                                                Model.catalogo.getLstSexo(),
+                                                                new{id = "ddlSexo",
+                                                                    @class = "form-control",
+                                                                    @style = "font-weight: bold;"
+                                                                })
+                                        </div>
+                                    </div>
+
+                                    @*ETNIA*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_ETNIA</label>
+                                            @Html.DropDownList( "ddlEtnia",
+                                                            Model.catalogo.getLstEtnias(Model.dtaEstudiante.etn_id.ToString()),
+                                                            new{id = "ddlEtnia",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator" style="margin-top:5px;">
+
+                                @*INFORMACION - TIPO SANGRE / GENERO / CORREO INSTITUCIONAL*@
+                                <div class="row">
+                                    @*TIPO SANGRE*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_TIPO_SANGRE</label>
+                                            @Html.DropDownList( "ddlTipoSangre",
+                                                            Model.catalogo.getLstTipoSangre(Model.dtaEstudiante.tsa_id.ToString()),
+                                                            new{id = "ddlTipoSangre",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @*GENERO*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_GENERO</label>
+                                            @Html.DropDownList( "ddlGenero",
+                                                            Model.catalogo.getLstGenero(Model.dtaEstudiante.gen_id.ToString()),
+                                                            new{id = "ddlGenero",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @*CORREO INSTITUCIONAL*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_CORREO_INSTITUCIONAL</label>
+                                            @Html.TextBox(  "estCorreoInstitucional",
+                                                        Model.dtaEstudiante.per_email,
+                                                        new{id = "estCorreoInstitucional",
+                                                            @class = "form-control",
+                                                            @readonly = "readonly",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </fieldset>
+
+                            //  FECHA DE NACIMIENTO
+                            <fieldset id="fchNacimiento">
+                                <legend> @Language.es_ES.PER_TITLE_LUGAR_NACIMIENTO </legend>
+                            
+                                <div class="row">
+                                    @* FECHA DE NACIMIENTO *@
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_FECHA_NACIMIENTO</label>
+                                            @Html.TextBox(  "estDtFchNacimiento",
+                                                        Convert.ToDateTime(Model.dtaEstudiante.per_fechaNacimiento.ToString()).ToString("dd/MM/yyyy"),
+                                                        new{id = "estDtFchNacimiento",
+                                                            @class = "form-control",
+                                                            @readonly="readonly",
+                                                            @style= "width: 280px; font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator" style="margin-top:5px;">
+
+                                @*DPA - FECHA NACIMIENTO*@
+
+                                <div class="row">
+                                    @*PAIS - Lugar de nacimiento*@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_PAIS</label>
+                                            @Html.DropDownList( "ddl_FNPais",
+                                                                Model.catalogo.getLstPaises(Model.dtaDireccionEstudiante.dir_dpa[0].ToString()),
+                                                                new{id = "ddl_FNPais",
+                                                                    @class = "form-control",
+                                                                    @style = "font-weight: bold;"
+                                                                })
+                                        </div>
+                                    </div>
+
+                                    @*PROVINCIA - Lugar de nacimiento*@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_PROVINCIA</label>
+                                            @Html.DropDownList("ddl_FNProvincias",
+                                                        Model.catalogo.getLstProvincias(Model.dtaDireccionEstudiante.dir_dpa[0].ToString(),
+                                                                                        Model.dtaDireccionEstudiante.dir_dpa[1].ToString()),
+                                                        new{id = "ddl_FNProvincias",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                    @*CIUDAD - Lugar de nacimiento*@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_CANTON</label>
+                                            @Html.DropDownList("ddl_FNCiudades",
+                                                        Model.catalogo.getLstCiudades(  Model.dtaDireccionEstudiante.dir_dpa[1].ToString(),
+                                                                                        Model.dtaDireccionEstudiante.dir_dpa[2].ToString()),
+                                                        new{id = "ddl_FNCiudades",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                    @*PARROQUIA - Lugar de nacimiento*@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_PARROQUIA</label>
+                                            @Html.DropDownList("ddl_FNParroquias",
+                                                        Model.catalogo.getLstParroquias(Model.dtaDireccionEstudiante.dir_dpa[2].ToString(),
+                                                                                            Model.dtaDireccionEstudiante.dir_dpa[3].ToString()),
+                                                        new{id = "ddl_FNParroquias",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        
+                            //  DATOS DE UBICACION
+                            <fieldset id="estDireccion">
+                                <legend> @Language.es_ES.PER_TITLE_DATOS_UBICACION </legend>
+                                <div class="row">
+                                    @*PAIS - Datos de ubicacion *@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_PAIS</label>
+                                            @Html.DropDownList( "ddl_DUPais",
+                                                            Model.catalogo.getLstPaises(Model.dtaDireccionEstudiante.dir_dpa[0].ToString()),
+                                                            new{id = "ddl_DUPais",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @*PROVINCIA - Datos de ubicacion *@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_PROVINCIA</label>
+                                            @Html.DropDownList("ddl_DUProvincias",
+                                                            Model.catalogo.getLstProvincias(Model.dtaDireccionEstudiante.dir_dpa[0].ToString(),
+                                                                                            Model.dtaDireccionEstudiante.dir_dpa[1].ToString()),
+                                                            new{id = "ddl_DUProvincias",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @*CIUDAD - Datos de ubicacion *@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_CANTON</label>
+                                            @Html.DropDownList("ddl_DUCiudades",
+                                                            Model.catalogo.getLstCiudades(Model.dtaDireccionEstudiante.dir_dpa[1].ToString(),
+                                                                                            Model.dtaDireccionEstudiante.dir_dpa[2].ToString()),
+                                                            new{id = "ddl_DUCiudades",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+
+                                    @*PARROQUIA - Datos de ubicacion *@
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_PARROQUIA</label>
+                                            @Html.DropDownList("ddl_DUParroquias",
+                                                            Model.catalogo.getLstParroquias(Model.dtaDireccionEstudiante.dir_dpa[2].ToString(),
+                                                                                            Model.dtaDireccionEstudiante.dir_dpa[3].ToString()),
+                                                            new{id = "ddl_DUParroquias",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                            })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator" style="margin-top:5px;">
+
+                                <div class="row">
+                                    @* CALLE PRINCIPAL *@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_CALLE_PRINCIPAL</label>
+                                            @Html.TextBox(  "txtDirCallePrincipal",
+                                                        Model.dtaDireccionEstudiante.dir_callePrincipal.ToString(),
+                                                        new{id = "txtDirCallePrincipal",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                    @* NUMERO DE CASA *@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_NUMERO_CASA</label>
+                                            @Html.TextBox(  "txtDirNumeroCasa",
+                                                        Model.dtaDireccionEstudiante.dir_numero.ToString(),
+                                                        new{id = "txtDirNumeroCasa",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                    @* CALLE TRASNVERSAL *@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_CALLE_SECUNDARIA</label>
+                                            @Html.TextBox(  "txtDirCalleSecundaria",
+                                                        Model.dtaDireccionEstudiante.dir_calleTransversal.ToString(),
+                                                        new{id = "txtDirCalleSecundaria",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator" style="margin-top:5px;">
+
+                                <div class="row">
+                                    @*REFERENCIA*@
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_REFERENCIA</label>
+                                            @Html.TextArea("txtDirReferencia",
+                                                        Model.dtaDireccionEstudiante.dir_referencia.ToString(),
+                                                        new {   id="txtDirReferencia",
+                                                                @class = "form-control",
+                                                                @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                                <hr class="inner-separator" style="margin-top:5px;">
+                            
+                                <div class="row">
+                                    @*TELEFONO CELULAR*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_TELEFONO_MOVIL</label>
+                                            @Html.TextBox("txtTelefonoCelular",
+                                                        Model.dtaEstudiante.per_telefonoCelular.ToString(),
+                                                        new{id = "txtTelefonoCelular",
+                                                            @class = "form-control required",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                    @*TELEFONO FIJO*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_TELEFONO_FIJO</label>
+                                            @Html.TextBox(  "txtTelefonoFijo",
+                                                        Model.dtaEstudiante.per_telefonoCasa.ToString(),
+                                                        new{id = "txtTelefonoFijo",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+
+                                    @*CORREO PERSONAL*@
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>@Language.es_ES.EST_DG_CORREO_PERSONAL</label>
+                                            @Html.TextBox(  "txtCorreoAlternativo",
+                                                        Model.dtaEstudiante.per_emailAlternativo.ToString(),
+                                                        new{id = "txtCorreoAlternativo",
+                                                            @class = "form-control",
+                                                            @style = "font-weight: bold;"
+                                                        })
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+
+                            <input type="submit" class="btn btn-primary" value="@Language.es_ES.BTN_GUARDAR"/>
+                        }
+                    </div>
+                </div>
+            }else{
+                <div class="alert alert-warning alert-dismissable" style="text-align: center;">
+                    <i class="fa fa-exclamation-triangle fa-2x"></i> &nbsp;
+                    <strong> @Language.es_ES.EST_DE_DATOS_USUARIO_NO_DISPONIBLE </strong>, @Language.es_ES.EST_SMS_CONSULTA_SECRETARIA_CARRERA
+                </div>
+            }
+        </div>
+    </div>
+    <!-- END HORIZONTAL FORM -->
+</div>

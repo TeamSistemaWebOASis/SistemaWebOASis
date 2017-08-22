@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dstsGetRepMatTesis.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dstsGetRepMatTesis.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dstsGetRepMatTesis.xsd" id="dstsGetRepMatTesis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dstsGetRepMatTesis">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GetTesisVigentesFechas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodEst" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodMatTesis" type="xs:int" />
+              <xs:element minOccurs="0" name="strResolucion" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFecha" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="intCodTesis" type="xs:int" />
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="txtTema" type="xs:string" />
+              <xs:element minOccurs="0" name="intMatricula" type="xs:int" />
+              <xs:element minOccurs="0" name="Creditos" type="xs:double" />
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strApellidos" type="xs:string" />
+              <xs:element name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTitulo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstConvalidaciones.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstConvalidaciones.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstConvalidaciones.xsd" id="dtstConvalidaciones" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstConvalidaciones">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Convalidaciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" type="xs:int" />
+              <xs:element minOccurs="0" name="CodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="Periodo" type="xs:string" />
+              <xs:element minOccurs="0" name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="Resolucion" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaAprob" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="Nota" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Institucion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dtstConvalidacionesKey1">
+      <xs:selector xpath=".//mstns:Convalidaciones" />
+      <xs:field xpath="mstns:Codigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

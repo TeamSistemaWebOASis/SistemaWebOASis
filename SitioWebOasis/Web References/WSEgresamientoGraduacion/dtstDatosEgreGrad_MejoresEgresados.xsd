@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_MejoresEgresados.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_MejoresEgresados.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_MejoresEgresados.xsd" id="dtstDatosEgreGrad_MejoresEgresados" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_MejoresEgresados">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_EgresadosActuales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="NombEstudiante" type="xs:string" />
+              <xs:element name="strCodEstud" type="xs:string" />
+              <xs:element name="fltPromNotasCalc" type="xs:float" />
+              <xs:element minOccurs="0" name="fltCreditos" type="xs:float" />
+              <xs:element minOccurs="0" name="fltPuntosRepEstud" type="xs:float" />
+              <xs:element minOccurs="0" name="ValTotal" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

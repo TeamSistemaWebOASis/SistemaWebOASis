@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstOrdenDePago.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstOrdenDePago.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstOrdenDePago.xsd" id="dtstOrdenDePago" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dtstOrdenDePago">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strApellidos" type="xs:string" />
+              <xs:element name="strNombres" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strDescripcionPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivelMatricula" type="xs:string" />
+              <xs:element name="strDescrNivelMatricula" type="xs:string" />
+              <xs:element name="sintCodMatricula" type="xs:short" />
+              <xs:element name="dtFechaMatricula" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strInfoAdicional" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodigo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

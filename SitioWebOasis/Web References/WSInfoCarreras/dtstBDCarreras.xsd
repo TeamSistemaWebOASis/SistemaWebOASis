@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstBDCarreras.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstBDCarreras.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstBDCarreras.xsd" id="dtstBDCarreras" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="en-US" name="dtstBDCarreras">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="BDCarreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element minOccurs="0" name="strBaseDatos" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstBDCarrerasKey1">
+      <xs:selector xpath=".//mstns:BDCarreras" />
+      <xs:field xpath="mstns:strCodCarrera" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

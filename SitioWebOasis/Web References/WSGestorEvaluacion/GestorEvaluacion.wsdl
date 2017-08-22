@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEvaluacion_ImprimirAcumulados.xsd" />
+      <s:import namespace="http://tempuri.org/dtstCertificadoPromocion.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" />
+      <s:import namespace="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstConvalidaciones.xsd" />
+      <s:import namespace="http://tempuri.org/dtstARD.xsd" />
+      <s:import namespace="http://tempuri.org/dtstARDporcentajes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacionesEstudiantes" namespace="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas" namespace="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_ImprimirActas" namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstARD" namespace="http://tempuri.org/dtstARD.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstCertificadoPromocion" namespace="http://tempuri.org/dtstCertificadoPromocion.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_ImprimirAcumulados" namespace="http://tempuri.org/dtstEvaluacion_ImprimirAcumulados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstDatosEstudiantes" namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMateriasNotasEstudiante" namespace="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMejoresEstudiante" namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstARDporcentajes" namespace="http://tempuri.org/dtstARDporcentajes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstConvalidaciones" namespace="http://tempuri.org/dtstConvalidaciones.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Acumulados" namespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" />
+      <s:element name="crearActaArtificialEvaluaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialEvaluacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crearActaArtificialEvaluacionesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialSuspension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialSuspensionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crearActaArtificialSuspensionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExSuspension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExSuspensionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getImprimirActaExSuspensionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExSuspensionEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExSuspensionEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getImprimirActaExSuspensionEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialPrincipal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialPrincipalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crearActaArtificialPrincipalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialPrincipalR1">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="crearActaArtificialPrincipalR1Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="crearActaArtificialPrincipalR1Result">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaEvaluaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaEvaluacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getImprimirActaEvaluacionesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_ImprimirAcumulados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaEvaluacionesEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaEvaluacionesEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getImprimirActaEvaluacionesEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_ImprimirAcumulados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExPrincipal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExPrincipalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getImprimirActaExPrincipalResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExPrincipalEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getImprimirActaExPrincipalEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getImprimirActaExPrincipalEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setActaEvaluaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsActa">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="fUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setActaEvaluacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setActaEvaluacionesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setActaArtificialPrincipal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="fUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setActaArtificialPrincipalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setActaArtificialPrincipalResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setActaArtificialSuspension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="fUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setActaArtificialSuspensionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setActaArtificialSuspensionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeRegistrarExSuspension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeRegistrarExSuspensionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PuedeRegistrarExSuspensionResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="iNumExSuspension" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExisteNotasExamen">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExisteNotasExamenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExisteNotasExamenResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosMateriaActa">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDocente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSistema" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosMateriaActaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strDocente" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSistema" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosMateriaPensum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="fltCreditos" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="bytHorasTeo" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="bytHorasPra" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosMateriaPensumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fltCreditos" type="s:float" />
+            <s:element minOccurs="1" maxOccurs="1" name="bytHorasTeo" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="bytHorasPra" type="s:unsignedByte" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCursoMateriaAsignada">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCursoMateriaAsignadaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarRegistroFechaIngresoExPrincipal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaIngreso" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarRegistroFechaIngresoExPrincipalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarRegistroFechaIngresoExPrincipalResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarRegistroFechaIngresoExSuspension">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaIngreso" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarRegistroFechaIngresoExSuspensionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarRegistroFechaIngresoExSuspensionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarRegistroFechaIngresoEvaluaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaIngreso" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarRegistroFechaIngresoEvaluacionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarRegistroFechaIngresoEvaluacionesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCertificadoPromocion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosCertificadoPromocionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosCertificadoPromocionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstCertificadoPromocion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistorialEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistorialEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHistorialEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_fBaseDatos">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fBaseDatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_fBaseDatosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fBaseDatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fBaseDatosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fUbicacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fUbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_fUbicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fUbicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fUbicacionResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetDatosEstudiantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strApellidos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosEstudiantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosEstudiantesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarExamenAtrasado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNota" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaRecepcionExamen" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="Err" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarExamenAtrasadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarExamenAtrasadoResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="Err" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RectificarNota">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNota" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCausaRectificacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strObservaciones" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RectificarNotaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RectificarNotaResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarRecalificacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="intNota" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strObservaciones" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarRecalificacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarRecalificacionResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorTramiteNormal">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="strInstitucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNota" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorTramiteNormalResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RealizarConvalidacionPorTramiteNormalResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorTramiteNormalSinMatricula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="strInstitucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNota" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorTramiteNormalSinMatriculaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RealizarConvalidacionPorTramiteNormalSinMatriculaResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorExamenDeSuficiencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="strInstitucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNota" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorExamenDeSuficienciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RealizarConvalidacionPorExamenDeSuficienciaResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorExamenDeSuficienciaSinMatricula">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNumResolucion" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtFechaAutorizacion" type="s:dateTime" />
+            <s:element minOccurs="0" maxOccurs="1" name="strInstitucion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNota" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="login" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaResult" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErr" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMateriasNotasEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodEstud" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMateriasNotasEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMateriasNotasEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluacionesEstudiantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUbicacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetEvaluacionesEstudiantesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetEvaluacionesEstudiantesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConvalidacionesEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUbicacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstudiante" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConvalidacionesEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConvalidacionesEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstConvalidaciones.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetConvalidaciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUbicacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstudiante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsConvalidaciones">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstConvalidaciones.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="lConvEliminadas" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetConvalidacionesResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetARD">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetARDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetARDResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstARD.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetARDMatricualdos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetARDMatricualdosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetARDMatricualdosResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetARDporcentajes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetARDporcentajesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetARDporcentajesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstARDporcentajes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMejoresEstudiantesCSPeriodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMejoresEstudiantesCSPeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMejoresEstudiantesCSPeriodoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMejoresEstudiantesSSPeriodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMejoresEstudiantesSSPeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMejoresEstudiantesSSPeriodoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarMateriasAprobadasEstudiantes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strUbicacion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarMateriasAprobadasEstudiantesResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="crearActaArtificialEvaluacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialEvaluaciones" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialEvaluacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialEvaluacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialSuspensionSoapIn">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialSuspension" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialSuspensionSoapOut">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialSuspensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExSuspensionSoapIn">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExSuspension" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExSuspensionSoapOut">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExSuspensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExSuspensionEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExSuspensionEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExSuspensionEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExSuspensionEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialPrincipalSoapIn">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialPrincipal" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialPrincipalSoapOut">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialPrincipalResponse" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialPrincipalR1SoapIn">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialPrincipalR1" />
+  </wsdl:message>
+  <wsdl:message name="crearActaArtificialPrincipalR1SoapOut">
+    <wsdl:part name="parameters" element="tns:crearActaArtificialPrincipalR1Response" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaEvaluacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:getImprimirActaEvaluaciones" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaEvaluacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:getImprimirActaEvaluacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaEvaluacionesEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:getImprimirActaEvaluacionesEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaEvaluacionesEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:getImprimirActaEvaluacionesEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExPrincipalSoapIn">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExPrincipal" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExPrincipalSoapOut">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExPrincipalResponse" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExPrincipalEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExPrincipalEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="getImprimirActaExPrincipalEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:getImprimirActaExPrincipalEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="setActaEvaluacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:setActaEvaluaciones" />
+  </wsdl:message>
+  <wsdl:message name="setActaEvaluacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:setActaEvaluacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="setActaArtificialPrincipalSoapIn">
+    <wsdl:part name="parameters" element="tns:setActaArtificialPrincipal" />
+  </wsdl:message>
+  <wsdl:message name="setActaArtificialPrincipalSoapOut">
+    <wsdl:part name="parameters" element="tns:setActaArtificialPrincipalResponse" />
+  </wsdl:message>
+  <wsdl:message name="setActaArtificialSuspensionSoapIn">
+    <wsdl:part name="parameters" element="tns:setActaArtificialSuspension" />
+  </wsdl:message>
+  <wsdl:message name="setActaArtificialSuspensionSoapOut">
+    <wsdl:part name="parameters" element="tns:setActaArtificialSuspensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PuedeRegistrarExSuspensionSoapIn">
+    <wsdl:part name="parameters" element="tns:PuedeRegistrarExSuspension" />
+  </wsdl:message>
+  <wsdl:message name="PuedeRegistrarExSuspensionSoapOut">
+    <wsdl:part name="parameters" element="tns:PuedeRegistrarExSuspensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExisteNotasExamenSoapIn">
+    <wsdl:part name="parameters" element="tns:ExisteNotasExamen" />
+  </wsdl:message>
+  <wsdl:message name="ExisteNotasExamenSoapOut">
+    <wsdl:part name="parameters" element="tns:ExisteNotasExamenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosMateriaActaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosMateriaActa" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosMateriaActaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosMateriaActaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosMateriaPensumSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosMateriaPensum" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosMateriaPensumSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosMateriaPensumResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCursoMateriaAsignadaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosCursoMateriaAsignada" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCursoMateriaAsignadaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosCursoMateriaAsignadaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarRegistroFechaIngresoExPrincipalSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarRegistroFechaIngresoExPrincipal" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarRegistroFechaIngresoExPrincipalSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarRegistroFechaIngresoExPrincipalResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarRegistroFechaIngresoExSuspensionSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarRegistroFechaIngresoExSuspension" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarRegistroFechaIngresoExSuspensionSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarRegistroFechaIngresoExSuspensionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarRegistroFechaIngresoEvaluacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarRegistroFechaIngresoEvaluaciones" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarRegistroFechaIngresoEvaluacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarRegistroFechaIngresoEvaluacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCertificadoPromocionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosCertificadoPromocion" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosCertificadoPromocionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosCertificadoPromocionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHistorialEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHistorialEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetHistorialEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHistorialEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_fBaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:get_fBaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="get_fBaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:get_fBaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_fBaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:set_fBaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="set_fBaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:set_fBaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_fUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:get_fUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="get_fUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:get_fUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_fUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:set_fUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="set_fUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:set_fUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosEstudiantesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosEstudiantes" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosEstudiantesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosEstudiantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarExamenAtrasadoSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarExamenAtrasado" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarExamenAtrasadoSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarExamenAtrasadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="RectificarNotaSoapIn">
+    <wsdl:part name="parameters" element="tns:RectificarNota" />
+  </wsdl:message>
+  <wsdl:message name="RectificarNotaSoapOut">
+    <wsdl:part name="parameters" element="tns:RectificarNotaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarRecalificacionSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarRecalificacion" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarRecalificacionSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarRecalificacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorTramiteNormalSoapIn">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorTramiteNormal" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorTramiteNormalSoapOut">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorTramiteNormalResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorTramiteNormalSinMatriculaSoapIn">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorTramiteNormalSinMatricula" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorTramiteNormalSinMatriculaSoapOut">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorTramiteNormalSinMatriculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorExamenDeSuficienciaSoapIn">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorExamenDeSuficiencia" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorExamenDeSuficienciaSoapOut">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorExamenDeSuficienciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaSoapIn">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorExamenDeSuficienciaSinMatricula" />
+  </wsdl:message>
+  <wsdl:message name="RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaSoapOut">
+    <wsdl:part name="parameters" element="tns:RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMateriasNotasEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMateriasNotasEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetMateriasNotasEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMateriasNotasEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluacionesEstudiantesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetEvaluacionesEstudiantes" />
+  </wsdl:message>
+  <wsdl:message name="GetEvaluacionesEstudiantesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetEvaluacionesEstudiantesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConvalidacionesEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConvalidacionesEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetConvalidacionesEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConvalidacionesEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetConvalidacionesSoapIn">
+    <wsdl:part name="parameters" element="tns:SetConvalidaciones" />
+  </wsdl:message>
+  <wsdl:message name="SetConvalidacionesSoapOut">
+    <wsdl:part name="parameters" element="tns:SetConvalidacionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetARDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetARD" />
+  </wsdl:message>
+  <wsdl:message name="GetARDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetARDResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetARDMatricualdosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetARDMatricualdos" />
+  </wsdl:message>
+  <wsdl:message name="GetARDMatricualdosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetARDMatricualdosResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetARDporcentajesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetARDporcentajes" />
+  </wsdl:message>
+  <wsdl:message name="GetARDporcentajesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetARDporcentajesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMejoresEstudiantesCSPeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMejoresEstudiantesCSPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="GetMejoresEstudiantesCSPeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMejoresEstudiantesCSPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMejoresEstudiantesSSPeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMejoresEstudiantesSSPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="GetMejoresEstudiantesSSPeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMejoresEstudiantesSSPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarMateriasAprobadasEstudiantesSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarMateriasAprobadasEstudiantes" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarMateriasAprobadasEstudiantesSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarMateriasAprobadasEstudiantesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GestorEvaluacionSoap">
+    <wsdl:operation name="crearActaArtificialEvaluaciones">
+      <wsdl:input message="tns:crearActaArtificialEvaluacionesSoapIn" />
+      <wsdl:output message="tns:crearActaArtificialEvaluacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialSuspension">
+      <wsdl:input message="tns:crearActaArtificialSuspensionSoapIn" />
+      <wsdl:output message="tns:crearActaArtificialSuspensionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExSuspension">
+      <wsdl:input message="tns:getImprimirActaExSuspensionSoapIn" />
+      <wsdl:output message="tns:getImprimirActaExSuspensionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExSuspensionEstudiante">
+      <wsdl:input message="tns:getImprimirActaExSuspensionEstudianteSoapIn" />
+      <wsdl:output message="tns:getImprimirActaExSuspensionEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialPrincipal">
+      <wsdl:input message="tns:crearActaArtificialPrincipalSoapIn" />
+      <wsdl:output message="tns:crearActaArtificialPrincipalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialPrincipalR1">
+      <wsdl:input message="tns:crearActaArtificialPrincipalR1SoapIn" />
+      <wsdl:output message="tns:crearActaArtificialPrincipalR1SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaEvaluaciones">
+      <wsdl:input message="tns:getImprimirActaEvaluacionesSoapIn" />
+      <wsdl:output message="tns:getImprimirActaEvaluacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaEvaluacionesEstudiante">
+      <wsdl:input message="tns:getImprimirActaEvaluacionesEstudianteSoapIn" />
+      <wsdl:output message="tns:getImprimirActaEvaluacionesEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExPrincipal">
+      <wsdl:input message="tns:getImprimirActaExPrincipalSoapIn" />
+      <wsdl:output message="tns:getImprimirActaExPrincipalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExPrincipalEstudiante">
+      <wsdl:input message="tns:getImprimirActaExPrincipalEstudianteSoapIn" />
+      <wsdl:output message="tns:getImprimirActaExPrincipalEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setActaEvaluaciones">
+      <wsdl:input message="tns:setActaEvaluacionesSoapIn" />
+      <wsdl:output message="tns:setActaEvaluacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setActaArtificialPrincipal">
+      <wsdl:input message="tns:setActaArtificialPrincipalSoapIn" />
+      <wsdl:output message="tns:setActaArtificialPrincipalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setActaArtificialSuspension">
+      <wsdl:input message="tns:setActaArtificialSuspensionSoapIn" />
+      <wsdl:output message="tns:setActaArtificialSuspensionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PuedeRegistrarExSuspension">
+      <wsdl:input message="tns:PuedeRegistrarExSuspensionSoapIn" />
+      <wsdl:output message="tns:PuedeRegistrarExSuspensionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteNotasExamen">
+      <wsdl:input message="tns:ExisteNotasExamenSoapIn" />
+      <wsdl:output message="tns:ExisteNotasExamenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosMateriaActa">
+      <wsdl:input message="tns:GetDatosMateriaActaSoapIn" />
+      <wsdl:output message="tns:GetDatosMateriaActaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosMateriaPensum">
+      <wsdl:input message="tns:GetDatosMateriaPensumSoapIn" />
+      <wsdl:output message="tns:GetDatosMateriaPensumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCursoMateriaAsignada">
+      <wsdl:input message="tns:GetDatosCursoMateriaAsignadaSoapIn" />
+      <wsdl:output message="tns:GetDatosCursoMateriaAsignadaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoExPrincipal">
+      <wsdl:input message="tns:ActualizarRegistroFechaIngresoExPrincipalSoapIn" />
+      <wsdl:output message="tns:ActualizarRegistroFechaIngresoExPrincipalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoExSuspension">
+      <wsdl:input message="tns:ActualizarRegistroFechaIngresoExSuspensionSoapIn" />
+      <wsdl:output message="tns:ActualizarRegistroFechaIngresoExSuspensionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoEvaluaciones">
+      <wsdl:input message="tns:ActualizarRegistroFechaIngresoEvaluacionesSoapIn" />
+      <wsdl:output message="tns:ActualizarRegistroFechaIngresoEvaluacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCertificadoPromocion">
+      <wsdl:input message="tns:GetDatosCertificadoPromocionSoapIn" />
+      <wsdl:output message="tns:GetDatosCertificadoPromocionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistorialEstudiante">
+      <wsdl:input message="tns:GetHistorialEstudianteSoapIn" />
+      <wsdl:output message="tns:GetHistorialEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <wsdl:input message="tns:get_fBaseDatosSoapIn" />
+      <wsdl:output message="tns:get_fBaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <wsdl:input message="tns:set_fBaseDatosSoapIn" />
+      <wsdl:output message="tns:set_fBaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <wsdl:input message="tns:get_fUbicacionSoapIn" />
+      <wsdl:output message="tns:get_fUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <wsdl:input message="tns:set_fUbicacionSoapIn" />
+      <wsdl:output message="tns:set_fUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosEstudiantes">
+      <wsdl:input message="tns:GetDatosEstudiantesSoapIn" />
+      <wsdl:output message="tns:GetDatosEstudiantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarExamenAtrasado">
+      <wsdl:input message="tns:RegistrarExamenAtrasadoSoapIn" />
+      <wsdl:output message="tns:RegistrarExamenAtrasadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RectificarNota">
+      <wsdl:input message="tns:RectificarNotaSoapIn" />
+      <wsdl:output message="tns:RectificarNotaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarRecalificacion">
+      <wsdl:input message="tns:RegistrarRecalificacionSoapIn" />
+      <wsdl:output message="tns:RegistrarRecalificacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorTramiteNormal">
+      <wsdl:input message="tns:RealizarConvalidacionPorTramiteNormalSoapIn" />
+      <wsdl:output message="tns:RealizarConvalidacionPorTramiteNormalSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorTramiteNormalSinMatricula">
+      <wsdl:input message="tns:RealizarConvalidacionPorTramiteNormalSinMatriculaSoapIn" />
+      <wsdl:output message="tns:RealizarConvalidacionPorTramiteNormalSinMatriculaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorExamenDeSuficiencia">
+      <wsdl:input message="tns:RealizarConvalidacionPorExamenDeSuficienciaSoapIn" />
+      <wsdl:output message="tns:RealizarConvalidacionPorExamenDeSuficienciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorExamenDeSuficienciaSinMatricula">
+      <wsdl:input message="tns:RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaSoapIn" />
+      <wsdl:output message="tns:RealizarConvalidacionPorExamenDeSuficienciaSinMatriculaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMateriasNotasEstudiante">
+      <wsdl:input message="tns:GetMateriasNotasEstudianteSoapIn" />
+      <wsdl:output message="tns:GetMateriasNotasEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluacionesEstudiantes">
+      <wsdl:input message="tns:GetEvaluacionesEstudiantesSoapIn" />
+      <wsdl:output message="tns:GetEvaluacionesEstudiantesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConvalidacionesEstudiante">
+      <wsdl:input message="tns:GetConvalidacionesEstudianteSoapIn" />
+      <wsdl:output message="tns:GetConvalidacionesEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetConvalidaciones">
+      <wsdl:input message="tns:SetConvalidacionesSoapIn" />
+      <wsdl:output message="tns:SetConvalidacionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetARD">
+      <wsdl:input message="tns:GetARDSoapIn" />
+      <wsdl:output message="tns:GetARDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetARDMatricualdos">
+      <wsdl:input message="tns:GetARDMatricualdosSoapIn" />
+      <wsdl:output message="tns:GetARDMatricualdosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetARDporcentajes">
+      <wsdl:input message="tns:GetARDporcentajesSoapIn" />
+      <wsdl:output message="tns:GetARDporcentajesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMejoresEstudiantesCSPeriodo">
+      <wsdl:input message="tns:GetMejoresEstudiantesCSPeriodoSoapIn" />
+      <wsdl:output message="tns:GetMejoresEstudiantesCSPeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMejoresEstudiantesSSPeriodo">
+      <wsdl:input message="tns:GetMejoresEstudiantesSSPeriodoSoapIn" />
+      <wsdl:output message="tns:GetMejoresEstudiantesSSPeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMateriasAprobadasEstudiantes">
+      <wsdl:input message="tns:ActualizarMateriasAprobadasEstudiantesSoapIn" />
+      <wsdl:output message="tns:ActualizarMateriasAprobadasEstudiantesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestorEvaluacionSoap" type="tns:GestorEvaluacionSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="crearActaArtificialEvaluaciones">
+      <soap:operation soapAction="http://tempuri.org/crearActaArtificialEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialSuspension">
+      <soap:operation soapAction="http://tempuri.org/crearActaArtificialSuspension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExSuspension">
+      <soap:operation soapAction="http://tempuri.org/getImprimirActaExSuspension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExSuspensionEstudiante">
+      <soap:operation soapAction="http://tempuri.org/getImprimirActaExSuspensionEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialPrincipal">
+      <soap:operation soapAction="http://tempuri.org/crearActaArtificialPrincipal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialPrincipalR1">
+      <soap:operation soapAction="http://tempuri.org/crearActaArtificialPrincipalR1" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaEvaluaciones">
+      <soap:operation soapAction="http://tempuri.org/getImprimirActaEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaEvaluacionesEstudiante">
+      <soap:operation soapAction="http://tempuri.org/getImprimirActaEvaluacionesEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExPrincipal">
+      <soap:operation soapAction="http://tempuri.org/getImprimirActaExPrincipal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExPrincipalEstudiante">
+      <soap:operation soapAction="http://tempuri.org/getImprimirActaExPrincipalEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setActaEvaluaciones">
+      <soap:operation soapAction="http://tempuri.org/setActaEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setActaArtificialPrincipal">
+      <soap:operation soapAction="http://tempuri.org/setActaArtificialPrincipal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setActaArtificialSuspension">
+      <soap:operation soapAction="http://tempuri.org/setActaArtificialSuspension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeRegistrarExSuspension">
+      <soap:operation soapAction="http://tempuri.org/PuedeRegistrarExSuspension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteNotasExamen">
+      <soap:operation soapAction="http://tempuri.org/ExisteNotasExamen" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosMateriaActa">
+      <soap:operation soapAction="http://tempuri.org/GetDatosMateriaActa" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosMateriaPensum">
+      <soap:operation soapAction="http://tempuri.org/GetDatosMateriaPensum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCursoMateriaAsignada">
+      <soap:operation soapAction="http://tempuri.org/GetDatosCursoMateriaAsignada" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoExPrincipal">
+      <soap:operation soapAction="http://tempuri.org/ActualizarRegistroFechaIngresoExPrincipal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoExSuspension">
+      <soap:operation soapAction="http://tempuri.org/ActualizarRegistroFechaIngresoExSuspension" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoEvaluaciones">
+      <soap:operation soapAction="http://tempuri.org/ActualizarRegistroFechaIngresoEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCertificadoPromocion">
+      <soap:operation soapAction="http://tempuri.org/GetDatosCertificadoPromocion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistorialEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetHistorialEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <soap:operation soapAction="http://tempuri.org/get_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <soap:operation soapAction="http://tempuri.org/set_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <soap:operation soapAction="http://tempuri.org/get_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <soap:operation soapAction="http://tempuri.org/set_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosEstudiantes">
+      <soap:operation soapAction="http://tempuri.org/GetDatosEstudiantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarExamenAtrasado">
+      <soap:operation soapAction="http://tempuri.org/RegistrarExamenAtrasado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RectificarNota">
+      <soap:operation soapAction="http://tempuri.org/RectificarNota" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarRecalificacion">
+      <soap:operation soapAction="http://tempuri.org/RegistrarRecalificacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorTramiteNormal">
+      <soap:operation soapAction="http://tempuri.org/RealizarConvalidacionPorTramiteNormal" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorTramiteNormalSinMatricula">
+      <soap:operation soapAction="http://tempuri.org/RealizarConvalidacionPorTramiteNormalSinMatricula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorExamenDeSuficiencia">
+      <soap:operation soapAction="http://tempuri.org/RealizarConvalidacionPorExamenDeSuficiencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorExamenDeSuficienciaSinMatricula">
+      <soap:operation soapAction="http://tempuri.org/RealizarConvalidacionPorExamenDeSuficienciaSinMatricula" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMateriasNotasEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetMateriasNotasEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluacionesEstudiantes">
+      <soap:operation soapAction="http://tempuri.org/GetEvaluacionesEstudiantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConvalidacionesEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetConvalidacionesEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConvalidaciones">
+      <soap:operation soapAction="http://tempuri.org/SetConvalidaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARD">
+      <soap:operation soapAction="http://tempuri.org/GetARD" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARDMatricualdos">
+      <soap:operation soapAction="http://tempuri.org/GetARDMatricualdos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARDporcentajes">
+      <soap:operation soapAction="http://tempuri.org/GetARDporcentajes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMejoresEstudiantesCSPeriodo">
+      <soap:operation soapAction="http://tempuri.org/GetMejoresEstudiantesCSPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMejoresEstudiantesSSPeriodo">
+      <soap:operation soapAction="http://tempuri.org/GetMejoresEstudiantesSSPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMateriasAprobadasEstudiantes">
+      <soap:operation soapAction="http://tempuri.org/ActualizarMateriasAprobadasEstudiantes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GestorEvaluacionSoap12" type="tns:GestorEvaluacionSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="crearActaArtificialEvaluaciones">
+      <soap12:operation soapAction="http://tempuri.org/crearActaArtificialEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialSuspension">
+      <soap12:operation soapAction="http://tempuri.org/crearActaArtificialSuspension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExSuspension">
+      <soap12:operation soapAction="http://tempuri.org/getImprimirActaExSuspension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExSuspensionEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/getImprimirActaExSuspensionEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialPrincipal">
+      <soap12:operation soapAction="http://tempuri.org/crearActaArtificialPrincipal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="crearActaArtificialPrincipalR1">
+      <soap12:operation soapAction="http://tempuri.org/crearActaArtificialPrincipalR1" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaEvaluaciones">
+      <soap12:operation soapAction="http://tempuri.org/getImprimirActaEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaEvaluacionesEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/getImprimirActaEvaluacionesEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExPrincipal">
+      <soap12:operation soapAction="http://tempuri.org/getImprimirActaExPrincipal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getImprimirActaExPrincipalEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/getImprimirActaExPrincipalEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setActaEvaluaciones">
+      <soap12:operation soapAction="http://tempuri.org/setActaEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setActaArtificialPrincipal">
+      <soap12:operation soapAction="http://tempuri.org/setActaArtificialPrincipal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setActaArtificialSuspension">
+      <soap12:operation soapAction="http://tempuri.org/setActaArtificialSuspension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeRegistrarExSuspension">
+      <soap12:operation soapAction="http://tempuri.org/PuedeRegistrarExSuspension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExisteNotasExamen">
+      <soap12:operation soapAction="http://tempuri.org/ExisteNotasExamen" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosMateriaActa">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosMateriaActa" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosMateriaPensum">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosMateriaPensum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCursoMateriaAsignada">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosCursoMateriaAsignada" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoExPrincipal">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarRegistroFechaIngresoExPrincipal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoExSuspension">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarRegistroFechaIngresoExSuspension" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarRegistroFechaIngresoEvaluaciones">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarRegistroFechaIngresoEvaluaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosCertificadoPromocion">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosCertificadoPromocion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistorialEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetHistorialEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/get_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/set_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/get_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/set_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosEstudiantes">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosEstudiantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarExamenAtrasado">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarExamenAtrasado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RectificarNota">
+      <soap12:operation soapAction="http://tempuri.org/RectificarNota" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarRecalificacion">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarRecalificacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorTramiteNormal">
+      <soap12:operation soapAction="http://tempuri.org/RealizarConvalidacionPorTramiteNormal" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorTramiteNormalSinMatricula">
+      <soap12:operation soapAction="http://tempuri.org/RealizarConvalidacionPorTramiteNormalSinMatricula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorExamenDeSuficiencia">
+      <soap12:operation soapAction="http://tempuri.org/RealizarConvalidacionPorExamenDeSuficiencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarConvalidacionPorExamenDeSuficienciaSinMatricula">
+      <soap12:operation soapAction="http://tempuri.org/RealizarConvalidacionPorExamenDeSuficienciaSinMatricula" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMateriasNotasEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetMateriasNotasEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEvaluacionesEstudiantes">
+      <soap12:operation soapAction="http://tempuri.org/GetEvaluacionesEstudiantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConvalidacionesEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetConvalidacionesEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetConvalidaciones">
+      <soap12:operation soapAction="http://tempuri.org/SetConvalidaciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARD">
+      <soap12:operation soapAction="http://tempuri.org/GetARD" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARDMatricualdos">
+      <soap12:operation soapAction="http://tempuri.org/GetARDMatricualdos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetARDporcentajes">
+      <soap12:operation soapAction="http://tempuri.org/GetARDporcentajes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMejoresEstudiantesCSPeriodo">
+      <soap12:operation soapAction="http://tempuri.org/GetMejoresEstudiantesCSPeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMejoresEstudiantesSSPeriodo">
+      <soap12:operation soapAction="http://tempuri.org/GetMejoresEstudiantesSSPeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarMateriasAprobadasEstudiantes">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarMateriasAprobadasEstudiantes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestorEvaluacion">
+    <wsdl:port name="GestorEvaluacionSoap" binding="tns:GestorEvaluacionSoap">
+      <soap:address location="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GestorEvaluacionSoap12" binding="tns:GestorEvaluacionSoap12">
+      <soap12:address location="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

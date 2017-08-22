@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorarioExamenes" filename="dtstHorarioExamenes.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?wsdl" filename="GestordeReportes.wsdl" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstNotasPeriodoEstudiante" filename="dtstNotasPeriodoEstudiante.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstEvaluacion_Actas" filename="dtstEvaluacion_Actas.xsd" />
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.DiscoveryDocumentReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?disco" filename="GestordeReportes.disco" />
+  </Results>
+</DiscoveryClientResultsFile>

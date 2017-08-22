@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
+      <s:element name="GetDatosNotasEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosNotasEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosNotasEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosGradoEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetDatosGradoEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetDatosGradoEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetDatosNotasEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosNotasEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosNotasEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosNotasEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosGradoEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetDatosGradoEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetDatosGradoEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetDatosGradoEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:portType name="NotasEstudianteSoap">
+    <wsdl:operation name="GetDatosNotasEstudiante">
+      <wsdl:input message="tns:GetDatosNotasEstudianteSoapIn" />
+      <wsdl:output message="tns:GetDatosNotasEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosGradoEstudiante">
+      <wsdl:input message="tns:GetDatosGradoEstudianteSoapIn" />
+      <wsdl:output message="tns:GetDatosGradoEstudianteSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NotasEstudianteSoap" type="tns:NotasEstudianteSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDatosNotasEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetDatosNotasEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosGradoEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetDatosGradoEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NotasEstudianteSoap12" type="tns:NotasEstudianteSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDatosNotasEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosNotasEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDatosGradoEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetDatosGradoEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="NotasEstudiante">
+    <wsdl:port name="NotasEstudianteSoap" binding="tns:NotasEstudianteSoap">
+      <soap:address location="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx" />
+    </wsdl:port>
+    <wsdl:port name="NotasEstudianteSoap12" binding="tns:NotasEstudianteSoap12">
+      <soap12:address location="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

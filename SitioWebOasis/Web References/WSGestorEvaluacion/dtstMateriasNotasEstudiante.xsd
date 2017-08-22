@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" id="dtstMateriasNotasEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dtstMateriasNotasEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Materias_Asignadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strNombreMateria" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="sintCodMatricula" type="xs:short" />
+              <xs:element name="strCodigo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Notas_Examenes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sintCodMatricula" type="xs:short" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strCodTipoExamen" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescrTipoExamen" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNota" type="xs:int" />
+              <xs:element minOccurs="0" name="strCodigo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Periodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+              <xs:element name="blnVigente" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstMateriasNotasEstudianteKey1">
+      <xs:selector xpath=".//mstns:Materias_Asignadas" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstMateriasNotasEstudianteKey2">
+      <xs:selector xpath=".//mstns:Notas_Examenes" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+      <xs:field xpath="mstns:strCodTipoExamen" />
+    </xs:unique>
+    <xs:unique name="key1">
+      <xs:selector xpath=".//mstns:Periodos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstMateriasNotasEstudianteKey3">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="Materias_AsignadasNotas_Examenes" refer="mstns:dtstMateriasNotasEstudianteKey1">
+      <xs:selector xpath=".//mstns:Notas_Examenes" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:keyref>
+    <xs:keyref name="PeriodosMaterias_Asignadas" refer="mstns:key1">
+      <xs:selector xpath=".//mstns:Materias_Asignadas" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

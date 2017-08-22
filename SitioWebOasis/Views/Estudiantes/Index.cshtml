@@ -1,0 +1,78 @@
+﻿@model SitioWebOasis.Models.DatosAcademicosEstudiante
+
+@{
+    ViewBag.Title = "Estudiantes";
+    var promedioEstudiante = default(decimal);
+    var descripcionPeriodoEstudiante = string.Empty;
+    Model.getDataAcademico(out promedioEstudiante, out descripcionPeriodoEstudiante);
+}
+
+<div class="main-content">
+    <div class="row">
+        @* NIVEL DEL ESTUDIANTE *@
+        <div class="col-md-4">
+            <div class="contextual-summary-info">
+                <i class="fa fa-level-up"></i>
+                <p class="pull-right"><span> @Language.es_ES.EST_LBL_NIVEL </span> @Model.getNivelEstudiante() </p>
+            </div>
+        </div>
+
+        @* PROMEDIO DEL ESTUDIANTE *@
+        <div class="col-md-4">
+            <div class="contextual-summary-info">
+                <i class="fa fa-line-chart yellow-font"></i>
+                <p class="pull-right"><span>@Language.es_ES.EST_LBL_PROMEDIO </span> @promedioEstudiante.ToString() </p>
+            </div>
+        </div>
+    </div>
+
+    <br>
+
+    <div class="widget widget-table">
+        <div class="widget-header">
+            <h3><i class="fa fa-star"></i> @Language.es_ES.EST_LBL_NOTAS &nbsp;/&nbsp; @Language.es_ES.EST_LBL_EV_ACUMULATIVA</h3>
+
+            <div class="btn-group widget-header-toolbar">
+                <a href="@Url.Action("NotasEstudiantes", "Estudiantes")" class="label label-default" style="color: white; font-size: small;">
+                    <i class="fa fa-eye"></i> @Language.es_ES.EST_LBL_VER_MAS
+                </a>
+            </div>
+
+            <div class="widget-header-toolbar">
+                <div class="label label-default" style="font-size: small;">
+                    <i class="fa fa-clock-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO: &nbsp;@descripcionPeriodoEstudiante 
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-content">
+            <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+
+                @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+                    <thead>
+                        <tr role="row">
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_UNO</th>
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
+
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @*NOTAS EVALUACION ESTUDIANTE*@
+                        @Html.Raw(Model.getHTMLNotasEVAcumulativa())
+                    </tbody>
+                </table>
+
+                <div class="row"></div>
+            </div>
+        </div>
+    </div>
+</div>

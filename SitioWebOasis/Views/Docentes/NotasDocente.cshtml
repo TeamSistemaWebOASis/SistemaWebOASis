@@ -1,0 +1,307 @@
+﻿@model SitioWebOasis.Models.EvaluacionesDocenteModel
+
+@{
+    ViewBag.Title = "Notas Docente";
+}
+
+@section scripts{
+    <script src="~/Content/js/Docentes/GestionNotasAcumulado.js?v1.0.91"> </script>
+    <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.11"> </script>
+}
+
+<div class="widget">
+    <div class="widget-header">
+        <h3> @Language.es_ES.DOC_GRD_EVALUACION_FORMATIVA </h3>
+    </div>
+
+    <div class="widget-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group" id="accordion">
+
+                    @*EVALUACION ACUMULATIVA*@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> @Language.es_ES.DOC_TB_EV_ACUMULATIVA 
+                                    <i class="fa fa-angle-down pull-right"></i>
+                                    <i class="fa fa-angle-up pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse in">
+                            <div class="panel-body">
+
+                                <div id="msmGrdEvAcumulativa" class="alert alert-info fade in" hidden="hidden">
+                                    <button class="close" data-dismiss="alert">×</button>
+                                    <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*IMPRESION DEL ACTA PARCIAL #01*@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
+                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
+                                        </div>
+                                        
+                                        @*IMPRESION DEL ACTA PARCIAL #02*@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
+                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
+                                        </div>
+                                        
+                                        @*IMPRESION DEL ACTA PARCIAL #03*@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
+                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator">
+
+                                @*GRID DE EVALUACION*@
+                                <table id="grdEvAcumulativa"></table>
+                                
+                                <hr class="inner-separator">
+                                
+                                <button id="btnGuardarEvAcumulativa" 
+                                        type="button" 
+                                        class="btn btn-success">
+                                    <i class="fa fa-floppy-o fa-2x"></i> Guardar
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*EVALUACION FINAL*@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"> @Language.es_ES.DOC_TB_EV_FINAL
+                                    <i class="fa fa-angle-down pull-right"></i>
+                                    <i class="fa fa-angle-up pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+
+                                <div class="alert alert-info fade in">
+                                    <button class="close" data-dismiss="alert">×</button>
+                                    <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*IMPRESION DEL ACTA EVALUACION FINAL #01*@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n final </button>
+                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator">
+
+                                <table id="datatable-data-export" class="table table-sorting table-striped table-hover table-bordered datatable dataTable no-footer" role="grid" aria-describedby="datatable-data-export_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;"> @Language.es_ES.EST_TB_COL_NUMERO </th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="align-content: center;vertical-align: middle;text-align: center;"> @Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE </th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="align-content: center;vertical-align: middle;text-align: center;"> @Language.es_ES.NOTAS_TB_COL_NIVEL </th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA_TOOL_TIP"> @Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA </th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_TOTAL_TOOL_TIP"> @Language.es_ES.NOTAS_TB_COL_TOTAL</th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_PROMEDIO_TOOL_TIP"> @Language.es_ES.NOTAS_TB_COL_PROMEDIO</th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;"> @Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;"> @Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                            <th tabindex="0" rowspan="1" colspan="1" style="width: 30px;text-align: center;vertical-align: middle;align-content: center;"> @Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        @* NOTAS EVALUACION ACUMULATIVA
+                                        @Html.Raw(Model.getHTML_EvaluacionFinal()) *@
+
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*EVALUACION RECUPERACION*@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed"> @Language.es_ES.DOC_TB_EV_RECUPERACION
+                                    <i class="fa fa-angle-down pull-right"></i>
+                                    <i class="fa fa-angle-up pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+
+                                <div class="alert alert-info fade in">
+                                    <button class="close" data-dismiss="alert">×</button>
+                                    <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*IMPRESION DEL ACTA EVALUACION RECUPERACION #01*@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n recuperaci&oacute;n </button>
+                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator">
+
+                                <table id="datatable-data-export" class="table table-sorting table-striped table-hover table-bordered datatable dataTable no-footer" role="grid" aria-describedby="datatable-data-export_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="datatable-data-export" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Browser: activate to sort column descending" style="width: 132px;">Browser</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable-data-export" rowspan="1" colspan="1" aria-label="Operating System: activate to sort column ascending" style="width: 159px;">Operating System</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable-data-export" rowspan="1" colspan="1" aria-label="Visits: activate to sort column ascending" style="width: 63px;">Visits</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable-data-export" rowspan="1" colspan="1" aria-label="New Visits: activate to sort column ascending" style="width: 100px;">New Visits</th>
+                                            <th class="sorting" tabindex="0" aria-controls="datatable-data-export" rowspan="1" colspan="1" aria-label="Bounce Rate: activate to sort column ascending" style="width: 119px;">Bounce Rate</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Chrome</td>
+                                            <td>Macintosh</td>
+                                            <td>360</td>
+                                            <td>82.78%</td>
+                                            <td>87.77%</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Chrome</td>
+                                            <td>Windows</td>
+                                            <td>582</td>
+                                            <td>87.24%</td>
+                                            <td>90.12%</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Chrome</td>
+                                            <td>Linux</td>
+                                            <td>172</td>
+                                            <td>45.21%</td>
+                                            <td>48.81%</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Chrome</td>
+                                            <td>iOS</td>
+                                            <td>86</td>
+                                            <td>35.23%</td>
+                                            <td>44.21%</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Chrome</td>
+                                            <td>iOS</td>
+                                            <td>45</td>
+                                            <td>23.21%</td>
+                                            <td>34.67%</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Firefox</td>
+                                            <td>Windows</td>
+                                            <td>280</td>
+                                            <td>63.12%</td>
+                                            <td>89.34%</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Firefox</td>
+                                            <td>Android</td>
+                                            <td>236</td>
+                                            <td>58.02%</td>
+                                            <td>76.19%</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Internet Explorer</td>
+                                            <td>Windows</td>
+                                            <td>145</td>
+                                            <td>45.23%</td>
+                                            <td>94.65%</td>
+                                        </tr>
+                                        <tr role="row" class="odd">
+                                            <td class="sorting_1">Opera</td>
+                                            <td>Windows</td>
+                                            <td>328</td>
+                                            <td>67.12%</td>
+                                            <td>78.34%</td>
+                                        </tr>
+                                        <tr role="row" class="even">
+                                            <td class="sorting_1">Opera</td>
+                                            <td>Macintosh</td>
+                                            <td>22</td>
+                                            <td>87.21%</td>
+                                            <td>79.81%</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* CODIGO DE LA ASIGNATURA A GESTIONAR *@
+    @Html.Hidden("codAsignatura", @Model.strCodAsignatura)
+
+    @* NIVEL DE LA ASIGNATURA *@
+    @Html.Hidden("nivel", @Model.strCodNivel)
+
+    @* PARALELO *@
+    @Html.Hidden("paralelo", @Model.strCodParalelo)
+
+    @* DATOS EVALUACION ACUMULATIVA *@
+    @*@Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString());*@
+
+    @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
+
+    @* PARCIAL ACTIVO *@
+    @Html.Hidden("dtaParcialActivo", @Model.parcialActivo.ToString())
+
+</div>

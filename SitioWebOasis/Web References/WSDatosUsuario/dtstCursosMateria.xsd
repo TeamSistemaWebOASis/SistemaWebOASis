@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstCursosMateria.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstCursosMateria.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstCursosMateria.xsd" id="dtstCursosMateria" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dtstCursosMateria">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GetCursosDictadoMaterias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodDocente" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaExPrinc" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaExSusp" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaEntPrinc" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaEntSusp" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaAsentExPrinc" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaAsentExSusp" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaEntEvaluaciones" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaAsentEvaluaciones" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:GetCursosDictadoMaterias" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

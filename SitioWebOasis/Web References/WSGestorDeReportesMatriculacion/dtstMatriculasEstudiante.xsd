@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstMatriculasEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstMatriculasEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstMatriculasEstudiante.xsd" id="dtstMatriculasEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstMatriculasEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Materias_Asignadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sintCodMatricula" type="xs:int" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNumMat" type="xs:int" />
+              <xs:element minOccurs="0" name="strCodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Matriculas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="sintCodigo" type="xs:int" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEstud" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaAutorizada" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaCreada" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" msdata:Expression="sintCodigo + strCodPeriodo" minOccurs="0" name="strKeyMatricula" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombres" type="xs:string" />
+              <xs:element minOccurs="0" name="strApellidos" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dtstMatriculasEstudianteKey2">
+      <xs:selector xpath=".//mstns:Materias_Asignadas" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:unique name="dtstMatriculasEstudianteKey1">
+      <xs:selector xpath=".//mstns:Matriculas" />
+      <xs:field xpath="mstns:sintCodigo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+    </xs:unique>
+    <xs:unique name="dtstMatriculasEstudianteKey3">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="EstudiantesMatriculas" refer="mstns:dtstMatriculasEstudianteKey3">
+      <xs:selector xpath=".//mstns:Matriculas" />
+      <xs:field xpath="mstns:strCodEstud" />
+    </xs:keyref>
+    <xs:keyref name="MatriculasMaterias_Asignadas" refer="mstns:dtstMatriculasEstudianteKey1">
+      <xs:selector xpath=".//mstns:Materias_Asignadas" />
+      <xs:field xpath="mstns:sintCodMatricula" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

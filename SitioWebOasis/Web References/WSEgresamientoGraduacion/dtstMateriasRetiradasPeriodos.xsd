@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstMateriasRetiradasPeriodos.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstMateriasRetiradasPeriodos.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstMateriasRetiradasPeriodos.xsd" id="dtstMateriasRetiradasPeriodos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstMateriasRetiradasPeriodos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MateriasRetiradasPeriodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CodigoMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="NombreMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="CodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="Periodo" type="xs:string" />
+              <xs:element minOccurs="0" name="Numero" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="FechaInicPer" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="FechaRetiro" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

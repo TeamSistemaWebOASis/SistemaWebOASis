@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_RecordAcademico.xsd" id="dtstDatosEgreGrad_RecordAcademico" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_RecordAcademico">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EvaluacionesMateriasAsignadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Codigo" type="xs:string" />
+              <xs:element name="Cedula" type="xs:string" />
+              <xs:element name="Apellidos" type="xs:string" />
+              <xs:element name="Nombres" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Periodo" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaMatricula" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element name="CodigoMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="NombreMateria" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Acumulado" type="xs:byte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Principal" type="xs:byte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Promedio" type="xs:byte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Suspension" type="xs:byte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="ComputoTotal" type="xs:byte" />
+              <xs:element minOccurs="0" name="Asistencia" type="xs:byte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Equivalencia" type="xs:string" />
+              <xs:element minOccurs="0" name="strObservaciones" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaInicPer" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

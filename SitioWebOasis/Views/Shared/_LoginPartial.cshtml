@@ -1,19 +1,39 @@
 ﻿@if (Request.IsAuthenticated)
 {
-    <text>
-    <ul class="nav navbar-nav navbar-right">
-        <li class="navbar-text">
-            Hello, @User.Identity.Name!
-        </li>
-        <li>
-            @Html.ActionLink("Sign out", "SignOut", "Account")
-        </li>
-    </ul>
-    </text>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="@Url.Content("~/Content/img/user-avatar_masculino.png")" alt="default_image" />
+            <span class="name">@User.Identity.Name.ToString()</span> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                @Html.ActionLink(   "Cerrar sesión",
+                                    "SignOut",
+                                    "Account",
+                                    routeValues: null,
+                                    htmlAttributes: new{id = "idLogOut",
+                                                        style = "padding-bottom: 12px;padding-top: 12px;border-style: solid;border-width: thin;"
+                                    })
+            </li>
+        </ul>
+    </li>
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Sign in", "SignIn", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-    </ul>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="@Url.Content("~/Content/img/user-avatar_masculino.png")" alt="default_image" />
+            <span class="name">@User.Identity.Name.ToString()</span> <span class="caret"></span>
+        </a>
+
+        <ul class="dropdown-menu" role="menu">
+            <li>
+                @Html.ActionLink(   "Sign in", 
+                                    "SignIn", 
+                                    "Account", 
+                                    routeValues: null, 
+                                    htmlAttributes: new { id = "loginLink" })
+            </li>
+        </ul>
+    </li>
 }

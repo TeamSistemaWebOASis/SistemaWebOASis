@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstCertificadoPromocion.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstCertificadoPromocion.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstCertificadoPromocion.xsd" id="dtstCertificadoPromocion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstCertificadoPromocion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EvaluacionesMateriasAsignadasPeriodo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoMateria" type="xs:string" />
+              <xs:element name="NombreMateria" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Acumulado" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Principal" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Promedio" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Suspension" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="ComputoTotal" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Equivalencia" type="xs:string" />
+              <xs:element msdata:AutoIncrement="true" msdata:AutoIncrementSeed="1" name="Numero" type="xs:int" />
+              <xs:element minOccurs="0" name="NumMatricula" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstCertificadoPromocionKey1">
+      <xs:selector xpath=".//mstns:EvaluacionesMateriasAsignadasPeriodo" />
+      <xs:field xpath="mstns:CodigoMateria" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

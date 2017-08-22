@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SitioWebOasis.Models.MenuViewModel>
+
+@foreach (SitioWebOasis.Models.MenuViewModel menu in Model)
+{
+    if (menu.SubMenu != null)
+    {
+        <li>
+            <a href="@Url.Action(menu.Action, menu.Controller)" class="js-sub-menu-toggle">
+                <i class="@menu.icon"></i>
+                <span class="@menu.Class"> @Html.Raw(menu.Title) </span>
+                <i class="toggle-icon fa fa-angle-left"></i>
+            </a>
+
+            <ul class="sub-menu">
+
+                @foreach (SitioWebOasis.Models.MenuViewModel subMenu in menu.SubMenu){
+                    if (subMenu.IsAction){
+                        <li>
+                            <a href="@Url.Action(subMenu.Action, subMenu.Controller)">
+                                <i class="@subMenu.icon"></i>
+                                <span class="text"> @subMenu.Title </span>
+                            </a>
+                        </li>
+                    }else{
+                        <li><a href="@Html.Raw(subMenu.Link)"> @Html.Raw(subMenu.Title)</a></li>
+                    }
+                }
+
+            </ul>
+        </li>
+    }
+    else if (menu.IsAction)
+    {
+        <li>
+            <a href="@Url.Action(menu.Action, menu.Controller)" class="js-sub-menu-toggle">
+                <i class="fa fa-home"></i>
+                <span class="@menu.Class"> @Html.Raw(menu.Title) </span>
+                <i class="toggle-icon fa fa-angle-left"></i>
+            </a>
+        </li>
+    }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstGetIntegratesTesis.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstGetIntegratesTesis.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstGetIntegratesTesis.xsd" id="dtstGetIntegratesTesis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dtstGetIntegratesTesis">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Get_integrates_tesis">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="intCodTesis" type="xs:int" />
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombres" type="xs:string" />
+              <xs:element name="strApellidos" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

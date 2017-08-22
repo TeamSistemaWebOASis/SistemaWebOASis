@@ -1,0 +1,36 @@
+﻿
+
+@* MENU INICIO *@
+<li>
+    <a href="#" class="js-sub-menu-toggle">
+        <i class="fa fa-home"></i><span class="text">@Language.es_ES.EST_MN_INICIO.ToString()</span>
+        <i class="toggle-icon fa fa-angle-left"></i>
+    </a>
+    <ul class="sub-menu ">
+        <li><a href="@Url.Action("DatosEstudiantes", "Estudiantes")"><span class="text"> @Language.es_ES.EST_MN_DATOS_ESTUDIANTE.ToString() </span></a></li>
+        <li><a href="@Url.Action("NotasEstudiantes", "Estudiantes")"><span class="text"> @Language.es_ES.EST_MN_NOTAS_ESTUDIANTE.ToString() </span></a></li>
+    </ul>
+</li>
+
+@* MENU MATRICULACION *@
+<li>
+    <a href="#" class="js-sub-menu-toggle">
+        <i class="fa fa-file-text-o"></i><span class="text">@Language.es_ES.EST_MN_MATRICULACION.ToString()</span>
+        <i class="toggle-icon fa fa-angle-left"></i>
+    </a>
+    <ul class="sub-menu ">
+        <li><a href="index.html"><span class="text"> @Language.es_ES.EST_MN_MATRICULACION.ToString() </span></a></li>
+    </ul>
+</li>
+
+@* MENU HORARIOS *@
+<li>
+    <a href="#" class="js-sub-menu-toggle">
+        <i class="fa fa-table"></i><span class="text">@Language.es_ES.EST_MN_HORARIOS.ToString()</span>
+        <i class="toggle-icon fa fa-angle-left"></i>
+    </a>
+    <ul class="sub-menu ">
+        <li><a href="@Url.Action("HorarioEstudiante", "Estudiantes")"><span class="text"> @Language.es_ES.EST_MN_HORARIO_ESTUDIANTE.ToString() </span></a></li>
+        <li><a href="@Url.Action("HorarioExamenesEstudiante", "Estudiantes")"><span class="text"> @Language.es_ES.EST_MN_HORARIO_EXAMENES.ToString() </span></a></li>
+    </ul>
+</li>

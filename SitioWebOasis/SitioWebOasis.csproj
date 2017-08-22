@@ -34,7 +34,7 @@
     <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+    <WarningLevel>2</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -45,11 +45,64 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autenticacion">
+      <HintPath>..\..\OASisVersionado\OAS_Seguridad\Autenticacion\bin\Autenticacion.dll</HintPath>
+    </Reference>
+    <Reference Include="Cliente">
+      <HintPath>..\..\OASisVersionado\OAS_Seguridad\Cliente\bin\Debug\Cliente.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServices">
+      <HintPath>..\..\OASisVersionado\OAS_Comun\CommonServices\bin\Debug\CommonServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.1.2.3\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.1.2.3\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.1.2.3\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.1.2.3\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=1.2.3.246, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.1.2.3\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=1.2.3.490, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.1.2.3\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReportViewerForMvc, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ReportViewerForMvc.1.0.1\lib\net45\ReportViewerForMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -148,23 +201,209 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="CommonClasses\CacheConfig.cs" />
+    <Compile Include="CommonClasses\Carrera.cs" />
+    <Compile Include="CommonClasses\ClienteServicio.cs" />
+    <Compile Include="CommonClasses\EndPointsServicios.cs" />
+    <Compile Include="CommonClasses\Facultad.cs" />
+    <Compile Include="CommonClasses\LinkMenu.cs" />
+    <Compile Include="CommonClasses\OASisPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommonClasses\OASisUsuarioPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommonClasses\Rol.cs" />
+    <Compile Include="CommonClasses\RolCarrera.cs" />
+    <Compile Include="CommonClasses\RolFacultad.cs" />
+    <Compile Include="CommonClasses\SiteReader.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommonClasses\SystemWebCookieManager.cs" />
+    <Compile Include="CommonClasses\Usuario.cs" />
+    <Compile Include="CommonControls\Header.ascx.cs">
+      <DependentUpon>Header.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CommonControls\Menu.ascx.cs">
+      <DependentUpon>Menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BreadCrumbController.cs" />
+    <Compile Include="Controllers\DocentesController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\EstudiantesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Language\es-ES.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>es-ES.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Language\WS_URL.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WS_URL.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Library\Catalogos.cs" />
+    <Compile Include="Library\DatosCarrera.cs" />
+    <Compile Include="Library\Direccion.cs" />
+    <Compile Include="Library\DocumentoPersonal.cs" />
+    <Compile Include="Library\EvaluacionAcumulativa.cs" />
+    <Compile Include="Library\Nacionalidad.cs" />
+    <Compile Include="Library\Persona.cs" />
+    <Compile Include="Models\DatosAcademicosDocente.cs" />
+    <Compile Include="Models\DatosAcademicosEstudiante.cs" />
+    <Compile Include="Models\DatosPersonalesEstudiantes.cs" />
+    <Compile Include="Models\EvaluacionAcumulativaModel.cs" />
+    <Compile Include="Models\EvaluacionesDocenteModel.cs" />
+    <Compile Include="Models\HorarioEstudiante.cs" />
+    <Compile Include="Models\HorarioExamenes.cs" />
+    <Compile Include="Models\MenuViewModel.cs" />
+    <Compile Include="Models\NotasDocente.cs" />
+    <Compile Include="Models\UsuarioCarreras.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="ProxySeguro\DatosUsuario.cs" />
+    <Compile Include="ProxySeguro\EgresamientoGraduacion.cs" />
+    <Compile Include="ProxySeguro\GestorDeReportesEvaluacion.cs" />
+    <Compile Include="ProxySeguro\GestorDeReportesMatriculacion.cs" />
+    <Compile Include="ProxySeguro\GestorEvaluacion.cs" />
+    <Compile Include="ProxySeguro\InfoCarreras.cs" />
+    <Compile Include="ProxySeguro\NotasEstudiante.cs" />
+    <Compile Include="ProxySeguro\Seguridad.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Web References\WSDatosUsuario\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSEgresamientoGraduacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSGestorDeReportesEvaluacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSGestorDeReportesMatriculacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSGestorEvaluacion\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSInfoCarreras\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSNotasEstudiante\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSSeguridad\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="CommonControls\Header.ascx" />
+    <Content Include="CommonControls\Menu.ascx" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\main.css" />
+    <Content Include="Content\css\my-custom-styles.css" />
+    <Content Include="Content\css\skins\darkblue.css" />
+    <Content Include="Content\css\skins\slategray.css" />
+    <Content Include="Content\css\ui.jqgrid-bootstrap.css" />
+    <Content Include="Content\ico\favicon.png" />
+    <Content Include="Content\ico\kingadmin-favicon114x114.png" />
+    <Content Include="Content\ico\kingadmin-favicon144x144.png" />
+    <Content Include="Content\ico\kingadmin-favicon57x57.png" />
+    <Content Include="Content\ico\kingadmin-favicon72x72.png" />
+    <Content Include="Content\img\DocenteFemeninoDefault.png" />
+    <Content Include="Content\img\DocenteMasculinoDefault.png" />
+    <Content Include="Content\img\EstudianteFemeninoDefault.png" />
+    <Content Include="Content\img\EstudianteMasculinoDefault.png" />
+    <Content Include="Content\img\img-estudiante.jpg" />
+    <Content Include="Content\img\kingadmin-logo-white.png" />
+    <Content Include="Content\img\kingadmin-logo.png" />
+    <Content Include="Content\img\sistema_academico-logo.png" />
+    <Content Include="Content\img\user-avatar_femenino.png" />
+    <Content Include="Content\img\user-avatar_masculino.png" />
+    <Content Include="Content\img\user1.png" />
+    <Content Include="Content\img\userDefault.png" />
+    <Content Include="Content\js\bootstrap-multiselect\bootstrap-multiselect.js" />
+    <Content Include="Content\js\bootstrap-slider\jssor.slider-22.0.15.mini.js" />
+    <Content Include="Content\js\bootstrap-tour\bootstrap-tour.custom.js" />
+    <Content Include="Content\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
+    <Content Include="Content\js\Docentes\GestionNotasAcumulado.js" />
+    <Content Include="Content\js\es-ES.js" />
+    <Content Include="Content\js\Estudiantes\Estudiante.js" />
+    <Content Include="Content\js\Estudiantes\Vinculantes.js" />
+    <Content Include="Content\js\jqgrid\i18n\grid.locale-en.js" />
+    <Content Include="Content\js\jqgrid\jquery.jqGrid.fluid.js" />
+    <Content Include="Content\js\jqgrid\jquery.jqGrid.min.js" />
+    <Content Include="Content\js\jqgrid\jquery.jqGrid.min_source.js" />
+    <Content Include="Content\js\jquery-plugin\jquery-maskedinput\jquery.masked-input.min.js" />
+    <Content Include="Content\js\jquery-slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Content\js\jquery-ui\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Content\js\jquery-validation\jquery-validation-v1.16.0-min.js" />
+    <Content Include="Content\js\jquery.redirect.js" />
+    <Content Include="Content\js\jquery\jquery-2.1.0.min.js" />
+    <Content Include="Content\js\king-chart-stat-transparent.js" />
+    <Content Include="Content\js\king-chart-stat.js" />
+    <Content Include="Content\js\king-common.js" />
+    <Content Include="Content\js\king-components-transparent.js" />
+    <Content Include="Content\js\king-components.js" />
+    <Content Include="Content\js\king-elements.js" />
+    <Content Include="Content\js\king-form-layouts.js" />
+    <Content Include="Content\js\king-page-transparent.js" />
+    <Content Include="Content\js\king-page.js" />
+    <Content Include="Content\js\king-table.js" />
+    <Content Include="Content\js\modernizr\modernizr.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Content\Site.css" />
+    <Content Include="ReportViewerWebForm.aspx" />
+    <Content Include="Scripts\ai.0.15.0-build58334.js" />
+    <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\lato-bol-webfont.ttf" />
+    <Content Include="Content\fonts\lato-bol-webfont.woff" />
+    <Content Include="Content\fonts\lato-lig-webfont.ttf" />
+    <Content Include="Content\fonts\lato-lig-webfont.woff" />
+    <None Include="Properties\PublishProfiles\servicios.espoch.edu.ec.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -177,7 +416,250 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Views\Docentes\Index.cshtml" />
+    <Content Include="Views\Docentes\NotasDocente.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Estudiantes\DatosAcademicosEstudiante.cshtml" />
+    <Content Include="Views\Estudiantes\DatosGradoEstudiante.cshtml" />
+    <Content Include="Views\Estudiantes\DatosPersonalesEstudiante.cshtml" />
+    <Content Include="Views\Estudiantes\HorarioEstudiante.cshtml" />
+    <Content Include="Views\Estudiantes\HorarioExamenesEstudiante.cshtml" />
+    <Content Include="Views\Estudiantes\Index.cshtml" />
+    <Content Include="Views\Shared\DatosGeneralesUsuario.cshtml" />
+    <Content Include="Views\Shared\Menu.cshtml" />
+    <Content Include="Views\Shared\MenuCarreras.cshtml" />
+    <Content Include="Views\Shared\_BreadCrumb.cshtml" />
+    <Content Include="Views\Shared\_Navigation.cshtml" />
+    <None Include="Web References\WSDatosUsuario\DatosUsuarios.disco" />
+    <Content Include="Web References\WSEgresamientoGraduacion\dsTesis.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dstsGetRepMatTesis.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\ds_mattesisperiodo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstCertificadoPromocionEgresamiento.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaCalificacionGrado.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaGrado.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ConfiguracionInstitucion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_CurriculumAcademico.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Egresados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Egresados.xsd" />
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Estudiantes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduacion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ListadosGraduacion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ListadosGraduacion.xsd" />
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_MejoresEgresados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Niveles.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Niveles.xsd" />
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_OtrosDatosEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Periodos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ProyectosGrado.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_RecordAcademico.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_RecordAcademico.xsd" />
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_RepEstudiantil.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_TitulosCarrera.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgrerGrad_AgregarMiembrosProyecto.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEstudiantes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstEstudiantes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstGetIntegratesTesis.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstGetTesisVigentes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstMateriasRetiradasPeriodos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstMateriasRetiradasPeriodos.xsd" />
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstRepTesis.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSEgresamientoGraduacion\dtstTesisSinMatricular.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\GestorEgresamientoGraduacion.disco" />
+    <Content Include="Web References\WSGestorDeReportesEvaluacion\dtstEvaluacion_Actas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesEvaluacion\dtstHorarioExamenes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesEvaluacion\dtstNotasPeriodoEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorDeReportesEvaluacion\GestordeReportes.disco" />
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstAlumnosDocente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosCarrera.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosCarrera.xsd" />
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosDocente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstDatosEstudiantesMatriculados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstHorario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstHorario.xsd" />
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstListaDocentes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstListaDocentes.xsd" />
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstListaEstudiantesMatriculados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstMatriculadosCursoMateria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstMatriculasEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstMatriculasFacultadesEscuelasCarreras.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstNumDocentesPorCategorias.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstNumDocentesPorTipos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstOrdenDePago.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstOrdenDePago.xsd" />
+    <Content Include="Web References\WSGestorDeReportesMatriculacion\dtstPeriodos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorDeReportesMatriculacion\GestordeReportes.disco" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstARD.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstARD.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstARDporcentajes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorEvaluacion\dtstCertificadoPromocion.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorEvaluacion\dtstConvalidaciones.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstConvalidaciones.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstDatosEstudiantes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorEvaluacion\dtstEvaluacionesEstudiantes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstEvaluacionesEstudiantes.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstEvaluacion_Actas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstEvaluacion_Actas.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstEvaluacion_Acumulados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstEvaluacion_Acumulados.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstEvaluacion_ImprimirActas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstEvaluacion_ImprimirActas.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstEvaluacion_ImprimirAcumulados.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSGestorEvaluacion\dtstMateriasNotasEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstMateriasNotasEstudiante.xsd" />
+    <Content Include="Web References\WSGestorEvaluacion\dtstMejoresEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSGestorEvaluacion\GestorEvaluacion.disco" />
+    <Content Include="Web References\WSInfoCarreras\dtstBDCarreras.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSInfoCarreras\dtstBDCarreras.xsd" />
+    <Content Include="Web References\WSInfoCarreras\dtstCarreras.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSInfoCarreras\dtstCarreras.xsd" />
+    <Content Include="Web References\WSInfoCarreras\dtstPeriodoVigente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSInfoCarreras\InfoCarreras.disco" />
+    <Content Include="Web References\WSNotasEstudiante\dtstDatosGradoEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSNotasEstudiante\dtstNotasEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSNotasEstudiante\NotasEstudiante.disco" />
+    <Content Include="Web References\WSSeguridad\dtstUsuario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSSeguridad\dtstUsuario.xsd" />
+    <None Include="Web References\WSSeguridad\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSSeguridad\Seguridad.disco" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -193,10 +675,119 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\SignOutCallback.cshtml" />
+    <None Include="Web References\WSDatosUsuario\DatosUsuarios.wsdl" />
+    <Content Include="Web References\WSDatosUsuario\dtstCursosMateria.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSDatosUsuario\dtstCursosMateria.xsd" />
+    <Content Include="Web References\WSDatosUsuario\dtstDatosCursosCarrera.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSDatosUsuario\dtstDatosCursosCarrera.xsd" />
+    <Content Include="Web References\WSDatosUsuario\dtstDatosDocente.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSDatosUsuario\dtstDatosDocente.xsd" />
+    <Content Include="Web References\WSDatosUsuario\dtstDatosEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSDatosUsuario\dtstDatosEstudiante.xsd" />
+    <Content Include="Web References\WSDatosUsuario\dtstDatosUsuario.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSDatosUsuario\dtstDatosUsuario.xsd" />
+    <Content Include="Web References\WSDatosUsuario\dtstEvaluacion_Actas.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSDatosUsuario\dtstEvaluacion_Actas.xsd" />
+    <None Include="Web References\WSDatosUsuario\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSEgresamientoGraduacion\dsTesis.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dstsGetRepMatTesis.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\ds_mattesisperiodo.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstCertificadoPromocionEgresamiento.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaCalificacionGrado.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaGrado.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ConfiguracionInstitucion.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_CurriculumAcademico.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Estudiantes.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduacion.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduados.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_MejoresEgresados.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Periodos.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ProyectosGrado.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_RepEstudiantil.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_TitulosCarrera.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgrerGrad_AgregarMiembrosProyecto.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEstudiantes.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstEstudiantes.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstGetIntegratesTesis.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstGetTesisVigentes.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstRepTesis.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\dtstTesisSinMatricular.xsd" />
+    <None Include="Web References\WSEgresamientoGraduacion\GestorEgresamientoGraduacion.wsdl" />
+    <None Include="Web References\WSEgresamientoGraduacion\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSGestorDeReportesEvaluacion\dtstEvaluacion_Actas.xsd" />
+    <None Include="Web References\WSGestorDeReportesEvaluacion\dtstHorarioExamenes.xsd" />
+    <None Include="Web References\WSGestorDeReportesEvaluacion\dtstNotasPeriodoEstudiante.xsd" />
+    <None Include="Web References\WSGestorDeReportesEvaluacion\GestordeReportes.wsdl" />
+    <None Include="Web References\WSGestorDeReportesEvaluacion\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstAlumnosDocente.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosDocente.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstDatosEstudiantesMatriculados.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstListaEstudiantesMatriculados.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstMatriculadosCursoMateria.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstMatriculasEstudiante.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstMatriculasFacultadesEscuelasCarreras.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstNumDocentesPorCategorias.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstNumDocentesPorTipos.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\dtstPeriodos.xsd" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\GestordeReportes.wsdl" />
+    <None Include="Web References\WSGestorDeReportesMatriculacion\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSGestorEvaluacion\dtstARDporcentajes.xsd" />
+    <None Include="Web References\WSGestorEvaluacion\dtstCertificadoPromocion.xsd" />
+    <None Include="Web References\WSGestorEvaluacion\dtstDatosEstudiantes.xsd" />
+    <None Include="Web References\WSGestorEvaluacion\dtstEvaluacion_ImprimirAcumulados.xsd" />
+    <None Include="Web References\WSGestorEvaluacion\dtstMejoresEstudiante.xsd" />
+    <None Include="Web References\WSGestorEvaluacion\GestorEvaluacion.wsdl" />
+    <None Include="Web References\WSGestorEvaluacion\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSInfoCarreras\dtstPeriodoVigente.xsd" />
+    <None Include="Web References\WSInfoCarreras\InfoCarreras.wsdl" />
+    <Content Include="Web References\WSInfoCarreras\ParametrosCarrera.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSInfoCarreras\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSNotasEstudiante\dtstDatosGradoEstudiante.xsd" />
+    <None Include="Web References\WSNotasEstudiante\dtstNotasEstudiante.xsd" />
+    <None Include="Web References\WSNotasEstudiante\NotasEstudiante.wsdl" />
+    <None Include="Web References\WSNotasEstudiante\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\WSSeguridad\Seguridad.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
+    <Folder Include="Views\BreadCrumb\" />
+    <Folder Include="Views\Navigation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -205,6 +796,125 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSInfoCarreras\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_Comun/CommonWebServices/InfoCarreras.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSInfoCarreras_InfoCarreras</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSEgresamientoGraduacion\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_EgresamientoGraduacion/EgresamientoGraduacion_BusinessServices/GestorEgresamientoGraduacion.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSEgresamientoGraduacion_GestorEgresamientoGraduacion</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSGestorDeReportesEvaluacion\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSGestorDeReportesEvaluacion_GestordeReportes</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSGestorEvaluacion\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSGestorEvaluacion_GestorEvaluacion</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSGestorDeReportesMatriculacion\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSGestorDeReportesMatriculacion_GestordeReportes</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSDatosUsuario\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSDatosUsuario_DatosUsuarios</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSNotasEstudiante\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSNotasEstudiante_NotasEstudiante</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/Seguridad.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSSeguridad\</RelPath>
+      <UpdateFromURL>http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/Seguridad.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSSeguridad_Seguridad</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CommonClasses\SiteReader.resx">
+      <DependentUpon>SiteReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonControls\Header.ascx.resx">
+      <DependentUpon>Header.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonControls\Menu.ascx.resx">
+      <DependentUpon>Menu.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\es-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>es-ES.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Language</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\WS_URL.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WS_URL.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>CENTRALIZADA</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
+    <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -225,6 +935,8 @@
           <DevelopmentServerPort>27887</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>https://localhost:44303/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>https://localhost:44303/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" id="dtstEvaluacionesEstudiantes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstEvaluacionesEstudiantes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Estudiantes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodEstudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="Estudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="CodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaMatricula" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Evaluaciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodEstudiante" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="Acumulado" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Principal" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Suspension" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Total" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Asistencia" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="Equivalencia" type="xs:string" />
+              <xs:element minOccurs="0" name="NumMatricula" type="xs:unsignedByte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacionesEstudiantesKey1">
+      <xs:selector xpath=".//mstns:Estudiantes" />
+      <xs:field xpath="mstns:CodEstudiante" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacionesEstudiantesKey2">
+      <xs:selector xpath=".//mstns:Evaluaciones" />
+      <xs:field xpath="mstns:CodEstudiante" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+    <xs:keyref name="EstudiantesEvaluaciones" refer="mstns:dtstEvaluacionesEstudiantesKey1">
+      <xs:selector xpath=".//mstns:Evaluaciones" />
+      <xs:field xpath="mstns:CodEstudiante" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -1,45 +1,102 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <title>@ViewBag.Title - @Language.es_ES.SA_VERSION.ToString()</title>
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+<body class="ontop-nav topnav-fixed">
+    <!-- WRAPPER -->
+    <div id="wrapper" class="wrapper">
+        <!-- TOP BAR -->
+        <div class="top-bar navbar-fixed-top">
+            <div class="container">
+                <div class="clearfix">
+                    <!-- navbar-toggle -->
+                    <button type="button" class="btn btn-default navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse" aria-expanded="false">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- end navbar-toggle -->
+                    <!-- logo -->
+                    <div class="pull-left logo">
+                        <a href="index.html">
+                            <img src="@Url.Content("~/Content/img/sistema_academico-logo.png")"
+                                 alt="@Language.es_ES.SA_VERSION.ToString()" />
+                        </a>
+                        <h1 class="sr-only">@Language.es_ES.SA_VERSION.ToString()</h1>
+                    </div>
+                    <!-- end logo -->
+
+                    <div class="collapse navbar-collapse" id="main-navbar-collapse">
+                        <ul class="nav navbar-nav">
+
+                            @* MENU DE CARRERAS DE UN USUARIO *@
+                            @Html.Partial("MenuCarreras")
+
+                            @* MENU USUARIO (login, perfil de usuario) *@
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <!-- /container -->
+        </div>
+        <!-- END TOP BAR -->
+
+        <br>
+
+        <!-- LEFT SIDEBAR -->
+        <div id="left-sidebar" class="left-sidebar minified">
+            <div class="sidebar-minified js-toggle-minified">
+                <i class="fa fa-exchange"></i>
+            </div>
+            <!-- main-nav -->
+            <div class="sidebar-scroll">
+                <nav class="main-nav">
+                    <ul class="main-menu">
+                        @* MENU LATERAL *@
+                        @Html.Action("Menu", "Navigation")
+                    </ul>
+                </nav>
+                <!-- /main-nav -->
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
+        <!-- END LEFT SIDEBAR -->
+        <!-- MAIN CONTENT WRAPPER -->
+        <div id="main-content-wrapper" class="content-wrapper expanded">
+            <div class="row">
+                <div class="col-md-12">
+                    @*BREADCRUMB*@
+                    @Html.Action("breadCrumb", "BreadCrumb")
+
+                </div>
+            </div>
+
+            <!-- main -->
+            <div class="content">
+
+                @* DATOS GENERALES DE USUARIO *@
+                @Html.Partial("DatosGeneralesUsuario")
+
+                <div class="main-content">
+                    @RenderBody()
+                </div>
+            </div>
+            <!-- /main -->
+            <!-- FOOTER -->
+            <footer class="footer">
+                @Language.es_ES.DTIC
+            </footer>
+            <!-- END FOOTER -->
+        </div>
+        <!-- END CONTENT WRAPPER -->
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/js")
     @RenderSection("scripts", required: false)
 </body>
 </html>

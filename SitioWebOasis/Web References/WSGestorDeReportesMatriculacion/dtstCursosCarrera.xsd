@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstCursosCarrera.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstCursosCarrera.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstCursosCarrera.xsd" id="dtstCursosCarrera" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstCursosCarrera">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cursos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strAula" type="xs:string" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionNivel" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstCursosCarreraKey1">
+      <xs:selector xpath=".//mstns:Cursos" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

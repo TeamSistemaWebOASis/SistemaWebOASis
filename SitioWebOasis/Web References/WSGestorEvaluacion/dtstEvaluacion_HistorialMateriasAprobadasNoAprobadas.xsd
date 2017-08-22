@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" id="dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Estudiante">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CedEstudiante" type="xs:string" />
+              <xs:element name="CodEstudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="NombreCompleto" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaInscripcion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="CodPeriodoIns" type="xs:string" />
+              <xs:element minOccurs="0" name="PeriodoIns" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MateriasAprobadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodEstudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="CodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="NumMatricula" type="xs:byte" />
+              <xs:element minOccurs="0" name="Asistencia" type="xs:byte" />
+              <xs:element minOccurs="0" name="FormaAprobacion" type="xs:string" />
+              <xs:element minOccurs="0" name="Acumulado" type="xs:byte" />
+              <xs:element minOccurs="0" name="Nota" type="xs:byte" />
+              <xs:element minOccurs="0" name="Total" type="xs:byte" />
+              <xs:element minOccurs="0" name="Creditos" type="xs:float" />
+              <xs:element minOccurs="0" name="NumNivel" type="xs:byte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MateriasNoAprobadas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodEstudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="CodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="Creditos" type="xs:float" />
+              <xs:element minOccurs="0" name="NumNivel" type="xs:byte" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacion_HistorialMateriasAprobadasNoAprobadasKey1">
+      <xs:selector xpath=".//mstns:Estudiante" />
+      <xs:field xpath="mstns:CodEstudiante" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacion_HistorialMateriasAprobadasNoAprobadasKey2">
+      <xs:selector xpath=".//mstns:MateriasAprobadas" />
+      <xs:field xpath="mstns:CodEstudiante" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstEvaluacion_HistorialMateriasAprobadasNoAprobadasKey3">
+      <xs:selector xpath=".//mstns:MateriasNoAprobadas" />
+      <xs:field xpath="mstns:CodEstudiante" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+    <xs:keyref name="EstudianteMateriasNoAprobadas" refer="mstns:dtstEvaluacion_HistorialMateriasAprobadasNoAprobadasKey1">
+      <xs:selector xpath=".//mstns:MateriasNoAprobadas" />
+      <xs:field xpath="mstns:CodEstudiante" />
+    </xs:keyref>
+    <xs:keyref name="EstudianteMateriasAprobadas" refer="mstns:dtstEvaluacion_HistorialMateriasAprobadasNoAprobadasKey1">
+      <xs:selector xpath=".//mstns:MateriasAprobadas" />
+      <xs:field xpath="mstns:CodEstudiante" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

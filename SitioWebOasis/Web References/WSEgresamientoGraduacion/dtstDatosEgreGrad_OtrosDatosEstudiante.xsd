@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" id="dtstDatosEgreGrad_OtrosDatosEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_OtrosDatosEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DatosEstudiante">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Cedula" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaInscripcion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="PeriodoInscripcion" type="xs:string" />
+              <xs:element minOccurs="0" name="FormaInscripcion" type="xs:string" />
+              <xs:element minOccurs="0" name="CedulaMilitar" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaNacimiento" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="LugarNacimiento" type="xs:string" />
+              <xs:element minOccurs="0" name="Nacionalidad" type="xs:string" />
+              <xs:element minOccurs="0" name="Direccion" type="xs:string" />
+              <xs:element minOccurs="0" name="Telefono" type="xs:string" />
+              <xs:element minOccurs="0" name="Email" type="xs:string" />
+              <xs:element minOccurs="0" name="Sexo" type="xs:string" />
+              <xs:element minOccurs="0" name="EstadoCivil" type="xs:string" />
+              <xs:element minOccurs="0" name="Padre" type="xs:string" />
+              <xs:element minOccurs="0" name="Madre" type="xs:string" />
+              <xs:element minOccurs="0" name="Ciudad" type="xs:string" />
+              <xs:element minOccurs="0" name="Provincia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_OtrosDatosEstudianteKey1">
+      <xs:selector xpath=".//mstns:DatosEstudiante" />
+      <xs:field xpath="mstns:Cedula" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

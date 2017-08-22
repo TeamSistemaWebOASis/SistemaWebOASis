@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" id="dtstNumDocentesPorCategorias" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstNumDocentesPorCategorias">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Carreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodFacultad" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreFacultad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEscuela" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreEscuela" type="xs:string" />
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreCarrera" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Categorias_Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodCarrera" type="xs:string" />
+              <xs:element name="strCodCategoriaDocente" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionCategoriaDocente" type="xs:string" />
+              <xs:element minOccurs="0" name="intNumDocentes" type="xs:int" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstNumDocentesPorCategoriasKey1">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strCodCarrera" />
+    </xs:unique>
+    <xs:unique name="dtstNumDocentesPorCategoriasKey2">
+      <xs:selector xpath=".//mstns:Categorias_Docentes" />
+      <xs:field xpath="mstns:strCodCarrera" />
+      <xs:field xpath="mstns:strCodCategoriaDocente" />
+    </xs:unique>
+    <xs:keyref name="CarrerasTipos_de_Docentes" refer="mstns:dtstNumDocentesPorCategoriasKey1">
+      <xs:selector xpath=".//mstns:Categorias_Docentes" />
+      <xs:field xpath="mstns:strCodCarrera" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

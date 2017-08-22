@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstNotasEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstNotasEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstNotasEstudiante.xsd" id="dtstNotasEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstNotasEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EvAcumulativa">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="asignatura" type="xs:string" />
+              <xs:element minOccurs="0" name="nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="numMatricula" type="xs:string" />
+              <xs:element minOccurs="0" default="0" name="bytNota1" type="xs:short" />
+              <xs:element minOccurs="0" default="0" name="bytNota2" type="xs:short" />
+              <xs:element minOccurs="0" default="0" name="bytNota3" type="xs:short" />
+              <xs:element minOccurs="0" name="acumulado" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEquiv" type="xs:string" />
+              <xs:element minOccurs="0" name="observaciones" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="EvFinal_EvFormativa">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="asignatura" type="xs:string" />
+              <xs:element minOccurs="0" name="nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="numMatricula" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNota" type="xs:string" />
+              <xs:element minOccurs="0" name="bytAcumulado" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEquiv" type="xs:string" />
+              <xs:element minOccurs="0" name="equivalencia" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoExamen" type="xs:string" />
+              <xs:element minOccurs="0" name="tipoExamen" type="xs:string" />
+              <xs:element minOccurs="0" name="observaciones" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Convalidaciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="periodoConvalidacion" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="asignatura" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" default="0" name="notaConvalidacion" type="xs:short" />
+              <xs:element minOccurs="0" name="strResolucion" type="xs:string" />
+              <xs:element minOccurs="0" name="fchAprobacion" type="xs:string" />
+              <xs:element minOccurs="0" name="fchRegistro" type="xs:string" />
+              <xs:element minOccurs="0" name="institucion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FechasAsignaturaCarreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="fchInicioPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="fchFinPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="fchExPrincipal" type="xs:string" />
+              <xs:element minOccurs="0" name="fchEvRecuperacion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

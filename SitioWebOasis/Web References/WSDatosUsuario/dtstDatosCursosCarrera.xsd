@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosCursosCarrera.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosCursosCarrera.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" id="dtstDatosCursosCarrera" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosCursosCarrera">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CursosCarrera">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strCodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strAula" type="xs:string" />
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strDescripcionNivel" type="xs:string" />
+              <xs:element minOccurs="0" default="&quot;&quot;" name="strCodNivelParalelo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

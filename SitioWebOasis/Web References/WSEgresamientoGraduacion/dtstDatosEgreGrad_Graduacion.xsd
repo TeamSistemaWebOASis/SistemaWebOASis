@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_Graduacion.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_Graduacion.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_Graduacion.xsd" id="dtstDatosEgreGrad_Graduacion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_Graduacion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Proyectos_Grado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strCodArea" type="xs:string" />
+              <xs:element name="strCodFormaGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaDefensa" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Miembros_Proyectos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodMiembro" type="xs:string" />
+              <xs:element name="strCodFuncion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Evaluaciones_Escritas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodMiembro" type="xs:string" />
+              <xs:element name="intCodEgre" type="xs:int" />
+              <xs:element minOccurs="0" name="fltNota" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Evaluaciones_Orales">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodMiembro" type="xs:string" />
+              <xs:element name="intCodEgre" type="xs:int" />
+              <xs:element name="fltNota" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Graduados">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="intCodEgre" type="xs:int" />
+              <xs:element name="strNumActa" type="xs:string" />
+              <xs:element name="fltPromNotas" type="xs:float" />
+              <xs:element name="fltNotaPromEsc" type="xs:float" />
+              <xs:element name="fltNotaPromOral" type="xs:float" />
+              <xs:element name="fltNotaPromGrado" type="xs:float" />
+              <xs:element minOccurs="0" name="fltCreditos" type="xs:float" />
+              <xs:element name="dtFechaGrado" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_GraduacionKey2">
+      <xs:selector xpath=".//mstns:Miembros_Proyectos" />
+      <xs:field xpath="mstns:strCodMiembro" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_GraduacionKey3">
+      <xs:selector xpath=".//mstns:Evaluaciones_Escritas" />
+      <xs:field xpath="mstns:strCodMiembro" />
+      <xs:field xpath="mstns:intCodEgre" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_GraduacionKey4">
+      <xs:selector xpath=".//mstns:Evaluaciones_Orales" />
+      <xs:field xpath="mstns:strCodMiembro" />
+      <xs:field xpath="mstns:intCodEgre" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_GraduacionKey1">
+      <xs:selector xpath=".//mstns:Graduados" />
+      <xs:field xpath="mstns:intCodEgre" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

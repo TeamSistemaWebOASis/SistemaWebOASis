@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstUsuario.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstUsuario.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstUsuario.xsd" id="dtstUsuario" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="en-US" name="dtstUsuario">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Usuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strLogin" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Carreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strIDRol" type="xs:string" />
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoEntidad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodUsuario" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Roles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strIDRol" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreRol" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Facultades">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strIDRol" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:unique>
+    <xs:unique name="dtstUsuarioKey1">
+      <xs:selector xpath=".//mstns:Roles" />
+      <xs:field xpath="mstns:strIDRol" />
+    </xs:unique>
+    <xs:keyref name="RolesFacultades" refer="mstns:dtstUsuarioKey1">
+      <xs:selector xpath=".//mstns:Facultades" />
+      <xs:field xpath="mstns:strIDRol" />
+    </xs:keyref>
+    <xs:keyref name="UsuariosRoles" refer="mstns:Constraint1">
+      <xs:selector xpath=".//mstns:Roles" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:keyref>
+    <xs:keyref name="RolesCarreras" refer="mstns:dtstUsuarioKey1">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strIDRol" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

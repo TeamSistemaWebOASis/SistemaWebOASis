@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dtstCertificadoPromocionEgresamiento.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dtstCertificadoPromocionEgresamiento.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dtstCertificadoPromocionEgresamiento.xsd" id="dtstCertificadoPromocionEgresamiento" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dtstCertificadoPromocionEgresamiento">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="EvaluacionesMateriasAsignadasPeriodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoMateria" type="xs:string" />
+              <xs:element name="NombreMateria" type="xs:string" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Acumulado" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Principal" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Promedio" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Suspension" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="ComputoTotal" type="xs:unsignedByte" />
+              <xs:element msdata:ReadOnly="true" minOccurs="0" name="Equivalencia" type="xs:string" />
+              <xs:element name="CodPeriodo" type="xs:string" />
+              <xs:element name="Periodo" type="xs:string" />
+              <xs:element minOccurs="0" name="Numero" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="NumMatricula" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" name="FechaInicPer" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

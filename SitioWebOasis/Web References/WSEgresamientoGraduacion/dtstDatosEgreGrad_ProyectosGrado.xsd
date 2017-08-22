@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEgreGrad_ProyectosGrado.xsd" id="dtstDatosEgreGrad_ProyectosGrado" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEgreGrad_ProyectosGrado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Proyectos_Grado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodigo" type="xs:int" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strCodArea" type="xs:string" />
+              <xs:element name="strCodFormaGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaDefensa" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Areas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Formas_Grado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Graduados">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="intCodigo" type="xs:int" />
+              <xs:element minOccurs="0" name="intCodProyecto" type="xs:int" />
+              <xs:element minOccurs="0" name="strNumActa" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="strGraduado" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodigo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_ProyectosGradoKey1">
+      <xs:selector xpath=".//mstns:Proyectos_Grado" />
+      <xs:field xpath="mstns:intCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_ProyectosGradoKey2">
+      <xs:selector xpath=".//mstns:Areas" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEgreGrad_ProyectosGradoKey3">
+      <xs:selector xpath=".//mstns:Formas_Grado" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique name="dtstDatosEgreGrad_ProyectosGradoKey4">
+      <xs:selector xpath=".//mstns:Graduados" />
+      <xs:field xpath="mstns:intCodigo" />
+    </xs:unique>
+    <xs:keyref name="Proyectos_GradoGraduados" refer="mstns:dtstDatosEgreGrad_ProyectosGradoKey1">
+      <xs:selector xpath=".//mstns:Graduados" />
+      <xs:field xpath="mstns:intCodProyecto" />
+    </xs:keyref>
+    <xs:keyref name="Formas_GradoProyectos_Grado" refer="mstns:dtstDatosEgreGrad_ProyectosGradoKey3">
+      <xs:selector xpath=".//mstns:Proyectos_Grado" />
+      <xs:field xpath="mstns:strCodFormaGrado" />
+    </xs:keyref>
+    <xs:keyref name="AreasProyectos_Grado" refer="mstns:dtstDatosEgreGrad_ProyectosGradoKey2">
+      <xs:selector xpath=".//mstns:Proyectos_Grado" />
+      <xs:field xpath="mstns:strCodArea" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosGradoEstudiante.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosGradoEstudiante.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" id="dtstDatosGradoEstudiante" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosGradoEstudiante">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DatosGradoEstudiante">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="codEstudiante" type="xs:string" />
+              <xs:element minOccurs="0" name="intCodEgresamiento" type="xs:string" />
+              <xs:element minOccurs="0" name="intCodProyecto" type="xs:string" />
+              <xs:element minOccurs="0" name="strNumActa" type="xs:string" />
+              <xs:element minOccurs="0" name="fltPromNotas" type="xs:string" />
+              <xs:element minOccurs="0" name="fltNotaPromEsc" type="xs:string" />
+              <xs:element minOccurs="0" name="fltNotaPromOral" type="xs:string" />
+              <xs:element minOccurs="0" name="fltNotaPromGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="fltCreditos" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="temaTesis" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

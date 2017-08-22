@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://www.tempuri.org/dsTesis.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://www.tempuri.org/dsTesis.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://www.tempuri.org/dsTesis.xsd" id="dsTesis" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="es-EC" name="dsTesis">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="GetTesisAlumno">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodTesis" type="xs:int" />
+              <xs:element minOccurs="0" name="txtTema" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTitulo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodArea" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodForGrado" type="xs:string" />
+              <xs:element minOccurs="0" name="strEstado" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
