@@ -4,38 +4,24 @@
 }
 
 @section scripts{
-    <script>
-        $(function(){
-            //  Exportar horario de examenes a formato PDF
-            $('#btnExportPDF').click(function () {
-                $.redirect( "@Url.Action("createFileHorarioExamenes", "Estudiantes")",
-                            { idCurso: $('#ddlLstCursoParalelo').val(), idTypeFile: "PDF" },
-                            "POST" )
-            })
-
-            //  Exportar horario de examenes en formato Excel
-            $('#btnExportXLS').click(function () {
-                $.redirect( "@Url.Action("createFileHorarioExamenes", "Estudiantes")",
-                            { idCurso: $('#ddlLstCursoParalelo').val(), idTypeFile: "Excel" },
-                            "POST" )
-            })
-        })
-    </script>
+    <script src="~/Content/js/DownloadFiles.js?v1.0.7"> </script>
 }
+
+<div id="messageError" class="alert alert-danger alert-dismissable" hidden="hidden"></div>
 
 <div class="widget">
     <div class="widget-header">
         <h3>@Language.es_ES.EST_LBL_HORARIOS_EXAMENES</h3>
 
         <div class="btn-group widget-header-toolbar">
-            <button id="btnExportPDF" type="button" class="btn btn-danger" style="padding-top: 2px; height: 25px;">
+            <button id="btnExport_HE_PDF" type="button" class="btn btn-danger" style="padding-top: 2px; height: 25px;">
                 <i class="fa fa-download"></i>
                 @Language.es_ES.EST_DWN_PDF
             </button>
         </div>
 
         <div class="widget-header-toolbar">
-            <button id="btnExportXLS" type="button" class="btn btn-primary" style="padding-top: 2px; height: 25px;">
+            <button id="btnExport_HE_XLS" type="button" class="btn btn-primary" style="padding-top: 2px; height: 25px;">
                 <i class="fa fa-download"></i>
                 @Language.es_ES.EST_DWN_XLS
             </button>
@@ -59,7 +45,7 @@
                         </div>
                         <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="false" style="">
                             <div class="panel-body">
-                                @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                                @*TABLA DE HORARIO DE EXAMENES ESTUDIANTE *@
                                 <table id="ticket-table" class="table table-bordered" role="grid">
                                     <thead>
                                         <tr role="row">

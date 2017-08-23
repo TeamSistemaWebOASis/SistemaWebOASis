@@ -1,5 +1,6 @@
 ﻿using GestorErrores;
 using Microsoft.Reporting.WebForms;
+using SitioWebOasis.CommonClasses;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.Library;
 using SitioWebOasis.Models;
@@ -71,15 +72,14 @@ namespace SitioWebOasis.Controllers
             return View("HorarioExamenesEstudiante", hee);
         }
 
-
-        public ActionResult createFile( string idCurso, string idTypeFile)
+        [HttpPost]
+        public JsonResult createFileHorarioAcademico( string idCurso, string idTypeFile)
         {
             try
             {
                 string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioAcademico.rdlc");
                 
-                HorarioEstudiante he = new Models.HorarioEstudiante(idCurso);
-                string nameFile = Language.es_ES.EST_TB_HORARIO_ACADEMICO + " / " + he.UsuarioActual.CarreraActual.ToString() + ((idTypeFile == "PDF") ? ".pdf" : ".xls");
+                HorarioEstudiante he = new Models.HorarioEstudiante(idCurso);                
                 LocalReport rptHorariosAcademicoEstudiante = he.getReporteHorarios(reportPath);
 
                 string reportType = idTypeFile;
@@ -103,24 +103,33 @@ namespace SitioWebOasis.Controllers
                                                                         out streams,
                                                                         out warnings);
 
-                return File(renderedBytes, mimeType, nameFile);
-            }
-            catch(Exception ex)
-            {
-                Errores err = new Errores();
-                err.SetError(ex, "createFile");
+                //  Creo el nombre del archivo
+                string nameFile = Language.es_ES.EST_TB_HORARIO_ACADEMICO.Replace(" ", "_") + "_" + he.UsuarioActual.Cedula.ToString() + ((idTypeFile == "PDF") ? ".pdf" : ".xls");
 
-                return View("Index", "Error");
+                //  Direcciono la creacion del archivo a una ubicacion temporal
+                string fullPath = Path.Combine(Server.MapPath("~/Temp"), nameFile);
+
+                //  Creo el archivo en la ubicacion temporal
+                System.IO.File.WriteAllBytes(fullPath, renderedBytes);
+
+                return Json(new { fileName = nameFile, errorMessage = "" });
+            }catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "createFile" );
+
+                return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
             }
         }
 
 
-        public ActionResult createFileHorarioExamenes(string idTypeFile)
+        [HttpPost]
+        public JsonResult createFileHorarioExamenes(string idTypeFile)
         {
+            HorarioEstudiante he = new Models.HorarioEstudiante();
+
             try
             {
-                string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioExamenEstudiantes.rdlc");
-                HorarioEstudiante he = new Models.HorarioEstudiante();
+                string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioExamenEstudiantes.rdlc");                
                 LocalReport rptHorarios = he.getReporteHorariosExamenes(reportPath);
 
                 string reportType = idTypeFile;
@@ -144,17 +153,56 @@ namespace SitioWebOasis.Controllers
                                                     out streams,
                                                     out warnings);
 
-                string nameFile = Language.es_ES.EST_TB_HORARIO_EXAMENES + " / " + he.UsuarioActual.CarreraActual.ToString() + (( idTypeFile == "PDF" ) ? ".pdf" : ".xls" );
-                return File(renderedBytes, mimeType, nameFile);
+                //  Creo el nombre del archivo
+                string nameFile = Language.es_ES.EST_TB_HORARIO_EXAMENES + "_" + he.UsuarioActual.Cedula.ToString() + ((idTypeFile == "PDF") ? ".pdf" : ".xls");
+
+                //  Direcciono la creacion del archivo a una ubicacion temporal
+                string fullPath = Path.Combine(Server.MapPath("~/Temp"), nameFile);
+
+                //  Creo el archivo en la ubicacion temporal
+                System.IO.File.WriteAllBytes(fullPath, renderedBytes);
+                
+                return Json(new { fileName = nameFile, errorMessage = "" });
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
-                err.SetError(ex, "_getParametrosCarrera");
+                err.SetError(ex, "createFileHorarioExamenes - "+ he.UsuarioActual.Cedula.ToString() + " - " + he.UsuarioActual.CarreraActual.Codigo.ToString());
+
+                return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
+            }
+        }
+
+
+        [HttpPost]
+        [DeleteFileAttribute]
+        public ActionResult DownloadFile(string file)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(file))
+                {
+                    //get the temp folder and file path in server
+                    string fullPath = Path.Combine(Server.MapPath("~/temp"), file);
+
+                    //return the file for download, this is an Excel 
+                    //so I set the file content type to "application/vnd.ms-excel"
+                    return File(fullPath, "application/vnd.ms-excel", file);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "Download File");
 
                 return RedirectToAction("Index", "Error");
             }
         }
+
 
         #endregion
 

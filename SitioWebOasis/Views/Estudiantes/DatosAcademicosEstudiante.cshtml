@@ -7,10 +7,15 @@
 
     <script>
         $(function(){
-            $('#ddlLstPeriodosEstudiante').change("click", function(){
+            $('#ddlLstPeriodosEstudiante').change("click", function () {
+                HoldOn.open({
+                    theme: 'sk-dot',
+                    message: "<h4>Cargado ...</h4>"
+                });
+
                 $.redirect( "@Url.Action("NotasEstudiantes", "Estudiantes")", 
-                            { periodoAcademico: $(this).val() },    
-                            "POST" )
+                            {   periodoAcademico: $(this).val() },    
+                                "POST" )
             })
         })
     </script>

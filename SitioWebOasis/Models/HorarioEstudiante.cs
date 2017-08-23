@@ -263,9 +263,6 @@ namespace SitioWebOasis.Models
 
             try
             {
-                Errores info = new Errores();
-                info.setInfo("DatosAcademicosEstudiante", reportPath);
-
                 WSGestorDeReportesMatriculacion.dtstHorario he = ( _strCodNivel == "-2" )
                                                                     ? _horarioEstudiante()
                                                                     : _horarioCursoParalelo(_strCodNivel, _strCodParalelo);

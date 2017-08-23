@@ -479,6 +479,5 @@ namespace SitioWebOasis.Models
 
             return lstPeriodosEstudiante;
         }
-
     }
 }

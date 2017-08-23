@@ -3,47 +3,40 @@
     ViewBag.Title = "Horario Estudiante";
 }
 
+
 @section scripts{
+    <script src="~/Content/js/DownloadFiles.js?v1.0.7"> </script>
 
     <script>
-        $(function(){
-            $('#ddlLstCursoParalelo').change("click", function () {
+        $(function () {
+            $('#ddlLstCursoParalelo').change("click", function(){
+                HoldOn.open({   theme: 'sk-dot',
+                                message: "<h4>Cargando ...</h4>"
+                });
+
                 $.redirect( "@Url.Action("HorarioEstudiante", "Estudiantes")",
-                            { strCursoParalelo: $(this).val() },
-                            "POST" )
-            })
-
-            //  Exportar horario en formato PDF
-            $('#btnExportPDF').click(function () {
-                $.redirect( "@Url.Action("createFile", "Estudiantes")",
-                            { idCurso: $('#ddlLstCursoParalelo').val(), idTypeFile: "PDF" },
-                            "POST" )
-            })
-
-
-            //  Exportar horario en formato EXCEL
-            $('#btnExportXLS').click(function () {
-                $.redirect( "@Url.Action("createFile", "Estudiantes")",
-                            { idCurso: $('#ddlLstCursoParalelo').val(), idTypeFile: "Excel" },
-                            "POST" )
+                            {   strCursoParalelo: $(this).val() },
+                                "POST" )
             })
         })
     </script>
 }
+
+<div id="messageError" class="alert alert-danger alert-dismissable" hidden="hidden"></div>
 
 <div class="widget">
     <div class="widget-header">
         <h3>@Language.es_ES.EST_LBL_HORARIOS.ToUpper()</h3>
 
         <div class="btn-group widget-header-toolbar">
-            <button id="btnExportPDF" type="button" class="btn btn-danger" style="padding-top: 2px; height: 25px;">
+            <button id="btnExport_HA_PDF" type="button" class="btn btn-danger" style="padding-top: 2px; height: 25px;">
                 <i class="fa fa-download"></i>
                 @Language.es_ES.EST_DWN_PDF
             </button>
         </div>
 
         <div class="widget-header-toolbar">
-            <button id="btnExportXLS" type="button" class="btn btn-primary" style="padding-top: 2px; height: 25px;">
+            <button id="btnExport_HA_XLS" type="button" class="btn btn-primary" style="padding-top: 2px; height: 25px;">
                 <i class="fa fa-download"></i>
                 @Language.es_ES.EST_DWN_XLS
             </button>

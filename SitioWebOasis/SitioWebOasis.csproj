@@ -204,6 +204,7 @@
     <Compile Include="CommonClasses\CacheConfig.cs" />
     <Compile Include="CommonClasses\Carrera.cs" />
     <Compile Include="CommonClasses\ClienteServicio.cs" />
+    <Compile Include="CommonClasses\DeleteFileAttribute .cs" />
     <Compile Include="CommonClasses\EndPointsServicios.cs" />
     <Compile Include="CommonClasses\Facultad.cs" />
     <Compile Include="CommonClasses\LinkMenu.cs" />
@@ -327,6 +328,7 @@
     <Content Include="CommonControls\Menu.ascx" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\HoldOn.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\my-custom-styles.css" />
     <Content Include="Content\css\skins\darkblue.css" />
@@ -355,9 +357,11 @@
     <Content Include="Content\js\bootstrap\bootstrap.min.js" />
     <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
     <Content Include="Content\js\Docentes\GestionNotasAcumulado.js" />
+    <Content Include="Content\js\DownloadFiles.js" />
     <Content Include="Content\js\es-ES.js" />
     <Content Include="Content\js\Estudiantes\Estudiante.js" />
     <Content Include="Content\js\Estudiantes\Vinculantes.js" />
+    <Content Include="Content\js\HoldOn.min.js" />
     <Content Include="Content\js\jqgrid\i18n\grid.locale-en.js" />
     <Content Include="Content\js\jqgrid\jquery.jqGrid.fluid.js" />
     <Content Include="Content\js\jqgrid\jquery.jqGrid.min.js" />
@@ -786,6 +790,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Temp\" />
     <Folder Include="Views\BreadCrumb\" />
     <Folder Include="Views\Navigation\" />
   </ItemGroup>

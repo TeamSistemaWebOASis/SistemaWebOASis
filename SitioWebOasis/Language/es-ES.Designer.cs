@@ -1258,6 +1258,24 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Acceder al Sistema Académico.
+        /// </summary>
+        public static string STR_ACCEDER_SISTEMA_ACADEMICO {
+            get {
+                return ResourceManager.GetString("STR_ACCEDER_SISTEMA_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cerrar sesión.
+        /// </summary>
+        public static string STR_CERRAR_SESION {
+            get {
+                return ResourceManager.GetString("STR_CERRAR_SESION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sistema academico - ESPOCH.
         /// </summary>
         public static string STR_FUENTE_REPORTE {

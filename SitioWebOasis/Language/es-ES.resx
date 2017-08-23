@@ -516,6 +516,12 @@
   <data name="SA_VERSION" xml:space="preserve">
     <value>Sistema académico v3.8.1</value>
   </data>
+  <data name="STR_ACCEDER_SISTEMA_ACADEMICO" xml:space="preserve">
+    <value>Acceder al Sistema Académico</value>
+  </data>
+  <data name="STR_CERRAR_SESION" xml:space="preserve">
+    <value>Cerrar sesión</value>
+  </data>
   <data name="STR_FUENTE_REPORTE" xml:space="preserve">
     <value>Sistema academico - ESPOCH</value>
   </data>
