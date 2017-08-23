@@ -91,11 +91,13 @@ EvaluacionAcumulativa.prototype.getEstadoEvaluacion = function () {
 EvaluacionAcumulativa.prototype.getNumMatricula = function () {
     var numMatricula = " -- ";
 
-    switch(this.bytNumMat) {
-        case 1: numMatricula = this.lstMatricula[0]; break;
-        case 2: numMatricula = this.lstMatricula[1]; break;
-        case 3: numMatricula = this.lstMatricula[2]; break;
-    }
+    if (this.bytNumMat != undefined) {
+        switch (this.bytNumMat) {
+            case 1: numMatricula = this.lstMatricula[0]; break;
+            case 2: numMatricula = this.lstMatricula[1]; break;
+            case 3: numMatricula = this.lstMatricula[2]; break;
+        }
+    }    
 
     return numMatricula;
 }

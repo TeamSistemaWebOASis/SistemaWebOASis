@@ -160,7 +160,7 @@
     {
         rowIds = $('#grdEvAcumulativa').jqGrid('getDataIDs');
 
-        for (i = 0; i <= rowIds.length; i++) {
+        for (i = 0; i <= rowIds.length - 1 ; i++) {
             //  En funcion al parcial activo resalto el color de la columna 
             $("#grdEvAcumulativa").jqGrid(  'setCell',
                                             rowIds[i],
@@ -214,6 +214,8 @@
 
 
     $('#btnGuardarEvAcumulativa').on('click', function(){
+        //  Muestro mensaje de proceso
+        showLoadingProcess();
 
         $.ajax({type: "POST",
                 url: "/Docentes/registrarEvaluacion/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" +  $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
@@ -224,13 +226,28 @@
                     alert(thrownError);
                 }
         }).success(function (data) {
+            //  Muestro mensaje de gestion de informacion
             $('#msmGrdEvAcumulativa').removeAttr("hidden");
+
+            //  Actualizo el grid con la informacion gestionada a nivel BD
             cargarDatosEvAcumulativa(data);
+
+            //  Actualizo el grid de notas
             updContenidoColumnasGrid();
+
+            //  Cierro la ventana GIF Proceso
+            HoldOn.close();
         })
 
     })
 
+
+    function showLoadingProcess() {
+        HoldOn.open({
+            theme: 'sk-dot',
+            message: "<h4>GUARDANDO INFORMACION ...</h4>"
+        });
+    }
 
     jQuery("tr.ui-jqgrid-labels th:eq(1)").attr("title", "Column 1 header title")
 

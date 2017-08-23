@@ -14,8 +14,13 @@ namespace SitioWebOasis.Models
 
         public string strCodParalelo { get; set;}
 
+
         public string parcialActivo = "3";
 
         public EvaluacionAcumulativaModel evAcumulativaModel { get; set; }
+
+
+        public EvaluacionFinalModel evFinalModel { get; set;}
+
     }
 }

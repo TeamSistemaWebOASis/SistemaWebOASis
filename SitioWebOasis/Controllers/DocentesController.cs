@@ -26,10 +26,15 @@ namespace SitioWebOasis.Controllers
                                                                                         strCodAsignatura,
                                                                                         strCodParalelo);
 
+            EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
+                                                                    strCodAsignatura,
+                                                                    strCodParalelo);
+
             return View("NotasDocente", new EvaluacionesDocenteModel {  strCodNivel = strCodNivel,
                                                                         strCodAsignatura = strCodAsignatura,
                                                                         strCodParalelo = strCodParalelo,
-                                                                        evAcumulativaModel = evAcumulativa });
+                                                                        evAcumulativaModel = evAcumulativa,
+                                                                        evFinalModel = evFinal });
         }
 
 

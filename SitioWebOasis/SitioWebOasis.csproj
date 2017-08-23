@@ -262,6 +262,7 @@
     <Compile Include="Models\DatosPersonalesEstudiantes.cs" />
     <Compile Include="Models\EvaluacionAcumulativaModel.cs" />
     <Compile Include="Models\EvaluacionesDocenteModel.cs" />
+    <Compile Include="Models\EvaluacionFinalModel.cs" />
     <Compile Include="Models\HorarioEstudiante.cs" />
     <Compile Include="Models\HorarioExamenes.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
