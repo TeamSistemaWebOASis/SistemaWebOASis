@@ -123,6 +123,9 @@
   <data name="BTN_GUARDAR" xml:space="preserve">
     <value>GUARDAR</value>
   </data>
+  <data name="BTN_GUARDAR_EVALUACION" xml:space="preserve">
+    <value>GUARDAR EVALUCIÓN</value>
+  </data>
   <data name="DOC_GRD_EVALUACION_FORMATIVA" xml:space="preserve">
     <value>Evaluación formativa</value>
   </data>

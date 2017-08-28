@@ -34,6 +34,7 @@ namespace SitioWebOasis.Models
 
         private WSGestorEvaluacion.dtstEvaluacion_Acumulados _CargarNotasEvAcumulativa()
         {
+            WSGestorEvaluacion.dtstEvaluacion_Acumulados rstEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
             WSGestorEvaluacion.dtstEvaluacion_Acumulados dsEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
 
             try
@@ -43,10 +44,14 @@ namespace SitioWebOasis.Models
                 ge.set_fBaseDatos(this._strNombreBD);
                 ge.set_fUbicacion(this._strUbicacion);
 
-                dsEvAcumulativa = ge.crearActaArtificialEvaluaciones(   this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                rstEvAcumulativa = ge.crearActaArtificialEvaluaciones(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                         this._strCodAsignatura,
                                                                         this._strCodNivel,
                                                                         this._strCodParalelo);
+
+                dsEvAcumulativa = (rstEvAcumulativa != null) 
+                                    ? rstEvAcumulativa
+                                    : new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
             }
             catch (System.Exception ex)
             {

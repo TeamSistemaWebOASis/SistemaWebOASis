@@ -22,15 +22,17 @@ namespace SitioWebOasis.Controllers
 
         public ActionResult EvaluacionAsignatura (string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
+            //  modelo - EVALUACION ACUMULATIVA
             EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
                                                                                         strCodAsignatura,
                                                                                         strCodParalelo);
 
+            //  modelo - EVALUACION FINAL
             EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
                                                                     strCodAsignatura,
                                                                     strCodParalelo);
 
-            return View("NotasDocente", new EvaluacionesDocenteModel {  strCodNivel = strCodNivel,
+            return View("GestionNotasDocente", new EvaluacionesDocenteModel {  strCodNivel = strCodNivel,
                                                                         strCodAsignatura = strCodAsignatura,
                                                                         strCodParalelo = strCodParalelo,
                                                                         evAcumulativaModel = evAcumulativa,

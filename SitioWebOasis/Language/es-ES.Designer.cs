@@ -79,6 +79,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a GUARDAR EVALUCIÓN.
+        /// </summary>
+        public static string BTN_GUARDAR_EVALUACION {
+            get {
+                return ResourceManager.GetString("BTN_GUARDAR_EVALUACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Evaluación formativa.
         /// </summary>
         public static string DOC_GRD_EVALUACION_FORMATIVA {

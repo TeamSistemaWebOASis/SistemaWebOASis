@@ -357,6 +357,8 @@
     <Content Include="Content\js\bootstrap-tour\bootstrap-tour.custom.js" />
     <Content Include="Content\js\bootstrap\bootstrap.min.js" />
     <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
+    <Content Include="Content\js\Docentes\EvaluacionFinal.js" />
+    <Content Include="Content\js\Docentes\GestionEvFinal.js" />
     <Content Include="Content\js\Docentes\GestionNotasAcumulado.js" />
     <Content Include="Content\js\DownloadFiles.js" />
     <Content Include="Content\js\es-ES.js" />
@@ -422,7 +424,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Docentes\Index.cshtml" />
-    <Content Include="Views\Docentes\NotasDocente.cshtml" />
+    <Content Include="Views\Docentes\GestionNotasDocente.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
     <Content Include="Views\Estudiantes\DatosAcademicosEstudiante.cshtml" />
     <Content Include="Views\Estudiantes\DatosGradoEstudiante.cshtml" />
