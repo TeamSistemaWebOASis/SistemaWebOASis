@@ -249,6 +249,4 @@
         });
     }
 
-    jQuery("tr.ui-jqgrid-labels th:eq(1)").attr("title", "Column 1 header title")
-
 })

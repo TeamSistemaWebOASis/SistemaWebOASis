@@ -32,11 +32,11 @@ namespace SitioWebOasis.Controllers
                                                                     strCodAsignatura,
                                                                     strCodParalelo);
 
-            return View("GestionNotasDocente", new EvaluacionesDocenteModel {  strCodNivel = strCodNivel,
-                                                                        strCodAsignatura = strCodAsignatura,
-                                                                        strCodParalelo = strCodParalelo,
-                                                                        evAcumulativaModel = evAcumulativa,
-                                                                        evFinalModel = evFinal });
+            return View("GestionNotasDocente", new EvaluacionesDocenteModel {   strCodNivel = strCodNivel,
+                                                                                strCodAsignatura = strCodAsignatura,
+                                                                                strCodParalelo = strCodParalelo,
+                                                                                evAcumulativaModel = evAcumulativa,
+                                                                                evFinalModel = evFinal });
         }
 
 
@@ -76,5 +76,31 @@ namespace SitioWebOasis.Controllers
         }
 
 
+        [HttpPost]
+        public ActionResult registrarEvaluacionFinal(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionFinal> dtaEvFinal)
+        {
+            JsonResult rstDPA = default(JsonResult);
+            try
+            {
+                EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
+                                                                        strCodAsignatura,
+                                                                        strCodParalelo);
+
+                if (dtaEvFinal.Count > 0){
+                    if (evFinal.registrarEvaluacionFinal(dtaEvFinal)){
+                        rstDPA = Json(  evFinal.jsonEvFinal,
+                                        JsonRequestBehavior.AllowGet);
+                    }else{
+                        rstDPA = Json(  "false", 
+                                        JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "registrarEvaluacionFinal");
+            }
+
+            return rstDPA;
+        }
     }
 }

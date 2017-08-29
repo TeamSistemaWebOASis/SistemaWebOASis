@@ -255,6 +255,7 @@
     <Compile Include="Library\Direccion.cs" />
     <Compile Include="Library\DocumentoPersonal.cs" />
     <Compile Include="Library\EvaluacionAcumulativa.cs" />
+    <Compile Include="Library\EvaluacionFinal.cs" />
     <Compile Include="Library\Nacionalidad.cs" />
     <Compile Include="Library\Persona.cs" />
     <Compile Include="Models\DatosAcademicosDocente.cs" />

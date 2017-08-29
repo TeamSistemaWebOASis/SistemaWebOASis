@@ -176,8 +176,6 @@ namespace SitioWebOasis.Models
 
             try
             {
-                OASisLogin fLogin = SitioWebOasis.CommonClasses.CacheConfig.Get("OASisLogin") as OASisLogin;
-
                 ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
                 ge.CookieContainer = new CookieContainer();
                 ge.set_fUbicacion(this._strUbicacion);

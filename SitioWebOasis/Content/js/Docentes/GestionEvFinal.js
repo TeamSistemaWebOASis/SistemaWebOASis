@@ -218,4 +218,32 @@ $(document).ready(function () {
             return [true, ""];
     }
 
+    
+    $('#btnGuardarEvFinal').on('click', function(){
+        //  Muestro mensaje de proceso
+        showLoadingProcess();
+
+        $.ajax({type: "POST",
+                url: "/Docentes/registrarEvaluacionFinal/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" +  $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
+                data: JSON.stringify(lstEvaluacionFinal),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError);
+                }
+        }).success(function (data) {
+            //  Muestro mensaje de gestion de informacion
+            $('#msmGrdEvFinal').removeAttr("hidden");
+
+            //  Actualizo el grid con la informacion gestionada a nivel BD
+            cargarDatosEvFinal(data);
+
+            //  Actualizo el grid de notas
+            updContenidoColumnasGrid();
+
+            //  Cierro la ventana GIF Proceso
+            HoldOn.close();
+        })
+    })
+
 })
