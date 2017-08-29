@@ -79,16 +79,25 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a GUARDAR EVALUCIÓN.
+        ///   Busca una cadena traducida similar a GUARDAR EVALUCIÓN ACUMULATIVA.
         /// </summary>
-        public static string BTN_GUARDAR_EVALUACION {
+        public static string BTN_GUARDAR_EVALUACION_ACUMULATIVA {
             get {
-                return ResourceManager.GetString("BTN_GUARDAR_EVALUACION", resourceCulture);
+                return ResourceManager.GetString("BTN_GUARDAR_EVALUACION_ACUMULATIVA", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación formativa.
+        ///   Busca una cadena traducida similar a GUARDAR EVALUACION FINAL.
+        /// </summary>
+        public static string BTN_GUARDAR_EVALUACION_FINAL {
+            get {
+                return ResourceManager.GetString("BTN_GUARDAR_EVALUACION_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a EVALUACIÓN FORMATIVA.
         /// </summary>
         public static string DOC_GRD_EVALUACION_FORMATIVA {
             get {
@@ -169,7 +178,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación acumulativa.
+        ///   Busca una cadena traducida similar a EVALUACIÓN ACUMULATIVA.
         /// </summary>
         public static string DOC_TB_EV_ACUMULATIVA {
             get {
@@ -178,7 +187,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación final.
+        ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
         /// </summary>
         public static string DOC_TB_EV_FINAL {
             get {
@@ -187,7 +196,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación recuperación.
+        ///   Busca una cadena traducida similar a EVALUACIÓN RECUPERACIÓN.
         /// </summary>
         public static string DOC_TB_EV_RECUPERACION {
             get {
@@ -556,7 +565,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación acumulativa.
+        ///   Busca una cadena traducida similar a EVALUACIÓN ACUMULATIVA.
         /// </summary>
         public static string EST_LBL_EV_ACUMULATIVA {
             get {
@@ -565,7 +574,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación final.
+        ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
         /// </summary>
         public static string EST_LBL_EV_FINAL {
             get {
@@ -574,7 +583,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Evaluación recuperación.
+        ///   Busca una cadena traducida similar a EVALUACIÓN RECUPERACIÓN.
         /// </summary>
         public static string EST_LBL_EV_RECUPERACION {
             get {

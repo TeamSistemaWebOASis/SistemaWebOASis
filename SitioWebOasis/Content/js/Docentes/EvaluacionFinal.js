@@ -51,13 +51,13 @@ EvaluacionFinal.prototype.getEstadoEvaluacionFinal = function () {
 
     switch (true) {
         //  Aprobado
-        case (this.Total >= 28 && this.strCodEquivalencia == "A" && this.bytAsistencia >= 70):
+        case (this.Total >= 28 && this.strCodEquivalencia != "E" && this.bytAsistencia >= 70):
             rst = "<span class='label label-success'>APROBADO</span>";
         break;
 
         //  Ev. Recuperacion
-        case (this.Total >= 16 && this.Total < 28 && this.strCodEquivalencia == "S" && this.bytAsistencia >= 70):
-            rst = "<span class='label label-warning'>EV. RECUPERACION</span>";
+        case (this.Total >= 16 && this.Total < 28 && this.bytAsistencia >= 70):
+            rst = "<span class='label label-warning'>Ev. RECUPERACION</span>";
         break;
 
         //  Reprueba
@@ -87,4 +87,15 @@ EvaluacionFinal.prototype.getNumMatricula = function () {
     }
 
     return numMatricula;
+}
+
+
+EvaluacionFinal.prototype.getTotalEvFinal = function () {
+    this.Total = parseInt( this.bytAcumulado ) + parseInt( this.bytNota );
+    return this.Total;
+}
+
+
+EvaluacionFinal.prototype.esExoneradoReprobado = function () {
+    return (this.strCodEquivalencia == "E" || this.strCodEquivalencia == "R") ? false : true;
 }

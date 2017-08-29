@@ -11,13 +11,13 @@
     <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.13"> </script>
 
     @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL    *@
-    <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.1"></script>
-    <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.1"></script>
+    <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.18"></script>
+    <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.18"></script>
 }
 
 <div class="widget">
     <div class="widget-header">
-        <h3> @Language.es_ES.DOC_GRD_EVALUACION_FORMATIVA </h3>
+        <h3> <strong> @Language.es_ES.DOC_GRD_EVALUACION_FORMATIVA </strong> </h3>
     </div>
 
     <div class="widget-content">
@@ -29,7 +29,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> @Language.es_ES.DOC_TB_EV_ACUMULATIVA 
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <strong> @Language.es_ES.DOC_TB_EV_ACUMULATIVA </strong>  
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>
@@ -89,13 +89,13 @@
                                 <table id="grdEvAcumulativa"></table>
                                 
                                 <hr class="inner-separator">
-                                
-                                <button id="btnGuardarEvAcumulativa" 
-                                        type="button" 
-                                        class="btn btn-success">
-                                    <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION
-                                </button>
 
+                                <button id="btnGuardarEvAcumulativa"
+                                        type="button"
+                                        class="btn btn-success pull-right">
+                                    <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA
+                                </button>
+                                
                             </div>
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"> @Language.es_ES.DOC_TB_EV_FINAL
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"> <strong> @Language.es_ES.DOC_TB_EV_FINAL </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>
@@ -138,12 +138,12 @@
                                 <hr class="inner-separator">
 
                                 @* GRID DE EVALUACION FINAL *@
-                                <table id="grdEvFinal" width="100%"></table>
+                                <table id="grdEvFinal"></table>
                                 <hr class="inner-separator">
                                 <button id="btnGuardarEvFinal"
                                         type="button"
-                                        class="btn btn-success">
-                                    <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION
+                                        class="btn btn-success pull-right">
+                                    <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
                                 </button>
 
                             </div>
@@ -155,7 +155,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed"> @Language.es_ES.DOC_TB_EV_RECUPERACION
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed"> <strong> @Language.es_ES.DOC_TB_EV_RECUPERACION </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>

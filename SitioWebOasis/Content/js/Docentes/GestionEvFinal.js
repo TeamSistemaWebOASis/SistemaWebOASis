@@ -37,15 +37,15 @@ $(document).ready(function () {
         colModel: [ { name: 'No', index: 'No', label: 'No', align: 'center', width:'30', sortable: false },
                     { name: 'strCodigo', key: true, hidden: true },
                     { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: false },
-                    { name: 'bytNumMat', label: 'Matrícula', width: '60', align: 'center', sortable: false },
+                    { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false },
 
-                    { name: 'bytAcumulado', label: 'Total acumulado', width: '110', align: 'center', sortable: false },
-                    { name: 'bytAsistencia', label: 'Total asistencia(%)', width: '110', align: 'center', sortable: false },
+                    { name: 'bytAcumulado', label: 'Total acumulado', width: '120', align: 'center', sortable: false },
+                    { name: 'bytAsistencia', label: 'Total asistencia(%)', width: '120', align: 'center', sortable: false },
 
                     { name: 'bytNota', label: 'Nota evaluación final', width: '120', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNota }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
                     { name: 'Total', label: 'Total Ev. final', width: '120', align: 'center', sortable: false },
                     { name: 'efAcumulado', label: 'Estado', width: '120', align: 'center' },
-                    { name: 'strObservaciones', label: 'Observación', align: 'center', sortable: false }],
+                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
         datatype: "jsonstring",
         datastr: $("#dtaJsonEvFinal").val(),
         viewrecords: true,
@@ -53,7 +53,7 @@ $(document).ready(function () {
         ignoreCase: true,
         editurl: "Docentes",
         onSelectRow: function (id, status, e) {
-            if (id !== lastsel) {
+            if (id !== lastsel && editarFila(id)) {
                 //  Cierro edicion de la ultima fila gestionada
                 if (lastsel != undefined) {
                     $('#grdEvFinal').jqGrid('restoreRow', lastsel);
@@ -71,7 +71,7 @@ $(document).ready(function () {
                         guardarDtaEvaluacionFinal(id);
 
                         //  Actualizo contenido de la fila
-                        updDtaEvaluacion(id);
+                        updDtaEvaluacionFinal(id);
 
                         //  Obtengo el identificador de la siguiente registro de notas a gestionar
                         var idNextRow = getIdNextRow(id);
@@ -82,6 +82,9 @@ $(document).ready(function () {
                 });
 
                 lastsel = id;
+            } else {
+                //  Si el registro del estudiante es de EXONERADO - REPROBADO
+                $('#grdEvFinal').jqGrid('setSelection', id, false);
             }
         },
 
@@ -91,6 +94,20 @@ $(document).ready(function () {
         }
     });
 
+
+    function editarFila(id)
+    {
+        var ban = true;
+
+        numReg = lstEvaluacionFinal.length;
+        for (var x = 0; x < numReg; x++) {
+            if (lstEvaluacionFinal[x].strCodigo == id) {
+                ban = lstEvaluacionFinal[x].esExoneradoReprobado();
+            }
+        }
+
+        return ban;
+    }
 
 
     $("#grdEvFinal").jqGrid('setGroupHeaders', {
@@ -103,7 +120,7 @@ $(document).ready(function () {
     function guardarDtaEvaluacionFinal(id) {
         numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
-            if (lstEvaluacionFinal[x].sintCodMatricula == id) {
+            if (lstEvaluacionFinal[x].strCodigo == id) {
                 var dtaNota = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");                
                 lstEvaluacionFinal[x]["bytNota"] = dtaNota;
                 lstEvaluacionFinal[x].banEstado = 1;
@@ -113,6 +130,21 @@ $(document).ready(function () {
         }
 
         return false;
+    }
+
+
+    function getIdNextRow(idActualRow) {
+        var num = rowIds.length;
+        var idNextRow = idActualRow;
+
+        for (var x = 0; x < num; x++) {
+            if (rowIds[x] == idActualRow && x < num) {
+                idNextRow = rowIds[x + 1];
+                break;
+            }
+        }
+
+        return idNextRow;
     }
 
 
@@ -140,7 +172,7 @@ $(document).ready(function () {
             $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[i].getEstadoEvaluacionFinal() });
 
             //  Si el estudiante es exonerado no permito la edicion de su nota de evaluacion final
-            $this.jqGrid('editRow', rowIds[i], true);
+            //$this.jqGrid('editRow', rowIds[i], true);
         }
     }
 
@@ -149,8 +181,8 @@ $(document).ready(function () {
         numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluacionFinal[x].strCodigo == id) {
-                $("#grdEvAcumulativa").jqGrid('setRowData', id, { Total: lstEvaluacionFinal[x].acumulado() });
-                $("#grdEvAcumulativa").jqGrid('setRowData', id, { ucAcumulado: lstEvaluacionFinal[x].getEstadoEvaluacion() });
+                $("#grdEvFinal").jqGrid('setRowData', id, { Total: lstEvaluacionFinal[x].getTotalEvFinal() });
+                $("#grdEvFinal").jqGrid('setRowData', id, { efAcumulado: lstEvaluacionFinal[x].getEstadoEvaluacionFinal() });
 
                 break;
             }
@@ -160,8 +192,7 @@ $(document).ready(function () {
                                     id,
                                     'bytNota',
                                     "",
-                                    {
-                                        'background-color': '#dff0d8',
+                                    {   'background-color': '#dff0d8',
                                         'background-image': 'none',
                                         'text-align': 'center',
                                         'font-size': 'medium',
@@ -181,7 +212,7 @@ $(document).ready(function () {
 
 
     function validarNota(value, colname) {
-        if (value < 0 || value > 10)
+        if (value < 0 || value > 12)
             return [false, "Nota fuera de rango (0, 10)"];
         else
             return [true, ""];
