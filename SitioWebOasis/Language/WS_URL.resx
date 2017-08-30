@@ -120,6 +120,9 @@
   <data name="WS_GENERAL" xml:space="preserve">
     <value>http://servicioscentral.espoch.edu.ec/General/</value>
   </data>
+  <data name="WS_INFO_PAGOS" xml:space="preserve">
+    <value>http://serviciosinfopagos.espoch.edu.ec/</value>
+  </data>
   <data name="WS_PERSONAS" xml:space="preserve">
     <value>http://servicioscentral.espoch.edu.ec/Central/</value>
   </data>

@@ -118,10 +118,10 @@ namespace SitioWebOasis.Controllers
                 }
 
                 ////  ESTUDIANTE
-                //numIdentificacion = "060452833-1";
+                numIdentificacion = "060478969-3";
 
                 //  DOCENTE
-                numIdentificacion = "060291123-2";
+                //  numIdentificacion = "060291123-2";
             }
             catch (Exception ex)
             {

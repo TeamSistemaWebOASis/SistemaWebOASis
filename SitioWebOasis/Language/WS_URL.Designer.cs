@@ -70,6 +70,15 @@ namespace CENTRALIZADA {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a http://serviciosinfopagos.espoch.edu.ec/.
+        /// </summary>
+        public static string WS_INFO_PAGOS {
+            get {
+                return ResourceManager.GetString("WS_INFO_PAGOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a http://servicioscentral.espoch.edu.ec/Central/.
         /// </summary>
         public static string WS_PERSONAS {

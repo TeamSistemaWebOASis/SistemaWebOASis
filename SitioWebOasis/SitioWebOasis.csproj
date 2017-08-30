@@ -260,6 +260,7 @@
     <Compile Include="Library\Persona.cs" />
     <Compile Include="Models\DatosAcademicosDocente.cs" />
     <Compile Include="Models\DatosAcademicosEstudiante.cs" />
+    <Compile Include="Models\DatosPagoEstudianteModel.cs" />
     <Compile Include="Models\DatosPersonalesEstudiantes.cs" />
     <Compile Include="Models\EvaluacionAcumulativaModel.cs" />
     <Compile Include="Models\EvaluacionesDocenteModel.cs" />
