@@ -88,11 +88,20 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a GUARDAR EVALUACION FINAL.
+        ///   Busca una cadena traducida similar a GUARDAR EVALUACIÓN FINAL.
         /// </summary>
         public static string BTN_GUARDAR_EVALUACION_FINAL {
             get {
                 return ResourceManager.GetString("BTN_GUARDAR_EVALUACION_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a GUARDAR EVALUACIÓN RECUPERACION.
+        /// </summary>
+        public static string BTN_GUARDAR_EVALUACION_RECUPERACION {
+            get {
+                return ResourceManager.GetString("BTN_GUARDAR_EVALUACION_RECUPERACION", resourceCulture);
             }
         }
         

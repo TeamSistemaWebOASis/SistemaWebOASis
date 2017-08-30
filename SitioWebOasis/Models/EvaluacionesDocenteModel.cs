@@ -22,5 +22,8 @@ namespace SitioWebOasis.Models
 
         public EvaluacionFinalModel evFinalModel { get; set;}
 
+
+        public EvaluacionRecuperacionModel evRecuperacionModel { get; set; }
+
     }
 }

@@ -256,6 +256,7 @@
     <Compile Include="Library\DocumentoPersonal.cs" />
     <Compile Include="Library\EvaluacionAcumulativa.cs" />
     <Compile Include="Library\EvaluacionFinal.cs" />
+    <Compile Include="Library\EvaluacionRecuperacion.cs" />
     <Compile Include="Library\Nacionalidad.cs" />
     <Compile Include="Library\Persona.cs" />
     <Compile Include="Models\DatosAcademicosDocente.cs" />
@@ -265,6 +266,7 @@
     <Compile Include="Models\EvaluacionAcumulativaModel.cs" />
     <Compile Include="Models\EvaluacionesDocenteModel.cs" />
     <Compile Include="Models\EvaluacionFinalModel.cs" />
+    <Compile Include="Models\EvaluacionRecuperacionModel.cs" />
     <Compile Include="Models\HorarioEstudiante.cs" />
     <Compile Include="Models\HorarioExamenes.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
@@ -360,7 +362,9 @@
     <Content Include="Content\js\bootstrap\bootstrap.min.js" />
     <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
     <Content Include="Content\js\Docentes\EvaluacionFinal.js" />
+    <Content Include="Content\js\Docentes\EvaluacionRecuperacion.js" />
     <Content Include="Content\js\Docentes\GestionEvFinal.js" />
+    <Content Include="Content\js\Docentes\GestionEvRecuperacion.js" />
     <Content Include="Content\js\Docentes\GestionNotasAcumulado.js" />
     <Content Include="Content\js\DownloadFiles.js" />
     <Content Include="Content\js\es-ES.js" />

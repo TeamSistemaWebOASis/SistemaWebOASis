@@ -118,12 +118,12 @@ namespace SitioWebOasis.Models
                 ge.set_fBaseDatos(this._strNombreBD);
 
                 //  Registro informacion de evaluacion final
-                ge.setActaArtificialPrincipal(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                this._strCodAsignatura.ToString(),
-                                                this._strCodNivel.ToString(),
-                                                this._strCodParalelo.ToString(), 
-                                                this._dsEvFinal,
-                                                this.UsuarioActual.Nombre.ToString());
+                rst = ge.setActaArtificialPrincipal(this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                    this._strCodAsignatura.ToString(),
+                                                    this._strCodNivel.ToString(),
+                                                    this._strCodParalelo.ToString(), 
+                                                    this._dsEvFinal,
+                                                    this.UsuarioActual.Nombre.ToString());
 
                 //  Actualizar fecha de registro de notas
                 ge.ActualizarRegistroFechaIngresoExPrincipal(   this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),

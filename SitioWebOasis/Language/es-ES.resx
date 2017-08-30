@@ -127,7 +127,10 @@
     <value>GUARDAR EVALUCIÓN ACUMULATIVA</value>
   </data>
   <data name="BTN_GUARDAR_EVALUACION_FINAL" xml:space="preserve">
-    <value>GUARDAR EVALUACION FINAL</value>
+    <value>GUARDAR EVALUACIÓN FINAL</value>
+  </data>
+  <data name="BTN_GUARDAR_EVALUACION_RECUPERACION" xml:space="preserve">
+    <value>GUARDAR EVALUACIÓN RECUPERACION</value>
   </data>
   <data name="DOC_GRD_EVALUACION_FORMATIVA" xml:space="preserve">
     <value>EVALUACIÓN FORMATIVA</value>

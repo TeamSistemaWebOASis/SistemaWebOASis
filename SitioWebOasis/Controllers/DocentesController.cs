@@ -32,54 +32,52 @@ namespace SitioWebOasis.Controllers
                                                                     strCodAsignatura,
                                                                     strCodParalelo);
 
+            //  modelo - EVALUACION RECUPERACION
+            EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
+                                                                                            strCodAsignatura,
+                                                                                            strCodParalelo);
+
             return View("GestionNotasDocente", new EvaluacionesDocenteModel {   strCodNivel = strCodNivel,
                                                                                 strCodAsignatura = strCodAsignatura,
                                                                                 strCodParalelo = strCodParalelo,
                                                                                 evAcumulativaModel = evAcumulativa,
-                                                                                evFinalModel = evFinal });
+                                                                                evFinalModel = evFinal,
+                                                                                evRecuperacionModel = evRecuperacion });
         }
 
 
         [HttpPost]
         public ActionResult registrarEvaluacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionAcumulativa> dtaEvAcumulativa)
         {
-            JsonResult rstDPA = default(JsonResult);
+            JsonResult rstEvAcumulativa = default(JsonResult);
             try
             {
-                switch (strParcialActivo)
-                {
-                    case "EF": break;
-                    case "ER": break;
-                    default:
-                        EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
-                                                                                                    strCodAsignatura,
-                                                                                                    strCodParalelo);
+                EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
+                                                                                            strCodAsignatura,
+                                                                                            strCodParalelo);
 
-                        if( dtaEvAcumulativa.Count > 0){
-                            if( evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa)){
-                                rstDPA = Json(  evAcumulativa.jsonEvAcumulativa, 
+                if( dtaEvAcumulativa.Count > 0){
+                    if( evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa)){
+                        rstEvAcumulativa = Json(evAcumulativa.jsonEvAcumulativa, 
                                                 JsonRequestBehavior.AllowGet);
-                            }else{
-                                rstDPA = Json( "false", JsonRequestBehavior.AllowGet);
-                            }
-                        }
-                        
-                    break;
-                }
-            }catch(Exception ex)
-            {
+                    }else{
+                        rstEvAcumulativa = Json("false", 
+                                                JsonRequestBehavior.AllowGet);
+                    }
+                }       
+            }catch(Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "registrarEvaluacionAcumulativa");
             }
 
-            return rstDPA;
+            return rstEvAcumulativa;
         }
 
 
         [HttpPost]
         public ActionResult registrarEvaluacionFinal(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionFinal> dtaEvFinal)
         {
-            JsonResult rstDPA = default(JsonResult);
+            JsonResult rstEvFinal = default(JsonResult);
             try
             {
                 EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
@@ -88,11 +86,11 @@ namespace SitioWebOasis.Controllers
 
                 if (dtaEvFinal.Count > 0){
                     if (evFinal.registrarEvaluacionFinal(dtaEvFinal)){
-                        rstDPA = Json(  evFinal.jsonEvFinal,
-                                        JsonRequestBehavior.AllowGet);
+                        rstEvFinal = Json(  evFinal.jsonEvFinal,
+                                            JsonRequestBehavior.AllowGet);
                     }else{
-                        rstDPA = Json(  "false", 
-                                        JsonRequestBehavior.AllowGet);
+                        rstEvFinal = Json(  "false", 
+                                            JsonRequestBehavior.AllowGet);
                     }
                 }
             }catch (Exception ex){
@@ -100,7 +98,39 @@ namespace SitioWebOasis.Controllers
                 err.SetError(ex, "registrarEvaluacionFinal");
             }
 
-            return rstDPA;
+            return rstEvFinal;
         }
+
+
+        [HttpPost]
+        public ActionResult registrarEvaluacionRecuperacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionRecuperacion> dtaEvRecuperacion)
+        {
+            JsonResult rstEvRecuperacion = default(JsonResult);
+            try
+            {
+                EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
+                                                                                                strCodAsignatura,
+                                                                                                strCodParalelo);
+
+                if (dtaEvRecuperacion.Count > 0)
+                {
+                    if (evRecuperacion.registrarEvaluacionRecuperacion(dtaEvRecuperacion)){
+                        rstEvRecuperacion = Json(   evRecuperacion.jsonEvRecuperacion,
+                                                    JsonRequestBehavior.AllowGet);
+                    }else{
+                        rstEvRecuperacion = Json(  "false",
+                                                    JsonRequestBehavior.AllowGet);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "registrarEvaluacionFinal");
+            }
+
+            return rstEvRecuperacion;
+        }
+
     }
 }
