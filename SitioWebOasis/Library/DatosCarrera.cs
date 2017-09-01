@@ -18,6 +18,7 @@ namespace SitioWebOasis.Library
 
         protected string _strCodParalelo { get; set; }
 
+
         protected WSInfoCarreras.dtstPeriodoVigente _dtstPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
 
         //  public OASisLogin fLogin = SitioWebOasis.CommonClasses.CacheConfig.Get("OASisLogin") as OASisLogin;

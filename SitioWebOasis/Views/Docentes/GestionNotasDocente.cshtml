@@ -1,27 +1,52 @@
 ﻿@model SitioWebOasis.Models.EvaluacionesDocenteModel
 
 @{
-    ViewBag.Title = "Notas Docente";
+    ViewBag.Title = "Gestión de Notas - ";
 }
 
 @section scripts{
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
 
     @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-    <script src="~/Content/js/Docentes/GestionNotasAcumulado.js?v1.0.94"> </script>
+    <script src="~/Content/js/Docentes/GestionNotasAcumulado.js?v1.0.99"> </script>
     <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.13"> </script>
 
     @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
-    <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.20"></script>
+    <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.22"></script>
     <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.20"></script>
 
     @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
-    <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.4"></script>
-    <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.4"></script>
+    <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
+    <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
 }
+
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="contextual-summary-info">
+                <i class="fa fa-list-alt"></i>
+                <p class="pull-right"><span> @Language.es_ES.DOC_GESTION_NOTAS </span> @Model.getNombreAsignatura( Model.strCodAsignatura.ToString(), Model.strCodNivel.ToString(), Model.strCodParalelo.ToString() ) </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="widget">
     <div class="widget-header">
         <h3> <strong> @Language.es_ES.DOC_GRD_EVALUACION_FORMATIVA </strong> </h3>
+        <div class="widget-header-toolbar">
+
+            <div class="control-inline toolbar-item-group">
+                <span class="control-title"><i class="fa fa-calendar-check-o"></i> @Language.es_ES.LST_LBL_ASIGNATURAS_DOCENTE: &nbsp;</span>
+                @*  dropdownlist - asignaturas de un docente *@
+                @Html.DropDownList("ddlLstPeriodosEstudiante",
+                                    Model.getLstAsignaturasDocente(Model.strCodAsignatura),
+                                    new{@class = "multiselect",
+                                        @Styles = "display: none;"
+                                    })
+            </div>
+        </div>
     </div>
 
     <div class="widget-content">
@@ -33,7 +58,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"> <strong> @Language.es_ES.DOC_TB_EV_ACUMULATIVA </strong>  
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                                    <strong> @Language.es_ES.DOC_TB_EV_ACUMULATIVA </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>
@@ -60,7 +86,7 @@
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
-                                        
+
                                         @*IMPRESION DEL ACTA PARCIAL #02*@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
@@ -72,7 +98,7 @@
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
-                                        
+
                                         @*IMPRESION DEL ACTA PARCIAL #03*@
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
@@ -91,7 +117,7 @@
 
                                 @*GRID DE EVALUACION*@
                                 <table id="grdEvAcumulativa"></table>
-                                
+
                                 <hr class="inner-separator">
 
                                 <button id="btnGuardarEvAcumulativa"
@@ -99,7 +125,7 @@
                                         class="btn btn-success pull-right">
                                     <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA
                                 </button>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -109,7 +135,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed"> <strong> @Language.es_ES.DOC_TB_EV_FINAL </strong>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed">
+                                    <strong> @Language.es_ES.DOC_TB_EV_FINAL </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>
@@ -120,7 +147,7 @@
 
                                 <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
                                     <button class="close" data-dismiss="alert">×</button>
-                                    <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong> 
+                                    <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
                                 </div>
 
                                 <div class="row">
@@ -159,7 +186,8 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed"> <strong> @Language.es_ES.DOC_TB_EV_RECUPERACION </strong>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed">
+                                    <strong> @Language.es_ES.DOC_TB_EV_RECUPERACION </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>
@@ -201,6 +229,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>

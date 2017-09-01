@@ -132,6 +132,9 @@
   <data name="BTN_GUARDAR_EVALUACION_RECUPERACION" xml:space="preserve">
     <value>GUARDAR EVALUACIÓN RECUPERACION</value>
   </data>
+  <data name="DOC_GESTION_NOTAS" xml:space="preserve">
+    <value>GESTIÓN DE NOTAS</value>
+  </data>
   <data name="DOC_GRD_EVALUACION_FORMATIVA" xml:space="preserve">
     <value>EVALUACIÓN FORMATIVA</value>
   </data>
@@ -434,6 +437,9 @@
   </data>
   <data name="EST_TB_HORARIO_EXAMENES" xml:space="preserve">
     <value>HORARIO EXAMENES</value>
+  </data>
+  <data name="LST_LBL_ASIGNATURAS_DOCENTE" xml:space="preserve">
+    <value>ASIGNATURAS</value>
   </data>
   <data name="NOTAS_TB_COL_NIVEL" xml:space="preserve">
     <value>Nivel</value>

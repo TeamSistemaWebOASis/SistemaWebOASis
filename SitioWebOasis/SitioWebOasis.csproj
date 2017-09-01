@@ -366,6 +366,7 @@
     <Content Include="Content\js\Docentes\GestionEvFinal.js" />
     <Content Include="Content\js\Docentes\GestionEvRecuperacion.js" />
     <Content Include="Content\js\Docentes\GestionNotasAcumulado.js" />
+    <Content Include="Content\js\Docentes\GestionNotasDocente.js" />
     <Content Include="Content\js\DownloadFiles.js" />
     <Content Include="Content\js\es-ES.js" />
     <Content Include="Content\js\Estudiantes\Estudiante.js" />
@@ -378,6 +379,7 @@
     <Content Include="Content\js\jquery-plugin\jquery-maskedinput\jquery.masked-input.min.js" />
     <Content Include="Content\js\jquery-slimscroll\jquery.slimscroll.min.js" />
     <Content Include="Content\js\jquery-ui\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="Content\js\jquery-ui\jQueryBlockUI.min.js" />
     <Content Include="Content\js\jquery-validation\jquery-validation-v1.16.0-min.js" />
     <Content Include="Content\js\jquery.redirect.js" />
     <Content Include="Content\js\jquery\jquery-2.1.0.min.js" />

@@ -19,7 +19,6 @@
 
     //  Gestion de notas 
     grid.jqGrid({
-        url: 'Docentes/',
         datatype: "json",
         colModel: [ { name: 'No', index: 'No', label: 'No', align: 'center', width: '20', sortable: false },
                     { name: 'sintCodMatricula', key: true, hidden: true },
@@ -41,7 +40,7 @@
         height:"auto",
         shrinkToFit: true,
         ignoreCase: true,
-        editurl: "Docentes",
+        mtype:"GET",
         onSelectRow: function (id, status, e) {
             if (id !== lastsel) {
                 //  Cierro edicion de la ultima fila gestionada

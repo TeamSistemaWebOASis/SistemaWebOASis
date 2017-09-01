@@ -63,21 +63,19 @@ namespace SitioWebOasis.Models
 
             try
             {
-                ////  Recorro DataTable Acta - registro por registro actualizando la informacion
-                //if (this._updEvRecuperacion(dtaEvRecuperacion))
-                //{
-                //    if (this._guardarEvRecuperacion()){
-                //        this._dsEvRecuperacion = this._CargarNotasEvRecuperacion();
-                //        this.jsonEvRecuperacion = (this._dsEvRecuperacion.Acta.Rows.Count > 0)
-                //                                    ? JsonConvert.SerializeObject(this._dsEvRecuperacion.Acta)
-                //                                    : "";
+                //  Recorro DataTable Acta - registro por registro actualizando la informacion
+                if (this._updEvRecuperacion(dtaEvRecuperacion))
+                {
+                    if (this._guardarEvRecuperacion()){
+                        this._dsEvRecuperacion = this._CargarNotasEvRecuperacion();
+                        this.jsonEvRecuperacion = (this._dsEvRecuperacion.Acta.Rows.Count > 0)
+                                                        ? JsonConvert.SerializeObject(this._dsEvRecuperacion.Acta)
+                                                        : "";
 
-                //        rst = true;
-                //    }
-                //}
-            }
-            catch (System.Exception ex)
-            {
+                        rst = true;
+                    }
+                }
+            }catch (System.Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "registrarEvaluacionRecuperacion");
             }
@@ -93,19 +91,18 @@ namespace SitioWebOasis.Models
 
             try
             {
-                //int numReg = dtaEvRecuperacion.Count;
-                //if (numReg > 0 && this._dsEvRecuperacion.Acta.Rows.Count > 0)
-                //{
-                //    for (int x = 0; x < numReg; x++)
-                //    {
-                //        if (this._dsEvRecuperacion.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvRecuperacion[0].sintCodMatricula.ToString()){
-                //            this._dsEvRecuperacion.Acta.Rows[x]["bytNota"] = Convert.ToByte(dtaEvRecuperacion[x].bytNota.ToString());
-                //        }
-                //    }
+                int numReg = dtaEvRecuperacion.Count;
+                if (numReg > 0 && this._dsEvRecuperacion.Acta.Rows.Count > 0)
+                {
+                    for (int x = 0; x < numReg; x++){
+                        if (this._dsEvRecuperacion.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvRecuperacion[0].sintCodMatricula.ToString()){
+                            this._dsEvRecuperacion.Acta.Rows[x]["bytNota"] = Convert.ToByte(dtaEvRecuperacion[x].bytNota.ToString());
+                        }
+                    }
 
-                //    this._dsEvRecuperacion.AcceptChanges();
-                //    rst = true;
-                //}
+                    this._dsEvRecuperacion.AcceptChanges();
+                    rst = true;
+                }
             }
             catch (Exception ex)
             {
@@ -128,19 +125,19 @@ namespace SitioWebOasis.Models
                 ge.set_fBaseDatos(this._strNombreBD);
 
                 //  Registro informacion de evaluacion recuperacion
-                //rst = ge.setActaArtificialSuspension(   this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                //                                        this._strCodAsignatura.ToString(),
-                //                                        this._strCodNivel.ToString(),
-                //                                        this._strCodParalelo.ToString(),
-                //                                        this._dsEvRecuperacion,
-                //                                        this.UsuarioActual.Nombre.ToString());
+                rst = ge.setActaArtificialSuspension(   this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                        this._strCodAsignatura.ToString(),
+                                                        this._strCodNivel.ToString(),
+                                                        this._strCodParalelo.ToString(),
+                                                        this._dsEvRecuperacion,
+                                                        this.UsuarioActual.Nombre.ToString());
 
-                ////  Actualizar fecha de registro de notas
-                //ge.ActualizarRegistroFechaIngresoExSuspension(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                //                                                this._strCodAsignatura.ToString(),
-                //                                                this._strCodNivel.ToString(),
-                //                                                this._strCodParalelo.ToString(),
-                //                                                DateTime.Now);
+                //  Actualizar fecha de registro de notas
+                ge.ActualizarRegistroFechaIngresoExSuspension(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this._strCodAsignatura.ToString(),
+                                                                this._strCodNivel.ToString(),
+                                                                this._strCodParalelo.ToString(),
+                                                                DateTime.Now);
             }
             catch (Exception ex)
             {
@@ -150,7 +147,5 @@ namespace SitioWebOasis.Models
 
             return rst;
         }
-
-
     }
 }

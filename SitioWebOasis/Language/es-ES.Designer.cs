@@ -106,6 +106,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a GESTIÓN DE NOTAS.
+        /// </summary>
+        public static string DOC_GESTION_NOTAS {
+            get {
+                return ResourceManager.GetString("DOC_GESTION_NOTAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a EVALUACIÓN FORMATIVA.
         /// </summary>
         public static string DOC_GRD_EVALUACION_FORMATIVA {
@@ -1011,6 +1020,15 @@ namespace Language {
         public static string EST_TB_HORARIO_EXAMENES {
             get {
                 return ResourceManager.GetString("EST_TB_HORARIO_EXAMENES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ASIGNATURAS.
+        /// </summary>
+        public static string LST_LBL_ASIGNATURAS_DOCENTE {
+            get {
+                return ResourceManager.GetString("LST_LBL_ASIGNATURAS_DOCENTE", resourceCulture);
             }
         }
         

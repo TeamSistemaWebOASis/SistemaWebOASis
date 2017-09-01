@@ -51,7 +51,6 @@ $(document).ready(function () {
         viewrecords: true,
         height: "100%",
         ignoreCase: true,
-        editurl: "Docentes",
         onSelectRow: function (id, status, e) {
             if (id !== lastsel && editarFila(id)) {
                 //  Cierro edicion de la ultima fila gestionada

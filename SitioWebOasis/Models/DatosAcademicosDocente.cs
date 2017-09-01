@@ -2,6 +2,7 @@
 using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.Library;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace SitioWebOasis.Models
@@ -51,6 +52,37 @@ namespace SitioWebOasis.Models
         }
 
 
+        public string getNombreDocente()
+        {
+            string nombreDocente = (this.UsuarioActual != null) 
+                                        ? this.UsuarioActual.Nombre
+                                        : string.Empty;
+
+            return nombreDocente;
+        }
+
+
+        public string getFacultadCarreraDocente()
+        {
+            string facultadCarreraDocente = string.Empty;
+
+            if( this.UsuarioActual != null)
+            {
+                string facultad = (this.UsuarioActual.FacultadActual != null) 
+                                        ? this.UsuarioActual.FacultadActual.Nombre.ToString() + " / "
+                                        : "";
+
+                string carrera = (this.UsuarioActual.CarreraActual != null) 
+                                    ? this.UsuarioActual.CarreraActual.Nombre.ToString() 
+                                    : "";
+
+                facultadCarreraDocente = facultad + carrera;
+            }
+
+            return facultadCarreraDocente;
+        }
+
+
         public string getHTMLAsignaturasDocente()
         {
             string rst = string.Empty;
@@ -84,6 +116,47 @@ namespace SitioWebOasis.Models
             }
 
             return rst;
+        }
+
+        
+        public List<System.Web.Mvc.SelectListItem> getLstAsignaturasDocente(string strCodAsignatura = "")
+        {
+            List<System.Web.Mvc.SelectListItem> lstAsignaturasDocente = new List<System.Web.Mvc.SelectListItem>();
+            System.Web.Mvc.SelectListItem asignatura = new System.Web.Mvc.SelectListItem();
+
+            if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Count > 0)
+            {
+                foreach (DataRow item in this._dtstCursosDocente.Cursos)
+                {
+                    asignatura = new System.Web.Mvc.SelectListItem();
+                    asignatura.Value = item["strCodMateria"].ToString() + "|" + item["strCodNivel"].ToString() + "|" + item["strCodParalelo"].ToString();
+                    asignatura.Text = item["strNombreMateria"].ToString();
+
+                    if (strCodAsignatura == item["strCodMateria"].ToString())
+                    {
+                        asignatura.Selected = true;
+                    }
+
+                    lstAsignaturasDocente.Add(asignatura);
+                }
+            }
+
+            return lstAsignaturasDocente;
+        }
+
+
+        public string getNombreAsignatura( string strCodAsignatura, string strCodNivel, string strCodParalelo )
+        {
+            string asignatura = string.Empty;
+            if(this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
+                DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '"+ strCodAsignatura +"' AND strCodNivel ='"+ strCodNivel + "' AND strCodParalelo = '"+ strCodParalelo + "'" );
+
+                asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
+                                                : string.Empty;
+
+            }
+
+            return asignatura;
         }
     }
 }

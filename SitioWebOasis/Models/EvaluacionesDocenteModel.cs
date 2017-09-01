@@ -14,9 +14,16 @@ namespace SitioWebOasis.Models
 
         public string strCodParalelo { get; set;}
 
-
         public string parcialActivo = "3";
 
+        private DatosAcademicosDocente _dad;
+
+        public EvaluacionesDocenteModel()
+        {
+            this._dad = new DatosAcademicosDocente(this.UsuarioActual.CarreraActual.Codigo.ToString());
+        }
+
+        
         public EvaluacionAcumulativaModel evAcumulativaModel { get; set; }
 
 
@@ -25,5 +32,15 @@ namespace SitioWebOasis.Models
 
         public EvaluacionRecuperacionModel evRecuperacionModel { get; set; }
 
+
+        public string getNombreAsignatura( string strCodAsignatura, string strCodNivel, string strCodParalelo)
+        {
+            return this._dad.getNombreAsignatura(strCodAsignatura, strCodNivel, strCodParalelo);
+        }
+
+        public List<System.Web.Mvc.SelectListItem> getLstAsignaturasDocente(string strCodAsignatura = "")
+        {
+            return this._dad.getLstAsignaturasDocente(strCodAsignatura);
+        }
     }
 }

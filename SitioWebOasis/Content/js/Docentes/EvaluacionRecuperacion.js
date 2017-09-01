@@ -51,12 +51,12 @@ EvaluacionRecuperacion.prototype.getEstadoEvaluacionRecuperacion = function () {
 
     switch (true) {
         //  Aprobado
-        case (this.Total >= 28 && this.strCodEquivalencia != "E" && this.bytAsistencia >= 70):
+        case (this.Total >= 28):
             rst = "<span class='label label-success'>APROBADO</span>";
         break;
 
         //  Reprueba
-        case (this.Total < 15 && this.strCodEquivalencia == "R"):
+        case (this.Total < 28):
             rst = "<span class='label label-danger'>REPRUEBA</span>";
         break;
     }

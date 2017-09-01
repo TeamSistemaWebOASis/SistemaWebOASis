@@ -39,9 +39,9 @@ $(document).ready(function () {
                     { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: false },
                     { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false },
 
-                    { name: 'bytAcumulado', label: 'Total acumulado', width: '120', align: 'center', sortable: false },
+                    { name: 'bytAcumulado', label: 'Total evaluación formativa', width: '150', align: 'center', sortable: false },
                     
-                    { name: 'bytNota', label: 'Nota evaluación recuperación', width: '120', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNota }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+                    { name: 'bytNota', label: 'Nota evaluación recuperación', width: '170', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNota }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
                     { name: 'Total', label: 'Total', width: '120', align: 'center', sortable: false },
                     { name: 'erAcumulado', label: 'Estado', width: '120', align: 'center' },
                     { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
@@ -50,9 +50,8 @@ $(document).ready(function () {
         viewrecords: true,
         height: "100%",
         ignoreCase: true,
-        editurl: "Docentes",
         onSelectRow: function (id, status, e) {
-            if (id !== lastsel && editarFila(id)) {
+            if (id !== lastsel) {
                 //  Cierro edicion de la ultima fila gestionada
                 if (lastsel != undefined) {
                     $('#grdEvRecuperacion').jqGrid('restoreRow', lastsel);
@@ -94,24 +93,9 @@ $(document).ready(function () {
     });
 
 
-    function editarFila(id) {
-        var ban = true;
-
-        numReg = lstEvaluacionRecuperacion.length;
-        for (var x = 0; x < numReg; x++) {
-            if (lstEvaluacionRecuperacion[x].strCodigo == id) {
-                ban = lstEvaluacionRecuperacion[x].esExoneradoReprobado();
-            }
-        }
-
-        return ban;
-    }
-
-
     $("#grdEvRecuperacion").jqGrid('setGroupHeaders', {
         useColSpanStyle: true,
-        groupHeaders: [{ startColumnName: 'bytAcumulado', numberOfColumns: 2, titleText: '<b>TOTALIZADO EVALUACIÓN FORMATIVA</b>' },
-                        { startColumnName: 'Total', numberOfColumns: 2, titleText: '<b>TOTALIZADO</b>' }]
+        groupHeaders: [{ startColumnName: 'Total', numberOfColumns: 2, titleText: '<b>TOTALIZADO</b>' }]
     });
 
 
@@ -198,16 +182,8 @@ $(document).ready(function () {
     }
 
 
-    function showLoadingProcess() {
-        HoldOn.open({
-            theme: 'sk-dot',
-            message: "<h4>GUARDANDO INFORMACION ...</h4>"
-        });
-    }
-
-
     function validarNota(value, colname) {
-        if (value < 0 || value > 12)
+        if (value < 0 || value > 20)
             return [false, "Nota fuera de rango (0, 20)"];
         else
             return [true, ""];
@@ -216,7 +192,7 @@ $(document).ready(function () {
 
     $('#btnGuardarEvRecuperacion').on('click', function () {
         //  Muestro mensaje de proceso
-        showLoadingProcess();
+        $.blockUI({ message: '<h3>Procesando información, favor espere un momento ...</h3>' });
 
         $.ajax({
             type: "POST",
@@ -238,7 +214,7 @@ $(document).ready(function () {
             updContenidoColumnasGrid();
 
             //  Cierro la ventana GIF Proceso
-            HoldOn.close();
+            $.unblockUI();
         })
     })
 
