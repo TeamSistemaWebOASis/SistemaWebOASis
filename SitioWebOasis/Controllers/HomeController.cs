@@ -17,14 +17,12 @@ namespace SitioWebOasis.Controllers
             if (this._existeRolUsuario())
             {
                 //  Interfaz para Estudiante 
-                if (UsuarioActual.RolActual.ID.ToString() == "Estudiante")
-                {
+                if (UsuarioActual.RolActual.ID.ToString() == "Estudiante"){
                     return RedirectToAction("Index", "Estudiantes");
                 }
 
                 //  Interfaz para Docente
-                if (UsuarioActual.RolActual.ID.ToString() == "Docente")
-                {
+                if (UsuarioActual.RolActual.ID.ToString() == "Docente"){
                     return RedirectToAction("Index", "Docentes");
                 }
             }
@@ -73,9 +71,7 @@ namespace SitioWebOasis.Controllers
                         //  Añadir la cookie a la respuesta
                         Response.Cookies.Add(cookie);
                         Session.Timeout = 20;
-                    }
-                    else
-                    {
+                    }else{
                         this.Session["UsuarioActual"] = new Usuario();
                     }
                 }
@@ -105,12 +101,9 @@ namespace SitioWebOasis.Controllers
                 string jsonDtaIdentificacion = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDocumentoPersonal.svc" + "/ObtenerPorPersona/" + numIdentificacion);
                 var _dtaIdentificacion = System.Web.Helpers.Json.Decode(jsonDtaIdentificacion);
 
-                if (_dtaIdentificacion.Length > 0)
-                {
-                    foreach (var item in _dtaIdentificacion)
-                    {
-                        if (item.pid_activo == true)
-                        {
+                if (_dtaIdentificacion.Length > 0){
+                    foreach (var item in _dtaIdentificacion){
+                        if (item.pid_activo == true){
                             numIdentificacion = (item.tdi_id != 1)  ? item.pid_valor 
                                                                     : this._addGuionCedula(item.pid_valor);
                         }
@@ -120,9 +113,10 @@ namespace SitioWebOasis.Controllers
                 ////  ESTUDIANTE
                 //  numIdentificacion = "060478969-3";
                 //  numIdentificacion = "180475189-7";
+                //  numIdentificacion = "080211622-8";  <-- Gustavo / Rol de Estudiante / Docente
 
                 //  DOCENTE
-                //  numIdentificacion = "060292098-5";
+                numIdentificacion = "060292098-5";
             }
             catch (Exception ex)
             {

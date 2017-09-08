@@ -110,7 +110,6 @@ namespace SitioWebOasis.Models
                     rst += "		</div>";
                     rst += "	</td>";
                     rst += "	<td><span class='label label-warning'>MEDIUM</span></td>";
-                    rst += "	<td><span class='label label-success'>ACTIVE</span></td>";
                     rst += "</tr>";
                 }
             }

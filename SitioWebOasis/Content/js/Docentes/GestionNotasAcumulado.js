@@ -14,12 +14,17 @@
     var gn2 = ($('#dtaParcialActivo').val() == "2") ? true : false;
     var gn3 = ($('#dtaParcialActivo').val() == "3") ? true : false;
 
+    var blnCambiosEvAc = false;
+
     //  Objeto con informacion de dtaEvAcumulada
     cargarDatosEvAcumulativa($('#dtaJsonEvAcumulativa').val());
 
     //  Gestion de notas 
     grid.jqGrid({
         datatype: "json",
+        mtype: "GET",
+        cache: true,
+        loadonce: true,
         colModel: [ { name: 'No', index: 'No', label: 'No', align: 'center', width: '20', sortable: false },
                     { name: 'sintCodMatricula', key: true, hidden: true },
                     { name: 'NombreEstudiante', label: "Nombre estudiante", align: 'left', width: '200', sortable: false },
@@ -40,7 +45,6 @@
         height:"auto",
         shrinkToFit: true,
         ignoreCase: true,
-        mtype:"GET",
         onSelectRow: function (id, status, e) {
             if (id !== lastsel) {
                 //  Cierro edicion de la ultima fila gestionada
@@ -194,6 +198,8 @@
                 lstEvaluaciones[x].bytAsistencia = dtaAsistencia;
                 lstEvaluaciones[x].banEstado = 1;
 
+                blnCambiosEvAc = true;
+
                 return true;
             }
         }
@@ -213,30 +219,37 @@
 
 
     $('#btnGuardarEvAcumulativa').on('click', function(){
-        //  Muestro mensaje de proceso
-        showLoadingProcess();
 
-        $.ajax({type: "POST",
-                url: "/Docentes/registrarEvaluacion/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" +  $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
+        if (blnCambiosEvAc == true) {
+            //  Muestro mensaje de proceso
+            showLoadingProcess();
+
+            $.ajax({
+                type: "POST",
+                url: "/Docentes/registrarEvaluacion/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" + $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
                 data: JSON.stringify(lstEvaluaciones),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(thrownError);
                 }
-        }).success(function (data) {
-            //  Muestro mensaje de gestion de informacion
-            $('#msmGrdEvAcumulativa').removeAttr("hidden");
+            }).success(function (data) {
+                //  Muestro mensaje de gestion de informacion
+                $('#msmGrdEvAcumulativa').removeAttr("hidden");
 
-            //  Actualizo el grid con la informacion gestionada a nivel BD
-            cargarDatosEvAcumulativa(data);
+                //  Actualizo el grid con la informacion gestionada a nivel BD
+                cargarDatosEvAcumulativa(data);
 
-            //  Actualizo el grid de notas
-            updContenidoColumnasGrid();
+                //  Actualizo el grid de notas
+                updContenidoColumnasGrid();
 
-            //  Cierro la ventana GIF Proceso
-            HoldOn.close();
-        })
+                //  Regreso a su valor original la variable de control de cambios en el grid de notas
+                blnCambiosEvAc = false;
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            })
+        }
 
     })
 

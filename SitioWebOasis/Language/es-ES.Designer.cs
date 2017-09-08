@@ -196,6 +196,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Rendimiento académico.
+        /// </summary>
+        public static string DOC_TB_COL_RENDIMIENTO_ACADEMICO {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_RENDIMIENTO_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a EVALUACIÓN ACUMULATIVA.
         /// </summary>
         public static string DOC_TB_EV_ACUMULATIVA {

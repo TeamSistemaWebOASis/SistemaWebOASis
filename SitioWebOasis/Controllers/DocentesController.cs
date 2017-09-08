@@ -9,6 +9,8 @@ using System.Web.Mvc;
 
 namespace SitioWebOasis.Controllers
 {
+    [Authorize]
+    [HandleError]
     public class DocentesController : Controller
     {
         // GET: Docentes
@@ -19,7 +21,7 @@ namespace SitioWebOasis.Controllers
         }
 
 
-
+        [OutputCache(Duration = 8000, VaryByParam = "strCodNivel, strCodAsignatura, strCodParalelo")]
         public ActionResult EvaluacionAsignatura (string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
             //  modelo - EVALUACION ACUMULATIVA
@@ -131,6 +133,7 @@ namespace SitioWebOasis.Controllers
 
             return rstEvRecuperacion;
         }
+
 
     }
 }

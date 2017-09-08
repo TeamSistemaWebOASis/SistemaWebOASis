@@ -414,6 +414,7 @@
     <Content Include="Content\fonts\lato-bol-webfont.woff" />
     <Content Include="Content\fonts\lato-lig-webfont.ttf" />
     <Content Include="Content\fonts\lato-lig-webfont.woff" />
+    <None Include="Properties\PublishProfiles\despligueLocal.pubxml" />
     <None Include="Properties\PublishProfiles\servicios.espoch.edu.ec.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

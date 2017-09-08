@@ -92,8 +92,7 @@ namespace SitioWebOasis.Models
             try
             {
                 int numReg = dtaEvRecuperacion.Count;
-                if (numReg > 0 && this._dsEvRecuperacion.Acta.Rows.Count > 0)
-                {
+                if (numReg > 0 && this._dsEvRecuperacion.Acta.Rows.Count > 0){
                     for (int x = 0; x < numReg; x++){
                         if (this._dsEvRecuperacion.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvRecuperacion[0].sintCodMatricula.ToString()){
                             this._dsEvRecuperacion.Acta.Rows[x]["bytNota"] = Convert.ToByte(dtaEvRecuperacion[x].bytNota.ToString());

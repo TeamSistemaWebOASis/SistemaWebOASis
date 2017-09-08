@@ -162,6 +162,9 @@
   <data name="DOC_TB_COL_PROMEDIO_GENERAL" xml:space="preserve">
     <value>Promedio General</value>
   </data>
+  <data name="DOC_TB_COL_RENDIMIENTO_ACADEMICO" xml:space="preserve">
+    <value>Rendimiento académico</value>
+  </data>
   <data name="DOC_TB_EV_ACUMULATIVA" xml:space="preserve">
     <value>EVALUACIÓN ACUMULATIVA</value>
   </data>
