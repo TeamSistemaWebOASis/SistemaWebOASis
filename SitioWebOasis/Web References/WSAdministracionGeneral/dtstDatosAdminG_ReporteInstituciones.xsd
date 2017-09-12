@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" id="dtstDatosAdminG_ReporteInstituciones" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminG_ReporteInstituciones">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Instituciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strCodCiudad" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreTipo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreCiudad" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ciudades">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_Instituciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_ReporteInstitucionesKey1">
+      <xs:selector xpath=".//mstns:Instituciones" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_ReporteInstitucionesKey2">
+      <xs:selector xpath=".//mstns:Ciudades" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_ReporteInstitucionesKey3">
+      <xs:selector xpath=".//mstns:Tipos_Instituciones" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="Tipos_InstitucionesInstituciones" refer="mstns:dtstDatosAdminG_ReporteInstitucionesKey3">
+      <xs:selector xpath=".//mstns:Instituciones" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+    <xs:keyref name="CiudadesInstituciones" refer="mstns:dtstDatosAdminG_ReporteInstitucionesKey2">
+      <xs:selector xpath=".//mstns:Instituciones" />
+      <xs:field xpath="mstns:strCodCiudad" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

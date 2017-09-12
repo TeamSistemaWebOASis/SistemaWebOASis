@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" id="dtstDatosAdminG_Institucion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminG_Institucion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Carreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element name="strBaseDatos" type="xs:string" />
+              <xs:element name="strCodEscuela" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="strNumSeguridad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoEntidad" type="xs:string" />
+              <xs:element minOccurs="0" name="blnAdmiteInscripcion" type="xs:boolean" />
+              <xs:element minOccurs="0" name="blnAdmiteCambioCarrera" type="xs:boolean" />
+              <xs:element minOccurs="0" name="blnAdmiteMigrarEstudiante" type="xs:boolean" />
+              <xs:element minOccurs="0" name="strCodCarreraOrigen" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Facultades">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strSudDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="imgLogo" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="strDatos" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="intNumEscuelas" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoEntidad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaSubDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveSubDecano" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Escuelas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="imgLogo" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="strDatos" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element name="strCodFacultad" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="intNumCarreras" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoEntidad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveDirector" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Usuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strLogin" type="xs:string" />
+              <xs:element minOccurs="0" name="strClave" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaUltIng" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estados_Entidades">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Configuracion_Carrera">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strDirector" type="xs:string" />
+              <xs:element name="lngUltNumEst" type="xs:long" />
+              <xs:element name="strCedUsuResp" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="imgLogo" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="strDatos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strSecretariaAcademica" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_Entidades">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey1">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey2">
+      <xs:selector xpath=".//mstns:Facultades" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey3">
+      <xs:selector xpath=".//mstns:Escuelas" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey4">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey5">
+      <xs:selector xpath=".//mstns:Estados_Entidades" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey6">
+      <xs:selector xpath=".//mstns:Configuracion_Carrera" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_InstitucionKey7">
+      <xs:selector xpath=".//mstns:Tipos_Entidades" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="FacultadesEscuelas" refer="mstns:dtstDatosAdminG_InstitucionKey2">
+      <xs:selector xpath=".//mstns:Escuelas" />
+      <xs:field xpath="mstns:strCodFacultad" />
+    </xs:keyref>
+    <xs:keyref name="Estados_EntidadesEscuelas" refer="mstns:dtstDatosAdminG_InstitucionKey5">
+      <xs:selector xpath=".//mstns:Escuelas" />
+      <xs:field xpath="mstns:strCodEstado" />
+    </xs:keyref>
+    <xs:keyref name="Estados_EntidadesFacultades" refer="mstns:dtstDatosAdminG_InstitucionKey5">
+      <xs:selector xpath=".//mstns:Facultades" />
+      <xs:field xpath="mstns:strCodEstado" />
+    </xs:keyref>
+    <xs:keyref name="EscuelasCarreras" refer="mstns:dtstDatosAdminG_InstitucionKey3">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strCodEscuela" />
+    </xs:keyref>
+    <xs:keyref name="Estados_EntidadesCarreras" refer="mstns:dtstDatosAdminG_InstitucionKey5">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strCodEstado" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

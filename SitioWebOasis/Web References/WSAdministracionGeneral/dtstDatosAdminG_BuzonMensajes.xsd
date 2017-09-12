@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" id="dtstDatosAdminG_BuzonMensajes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminG_BuzonMensajes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Buzon_De_Mensajes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element msdata:ReadOnly="true" msdata:AutoIncrement="true" name="intCodigo" type="xs:int" />
+              <xs:element name="strDescripcion" type="xs:string" />
+              <xs:element name="dtFechaInicio" type="xs:dateTime" />
+              <xs:element name="dtFechaFin" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_BuzonMensajesKey1">
+      <xs:selector xpath=".//mstns:Buzon_De_Mensajes" />
+      <xs:field xpath="mstns:intCodigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

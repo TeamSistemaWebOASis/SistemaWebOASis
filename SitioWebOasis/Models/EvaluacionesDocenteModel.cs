@@ -1,4 +1,5 @@
-﻿using SitioWebOasis.Library;
+﻿using GestorErrores;
+using SitioWebOasis.Library;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +15,15 @@ namespace SitioWebOasis.Models
 
         public string strCodParalelo { get; set;}
 
-        public string parcialActivo = "3";
+        public string strParcialActivo {
+            get {   EvaluacionActiva pa = new EvaluacionActiva();
+                    return pa.getDtaEvaluacionActiva();
+            }
+        }
+        
 
         private DatosAcademicosDocente _dad;
+
 
         public EvaluacionesDocenteModel()
         {
@@ -37,6 +44,7 @@ namespace SitioWebOasis.Models
         {
             return this._dad.getNombreAsignatura(strCodAsignatura, strCodNivel, strCodParalelo);
         }
+
 
         public List<System.Web.Mvc.SelectListItem> getLstAsignaturasDocente(string strCodAsignatura = "")
         {

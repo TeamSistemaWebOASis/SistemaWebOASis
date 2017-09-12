@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosSeguridad.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosSeguridad.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosSeguridad.xsd" id="dtstDatosSeguridad" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosSeguridad">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Usuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strLogin" type="xs:string" />
+              <xs:element minOccurs="0" name="strClave" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaUltIng" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Usuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estados_Usuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Permisos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedUsuario" type="xs:string" />
+              <xs:element name="strCodProceso" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreUsuario" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreProceso" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Procesos_Sistema">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="Constraint1">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:unique>
+    <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Tipos_de_Usuarios_Constraint1">
+      <xs:selector xpath=".//mstns:Tipos_de_Usuarios" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Estados_Usuarios_Constraint1">
+      <xs:selector xpath=".//mstns:Estados_Usuarios" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Permisos_Constraint1">
+      <xs:selector xpath=".//mstns:Permisos" />
+      <xs:field xpath="mstns:strCedUsuario" />
+      <xs:field xpath="mstns:strCodProceso" />
+    </xs:unique>
+    <xs:unique msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true" name="Procesos_Sistema_Constraint1">
+      <xs:selector xpath=".//mstns:Procesos_Sistema" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="UsuariosPermisos" refer="mstns:Constraint1">
+      <xs:selector xpath=".//mstns:Permisos" />
+      <xs:field xpath="mstns:strCedUsuario" />
+    </xs:keyref>
+    <xs:keyref name="Procesos_SistemaPermisos" refer="mstns:Procesos_Sistema_Constraint1">
+      <xs:selector xpath=".//mstns:Permisos" />
+      <xs:field xpath="mstns:strCodProceso" />
+    </xs:keyref>
+    <xs:keyref name="Estados_UsuariosUsuarios" refer="mstns:Estados_Usuarios_Constraint1">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:strCodEstado" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_UsuariosUsuarios" refer="mstns:Tipos_de_Usuarios_Constraint1">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

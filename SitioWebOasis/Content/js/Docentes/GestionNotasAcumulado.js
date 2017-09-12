@@ -45,6 +45,7 @@
         height:"auto",
         shrinkToFit: true,
         ignoreCase: true,
+        rowNum: 100,
         onSelectRow: function (id, status, e) {
             if (id !== lastsel) {
                 //  Cierro edicion de la ultima fila gestionada
@@ -79,6 +80,8 @@
         },
 
         loadComplete: function (data) {
+            $(this).jqGrid('setGridParam', 'rowNum', data.length);
+
             //  Resaltar contenido en columnas en la pagina
             updContenidoColumnasGrid();
         }
@@ -220,7 +223,7 @@
 
     $('#btnGuardarEvAcumulativa').on('click', function(){
 
-        if (blnCambiosEvAc == true) {
+        if (getEstadoSesion() == true && blnCambiosEvAc == true) {
             //  Muestro mensaje de proceso
             showLoadingProcess();
 
@@ -259,6 +262,26 @@
             theme: 'sk-dot',
             message: "<h4>GUARDANDO INFORMACION ...</h4>"
         });
+    }
+
+
+    function getEstadoSesion()
+    {
+        var rst = true;
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/getEstadoSesion/",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert(thrownError);
+            }
+        }).success(function (data) {
+            alert("en teoria retorna algo !!!!");
+        })
+
+        return rst;
     }
 
 })

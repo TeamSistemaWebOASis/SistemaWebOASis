@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosInstitucionales.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosInstitucionales.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosInstitucionales.xsd" id="dtstDatosInstitucionales" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosInstitucionales">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Usuarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strLogin" type="xs:string" />
+              <xs:element minOccurs="0" name="strClave" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaUltIng" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Configuracion_Institucion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strRector" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaRector" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveRector" type="xs:string" />
+              <xs:element minOccurs="0" name="strViceRAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaViceRAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveViceRAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strViceRAdm" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaViceRAdm" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveViceRAdm" type="xs:string" />
+              <xs:element minOccurs="0" name="strSecreAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaSecreAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveSecreAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedUsuResp" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strDir" type="xs:string" />
+              <xs:element minOccurs="0" name="strTelefonos" type="xs:string" />
+              <xs:element minOccurs="0" name="imgLogo" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="strDatos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodSexoSecreAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodSexoRector" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodSexoVRectorAca" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodSexoVRectorAdm" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sexos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosInstitucionalesKey2">
+      <xs:selector xpath=".//mstns:Usuarios" />
+      <xs:field xpath="mstns:strCedula" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosInstitucionalesKey1">
+      <xs:selector xpath=".//mstns:Configuracion_Institucion" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosInstitucionalesKey4">
+      <xs:selector xpath=".//mstns:Sexos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

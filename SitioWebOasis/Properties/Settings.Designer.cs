@@ -107,5 +107,16 @@ namespace SitioWebOasis.Properties {
                 return ((string)(this["SitioWebOasis_WSSeguridad_Seguridad"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessSe" +
+            "rvices/GestorAdministracionGeneral.asmx")]
+        public string SitioWebOasis_WSAdministracionGeneral_GestorAdministracionGeneral {
+            get {
+                return ((string)(this["SitioWebOasis_WSAdministracionGeneral_GestorAdministracionGeneral"]));
+            }
+        }
     }
 }

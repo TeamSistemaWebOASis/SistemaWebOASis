@@ -90,7 +90,6 @@ namespace SitioWebOasis.Models
                     html += " <tr id='" + item["strCodigo"] + "' role='row' class='" + colorRow + "'>";
                     html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center;'>" + item["No"] + "</td>";
                     html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left;'>" + item["NombreEstudiante"].ToString().Trim() + "</td>";
-                    html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center;'>" + numNivel + "</td>";
                     html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center;'>" + numMatricula + "</td>";
                     html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + item["bytNota1"] + "</td>";
                     html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + item["bytNota2"] + "</td>";
@@ -145,13 +144,13 @@ namespace SitioWebOasis.Models
                         if ( this._dsEvAcumulativa.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvAcumulativa[0].sintCodMatricula.ToString()){
                             this._dsEvAcumulativa.Acta.Rows[x]["bytAsistencia"] = Convert.ToByte( dtaEvAcumulativa[x].bytAsistencia.ToString() );
 
-                            switch (this.parcialActivo){
+                            switch (this.strParcialActivo){
                                 case "1": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota1.ToString()); break;
                                 case "2": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota2.ToString()); break;
                                 case "3": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota3.ToString()); break;
                             }
 
-                            this._dsEvAcumulativa.Acta.Rows[x]["bytNota" + this.parcialActivo] = nota;
+                            this._dsEvAcumulativa.Acta.Rows[x]["bytNota" + this.strParcialActivo] = nota;
                         }
                     }
 

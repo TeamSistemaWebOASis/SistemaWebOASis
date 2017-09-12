@@ -1,0 +1,1956 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosSeguridad" namespace="http://tempuri.org/dtstDatosSeguridad.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_HistorialEstudiante" namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Instituciones" namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Permisos" namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Parametros" namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosInstitucionales" namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Periodos" namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosEquivalencias" namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Institucion" namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_BuzonMensajes" namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_ReporteInstituciones" namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
+      <s:element name="GetMensajesPendientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUsuario" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMensajesPendientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMensajesPendientesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMensajesLeidos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMensajesLeidosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMensajesLeidosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistenMensajesPendientes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistenMensajesPendientesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistenMensajesPendientesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getConfiguracionCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getConfiguracionCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getConfiguracionCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setConfiguracionCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsCarrera">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setConfiguracionCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsCarrera">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosInstitucion">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosInstitucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosInstitucionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosInstitucionEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodEstado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosInstitucionEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosInstitucionEstadoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosInstitucion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsInstitucion">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosInstitucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsInstitucion">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosInstitucionales">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosInstitucionalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosInstitucionalesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosInstitucionales">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsInstitucion">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosInstitucionalesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsInstitucion">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerLogo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strEntidad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerLogoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerLogoResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarLogo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strEntidad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bArray" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarLogoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarLogoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerLogoInstitucion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerLogoInstitucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerLogoInstitucionResult" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarLogoInstitucion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="bArray" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarLogoInstitucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarLogoInstitucionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsBaseDatosValida">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strBaseDatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsBaseDatosValidaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EsBaseDatosValidaResult" type="tns:Estado" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="Estado">
+        <s:restriction base="s:string">
+          <s:enumeration value="Exito" />
+          <s:enumeration value="NoConexion" />
+          <s:enumeration value="NoBaseDatos" />
+          <s:enumeration value="ErrorDesconocido" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="getEstadosEntidades">
+        <s:complexType />
+      </s:element>
+      <s:element name="getEstadosEntidadesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEstadosEntidadesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosInstituciones">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosInstitucionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosInstitucionesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosInstituciones">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsInstituciones">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosInstitucionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsInstituciones">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProvPais">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodCiudad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodProv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodPais" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProvPaisResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodProv" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CodPais" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosParametros">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosParametrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosParametrosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatos_Parametros">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsParametros">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatos_ParametrosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsParametros">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getValorParametro">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Codigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getValorParametroResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getValorParametroResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosPeriodos">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosPeriodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosPeriodosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosAdminG_Periodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsPeriodos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosAdminG_PeriodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsPeriodos">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPeriodoVigente">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPeriodoVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPeriodoVigenteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosReporteInstituciones">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosReporteInstitucionesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosReporteInstitucionesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambioClave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLogin" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strOldClave" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strNewClave" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CambioClaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CambioClaveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermisos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLogin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPermisosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPermisosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NecesitaCambioClave">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLogin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="NecesitaCambioClaveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="NecesitaCambioClaveResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarFechaUltIng">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLogin" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarFechaUltIngResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="setDatosSeguridad">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsSeguridad">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosSeguridad.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosSeguridadResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosSeguridad">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosSeguridadResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosSeguridadResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosSeguridad.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setEquivalencias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsEquivalencias">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setEquivalenciasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsEquivalencias">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMaterias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMateriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMateriasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getEquivalencias">
+        <s:complexType />
+      </s:element>
+      <s:element name="getEquivalenciasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getEquivalenciasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCarreras">
+        <s:complexType />
+      </s:element>
+      <s:element name="getCarrerasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCarrerasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRptEquivalencias">
+        <s:complexType />
+      </s:element>
+      <s:element name="getRptEquivalenciasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRptEquivalenciasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistorialEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetHistorialEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetHistorialEstudianteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_fBaseDatos">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fBaseDatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_fBaseDatosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fBaseDatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fBaseDatosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fUbicacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fUbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_fUbicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fUbicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fUbicacionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="GetMensajesPendientesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMensajesPendientes" />
+  </wsdl:message>
+  <wsdl:message name="GetMensajesPendientesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMensajesPendientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMensajesLeidosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMensajesLeidos" />
+  </wsdl:message>
+  <wsdl:message name="GetMensajesLeidosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMensajesLeidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistenMensajesPendientesSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistenMensajesPendientes" />
+  </wsdl:message>
+  <wsdl:message name="ExistenMensajesPendientesSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistenMensajesPendientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getConfiguracionCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:getConfiguracionCarrera" />
+  </wsdl:message>
+  <wsdl:message name="getConfiguracionCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:getConfiguracionCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="setConfiguracionCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:setConfiguracionCarrera" />
+  </wsdl:message>
+  <wsdl:message name="setConfiguracionCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:setConfiguracionCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucionEstado" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucionEstadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosInstitucionSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="setDatosInstitucionSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionalesSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucionales" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionalesSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucionalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosInstitucionalesSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosInstitucionales" />
+  </wsdl:message>
+  <wsdl:message name="setDatosInstitucionalesSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosInstitucionalesResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerLogoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerLogo" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerLogoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerLogoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarLogoSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarLogo" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarLogoSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarLogoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerLogoInstitucionSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerLogoInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerLogoInstitucionSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerLogoInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarLogoInstitucionSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarLogoInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarLogoInstitucionSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarLogoInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EsBaseDatosValidaSoapIn">
+    <wsdl:part name="parameters" element="tns:EsBaseDatosValida" />
+  </wsdl:message>
+  <wsdl:message name="EsBaseDatosValidaSoapOut">
+    <wsdl:part name="parameters" element="tns:EsBaseDatosValidaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEstadosEntidadesSoapIn">
+    <wsdl:part name="parameters" element="tns:getEstadosEntidades" />
+  </wsdl:message>
+  <wsdl:message name="getEstadosEntidadesSoapOut">
+    <wsdl:part name="parameters" element="tns:getEstadosEntidadesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionesSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosInstituciones" />
+  </wsdl:message>
+  <wsdl:message name="getDatosInstitucionesSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosInstitucionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosInstitucionesSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosInstituciones" />
+  </wsdl:message>
+  <wsdl:message name="setDatosInstitucionesSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosInstitucionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProvPaisSoapIn">
+    <wsdl:part name="parameters" element="tns:getProvPais" />
+  </wsdl:message>
+  <wsdl:message name="getProvPaisSoapOut">
+    <wsdl:part name="parameters" element="tns:getProvPaisResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosParametrosSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosParametros" />
+  </wsdl:message>
+  <wsdl:message name="getDatosParametrosSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosParametrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatos_ParametrosSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatos_Parametros" />
+  </wsdl:message>
+  <wsdl:message name="setDatos_ParametrosSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatos_ParametrosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getValorParametroSoapIn">
+    <wsdl:part name="parameters" element="tns:getValorParametro" />
+  </wsdl:message>
+  <wsdl:message name="getValorParametroSoapOut">
+    <wsdl:part name="parameters" element="tns:getValorParametroResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosPeriodosSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosPeriodos" />
+  </wsdl:message>
+  <wsdl:message name="getDatosPeriodosSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosPeriodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosAdminG_PeriodosSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosAdminG_Periodos" />
+  </wsdl:message>
+  <wsdl:message name="setDatosAdminG_PeriodosSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosAdminG_PeriodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodoVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getPeriodoVigente" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodoVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getPeriodoVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosReporteInstitucionesSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosReporteInstituciones" />
+  </wsdl:message>
+  <wsdl:message name="getDatosReporteInstitucionesSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosReporteInstitucionesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CambioClaveSoapIn">
+    <wsdl:part name="parameters" element="tns:CambioClave" />
+  </wsdl:message>
+  <wsdl:message name="CambioClaveSoapOut">
+    <wsdl:part name="parameters" element="tns:CambioClaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPermisosSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPermisos" />
+  </wsdl:message>
+  <wsdl:message name="GetPermisosSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPermisosResponse" />
+  </wsdl:message>
+  <wsdl:message name="NecesitaCambioClaveSoapIn">
+    <wsdl:part name="parameters" element="tns:NecesitaCambioClave" />
+  </wsdl:message>
+  <wsdl:message name="NecesitaCambioClaveSoapOut">
+    <wsdl:part name="parameters" element="tns:NecesitaCambioClaveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarFechaUltIngSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarFechaUltIng" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarFechaUltIngSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarFechaUltIngResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosSeguridadSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatosSeguridad" />
+  </wsdl:message>
+  <wsdl:message name="setDatosSeguridadSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosSeguridadResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosSeguridadSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosSeguridad" />
+  </wsdl:message>
+  <wsdl:message name="getDatosSeguridadSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosSeguridadResponse" />
+  </wsdl:message>
+  <wsdl:message name="setEquivalenciasSoapIn">
+    <wsdl:part name="parameters" element="tns:setEquivalencias" />
+  </wsdl:message>
+  <wsdl:message name="setEquivalenciasSoapOut">
+    <wsdl:part name="parameters" element="tns:setEquivalenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMateriasSoapIn">
+    <wsdl:part name="parameters" element="tns:getMaterias" />
+  </wsdl:message>
+  <wsdl:message name="getMateriasSoapOut">
+    <wsdl:part name="parameters" element="tns:getMateriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getEquivalenciasSoapIn">
+    <wsdl:part name="parameters" element="tns:getEquivalencias" />
+  </wsdl:message>
+  <wsdl:message name="getEquivalenciasSoapOut">
+    <wsdl:part name="parameters" element="tns:getEquivalenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCarrerasSoapIn">
+    <wsdl:part name="parameters" element="tns:getCarreras" />
+  </wsdl:message>
+  <wsdl:message name="getCarrerasSoapOut">
+    <wsdl:part name="parameters" element="tns:getCarrerasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRptEquivalenciasSoapIn">
+    <wsdl:part name="parameters" element="tns:getRptEquivalencias" />
+  </wsdl:message>
+  <wsdl:message name="getRptEquivalenciasSoapOut">
+    <wsdl:part name="parameters" element="tns:getRptEquivalenciasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetHistorialEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetHistorialEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetHistorialEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetHistorialEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_fBaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:get_fBaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="get_fBaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:get_fBaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_fBaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:set_fBaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="set_fBaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:set_fBaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_fUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:get_fUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="get_fUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:get_fUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_fUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:set_fUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="set_fUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:set_fUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GestorAdministracionGeneralSoap">
+    <wsdl:operation name="GetMensajesPendientes">
+      <wsdl:input message="tns:GetMensajesPendientesSoapIn" />
+      <wsdl:output message="tns:GetMensajesPendientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMensajesLeidos">
+      <wsdl:input message="tns:GetMensajesLeidosSoapIn" />
+      <wsdl:output message="tns:GetMensajesLeidosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistenMensajesPendientes">
+      <wsdl:input message="tns:ExistenMensajesPendientesSoapIn" />
+      <wsdl:output message="tns:ExistenMensajesPendientesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getConfiguracionCarrera">
+      <wsdl:input message="tns:getConfiguracionCarreraSoapIn" />
+      <wsdl:output message="tns:getConfiguracionCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setConfiguracionCarrera">
+      <wsdl:input message="tns:setConfiguracionCarreraSoapIn" />
+      <wsdl:output message="tns:setConfiguracionCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucion">
+      <wsdl:input message="tns:getDatosInstitucionSoapIn" />
+      <wsdl:output message="tns:getDatosInstitucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucionEstado">
+      <wsdl:input message="tns:getDatosInstitucionEstadoSoapIn" />
+      <wsdl:output message="tns:getDatosInstitucionEstadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstitucion">
+      <wsdl:input message="tns:setDatosInstitucionSoapIn" />
+      <wsdl:output message="tns:setDatosInstitucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucionales">
+      <wsdl:input message="tns:getDatosInstitucionalesSoapIn" />
+      <wsdl:output message="tns:getDatosInstitucionalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstitucionales">
+      <wsdl:input message="tns:setDatosInstitucionalesSoapIn" />
+      <wsdl:output message="tns:setDatosInstitucionalesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLogo">
+      <wsdl:input message="tns:ObtenerLogoSoapIn" />
+      <wsdl:output message="tns:ObtenerLogoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLogo">
+      <wsdl:input message="tns:ActualizarLogoSoapIn" />
+      <wsdl:output message="tns:ActualizarLogoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLogoInstitucion">
+      <wsdl:input message="tns:ObtenerLogoInstitucionSoapIn" />
+      <wsdl:output message="tns:ObtenerLogoInstitucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLogoInstitucion">
+      <wsdl:input message="tns:ActualizarLogoInstitucionSoapIn" />
+      <wsdl:output message="tns:ActualizarLogoInstitucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EsBaseDatosValida">
+      <wsdl:input message="tns:EsBaseDatosValidaSoapIn" />
+      <wsdl:output message="tns:EsBaseDatosValidaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEstadosEntidades">
+      <wsdl:input message="tns:getEstadosEntidadesSoapIn" />
+      <wsdl:output message="tns:getEstadosEntidadesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstituciones">
+      <wsdl:input message="tns:getDatosInstitucionesSoapIn" />
+      <wsdl:output message="tns:getDatosInstitucionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstituciones">
+      <wsdl:input message="tns:setDatosInstitucionesSoapIn" />
+      <wsdl:output message="tns:setDatosInstitucionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProvPais">
+      <wsdl:input message="tns:getProvPaisSoapIn" />
+      <wsdl:output message="tns:getProvPaisSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosParametros">
+      <wsdl:input message="tns:getDatosParametrosSoapIn" />
+      <wsdl:output message="tns:getDatosParametrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatos_Parametros">
+      <wsdl:input message="tns:setDatos_ParametrosSoapIn" />
+      <wsdl:output message="tns:setDatos_ParametrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getValorParametro">
+      <wsdl:input message="tns:getValorParametroSoapIn" />
+      <wsdl:output message="tns:getValorParametroSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosPeriodos">
+      <wsdl:input message="tns:getDatosPeriodosSoapIn" />
+      <wsdl:output message="tns:getDatosPeriodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosAdminG_Periodos">
+      <wsdl:input message="tns:setDatosAdminG_PeriodosSoapIn" />
+      <wsdl:output message="tns:setDatosAdminG_PeriodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoVigente">
+      <wsdl:input message="tns:getPeriodoVigenteSoapIn" />
+      <wsdl:output message="tns:getPeriodoVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosReporteInstituciones">
+      <wsdl:input message="tns:getDatosReporteInstitucionesSoapIn" />
+      <wsdl:output message="tns:getDatosReporteInstitucionesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CambioClave">
+      <wsdl:input message="tns:CambioClaveSoapIn" />
+      <wsdl:output message="tns:CambioClaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisos">
+      <wsdl:input message="tns:GetPermisosSoapIn" />
+      <wsdl:output message="tns:GetPermisosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="NecesitaCambioClave">
+      <wsdl:input message="tns:NecesitaCambioClaveSoapIn" />
+      <wsdl:output message="tns:NecesitaCambioClaveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFechaUltIng">
+      <wsdl:input message="tns:ActualizarFechaUltIngSoapIn" />
+      <wsdl:output message="tns:ActualizarFechaUltIngSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatosSeguridad">
+      <wsdl:input message="tns:setDatosSeguridadSoapIn" />
+      <wsdl:output message="tns:setDatosSeguridadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSeguridad">
+      <wsdl:input message="tns:getDatosSeguridadSoapIn" />
+      <wsdl:output message="tns:getDatosSeguridadSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setEquivalencias">
+      <wsdl:input message="tns:setEquivalenciasSoapIn" />
+      <wsdl:output message="tns:setEquivalenciasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMaterias">
+      <wsdl:input message="tns:getMateriasSoapIn" />
+      <wsdl:output message="tns:getMateriasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getEquivalencias">
+      <wsdl:input message="tns:getEquivalenciasSoapIn" />
+      <wsdl:output message="tns:getEquivalenciasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCarreras">
+      <wsdl:input message="tns:getCarrerasSoapIn" />
+      <wsdl:output message="tns:getCarrerasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRptEquivalencias">
+      <wsdl:input message="tns:getRptEquivalenciasSoapIn" />
+      <wsdl:output message="tns:getRptEquivalenciasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHistorialEstudiante">
+      <wsdl:input message="tns:GetHistorialEstudianteSoapIn" />
+      <wsdl:output message="tns:GetHistorialEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <wsdl:input message="tns:get_fBaseDatosSoapIn" />
+      <wsdl:output message="tns:get_fBaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <wsdl:input message="tns:set_fBaseDatosSoapIn" />
+      <wsdl:output message="tns:set_fBaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <wsdl:input message="tns:get_fUbicacionSoapIn" />
+      <wsdl:output message="tns:get_fUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <wsdl:input message="tns:set_fUbicacionSoapIn" />
+      <wsdl:output message="tns:set_fUbicacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestorAdministracionGeneralSoap" type="tns:GestorAdministracionGeneralSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMensajesPendientes">
+      <soap:operation soapAction="http://tempuri.org/GetMensajesPendientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMensajesLeidos">
+      <soap:operation soapAction="http://tempuri.org/GetMensajesLeidos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistenMensajesPendientes">
+      <soap:operation soapAction="http://tempuri.org/ExistenMensajesPendientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfiguracionCarrera">
+      <soap:operation soapAction="http://tempuri.org/getConfiguracionCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setConfiguracionCarrera">
+      <soap:operation soapAction="http://tempuri.org/setConfiguracionCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucion">
+      <soap:operation soapAction="http://tempuri.org/getDatosInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucionEstado">
+      <soap:operation soapAction="http://tempuri.org/getDatosInstitucionEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstitucion">
+      <soap:operation soapAction="http://tempuri.org/setDatosInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucionales">
+      <soap:operation soapAction="http://tempuri.org/getDatosInstitucionales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstitucionales">
+      <soap:operation soapAction="http://tempuri.org/setDatosInstitucionales" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLogo">
+      <soap:operation soapAction="http://tempuri.org/ObtenerLogo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLogo">
+      <soap:operation soapAction="http://tempuri.org/ActualizarLogo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLogoInstitucion">
+      <soap:operation soapAction="http://tempuri.org/ObtenerLogoInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLogoInstitucion">
+      <soap:operation soapAction="http://tempuri.org/ActualizarLogoInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsBaseDatosValida">
+      <soap:operation soapAction="http://tempuri.org/EsBaseDatosValida" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstadosEntidades">
+      <soap:operation soapAction="http://tempuri.org/getEstadosEntidades" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstituciones">
+      <soap:operation soapAction="http://tempuri.org/getDatosInstituciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstituciones">
+      <soap:operation soapAction="http://tempuri.org/setDatosInstituciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProvPais">
+      <soap:operation soapAction="http://tempuri.org/getProvPais" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosParametros">
+      <soap:operation soapAction="http://tempuri.org/getDatosParametros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatos_Parametros">
+      <soap:operation soapAction="http://tempuri.org/setDatos_Parametros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getValorParametro">
+      <soap:operation soapAction="http://tempuri.org/getValorParametro" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosPeriodos">
+      <soap:operation soapAction="http://tempuri.org/getDatosPeriodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosAdminG_Periodos">
+      <soap:operation soapAction="http://tempuri.org/setDatosAdminG_Periodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoVigente">
+      <soap:operation soapAction="http://tempuri.org/getPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosReporteInstituciones">
+      <soap:operation soapAction="http://tempuri.org/getDatosReporteInstituciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambioClave">
+      <soap:operation soapAction="http://tempuri.org/CambioClave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisos">
+      <soap:operation soapAction="http://tempuri.org/GetPermisos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NecesitaCambioClave">
+      <soap:operation soapAction="http://tempuri.org/NecesitaCambioClave" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFechaUltIng">
+      <soap:operation soapAction="http://tempuri.org/ActualizarFechaUltIng" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosSeguridad">
+      <soap:operation soapAction="http://tempuri.org/setDatosSeguridad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSeguridad">
+      <soap:operation soapAction="http://tempuri.org/getDatosSeguridad" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setEquivalencias">
+      <soap:operation soapAction="http://tempuri.org/setEquivalencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMaterias">
+      <soap:operation soapAction="http://tempuri.org/getMaterias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEquivalencias">
+      <soap:operation soapAction="http://tempuri.org/getEquivalencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCarreras">
+      <soap:operation soapAction="http://tempuri.org/getCarreras" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRptEquivalencias">
+      <soap:operation soapAction="http://tempuri.org/getRptEquivalencias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistorialEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetHistorialEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <soap:operation soapAction="http://tempuri.org/get_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <soap:operation soapAction="http://tempuri.org/set_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <soap:operation soapAction="http://tempuri.org/get_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <soap:operation soapAction="http://tempuri.org/set_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GestorAdministracionGeneralSoap12" type="tns:GestorAdministracionGeneralSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetMensajesPendientes">
+      <soap12:operation soapAction="http://tempuri.org/GetMensajesPendientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMensajesLeidos">
+      <soap12:operation soapAction="http://tempuri.org/GetMensajesLeidos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistenMensajesPendientes">
+      <soap12:operation soapAction="http://tempuri.org/ExistenMensajesPendientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfiguracionCarrera">
+      <soap12:operation soapAction="http://tempuri.org/getConfiguracionCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setConfiguracionCarrera">
+      <soap12:operation soapAction="http://tempuri.org/setConfiguracionCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucion">
+      <soap12:operation soapAction="http://tempuri.org/getDatosInstitucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucionEstado">
+      <soap12:operation soapAction="http://tempuri.org/getDatosInstitucionEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstitucion">
+      <soap12:operation soapAction="http://tempuri.org/setDatosInstitucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstitucionales">
+      <soap12:operation soapAction="http://tempuri.org/getDatosInstitucionales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstitucionales">
+      <soap12:operation soapAction="http://tempuri.org/setDatosInstitucionales" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLogo">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerLogo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLogo">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarLogo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerLogoInstitucion">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerLogoInstitucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarLogoInstitucion">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarLogoInstitucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsBaseDatosValida">
+      <soap12:operation soapAction="http://tempuri.org/EsBaseDatosValida" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEstadosEntidades">
+      <soap12:operation soapAction="http://tempuri.org/getEstadosEntidades" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosInstituciones">
+      <soap12:operation soapAction="http://tempuri.org/getDatosInstituciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosInstituciones">
+      <soap12:operation soapAction="http://tempuri.org/setDatosInstituciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProvPais">
+      <soap12:operation soapAction="http://tempuri.org/getProvPais" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosParametros">
+      <soap12:operation soapAction="http://tempuri.org/getDatosParametros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatos_Parametros">
+      <soap12:operation soapAction="http://tempuri.org/setDatos_Parametros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getValorParametro">
+      <soap12:operation soapAction="http://tempuri.org/getValorParametro" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosPeriodos">
+      <soap12:operation soapAction="http://tempuri.org/getDatosPeriodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosAdminG_Periodos">
+      <soap12:operation soapAction="http://tempuri.org/setDatosAdminG_Periodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoVigente">
+      <soap12:operation soapAction="http://tempuri.org/getPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosReporteInstituciones">
+      <soap12:operation soapAction="http://tempuri.org/getDatosReporteInstituciones" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CambioClave">
+      <soap12:operation soapAction="http://tempuri.org/CambioClave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPermisos">
+      <soap12:operation soapAction="http://tempuri.org/GetPermisos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="NecesitaCambioClave">
+      <soap12:operation soapAction="http://tempuri.org/NecesitaCambioClave" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarFechaUltIng">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarFechaUltIng" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatosSeguridad">
+      <soap12:operation soapAction="http://tempuri.org/setDatosSeguridad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosSeguridad">
+      <soap12:operation soapAction="http://tempuri.org/getDatosSeguridad" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setEquivalencias">
+      <soap12:operation soapAction="http://tempuri.org/setEquivalencias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMaterias">
+      <soap12:operation soapAction="http://tempuri.org/getMaterias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getEquivalencias">
+      <soap12:operation soapAction="http://tempuri.org/getEquivalencias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCarreras">
+      <soap12:operation soapAction="http://tempuri.org/getCarreras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRptEquivalencias">
+      <soap12:operation soapAction="http://tempuri.org/getRptEquivalencias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHistorialEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetHistorialEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/get_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/set_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/get_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/set_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestorAdministracionGeneral">
+    <wsdl:port name="GestorAdministracionGeneralSoap" binding="tns:GestorAdministracionGeneralSoap">
+      <soap:address location="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GestorAdministracionGeneralSoap12" binding="tns:GestorAdministracionGeneralSoap12">
+      <soap12:address location="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

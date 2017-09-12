@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosEquivalencias.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosEquivalencias.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosEquivalencias.xsd" id="dtstDatosEquivalencias" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosEquivalencias">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Equivalencias_Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodCarrera1" type="xs:string" />
+              <xs:element name="strCodMatCar1" type="xs:string" />
+              <xs:element name="strCodCarrera2" type="xs:string" />
+              <xs:element name="strCodMatCar2" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreCarrera1" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreCarrera2" type="xs:string" />
+              <xs:element minOccurs="0" name="strBaseDatos1" type="xs:string" />
+              <xs:element minOccurs="0" name="strBaseDatos2" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria1" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria2" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Carreras">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strBaseDatos" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="rptEquivalencias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Carrera1" type="xs:string" />
+              <xs:element name="Carrera2" type="xs:string" />
+              <xs:element name="Materia1" type="xs:string" />
+              <xs:element name="Materia2" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CarrerasConEquivalencia">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodCarrera1" type="xs:string" />
+              <xs:element minOccurs="0" name="Carrera1" type="xs:string" />
+              <xs:element name="CodCarrera2" type="xs:string" />
+              <xs:element minOccurs="0" name="Carrera2" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEquivalenciasKey1">
+      <xs:selector xpath=".//mstns:Equivalencias_Materias" />
+      <xs:field xpath="mstns:strCodCarrera1" />
+      <xs:field xpath="mstns:strCodMatCar1" />
+      <xs:field xpath="mstns:strCodCarrera2" />
+      <xs:field xpath="mstns:strCodMatCar2" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEquivalenciasKey2">
+      <xs:selector xpath=".//mstns:Carreras" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEquivalenciasKey3">
+      <xs:selector xpath=".//mstns:Materias" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosEquivalenciasKey4">
+      <xs:selector xpath=".//mstns:CarrerasConEquivalencia" />
+      <xs:field xpath="mstns:CodCarrera1" />
+      <xs:field xpath="mstns:CodCarrera2" />
+    </xs:unique>
+    <xs:keyref name="CarrerasEquivalencias_Materias1" refer="mstns:dtstDatosEquivalenciasKey2">
+      <xs:selector xpath=".//mstns:Equivalencias_Materias" />
+      <xs:field xpath="mstns:strCodCarrera2" />
+    </xs:keyref>
+    <xs:keyref name="CarrerasEquivalencias_Materias" refer="mstns:dtstDatosEquivalenciasKey2">
+      <xs:selector xpath=".//mstns:Equivalencias_Materias" />
+      <xs:field xpath="mstns:strCodCarrera1" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

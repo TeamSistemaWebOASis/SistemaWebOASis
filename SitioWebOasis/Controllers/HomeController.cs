@@ -70,6 +70,8 @@ namespace SitioWebOasis.Controllers
 
                         //  Añadir la cookie a la respuesta
                         Response.Cookies.Add(cookie);
+
+                        //  Seteo el tiempo de session en "20" minutos
                         Session.Timeout = 20;
                     }else{
                         this.Session["UsuarioActual"] = new Usuario();
@@ -152,6 +154,19 @@ namespace SitioWebOasis.Controllers
         private Usuario UsuarioActual
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
+        }
+
+
+        [HttpPost]
+        public ContentResult getEstadoSesion()
+        {
+            //  ActionExecutingContext = 
+            JsonResult rstEstSession = default(JsonResult);
+            int dtSession = (HttpContext.Session != null)
+                                ? HttpContext.Session.Timeout
+                                : default(int);
+
+            return Content($"estado: \"1\",  tiempo: \"{dtSession.ToString()}\"");
         }
     }
 }

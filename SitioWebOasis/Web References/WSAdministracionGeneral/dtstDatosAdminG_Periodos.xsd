@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" id="dtstDatosAdminG_Periodos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminG_Periodos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Periodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+              <xs:element name="dtFechaInic" type="xs:dateTime" />
+              <xs:element name="dtFechaFin" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeMatOrd" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeMatExt" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeMatPro" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeRetMat" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="bUtilizado" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminG_PeriodosKey1">
+      <xs:selector xpath=".//mstns:Periodos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
