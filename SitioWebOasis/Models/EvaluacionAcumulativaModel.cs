@@ -52,9 +52,7 @@ namespace SitioWebOasis.Models
                 dsEvAcumulativa = (rstEvAcumulativa != null) 
                                     ? rstEvAcumulativa
                                     : new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
-            }
-            catch (System.Exception ex)
-            {
+            }catch (System.Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getAsignaturasDocente");
             }
@@ -78,26 +76,29 @@ namespace SitioWebOasis.Models
                 string numMatricula = string.Empty;
                 string promedio = string.Empty;
                 string numNivel = string.Empty;
+                string estadoCumplimiento = string.Empty;
 
                 foreach (DataRow item in this._dsEvAcumulativa.Acta)
                 {
-                    colorRow = (colorRow == "even") ? "odd" : "even";
+                    colorRow = (colorRow == "odd") ? "even" : "odd";
 
                     numMatricula = this._getNumOrdinal(item["bytNumMat"].ToString(), "matricula");
                     numNivel = this._getNumOrdinal(item["strCodNivel"].ToString(), "nivel");
-                    promedio = this._getPromedio(item);
+                    estadoCumplimiento = (this.strParcialActivo == "3" || this.strParcialActivo == "P") 
+                                            ? this._getEstadoCumplimiento(item["Total"].ToString(), item["bytAsistencia"].ToString()) 
+                                            : "---" ;
 
                     html += " <tr id='" + item["strCodigo"] + "' role='row' class='" + colorRow + "'>";
-                    html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center;'>" + item["No"] + "</td>";
-                    html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left;'>" + item["NombreEstudiante"].ToString().Trim() + "</td>";
-                    html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center;'>" + numMatricula + "</td>";
-                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + item["bytNota1"] + "</td>";
-                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + item["bytNota2"] + "</td>";
-                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + item["bytNota3"] + "</td>";
-                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + item["Total"] + "</td>";
-                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center;'>" + promedio + "</td>";
-                    html += "     <td style='width: 40px;align-content: center; vertical-align: middle; text-align: center;'>" + item["bytAsistencia"] + "</td>";
-                    html += "     <td style='width: 100px;align-content: center; vertical-align: middle; text-align: center;'>" + item["strObservaciones"] + "</td>";
+                    html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["No"] + "</td>";
+                    html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left; font-size: 12px;'>" + item["NombreEstudiante"].ToString().Trim() + "</td>";
+                    html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + numMatricula + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytNota1"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytNota2"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytNota3"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["Total"] + "</td>";
+                    html += "     <td style='width: 40px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytAsistencia"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + estadoCumplimiento + "</td>";
+                    html += "     <td style='width: 100px;align-content: center; vertical-align: middle; text-align: center;font-size: 12px;'>" + item["strObservaciones"] + "</td>";
                     html += " </tr>";
                 }
             }
@@ -197,9 +198,7 @@ namespace SitioWebOasis.Models
 
                 rst = (regEvAcumulado && regFchRegistro)? true 
                                                         : false;
-            }
-            catch (System.Exception ex)
-            {
+            }catch (System.Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_guardarEvAcumulativa");
             }
@@ -208,5 +207,40 @@ namespace SitioWebOasis.Models
         }
 
 
+        private string _getEstadoCumplimiento(string totalAcumulado, string porcientoAsistencia)
+        {
+            string estCumplimiento = "---";
+            int ta = Convert.ToInt16(totalAcumulado);
+            int pa = Convert.ToInt16(porcientoAsistencia);
+
+            try
+            {
+                //  EXONERADO
+                if( ta >= 25 && pa >= 70 ){
+                    estCumplimiento = "<span class='label label-success'>"+ Language.es_ES.LBL_CUMPLIMIENTO_EXONERADO +"</span>";
+                }
+
+                //  EVALUACION FINAL
+                if (ta >= 12 && ta < 25 && pa >= 70){
+                    estCumplimiento = "<span class='label label-default'>"+ Language.es_ES.LBL_CUMPLIMIENTO_EV_FINAL +"</span>"; ;
+                }
+
+                //  REPROBADO
+                if (ta < 12 && pa >= 70){
+                    estCumplimiento = "<span class='label label-danger'>" + Language.es_ES.LBL_CUMPLIMIENTO_REPROBADO + "</span>"; ;
+                }
+
+                //  REPROBADO - FALTAS
+                if (pa < 70){
+                    estCumplimiento = "<span class='label label-danger'>" + Language.es_ES.LBL_CUMPLIMIENTO_REPROBADO_FALTAS + "</span>"; ;
+                }
+            }catch(Exception ex){
+                estCumplimiento = "---";
+                Errores err = new Errores();
+                err.SetError(ex, "_guardarEvAcumulativa");
+            }
+
+            return estCumplimiento;
+        }
     }
 }

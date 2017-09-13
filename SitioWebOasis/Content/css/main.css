@@ -12229,10 +12229,11 @@ div.DTTT_collection a.DTTT_button {
 /*	General Styles
 /*------------------------------------------------*/
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 13px;
-  color: #555;
-  background: #ececec; }
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    color: #555;
+    background: #ececec; 
+}
 
 h1, h2 {
   font-family: "latolight"; }

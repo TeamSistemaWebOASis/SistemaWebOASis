@@ -74,7 +74,7 @@ namespace SitioWebOasis.Library
 
 
 
-        protected string _getNumOrdinal(string numero, string tpo)
+        protected string _getNumOrdinal(string numero, string tpo="nivel")
         {
             string[] ciclosAcademicos = new string[10] { "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo" };
             string[] matricula = new string[3] { "1ra", "2da", "3ra" };
@@ -84,31 +84,31 @@ namespace SitioWebOasis.Library
         }
 
 
-        protected string _getPromedio(DataRow item)
+        protected string _getPromedio(DataRow item, string strParcialActivo)
         {
             string prm = string.Empty;
             decimal n1 = default(decimal);
             decimal n2 = default(decimal);
             decimal n3 = default(decimal);
             decimal rst = default(decimal);
+            decimal dtaParcial = default(decimal);
 
             try
             {
                 n1 = Convert.ToDecimal(item["bytNota1"]);
                 n2 = Convert.ToDecimal(item["bytNota2"]);
                 n3 = Convert.ToDecimal(item["bytNota3"]);
-                rst = (n1 + n2 + n3);
+                dtaParcial = (strParcialActivo != "P")  ? Convert.ToDecimal(strParcialActivo) 
+                                                        : Convert.ToDecimal("3");
 
-                prm = Decimal.Round(Decimal.Divide(rst, Convert.ToDecimal("3")), 2).ToString();
-            }
-            catch (Exception ex)
-            {
+                rst = (n1 + n2 + n3);
+                prm = Decimal.Round(Decimal.Divide(rst, dtaParcial), 2).ToString();
+            }catch (Exception ex){
                 Errores err = new Errores();
-                err.SetError(ex, "_getAsignaturasDocente");
+                err.SetError(ex, "_getPromedio");
             }
 
             return prm;
         }
-
     }
 }

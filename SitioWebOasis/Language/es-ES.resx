@@ -304,7 +304,7 @@
     <value>EVALUACIÓN RECUPERACIÓN</value>
   </data>
   <data name="EST_LBL_EXONERADO" xml:space="preserve">
-    <value>Exonerado</value>
+    <value>EXONERADO</value>
   </data>
   <data name="EST_LBL_HORARIOS" xml:space="preserve">
     <value>Horarios</value>
@@ -441,8 +441,29 @@
   <data name="EST_TB_HORARIO_EXAMENES" xml:space="preserve">
     <value>HORARIO EXAMENES</value>
   </data>
+  <data name="LBL_CUMPLIMIENTO_EV_FINAL" xml:space="preserve">
+    <value>EVALUACIÓN FINAL</value>
+  </data>
+  <data name="LBL_CUMPLIMIENTO_EXONERADO" xml:space="preserve">
+    <value>EXONERADO</value>
+  </data>
+  <data name="LBL_CUMPLIMIENTO_REPROBADO" xml:space="preserve">
+    <value>REPROBADO</value>
+  </data>
+  <data name="LBL_CUMPLIMIENTO_REPROBADO_FALTAS" xml:space="preserve">
+    <value>REPROBADO - FALTAS</value>
+  </data>
   <data name="LST_LBL_ASIGNATURAS_DOCENTE" xml:space="preserve">
     <value>ASIGNATURAS</value>
+  </data>
+  <data name="NOTAS_TB_COL_CUMPLIMIENTO" xml:space="preserve">
+    <value>Cumplimiento</value>
+  </data>
+  <data name="NOTAS_TB_COL_ESTADO" xml:space="preserve">
+    <value>Estado</value>
+  </data>
+  <data name="NOTAS_TB_COL_EV_ACUMULATIVA" xml:space="preserve">
+    <value>EVALUACIÓN ACUMULATIVA</value>
   </data>
   <data name="NOTAS_TB_COL_NIVEL" xml:space="preserve">
     <value>Nivel</value>
@@ -481,7 +502,10 @@
     <value>Promedio: Sumatoria de la Nota uno + Nota dos + Nota tres sobre (/) el numero de parcial vigente</value>
   </data>
   <data name="NOTAS_TB_COL_TOTAL" xml:space="preserve">
-    <value>Total</value>
+    <value>Total Acumulado</value>
+  </data>
+  <data name="NOTAS_TB_COL_TOTALIZADOS" xml:space="preserve">
+    <value>TOTALIZADOS</value>
   </data>
   <data name="NOTAS_TB_COL_TOTAL_TOOL_TIP" xml:space="preserve">
     <value>Sumatoria: Nota uno + Nota dos + Nota tres</value>

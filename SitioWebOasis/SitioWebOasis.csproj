@@ -344,6 +344,8 @@
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\my-custom-styles.css" />
     <Content Include="Content\css\skins\darkblue.css" />
+    <Content Include="Content\css\skins\red.css" />
+    <Content Include="Content\css\skins\slategray - Copia.css" />
     <Content Include="Content\css\skins\slategray.css" />
     <Content Include="Content\css\ui.jqgrid-bootstrap.css" />
     <Content Include="Content\ico\favicon.png" />
@@ -356,9 +358,10 @@
     <Content Include="Content\img\EstudianteFemeninoDefault.png" />
     <Content Include="Content\img\EstudianteMasculinoDefault.png" />
     <Content Include="Content\img\img-estudiante.jpg" />
-    <Content Include="Content\img\kingadmin-logo-white.png" />
-    <Content Include="Content\img\kingadmin-logo.png" />
     <Content Include="Content\img\sistema_academico-logo.png" />
+    <Content Include="Content\img\__sistema_academico-logo.png" />
+    <Content Include="Content\img\_kingadmin-logo-white.png" />
+    <Content Include="Content\img\_kingadmin-logo.png" />
     <Content Include="Content\img\user-avatar_femenino.png" />
     <Content Include="Content\img\user-avatar_masculino.png" />
     <Content Include="Content\img\user1.png" />

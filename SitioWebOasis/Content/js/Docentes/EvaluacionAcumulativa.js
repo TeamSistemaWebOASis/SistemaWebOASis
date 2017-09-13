@@ -57,7 +57,7 @@ EvaluacionAcumulativa.prototype.acumulado = function(){
 
 
 EvaluacionAcumulativa.prototype.getEstadoEvaluacion = function () {
-    var rst = false;
+    var rst = "---";
     var acumulado = this.acumulado();
 
     if (this.parcialActivo == "3") {

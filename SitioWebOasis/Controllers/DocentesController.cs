@@ -6,6 +6,7 @@ using SitioWebOasis.Models;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using System.Web.Optimization;
 
 namespace SitioWebOasis.Controllers
 {
@@ -21,7 +22,7 @@ namespace SitioWebOasis.Controllers
         }
 
 
-        [OutputCache(Duration = 8000, VaryByParam = "strCodNivel, strCodAsignatura, strCodParalelo")]
+        //  [OutputCache(Duration = 8000, VaryByParam = "strCodNivel, strCodAsignatura, strCodParalelo")]
         public ActionResult EvaluacionAsignatura (string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
             //  modelo - EVALUACION ACUMULATIVA

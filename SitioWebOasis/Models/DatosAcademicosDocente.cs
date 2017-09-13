@@ -86,9 +86,12 @@ namespace SitioWebOasis.Models
         public string getHTMLAsignaturasDocente()
         {
             string rst = string.Empty;
-            string alertaEquivalencia = "even";
+            string nivel = string.Empty;
+            string color = "odd";
+            string evActiva = string.Empty;
+            string parcialActivo = string.Empty;
 
-            rst += " <tr role='row' class='" + alertaEquivalencia + "'>";
+            rst += " <tr role='row' class='" + color + "'>";
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
@@ -96,20 +99,24 @@ namespace SitioWebOasis.Models
             {
                 int x = 0;
                 rst = string.Empty;
+                EvaluacionActiva ea = new EvaluacionActiva();
+                evActiva = ea.getDtaEvaluacionActiva();
+                parcialActivo = (evActiva != "P")   ? this._getNumOrdinal(evActiva) 
+                                                    : Language.es_ES.DOC_TB_EV_FINAL;
 
                 foreach (DataRow item in this._dtstCursosDocente.Cursos)
                 {
-                    rst += "<tr>";
-                    rst += "    <td><a href='#'>"+ x++ +"</a></td>";
-                    rst += "    <td><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/"+ item["strCodParalelo"].ToString() + "'>"+ item["strNombreMateria"].ToString() +"</a></td>";
-                    rst += "	<td>" + item["strCodNivel"].ToString() + "</td>";
-                    rst += "	<td>" + item["strCodParalelo"].ToString() + "</td>";
-                    rst += "	<td>";
-                    rst += "		<div class='progress'>";
-                    rst += "			<div class='progress-bar' data-transitiongoal='95' aria-valuenow='95' style='width: 95%'>95%</div>";
-                    rst += "		</div>";
-                    rst += "	</td>";
-                    rst += "	<td><span class='label label-warning'>MEDIUM</span></td>";
+                    
+                    color = (color == "odd") ? "even": "odd";
+                    nivel = this._getNumOrdinal(item["strCodNivel"].ToString());
+                    
+                    rst += "<tr role='row' class='" + color + "'>";
+                    rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + ++x +"</td>";
+                    rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/"+ item["strCodParalelo"].ToString() + "'>"+ item["strNombreMateria"].ToString() +"</a></td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>"+ nivel +"</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>"+ item["strCodParalelo"].ToString() +"</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>"+ parcialActivo + "</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'><span class='label label-warning'>MEDIUM</span></td>";
                     rst += "</tr>";
                 }
             }

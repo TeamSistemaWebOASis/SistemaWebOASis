@@ -619,7 +619,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Exonerado.
+        ///   Busca una cadena traducida similar a EXONERADO.
         /// </summary>
         public static string EST_LBL_EXONERADO {
             get {
@@ -1033,11 +1033,74 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
+        /// </summary>
+        public static string LBL_CUMPLIMIENTO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("LBL_CUMPLIMIENTO_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a EXONERADO.
+        /// </summary>
+        public static string LBL_CUMPLIMIENTO_EXONERADO {
+            get {
+                return ResourceManager.GetString("LBL_CUMPLIMIENTO_EXONERADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a REPROBADO.
+        /// </summary>
+        public static string LBL_CUMPLIMIENTO_REPROBADO {
+            get {
+                return ResourceManager.GetString("LBL_CUMPLIMIENTO_REPROBADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a REPROBADO - FALTAS.
+        /// </summary>
+        public static string LBL_CUMPLIMIENTO_REPROBADO_FALTAS {
+            get {
+                return ResourceManager.GetString("LBL_CUMPLIMIENTO_REPROBADO_FALTAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ASIGNATURAS.
         /// </summary>
         public static string LST_LBL_ASIGNATURAS_DOCENTE {
             get {
                 return ResourceManager.GetString("LST_LBL_ASIGNATURAS_DOCENTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cumplimiento.
+        /// </summary>
+        public static string NOTAS_TB_COL_CUMPLIMIENTO {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_CUMPLIMIENTO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Estado.
+        /// </summary>
+        public static string NOTAS_TB_COL_ESTADO {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ESTADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a EVALUACIÓN ACUMULATIVA.
+        /// </summary>
+        public static string NOTAS_TB_COL_EV_ACUMULATIVA {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EV_ACUMULATIVA", resourceCulture);
             }
         }
         
@@ -1150,7 +1213,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Total.
+        ///   Busca una cadena traducida similar a Total Acumulado.
         /// </summary>
         public static string NOTAS_TB_COL_TOTAL {
             get {
@@ -1164,6 +1227,15 @@ namespace Language {
         public static string NOTAS_TB_COL_TOTAL_TOOL_TIP {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_TOTAL_TOOL_TIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a TOTALIZADOS.
+        /// </summary>
+        public static string NOTAS_TB_COL_TOTALIZADOS {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_TOTALIZADOS", resourceCulture);
             }
         }
         

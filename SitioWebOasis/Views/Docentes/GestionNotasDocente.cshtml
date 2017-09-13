@@ -4,6 +4,11 @@
     ViewBag.Title = "Gestión de Notas - ";
 }
 
+
+@*@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/slategray.css")" rel="stylesheet" type="text/css" />
+}*@
+
 @section scripts{
     @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
     <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
@@ -133,16 +138,22 @@
                                     <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
                                         <thead>
                                             <tr role="row">
-                                                <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
-                                                <th style="width: 400px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
-                                                <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_01 </th>
-                                                <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
-                                                <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
+                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="3">@Language.es_ES.NOTAS_TB_COL_EV_ACUMULATIVA</th>
+                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="3">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                            </tr>
+
+                                            <tr role="row">
+                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_01 </th>
+                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
+                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
+
                                                 <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_TOTAL</th>
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PROMEDIO</th>
                                                 <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
-                                                <th style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
                                             </tr>
                                         </thead>
                                         <tbody>

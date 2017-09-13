@@ -7,6 +7,10 @@
     <title>@ViewBag.Title - @Language.es_ES.SA_VERSION.ToString()</title>
     @Styles.Render("~/Content/css")
 
+    @if (IsSectionDefined("AddToHead")){
+        @RenderSection("AddToHead", required: false)
+    }
+
 </head>
 
 <body class="ontop-nav topnav-fixed">
