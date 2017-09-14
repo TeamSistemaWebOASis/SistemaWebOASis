@@ -25,8 +25,7 @@ namespace SitioWebOasis.Models
         private DatosAcademicosDocente _dad;
 
 
-        public EvaluacionesDocenteModel()
-        {
+        public EvaluacionesDocenteModel(){
             this._dad = new DatosAcademicosDocente(this.UsuarioActual.CarreraActual.Codigo.ToString());
         }
 

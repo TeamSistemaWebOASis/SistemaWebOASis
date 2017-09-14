@@ -33,7 +33,7 @@ namespace SitioWebOasis.Library
         /// <returns> Retorna la evaluacion vigente, en caso de no existir ninguna evaluacion activa retorna un valor cero (0) </returns>
         public string getDtaEvaluacionActiva()
         {
-            string dtaEvaluacionActiva = "NA";
+            string dtaEvaluacionActiva = "ER";
             try
             {
                 ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
@@ -55,7 +55,7 @@ namespace SitioWebOasis.Library
                                 case "FN1": dtaEvaluacionActiva = "1"; break;
                                 case "FN2": dtaEvaluacionActiva = "2"; break;
                                 case "FN3": dtaEvaluacionActiva = "3"; break;
-                                case "FNP": dtaEvaluacionActiva = "P"; break;
+                                case "FNP": dtaEvaluacionActiva = "EF"; break;
                             }
 
                             break;
@@ -63,12 +63,13 @@ namespace SitioWebOasis.Library
                     }
                 }
             }catch(Exception ex){
+                dtaEvaluacionActiva = string.Empty;
+
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaParametro");
             }
 
-            //  return dtaEvaluacionActiva;
-            return "P";
+            return dtaEvaluacionActiva;
         }
 
     }

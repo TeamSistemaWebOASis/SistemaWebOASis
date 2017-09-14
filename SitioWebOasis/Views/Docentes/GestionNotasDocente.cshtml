@@ -2,6 +2,54 @@
 
 @{
     ViewBag.Title = "Gestión de Notas - ";
+    var strParcialActivo = Model.strParcialActivo.ToString();
+    var colorP1 = "btn-success";
+    var colorP2 = "btn-success";
+    var colorP3 = "btn-success";
+    var colorEF = "btn-success";
+    var colorER = "btn-success";
+    var activoEA = "collapse in";
+    var activoEF = "collapse";
+    var activoER = "collapse";
+
+    switch (strParcialActivo){
+        case "1":   colorP2 = "btn-warning";
+            colorP3 = "btn-warning";
+            colorEF = "btn-warning";
+            colorER = "btn-warning";
+            break;
+
+        case "2":   colorP1 = "btn-warning";
+            colorP3 = "btn-warning";
+            colorEF = "btn-warning";
+            colorER = "btn-warning";
+            break;
+
+        case "3":   colorP1 = "btn-warning";
+            colorP2 = "btn-warning";
+            colorEF = "btn-warning";
+            colorER = "btn-warning";
+            break;
+
+        case "EF":   colorP1 = "btn-warning";
+            colorP2 = "btn-warning";
+            colorP3 = "btn-warning";
+            colorER = "btn-warning";
+            activoEA = "collapse";
+            activoEF = "collapse in";
+            activoER = "collapse";
+            break;
+
+        case "ER":
+            colorP1 = "btn-warning";
+            colorP2 = "btn-warning";
+            colorP3 = "btn-warning";
+            colorEF = "btn-warning";
+            activoEA = "collapse";
+            activoEF = "collapse";
+            activoER = "collapse in";
+            break;
+    }
 }
 
 
@@ -70,7 +118,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in">
+                        <div id="collapseOne" class="panel-collapse @activoEA">
                             <div class="panel-body">
 
                                 <div id="msmGrdEvAcumulativa" class="alert alert-info fade in" hidden="hidden">
@@ -78,24 +126,25 @@
                                     <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
                                 </div>
 
+                                @*BOTONES DE IMPRESION DE ACTAS*@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         @*IMPRESION DEL ACTA PARCIAL #01*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
-                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
+                                            <button type="button" class="btn @colorP1 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="btn_p1_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="btn_p1_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="btn_p1_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
 
                                         @*IMPRESION DEL ACTA PARCIAL #02*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
-                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button type="button" class="btn @colorP2 btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
+                                            <button type="button" class="btn @colorP2 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -106,8 +155,8 @@
 
                                         @*IMPRESION DEL ACTA PARCIAL #03*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
-                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button type="button" class="btn @colorP3 btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
+                                            <button type="button" class="btn @colorP3 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -121,7 +170,7 @@
                                 <hr class="inner-separator">
 
                                 @* GRID DE EVALUACION ACUMULATIVA *@
-                                @* Si no existe ninguna evaluacion activa muestro el grid solo de lectura *@
+                                @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
                                 @if (Model.strParcialActivo != "P" && Model.strParcialActivo != "NA")
                                 {
                                     <table id="grdEvAcumulativa"></table>
@@ -131,9 +180,7 @@
                                             class="btn btn-success pull-right">
                                         <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA
                                     </button>
-                                }
-                                else
-                                {
+                                }else{
                                     @*TABLA DE NOTAS DEL ESTUDIANTE*@
                                     <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
                                         <thead>
@@ -162,7 +209,6 @@
                                         </tbody>
                                     </table>
                                 }
-                                
 
                             </div>
                         </div>
@@ -180,7 +226,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
+                        <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
                                 <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
@@ -188,12 +234,13 @@
                                     <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
                                 </div>
 
+                                @*BOTONES DE IMPRESION ACTA EVALUACION FINAL*@
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @*  IMPRESION DEL ACTA EVALUACION FINAL #01 *@
+                                        @*  IMPRESION DEL ACTA EVALUACION FINAL *@
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n final </button>
-                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n final </button>
+                                            <button type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -231,7 +278,7 @@
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
+                        <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
 
                                 <div class="alert alert-info fade in">
@@ -243,8 +290,8 @@
                                     <div class="col-sm-12">
                                         @*IMPRESION DEL ACTA EVALUACION RECUPERACION #01*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-warning btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n recuperaci&oacute;n </button>
-                                            <button type="button" class="btn btn-warning btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n recuperaci&oacute;n </button>
+                                            <button type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -283,7 +330,7 @@
     @Html.Hidden("paralelo", @Model.strCodParalelo)
 
     @* PARCIAL ACTIVO *@
-    @Html.Hidden("dtaParcialActivo", @Model.strParcialActivo.ToString())
+    @Html.Hidden("dtaParcialActivo", @strParcialActivo)
 
     @* DATOS EVALUACION ACUMULATIVA *@
     @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())

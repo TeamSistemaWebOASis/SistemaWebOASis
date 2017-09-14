@@ -22,9 +22,9 @@ namespace SitioWebOasis.Models
 
         public DatosAcademicosEstudiante( string dtaPeriodoAcademico = "" )
         {
-            periodoEstudiante = (string.IsNullOrEmpty(dtaPeriodoAcademico)) 
-                                    ? this._getUltimoPeriodoEstudiante() 
-                                    : dtaPeriodoAcademico;
+            this.periodoEstudiante = (string.IsNullOrEmpty(dtaPeriodoAcademico)) 
+                                        ? this._getUltimoPeriodoEstudiante() 
+                                        : dtaPeriodoAcademico;
         }
 
 
@@ -55,14 +55,11 @@ namespace SitioWebOasis.Models
         {
             string ultimoPeriodo = "";
 
-            try
-            {
+            try{
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
                 ultimoPeriodo = du.getUltimoPeriodoEstudiante(  this.UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 this.UsuarioActual.Cedula.ToString());
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getUltimoPeriodoEstudiante - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }

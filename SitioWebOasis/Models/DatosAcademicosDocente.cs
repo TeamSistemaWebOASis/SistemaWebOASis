@@ -95,29 +95,32 @@ namespace SitioWebOasis.Models
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
-            if (this._dtstCursosDocente.Cursos.Count > 0)
-            {
-                int x = 0;
-                rst = string.Empty;
+            if (this._dtstCursosDocente.Cursos.Count > 0){
+                int x = 0;                
                 EvaluacionActiva ea = new EvaluacionActiva();
                 evActiva = ea.getDtaEvaluacionActiva();
-                parcialActivo = (evActiva != "P")   ? this._getNumOrdinal(evActiva) 
-                                                    : Language.es_ES.DOC_TB_EV_FINAL;
 
-                foreach (DataRow item in this._dtstCursosDocente.Cursos)
+                if( !string.IsNullOrEmpty(evActiva))
                 {
-                    
-                    color = (color == "odd") ? "even": "odd";
-                    nivel = this._getNumOrdinal(item["strCodNivel"].ToString());
-                    
-                    rst += "<tr role='row' class='" + color + "'>";
-                    rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + ++x +"</td>";
-                    rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/"+ item["strCodParalelo"].ToString() + "'>"+ item["strNombreMateria"].ToString() +"</a></td>";
-                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>"+ nivel +"</td>";
-                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>"+ item["strCodParalelo"].ToString() +"</td>";
-                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>"+ parcialActivo + "</td>";
-                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'><span class='label label-warning'>MEDIUM</span></td>";
-                    rst += "</tr>";
+                    rst = string.Empty;
+                    parcialActivo = (evActiva != "EF" && evActiva != "ER")  ? this._getNumOrdinal(evActiva)
+                                                                            : (evActiva == "EF")? Language.es_ES.DOC_TB_EV_FINAL
+                                                                                                : Language.es_ES.DOC_TB_EV_RECUPERACION;
+
+                    foreach (DataRow item in this._dtstCursosDocente.Cursos)
+                    {
+                        color = (color == "odd") ? "even" : "odd";
+                        nivel = this._getNumOrdinal(item["strCodNivel"].ToString());
+
+                        rst += "<tr role='row' class='" + color + "'>";
+                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + ++x + "</td>";
+                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/" + item["strCodParalelo"].ToString() + "'>" + item["strNombreMateria"].ToString() + "</a></td>";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + parcialActivo + "</td>";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'><span class='label label-warning'>MEDIUM</span></td>";
+                        rst += "</tr>";
+                    }
                 }
             }
 
