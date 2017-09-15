@@ -61,17 +61,23 @@
     @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
     <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
 
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-    <script src="~/Content/js/Docentes/GestionNotasAcumulado.js?v1.0.109"> </script>
-    <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.21"> </script>
+    @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3"){
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
+        <script src="~/Content/js/Docentes/GestionNotasAcumulado.js?v1.0.109"> </script>
+        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.21"> </script>
+    }
 
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
-    <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.22"></script>
-    <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.20"></script>
+    @if (strParcialActivo == "EF"){
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
+        <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.22"></script>
+        <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.20"></script>
+    }
 
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
-    <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
-    <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
+    @if (strParcialActivo == "ER"){
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+        <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
+        <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
+    }
 }
 
 <div class="main-content">
@@ -229,38 +235,44 @@
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
-                                <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
-                                    <button class="close" data-dismiss="alert">×</button>
-                                    <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
-                                </div>
+                                @if(strParcialActivo == "EF" || strParcialActivo == "ER") {
+                                    <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                        <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
+                                    </div>
 
-                                @*BOTONES DE IMPRESION ACTA EVALUACION FINAL*@
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        @*  IMPRESION DEL ACTA EVALUACION FINAL *@
-                                        <div class="btn-group">
-                                            <button type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n final </button>
-                                            <button type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
+                                    @*BOTONES DE IMPRESION ACTA EVALUACION FINAL*@
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            @*  IMPRESION DEL ACTA EVALUACION FINAL *@
+                                            <div class="btn-group">
+                                                <button type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n final </button>
+                                                <button type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                    <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <hr class="inner-separator">
+                                    <hr class="inner-separator">
 
-                                @* GRID DE EVALUACION FINAL *@
-                                <table id="grdEvFinal"></table>
-                                <hr class="inner-separator">
-                                <button id="btnGuardarEvFinal"
-                                        type="button"
-                                        class="btn btn-success pull-right">
-                                    <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
-                                </button>
+                                    @* GRID DE EVALUACION FINAL *@
+                                    <table id="grdEvFinal"></table>
+                                    <hr class="inner-separator">
+                                    <button id="btnGuardarEvFinal"
+                                            type="button"
+                                            class="btn btn-success pull-right">
+                                        <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
+                                    </button>
+                                }else{
+                                    <div class="alert alert-info fade in">
+                                        <i class="fa fa-info-circle"></i> INFORMACION NO DISPONIBLE
+                                    </div>
+                                }
 
                             </div>
                         </div>
@@ -281,36 +293,46 @@
                         <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
 
-                                <div class="alert alert-info fade in">
-                                    <button class="close" data-dismiss="alert">×</button>
-                                    <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
-                                </div>
+                                @if (strParcialActivo == "EF" || strParcialActivo == "ER"){
+                                    <div class="alert alert-info fade in">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                        <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
+                                    </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        @*IMPRESION DEL ACTA EVALUACION RECUPERACION #01*@
-                                        <div class="btn-group">
-                                            <button type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n recuperaci&oacute;n </button>
-                                            <button type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            @*IMPRESION DEL ACTA EVALUACION RECUPERACION #01*@
+                                            <div class="btn-group">
+                                                <button type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n recuperaci&oacute;n </button>
+                                                <button type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                    <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <hr class="inner-separator">
-                                @* GRID DE EVALUACION RECUPERACION *@
-                                <table id="grdEvRecuperacion"></table>
-                                <hr class="inner-separator">
-                                <button id="btnGuardarEvRecuperacion"
-                                        type="button"
-                                        class="btn btn-success pull-right">
-                                    <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION
-                                </button>
+                                    <hr class="inner-separator">
+                                    @* GRID DE EVALUACION RECUPERACION *@
+                                    <table id="grdEvRecuperacion"></table>
+                                    <hr class="inner-separator">
+
+                                    <button id="btnGuardarEvRecuperacion"
+                                            type="button"
+                                            class="btn btn-success pull-right">
+                                        <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION
+                                    </button>
+                                }else{
+                                    <div class="alert alert-info fade in">
+                                        <i class="fa fa-info-circle"></i> INFORMACION NO DISPONIBLE
+                                    </div>
+                                }
+
+
+
                             </div>
                         </div>
                     </div>

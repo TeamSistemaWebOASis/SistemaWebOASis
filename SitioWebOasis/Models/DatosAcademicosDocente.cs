@@ -118,7 +118,9 @@ namespace SitioWebOasis.Models
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + parcialActivo + "</td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'><span class='label label-warning'>MEDIUM</span></td>";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>";
+                        rst += "	    <span id='mini-bar-chart"+ ++x +"' class='mini-bar-chart'><canvas width='53' height='25' style='display: inline-block; vertical-align: top; width: 53px; height: 25px;'></canvas></span>";
+                        rst += "    </td>";
                         rst += "</tr>";
                     }
                 }

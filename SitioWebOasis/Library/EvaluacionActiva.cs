@@ -69,7 +69,8 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "_getDtaParametro");
             }
 
-            return dtaEvaluacionActiva;
+            //  return dtaEvaluacionActiva;
+            return "1";
         }
 
     }
