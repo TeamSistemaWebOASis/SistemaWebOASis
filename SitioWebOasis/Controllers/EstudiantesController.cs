@@ -77,7 +77,7 @@ namespace SitioWebOasis.Controllers
         {
             try
             {
-                string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioAcademico.rdlc");
+                string reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptActaEvaluacionesConNotas.rdlc");
                 
                 HorarioEstudiante he = new Models.HorarioEstudiante(idCurso);                
                 LocalReport rptHorariosAcademicoEstudiante = he.getReporteHorarios(reportPath);

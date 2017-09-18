@@ -1,4 +1,5 @@
 ﻿using GestorErrores;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using OAS_Seguridad.Cliente;
@@ -242,5 +243,141 @@ namespace SitioWebOasis.Models
 
             return estCumplimiento;
         }
+
+
+        
+        public LocalReport getRptEvAcumulativa(string reportPath, string impParcial = "1")
+        {
+            LocalReport rptEvAcumulativa = new LocalReport();
+
+            try{
+                ReportDataSource rds = new ReportDataSource();
+                rds.Name = "dtsActasAcumuladas";
+                rds.Value = this._dsEvAcumulativa.Acta;
+
+                rptEvAcumulativa.DataSources.Clear();
+                rptEvAcumulativa.DataSources.Add(rds);
+                rptEvAcumulativa.ReportPath = reportPath;
+
+                rptEvAcumulativa.SetParameters(this._getParametrosGeneralesReporte());
+                rptEvAcumulativa.Refresh();
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "getReporteHorarios");
+            }
+
+            return rptEvAcumulativa;
+        }
+
+        private IEnumerable<ReportParameter> _getParametrosGeneralesReporte()
+        {
+            WSInfoCarreras.ParametrosCarrera pc = this._getParametrosCarrera();
+            List<ReportParameter> lstPrmRptEvAcumulativa = new List<ReportParameter>();
+
+            string lblFacultad = "FACULTAD:";
+            string lblCarrera = "CARRERA:";
+            string lblEscuela = "ESCUELA:";
+
+            string facultad = default(string);
+            string carrera = default(string);
+            string escuela = default(string);
+            string strCurso = default(string);
+
+            try
+            {
+                ReportParameter prmRptHorarioAcademico = new ReportParameter();
+
+                lstPrmRptHorarioAcademico.Add(  new ReportParameter("strPeriodoAcademico", 
+                                                                    this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString().ToUpper()));
+
+                strCurso = (this._strCodNivel != "-2")
+                                ? this._getDescripcionCurso(this._strCodNivel, this._strCodParalelo)
+                                : "";
+
+                switch (UsuarioActual.CarreraActual.TipoEntidad.ToString())
+                {
+                    case "CAR":
+                        facultad = pc.NombreFacultad;
+                        carrera = pc.NombreCarrera;
+                        escuela = pc.NombreEscuela;
+                        break;
+
+                    case "CAA":
+                        lblFacultad = "";
+                        lblCarrera = "";
+                        lblEscuela = "";
+
+                        facultad = pc.NombreFacultad;
+                        carrera = pc.NombreCarrera;
+                        escuela = "";
+                        break;
+                }
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strInstitucion",
+                                                                    Language.es_ES.STR_INSTITUCION));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblHorarioAcademico",
+                                                                    Language.es_ES.STR_HORARIO_ACADEMICO));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblHorarioExamenes",
+                                                                    Language.es_ES.STR_HORARIO_EXAMENES));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblPeriodoAcademico",
+                                                                    Language.es_ES.STR_PERIODO_ACADEMICO));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblFacultad",
+                                                                    lblFacultad));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblCarrera",
+                                                                    lblCarrera));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblEscuela",
+                                                                    lblEscuela));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strFacultad",
+                                                                    facultad));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strEscuela",
+                                                                    carrera));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strCarrera",
+                                                                    escuela));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strCurso",
+                                                                    strCurso));
+
+                lstPrmRptHorarioAcademico.Add(new ReportParameter("strFuente",
+                                                                    Language.es_ES.STR_FUENTE_REPORTE));
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getDatosGeneralesReporte");
+            }
+
+            return lstPrmRptHorarioAcademico;
+        }
+
+
+        private WSInfoCarreras.ParametrosCarrera _getParametrosCarrera()
+        {
+            WSInfoCarreras.ParametrosCarrera pc = new WSInfoCarreras.ParametrosCarrera();
+            try
+            {
+                WSInfoCarreras.InfoCarreras ic = new WSInfoCarreras.InfoCarreras();
+                pc = ic.GetParametrosCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getParametrosCarrera");
+            }
+
+            return pc;
+        }
+
+
     }
 }

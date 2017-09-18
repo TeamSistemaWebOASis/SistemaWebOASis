@@ -63,8 +63,8 @@
 
     @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3"){
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-        <script src="~/Content/js/Docentes/GestionNotasAcumulado.js?v1.0.109"> </script>
-        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.21"> </script>
+        <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.27"> </script>
+        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.27"> </script>
     }
 
     @if (strParcialActivo == "EF"){
@@ -140,10 +140,10 @@
                                             <button type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
                                             <button type="button" class="btn @colorP1 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a id="btn_p1_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="btn_p1_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="p1_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="p1_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a id="btn_p1_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="p1_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
 
@@ -152,10 +152,10 @@
                                             <button type="button" class="btn @colorP2 btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
                                             <button type="button" class="btn @colorP2 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="p2_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="p2_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="p2_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
 
@@ -164,10 +164,10 @@
                                             <button type="button" class="btn @colorP3 btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
                                             <button type="button" class="btn @colorP3 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="p3_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="p3_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="p3_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
                                     </div>

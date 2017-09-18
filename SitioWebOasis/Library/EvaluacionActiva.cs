@@ -33,7 +33,7 @@ namespace SitioWebOasis.Library
         /// <returns> Retorna la evaluacion vigente, en caso de no existir ninguna evaluacion activa retorna un valor cero (0) </returns>
         public string getDtaEvaluacionActiva()
         {
-            string dtaEvaluacionActiva = "ER";
+            string dtaEvaluacionActiva = "";
             try
             {
                 ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
@@ -70,7 +70,7 @@ namespace SitioWebOasis.Library
             }
 
             //  return dtaEvaluacionActiva;
-            return "1";
+            return "2";
         }
 
     }

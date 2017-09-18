@@ -1,6 +1,7 @@
 ﻿using GestorErrores;
 using OAS_Seguridad.Cliente;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
+using SitioWebOasis.WSDatosUsuario;
 using System;
 using System.Data;
 
@@ -110,5 +111,50 @@ namespace SitioWebOasis.Library
 
             return prm;
         }
+
+
+
+        private WSDatosUsuario.dtstDatosCursosCarrera _getCursosCarrera()
+        {
+            WSDatosUsuario.dtstDatosCursosCarrera dsCC = new dtstDatosCursosCarrera();
+
+            try
+            {
+                ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
+                dsCC = du.getCursosCarrera( UsuarioActual.CarreraActual.Codigo.ToString(),
+                                            this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString());
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getCursosCarrera");
+            }
+
+            return dsCC;
+        }
+
+
+        protected string _getDescripcionCurso(string strCodNivel, string strCodParalelo)
+        {
+            string rst = default(string);
+
+            try
+            {
+                dtstDatosCursosCarrera dsCursosCarrera = this._getCursosCarrera();
+                DataRow[] rstFiltro = dsCursosCarrera.CursosCarrera.Select("strCodParalelo = '" + strCodParalelo + "' AND strCodNivel = '" + strCodNivel + "'");
+
+                rst = (rstFiltro.Length > 0)
+                        ? rstFiltro[0]["strDescripcionNivel"].ToString()
+                        : "";
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getDescripcionCurso");
+            }
+
+            return rst;
+        }
+
     }
 }

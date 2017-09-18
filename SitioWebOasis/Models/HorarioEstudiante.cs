@@ -322,16 +322,14 @@ namespace SitioWebOasis.Models
             WSGestorDeReportesEvaluacion.dtstHorarioExamenes dsConsultaHorarioExamenes = new WSGestorDeReportesEvaluacion.dtstHorarioExamenes();
             WSGestorDeReportesEvaluacion.dtstHorarioExamenes dsHorarioExamenes = new WSGestorDeReportesEvaluacion.dtstHorarioExamenes();
 
-            try
-            {
+            try{
                 ProxySeguro.GestorDeReportesEvaluacion re = new ProxySeguro.GestorDeReportesEvaluacion();
                 re.CookieContainer = new System.Net.CookieContainer();
                 re.set_CodCarrera( UsuarioActual.CarreraActual.Codigo.ToString() );
 
                 dsHorarioExamenes = re.GetHorarioExamenesEstudiante(_dsPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                     UsuarioActual.Cedula.ToString());
-            }
-            catch (Exception ex){
+            }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getHorarioExamenes");
             }
