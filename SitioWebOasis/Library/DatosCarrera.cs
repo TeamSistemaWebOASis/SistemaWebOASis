@@ -4,6 +4,7 @@ using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.WSDatosUsuario;
 using System;
 using System.Data;
+using System.Net;
 
 namespace SitioWebOasis.Library
 {
@@ -22,8 +23,7 @@ namespace SitioWebOasis.Library
 
         protected WSInfoCarreras.dtstPeriodoVigente _dtstPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
 
-        //  public OASisLogin fLogin = SitioWebOasis.CommonClasses.CacheConfig.Get("OASisLogin") as OASisLogin;
-
+        
         public DatosCarrera() { }
 
         
@@ -74,7 +74,6 @@ namespace SitioWebOasis.Library
         }
 
 
-
         protected string _getNumOrdinal(string numero, string tpo="nivel")
         {
             string[] ciclosAcademicos = new string[10] { "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo" };
@@ -111,7 +110,6 @@ namespace SitioWebOasis.Library
 
             return prm;
         }
-
 
 
         private WSDatosUsuario.dtstDatosCursosCarrera _getCursosCarrera()
@@ -154,6 +152,72 @@ namespace SitioWebOasis.Library
             }
 
             return rst;
+        }
+
+
+        protected WSInfoCarreras.ParametrosCarrera _getParametrosCarrera()
+        {
+            WSInfoCarreras.ParametrosCarrera pc = new WSInfoCarreras.ParametrosCarrera();
+
+            try{
+                WSInfoCarreras.InfoCarreras ic = new WSInfoCarreras.InfoCarreras();
+                pc = ic.GetParametrosCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getParametrosCarrera");
+            }
+
+            return pc;
+        }
+
+
+        protected void _getDatosMateria(ref string strAsignatura, 
+                                        ref string strNivel, 
+                                        ref string strPeriodo, 
+                                        ref string strDocente, 
+                                        ref string strSistema, 
+                                        ref float numCreditos, 
+                                        ref byte fHorasTeo, 
+                                        ref byte fHorasPra)
+        {
+            try{
+                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
+                ge.CookieContainer = new CookieContainer();
+                ge.set_fBaseDatos(this._strNombreBD);
+                ge.set_fUbicacion(this._strUbicacion);
+
+                //Buscando los datos de la materia
+                ge.GetDatosMateriaActa( this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
+                                        this._strCodAsignatura,
+                                        this._strCodNivel,
+                                        this._strCodParalelo, 
+                                        ref strAsignatura, 
+                                        ref strNivel, 
+                                        ref strPeriodo, 
+                                        ref strDocente, 
+                                        ref strSistema);
+
+                //Buscando los datos del pensum de la materia
+                ge.GetDatosMateriaPensum(   this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
+                                            this._strCodAsignatura, 
+                                            ref numCreditos, 
+                                            ref fHorasTeo, 
+                                            ref fHorasPra);
+
+            }
+            catch(Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "getDatosMateria");
+
+                strAsignatura = string.Empty;
+                strNivel = string.Empty;
+                strPeriodo = string.Empty;
+                strDocente = string.Empty;
+                strSistema = string.Empty;
+            }
         }
 
     }

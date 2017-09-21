@@ -4,8 +4,8 @@
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
       <s:element name="GetDatosNotasEstudiante">
         <s:complexType>
           <s:sequence>
@@ -49,6 +49,81 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="CerrarGestionNotasParcial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sintCodMatricula_1" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria_3" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolNota1_4" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolNota2_5" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolNota3_6" type="s:unsignedByte" />
+            <s:element minOccurs="0" maxOccurs="1" name="strObservacion_7" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CerrarGestionNotasParcialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CerrarGestionNotasParcialResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updCierreGestionNotasParcial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="sintCodMatricula_1" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo_2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria_3" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolNota1_4" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolNota2_5" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="boolNota3_6" type="s:unsignedByte" />
+            <s:element minOccurs="0" maxOccurs="1" name="strObservacion_7" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updCierreGestionNotasParcialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="updCierreGestionNotasParcialResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNumRegistrosEvAcumulativo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNumRegistrosEvAcumulativoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getNumRegistrosEvAcumulativoResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNumRegistrosEvFinalesRecuperacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getNumRegistrosEvFinalesRecuperacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getNumRegistrosEvFinalesRecuperacionResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetDatosNotasEstudianteSoapIn">
@@ -63,6 +138,30 @@
   <wsdl:message name="GetDatosGradoEstudianteSoapOut">
     <wsdl:part name="parameters" element="tns:GetDatosGradoEstudianteResponse" />
   </wsdl:message>
+  <wsdl:message name="CerrarGestionNotasParcialSoapIn">
+    <wsdl:part name="parameters" element="tns:CerrarGestionNotasParcial" />
+  </wsdl:message>
+  <wsdl:message name="CerrarGestionNotasParcialSoapOut">
+    <wsdl:part name="parameters" element="tns:CerrarGestionNotasParcialResponse" />
+  </wsdl:message>
+  <wsdl:message name="updCierreGestionNotasParcialSoapIn">
+    <wsdl:part name="parameters" element="tns:updCierreGestionNotasParcial" />
+  </wsdl:message>
+  <wsdl:message name="updCierreGestionNotasParcialSoapOut">
+    <wsdl:part name="parameters" element="tns:updCierreGestionNotasParcialResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNumRegistrosEvAcumulativoSoapIn">
+    <wsdl:part name="parameters" element="tns:getNumRegistrosEvAcumulativo" />
+  </wsdl:message>
+  <wsdl:message name="getNumRegistrosEvAcumulativoSoapOut">
+    <wsdl:part name="parameters" element="tns:getNumRegistrosEvAcumulativoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getNumRegistrosEvFinalesRecuperacionSoapIn">
+    <wsdl:part name="parameters" element="tns:getNumRegistrosEvFinalesRecuperacion" />
+  </wsdl:message>
+  <wsdl:message name="getNumRegistrosEvFinalesRecuperacionSoapOut">
+    <wsdl:part name="parameters" element="tns:getNumRegistrosEvFinalesRecuperacionResponse" />
+  </wsdl:message>
   <wsdl:portType name="NotasEstudianteSoap">
     <wsdl:operation name="GetDatosNotasEstudiante">
       <wsdl:input message="tns:GetDatosNotasEstudianteSoapIn" />
@@ -71,6 +170,22 @@
     <wsdl:operation name="GetDatosGradoEstudiante">
       <wsdl:input message="tns:GetDatosGradoEstudianteSoapIn" />
       <wsdl:output message="tns:GetDatosGradoEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CerrarGestionNotasParcial">
+      <wsdl:input message="tns:CerrarGestionNotasParcialSoapIn" />
+      <wsdl:output message="tns:CerrarGestionNotasParcialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="updCierreGestionNotasParcial">
+      <wsdl:input message="tns:updCierreGestionNotasParcialSoapIn" />
+      <wsdl:output message="tns:updCierreGestionNotasParcialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNumRegistrosEvAcumulativo">
+      <wsdl:input message="tns:getNumRegistrosEvAcumulativoSoapIn" />
+      <wsdl:output message="tns:getNumRegistrosEvAcumulativoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getNumRegistrosEvFinalesRecuperacion">
+      <wsdl:input message="tns:getNumRegistrosEvFinalesRecuperacionSoapIn" />
+      <wsdl:output message="tns:getNumRegistrosEvFinalesRecuperacionSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NotasEstudianteSoap" type="tns:NotasEstudianteSoap">
@@ -93,6 +208,42 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CerrarGestionNotasParcial">
+      <soap:operation soapAction="http://tempuri.org/CerrarGestionNotasParcial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updCierreGestionNotasParcial">
+      <soap:operation soapAction="http://tempuri.org/updCierreGestionNotasParcial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumRegistrosEvAcumulativo">
+      <soap:operation soapAction="http://tempuri.org/getNumRegistrosEvAcumulativo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumRegistrosEvFinalesRecuperacion">
+      <soap:operation soapAction="http://tempuri.org/getNumRegistrosEvFinalesRecuperacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NotasEstudianteSoap12" type="tns:NotasEstudianteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -107,6 +258,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetDatosGradoEstudiante">
       <soap12:operation soapAction="http://tempuri.org/GetDatosGradoEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CerrarGestionNotasParcial">
+      <soap12:operation soapAction="http://tempuri.org/CerrarGestionNotasParcial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updCierreGestionNotasParcial">
+      <soap12:operation soapAction="http://tempuri.org/updCierreGestionNotasParcial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumRegistrosEvAcumulativo">
+      <soap12:operation soapAction="http://tempuri.org/getNumRegistrosEvAcumulativo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getNumRegistrosEvFinalesRecuperacion">
+      <soap12:operation soapAction="http://tempuri.org/getNumRegistrosEvFinalesRecuperacion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

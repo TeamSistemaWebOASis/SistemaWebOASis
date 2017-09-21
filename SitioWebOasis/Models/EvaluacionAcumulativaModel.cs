@@ -244,16 +244,17 @@ namespace SitioWebOasis.Models
             return estCumplimiento;
         }
 
-
         
+
         public LocalReport getRptEvAcumulativa(string reportPath, string impParcial = "1")
         {
             LocalReport rptEvAcumulativa = new LocalReport();
 
             try{
+                WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados dtaEvAcumulativa = this._getDtaImpresionEvAcumulativa();
                 ReportDataSource rds = new ReportDataSource();
+                rds.Value = dtaEvAcumulativa.Acta;
                 rds.Name = "dtsActasAcumuladas";
-                rds.Value = this._dsEvAcumulativa.Acta;
 
                 rptEvAcumulativa.DataSources.Clear();
                 rptEvAcumulativa.DataSources.Add(rds);
@@ -271,6 +272,37 @@ namespace SitioWebOasis.Models
             return rptEvAcumulativa;
         }
 
+
+        private WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados _getDtaImpresionEvAcumulativa()
+        {
+            WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados rstEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
+            WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados dsEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
+
+            try{
+                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
+                ge.CookieContainer = new CookieContainer();
+                ge.set_fBaseDatos(this._strNombreBD);
+                ge.set_fUbicacion(this._strUbicacion);
+
+                rstEvAcumulativa = ge.getImprimirActaEvaluaciones(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                    this._strCodAsignatura,
+                                                                    this._strCodNivel,
+                                                                    this._strCodParalelo);
+
+                dsEvAcumulativa = (rstEvAcumulativa != null)
+                                    ? rstEvAcumulativa
+                                    : new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
+            }
+            catch (System.Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getDtaImpresionEvAcumulativa");
+            }
+
+            return dsEvAcumulativa;
+        }
+
+
         private IEnumerable<ReportParameter> _getParametrosGeneralesReporte()
         {
             WSInfoCarreras.ParametrosCarrera pc = this._getParametrosCarrera();
@@ -285,16 +317,26 @@ namespace SitioWebOasis.Models
             string escuela = default(string);
             string strCurso = default(string);
 
+            string strAsignatura = string.Empty;
+            string strNivel = string.Empty;
+            string strPeriodo = string.Empty;
+            string strDocente = string.Empty;
+            string strSistema = string.Empty;
+            float numCreditos = default(float);
+            byte fHorasTeo = default(byte);
+            byte fHorasPra = default(byte);
+
             try
             {
                 ReportParameter prmRptHorarioAcademico = new ReportParameter();
-
-                lstPrmRptHorarioAcademico.Add(  new ReportParameter("strPeriodoAcademico", 
-                                                                    this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString().ToUpper()));
-
-                strCurso = (this._strCodNivel != "-2")
-                                ? this._getDescripcionCurso(this._strCodNivel, this._strCodParalelo)
-                                : "";
+                this._getDatosMateria(  ref strAsignatura, 
+                                        ref strNivel, 
+                                        ref strPeriodo, 
+                                        ref strDocente, 
+                                        ref strSistema, 
+                                        ref numCreditos,
+                                        ref fHorasTeo,
+                                        ref fHorasPra);
 
                 switch (UsuarioActual.CarreraActual.TipoEntidad.ToString())
                 {
@@ -315,67 +357,139 @@ namespace SitioWebOasis.Models
                         break;
                 }
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strInstitucion",
-                                                                    Language.es_ES.STR_INSTITUCION));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strPeriodoAcademico",
+                                                                this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()) );
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblHorarioAcademico",
-                                                                    Language.es_ES.STR_HORARIO_ACADEMICO));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strLblFacultad",
+                                                                lblFacultad));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblHorarioExamenes",
-                                                                    Language.es_ES.STR_HORARIO_EXAMENES));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strLblCarrera",
+                                                                lblCarrera));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblPeriodoAcademico",
-                                                                    Language.es_ES.STR_PERIODO_ACADEMICO));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strLblEscuela",
+                                                                lblEscuela));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblFacultad",
-                                                                    lblFacultad));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strAsignatura",
+                                                                strAsignatura));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblCarrera",
-                                                                    lblCarrera));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strCodMateria",
+                                                                this._strCodAsignatura.ToString().ToUpper()));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblEscuela",
-                                                                    lblEscuela));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strCreditos",
+                                                                Convert.ToString(numCreditos)));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strFacultad",
-                                                                    facultad));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strDocente",
+                                                                this.UsuarioActual.Nombre.ToString().ToUpper()));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strEscuela",
-                                                                    carrera));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strNivel",
+                                                                this._strCodNivel.ToString()));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strCarrera",
-                                                                    escuela));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strParalelo",
+                                                                this._strCodParalelo.ToString()));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strCurso",
-                                                                    strCurso));
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strFacultad",
+                                                                facultad));
 
-                lstPrmRptHorarioAcademico.Add(new ReportParameter("strFuente",
-                                                                    Language.es_ES.STR_FUENTE_REPORTE));
-            }
-            catch (Exception ex)
-            {
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strEscuela",
+                                                                escuela));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strCarrera",
+                                                                carrera));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strURLImagen",
+                                                                ""));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter( "strURLImagenDTIC",
+                                                                ""));
+            }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getDatosGeneralesReporte");
             }
 
-            return lstPrmRptHorarioAcademico;
+            return lstPrmRptEvAcumulativa;
         }
 
 
-        private WSInfoCarreras.ParametrosCarrera _getParametrosCarrera()
+
+        public void cierreGestionNotasParcial(string dtaParcial)
         {
-            WSInfoCarreras.ParametrosCarrera pc = new WSInfoCarreras.ParametrosCarrera();
+            string parcial1 = "0";
+            string parcial2 = "0";
+            string parcial3 = "0";
+
             try
             {
-                WSInfoCarreras.InfoCarreras ic = new WSInfoCarreras.InfoCarreras();
-                pc = ic.GetParametrosCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+                if(this._dsEvAcumulativa.Acta.Rows.Count > 0){
+                    switch (dtaParcial){
+                        case "p1":
+                            parcial1 = "1";
+                        break;
+
+                        case "p2":
+                            parcial1 = "1";
+                            parcial2 = "1";
+                        break;
+                            
+                        case "p3":
+                            parcial1 = "1";
+                            parcial2 = "1";
+                            parcial3 = "1";
+                        break;
+                    }
+
+                    ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                    int numRegEA = ne.getNumRegistrosEvAcumulativo(this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                            this._strCodAsignatura.ToString());
+
+                    if ( dtaParcial == "p1" ){
+
+                        if (numRegEA == 0){
+                            foreach (DataRow item in this._dsEvAcumulativa.Acta)
+                            {
+                                ne.CerrarGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                Convert.ToInt16(item["sintCodMatricula"].ToString()),
+                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this._strCodAsignatura,
+                                                                Convert.ToByte(parcial1),
+                                                                Convert.ToByte(parcial2),
+                                                                Convert.ToByte(parcial3),
+                                                                "Cierre por Sitio Web");
+                            }
+                        }else
+                        {
+                            foreach (DataRow item in this._dsEvAcumulativa.Acta){
+                                ne.updCierreGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                Convert.ToInt16(item["sintCodMatricula"].ToString()),
+                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this._strCodAsignatura,
+                                                                Convert.ToByte(parcial1),
+                                                                Convert.ToByte(parcial2),
+                                                                Convert.ToByte(parcial3),
+                                                                "Cierre por Sitio Web");
+                            }
+                        }
+                    }else if( dtaParcial == "p2" || dtaParcial == "p3" || dtaParcial == "p4" ){
+                        foreach (DataRow item in this._dsEvAcumulativa.Acta){
+                            ne.updCierreGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                            Convert.ToInt16(item["sintCodMatricula"].ToString()),
+                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                            this._strCodAsignatura,
+                                                            Convert.ToByte(parcial1),
+                                                            Convert.ToByte(parcial2),
+                                                            Convert.ToByte(parcial3),
+                                                            "Cierre por Sitio Web");
+
+                        }
+                    }
+                    
+                }
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
                 Errores err = new Errores();
-                err.SetError(ex, "_getParametrosCarrera");
+                err.SetError(ex, "cierreGestionNotasParcial");
             }
-
-            return pc;
         }
 
 

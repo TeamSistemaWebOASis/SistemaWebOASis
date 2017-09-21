@@ -161,6 +161,7 @@ namespace SitioWebOasis.Controllers
                     case "P3":
                         idTypeFile = dtaActa[1];
                         nameFile = this._getDtaRptEvAcumulativa(dtaActa, dtaAsignatura);
+
                     break;
 
                     //  EVALUACION FINAL
@@ -194,10 +195,11 @@ namespace SitioWebOasis.Controllers
         private string _getDtaRptEvAcumulativa( string[] dtaActa, string[] dtaAsignatura)
         {
             //  Creo el nombre del archivo
-            string nameFile = Language.es_ES.EST_TB_HORARIO_ACADEMICO.Replace(" ", "_") + "_" + this.UsuarioActual.Cedula.ToString() + ((dtaActa[1] == "PDF" || dtaActa[1] == "blc") ? ".pdf" : ".xls");
+            string nameFile = Language.es_ES.EST_TB_HORARIO_ACADEMICO.Replace(" ", "_") + "_" + this.UsuarioActual.Cedula.ToString() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
             string reportPath = string.Empty;
             string dtaParcial = dtaActa[0];
             string idTypeFile = dtaActa[1];
+            string strNameFile = string.Empty;
 
             try{
                 EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  dtaAsignatura[1],
@@ -233,7 +235,11 @@ namespace SitioWebOasis.Controllers
 
                 //  Creo el archivo en la ubicacion temporal
                 System.IO.File.WriteAllBytes(fullPath, renderedBytes);
-            }catch(Exception ex)
+
+                //  Ejecuto el proceso de cierre de notas de un parcial activo
+                evAcumulativa.cierreGestionNotasParcial(dtaActa[0]);
+            }
+            catch(Exception ex)
             {
                 nameFile = "-1";
 

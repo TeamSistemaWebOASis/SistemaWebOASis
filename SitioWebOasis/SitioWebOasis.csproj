@@ -359,9 +359,6 @@
     <Content Include="Content\img\EstudianteMasculinoDefault.png" />
     <Content Include="Content\img\img-estudiante.jpg" />
     <Content Include="Content\img\sistema_academico-logo.png" />
-    <Content Include="Content\img\__sistema_academico-logo.png" />
-    <Content Include="Content\img\_kingadmin-logo-white.png" />
-    <Content Include="Content\img\_kingadmin-logo.png" />
     <Content Include="Content\img\user-avatar_femenino.png" />
     <Content Include="Content\img\user-avatar_masculino.png" />
     <Content Include="Content\img\user1.png" />

@@ -33,6 +33,14 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         private System.Threading.SendOrPostCallback GetDatosGradoEstudianteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback CerrarGestionNotasParcialOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback updCierreGestionNotasParcialOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getNumRegistrosEvAcumulativoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getNumRegistrosEvFinalesRecuperacionOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -76,6 +84,18 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         public event GetDatosGradoEstudianteCompletedEventHandler GetDatosGradoEstudianteCompleted;
+        
+        /// <remarks/>
+        public event CerrarGestionNotasParcialCompletedEventHandler CerrarGestionNotasParcialCompleted;
+        
+        /// <remarks/>
+        public event updCierreGestionNotasParcialCompletedEventHandler updCierreGestionNotasParcialCompleted;
+        
+        /// <remarks/>
+        public event getNumRegistrosEvAcumulativoCompletedEventHandler getNumRegistrosEvAcumulativoCompleted;
+        
+        /// <remarks/>
+        public event getNumRegistrosEvFinalesRecuperacionCompletedEventHandler getNumRegistrosEvFinalesRecuperacionCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDatosNotasEstudiante", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -138,6 +158,160 @@ namespace SitioWebOasis.WSNotasEstudiante {
             if ((this.GetDatosGradoEstudianteCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetDatosGradoEstudianteCompleted(this, new GetDatosGradoEstudianteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CerrarGestionNotasParcial", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CerrarGestionNotasParcial(string strCodCarrera, int sintCodMatricula_1, string strCodPeriodo_2, string strCodMateria_3, byte boolNota1_4, byte boolNota2_5, byte boolNota3_6, string strObservacion_7) {
+            object[] results = this.Invoke("CerrarGestionNotasParcial", new object[] {
+                        strCodCarrera,
+                        sintCodMatricula_1,
+                        strCodPeriodo_2,
+                        strCodMateria_3,
+                        boolNota1_4,
+                        boolNota2_5,
+                        boolNota3_6,
+                        strObservacion_7});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CerrarGestionNotasParcialAsync(string strCodCarrera, int sintCodMatricula_1, string strCodPeriodo_2, string strCodMateria_3, byte boolNota1_4, byte boolNota2_5, byte boolNota3_6, string strObservacion_7) {
+            this.CerrarGestionNotasParcialAsync(strCodCarrera, sintCodMatricula_1, strCodPeriodo_2, strCodMateria_3, boolNota1_4, boolNota2_5, boolNota3_6, strObservacion_7, null);
+        }
+        
+        /// <remarks/>
+        public void CerrarGestionNotasParcialAsync(string strCodCarrera, int sintCodMatricula_1, string strCodPeriodo_2, string strCodMateria_3, byte boolNota1_4, byte boolNota2_5, byte boolNota3_6, string strObservacion_7, object userState) {
+            if ((this.CerrarGestionNotasParcialOperationCompleted == null)) {
+                this.CerrarGestionNotasParcialOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCerrarGestionNotasParcialOperationCompleted);
+            }
+            this.InvokeAsync("CerrarGestionNotasParcial", new object[] {
+                        strCodCarrera,
+                        sintCodMatricula_1,
+                        strCodPeriodo_2,
+                        strCodMateria_3,
+                        boolNota1_4,
+                        boolNota2_5,
+                        boolNota3_6,
+                        strObservacion_7}, this.CerrarGestionNotasParcialOperationCompleted, userState);
+        }
+        
+        private void OnCerrarGestionNotasParcialOperationCompleted(object arg) {
+            if ((this.CerrarGestionNotasParcialCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CerrarGestionNotasParcialCompleted(this, new CerrarGestionNotasParcialCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updCierreGestionNotasParcial", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool updCierreGestionNotasParcial(string strCodCarrera, int sintCodMatricula_1, string strCodPeriodo_2, string strCodMateria_3, byte boolNota1_4, byte boolNota2_5, byte boolNota3_6, string strObservacion_7) {
+            object[] results = this.Invoke("updCierreGestionNotasParcial", new object[] {
+                        strCodCarrera,
+                        sintCodMatricula_1,
+                        strCodPeriodo_2,
+                        strCodMateria_3,
+                        boolNota1_4,
+                        boolNota2_5,
+                        boolNota3_6,
+                        strObservacion_7});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updCierreGestionNotasParcialAsync(string strCodCarrera, int sintCodMatricula_1, string strCodPeriodo_2, string strCodMateria_3, byte boolNota1_4, byte boolNota2_5, byte boolNota3_6, string strObservacion_7) {
+            this.updCierreGestionNotasParcialAsync(strCodCarrera, sintCodMatricula_1, strCodPeriodo_2, strCodMateria_3, boolNota1_4, boolNota2_5, boolNota3_6, strObservacion_7, null);
+        }
+        
+        /// <remarks/>
+        public void updCierreGestionNotasParcialAsync(string strCodCarrera, int sintCodMatricula_1, string strCodPeriodo_2, string strCodMateria_3, byte boolNota1_4, byte boolNota2_5, byte boolNota3_6, string strObservacion_7, object userState) {
+            if ((this.updCierreGestionNotasParcialOperationCompleted == null)) {
+                this.updCierreGestionNotasParcialOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdCierreGestionNotasParcialOperationCompleted);
+            }
+            this.InvokeAsync("updCierreGestionNotasParcial", new object[] {
+                        strCodCarrera,
+                        sintCodMatricula_1,
+                        strCodPeriodo_2,
+                        strCodMateria_3,
+                        boolNota1_4,
+                        boolNota2_5,
+                        boolNota3_6,
+                        strObservacion_7}, this.updCierreGestionNotasParcialOperationCompleted, userState);
+        }
+        
+        private void OnupdCierreGestionNotasParcialOperationCompleted(object arg) {
+            if ((this.updCierreGestionNotasParcialCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updCierreGestionNotasParcialCompleted(this, new updCierreGestionNotasParcialCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getNumRegistrosEvAcumulativo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getNumRegistrosEvAcumulativo(string strCodCarrera, string strCodPeriodo, string strCodMateria) {
+            object[] results = this.Invoke("getNumRegistrosEvAcumulativo", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNumRegistrosEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria) {
+            this.getNumRegistrosEvAcumulativoAsync(strCodCarrera, strCodPeriodo, strCodMateria, null);
+        }
+        
+        /// <remarks/>
+        public void getNumRegistrosEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, object userState) {
+            if ((this.getNumRegistrosEvAcumulativoOperationCompleted == null)) {
+                this.getNumRegistrosEvAcumulativoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNumRegistrosEvAcumulativoOperationCompleted);
+            }
+            this.InvokeAsync("getNumRegistrosEvAcumulativo", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria}, this.getNumRegistrosEvAcumulativoOperationCompleted, userState);
+        }
+        
+        private void OngetNumRegistrosEvAcumulativoOperationCompleted(object arg) {
+            if ((this.getNumRegistrosEvAcumulativoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNumRegistrosEvAcumulativoCompleted(this, new getNumRegistrosEvAcumulativoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getNumRegistrosEvFinalesRecuperacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int getNumRegistrosEvFinalesRecuperacion(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
+            object[] results = this.Invoke("getNumRegistrosEvFinalesRecuperacion", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodTipoExamen});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getNumRegistrosEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
+            this.getNumRegistrosEvFinalesRecuperacionAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodTipoExamen, null);
+        }
+        
+        /// <remarks/>
+        public void getNumRegistrosEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen, object userState) {
+            if ((this.getNumRegistrosEvFinalesRecuperacionOperationCompleted == null)) {
+                this.getNumRegistrosEvFinalesRecuperacionOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNumRegistrosEvFinalesRecuperacionOperationCompleted);
+            }
+            this.InvokeAsync("getNumRegistrosEvFinalesRecuperacion", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodTipoExamen}, this.getNumRegistrosEvFinalesRecuperacionOperationCompleted, userState);
+        }
+        
+        private void OngetNumRegistrosEvFinalesRecuperacionOperationCompleted(object arg) {
+            if ((this.getNumRegistrosEvFinalesRecuperacionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getNumRegistrosEvFinalesRecuperacionCompleted(this, new getNumRegistrosEvFinalesRecuperacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4236,6 +4410,110 @@ namespace SitioWebOasis.WSNotasEstudiante {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((dtstDatosGradoEstudiante)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void CerrarGestionNotasParcialCompletedEventHandler(object sender, CerrarGestionNotasParcialCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CerrarGestionNotasParcialCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CerrarGestionNotasParcialCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void updCierreGestionNotasParcialCompletedEventHandler(object sender, updCierreGestionNotasParcialCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updCierreGestionNotasParcialCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updCierreGestionNotasParcialCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getNumRegistrosEvAcumulativoCompletedEventHandler(object sender, getNumRegistrosEvAcumulativoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNumRegistrosEvAcumulativoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNumRegistrosEvAcumulativoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getNumRegistrosEvFinalesRecuperacionCompletedEventHandler(object sender, getNumRegistrosEvFinalesRecuperacionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getNumRegistrosEvFinalesRecuperacionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getNumRegistrosEvFinalesRecuperacionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }
