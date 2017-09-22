@@ -9,6 +9,7 @@
         CreateDownloadFileHorarios( "createFileHorarioAcademico", "PDF" );
     })
 
+
     //  Exportar horario academico en formato EXCEL
     $('#btnExport_HA_XLS').click(function () {
         //  Muestra GIF Proceso
@@ -27,6 +28,7 @@
         //  Crea y Descarga el archivo
         CreateDownloadFileHorarios( "createFileHorarioExamenes", "PDF" );
     })
+
 
     //  Exportar horario de examenes en formato Excel
     $('#btnExport_HE_XLS').click(function () {

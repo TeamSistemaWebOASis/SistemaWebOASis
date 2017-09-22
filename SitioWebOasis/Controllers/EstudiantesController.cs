@@ -180,17 +180,14 @@ namespace SitioWebOasis.Controllers
         {
             try
             {
-                if (!string.IsNullOrEmpty(file))
-                {
+                if (!string.IsNullOrEmpty(file)){
                     //get the temp folder and file path in server
                     string fullPath = Path.Combine(Server.MapPath("~/temp"), file);
 
                     //return the file for download, this is an Excel 
                     //so I set the file content type to "application/vnd.ms-excel"
                     return File(fullPath, "application/vnd.ms-excel", file);
-                }
-                else
-                {
+                }else{
                     return RedirectToAction("Index", "Error");
                 }
             }
@@ -202,7 +199,6 @@ namespace SitioWebOasis.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-
 
         #endregion
 

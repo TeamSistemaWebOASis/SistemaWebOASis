@@ -267,7 +267,8 @@
 
     //  Control de impresion de actas
     $('#p1_pdf, #p2_pdf, #p3_pdf, #p1_xls, #p2_xls, #p3_xls, #p1_blc, #p2_blc, #p3_blc').on('click', function () {
-        alert('A Imprimir el parcial: ' + $(this).attr("id"));
+        //  Muestro ventana de progreso
+        showLoadingProcess();
 
         $.ajax({
             type: "POST",
@@ -282,17 +283,15 @@
             //  Cierro la ventana GIF Proceso
             HoldOn.close();
 
-            alert("En teoria descarga el acta !!!!!!!!!!!");
-
-            //if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
-            //    $.redirect("DownloadFile",
-            //                {   file: data.responseJSON.fileName },
-            //                    "POST")
-            //} else {
-            //    //  Si existe error, muestro el mensaje
-            //    $('#messageError').removeAttr("hidden");
-            //    $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
-            //}
+            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+                $.redirect("/Docentes/DownloadFile",
+                            {   file: data.responseJSON.fileName },
+                                "POST")
+            } else {
+                //  Si existe error, muestro el mensaje
+                $('#messageError').removeAttr("hidden");
+                $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
+            }
         })
 
     })

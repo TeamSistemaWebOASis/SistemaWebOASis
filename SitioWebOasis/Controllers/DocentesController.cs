@@ -1,6 +1,7 @@
 ﻿using GestorErrores;
 using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
+using SitioWebOasis.CommonClasses;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.Library;
 using SitioWebOasis.Models;
@@ -191,7 +192,6 @@ namespace SitioWebOasis.Controllers
         }
 
 
-
         private string _getDtaRptEvAcumulativa( string[] dtaActa, string[] dtaAsignatura)
         {
             //  Creo el nombre del archivo
@@ -248,6 +248,30 @@ namespace SitioWebOasis.Controllers
             }
 
             return nameFile;
+        }
+
+
+        [HttpPost]
+        [DeleteFileAttribute]
+        public ActionResult DownloadFile(string file)
+        {
+            try{
+                if (!string.IsNullOrEmpty(file) && file != "-1"){
+                    //  get the temp folder and file path in server
+                    string fullPath = Path.Combine(Server.MapPath("~/temp"), file);
+
+                    //return the file for download, this is an Excel 
+                    //so I set the file content type to "application/vnd.ms-excel"
+                    return File(fullPath, "application/vnd.ms-excel", file);
+                }else{
+                    return RedirectToAction("Index", "Error");
+                }
+            }catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "Download File");
+
+                return RedirectToAction("Index", "Error");
+            }
         }
 
     }

@@ -410,15 +410,13 @@ namespace SitioWebOasis.Models
         }
 
 
-
         public void cierreGestionNotasParcial(string dtaParcial)
         {
             string parcial1 = "0";
             string parcial2 = "0";
             string parcial3 = "0";
 
-            try
-            {
+            try{
                 if(this._dsEvAcumulativa.Acta.Rows.Count > 0){
                     switch (dtaParcial){
                         case "p1":
@@ -438,60 +436,86 @@ namespace SitioWebOasis.Models
                     }
 
                     ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-                    int numRegEA = ne.getNumRegistrosEvAcumulativo(this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                            this._strCodAsignatura.ToString());
+                    int numRegEA = ne.getNumRegistrosEvAcumulativo( this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                    this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                    this._strCodAsignatura.ToString());
 
                     if ( dtaParcial == "p1" ){
-
                         if (numRegEA == 0){
-                            foreach (DataRow item in this._dsEvAcumulativa.Acta)
-                            {
-                                ne.CerrarGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                                Convert.ToInt16(item["sintCodMatricula"].ToString()),
-                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                                this._strCodAsignatura,
-                                                                Convert.ToByte(parcial1),
-                                                                Convert.ToByte(parcial2),
-                                                                Convert.ToByte(parcial3),
-                                                                "Cierre por Sitio Web");
-                            }
-                        }else
-                        {
-                            foreach (DataRow item in this._dsEvAcumulativa.Acta){
-                                ne.updCierreGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                                Convert.ToInt16(item["sintCodMatricula"].ToString()),
-                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                                this._strCodAsignatura,
-                                                                Convert.ToByte(parcial1),
-                                                                Convert.ToByte(parcial2),
-                                                                Convert.ToByte(parcial3),
-                                                                "Cierre por Sitio Web");
-                            }
+                            this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
+                        }else{
+                            this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
                         }
                     }else if( dtaParcial == "p2" || dtaParcial == "p3" || dtaParcial == "p4" ){
-                        foreach (DataRow item in this._dsEvAcumulativa.Acta){
-                            ne.updCierreGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                            Convert.ToInt16(item["sintCodMatricula"].ToString()),
-                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                            this._strCodAsignatura,
-                                                            Convert.ToByte(parcial1),
-                                                            Convert.ToByte(parcial2),
-                                                            Convert.ToByte(parcial3),
-                                                            "Cierre por Sitio Web");
-
+                        if (numRegEA == 0){
+                            this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
+                        }else{
+                            this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
                         }
                     }
-                    
                 }
-            }
-            catch(Exception ex)
-            {
+            }catch(Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "cierreGestionNotasParcial");
             }
+
         }
 
 
+        private bool _addCerrarGestionParcial(string parcial1, string parcial2, string parcial3)
+        {
+            bool rst = true;
+
+            try
+            {
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                foreach (DataRow item in this._dsEvAcumulativa.Acta){
+                    ne.CerrarGestionNotasParcial(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                    Convert.ToInt16(item["sintCodMatricula"].ToString()),
+                                                    this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                    this._strCodAsignatura,
+                                                    Convert.ToByte(parcial1),
+                                                    Convert.ToByte(parcial2),
+                                                    Convert.ToByte(parcial3),
+                                                    "Cierre por Sitio Web");
+                }
+            }catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_addCerrarGestionParcial");
+            }
+
+            return rst;
+        }
+
+
+        private bool _updCerrarGestionParcial( string parcial1, string parcial2, string parcial3)
+        {
+            bool rst = false;
+
+            try
+            {
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+
+                foreach (DataRow item in this._dsEvAcumulativa.Acta){
+                    ne.updCierreGestionNotasParcial(this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                    Convert.ToInt16(item["sintCodMatricula"].ToString()),
+                                                    this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                    this._strCodAsignatura,
+                                                    Convert.ToByte(parcial1),
+                                                    Convert.ToByte(parcial2),
+                                                    Convert.ToByte(parcial3),
+                                                    "Cierre por Sitio Web");
+                }
+
+                rst = true;
+            }catch(Exception ex){
+                rst = false;
+
+                Errores err = new Errores();
+                err.SetError(ex, "_addCerrarGestionParcial");
+            }
+
+            return rst;
+        }
     }
 }
