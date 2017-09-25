@@ -118,7 +118,8 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "080211622-8";  <-- Gustavo / Rol de Estudiante / Docente
 
                 //  DOCENTE
-                numIdentificacion = "060292098-5";
+                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
             }
             catch (Exception ex)
             {

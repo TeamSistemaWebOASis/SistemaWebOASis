@@ -270,6 +270,7 @@
     <Compile Include="Models\EvaluacionRecuperacionModel.cs" />
     <Compile Include="Models\HorarioEstudiante.cs" />
     <Compile Include="Models\HorarioExamenes.cs" />
+    <Compile Include="Models\MenuRolesModel.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
     <Compile Include="Models\NotasDocente.cs" />
     <Compile Include="Models\UsuarioCarreras.cs" />
@@ -459,6 +460,7 @@
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <Content Include="Views\Shared\MenuRoles.cshtml" />
     <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -504,10 +506,10 @@
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.wsdl" />
-    <Content Include="Web References\WSAdministracionGeneral\Reference.map">
+    <None Include="Web References\WSAdministracionGeneral\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\WSDatosUsuario\DatosUsuarios.disco" />
     <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.disco" />
     <Content Include="Web References\WSEgresamientoGraduacion\dsTesis.datasource">
