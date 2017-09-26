@@ -70,7 +70,7 @@ namespace SitioWebOasis.Library
             }
 
             //  return dtaEvaluacionActiva;
-            return "2";
+            return "EF";
         }
 
     }

@@ -18,10 +18,16 @@ namespace SitioWebOasis.Models
             lstRolesUsuario = new List<SelectListItem>();
             this._cargarListaRolesUsuario();
         }
+        
 
         private Usuario UsuarioActual
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
+        }
+
+
+        public string getRolActual(){
+            return this.UsuarioActual.RolActual.Nombre.ToString();
         }
 
 

@@ -64,7 +64,7 @@ namespace SitioWebOasis.Models
         
         public string getHTML_EvaluacionAcumulativa()
         {
-            string colorRow = "even";
+            string colorRow = "odd";
             string html = string.Empty;
             
             html += " <tr role='row' class='" + colorRow + "'>";
@@ -79,13 +79,12 @@ namespace SitioWebOasis.Models
                 string numNivel = string.Empty;
                 string estadoCumplimiento = string.Empty;
 
-                foreach (DataRow item in this._dsEvAcumulativa.Acta)
-                {
-                    colorRow = (colorRow == "odd") ? "even" : "odd";
+                foreach (DataRow item in this._dsEvAcumulativa.Acta){
+                    colorRow = (colorRow == "even") ? "odd" : "even";
 
                     numMatricula = this._getNumOrdinal(item["bytNumMat"].ToString(), "matricula");
                     numNivel = this._getNumOrdinal(item["strCodNivel"].ToString(), "nivel");
-                    estadoCumplimiento = (this.strParcialActivo == "3" || this.strParcialActivo == "P") 
+                    estadoCumplimiento = (this.strParcialActivo == "3" || this.strParcialActivo == "EF") 
                                             ? this._getEstadoCumplimiento(item["Total"].ToString(), item["bytAsistencia"].ToString()) 
                                             : "---" ;
 
@@ -243,7 +242,6 @@ namespace SitioWebOasis.Models
 
             return estCumplimiento;
         }
-
         
 
         public LocalReport getRptEvAcumulativa(string reportPath, string impParcial = "1")
