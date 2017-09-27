@@ -2,7 +2,7 @@ using System;
 
 namespace SitioWebOasis.CommonClasses.GestionUsuarios
 {
-	public enum Roles {PublicoGeneral,Aspirante,Estudiante,Docente,DirectivoInstitucion,DirectivoFacultad,DirectivoCarrera,AdministradorGlobal};
+	public enum Roles {PublicoGeneral,Aspirante,Estudiantes,Docentes,DirectivoInstitucion,DirectivoFacultad,DirectivoCarrera,AdministradorGlobal};
 	
 	/// <summary>
 	/// Representa un rol global dentro del Sitio Web.
@@ -34,10 +34,10 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 					r = Roles.Aspirante;
 					break;
 				case "EST":
-					r = Roles.Estudiante;
+					r = Roles.Estudiantes;
 					break;
 				case "DOC":
-					r = Roles.Docente;
+					r = Roles.Docentes;
 					break;
 				case "DIRINST":
 					r = Roles.DirectivoInstitucion;

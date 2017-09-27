@@ -37,12 +37,12 @@ namespace SitioWebOasis.Models
 
                     switch (usr.RolActual.ID.ToString())
                     {
-                        case "Estudiante":
-                            rol = Roles.Estudiante;
+                        case "Estudiantes":
+                            rol = Roles.Estudiantes;
                             break;
 
-                        case "Docente":
-                            rol = Roles.Docente;
+                        case "Docentes":
+                            rol = Roles.Docentes;
                             break;
                     }
 

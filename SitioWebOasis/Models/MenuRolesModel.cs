@@ -35,14 +35,19 @@ namespace SitioWebOasis.Models
         {
             ArrayList lstCarreras = new ArrayList();
             SelectListItem item = new SelectListItem();
+            string rolRegistrado = string.Empty;
 
             try{
                 if (this.UsuarioActual != null && this.UsuarioActual.NumRolesDeCarrera > 0){
                     foreach( CommonClasses.GestionUsuarios.Rol elemento in this.UsuarioActual.GetRolesCarrera()){
-                        item = new SelectListItem();
-                        item.Value = elemento.ID.ToString();
-                        item.Text = elemento.Nombre;
-                        lstRolesUsuario.Add(item);
+                        if( rolRegistrado.CompareTo(elemento.ID.ToString()) == -1 ){
+                            item = new SelectListItem();
+                            item.Value = elemento.ID.ToString();
+                            item.Text = elemento.Nombre.ToUpper();
+                            lstRolesUsuario.Add(item);
+
+                            rolRegistrado = elemento.ID.ToString();
+                        }
                     }
                 }else{
                     item = new SelectListItem();

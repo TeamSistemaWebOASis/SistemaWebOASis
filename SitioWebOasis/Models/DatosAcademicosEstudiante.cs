@@ -456,22 +456,36 @@ namespace SitioWebOasis.Models
         public List<System.Web.Mvc.SelectListItem> getLstPeriodosEstudiante()
         {
             dtaPeriodosEstudiante = this._periodosMatriculasEstudiante();
-
             List<System.Web.Mvc.SelectListItem> lstPeriodosEstudiante = new List<System.Web.Mvc.SelectListItem>();
             System.Web.Mvc.SelectListItem periodo = new System.Web.Mvc.SelectListItem();
 
-            if (dtaPeriodosEstudiante.Periodos.Rows.Count > 0){
-                foreach (DataRow item in dtaPeriodosEstudiante.Periodos) {
-                    periodo = new System.Web.Mvc.SelectListItem();
-                    periodo.Value = item["strCodigo"].ToString();
-                    periodo.Text = item["strDescripcion"].ToString();
+            try
+            {
+                if (dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Periodos.Rows.Count > 0){
+                    foreach (DataRow item in dtaPeriodosEstudiante.Periodos){
+                        periodo = new System.Web.Mvc.SelectListItem();
+                        periodo.Value = item["strCodigo"].ToString();
+                        periodo.Text = item["strDescripcion"].ToString();
 
-                    if( periodoEstudiante == item["strCodigo"].ToString()){
-                        periodo.Selected = true;
-                    }  
+                        if (periodoEstudiante == item["strCodigo"].ToString()){
+                            periodo.Selected = true;
+                        }
 
-                    lstPeriodosEstudiante.Add(periodo);
+                        lstPeriodosEstudiante.Add(periodo);
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                lstPeriodosEstudiante = new List<System.Web.Mvc.SelectListItem>();
+                periodo = new System.Web.Mvc.SelectListItem();
+                periodo.Value = "-1";
+                periodo.Text = Language.es_ES.EST_LBL_SIN_REGISTROS;
+
+                lstPeriodosEstudiante.Add(periodo);
+
+                Errores err = new Errores();
+                err.SetError(ex, "getLstPeriodosEstudiante - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
 
             return lstPeriodosEstudiante;

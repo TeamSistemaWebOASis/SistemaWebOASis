@@ -416,9 +416,9 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 				list.Add(new LinkMenu("Sitio para Directivos de Facultad","DirectivosFacultad/DirectivosFacultadHome.aspx"));
 			if (this.TieneElRolDe(Roles.DirectivoInstitucion))
 				list.Add(new LinkMenu("Sitio para Directivos Institucionales","DirectivosInstitucion/DirectivosInstitucionHome.aspx"));
-			if (this.TieneElRolDe(Roles.Docente))
+			if (this.TieneElRolDe(Roles.Docentes))
 				list.Add(new LinkMenu("Sitio para Docentes","Docentes/DocentesHome.aspx"));
-			if (this.TieneElRolDe(Roles.Estudiante))
+			if (this.TieneElRolDe(Roles.Estudiantes))
 				list.Add(new LinkMenu("Sitio para Estudiantes","Estudiantes/EstudiantesHome.aspx"));
 
 			list.Add(new LinkMenu("Sitio Principal","Default.aspx"));

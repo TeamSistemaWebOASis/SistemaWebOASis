@@ -5,6 +5,7 @@ using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.Library;
 using SitioWebOasis.Models;
 using System;
+using System.Collections;
 using System.IO;
 using System.Web.Mvc;
 
@@ -17,28 +18,61 @@ namespace SitioWebOasis.Controllers
             ViewBag.estado = "hidden";
         }
 
+        private Usuario UsuarioActual{
+            get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
+        }
+
+
         //
         //  GET: Estudiantes
         //
-        public ActionResult Index(string idCarrera)
+        public ActionResult Index(string idCarrera = "")
         {
-            SitioWebOasis.Models.DatosAcademicosEstudiante dtaEstudiante; 
+            SitioWebOasis.Models.DatosAcademicosEstudiante dtaEstudiante;
+            string strIdCarrera = (string.IsNullOrEmpty(idCarrera))
+                                    ? this._getIdCarrera()
+                                    : idCarrera;
 
-            if ( !string.IsNullOrEmpty( idCarrera )){
-                UsuarioCarreras UsrActual = new UsuarioCarreras();
-                UsrActual.UsuarioActual.SetRolCarreraActual(Roles.Estudiante,
-                                                            idCarrera);
-            }
+            if (!string.IsNullOrEmpty(strIdCarrera)) {
+                UsuarioActual.SetRolCarreraActual(  Roles.Estudiantes,
+                                                    strIdCarrera);
 
-            dtaEstudiante = new SitioWebOasis.Models.DatosAcademicosEstudiante();
-            
-            if( dtaEstudiante.nivelEstudiante != "-1"){
+                dtaEstudiante = new SitioWebOasis.Models.DatosAcademicosEstudiante();
                 return View("Index", dtaEstudiante);
             }else{
-                //  
                 return View("Index", "Error");
             }
         }
+
+
+        private string _getIdCarrera()
+        {
+            string idCarrera = string.Empty;
+
+            try
+            {
+                ArrayList CarrerasEstudiante = UsuarioActual.GetCarreras(Roles.Estudiantes);
+                
+                foreach (Carrera item in CarrerasEstudiante){
+                    if(item.TipoEntidad == "CAR"){
+                        idCarrera = item.Codigo;
+                        break;
+                    }else if(item.TipoEntidad == "CAA"){
+                        idCarrera = item.Codigo;
+                        break;
+                    }else{
+                        idCarrera = item.Codigo;
+                    }
+                }
+            }
+            catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "getIdCarrera");
+            }
+
+            return idCarrera;
+        }
+
 
 
         public ActionResult NotasEstudiantes(string periodoAcademico = "")

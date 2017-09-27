@@ -6,6 +6,7 @@ using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.Library;
 using SitioWebOasis.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Web.Mvc;
@@ -20,7 +21,11 @@ namespace SitioWebOasis.Controllers
         // GET: Docentes
         public ActionResult Index( string idRol, string idCarrera )
         {
-            SitioWebOasis.Models.DatosAcademicosDocente daDocente = new DatosAcademicosDocente(idCarrera);
+            string strIdCarrera = (string.IsNullOrEmpty(idCarrera))
+                                    ? this._getIdCarrera()
+                                    : idCarrera;
+
+            SitioWebOasis.Models.DatosAcademicosDocente daDocente = new DatosAcademicosDocente(strIdCarrera);
             return View("Index", daDocente);
         }
 
@@ -28,6 +33,39 @@ namespace SitioWebOasis.Controllers
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
         }
+
+
+
+        private string _getIdCarrera()
+        {
+            string idCarrera = string.Empty;
+
+            try
+            {
+                ArrayList CarrerasEstudiante = UsuarioActual.GetCarreras(Roles.Docentes);
+
+                foreach (Carrera item in CarrerasEstudiante){
+                    if (item.TipoEntidad == "CAR"){
+                        idCarrera = item.Codigo;
+                        break;
+                    }else if (item.TipoEntidad == "CAA"){
+                        idCarrera = item.Codigo;
+                        break;
+                    }else{
+                        idCarrera = item.Codigo;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "getIdCarrera");
+            }
+
+            return idCarrera;
+        }
+
+
 
 
         //  [OutputCache(Duration = 8000, VaryByParam = "strCodNivel, strCodAsignatura, strCodParalelo")]

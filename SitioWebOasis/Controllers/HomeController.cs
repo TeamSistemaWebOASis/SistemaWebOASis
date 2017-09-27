@@ -17,12 +17,12 @@ namespace SitioWebOasis.Controllers
             if (this._existeRolUsuario())
             {
                 //  Interfaz para Estudiante 
-                if (UsuarioActual.RolActual.ID.ToString() == "Estudiante"){
+                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes"){
                     return RedirectToAction("Index", "Estudiantes");
                 }
 
                 //  Interfaz para Docente
-                if (UsuarioActual.RolActual.ID.ToString() == "Docente"){
+                if (UsuarioActual.RolActual.ID.ToString() == "Docentes"){
                     return RedirectToAction("Index", "Docentes");
                 }
             }
@@ -115,11 +115,13 @@ namespace SitioWebOasis.Controllers
                 ////  ESTUDIANTE
                 //  numIdentificacion = "060478969-3";
                 //  numIdentificacion = "180475189-7";
-                //  numIdentificacion = "080211622-8";  <-- Gustavo / Rol de Estudiante / Docente
+                
 
                 //  DOCENTE
                 numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                //  numIdentificacion = "080211622-8";  <-- Gustavo / Rol de Estudiante / Docente
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
+                //  numIdentificacion = "060190508-6";  //  <-- Patricio Moreno
             }
             catch (Exception ex)
             {

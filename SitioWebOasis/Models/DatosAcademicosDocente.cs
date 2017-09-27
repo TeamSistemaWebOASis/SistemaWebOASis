@@ -14,7 +14,7 @@ namespace SitioWebOasis.Models
         public DatosAcademicosDocente( string idCarrera = "" )
         {
             if( !string.IsNullOrEmpty(idCarrera)){
-                this.UsuarioActual.SetRolCarreraActual( Roles.Docente,
+                this.UsuarioActual.SetRolCarreraActual( Roles.Docentes,
                                                         idCarrera);
             }
 
