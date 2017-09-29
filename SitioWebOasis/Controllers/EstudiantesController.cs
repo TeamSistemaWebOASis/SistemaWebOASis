@@ -37,8 +37,11 @@ namespace SitioWebOasis.Controllers
                 UsuarioActual.SetRolCarreraActual(  Roles.Estudiantes,
                                                     strIdCarrera);
 
-                dtaEstudiante = new SitioWebOasis.Models.DatosAcademicosEstudiante();
-                return View("Index", dtaEstudiante);
+                Session["objDtaEstudiante"] = ( Session["objDtaEstudiante"] == null )
+                                                ? new SitioWebOasis.Models.DatosAcademicosEstudiante()
+                                                : Session["objDtaEstudiante"];
+
+                return View("Index", (DatosAcademicosEstudiante)Session["objDtaEstudiante"]);
             }else{
                 return View("Index", "Error");
             }
@@ -77,12 +80,16 @@ namespace SitioWebOasis.Controllers
 
         public ActionResult NotasEstudiantes(string periodoAcademico = "")
         {
-            DatosAcademicosEstudiante dtaNotasEstudiante = new DatosAcademicosEstudiante();
+            //  DatosAcademicosEstudiante dtaNotasEstudiante = new DatosAcademicosEstudiante();
+            Session["objDtaEstudiante"] = (Session["objDtaEstudiante"] == null)
+                                                ? new SitioWebOasis.Models.DatosAcademicosEstudiante()
+                                                : Session["objDtaEstudiante"];
+
             if ( !string.IsNullOrEmpty( periodoAcademico )){
-                dtaNotasEstudiante = new DatosAcademicosEstudiante(periodoAcademico);
+                Session["objDtaEstudiante"] = new DatosAcademicosEstudiante(periodoAcademico);
             }
 
-            return View("DatosAcademicosEstudiante", dtaNotasEstudiante);
+            return View("DatosAcademicosEstudiante", (DatosAcademicosEstudiante)Session["objDtaEstudiante"]);
         }
 
 

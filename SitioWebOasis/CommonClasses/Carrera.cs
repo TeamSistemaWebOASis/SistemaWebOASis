@@ -12,14 +12,16 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 		private string _Codigo = null;
 		private string _Nombre = null;
         private string _tipoEntidad = null;
+        private string _strSede = null;
         private string _codUsuario = null;
 
 
-        public Carrera(string strCodigo, string strNombre, string strTpoEntidad, string strCodUsuario)
+        public Carrera(string strCodigo, string strNombre, string strTpoEntidad, string strSede, string strCodUsuario)
 		{
 			this._Codigo = strCodigo;
 			this._Nombre = strNombre;
             this._tipoEntidad = strTpoEntidad;
+            this._strSede = strSede;
             this._codUsuario = strCodUsuario;
         }
 
@@ -38,6 +40,10 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			get { return this._tipoEntidad; }
 		}
 
+        public string SedeCarrera
+        {
+            get { return this._strSede; }
+        }
 
         public string codUsuario
         {

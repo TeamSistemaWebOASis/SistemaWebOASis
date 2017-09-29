@@ -8,9 +8,21 @@
 }
 
 <div class="main-content">
+
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contextual-summary-info">
+                    <i class="fa fa-user"></i>
+                    <p class="pull-right"><span><strong>@Model.UsuarioActual.CarreraActual.Nombre / @Model.UsuarioActual.CarreraActual.SedeCarrera </strong> </span> @Model.UsuarioActual.Nombre.ToString() </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="row">
         @* NIVEL DEL ESTUDIANTE *@
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="contextual-summary-info">
                 <i class="fa fa-level-up"></i>
                 <p class="pull-right"><span> @Language.es_ES.EST_LBL_NIVEL </span> @Model.getNivelEstudiante() </p>
@@ -18,7 +30,7 @@
         </div>
 
         @* PROMEDIO DEL ESTUDIANTE *@
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="contextual-summary-info">
                 <i class="fa fa-line-chart yellow-font"></i>
                 <p class="pull-right"><span>@Language.es_ES.EST_LBL_PROMEDIO </span> @promedioEstudiante.ToString() </p>

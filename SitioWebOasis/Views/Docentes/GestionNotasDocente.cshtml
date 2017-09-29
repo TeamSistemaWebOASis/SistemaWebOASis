@@ -63,8 +63,8 @@
 
     @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3"){
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-        <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.28"> </script>
-        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.28"> </script>
+        <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.40"> </script>
+        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.40"> </script>
     }
 
     @if (strParcialActivo == "EF"){
@@ -137,8 +137,8 @@
                                     <div class="col-sm-12">
                                         @*IMPRESION DEL ACTA PARCIAL #01*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
-                                            <button type="button" class="btn @colorP1 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button id="btnP1" type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
+                                            <button id="btnP1F" type="button" class="btn @colorP1 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a id="p1_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a id="p1_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -149,8 +149,8 @@
 
                                         @*IMPRESION DEL ACTA PARCIAL #02*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn @colorP2 btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
-                                            <button type="button" class="btn @colorP2 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button id="btnP2" type="button" class="btn @colorP2 btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
+                                            <button id="btnP2F" type="button" class="btn @colorP2 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a id="p2_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a id="p2_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -161,8 +161,8 @@
 
                                         @*IMPRESION DEL ACTA PARCIAL #03*@
                                         <div class="btn-group">
-                                            <button type="button" class="btn @colorP3 btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
-                                            <button type="button" class="btn @colorP3 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button id="btnP3" type="button" class="btn @colorP3 btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
+                                            <button id="btnP3F" type="button" class="btn @colorP3 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a id="p3_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                 <li><a id="p3_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -218,7 +218,8 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>carlos
+
 
 
                     @*EVALUACION FINAL*@
@@ -280,6 +281,7 @@
 
 
                     @*EVALUACION RECUPERACION*@
+                    
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -331,8 +333,6 @@
                                     </div>
                                 }
 
-
-
                             </div>
                         </div>
                     </div>
@@ -340,6 +340,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div id="loginForm" style="cursor: default; display: none;">
+        <p> <h3>Compañero docente al momento de usted realizar esta operacion usted CIERRA LA GESTION DE NOTAS lo cual implica que ninguna nota va a poder ser gestionada hasta la habilitacion de la proxima evaluación </h3> </p>
+        <p> <h4> Por su seguridad se ha enviado un codigo de confirmación a su cuenta de correo </h4> </p>
+        <p><label>Numero de confirmación:</label><input id="dtaNumConfirmacion" type="text" name="dtaNumConfirmacion"></p>
+        <p><input id="btnValidarImprimir" type="button" value="Validar e imprimir" name="btnValidarImprimir"></p>
     </div>
 
     @* CODIGO DE LA ASIGNATURA A GESTIONAR *@

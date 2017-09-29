@@ -260,40 +260,60 @@
     function showLoadingProcess() {
         HoldOn.open({
             theme: 'sk-dot',
-            message: "<h4>GUARDANDO INFORMACION ...</h4>"
+            message: "<h4>PROCESANDO INFORMACION ...</h4>"
         });
     }
 
 
     //  Control de impresion de actas
     $('#p1_pdf, #p2_pdf, #p3_pdf, #p1_xls, #p2_xls, #p3_xls, #p1_blc, #p2_blc, #p3_blc').on('click', function () {
-        //  Muestro ventana de progreso
-        showLoadingProcess();
+        //  Muestro ventana de autenticacion a dos factores
+        $.blockUI({ message: $('#loginForm') });
+    })
 
-        $.ajax({
-            type: "POST",
-            url: "/Docentes/impresionActas",
-            data: '{idActa: "' + $(this).attr("id") + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json"
-        }).complete(function (data) {
-            //  Oculto el mensaje de error
-            $('#messageError').attr("hidden");
 
-            //  Cierro la ventana GIF Proceso
-            HoldOn.close();
+    $('#btnValidarImprimir').click(function () {
+        if ($('#dtaNumConfirmacion').val() == "987") {
+            $.unblockUI();
+            showLoadingProcess();
+            var dtaBoton = $('#p1_pdf, #p2_pdf, #p3_pdf, #p1_xls, #p2_xls, #p3_xls, #p1_blc, #p2_blc, #p3_blc');
 
-            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
-                $.redirect("/Docentes/DownloadFile",
-                            {   file: data.responseJSON.fileName },
-                                "POST")
-            } else {
-                //  Si existe error, muestro el mensaje
-                $('#messageError').removeAttr("hidden");
-                $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
-            }
-        })
+            $.ajax({
+                type: "POST",
+                url: "/Docentes/impresionActas",
+                data: '{idActa: "' + dtaBoton.attr("id") + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).complete(function (data) {
+                //  desactivo todo el grid
+                //  $('#grdEvAcumulativa').attr('disabled', 'disabled');
 
+                //  desactivo todo el grid
+                grid[0].grid.beginReq();                setTimeout(function () {
+                    grid[0].grid.endReq();
+                }, 100);
+                //  Cambio el color del boton
+                $('#btnP1, #btnP2, #btnP3, #btnP1F, #btnP2F, #btnP3F').attr("class", 'btn btn-warning btn-md');
+
+                //  Oculto el mensaje de error
+                $('#messageError').attr("hidden");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+
+                if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+                    $.redirect("/Docentes/DownloadFile",
+                                { file: data.responseJSON.fileName },
+                                    "POST")
+                } else {
+                    //  Si existe error, muestro el mensaje
+                    $('#messageError').removeAttr("hidden");
+                    $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
+                }
+            })
+        } else {
+            alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
+        }
     })
 
 })

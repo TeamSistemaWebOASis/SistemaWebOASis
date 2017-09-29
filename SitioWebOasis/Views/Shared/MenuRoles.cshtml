@@ -1,7 +1,7 @@
 ﻿@{
     //  Instancio el modelo UsuarioCarreras
     var mdUsuarioRoles = new SitioWebOasis.Models.MenuRolesModel();
-    var strCarreraActual = mdUsuarioRoles.getRolActual();
+    var strCarreraActual = mdUsuarioRoles.getRolActual().ToUpper();
 }
 
 @* MENU DE CARRERAS DE UN USUARIO *@

@@ -185,7 +185,8 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 		{
 			return new Carrera( drCarrera["strCodigo"].ToString(),
                                 drCarrera["strNombre"].ToString(), 
-                                drCarrera["strCodTipoEntidad"].ToString(), 
+                                drCarrera["strCodTipoEntidad"].ToString(),
+                                drCarrera["strSede"].ToString(),
                                 drCarrera["strCodUsuario"].ToString());
 		}
 

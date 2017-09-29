@@ -20,11 +20,11 @@ namespace SitioWebOasis.Controllers
 
                 switch (rol)
                 {
-                    case "Estudiante":
+                    case "Estudiantes":
                         lstMVM = this._getMenuEstudiantes();
                         break;
 
-                    case "Docente":
+                    case "Docentes":
                         lstMVM = this._getMenuDocentes();
                         break;
 

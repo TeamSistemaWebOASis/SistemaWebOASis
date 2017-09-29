@@ -41,6 +41,7 @@ namespace SitioWebOasis
                                                                     "~/Content/js/jqgrid/i18n/grid.locale-en.js",
                                                                     "~/Content/js/jqgrid/jquery.jqGrid.fluid.js",
                                                                     "~/Content/js/HoldOn.min.js",
+                                                                    "~/Content/js/jquery-ui/jQueryBlockUI.min.js",
                                                                     "~/Content/js/jquery-sparkline/jquery.sparkline.min.js"));
         }
     }

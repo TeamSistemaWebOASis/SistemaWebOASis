@@ -27,7 +27,9 @@ namespace SitioWebOasis.Models
 
 
         public string getRolActual(){
-            return this.UsuarioActual.RolActual.Nombre.ToString();
+            return (this.UsuarioActual != null) 
+                        ? this.UsuarioActual.RolActual.Nombre.ToString() 
+                        : "";
         }
 
 

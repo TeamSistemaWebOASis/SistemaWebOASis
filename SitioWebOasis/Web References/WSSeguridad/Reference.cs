@@ -843,6 +843,8 @@ namespace SitioWebOasis.WSSeguridad {
             
             private global::System.Data.DataColumn columnstrCodUsuario;
             
+            private global::System.Data.DataColumn columnstrSede;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CarrerasDataTable() {
@@ -918,6 +920,14 @@ namespace SitioWebOasis.WSSeguridad {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn strSedeColumn {
+                get {
+                    return this.columnstrSede;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -953,14 +963,15 @@ namespace SitioWebOasis.WSSeguridad {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CarrerasRow AddCarrerasRow(RolesRow parentRolesRowByRolesCarreras, string strCodigo, string strNombre, string strCodTipoEntidad, string strCodUsuario) {
+            public CarrerasRow AddCarrerasRow(RolesRow parentRolesRowByRolesCarreras, string strCodigo, string strNombre, string strCodTipoEntidad, string strCodUsuario, string strSede) {
                 CarrerasRow rowCarrerasRow = ((CarrerasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         strCodigo,
                         strNombre,
                         strCodTipoEntidad,
-                        strCodUsuario};
+                        strCodUsuario,
+                        strSede};
                 if ((parentRolesRowByRolesCarreras != null)) {
                     columnValuesArray[0] = parentRolesRowByRolesCarreras[0];
                 }
@@ -997,6 +1008,7 @@ namespace SitioWebOasis.WSSeguridad {
                 this.columnstrNombre = base.Columns["strNombre"];
                 this.columnstrCodTipoEntidad = base.Columns["strCodTipoEntidad"];
                 this.columnstrCodUsuario = base.Columns["strCodUsuario"];
+                this.columnstrSede = base.Columns["strSede"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1012,8 +1024,11 @@ namespace SitioWebOasis.WSSeguridad {
                 base.Columns.Add(this.columnstrCodTipoEntidad);
                 this.columnstrCodUsuario = new global::System.Data.DataColumn("strCodUsuario", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstrCodUsuario);
+                this.columnstrSede = new global::System.Data.DataColumn("strSede", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstrSede);
                 this.columnstrIDRol.AllowDBNull = false;
                 this.columnstrCodigo.AllowDBNull = false;
+                this.columnstrSede.DefaultValue = ((string)("\'\'"));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1874,6 +1889,22 @@ namespace SitioWebOasis.WSSeguridad {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string strSede {
+                get {
+                    try {
+                        return ((string)(this[this.tableCarreras.strSedeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'strSede\' de la tabla \'Carreras\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCarreras.strSedeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RolesRow RolesRow {
                 get {
                     return ((RolesRow)(this.GetParentRow(this.Table.ParentRelations["RolesCarreras"])));
@@ -1917,6 +1948,18 @@ namespace SitioWebOasis.WSSeguridad {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetstrCodUsuarioNull() {
                 this[this.tableCarreras.strCodUsuarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstrSedeNull() {
+                return this.IsNull(this.tableCarreras.strSedeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstrSedeNull() {
+                this[this.tableCarreras.strSedeColumn] = global::System.Convert.DBNull;
             }
         }
         

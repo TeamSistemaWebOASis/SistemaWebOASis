@@ -95,31 +95,34 @@ namespace SitioWebOasis.Controllers
             try
             {
                 //  Consumo del servicio web ObtenerPorDocumento (cedula)
-                //string jsonDtaPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/ObtenerPorEmail/" + User.Identity.Name.ToString());
-                //var dtaPersona = System.Web.Helpers.Json.Decode(jsonDtaPersona);
-                //numIdentificacion = dtaPersona.per_id.ToString();
+                string jsonDtaPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/ObtenerPorEmail/" + User.Identity.Name.ToString());
+                var dtaPersona = System.Web.Helpers.Json.Decode(jsonDtaPersona);
+                numIdentificacion = dtaPersona.per_id.ToString();
 
-                ////  Consumo del servicio web ObtenerPorDocumento (cedula)
-                //string jsonDtaIdentificacion = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDocumentoPersonal.svc" + "/ObtenerPorPersona/" + numIdentificacion);
-                //var _dtaIdentificacion = System.Web.Helpers.Json.Decode(jsonDtaIdentificacion);
+                //  Consumo del servicio web ObtenerPorDocumento (cedula)
+                string jsonDtaIdentificacion = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDocumentoPersonal.svc" + "/ObtenerPorPersona/" + numIdentificacion);
+                var _dtaIdentificacion = System.Web.Helpers.Json.Decode(jsonDtaIdentificacion);
 
-                //if (_dtaIdentificacion.Length > 0){
-                //    foreach (var item in _dtaIdentificacion){
-                //        if (item.pid_activo == true){
-                //            numIdentificacion = (item.tdi_id != 1)  ? item.pid_valor 
-                //                                                    : this._addGuionCedula(item.pid_valor);
-                //        }
-                //    }
-                //}
+                if (_dtaIdentificacion.Length > 0)
+                {
+                    foreach (var item in _dtaIdentificacion){
+                        if (item.pid_activo == true){
+                            numIdentificacion = (item.tdi_id != 1)  
+                                                    ? item.pid_valor
+                                                    : this._addGuionCedula(item.pid_valor);
+                        }
+                    }
+                }
 
                 ////  ESTUDIANTE
                 //  numIdentificacion = "060478969-3";
                 //  numIdentificacion = "180475189-7";
-                
+                //  numIdentificacion = "131383905-0";
+
 
                 //  DOCENTE
-                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
-                //  numIdentificacion = "080211622-8";  <-- Gustavo / Rol de Estudiante / Docente
+                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                //  numIdentificacion = "080211622-8";  //  <-- Gustavo / Rol de Estudiante / Docente
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
                 //  numIdentificacion = "060190508-6";  //  <-- Patricio Moreno
             }
