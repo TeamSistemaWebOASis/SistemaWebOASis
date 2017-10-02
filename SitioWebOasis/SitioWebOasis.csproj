@@ -457,11 +457,10 @@
     <Content Include="Views\Shared\MenuCarreras.cshtml" />
     <Content Include="Views\Shared\_BreadCrumb.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
+    <Content Include="Views\Shared\MenuRoles.cshtml" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <Content Include="Views\Shared\MenuRoles.cshtml" />
-    <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -505,37 +504,38 @@
     <Content Include="Web References\WSAdministracionGeneral\Estado.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.wsdl" />
-    <None Include="Web References\WSAdministracionGeneral\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Web References\WSDatosUsuario\DatosUsuarios.disco" />
     <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.disco" />
+    <None Include="Web References\WSDatosUsuario\DatosUsuarios.disco" />
     <Content Include="Web References\WSEgresamientoGraduacion\dsTesis.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dsTesis.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dstsGetRepMatTesis.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\WSEgresamientoGraduacion\ds_mattesisperiodo.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\ds_mattesisperiodo.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstCertificadoPromocionEgresamiento.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstCertificadoPromocionEgresamiento.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaCalificacionGrado.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaGrado.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaGrado.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ConfiguracionInstitucion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ConfiguracionInstitucion.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_CurriculumAcademico.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_CurriculumAcademico.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Egresados.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -543,12 +543,15 @@
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Estudiantes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Estudiantes.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduacion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduacion.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduados.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduados.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ListadosGraduacion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -556,6 +559,7 @@
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_MejoresEgresados.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_MejoresEgresados.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Niveles.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -563,12 +567,15 @@
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_OtrosDatosEstudiante.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Periodos.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Periodos.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ProyectosGrado.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ProyectosGrado.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_RecordAcademico.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -579,21 +586,26 @@
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_TitulosCarrera.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_TitulosCarrera.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEgrerGrad_AgregarMiembrosProyecto.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\WSEgresamientoGraduacion\dtstDatosEstudiantes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEstudiantes.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstEstudiantes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstEstudiantes.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstGetIntegratesTesis.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstGetIntegratesTesis.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstGetTesisVigentes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstGetTesisVigentes.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstMateriasRetiradasPeriodos.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -601,9 +613,11 @@
     <Content Include="Web References\WSEgresamientoGraduacion\dtstRepTesis.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstRepTesis.xsd" />
     <Content Include="Web References\WSEgresamientoGraduacion\dtstTesisSinMatricular.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSEgresamientoGraduacion\dtstTesisSinMatricular.xsd" />
     <None Include="Web References\WSEgresamientoGraduacion\GestorEgresamientoGraduacion.disco" />
     <Content Include="Web References\WSGestorDeReportesEvaluacion\dtstEvaluacion_Actas.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -665,7 +679,6 @@
     <Content Include="Web References\WSGestorEvaluacion\dtstARD.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\WSGestorEvaluacion\dtstARD.xsd" />
     <Content Include="Web References\WSGestorEvaluacion\dtstARDporcentajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -709,6 +722,7 @@
     <Content Include="Web References\WSGestorEvaluacion\dtstMejoresEstudiante.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSGestorEvaluacion\dtstMejoresEstudiante.xsd" />
     <None Include="Web References\WSGestorEvaluacion\GestorEvaluacion.disco" />
     <Content Include="Web References\WSInfoCarreras\dtstBDCarreras.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -756,6 +770,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\SignOutCallback.cshtml" />
+    <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
+    <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.wsdl" />
+    <None Include="Web References\WSAdministracionGeneral\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\WSDatosUsuario\DatosUsuarios.wsdl" />
     <Content Include="Web References\WSDatosUsuario\dtstCursosMateria.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -785,30 +805,10 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\WSEgresamientoGraduacion\dsTesis.xsd" />
     <None Include="Web References\WSEgresamientoGraduacion\dstsGetRepMatTesis.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\ds_mattesisperiodo.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstCertificadoPromocionEgresamiento.xsd" />
     <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaCalificacionGrado.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ActaGrado.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ConfiguracionInstitucion.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_CurriculumAcademico.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Estudiantes.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduacion.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Graduados.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_MejoresEgresados.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_OtrosDatosEstudiante.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_Periodos.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_ProyectosGrado.xsd" />
     <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_RepEstudiantil.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgreGrad_TitulosCarrera.xsd" />
     <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEgrerGrad_AgregarMiembrosProyecto.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstDatosEstudiantes.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstEstudiantes.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstGetIntegratesTesis.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstGetTesisVigentes.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstRepTesis.xsd" />
-    <None Include="Web References\WSEgresamientoGraduacion\dtstTesisSinMatricular.xsd" />
     <None Include="Web References\WSEgresamientoGraduacion\GestorEgresamientoGraduacion.wsdl" />
     <None Include="Web References\WSEgresamientoGraduacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -837,11 +837,11 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Web References\WSGestorEvaluacion\dtstARD.xsd" />
     <None Include="Web References\WSGestorEvaluacion\dtstARDporcentajes.xsd" />
     <None Include="Web References\WSGestorEvaluacion\dtstCertificadoPromocion.xsd" />
     <None Include="Web References\WSGestorEvaluacion\dtstDatosEstudiantes.xsd" />
     <None Include="Web References\WSGestorEvaluacion\dtstEvaluacion_ImprimirAcumulados.xsd" />
-    <None Include="Web References\WSGestorEvaluacion\dtstMejoresEstudiante.xsd" />
     <None Include="Web References\WSGestorEvaluacion\GestorEvaluacion.wsdl" />
     <None Include="Web References\WSGestorEvaluacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
@@ -884,6 +884,30 @@
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="CommonClasses\SiteReader.resx">
+      <DependentUpon>SiteReader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonControls\Header.ascx.resx">
+      <DependentUpon>Header.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CommonControls\Menu.ascx.resx">
+      <DependentUpon>Menu.ascx.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\es-ES.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>es-ES.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Language</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language\WS_URL.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>WS_URL.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>CENTRALIZADA</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptActaEvaluacionesConNotas.rdlc" />
+    <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
+    <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WebReferenceUrl Include="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx">
@@ -985,30 +1009,6 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SitioWebOasis_WSSeguridad_Seguridad</CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="CommonClasses\SiteReader.resx">
-      <DependentUpon>SiteReader.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CommonControls\Header.ascx.resx">
-      <DependentUpon>Header.ascx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CommonControls\Menu.ascx.resx">
-      <DependentUpon>Menu.ascx.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Language\es-ES.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>es-ES.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>Language</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Language\WS_URL.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>WS_URL.Designer.cs</LastGenOutput>
-      <CustomToolNamespace>CENTRALIZADA</CustomToolNamespace>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\rptActaEvaluacionesConNotas.rdlc" />
-    <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
-    <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

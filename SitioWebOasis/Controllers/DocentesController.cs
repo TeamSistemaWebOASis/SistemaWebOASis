@@ -181,7 +181,7 @@ namespace SitioWebOasis.Controllers
             return rstEvRecuperacion;
         }
         
-
+        
         [HttpPost]
         public JsonResult impresionActas(string idActa, string idAsignatura)
         {

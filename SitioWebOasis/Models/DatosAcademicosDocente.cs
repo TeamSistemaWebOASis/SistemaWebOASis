@@ -9,10 +9,12 @@ namespace SitioWebOasis.Models
 {
     public class DatosAcademicosDocente: DatosCarrera
     {
+        private string _codCarrera = string.Empty;
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
         public DatosAcademicosDocente( string idCarrera = "" )
         {
+            this._codCarrera = idCarrera;
             if( !string.IsNullOrEmpty(idCarrera)){
                 this.UsuarioActual.SetRolCarreraActual( Roles.Docentes,
                                                         idCarrera);
@@ -103,12 +105,12 @@ namespace SitioWebOasis.Models
                 if( !string.IsNullOrEmpty(evActiva))
                 {
                     rst = string.Empty;
-                    parcialActivo = (evActiva != "EF" && evActiva != "ER")  ? this._getNumOrdinal(evActiva)
-                                                                            : (evActiva == "EF")? Language.es_ES.DOC_TB_EV_FINAL
-                                                                                                : Language.es_ES.DOC_TB_EV_RECUPERACION;
+                    parcialActivo = (evActiva != "EF" && evActiva != "ER" && evActiva != "NA")  
+                                        ? this._getNumOrdinal(evActiva)
+                                        : (evActiva == "EF")? Language.es_ES.DOC_TB_EV_FINAL
+                                                            : Language.es_ES.DOC_TB_EV_RECUPERACION;
 
-                    foreach (DataRow item in this._dtstCursosDocente.Cursos)
-                    {
+                    foreach (DataRow item in this._dtstCursosDocente.Cursos){
                         color = (color == "odd") ? "even" : "odd";
                         nivel = this._getNumOrdinal(item["strCodNivel"].ToString());
 

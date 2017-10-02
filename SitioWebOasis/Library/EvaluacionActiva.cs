@@ -7,8 +7,11 @@ using System.Web;
 
 namespace SitioWebOasis.Library
 {
-    public class EvaluacionActiva
+    public class EvaluacionActiva: DatosCarrera
     {
+        private string _codCarrera = string.Empty;
+        private string _codAsignatura = string.Empty;
+
         private string _parcialUno = string.Empty;
         private string _parcialDos = string.Empty;
         private string _parcialTres = string.Empty;
@@ -21,6 +24,13 @@ namespace SitioWebOasis.Library
         private string _prmParcialPrincipal = "FNP";
 
         public EvaluacionActiva() { }
+        
+
+        public EvaluacionActiva( string idCarrera, string codAsignatura )
+        {
+            this._codCarrera = idCarrera;
+            this._codAsignatura = codAsignatura;
+        }
 
         /// <summary>
         ///     Retorma informacion de la evaluacion activa en funcion a los parametros generales del sistema 
@@ -33,7 +43,9 @@ namespace SitioWebOasis.Library
         /// <returns> Retorna la evaluacion vigente, en caso de no existir ninguna evaluacion activa retorna un valor cero (0) </returns>
         public string getDtaEvaluacionActiva()
         {
-            string dtaEvaluacionActiva = "";
+            string dtaEvaluacionActiva = "NA";
+            string evActiva = string.Empty;
+
             try
             {
                 ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
@@ -62,16 +74,94 @@ namespace SitioWebOasis.Library
                         }
                     }
                 }
-            }catch(Exception ex){
+            }
+            catch(Exception ex){
                 dtaEvaluacionActiva = string.Empty;
 
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaParametro");
             }
 
-            //  return dtaEvaluacionActiva;
-            return "3";
+            return dtaEvaluacionActiva;
         }
+
+
+
+        public string getActaImpresa( string codAsignatura, string evActiva)
+        {
+            string numActa = "NA";
+
+            try{
+                switch (evActiva)
+                {
+                    //  Parciales 1, 2 y 3
+                    case "1":
+                    case "2":
+                    case "3":
+                        numActa = (this._getActaEvAcumulativaImpresa(codAsignatura, evActiva)) ? "NA" : evActiva;
+                    break;
+
+                    //  Ev. final - Ev. Recuperacion
+                    case "EF":
+                        numActa = (this._getActaEvFinalImpresa(codAsignatura, evActiva) ) ? "NA" : evActiva;
+                    break;
+                }
+
+            }catch (Exception ex) {
+                numActa = "NA";
+                Errores err = new Errores();
+                err.SetError(ex, "getActaImpresa");
+            }
+
+            return numActa;
+        }
+
+
+
+
+        private bool _getActaEvAcumulativaImpresa(string codAsignatura, string strCodParcial )
+        {
+            bool rst = true;
+            int numReg = default(int);
+
+            try
+            {
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                rst = ne.getActaImpresaEvAcumulativo(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                        this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                        codAsignatura, 
+                                                        strCodParcial);
+
+            }catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_getActaEvAcumulativaImpresa");
+            }
+
+            return rst;
+        }
+
+
+        private bool _getActaEvFinalImpresa(string codAsignatura, string strCodEvaluacion )
+        {
+            bool rst = true;
+            int numReg = default(int);
+
+            try
+            {
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                rst = ne.getActaImpresaEvFinalesRecuperacion(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                codAsignatura,
+                                                                strCodEvaluacion);
+            }catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_getActaEvAcumulativaImpresa");
+            }
+
+            return rst;
+        }
+
+
 
     }
 }

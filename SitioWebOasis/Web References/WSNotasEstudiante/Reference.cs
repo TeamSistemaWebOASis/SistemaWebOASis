@@ -41,6 +41,10 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         private System.Threading.SendOrPostCallback getNumRegistrosEvFinalesRecuperacionOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getActaImpresaEvAcumulativoOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getActaImpresaEvFinalesRecuperacionOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -96,6 +100,12 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         public event getNumRegistrosEvFinalesRecuperacionCompletedEventHandler getNumRegistrosEvFinalesRecuperacionCompleted;
+        
+        /// <remarks/>
+        public event getActaImpresaEvAcumulativoCompletedEventHandler getActaImpresaEvAcumulativoCompleted;
+        
+        /// <remarks/>
+        public event getActaImpresaEvFinalesRecuperacionCompletedEventHandler getActaImpresaEvFinalesRecuperacionCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDatosNotasEstudiante", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -312,6 +322,76 @@ namespace SitioWebOasis.WSNotasEstudiante {
             if ((this.getNumRegistrosEvFinalesRecuperacionCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getNumRegistrosEvFinalesRecuperacionCompleted(this, new getNumRegistrosEvFinalesRecuperacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getActaImpresaEvAcumulativo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool getActaImpresaEvAcumulativo(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParcial) {
+            object[] results = this.Invoke("getActaImpresaEvAcumulativo", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodParcial});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getActaImpresaEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParcial) {
+            this.getActaImpresaEvAcumulativoAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParcial, null);
+        }
+        
+        /// <remarks/>
+        public void getActaImpresaEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParcial, object userState) {
+            if ((this.getActaImpresaEvAcumulativoOperationCompleted == null)) {
+                this.getActaImpresaEvAcumulativoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetActaImpresaEvAcumulativoOperationCompleted);
+            }
+            this.InvokeAsync("getActaImpresaEvAcumulativo", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodParcial}, this.getActaImpresaEvAcumulativoOperationCompleted, userState);
+        }
+        
+        private void OngetActaImpresaEvAcumulativoOperationCompleted(object arg) {
+            if ((this.getActaImpresaEvAcumulativoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getActaImpresaEvAcumulativoCompleted(this, new getActaImpresaEvAcumulativoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getActaImpresaEvFinalesRecuperacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool getActaImpresaEvFinalesRecuperacion(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
+            object[] results = this.Invoke("getActaImpresaEvFinalesRecuperacion", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodTipoExamen});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getActaImpresaEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
+            this.getActaImpresaEvFinalesRecuperacionAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodTipoExamen, null);
+        }
+        
+        /// <remarks/>
+        public void getActaImpresaEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen, object userState) {
+            if ((this.getActaImpresaEvFinalesRecuperacionOperationCompleted == null)) {
+                this.getActaImpresaEvFinalesRecuperacionOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetActaImpresaEvFinalesRecuperacionOperationCompleted);
+            }
+            this.InvokeAsync("getActaImpresaEvFinalesRecuperacion", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodTipoExamen}, this.getActaImpresaEvFinalesRecuperacionOperationCompleted, userState);
+        }
+        
+        private void OngetActaImpresaEvFinalesRecuperacionOperationCompleted(object arg) {
+            if ((this.getActaImpresaEvFinalesRecuperacionCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getActaImpresaEvFinalesRecuperacionCompleted(this, new getActaImpresaEvFinalesRecuperacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4514,6 +4594,58 @@ namespace SitioWebOasis.WSNotasEstudiante {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getActaImpresaEvAcumulativoCompletedEventHandler(object sender, getActaImpresaEvAcumulativoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getActaImpresaEvAcumulativoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getActaImpresaEvAcumulativoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getActaImpresaEvFinalesRecuperacionCompletedEventHandler(object sender, getActaImpresaEvFinalesRecuperacionCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getActaImpresaEvFinalesRecuperacionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getActaImpresaEvFinalesRecuperacionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
             }
         }
     }

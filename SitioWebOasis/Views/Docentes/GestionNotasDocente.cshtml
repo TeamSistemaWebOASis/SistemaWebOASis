@@ -132,12 +132,12 @@
                                     <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
                                 </div>
 
-                                @*BOTONES DE IMPRESION DE ACTAS*@
+                                @* BOTONES DE IMPRESION DE ACTAS *@
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @*IMPRESION DEL ACTA PARCIAL #01*@
+                                        @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
                                         <div class="btn-group">
-                                            <button id="btnP1" type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> Parcial #01 </button>
+                                            <button id="btnP1" type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> <strong>Impresión Acta Acumulativa</strong> </button>
                                             <button id="btnP1F" type="button" class="btn @colorP1 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
                                                 <li><a id="p1_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
@@ -147,29 +147,6 @@
                                             </ul>
                                         </div>
 
-                                        @*IMPRESION DEL ACTA PARCIAL #02*@
-                                        <div class="btn-group">
-                                            <button id="btnP2" type="button" class="btn @colorP2 btn-md"><i class="fa fa fa-print"></i> Parcial #02 </button>
-                                            <button id="btnP2F" type="button" class="btn @colorP2 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a id="p2_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="p2_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a id="p2_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
-                                        </div>
-
-                                        @*IMPRESION DEL ACTA PARCIAL #03*@
-                                        <div class="btn-group">
-                                            <button id="btnP3" type="button" class="btn @colorP3 btn-md"><i class="fa fa fa-print"></i> Parcial #03 </button>
-                                            <button id="btnP3F" type="button" class="btn @colorP3 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a id="p3_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="p3_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a id="p3_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
-                                        </div>
                                     </div>
                                 </div>
 
@@ -184,7 +161,7 @@
                                     <button id="btnGuardarEvAcumulativa"
                                             type="button"
                                             class="btn btn-success pull-right">
-                                        <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA
+                                        <i class="fa fa-floppy-o fa-2x"></i> <strong>@Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA</strong>
                                     </button>
                                 }else{
                                     @*TABLA DE NOTAS DEL ESTUDIANTE*@
@@ -218,8 +195,7 @@
 
                             </div>
                         </div>
-                    </div>carlos
-
+                    </div>
 
 
                     @*EVALUACION FINAL*@
@@ -271,7 +247,7 @@
                                     </button>
                                 }else{
                                     <div class="alert alert-info fade in">
-                                        <i class="fa fa-info-circle"></i> INFORMACION NO DISPONIBLE
+                                        <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i> INFORMACION NO DISPONIBLE
                                     </div>
                                 }
 
@@ -281,7 +257,6 @@
 
 
                     @*EVALUACION RECUPERACION*@
-                    
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
@@ -329,7 +304,7 @@
                                     </button>
                                 }else{
                                     <div class="alert alert-info fade in">
-                                        <i class="fa fa-info-circle"></i> INFORMACION NO DISPONIBLE
+                                        <i class="fa fa-exclamation-triangle fa-3x"></i> INFORMACION NO DISPONIBLE
                                     </div>
                                 }
 

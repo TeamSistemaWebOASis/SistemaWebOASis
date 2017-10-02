@@ -53,6 +53,7 @@ namespace SitioWebOasis.Models
                 dsEvAcumulativa = (rstEvAcumulativa != null) 
                                     ? rstEvAcumulativa
                                     : new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
+
             }catch (System.Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getAsignaturasDocente");
@@ -515,5 +516,12 @@ namespace SitioWebOasis.Models
 
             return rst;
         }
+
+
+        //public bool getEstadoGestionEvAcumulativa()
+        //{
+
+        //}
+
     }
 }
