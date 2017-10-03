@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using SitioWebOasis.Library;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -138,6 +139,93 @@ namespace SitioWebOasis.Models
             }
 
             return rst;
+        }
+
+
+        public string getHTML_EvaluacionFinal()
+        {
+            string colorRow = "odd";
+            string html = string.Empty;
+
+            html += " <tr role='row' class='" + colorRow + "'>";
+            html += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            html += " </tr>";
+
+            if (this._dsEvFinal.Acta.Rows.Count > 0)
+            {
+                html = string.Empty;
+                string numMatricula = string.Empty;
+                string promedio = string.Empty;
+                string numNivel = string.Empty;
+                string estadoCumplimiento = string.Empty;
+
+                foreach (DataRow item in this._dsEvFinal.Acta)
+                {
+                    colorRow = (colorRow == "even") ? "odd" : "even";
+
+                    numMatricula = this._getNumOrdinal(item["bytNumMat"].ToString(), "matricula");
+                    numNivel = this._getNumOrdinal(item["strCodNivel"].ToString(), "nivel");
+                    estadoCumplimiento = this._getEstadoCumplimiento(   Convert.ToByte(item["Total"].ToString()),
+                                                                        Convert.ToByte(item["bytAsistencia"].ToString()),
+                                                                        item["strCodEquiv"].ToString());
+
+                    html += " <tr id='" + item["strCodigo"] + "' role='row' class='" + colorRow + "'>";
+                    html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["No"] + "</td>";
+                    html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left; font-size: 12px;'>" + item["NombreCompleto"].ToString().Trim().ToUpper() + "</td>";
+                    html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + numMatricula + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytAcumulado"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytAsistencia"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytNota"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["Total"] + "</td>";
+                    html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + estadoCumplimiento + "</td>";
+                    html += "     <td style='width: 100px;align-content: center; vertical-align: middle; text-align: center;font-size: 12px;'>" + item["strObservaciones"] + "</td>";
+                    html += " </tr>";
+                }
+            }
+
+            return html;
+        }
+
+
+
+        private string _getEstadoCumplimiento( byte total, byte asistencia, string strCodEquivalencia )
+        {
+            string estCumplimiento = "---";
+
+            try{
+                //  APROBADO
+                if ( total >= 28 && asistencia >= 70){
+                    estCumplimiento = "<span class='label label-success'>" + Language.es_ES.EST_LBL_APROBADO.ToUpper() + "</span>";
+                }
+
+                //  EVALUACION RECUPERACION
+                if (total >= 16 && total < 28 && asistencia >= 70){
+                    estCumplimiento = "<span class='label label-warning'>" + Language.es_ES.EST_LBL_EV_RECUPERACION + "</span>"; ;
+                }
+
+                //  REPROBADO - FALTAS
+                if (asistencia < 70 && strCodEquivalencia == "R"){
+                    estCumplimiento = "<span class='label label-danger'>" + Language.es_ES.LBL_CUMPLIMIENTO_REPROBADO_FALTAS + "</span>"; ;
+                }
+
+                //  REPROBADO
+                if ( total < 16 && asistencia >= 70 ){
+                    estCumplimiento = "<span class='label label-danger'>" + Language.es_ES.LBL_CUMPLIMIENTO_REPROBADO + "</span>"; ;
+                }
+
+                //  EXONERADO
+                if (total >= 28 && asistencia >= 70 && strCodEquivalencia == "E"){
+                    estCumplimiento = "<span class='label label-success'>" + Language.es_ES.LBL_CUMPLIMIENTO_EXONERADO + "</span>"; ;
+                }
+            }
+            catch (Exception ex)
+            {
+                estCumplimiento = "---";
+                Errores err = new Errores();
+                err.SetError(ex, "_guardarEvAcumulativa");
+            }
+
+            return estCumplimiento;
         }
 
     }

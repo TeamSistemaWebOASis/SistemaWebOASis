@@ -459,6 +459,21 @@
   <data name="NOTAS_TB_COL_CUMPLIMIENTO" xml:space="preserve">
     <value>Cumplimiento</value>
   </data>
+  <data name="NOTAS_TB_COL_EF_TOTAL_ACUMULADO" xml:space="preserve">
+    <value>Total acumulado</value>
+  </data>
+  <data name="NOTAS_TB_COL_EF_TOTAL_ASISTENCIA" xml:space="preserve">
+    <value>Total asistencia(%)</value>
+  </data>
+  <data name="NOTAS_TB_COL_EF_TOTAL_EV_FINAL" xml:space="preserve">
+    <value>Total Ev. final</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION" xml:space="preserve">
+    <value>Nota evaluación recuperación</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA" xml:space="preserve">
+    <value>Total evaluación formativa</value>
+  </data>
   <data name="NOTAS_TB_COL_ESTADO" xml:space="preserve">
     <value>Estado</value>
   </data>
@@ -470,6 +485,9 @@
   </data>
   <data name="NOTAS_TB_COL_NOMBRE_ESTUDIANTE" xml:space="preserve">
     <value>Estudiante</value>
+  </data>
+  <data name="NOTAS_TB_COL_NOTA_EV_FINAL" xml:space="preserve">
+    <value>Nota evaluación final</value>
   </data>
   <data name="NOTAS_TB_COL_NUMERO" xml:space="preserve">
     <value>No</value>
@@ -506,6 +524,9 @@
   </data>
   <data name="NOTAS_TB_COL_TOTALIZADOS" xml:space="preserve">
     <value>TOTALIZADOS</value>
+  </data>
+  <data name="NOTAS_TB_COL_TOTALIZADO_EV_FINAL" xml:space="preserve">
+    <value>TOTALIZADO EVALUACIÓN FORMATIVA</value>
   </data>
   <data name="NOTAS_TB_COL_TOTAL_TOOL_TIP" xml:space="preserve">
     <value>Sumatoria: Nota uno + Nota dos + Nota tres</value>

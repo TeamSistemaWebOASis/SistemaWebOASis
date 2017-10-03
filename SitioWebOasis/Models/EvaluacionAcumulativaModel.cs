@@ -85,13 +85,13 @@ namespace SitioWebOasis.Models
 
                     numMatricula = this._getNumOrdinal(item["bytNumMat"].ToString(), "matricula");
                     numNivel = this._getNumOrdinal(item["strCodNivel"].ToString(), "nivel");
-                    estadoCumplimiento = (this.strParcialActivo == "3" || this.strParcialActivo == "EF") 
+                    estadoCumplimiento = (this.strParcialActivo == "3" || this.strParcialActivo == "EF" || this.strParcialActivo == "ER" || this.strParcialActivo == "NA") 
                                             ? this._getEstadoCumplimiento(item["Total"].ToString(), item["bytAsistencia"].ToString()) 
                                             : "---" ;
 
                     html += " <tr id='" + item["strCodigo"] + "' role='row' class='" + colorRow + "'>";
                     html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["No"] + "</td>";
-                    html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left; font-size: 12px;'>" + item["NombreEstudiante"].ToString().Trim() + "</td>";
+                    html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left; font-size: 12px;'>" + item["NombreEstudiante"].ToString().Trim().ToUpper() + "</td>";
                     html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + numMatricula + "</td>";
                     html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytNota1"] + "</td>";
                     html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytNota2"] + "</td>";
@@ -517,11 +517,6 @@ namespace SitioWebOasis.Models
             return rst;
         }
 
-
-        //public bool getEstadoGestionEvAcumulativa()
-        //{
-
-        //}
 
     }
 }

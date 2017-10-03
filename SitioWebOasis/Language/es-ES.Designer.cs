@@ -1087,6 +1087,51 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Total acumulado.
+        /// </summary>
+        public static string NOTAS_TB_COL_EF_TOTAL_ACUMULADO {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EF_TOTAL_ACUMULADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total asistencia(%).
+        /// </summary>
+        public static string NOTAS_TB_COL_EF_TOTAL_ASISTENCIA {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EF_TOTAL_ASISTENCIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total Ev. final.
+        /// </summary>
+        public static string NOTAS_TB_COL_EF_TOTAL_EV_FINAL {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EF_TOTAL_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nota evaluación recuperación.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total evaluación formativa.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Estado.
         /// </summary>
         public static string NOTAS_TB_COL_ESTADO {
@@ -1119,6 +1164,15 @@ namespace Language {
         public static string NOTAS_TB_COL_NOMBRE_ESTUDIANTE {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_NOMBRE_ESTUDIANTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nota evaluación final.
+        /// </summary>
+        public static string NOTAS_TB_COL_NOTA_EV_FINAL {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_NOTA_EV_FINAL", resourceCulture);
             }
         }
         
@@ -1227,6 +1281,15 @@ namespace Language {
         public static string NOTAS_TB_COL_TOTAL_TOOL_TIP {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_TOTAL_TOOL_TIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a TOTALIZADO EVALUACIÓN FORMATIVA.
+        /// </summary>
+        public static string NOTAS_TB_COL_TOTALIZADO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_TOTALIZADO_EV_FINAL", resourceCulture);
             }
         }
         

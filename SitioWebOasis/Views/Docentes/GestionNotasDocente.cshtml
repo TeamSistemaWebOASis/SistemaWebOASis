@@ -3,9 +3,7 @@
 @{
     ViewBag.Title = "Gestión de Notas - ";
     var strParcialActivo = Model.strParcialActivo.ToString();
-    var colorP1 = "btn-success";
-    var colorP2 = "btn-success";
-    var colorP3 = "btn-success";
+    var colorEA = "btn-success";
     var colorEF = "btn-success";
     var colorER = "btn-success";
     var activoEA = "collapse in";
@@ -13,27 +11,15 @@
     var activoER = "collapse";
 
     switch (strParcialActivo){
-        case "1":   colorP2 = "btn-warning";
-            colorP3 = "btn-warning";
+        case "1":
+        case "2":
+        case "3":
             colorEF = "btn-warning";
             colorER = "btn-warning";
             break;
 
-        case "2":   colorP1 = "btn-warning";
-            colorP3 = "btn-warning";
-            colorEF = "btn-warning";
-            colorER = "btn-warning";
-            break;
-
-        case "3":   colorP1 = "btn-warning";
-            colorP2 = "btn-warning";
-            colorEF = "btn-warning";
-            colorER = "btn-warning";
-            break;
-
-        case "EF":   colorP1 = "btn-warning";
-            colorP2 = "btn-warning";
-            colorP3 = "btn-warning";
+        case "EF":
+            colorEA = "btn-warning";
             colorER = "btn-warning";
             activoEA = "collapse";
             activoEF = "collapse in";
@@ -41,14 +27,21 @@
             break;
 
         case "ER":
-            colorP1 = "btn-warning";
-            colorP2 = "btn-warning";
-            colorP3 = "btn-warning";
+            colorEA = "btn-warning";
             colorEF = "btn-warning";
             activoEA = "collapse";
             activoEF = "collapse";
             activoER = "collapse in";
             break;
+
+        default:
+            colorEA = "btn-warning";
+            colorEF = "btn-warning";
+            colorER = "btn-warning";
+            activoEA = "collapse";
+            activoEF = "collapse";
+            activoER = "collapse";
+        break;
     }
 }
 
@@ -61,23 +54,32 @@
     @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
     <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
 
+    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
     @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3"){
-        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.40"> </script>
         <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.40"> </script>
     }
 
+    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
     @if (strParcialActivo == "EF"){
-        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
+        <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
         <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.22"></script>
         <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.20"></script>
     }
 
+    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
     @if (strParcialActivo == "ER"){
-        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+        <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
+        <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
         <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
         <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
     }
+
+    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+    @if (strParcialActivo == "NA"){
+        <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
+    }
+
 }
 
 <div class="main-content">
@@ -119,10 +121,13 @@
                             <h4 class="panel-title">
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                                     <strong> @Language.es_ES.DOC_TB_EV_ACUMULATIVA </strong>
+                                    &nbsp;        
+                                    <i class="label label-danger"><i class="fa fa-arrow-down"></i> 0.7%</i>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
                                 </a>
                             </h4>
+
                         </div>
                         <div id="collapseOne" class="panel-collapse @activoEA">
                             <div class="panel-body">
@@ -137,13 +142,13 @@
                                     <div class="col-sm-12">
                                         @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
                                         <div class="btn-group">
-                                            <button id="btnP1" type="button" class="btn @colorP1 btn-md"><i class="fa fa fa-print"></i> <strong>Impresión Acta Acumulativa</strong> </button>
-                                            <button id="btnP1F" type="button" class="btn @colorP1 btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button id="btnEA" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión Acta Acumulativa</strong> </button>
+                                            <button id="btnEAF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a id="p1_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="p1_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="pEA_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="pEA_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a id="p1_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="pEA_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
 
@@ -164,7 +169,7 @@
                                         <i class="fa fa-floppy-o fa-2x"></i> <strong>@Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA</strong>
                                     </button>
                                 }else{
-                                    @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                                    @*TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
                                     <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
                                         <thead>
                                             <tr role="row">
@@ -192,7 +197,6 @@
                                         </tbody>
                                     </table>
                                 }
-
                             </div>
                         </div>
                     </div>
@@ -212,30 +216,31 @@
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
+                                @*BOTONES DE IMPRESION ACTA EVALUACION FINAL*@
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*  IMPRESION DEL ACTA EVALUACION FINAL *@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta evaluaci&oacute;n final</strong> </button>
+                                            <button type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr class="inner-separator">
+
+
                                 @if(strParcialActivo == "EF" || strParcialActivo == "ER") {
                                     <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
                                         <button class="close" data-dismiss="alert">×</button>
                                         <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
                                     </div>
-
-                                    @*BOTONES DE IMPRESION ACTA EVALUACION FINAL*@
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            @*  IMPRESION DEL ACTA EVALUACION FINAL *@
-                                            <div class="btn-group">
-                                                <button type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n final </button>
-                                                <button type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                    <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <hr class="inner-separator">
 
                                     @* GRID DE EVALUACION FINAL *@
                                     <table id="grdEvFinal"></table>
@@ -246,9 +251,32 @@
                                         <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
                                     </button>
                                 }else{
-                                    <div class="alert alert-info fade in">
-                                        <i class="fa fa-exclamation-triangle fa-3x" aria-hidden="true"></i> INFORMACION NO DISPONIBLE
-                                    </div>
+                                    @*TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
+                                    <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
+                                        <thead>
+                                            <tr role="row">
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
+                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADO_EV_FINAL </th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
+                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                            </tr>
+
+                                            <tr role="row">
+                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO </th>
+                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ASISTENCIA</th>
+
+                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
+                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @* NOTAS EVALUACION ESTUDIANTE *@
+                                            @Html.Raw(Model.evFinalModel.getHTML_EvaluacionFinal())
+                                        </tbody>
+                                    </table>
                                 }
 
                             </div>
@@ -269,29 +297,28 @@
                         </div>
                         <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
+                                <div class="alert alert-info fade in">
+                                    <button class="close" data-dismiss="alert">×</button>
+                                    <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
+                                </div>
 
-                                @if (strParcialActivo == "EF" || strParcialActivo == "ER"){
-                                    <div class="alert alert-info fade in">
-                                        <button class="close" data-dismiss="alert">×</button>
-                                        <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            @*IMPRESION DEL ACTA EVALUACION RECUPERACION #01*@
-                                            <div class="btn-group">
-                                                <button type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> Evaluaci&oacute;n recuperaci&oacute;n </button>
-                                                <button type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                    <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                                </ul>
-                                            </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        @*IMPRESION DEL ACTA EVALUACION RECUPERACION *@
+                                        <div class="btn-group">
+                                            <button type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> <strong> Imprimir acta evaluación recuperación </strong>  </button>
+                                            <button type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li class="divider"></li>
+                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                            </ul>
                                         </div>
                                     </div>
-
+                                </div>
+                                <hr class="inner-separator">
+                                @if (strParcialActivo == "EF" || strParcialActivo == "ER"){
                                     <hr class="inner-separator">
                                     @* GRID DE EVALUACION RECUPERACION *@
                                     <table id="grdEvRecuperacion"></table>
@@ -300,12 +327,32 @@
                                     <button id="btnGuardarEvRecuperacion"
                                             type="button"
                                             class="btn btn-success pull-right">
-                                        <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION
+                                        <i class="fa fa-floppy-o fa-2x"></i> <strong> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION </strong>
                                     </button>
                                 }else{
-                                    <div class="alert alert-info fade in">
-                                        <i class="fa fa-exclamation-triangle fa-3x"></i> INFORMACION NO DISPONIBLE
-                                    </div>
+                                    @*TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
+                                    <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
+                                        <thead>
+                                            <tr role="row">
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
+                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                            </tr>
+
+                                            <tr role="row">
+                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
+                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @* NOTAS EVALUACION ESTUDIANTE *@
+                                            @Html.Raw(Model.evRecuperacionModel.getHTML_EvaluacionRecuperacion())
+                                        </tbody>
+                                    </table>
                                 }
 
                             </div>

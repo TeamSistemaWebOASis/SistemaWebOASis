@@ -49,5 +49,8 @@ namespace SitioWebOasis.Models
         {
             return this._dad.getLstAsignaturasDocente(strCodAsignatura);
         }
+
+
+
     }
 }

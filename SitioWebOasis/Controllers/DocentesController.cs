@@ -195,12 +195,9 @@ namespace SitioWebOasis.Controllers
                 switch (dtaActa[0].ToString().ToUpper())
                 {
                     //  EVALUACION ACUMULATIVA ( Parcial 1 / Parcial 2 / Parcial 3 )
-                    case "P1":
-                    case "P2":
-                    case "P3":
+                    case "PEA":
                         idTypeFile = dtaActa[1];
                         nameFile = this._getDtaRptEvAcumulativa(dtaActa, dtaAsignatura);
-
                     break;
 
                     //  EVALUACION FINAL

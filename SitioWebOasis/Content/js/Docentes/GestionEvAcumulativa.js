@@ -276,7 +276,7 @@
         if ($('#dtaNumConfirmacion').val() == "987") {
             $.unblockUI();
             showLoadingProcess();
-            var dtaBoton = $('#p1_pdf, #p2_pdf, #p3_pdf, #p1_xls, #p2_xls, #p3_xls, #p1_blc, #p2_blc, #p3_blc');
+            var dtaBoton = $('#pEA_pdf, #pEA_xls, #pEA_blc');
 
             $.ajax({
                 type: "POST",
@@ -285,15 +285,8 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             }).complete(function (data) {
-                //  desactivo todo el grid
-                //  $('#grdEvAcumulativa').attr('disabled', 'disabled');
-
-                //  desactivo todo el grid
-                grid[0].grid.beginReq();                setTimeout(function () {
-                    grid[0].grid.endReq();
-                }, 100);
                 //  Cambio el color del boton
-                $('#btnP1, #btnP2, #btnP3, #btnP1F, #btnP2F, #btnP3F').attr("class", 'btn btn-warning btn-md');
+                $('#btnEA, #btnEAF').attr("class", 'btn btn-warning btn-md');
 
                 //  Oculto el mensaje de error
                 $('#messageError').attr("hidden");
@@ -303,7 +296,7 @@
 
                 if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
                     $.redirect("/Docentes/DownloadFile",
-                                { file: data.responseJSON.fileName },
+                                {   file: data.responseJSON.fileName },
                                     "POST")
                 } else {
                     //  Si existe error, muestro el mensaje
