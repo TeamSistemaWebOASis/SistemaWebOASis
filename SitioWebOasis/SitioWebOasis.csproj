@@ -908,6 +908,8 @@
       <CustomToolNamespace>CENTRALIZADA</CustomToolNamespace>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\rptActaEvaluacionesConNotas.rdlc" />
+    <EmbeddedResource Include="Reports\rptActaEvaluacionesSinNotas.rdlc" />
+    <EmbeddedResource Include="Reports\rptActaExPrincipalConNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
   </ItemGroup>

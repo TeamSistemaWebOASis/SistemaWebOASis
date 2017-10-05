@@ -216,25 +216,24 @@
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
-                                @*BOTONES DE IMPRESION ACTA EVALUACION FINAL*@
+                                @* BOTONES DE IMPRESION DE ACTAS *@
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @*  IMPRESION DEL ACTA EVALUACION FINAL *@
+                                        @* IMPRESION DEL ACTA - EV FINAL *@
                                         <div class="btn-group">
-                                            <button type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta evaluaci&oacute;n final</strong> </button>
-                                            <button type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button id="btnEF" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta final</strong> </button>
+                                            <button id="btnEFF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="pEF_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="pEF_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="pEF_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
 
                                 <hr class="inner-separator">
-
 
                                 @if(strParcialActivo == "EF" || strParcialActivo == "ER") {
                                     <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">

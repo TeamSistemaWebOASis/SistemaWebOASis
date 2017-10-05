@@ -94,15 +94,15 @@ namespace SitioWebOasis.Models
 
         public void getDataAcademico( out decimal promedioEstudiante, out string descripcionPeriodoEstudiante)
         {
-            promedioEstudiante = default(decimal);
-            descripcionPeriodoEstudiante = default(string);
-
             try
             {
                 this._dsNotasEstudiante = this._getNotasPeriodoEstudiante();
                 promedioEstudiante = this._getPromedioEstudiante();
                 descripcionPeriodoEstudiante = this._getDescripcionPeriodoEstudiante();
             }catch(Exception ex){
+                promedioEstudiante = default(decimal);
+                descripcionPeriodoEstudiante = default(string);
+
                 Errores err = new Errores();
                 err.SetError(ex, "getDataAcademico - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }

@@ -22,7 +22,7 @@ namespace SitioWebOasis.Controllers
         public ActionResult Index( string idRol, string idCarrera )
         {
             string strIdCarrera = (string.IsNullOrEmpty(idCarrera))
-                                    ? this._getIdCarrera()
+                                    ? this._getCodigoCarrera()
                                     : idCarrera;
 
             SitioWebOasis.Models.DatosAcademicosDocente daDocente = new DatosAcademicosDocente(strIdCarrera);
@@ -35,8 +35,7 @@ namespace SitioWebOasis.Controllers
         }
 
 
-
-        private string _getIdCarrera()
+        private string _getCodigoCarrera()
         {
             string idCarrera = string.Empty;
 
@@ -64,34 +63,41 @@ namespace SitioWebOasis.Controllers
 
             return idCarrera;
         }
+        
 
-
-
-
-        //  [OutputCache(Duration = 8000, VaryByParam = "strCodNivel, strCodAsignatura, strCodParalelo")]
         public ActionResult EvaluacionAsignatura (string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
-            //  modelo - EVALUACION ACUMULATIVA
-            EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
-                                                                                        strCodAsignatura,
-                                                                                        strCodParalelo);
-
-            //  modelo - EVALUACION FINAL
-            EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
-                                                                    strCodAsignatura,
-                                                                    strCodParalelo);
-
-            //  modelo - EVALUACION RECUPERACION
-            EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
+            try
+            {
+                //  modelo - EVALUACION ACUMULATIVA
+                EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
                                                                                             strCodAsignatura,
                                                                                             strCodParalelo);
 
-            return View("GestionNotasDocente", new EvaluacionesDocenteModel {   strCodNivel = strCodNivel,
+                //  modelo - EVALUACION FINAL
+                EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
+                                                                        strCodAsignatura,
+                                                                        strCodParalelo);
+
+                //  modelo - EVALUACION RECUPERACION
+                EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
+                                                                                                strCodAsignatura,
+                                                                                                strCodParalelo);
+
+                return View("GestionNotasDocente", new EvaluacionesDocenteModel{strCodNivel = strCodNivel,
                                                                                 strCodAsignatura = strCodAsignatura,
                                                                                 strCodParalelo = strCodParalelo,
                                                                                 evAcumulativaModel = evAcumulativa,
                                                                                 evFinalModel = evFinal,
                                                                                 evRecuperacionModel = evRecuperacion });
+            }catch(Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "EvaluacionAsignatura");
+
+                return RedirectToAction("Index", "Error");
+            }
+            
         }
 
 
@@ -190,100 +196,54 @@ namespace SitioWebOasis.Controllers
                 string[] dtaAsignatura = idAsignatura.Split('|');
 
                 string nameFile = string.Empty;
-                string idTypeFile = string.Empty;
-
-                switch (dtaActa[0].ToString().ToUpper())
-                {
+                switch (dtaActa[0].ToString().ToUpper()){
                     //  EVALUACION ACUMULATIVA ( Parcial 1 / Parcial 2 / Parcial 3 )
                     case "PEA":
-                        idTypeFile = dtaActa[1];
-                        nameFile = this._getDtaRptEvAcumulativa(dtaActa, dtaAsignatura);
+                        EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  dtaAsignatura[1], 
+                                                                                                    dtaAsignatura[0],
+                                                                                                    dtaAsignatura[2]);
+
+                        nameFile = evAcumulativa.getDtaRptEvAcumulativa(dtaActa, 
+                                                                        dtaAsignatura, 
+                                                                        Server.MapPath("~/Reports"), 
+                                                                        Server.MapPath("~/Temp"));
                     break;
 
                     //  EVALUACION FINAL
-                    case "PF":
-                        EvaluacionFinalModel evFinal = new EvaluacionFinalModel(dtaAsignatura[0],
-                                                                                dtaAsignatura[1],
+                    case "PEF":
+                        EvaluacionFinalModel evFinal = new EvaluacionFinalModel(dtaAsignatura[1],
+                                                                                dtaAsignatura[0],
                                                                                 dtaAsignatura[2]);
+
+                        nameFile = evFinal.getDtaRptEvFinal(dtaActa,
+                                                            dtaAsignatura,
+                                                            Server.MapPath("~/Reports"),
+                                                            Server.MapPath("~/Temp"));
                     break;
                         
                     //  EVALUACION RECUPERACION
-                    case "PR":
+                    case "PER":
                         EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   dtaAsignatura[0],
                                                                                                         dtaAsignatura[1],
                                                                                                         dtaAsignatura[2]);
                     break;
                 }
 
-                return Json(new { fileName = nameFile, errorMessage = "" });
+                if( nameFile == "-1"){
+                    return Json(new { fileName = "", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
+                }else{
+                    return Json(new { fileName = nameFile, errorMessage = "" });
+                }
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "createFile");
 
-                return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
+                return Json(new { fileName = "none", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
             }
         }
 
-
-        private string _getDtaRptEvAcumulativa( string[] dtaActa, string[] dtaAsignatura)
-        {
-            //  Creo el nombre del archivo
-            string nameFile = Language.es_ES.EST_TB_HORARIO_ACADEMICO.Replace(" ", "_") + "_" + this.UsuarioActual.Cedula.ToString() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
-            string reportPath = string.Empty;
-            string dtaParcial = dtaActa[0];
-            string idTypeFile = dtaActa[1];
-            string strNameFile = string.Empty;
-
-            try{
-                EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  dtaAsignatura[1],
-                                                                                            dtaAsignatura[0],
-                                                                                            dtaAsignatura[2]);
-
-                reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptActaEvaluacionesConNotas.rdlc");
-                LocalReport rptEvAcumulativa = evAcumulativa.getRptEvAcumulativa(reportPath, dtaParcial);
-
-                string reportType = idTypeFile;
-                string mimeType;
-                string encoding;
-                string fileNameExtension;
-
-                string deviceInfo = "<DeviceInfo>" +
-                                    "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
-                                    "</DeviceInfo>";
-
-                Warning[] warnings;
-                string[] streams;
-                byte[] renderedBytes;
-
-                renderedBytes = rptEvAcumulativa.Render(    reportType,
-                                                            deviceInfo,
-                                                            out mimeType,
-                                                            out encoding,
-                                                            out fileNameExtension,
-                                                            out streams,
-                                                            out warnings);
-
-                //  Direcciono la creacion del archivo a una ubicacion temporal
-                string fullPath = Path.Combine(Server.MapPath("~/Temp"), nameFile);
-
-                //  Creo el archivo en la ubicacion temporal
-                System.IO.File.WriteAllBytes(fullPath, renderedBytes);
-
-                //  Ejecuto el proceso de cierre de notas de un parcial activo
-                evAcumulativa.cierreGestionNotasParcial(dtaActa[0]);
-            }
-            catch(Exception ex)
-            {
-                nameFile = "-1";
-
-                Errores err = new Errores();
-                err.SetError(ex, "_getDtaRptEvAcumulativa");
-            }
-
-            return nameFile;
-        }
 
 
         [HttpPost]

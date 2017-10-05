@@ -456,6 +456,15 @@
   <data name="LST_LBL_ASIGNATURAS_DOCENTE" xml:space="preserve">
     <value>ASIGNATURAS</value>
   </data>
+  <data name="MSG_ERROR_GENERAR_ARCHIVO" xml:space="preserve">
+    <value>Problema al generar archivo</value>
+  </data>
+  <data name="NF_EV_ACUMULATIVA" xml:space="preserve">
+    <value>ACTA_EV_ACUMULATIVA</value>
+  </data>
+  <data name="NF_EV_FINAL" xml:space="preserve">
+    <value>ACTA_EV_FINAL</value>
+  </data>
   <data name="NOTAS_TB_COL_CUMPLIMIENTO" xml:space="preserve">
     <value>Cumplimiento</value>
   </data>

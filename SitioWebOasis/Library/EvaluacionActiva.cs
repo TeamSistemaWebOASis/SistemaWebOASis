@@ -84,7 +84,7 @@ namespace SitioWebOasis.Library
 
 
             //  return dtaEvaluacionActiva;
-            return "NA";
+            return "EF";
         }
 
 

@@ -8,6 +8,7 @@ using SitioWebOasis.Library;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Net;
 
 namespace SitioWebOasis.Models
@@ -17,7 +18,7 @@ namespace SitioWebOasis.Models
         public string jsonEvAcumulativa { get; set; }
         private string _dtaEvAcumulativa = string.Empty;
         private WSGestorEvaluacion.dtstEvaluacion_Acumulados _dsEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
-        
+        DatosAcademicosDocente _dad;
 
         public EvaluacionAcumulativaModel( string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
@@ -51,8 +52,8 @@ namespace SitioWebOasis.Models
                                                                         this._strCodParalelo);
 
                 dsEvAcumulativa = (rstEvAcumulativa != null) 
-                                    ? rstEvAcumulativa
-                                    : new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
+                                        ? rstEvAcumulativa
+                                        : new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
 
             }catch (System.Exception ex){
                 Errores err = new Errores();
@@ -245,7 +246,7 @@ namespace SitioWebOasis.Models
         }
         
 
-        public LocalReport getRptEvAcumulativa(string reportPath, string impParcial = "1")
+        public LocalReport getRptEvAcumulativa(string reportPath)
         {
             LocalReport rptEvAcumulativa = new LocalReport();
 
@@ -301,7 +302,7 @@ namespace SitioWebOasis.Models
             return dsEvAcumulativa;
         }
 
-
+        
         private IEnumerable<ReportParameter> _getParametrosGeneralesReporte()
         {
             WSInfoCarreras.ParametrosCarrera pc = this._getParametrosCarrera();
@@ -336,7 +337,7 @@ namespace SitioWebOasis.Models
                                         ref numCreditos,
                                         ref fHorasTeo,
                                         ref fHorasPra);
-
+                
                 switch (UsuarioActual.CarreraActual.TipoEntidad.ToString())
                 {
                     case "CAR":
@@ -518,5 +519,76 @@ namespace SitioWebOasis.Models
         }
 
 
+        public string getDtaRptEvAcumulativa(string[] dtaActa, string[] dtaAsignatura, string pathReport, string pathTmp)
+        {
+            //  Creo el nombre del archivo
+            string nameFile = string.Empty;
+            string reportPath = string.Empty;
+            string dtaParcial = dtaActa[0];
+            string nombreAsignatura = string.Empty;
+
+            string idTypeFile = (dtaActa[1] == "pdf" || dtaActa[1] == "blc")
+                                    ? "pdf"
+                                    : (dtaActa[1] == "xls") ? "Excel"
+                                                            : "";
+            string strNameFile = string.Empty;
+
+            try
+            {
+
+                if (!string.IsNullOrEmpty(idTypeFile)){
+                    reportPath = (dtaActa[1] == "pdf" || dtaActa[1] == "xls")
+                                    ? Path.Combine(pathReport, "rptActaEvaluacionesConNotas.rdlc")
+                                    : Path.Combine(pathReport, "rptActaEvaluacionesSinNotas.rdlc");
+
+                    LocalReport rptEvAcumulativa = this.getRptEvAcumulativa(reportPath);
+
+                    string reportType = idTypeFile;
+                    string mimeType;
+                    string encoding;
+                    string fileNameExtension;
+
+                    string deviceInfo = "<DeviceInfo>" +
+                                        "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
+                                        "</DeviceInfo>";
+
+                    Warning[] warnings;
+                    string[] streams;
+                    byte[] renderedBytes;
+
+                    renderedBytes = rptEvAcumulativa.Render(reportType,
+                                                            deviceInfo,
+                                                            out mimeType,
+                                                            out encoding,
+                                                            out fileNameExtension,
+                                                            out streams,
+                                                            out warnings);
+
+                    nombreAsignatura = this.getNombreAsignatura(this._strCodAsignatura, 
+                                                                this._strCodNivel, 
+                                                                this._strCodParalelo);
+
+                    nameFile = Language.es_ES.NF_EV_ACUMULATIVA + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
+
+                    //  Direcciono la creacion del archivo a una ubicacion temporal
+                    string fullPath = Path.Combine(pathTmp, nameFile);
+
+                    //  Creo el archivo en la ubicacion temporal
+                    System.IO.File.WriteAllBytes(fullPath, renderedBytes);
+
+                    //  Ejecuto el proceso de cierre de notas de un parcial activo
+                    this.cierreGestionNotasParcial(dtaActa[0]);
+                }
+            }
+            catch (Exception ex)
+            {
+                nameFile = "-1";
+
+                Errores err = new Errores();
+                err.SetError(ex, "_getDtaRptEvAcumulativa");
+            }
+
+            return nameFile;
+        }
     }
 }

@@ -1078,6 +1078,33 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Problema al generar archivo.
+        /// </summary>
+        public static string MSG_ERROR_GENERAR_ARCHIVO {
+            get {
+                return ResourceManager.GetString("MSG_ERROR_GENERAR_ARCHIVO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ACTA_EV_ACUMULATIVA.
+        /// </summary>
+        public static string NF_EV_ACUMULATIVA {
+            get {
+                return ResourceManager.GetString("NF_EV_ACUMULATIVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ACTA_EV_FINAL.
+        /// </summary>
+        public static string NF_EV_FINAL {
+            get {
+                return ResourceManager.GetString("NF_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cumplimiento.
         /// </summary>
         public static string NOTAS_TB_COL_CUMPLIMIENTO {
