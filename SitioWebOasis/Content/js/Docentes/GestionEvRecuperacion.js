@@ -219,4 +219,60 @@ $(document).ready(function () {
         })
     })
 
+
+    //  Control de impresion de actas
+    $('#pER_pdf, #pER_xls, #pER_blc').on('click', function () {
+        $("#opImpEvRecuperacion").val($(this).attr("id"));
+
+        //  Muestro ventana de autenticacion a dos factores
+        $.blockUI({ message: $('#loginForm') });
+    })
+
+
+    $('#btnValidarImprimir').click(function () {
+        if ($('#dtaNumConfirmacion').val() == "987") {
+            $.unblockUI();
+            showLoadingProcess();
+            var opImpresion = $("#opImpEvRecuperacion").val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Docentes/impresionActas",
+                data: '{idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).complete(function (data) {
+                //  Cambio el color del boton
+                $('#btnER, #btnERF').attr("class", 'btn btn-warning btn-md');
+
+                //  Oculto el mensaje de error
+                $('#messageError').attr("hidden");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+
+                $("opImpEvRecuperacion").attr("value", "");
+
+                if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+                    $.redirect("/Docentes/DownloadFile",
+                                { file: data.responseJSON.fileName },
+                                    "POST")
+                } else {
+                    //  Si existe error, muestro el mensaje
+                    $('#messageError').removeAttr("hidden");
+                    $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
+                }
+            })
+        } else {
+            alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
+        }
+    })
+
+    function showLoadingProcess() {
+        HoldOn.open({
+            theme: 'sk-dot',
+            message: "<h4>GUARDANDO INFORMACIÓN ...</h4>"
+        });
+    }
+
 })

@@ -266,7 +266,9 @@
 
 
     //  Control de impresion de actas
-    $('#p1_pdf, #p2_pdf, #p3_pdf, #p1_xls, #p2_xls, #p3_xls, #p1_blc, #p2_blc, #p3_blc').on('click', function () {
+    $('#pEA_pdf, #pEA_xls, #pEA_blc').on('click', function () {
+        $("#opImpEvAcumulada").val($(this).attr("id"));
+
         //  Muestro ventana de autenticacion a dos factores
         $.blockUI({ message: $('#loginForm') });
     })
@@ -276,12 +278,12 @@
         if ($('#dtaNumConfirmacion').val() == "987") {
             $.unblockUI();
             showLoadingProcess();
-            var dtaBoton = $('#pEA_pdf, #pEA_xls, #pEA_blc');
+            var opImpresion = $("#opImpEvAcumulada").val();
 
             $.ajax({
                 type: "POST",
                 url: "/Docentes/impresionActas",
-                data: '{idActa: "' + dtaBoton.attr("id") + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                data: '{idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             }).complete(function (data) {

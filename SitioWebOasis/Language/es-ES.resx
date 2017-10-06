@@ -465,6 +465,9 @@
   <data name="NF_EV_FINAL" xml:space="preserve">
     <value>ACTA_EV_FINAL</value>
   </data>
+  <data name="NF_EV_RECUPERACION" xml:space="preserve">
+    <value>ACTA_EV_RECUPERACION</value>
+  </data>
   <data name="NOTAS_TB_COL_CUMPLIMIENTO" xml:space="preserve">
     <value>Cumplimiento</value>
   </data>

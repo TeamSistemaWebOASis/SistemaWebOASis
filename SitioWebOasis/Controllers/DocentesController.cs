@@ -223,9 +223,14 @@ namespace SitioWebOasis.Controllers
                         
                     //  EVALUACION RECUPERACION
                     case "PER":
-                        EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   dtaAsignatura[0],
-                                                                                                        dtaAsignatura[1],
+                        EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   dtaAsignatura[1],
+                                                                                                        dtaAsignatura[0],
                                                                                                         dtaAsignatura[2]);
+
+                        nameFile = evRecuperacion.getDtaRptEvRecuperacion(  dtaActa,
+                                                                            dtaAsignatura,
+                                                                            Server.MapPath("~/Reports"),
+                                                                            Server.MapPath("~/Temp"));
                     break;
                 }
 

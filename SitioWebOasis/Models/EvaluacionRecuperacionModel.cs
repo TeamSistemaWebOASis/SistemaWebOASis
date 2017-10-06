@@ -1,9 +1,12 @@
 ﻿using GestorErrores;
+using Microsoft.Reporting.WebForms;
 using Newtonsoft.Json;
 using SitioWebOasis.Library;
+using SitioWebOasis.WSGestorEvaluacion;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -84,8 +87,7 @@ namespace SitioWebOasis.Models
             return rst;
         }
 
-
-
+        
         private bool _updEvRecuperacion(List<EvaluacionRecuperacion> dtaEvRecuperacion)
         {
             bool rst = false;
@@ -148,10 +150,7 @@ namespace SitioWebOasis.Models
             return rst;
         }
 
-
-
-
-
+        
         public string getHTML_EvaluacionRecuperacion()
         {
             string colorRow = "odd";
@@ -195,7 +194,6 @@ namespace SitioWebOasis.Models
         }
 
 
-
         private string _getEstadoCumplimiento(byte total, string strCodEquivalencia)
         {
             string estCumplimiento = "---";
@@ -227,12 +225,247 @@ namespace SitioWebOasis.Models
 
 
 
+        public string getDtaRptEvRecuperacion(string[] dtaActa, string[] dtaAsignatura, string pathReport, string pathTmp)
+        {
+            //  Creo el nombre del archivo
+            string nameFile = string.Empty;
+            string reportPath = string.Empty;
+            string dtaParcial = dtaActa[0];
+            string nombreAsignatura = string.Empty;
+
+            string idTypeFile = (dtaActa[1] == "pdf" || dtaActa[1] == "blc")
+                                    ? "pdf"
+                                    : (dtaActa[1] == "xls") ? "Excel"
+                                                            : "";
+            string strNameFile = string.Empty;
+
+            try
+            {
+
+                if (!string.IsNullOrEmpty(idTypeFile))
+                {
+                    reportPath = (dtaActa[1] == "pdf" || dtaActa[1] == "xls")
+                                    ? Path.Combine(pathReport, "rptActaExSuspensionConNotasR1.rdlc")
+                                    : Path.Combine(pathReport, "rptActaExSuspensionSinNotasR1.rdlc");
+
+                    LocalReport rptEvRecuperacion = this.getRptEvRecuperacion(reportPath);
+
+                    string reportType = idTypeFile;
+                    string mimeType;
+                    string encoding;
+                    string fileNameExtension;
+
+                    string deviceInfo = "<DeviceInfo>" +
+                                        "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
+                                        "</DeviceInfo>";
+
+                    Warning[] warnings;
+                    string[] streams;
+                    byte[] renderedBytes;
+
+                    renderedBytes = rptEvRecuperacion.Render(reportType,
+                                                        deviceInfo,
+                                                        out mimeType,
+                                                        out encoding,
+                                                        out fileNameExtension,
+                                                        out streams,
+                                                        out warnings);
+
+                    nombreAsignatura = this.getNombreAsignatura(this._strCodAsignatura,
+                                                                this._strCodNivel,
+                                                                this._strCodParalelo);
+
+                    nameFile = Language.es_ES.NF_EV_RECUPERACION + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
+
+                    //  Direcciono la creacion del archivo a una ubicacion temporal
+                    string fullPath = Path.Combine(pathTmp, nameFile);
+
+                    //  Creo el archivo en la ubicacion temporal
+                    System.IO.File.WriteAllBytes(fullPath, renderedBytes);
+
+                    //  Ejecuto el proceso de cierre de notas de un parcial activo
+                    //  this.cierreGestionNotasFinal(dtaActa[0]);
+                }
+            }catch (Exception ex){
+                nameFile = "-1";
+
+                Errores err = new Errores();
+                err.SetError(ex, "getDtaRptEvFinal");
+            }
+
+            return nameFile;
+        }
+
+
+        public LocalReport getRptEvRecuperacion(string reportPath)
+        {
+            LocalReport rptEvRecuperacion = new LocalReport();
+
+            try
+            {
+                dtstEvaluacion_ImprimirActas dtaEvRecuperacion = this._getDtaImpresionEvRecuperacion();
+                
+                ReportDataSource rds = new ReportDataSource();
+                rds.Value = dtaEvRecuperacion.Acta;
+                rds.Name = "dtsExamenPrincipal";
+
+                rptEvRecuperacion.DataSources.Clear();
+                rptEvRecuperacion.DataSources.Add(rds);
+                rptEvRecuperacion.ReportPath = reportPath;
+
+                rptEvRecuperacion.SetParameters(this._getParametrosGeneralesReporte());
+                rptEvRecuperacion.Refresh();
+            }catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "getRptEvRecuperacion");
+            }
+
+            return rptEvRecuperacion;
+        }
 
 
 
+        private WSGestorEvaluacion.dtstEvaluacion_ImprimirActas _getDtaImpresionEvRecuperacion()
+        {
+            dtstEvaluacion_ImprimirActas rstEvRecuperacion = new dtstEvaluacion_ImprimirActas();
+            dtstEvaluacion_ImprimirActas dsEvRecuperacion = new dtstEvaluacion_ImprimirActas();
+
+            try
+            {
+                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
+                ge.CookieContainer = new CookieContainer();
+                ge.set_fBaseDatos(this._strNombreBD);
+                ge.set_fUbicacion(this._strUbicacion);
+
+                rstEvRecuperacion = ge.getImprimirActaExSuspension( this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                    this._strCodAsignatura,
+                                                                    this._strCodNivel,
+                                                                    this._strCodParalelo);
+
+                dsEvRecuperacion = (rstEvRecuperacion != null)
+                                        ? rstEvRecuperacion
+                                        : new dtstEvaluacion_ImprimirActas();
+
+            }catch (System.Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_getDtaImpresionEvRecuperacion");
+            }
+
+            return dsEvRecuperacion;
+        }
 
 
 
+        private IEnumerable<ReportParameter> _getParametrosGeneralesReporte()
+        {
+            WSInfoCarreras.ParametrosCarrera pc = this._getParametrosCarrera();
+            List<ReportParameter> lstPrmRptEvAcumulativa = new List<ReportParameter>();
 
+            string lblFacultad = "FACULTAD:";
+            string lblCarrera = "CARRERA:";
+            string lblEscuela = "ESCUELA:";
+
+            string facultad = default(string);
+            string carrera = default(string);
+            string escuela = default(string);
+            string strCurso = default(string);
+
+            string strAsignatura = string.Empty;
+            string strNivel = string.Empty;
+            string strPeriodo = string.Empty;
+            string strDocente = string.Empty;
+            string strSistema = string.Empty;
+            float numCreditos = default(float);
+            byte fHorasTeo = default(byte);
+            byte fHorasPra = default(byte);
+
+            try
+            {
+                ReportParameter prmRptHorarioAcademico = new ReportParameter();
+                this._getDatosMateria(ref strAsignatura,
+                                        ref strNivel,
+                                        ref strPeriodo,
+                                        ref strDocente,
+                                        ref strSistema,
+                                        ref numCreditos,
+                                        ref fHorasTeo,
+                                        ref fHorasPra);
+
+                switch (UsuarioActual.CarreraActual.TipoEntidad.ToString())
+                {
+                    case "CAR":
+                        facultad = pc.NombreFacultad;
+                        carrera = pc.NombreCarrera;
+                        escuela = pc.NombreEscuela;
+                        break;
+
+                    case "CAA":
+                        lblFacultad = "";
+                        lblCarrera = "";
+                        lblEscuela = "";
+
+                        facultad = pc.NombreFacultad;
+                        carrera = pc.NombreCarrera;
+                        escuela = "";
+                        break;
+                }
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strInstitucion",
+                                                                "ESPOCH"));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strPeriodoAcademico",
+                                                                this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strLblFacultad",
+                                                                lblFacultad));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strLblCarrera",
+                                                                lblCarrera));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strLblEscuela",
+                                                                lblEscuela));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strAsignatura",
+                                                                strAsignatura));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strCodMateria",
+                                                                this._strCodAsignatura.ToString().ToUpper()));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strCreditos",
+                                                                Convert.ToString(numCreditos)));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strDocente",
+                                                                this.UsuarioActual.Nombre.ToString().ToUpper()));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strNivel",
+                                                                this._strCodNivel.ToString()));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strParalelo",
+                                                                this._strCodParalelo.ToString()));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strFacultad",
+                                                                facultad));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strEscuela",
+                                                                escuela));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strCarrera",
+                                                                carrera));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strURLImagen",
+                                                                ""));
+
+                lstPrmRptEvAcumulativa.Add(new ReportParameter("strURLImagenDTIC",
+                                                                ""));
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getDatosGeneralesReporte");
+            }
+
+            return lstPrmRptEvAcumulativa;
+        }
+        
     }
 }

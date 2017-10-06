@@ -285,7 +285,7 @@ namespace SitioWebOasis.Models
                 {
                     reportPath = (dtaActa[1] == "pdf" || dtaActa[1] == "xls")
                                     ? Path.Combine(pathReport, "rptActaExPrincipalConNotasR1.rdlc")
-                                    : Path.Combine(pathReport, ".rdlc");
+                                    : Path.Combine(pathReport, "rptActaExPrincipalSinNotasR1.rdlc");
 
                     LocalReport rptEvFinal = this.getRptEvFinal(reportPath);
 

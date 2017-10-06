@@ -1105,6 +1105,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ACTA_EV_RECUPERACION.
+        /// </summary>
+        public static string NF_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("NF_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cumplimiento.
         /// </summary>
         public static string NOTAS_TB_COL_CUMPLIMIENTO {

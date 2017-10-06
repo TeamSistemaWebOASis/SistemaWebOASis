@@ -249,6 +249,8 @@ $(document).ready(function () {
 
     //  Control de impresion de actas
     $('#pEF_pdf, #pEF_xls, #pEF_blc').on('click', function () {
+        $("#opImpEvFinal").val($(this).attr("id"));
+
         //  Muestro ventana de autenticacion a dos factores
         $.blockUI({ message: $('#loginForm') });
     })
@@ -258,23 +260,25 @@ $(document).ready(function () {
         if ($('#dtaNumConfirmacion').val() == "987") {
             $.unblockUI();
             showLoadingProcess();
-            var dtaBoton = $('#pEF_pdf, #pEF_xls, #pEF_blc');
+            var opImpresion = $("#opImpEvFinal").val();
 
             $.ajax({
                 type: "POST",
                 url: "/Docentes/impresionActas",
-                data: '{idActa: "' + dtaBoton.attr("id") + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                data: '{idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
                 contentType: "application/json; charset=utf-8",
                 dataType: "json"
             }).complete(function (data) {
                 //  Cambio el color del boton
-                $('#btnEA, #btnEAF').attr("class", 'btn btn-warning btn-md');
+                $('#btnEF, #btnEFF').attr("class", 'btn btn-warning btn-md');
 
                 //  Oculto el mensaje de error
                 $('#messageError').attr("hidden");
 
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
+
+                $("opImpEvFinal").attr("value", "");
 
                 if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
                     $.redirect("/Docentes/DownloadFile",
@@ -290,9 +294,4 @@ $(document).ready(function () {
             alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
         }
     })
-
-
-
-
-
 })

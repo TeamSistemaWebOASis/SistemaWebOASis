@@ -50,37 +50,6 @@
     <link href="@Url.Content("~/Content/css/skins/slategray.css")" rel="stylesheet" type="text/css" />
 }*@
 
-@section scripts{
-    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-    <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
-
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-    @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3"){
-        <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.40"> </script>
-        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.40"> </script>
-    }
-
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
-    @if (strParcialActivo == "EF"){
-        <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-        <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.22"></script>
-        <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.20"></script>
-    }
-
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
-    @if (strParcialActivo == "ER"){
-        <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-        <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
-        <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
-        <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
-    }
-
-    @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
-    @if (strParcialActivo == "NA"){
-        <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-    }
-
-}
 
 <div class="main-content">
     <div class="row">
@@ -235,7 +204,7 @@
 
                                 <hr class="inner-separator">
 
-                                @if(strParcialActivo == "EF" || strParcialActivo == "ER") {
+                                @if(strParcialActivo == "EF") {
                                     <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
                                         <button class="close" data-dismiss="alert">×</button>
                                         <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
@@ -301,17 +270,18 @@
                                     <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
                                 </div>
 
+                                @* BOTONES DE IMPRESION DE ACTAS *@
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        @*IMPRESION DEL ACTA EVALUACION RECUPERACION *@
+                                        @* IMPRESION DEL ACTA - EV RECUPERACION *@
                                         <div class="btn-group">
-                                            <button type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> <strong> Imprimir acta evaluación recuperación </strong>  </button>
-                                            <button type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                            <button id="btnER" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta recuperación</strong> </button>
+                                            <button id="btnERF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                             <ul class="dropdown-menu" role="menu">
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                <li><a id="pER_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                <li><a id="pER_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
                                                 <li class="divider"></li>
-                                                <li><a href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                <li><a id="pER_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -363,6 +333,8 @@
         </div>
     </div>
 
+
+    @*MENSAJE DE CONFIRMACION DE IMPRESION*@
     <div id="loginForm" style="cursor: default; display: none;">
         <p> <h3>Compañero docente al momento de usted realizar esta operacion usted CIERRA LA GESTION DE NOTAS lo cual implica que ninguna nota va a poder ser gestionada hasta la habilitacion de la proxima evaluación </h3> </p>
         <p> <h4> Por su seguridad se ha enviado un codigo de confirmación a su cuenta de correo </h4> </p>
@@ -382,13 +354,53 @@
     @* PARCIAL ACTIVO *@
     @Html.Hidden("dtaParcialActivo", @strParcialActivo)
 
-    @* DATOS EVALUACION ACUMULATIVA *@
-    @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
 
-    @* DATOS EVALUACION FINAL *@
-    @Html.Hidden("dtaJsonEvFinal", @Model.evFinalModel.jsonEvFinal.ToString())
+    @Html.Hidden("opImpEvAcumulada", "")
+    @Html.Hidden("opImpEvFinal", "")
+    @Html.Hidden("opImpEvRecuperacion", "")
 
-    @* DATOS EVALUACION RECUPERACION *@
-    @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacionModel.jsonEvRecuperacion.ToString())
+    
+    @section scripts{
+        @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+        <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
+
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
+        @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3")
+        {
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.40"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.40"> </script>
+
+            @* DATOS EVALUACION ACUMULATIVA *@
+            @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
+        }
+
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
+        @if (strParcialActivo == "EF")
+        {
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.32"></script>
+            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.32"></script>
+
+            @* DATOS EVALUACION FINAL *@
+            @Html.Hidden("dtaJsonEvFinal", @Model.evFinalModel.jsonEvFinal.ToString())
+        }
+
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+        @if (strParcialActivo == "ER")
+        {
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
+            <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
+            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
+
+            @* DATOS EVALUACION RECUPERACION *@
+            @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacionModel.jsonEvRecuperacion.ToString())
+        }
+
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+        @if (strParcialActivo == "NA"){
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
+        }
+    }
 
 </div>
