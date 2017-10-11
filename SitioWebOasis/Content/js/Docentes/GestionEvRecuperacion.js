@@ -12,6 +12,7 @@ $(document).ready(function () {
     var selIRow = 1;
     var rowIds;
 
+    var blnCambiosEvRecuperacion = false;
 
     //  Objeto con informacion de dtaEvAcumulacionFinal
     cargarDatosEvRecuperacion($('#dtaJsonEvRecuperacion').val());
@@ -38,10 +39,10 @@ $(document).ready(function () {
                     { name: 'strCodigo', key: true, hidden: true },
                     { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: false },
                     { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false },
-
                     { name: 'bytAcumulado', label: 'Total evaluación formativa', width: '150', align: 'center', sortable: false },
                     
                     { name: 'bytNota', label: 'Nota evaluación recuperación', width: '170', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNota }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+
                     { name: 'Total', label: 'Total', width: '120', align: 'center', sortable: false },
                     { name: 'erAcumulado', label: 'Estado', width: '120', align: 'center' },
                     { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
@@ -67,10 +68,10 @@ $(document).ready(function () {
                     focusField: 4,
                     aftersavefunc: function (id) {
                         //  Registro la informacion gestionada en el JSON
-                        guardarDtaEvaluacionFinal(id);
+                        guardarDtaEvRecuperacion(id);
 
                         //  Actualizo contenido de la fila
-                        updDtaEvaluacionFinal(id);
+                        updDtaEvRecuperacion(id);
 
                         //  Obtengo el identificador de la siguiente registro de notas a gestionar
                         var idNextRow = getIdNextRow(id);
@@ -100,13 +101,16 @@ $(document).ready(function () {
     });
 
 
-    function guardarDtaEvaluacionFinal(id) {
+    function guardarDtaEvRecuperacion(id) {
         numReg = lstEvaluacionRecuperacion.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluacionRecuperacion[x].strCodigo == id) {
                 var dtaNota = $("#grdEvRecuperacion").jqGrid("getCell", id, "bytNota");
                 lstEvaluacionRecuperacion[x]["bytNota"] = dtaNota;
                 lstEvaluacionRecuperacion[x].banEstado = 1;
+
+                //  Registro un cambio
+                blnCambiosEvRecuperacion = true;
 
                 return true;
             }
@@ -157,7 +161,7 @@ $(document).ready(function () {
     }
 
 
-    function updDtaEvaluacionFinal(id) {
+    function updDtaEvRecuperacion(id) {
         numReg = lstEvaluacionRecuperacion.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluacionRecuperacion[x].strCodigo == id) {
@@ -195,28 +199,36 @@ $(document).ready(function () {
         //  Muestro mensaje de proceso
         $.blockUI({ message: '<h3>Procesando información, favor espere un momento ...</h3>' });
 
-        $.ajax({
-            type: "POST",
-            url: "/Docentes/registrarEvaluacionRecuperacion/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" + $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
-            data: JSON.stringify(lstEvaluacionRecuperacion),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            error: function (xhr, ajaxOptions, thrownError) {
-                alert(thrownError);
-            }
-        }).success(function (data) {
-            //  Muestro mensaje de gestion de informacion
-            $('#msmGrdEvRecuperacion').removeAttr("hidden");
+        if (blnCambiosEvRecuperacion == true) {
+            $.ajax({
+                type: "POST",
+                url: "/Docentes/registrarEvaluacionRecuperacion/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" + $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
+                data: JSON.stringify(lstEvaluacionRecuperacion),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(thrownError);
+                }
+            }).success(function (data) {
+                //  Muestro mensaje de gestion de informacion
+                $('#msmGrdEvRecuperacion').removeAttr("hidden");
 
-            //  Actualizo el grid con la informacion gestionada a nivel BD
-            cargarDatosEvRecuperacion(data);
+                //  Actualizo el grid con la informacion gestionada a nivel BD
+                cargarDatosEvRecuperacion(data);
 
-            //  Actualizo el grid de notas
-            updContenidoColumnasGrid();
+                //  Actualizo el grid de notas
+                updContenidoColumnasGrid();
 
+                //  Regreso a su valor original la variable de control de cambios en el grid de notas
+                blnCambiosEvRecuperacion = false;
+
+                //  Cierro la ventana GIF Proceso
+                $.unblockUI();
+            })
+        } else {
             //  Cierro la ventana GIF Proceso
             $.unblockUI();
-        })
+        }
     })
 
 
@@ -232,9 +244,14 @@ $(document).ready(function () {
     $('#btnValidarImprimir').click(function () {
         if ($('#dtaNumConfirmacion').val() == "987") {
             $.unblockUI();
-            showLoadingProcess();
-            var opImpresion = $("#opImpEvRecuperacion").val();
 
+            //  Guardo los cambios registrados
+            $('#btnGuardarEvRecuperacion').trigger("click");
+
+            showLoadingProcess();
+
+            var opImpresion = $("#opImpEvRecuperacion").val();
+            
             $.ajax({
                 type: "POST",
                 url: "/Docentes/impresionActas",
@@ -254,9 +271,15 @@ $(document).ready(function () {
                 $("opImpEvRecuperacion").attr("value", "");
 
                 if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
-                    $.redirect("/Docentes/DownloadFile",
+                    //  Cambio el Grid a modo "soloLectura"
+                    grdEvRecuperacionSoloLectura();
+
+                    //  Elimino el boton de guardado de Ev recuperacion
+                    $('#btnGuardarEvRecuperacion').remove();
+
+                    $.redirect( "/Docentes/DownloadFile",
                                 { file: data.responseJSON.fileName },
-                                    "POST")
+                                "POST")
                 } else {
                     //  Si existe error, muestro el mensaje
                     $('#messageError').removeAttr("hidden");
@@ -268,6 +291,7 @@ $(document).ready(function () {
         }
     })
 
+
     function showLoadingProcess() {
         HoldOn.open({
             theme: 'sk-dot',
@@ -275,4 +299,8 @@ $(document).ready(function () {
         });
     }
 
+
+    function grdEvRecuperacionSoloLectura(){
+        $('#grdEvRecuperacion').setColProp('bytNota', { editable: 'False' });
+    }
 })

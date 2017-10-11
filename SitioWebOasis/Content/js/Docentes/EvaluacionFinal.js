@@ -50,6 +50,12 @@ EvaluacionFinal.prototype.getEstadoEvaluacionFinal = function () {
     var rst = false;
 
     switch (true) {
+
+        //  Exonerado
+        case (this.Total >= 28 && this.strCodEquivalencia == "E" && this.bytAsistencia >= 70):
+            rst = "<span class='label label-success'>EXONERADO</span>";
+        break;
+
         //  Aprobado
         case (this.Total >= 28 && this.strCodEquivalencia != "E" && this.bytAsistencia >= 70):
             rst = "<span class='label label-success'>APROBADO</span>";
@@ -65,9 +71,9 @@ EvaluacionFinal.prototype.getEstadoEvaluacionFinal = function () {
             rst = "<span class='label label-danger'>REPRUEBA</span>";
         break;
 
-        //  Exonerado
-        case (this.Total >= 28 && this.strCodEquivalencia == "E" && this.bytAsistencia >= 70):
-            rst = "<span class='label label-success'>EXONERADO</span>";
+        //  Reprueba - FALTAS
+        case (this.bytAsistencia < 70):
+            rst = "<span class='label label-danger'>REPRUEBA - FALTAS</span>";
         break;
     }
 

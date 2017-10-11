@@ -67,6 +67,7 @@ namespace SitioWebOasis.Library
                                 case "FN1": dtaEvaluacionActiva = "1"; break;
                                 case "FN2": dtaEvaluacionActiva = "2"; break;
                                 case "FN3": dtaEvaluacionActiva = "3"; break;
+
                                 case "FNP": dtaEvaluacionActiva = "EF"; break;
                             }
 
@@ -82,9 +83,7 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "_getDtaParametro");
             }
 
-
-            //  return dtaEvaluacionActiva;
-            return "ER";
+            return dtaEvaluacionActiva;
         }
 
 

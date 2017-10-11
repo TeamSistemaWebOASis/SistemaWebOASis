@@ -8,6 +8,8 @@ $(document).ready(function () {
     var grdEvFinal = $("#grdEvFinal");
     var lstEvaluacionFinal = new Array();
 
+    var blnCambiosEvFinal = false;
+
     var lastsel;
     var selIRow = 1;
     var rowIds;
@@ -38,11 +40,11 @@ $(document).ready(function () {
                     { name: 'strCodigo', key: true, hidden: true },
                     { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: false },
                     { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false },
-
                     { name: 'bytAcumulado', label: 'Total acumulado', width: '120', align: 'center', sortable: false },
                     { name: 'bytAsistencia', label: 'Total asistencia(%)', width: '120', align: 'center', sortable: false },
 
-                    { name: 'bytNota', label: 'Nota evaluación final', width: '120', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNota }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+                    { name: 'bytNota', label: 'Nota evaluación final', width: '120', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaEvFinal }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+
                     { name: 'Total', label: 'Total Ev. final', width: '120', align: 'center', sortable: false },
                     { name: 'efAcumulado', label: 'Estado', width: '120', align: 'center' },
                     { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
@@ -118,18 +120,21 @@ $(document).ready(function () {
 
 
     function guardarDtaEvaluacionFinal(id) {
-        numReg = lstEvaluacionFinal.length;
+        var ban = false;
+        var numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluacionFinal[x].strCodigo == id) {
                 var dtaNota = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");                
                 lstEvaluacionFinal[x]["bytNota"] = dtaNota;
                 lstEvaluacionFinal[x].banEstado = 1;
 
-                return true;
+                blnCambiosEvFinal = true;
+
+                ban = true;
             }
         }
 
-        return false;
+        return ban;
     }
 
 
@@ -170,9 +175,6 @@ $(document).ready(function () {
 
             $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[i].getNumMatricula() });
             $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[i].getEstadoEvaluacionFinal() });
-
-            //  Si el estudiante es exonerado no permito la edicion de su nota de evaluacion final
-            //$this.jqGrid('editRow', rowIds[i], true);
         }
     }
 
@@ -211,7 +213,7 @@ $(document).ready(function () {
     }
 
 
-    function validarNota(value, colname) {
+    function validarNotaEvFinal(value, colname) {
         if (value < 0 || value > 12)
             return [false, "Nota fuera de rango (0, 10)"];
         else
@@ -223,27 +225,37 @@ $(document).ready(function () {
         //  Muestro mensaje de proceso
         showLoadingProcess();
 
-        $.ajax({type: "POST",
-                url: "/Docentes/registrarEvaluacionFinal/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" +  $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
+        //  Verifico si el Grid de notas a cambiado
+        if (blnCambiosEvFinal == true){
+            $.ajax({
+                type: "POST",
+                url: "/Docentes/registrarEvaluacionFinal/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" + $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
                 data: JSON.stringify(lstEvaluacionFinal),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 error: function (xhr, ajaxOptions, thrownError) {
                     alert(thrownError);
                 }
-        }).success(function (data) {
-            //  Muestro mensaje de gestion de informacion
-            $('#msmGrdEvFinal').removeAttr("hidden");
+            }).success(function (data) {
+                //  Muestro mensaje de gestion de informacion
+                $('#msmGrdEvFinal').removeAttr("hidden");
 
-            //  Actualizo el grid con la informacion gestionada a nivel BD
-            cargarDatosEvFinal(data);
+                //  Actualizo el grid con la informacion gestionada a nivel BD
+                cargarDatosEvFinal(data);
 
-            //  Actualizo el grid de notas
-            updContenidoColumnasGrid();
+                //  Actualizo el grid de notas
+                updContenidoColumnasGrid();
 
+                //  Regreso a su valor original la variable de control de cambios en el grid de notas
+                blnCambiosEvFinal = false;
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            })
+        } else {
             //  Cierro la ventana GIF Proceso
             HoldOn.close();
-        })
+        }
     })
 
 
@@ -262,6 +274,9 @@ $(document).ready(function () {
             showLoadingProcess();
             var opImpresion = $("#opImpEvFinal").val();
 
+            //  Ejecuto el proceso de registro de informacion
+            $('#btnGuardarEvFinal').trigger("click");
+
             $.ajax({
                 type: "POST",
                 url: "/Docentes/impresionActas",
@@ -275,12 +290,12 @@ $(document).ready(function () {
                 //  Oculto el mensaje de error
                 $('#messageError').attr("hidden");
 
-                //  Cierro la ventana GIF Proceso
-                HoldOn.close();
-
                 $("opImpEvFinal").attr("value", "");
 
                 if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+                    //  Cambio el Grid a modo "soloLectura"
+                    grdEvFinalSoloLectura();
+
                     $.redirect("/Docentes/DownloadFile",
                                 { file: data.responseJSON.fileName },
                                     "POST")
@@ -289,9 +304,28 @@ $(document).ready(function () {
                     $('#messageError').removeAttr("hidden");
                     $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
                 }
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
             })
         } else {
             alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
         }
     })
+
+
+
+    function grdEvFinalSoloLectura()
+    {
+        rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
+
+        for (i = 0; i <= rowIds.length - 1 ; i++) {
+            var rowEF = $("#grdEvFinal").jqGrid('getRowData',
+                                                rowIds[i]);
+
+            rowEF.setColProp('Arrived', { editable: false });
+        }
+    }
+
+
 })

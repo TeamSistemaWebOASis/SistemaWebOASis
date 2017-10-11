@@ -128,8 +128,7 @@
 
                                 @* GRID DE EVALUACION ACUMULATIVA *@
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
-                                @if (Model.strParcialActivo != "EF" && Model.strParcialActivo != "NA")
-                                {
+                                @if (Model.strParcialActivo == "1" || Model.strParcialActivo == "2" || Model.strParcialActivo == "3"){
                                     <table id="grdEvAcumulativa"></table>
                                     <hr class="inner-separator">
                                     <button id="btnGuardarEvAcumulativa"
@@ -265,11 +264,6 @@
                         </div>
                         <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
-                                <div class="alert alert-info fade in">
-                                    <button class="close" data-dismiss="alert">×</button>
-                                    <i class="fa fa-info-circle"></i> Try to show/hide column visibility and drag the column to another position to reorder table columns.
-                                </div>
-
                                 @* BOTONES DE IMPRESION DE ACTAS *@
                                 <div class="row">
                                     <div class="col-sm-12">
@@ -287,8 +281,12 @@
                                     </div>
                                 </div>
                                 <hr class="inner-separator">
-                                @if (strParcialActivo == "EF" || strParcialActivo == "ER"){
-                                    <hr class="inner-separator">
+                                @if (strParcialActivo == "ER"){
+                                    <div id="msmGrdEvRecuperacion" class="alert alert-info fade in" hidden="hidden">
+                                        <button class="close" data-dismiss="alert">×</button>
+                                        <i class="fa fa-info-circle"></i> EVALUACION RECUPERACION - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
+                                    </div>
+                                    
                                     @* GRID DE EVALUACION RECUPERACION *@
                                     <table id="grdEvRecuperacion"></table>
                                     <hr class="inner-separator">
@@ -299,7 +297,7 @@
                                         <i class="fa fa-floppy-o fa-2x"></i> <strong> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION </strong>
                                     </button>
                                 }else{
-                                    @*TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
+                                    @* SOLO LECTURA - TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
                                     <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
                                         <thead>
                                             <tr role="row">
@@ -367,8 +365,8 @@
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         @if (strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3")
         {
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.40"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.40"> </script>
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.41"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.41"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
@@ -378,8 +376,8 @@
         @if (strParcialActivo == "EF")
         {
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.32"></script>
-            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.32"></script>
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.33"></script>
+            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.33"></script>
 
             @* DATOS EVALUACION FINAL *@
             @Html.Hidden("dtaJsonEvFinal", @Model.evFinalModel.jsonEvFinal.ToString())
@@ -390,8 +388,8 @@
         {
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.8"></script>
-            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.6"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.14"></script>
+            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.14"></script>
 
             @* DATOS EVALUACION RECUPERACION *@
             @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacionModel.jsonEvRecuperacion.ToString())
