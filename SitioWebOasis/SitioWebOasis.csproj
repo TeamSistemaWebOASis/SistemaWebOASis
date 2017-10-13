@@ -251,6 +251,8 @@
       <DependentUpon>WS_URL.resx</DependentUpon>
     </Compile>
     <Compile Include="Library\Catalogos.cs" />
+    <Compile Include="Library\CorreoElectronico.cs" />
+    <Compile Include="Library\DatosAsignaturaDocente.cs" />
     <Compile Include="Library\DatosCarrera.cs" />
     <Compile Include="Library\Direccion.cs" />
     <Compile Include="Library\DocumentoPersonal.cs" />
@@ -290,6 +292,11 @@
     <Compile Include="ProxySeguro\NotasEstudiante.cs" />
     <Compile Include="ProxySeguro\Seguridad.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="Web References\WSAcademicoWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
     <Compile Include="Web References\WSAdministracionGeneral\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -460,12 +467,21 @@
     <Content Include="Views\Shared\_BreadCrumb.cshtml" />
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\MenuRoles.cshtml" />
+    <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
+    <None Include="Web References\WSAcademicoWCF\Academico.wsdl" />
+    <Content Include="Web References\WSAcademicoWCF\Persona.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAcademicoWCF\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.xsd" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_Institucion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -917,6 +933,17 @@
     <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
   </ItemGroup>
   <ItemGroup>
+    <WebReferenceUrl Include="http://academicosil.espoch.edu.ec/DiscapacitadosNegociosWCF/Academico.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSAcademicoWCF\</RelPath>
+      <UpdateFromURL>http://academicosil.espoch.edu.ec/DiscapacitadosNegociosWCF/Academico.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSAcademicoWCF_Academico</CachedSettingsPropName>
+    </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSAdministracionGeneral\</RelPath>

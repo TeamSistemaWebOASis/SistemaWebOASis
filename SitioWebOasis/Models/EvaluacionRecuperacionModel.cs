@@ -13,10 +13,11 @@ using System.Web;
 
 namespace SitioWebOasis.Models
 {
-    public class EvaluacionRecuperacionModel : EvaluacionesDocenteModel
+    public class EvaluacionRecuperacionModel : DatosAcademicosDocente
     {
         public string jsonEvRecuperacion { get; set; }
         private WSGestorEvaluacion.dtstEvaluacion_Actas _dsEvRecuperacion = new WSGestorEvaluacion.dtstEvaluacion_Actas();
+
 
         public EvaluacionRecuperacionModel(string strCodNivel, string strCodAsignatura, string strCodParalelo)
         {
@@ -263,13 +264,13 @@ namespace SitioWebOasis.Models
                     string[] streams;
                     byte[] renderedBytes;
 
-                    renderedBytes = rptEvRecuperacion.Render(reportType,
-                                                        deviceInfo,
-                                                        out mimeType,
-                                                        out encoding,
-                                                        out fileNameExtension,
-                                                        out streams,
-                                                        out warnings);
+                    renderedBytes = rptEvRecuperacion.Render(   reportType,
+                                                                deviceInfo,
+                                                                out mimeType,
+                                                                out encoding,
+                                                                out fileNameExtension,
+                                                                out streams,
+                                                                out warnings);
 
                     nombreAsignatura = this.getNombreAsignatura(this._strCodAsignatura,
                                                                 this._strCodNivel,

@@ -13,7 +13,7 @@ using System.Net;
 
 namespace SitioWebOasis.Models
 {
-    public class EvaluacionAcumulativaModel: EvaluacionesDocenteModel
+    public class EvaluacionAcumulativaModel: DatosAcademicosDocente
     {
         public string jsonEvAcumulativa { get; set; }
         private string _dtaEvAcumulativa = string.Empty;
@@ -566,7 +566,7 @@ namespace SitioWebOasis.Models
 
                     nombreAsignatura = this.getNombreAsignatura(this._strCodAsignatura, 
                                                                 this._strCodNivel, 
-                                                                this._strCodParalelo);
+                                                                this._strCodParalelo );
 
                     nameFile = Language.es_ES.NF_EV_ACUMULATIVA + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
 

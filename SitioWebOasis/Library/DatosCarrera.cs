@@ -1,6 +1,7 @@
 ﻿using GestorErrores;
 using OAS_Seguridad.Cliente;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
+using SitioWebOasis.Models;
 using SitioWebOasis.WSDatosUsuario;
 using System;
 using System.Data;
@@ -23,8 +24,8 @@ namespace SitioWebOasis.Library
 
         protected WSInfoCarreras.dtstPeriodoVigente _dtstPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
 
-        
-        public DatosCarrera() { }
+
+        public DatosCarrera() {}
 
         
         public Usuario UsuarioActual
@@ -217,6 +218,45 @@ namespace SitioWebOasis.Library
                 strPeriodo = string.Empty;
                 strDocente = string.Empty;
                 strSistema = string.Empty;
+            }
+        }
+
+        public string getCodigoAutenticacion(string correoUsuario)
+        {
+            string codAutenticacion = "false";
+            bool rst = false;
+
+            try{
+
+                Random rnd = new Random();
+                string numCodigo = Convert.ToString(rnd.Next(0, 1000));
+
+                WSAcademicoWCF.Academico correo = new WSAcademicoWCF.Academico();
+                rst = correo.EnviarEmailHtml(   "oasis@espoch.edu.ec",
+                                                "Sistema académico DTIC - ESPOCH",
+                                                correoUsuario,
+                                                "Clave confirmacion impresion acta",
+                                                "La clave es: " + numCodigo,
+                                                "Academico",
+                                                "Oasis20|3Desitel");
+
+                codAutenticacion = (rst) ? numCodigo : "false";
+            }catch(Exception ex){
+                codAutenticacion = "false";
+
+                Errores err = new Errores();
+                err.SetError(ex, "getCodAutenticacion");
+            }
+
+            return codAutenticacion;
+        }
+
+
+        public string strParcialActivo
+        {
+            get{
+                EvaluacionActiva pa = new EvaluacionActiva();
+                return pa.getDtaEvaluacionActiva();
             }
         }
 

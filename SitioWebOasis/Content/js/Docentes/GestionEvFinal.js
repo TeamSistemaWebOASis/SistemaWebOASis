@@ -13,6 +13,7 @@ $(document).ready(function () {
     var lastsel;
     var selIRow = 1;
     var rowIds;
+    var codAutenticacion = null;
     
 
     //  Objeto con informacion de dtaEvAcumulacionFinal
@@ -263,13 +264,15 @@ $(document).ready(function () {
     $('#pEF_pdf, #pEF_xls, #pEF_blc').on('click', function () {
         $("#opImpEvFinal").val($(this).attr("id"));
 
-        //  Muestro ventana de autenticacion a dos factores
-        $.blockUI({ message: $('#loginForm') });
+        //  Envio el codigo de autenticacion al correo
+        getCodAutenticacion();
+
+        
     })
 
 
     $('#btnValidarImprimir').click(function () {
-        if ($('#dtaNumConfirmacion').val() == "987") {
+        if ($('#dtaNumConfirmacion').val() == codAutenticacion) {
             $.unblockUI();
             showLoadingProcess();
             var opImpresion = $("#opImpEvFinal").val();
@@ -292,9 +295,14 @@ $(document).ready(function () {
 
                 $("opImpEvFinal").attr("value", "");
 
+                codAutenticacion = null;
+
                 if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
                     //  Cambio el Grid a modo "soloLectura"
                     grdEvFinalSoloLectura();
+
+                    //  Elimino el boton de guardar
+                    $('#btnGuardarEvFinal').remove();
 
                     $.redirect("/Docentes/DownloadFile",
                                 { file: data.responseJSON.fileName },
@@ -314,17 +322,39 @@ $(document).ready(function () {
     })
 
 
-
     function grdEvFinalSoloLectura()
     {
-        rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
+        $('#grdEvFinal').setColProp('bytNota', { editable: 'False' });
+    }
 
-        for (i = 0; i <= rowIds.length - 1 ; i++) {
-            var rowEF = $("#grdEvFinal").jqGrid('getRowData',
-                                                rowIds[i]);
 
-            rowEF.setColProp('Arrived', { editable: false });
-        }
+
+    function getCodAutenticacion() {
+        var rst;
+
+        $.ajax({
+            type: "POST",
+            url: "/Docentes/EnviarCorreoValidacionImpresion",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).complete(function (data) {
+            if (data.responseJSON.codAutenticacion != "false") {
+                //  Ejecuto proceso de validacion de informacion
+                procesoImpresionActa(data.responseJSON.codAutenticacion);
+            }
+        })
+
+        return rst;
+    }
+
+
+
+    function procesoImpresionActa(codAutenticacionCorreo)
+    {
+        //  Muestro ventana de autenticacion a dos factores
+        $.blockUI({ message: $('#loginForm') });
+
+        codAutenticacion = codAutenticacionCorreo;
     }
 
 

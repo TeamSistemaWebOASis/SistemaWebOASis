@@ -29,6 +29,7 @@ namespace SitioWebOasis.Controllers
             return View("Index", daDocente);
         }
 
+
         public Usuario UsuarioActual
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
@@ -249,8 +250,7 @@ namespace SitioWebOasis.Controllers
             }
         }
 
-
-
+        
         [HttpPost]
         [DeleteFileAttribute]
         public ActionResult DownloadFile(string file)
@@ -272,6 +272,25 @@ namespace SitioWebOasis.Controllers
 
                 return RedirectToAction("Index", "Error");
             }
+        }
+
+
+        [HttpPost]
+        public JsonResult EnviarCorreoValidacionImpresion()
+        {
+            bool ban = false;
+            string rst = "false";
+
+            try{
+                DatosCarrera dc = new DatosCarrera();
+                rst = dc.getCodigoAutenticacion(User.Identity.Name.ToString());
+            }catch(Exception ex){
+                ban = false;
+                Errores err = new Errores();
+                err.SetError(ex, "EnviarCorreoValidacionImpresion");
+            }
+
+            return Json(new { codAutenticacion = rst, errorMessage = "" });
         }
 
     }

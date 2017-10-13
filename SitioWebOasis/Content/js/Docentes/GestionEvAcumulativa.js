@@ -284,7 +284,7 @@
 
 
     $('#btnValidarImprimir').click(function () {
-        if ($('#dtaNumConfirmacion').val() == "987") {
+        if ($('#dtaNumConfirmacion').val() == getCodAutenticacion()) {
             $.unblockUI();
             showLoadingProcess();
             var opImpresion = $("#opImpEvAcumulada").val();
@@ -320,4 +320,21 @@
         }
     })
 
+
+    function getCodAutenticacion()
+    {
+        var rst;
+
+        $.ajax({
+            type: "POST",
+            url: "/Docentes/EnviarCorreoValidacionImpresion",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).complete(function (data) {
+            rst = data.responseJSON.codAutenticacion;
+            alert(rst);
+        })
+
+        return rst;
+    }
 })

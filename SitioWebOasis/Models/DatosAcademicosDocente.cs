@@ -67,19 +67,27 @@ namespace SitioWebOasis.Models
         public string getFacultadCarreraDocente()
         {
             string facultadCarreraDocente = string.Empty;
-
-            if( this.UsuarioActual != null)
+            try
             {
-                string facultad = (this.UsuarioActual.FacultadActual != null) 
-                                        ? this.UsuarioActual.FacultadActual.Nombre.ToString() + " / "
+                if (this.UsuarioActual != null)
+                {
+                    string facultad = (this.UsuarioActual.FacultadActual != null)
+                                            ? this.UsuarioActual.FacultadActual.Nombre.ToString() + " / "
+                                            : "";
+
+                    string carrera = (this.UsuarioActual.CarreraActual != null)
+                                        ? this.UsuarioActual.CarreraActual.Nombre.ToString()
                                         : "";
 
-                string carrera = (this.UsuarioActual.CarreraActual != null) 
-                                    ? this.UsuarioActual.CarreraActual.Nombre.ToString() 
-                                    : "";
-
-                facultadCarreraDocente = facultad + carrera;
+                    facultadCarreraDocente = facultad + carrera;
+                }
             }
+            catch (Exception ex) {
+                facultadCarreraDocente = string.Empty;
+                Errores err = new Errores();
+                err.SetError(ex, "getFacultadCarreraDocente");
+            }
+            
 
             return facultadCarreraDocente;
         }
@@ -158,18 +166,61 @@ namespace SitioWebOasis.Models
         }
 
 
-        public string getNombreAsignatura( string strCodAsignatura, string strCodNivel, string strCodParalelo )
+        public string getNombreAsignatura(string strCodAsignatura, string strCodNivel, string strCodParalelo)
         {
             string asignatura = string.Empty;
-            if(this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
-                DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '"+ strCodAsignatura +"' AND strCodNivel ='"+ strCodNivel + "' AND strCodParalelo = '"+ strCodParalelo + "'" );
 
-                asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
-                                                : string.Empty;
+            try
+            {
+                if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
+                    DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '" + strCodAsignatura + "' AND strCodNivel ='" + strCodNivel + "' AND strCodParalelo = '" + strCodParalelo + "'");
+                    asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
+                                                    : string.Empty;
+                }
+            }catch (Exception ex){
+                asignatura = string.Empty;
 
+                Errores err = new Errores();
+                err.SetError(ex, "getNombreAsignatura");
             }
 
             return asignatura;
+        }
+
+
+        public bool estadoActa( string strCodAsignatura )
+        {
+            bool ban = false;
+
+            try {                
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+
+                if(this.strParcialActivo == "1" || this.strParcialActivo == "2" || this.strParcialActivo == "3")
+                {
+                    ban = ne.getActaImpresaEvAcumulativo(   UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                            strCodAsignatura,
+                                                            this.strParcialActivo);
+                }else if(this.strParcialActivo == "EF" || this.strParcialActivo == "ER")
+                {
+                    string strCodCarrera = UsuarioActual.CarreraActual.Codigo.ToString();
+                    string periodoVigente = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
+                    string parcialActivo = this.strParcialActivo;
+
+                    ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
+                                                                    periodoVigente,
+                                                                    strCodAsignatura,
+                                                                    parcialActivo);
+                }
+            }
+            catch (Exception ex){
+                ban = false;
+
+                Errores err = new Errores();
+                err.SetError(ex, "estadoActa");
+            }
+
+            return ban;
         }
     }
 }

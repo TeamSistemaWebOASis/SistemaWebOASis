@@ -118,5 +118,15 @@ namespace SitioWebOasis.Properties {
                 return ((string)(this["SitioWebOasis_WSSeguridad_Seguridad"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://academicosil.espoch.edu.ec/DiscapacitadosNegociosWCF/Academico.asmx")]
+        public string SitioWebOasis_WSAcademicoWCF_Academico {
+            get {
+                return ((string)(this["SitioWebOasis_WSAcademicoWCF_Academico"]));
+            }
+        }
     }
 }
