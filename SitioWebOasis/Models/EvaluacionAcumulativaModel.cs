@@ -80,13 +80,14 @@ namespace SitioWebOasis.Models
                 string promedio = string.Empty;
                 string numNivel = string.Empty;
                 string estadoCumplimiento = string.Empty;
+                string parcialActivo = this.strParcialActivo;
 
                 foreach (DataRow item in this._dsEvAcumulativa.Acta){
                     colorRow = (colorRow == "even") ? "odd" : "even";
 
                     numMatricula = this._getNumOrdinal(item["bytNumMat"].ToString(), "matricula");
                     numNivel = this._getNumOrdinal(item["strCodNivel"].ToString(), "nivel");
-                    estadoCumplimiento = (this.strParcialActivo == "3" || this.strParcialActivo == "EF" || this.strParcialActivo == "ER" || this.strParcialActivo == "NA") 
+                    estadoCumplimiento = (parcialActivo == "3" || parcialActivo == "EF" || parcialActivo == "ER" || parcialActivo == "NA") 
                                             ? this._getEstadoCumplimiento(item["Total"].ToString(), item["bytAsistencia"].ToString()) 
                                             : "---" ;
 
@@ -138,7 +139,7 @@ namespace SitioWebOasis.Models
         {
             bool rst = false;
             byte nota = default(byte);
-
+            string parcialActivo = this.strParcialActivo;
             try
             {
                 int numReg = dtaEvAcumulativa.Count;
@@ -147,13 +148,14 @@ namespace SitioWebOasis.Models
                         if ( this._dsEvAcumulativa.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvAcumulativa[0].sintCodMatricula.ToString()){
                             this._dsEvAcumulativa.Acta.Rows[x]["bytAsistencia"] = Convert.ToByte( dtaEvAcumulativa[x].bytAsistencia.ToString() );
 
-                            switch (this.strParcialActivo){
+                            switch (parcialActivo)
+                            {
                                 case "1": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota1.ToString()); break;
                                 case "2": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota2.ToString()); break;
                                 case "3": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota3.ToString()); break;
                             }
 
-                            this._dsEvAcumulativa.Acta.Rows[x]["bytNota" + this.strParcialActivo] = nota;
+                            this._dsEvAcumulativa.Acta.Rows[x]["bytNota" + parcialActivo] = nota;
                         }
                     }
 

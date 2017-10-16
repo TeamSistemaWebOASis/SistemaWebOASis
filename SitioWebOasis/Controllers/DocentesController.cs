@@ -280,18 +280,51 @@ namespace SitioWebOasis.Controllers
         {
             bool ban = false;
             string rst = "false";
+            string msgError = string.Empty;
 
             try{
                 DatosCarrera dc = new DatosCarrera();
                 rst = dc.getCodigoAutenticacion(User.Identity.Name.ToString());
+
+                if(rst != "false"){
+                    Session["codImpresionActa"] = rst;
+                    ban = true;
+                }else{
+                    msgError = "Problema el enviar codigo de autenticación";
+                }
+
             }catch(Exception ex){
                 ban = false;
                 Errores err = new Errores();
                 err.SetError(ex, "EnviarCorreoValidacionImpresion");
             }
 
-            return Json(new { codAutenticacion = rst, errorMessage = "" });
+            return Json(new { banEnviocodAutenticacion = ban, errorMessage = msgError });
         }
+
+
+        [HttpPost]
+        public JsonResult ValidarCodigoImpresion(string strCodImpresion, string idActa, string idAsignatura)
+        {
+            bool ban = false;
+            string mgmImpresion = string.Empty;
+
+            try
+            {
+                if (string.Compare(Session["codImpresionActa"].ToString(), strCodImpresion) == 0) {
+                    return this.impresionActas( idActa, idAsignatura);
+                }else{
+                    return Json(new { rstValidacionCodigo = ban, errorMessage = "Codigo 'no' valido, favor vuelva a intentarlo" });
+                }
+            }catch(Exception ex){
+                ban = false;
+                Errores err = new Errores();
+                err.SetError(ex, "ValidarCodigoImpresion");
+            }
+
+            return Json(new { rstValidacionCodigo = ban, errorMessage = mgmImpresion });
+        }
+
 
     }
 }

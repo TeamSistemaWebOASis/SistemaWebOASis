@@ -87,6 +87,7 @@
         }
     });
 
+
     function validarNotaSobre8(value, colname) {
         if (value < 0 || value > 8)
             return [false, "Nota de parcial '" + $("#dtaParcialActivo").val() + "' fuera de rango, la calificación es sobre '8' puntos"];
@@ -278,52 +279,54 @@
     $('#pEA_pdf, #pEA_xls, #pEA_blc').on('click', function () {
         $("#opImpEvAcumulada").val($(this).attr("id"));
 
-        //  Muestro ventana de autenticacion a dos factores
-        $.blockUI({ message: $('#loginForm') });
+        //  Creo y envio el codigo de autenticacion 
+        getCodAutenticacion();
     })
 
 
     $('#btnValidarImprimir').click(function () {
-        if ($('#dtaNumConfirmacion').val() == getCodAutenticacion()) {
-            $.unblockUI();
-            showLoadingProcess();
-            var opImpresion = $("#opImpEvAcumulada").val();
+        var opImpresion = $("#opImpEvAcumulada").val();
+        var numConfirmacion = $("#dtaNumConfirmacion").val();
 
-            $.ajax({
-                type: "POST",
-                url: "/Docentes/impresionActas",
-                data: '{idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json"
-            }).complete(function (data) {
+        showLoadingProcess()
+
+        $.ajax({    type: "POST",
+                    url: "/Docentes/ValidarCodigoImpresion",
+                    data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+        }).complete(function (data) {
+
+            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
                 //  Cambio el color del boton
                 $('#btnEA, #btnEAF').attr("class", 'btn btn-warning btn-md');
 
                 //  Oculto el mensaje de error
                 $('#messageError').attr("hidden");
 
+                //  Cierro el formulario de ingreso de codigo de impresion
+                $.unblockUI();
+
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
 
-                if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
-                    $.redirect("/Docentes/DownloadFile",
-                                {   file: data.responseJSON.fileName },
-                                    "POST")
-                } else {
-                    //  Si existe error, muestro el mensaje
-                    $('#messageError').removeAttr("hidden");
-                    $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
-                }
-            })
-        } else {
-            alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
-        }
+                $.redirect("/Docentes/DownloadFile",
+                            {   file: data.responseJSON.fileName },
+                                "POST")
+            } else {
+                //  Si existe error, muestro el mensaje
+                $('#messageError').removeAttr("hidden");
+                $('#messageError').html("<a href='' class='close'>×</a><strong>" + data.responseJSON.rstValidacionCodigo + "</strong> Favor vuelva a intentarlo");
+            }
+        })
+
     })
 
 
     function getCodAutenticacion()
     {
         var rst;
+        showLoadingProcess()
 
         $.ajax({
             type: "POST",
@@ -331,10 +334,26 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).complete(function (data) {
-            rst = data.responseJSON.codAutenticacion;
-            alert(rst);
+            if (data.responseJSON.banEnviocodAutenticacion == true) {
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+
+                //  Muestro ventana de autenticacion a dos factores
+                $.blockUI({ message: $('#loginForm') });
+            } else {
+                //  Si existe error, muestro el mensaje
+                $('#messageError').removeAttr("hidden");
+                $('#messageError').html("<a href='' class='close'>×</a><strong>" + data.responseJSON.errorMessage + "</strong>, Favor vuelva a intentarlo");
+            }
         })
 
         return rst;
     }
+
+
+    $('#btnCerrarNC').click(function () {
+        //  Cierro el formulario de ingreso de codigo de impresion
+        $.unblockUI();
+    })
+
 })

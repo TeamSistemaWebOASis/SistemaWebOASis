@@ -133,7 +133,7 @@
 
                                 @* GRID DE EVALUACION ACUMULATIVA *@
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
-                                @if ( ( Model.strParcialActivo == "1" || Model.strParcialActivo == "2" || Model.strParcialActivo == "3" ) && !estadoActa ){
+                                @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && !estadoActa ){
                                     <table id="grdEvAcumulativa"></table>
                                     <hr class="inner-separator">
                                     <button id="btnGuardarEvAcumulativa"
@@ -336,12 +336,20 @@
     </div>
 
 
-    @*MENSAJE DE CONFIRMACION DE IMPRESION*@
+    @* MENSAJE DE CONFIRMACION DE IMPRESION *@
     <div id="loginForm" style="cursor: default; display: none;">
-        <p> <h3>Compañero docente al momento de usted realizar esta operacion usted CIERRA LA GESTION DE NOTAS lo cual implica que ninguna nota va a poder ser gestionada hasta la habilitacion de la proxima evaluación </h3> </p>
-        <p> <h4> Por su seguridad se ha enviado un codigo de confirmación a su cuenta de correo </h4> </p>
-        <p><label>Numero de confirmación:</label><input id="dtaNumConfirmacion" type="text" name="dtaNumConfirmacion"></p>
-        <p><input id="btnValidarImprimir" type="button" value="Validar e imprimir" name="btnValidarImprimir"></p>
+        <div class="alert alert-info alert-dismissable">
+            Compañero docente al ejecutar está acción
+            <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DEL PARCIAL @strParcialActivo </strong> y ninguna nota de este parcial va ser gestionada desde el modulo web del sistema académico.
+        </div>
+
+        <p> <h4> Por su seguridad se ha enviado un codigo de confirmación a su cuenta de correo @User.Identity.Name.ToString() para continuar con la ejecucion de esta tarea </h4> </p>
+        
+        <input id="dtaNumConfirmacion" type="text" name="dtaNumConfirmacion" placeholder="NÚMERO DE CONFIRMACIÓN"></p>
+        <p> 
+            <input id="btnValidarImprimir" type="button" value="Validar e imprimir" name="btnValidarImprimir">
+            <input id="btnCerrarNC" type="button" value="Cerrar" name="btnCerrarNC">
+        </p>
     </div>
 
     @* CODIGO DE LA ASIGNATURA A GESTIONAR *@
@@ -367,13 +375,15 @@
         <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-        @if (( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && !estadoActa )
+        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && !estadoActa)
         {
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.42"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.42"> </script>
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.43"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.43"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
+        }else{
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@

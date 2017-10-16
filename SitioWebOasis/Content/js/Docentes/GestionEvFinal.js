@@ -266,8 +266,6 @@ $(document).ready(function () {
 
         //  Envio el codigo de autenticacion al correo
         getCodAutenticacion();
-
-        
     })
 
 
@@ -356,6 +354,4 @@ $(document).ready(function () {
 
         codAutenticacion = codAutenticacionCorreo;
     }
-
-
 })

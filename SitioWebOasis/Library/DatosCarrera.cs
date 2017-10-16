@@ -230,7 +230,7 @@ namespace SitioWebOasis.Library
 
                 Random rnd = new Random();
                 string numCodigo = Convert.ToString(rnd.Next(0, 1000));
-
+                
                 WSAcademicoWCF.Academico correo = new WSAcademicoWCF.Academico();
                 rst = correo.EnviarEmailHtml(   "oasis@espoch.edu.ec",
                                                 "Sistema académico DTIC - ESPOCH",
@@ -241,6 +241,7 @@ namespace SitioWebOasis.Library
                                                 "Oasis20|3Desitel");
 
                 codAutenticacion = (rst) ? numCodigo : "false";
+
             }catch(Exception ex){
                 codAutenticacion = "false";
 

@@ -191,22 +191,20 @@ namespace SitioWebOasis.Models
         public bool estadoActa( string strCodAsignatura )
         {
             bool ban = false;
+            string parcialActivo = string.Empty;
 
             try {                
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                string strCodCarrera    = UsuarioActual.CarreraActual.Codigo.ToString();
+                string periodoVigente   = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
+                parcialActivo           = this.strParcialActivo;
 
-                if(this.strParcialActivo == "1" || this.strParcialActivo == "2" || this.strParcialActivo == "3")
-                {
-                    ban = ne.getActaImpresaEvAcumulativo(   UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                if (parcialActivo == "1" || parcialActivo == "2" || parcialActivo == "3"){
+                    ban = ne.getActaImpresaEvAcumulativo(   strCodCarrera,
+                                                            periodoVigente,
                                                             strCodAsignatura,
-                                                            this.strParcialActivo);
-                }else if(this.strParcialActivo == "EF" || this.strParcialActivo == "ER")
-                {
-                    string strCodCarrera = UsuarioActual.CarreraActual.Codigo.ToString();
-                    string periodoVigente = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
-                    string parcialActivo = this.strParcialActivo;
-
+                                                            parcialActivo);
+                }else if(parcialActivo == "EF" || parcialActivo == "ER"){
                     ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
                                                                     periodoVigente,
                                                                     strCodAsignatura,
