@@ -200,7 +200,7 @@ namespace SitioWebOasis.Models
                 parcialActivo           = this.strParcialActivo;
 
                 if (parcialActivo == "1" || parcialActivo == "2" || parcialActivo == "3"){
-                    ban = ne.getActaImpresaEvAcumulativo(   strCodCarrera,
+                    ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
                                                             periodoVigente,
                                                             strCodAsignatura,
                                                             parcialActivo);

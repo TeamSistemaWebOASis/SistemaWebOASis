@@ -207,7 +207,7 @@ namespace SitioWebOasis.Controllers
                         nameFile = evAcumulativa.getDtaRptEvAcumulativa(dtaActa, 
                                                                         dtaAsignatura, 
                                                                         Server.MapPath("~/Reports"), 
-                                                                        Server.MapPath("~/Temp"));
+                                                                        Server.MapPath("~/Temp"));                        
                     break;
 
                     //  EVALUACION FINAL

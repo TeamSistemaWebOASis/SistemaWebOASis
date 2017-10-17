@@ -45,6 +45,8 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         private System.Threading.SendOrPostCallback getActaImpresaEvFinalesRecuperacionOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getEstadoParcialEvAcumulativaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -106,6 +108,9 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         public event getActaImpresaEvFinalesRecuperacionCompletedEventHandler getActaImpresaEvFinalesRecuperacionCompleted;
+        
+        /// <remarks/>
+        public event getEstadoParcialEvAcumulativaCompletedEventHandler getEstadoParcialEvAcumulativaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDatosNotasEstudiante", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -392,6 +397,41 @@ namespace SitioWebOasis.WSNotasEstudiante {
             if ((this.getActaImpresaEvFinalesRecuperacionCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getActaImpresaEvFinalesRecuperacionCompleted(this, new getActaImpresaEvFinalesRecuperacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getEstadoParcialEvAcumulativa", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool getEstadoParcialEvAcumulativa(string strCodCarrera, string strCodPeriodo, string strCodMateria, string dtaParcial) {
+            object[] results = this.Invoke("getEstadoParcialEvAcumulativa", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        dtaParcial});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string dtaParcial) {
+            this.getEstadoParcialEvAcumulativaAsync(strCodCarrera, strCodPeriodo, strCodMateria, dtaParcial, null);
+        }
+        
+        /// <remarks/>
+        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string dtaParcial, object userState) {
+            if ((this.getEstadoParcialEvAcumulativaOperationCompleted == null)) {
+                this.getEstadoParcialEvAcumulativaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEstadoParcialEvAcumulativaOperationCompleted);
+            }
+            this.InvokeAsync("getEstadoParcialEvAcumulativa", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodMateria,
+                        dtaParcial}, this.getEstadoParcialEvAcumulativaOperationCompleted, userState);
+        }
+        
+        private void OngetEstadoParcialEvAcumulativaOperationCompleted(object arg) {
+            if ((this.getEstadoParcialEvAcumulativaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getEstadoParcialEvAcumulativaCompleted(this, new getEstadoParcialEvAcumulativaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -4637,6 +4677,32 @@ namespace SitioWebOasis.WSNotasEstudiante {
         private object[] results;
         
         internal getActaImpresaEvFinalesRecuperacionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getEstadoParcialEvAcumulativaCompletedEventHandler(object sender, getEstadoParcialEvAcumulativaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getEstadoParcialEvAcumulativaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getEstadoParcialEvAcumulativaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

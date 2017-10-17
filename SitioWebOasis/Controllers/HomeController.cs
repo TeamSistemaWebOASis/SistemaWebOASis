@@ -49,8 +49,7 @@ namespace SitioWebOasis.Controllers
                                                                 out dsUsuario);
 
                     //  Verificar si el usuario es válido
-                    if (blnUsuarioValido)
-                    {
+                    if (blnUsuarioValido){
                         // registrar datos del usuario en la sesión para futuras referencias
                         Usuario usr = this.RegistrarUsuarioEnSesion(dsUsuario);
 

@@ -412,25 +412,50 @@ namespace SitioWebOasis.Models
         }
 
 
-        public void cierreGestionNotasParcial(string dtaParcial)
+        public bool estadoParcialEvAcumulativa()
+        {
+            bool ban = false;
+
+            try {
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                string strParcialActivo = this.strParcialActivo;
+
+                ban = ne.getEstadoParcialEvAcumulativa( UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                        this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(), 
+                                                        this._strCodAsignatura,
+                                                        strParcialActivo );
+            } catch (Exception ex) {
+                ban = false;
+
+                Errores err = new Errores();
+                err.SetError(ex, "parcialActivo");
+            }
+
+            return ban;
+        }
+
+
+        public void cierreGestionNotasParcial()
         {
             string parcial1 = "0";
             string parcial2 = "0";
             string parcial3 = "0";
 
             try{
-                if(this._dsEvAcumulativa.Acta.Rows.Count > 0){
+                string dtaParcial = this.strParcialActivo;
+
+                if (this._dsEvAcumulativa.Acta.Rows.Count > 0){
                     switch (dtaParcial){
-                        case "p1":
+                        case "1":
                             parcial1 = "1";
                         break;
 
-                        case "p2":
+                        case "2":
                             parcial1 = "1";
                             parcial2 = "1";
                         break;
                             
-                        case "p3":
+                        case "3":
                             parcial1 = "1";
                             parcial2 = "1";
                             parcial3 = "1";
@@ -442,13 +467,13 @@ namespace SitioWebOasis.Models
                                                                     this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                     this._strCodAsignatura.ToString());
 
-                    if ( dtaParcial == "p1" ){
+                    if ( dtaParcial == "1" ){
                         if (numRegEA == 0){
                             this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
                         }else{
                             this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
                         }
-                    }else if( dtaParcial == "p2" || dtaParcial == "p3" || dtaParcial == "p4" ){
+                    }else if( dtaParcial == "2" || dtaParcial == "3" ){
                         if (numRegEA == 0){
                             this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
                         }else{
@@ -537,7 +562,6 @@ namespace SitioWebOasis.Models
 
             try
             {
-
                 if (!string.IsNullOrEmpty(idTypeFile)){
                     reportPath = (dtaActa[1] == "pdf" || dtaActa[1] == "xls")
                                     ? Path.Combine(pathReport, "rptActaEvaluacionesConNotas.rdlc")
@@ -578,8 +602,9 @@ namespace SitioWebOasis.Models
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
 
-                    //  Ejecuto el proceso de cierre de notas de un parcial activo
-                    this.cierreGestionNotasParcial(dtaActa[0]);
+                    if (this.estadoParcialEvAcumulativa()){
+                        this.cierreGestionNotasParcial();
+                    }
                 }
             }
             catch (Exception ex)

@@ -16,14 +16,14 @@
         case "1":
         case "2":
         case "3":
-            colorEA = (!estadoActa)? "btn-success": "btn-warning";
+            colorEA = (estadoActa)? "btn-success": "btn-warning";
             colorEF = "btn-warning";
             colorER = "btn-warning";
         break;
 
         case "EF":
             colorEA = "btn-warning";
-            colorEF = (!estadoActa) ? "btn-success" : "btn-warning";
+            colorEF = (estadoActa) ? "btn-success" : "btn-warning";
             colorER = "btn-warning";
             activoEA = "collapse";
             activoEF = "collapse in";
@@ -33,7 +33,7 @@
         case "ER":
             colorEA = "btn-warning";
             colorEF = "btn-warning";
-            colorER = (!estadoActa) ? "btn-success" : "btn-warning";
+            colorER = (estadoActa) ? "btn-success" : "btn-warning";
             activoEA = "collapse";
             activoEF = "collapse";
             activoER = "collapse in";
@@ -133,7 +133,7 @@
 
                                 @* GRID DE EVALUACION ACUMULATIVA *@
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
-                                @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && !estadoActa ){
+                                @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && estadoActa ){
                                     <table id="grdEvAcumulativa"></table>
                                     <hr class="inner-separator">
                                     <button id="btnGuardarEvAcumulativa"
@@ -343,7 +343,7 @@
             <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DEL PARCIAL @strParcialActivo </strong> y ninguna nota de este parcial va ser gestionada desde el modulo web del sistema académico.
         </div>
 
-        <p> <h4> Por su seguridad se ha enviado un codigo de confirmación a su cuenta de correo @User.Identity.Name.ToString() para continuar con la ejecucion de esta tarea </h4> </p>
+        <p> <h4> Por su seguridad se ha enviado un código de confirmación a su cuenta de correo @User.Identity.Name.ToString() para continuar con la ejecucion de esta tarea </h4> </p>
         
         <input id="dtaNumConfirmacion" type="text" name="dtaNumConfirmacion" placeholder="NÚMERO DE CONFIRMACIÓN"></p>
         <p> 
@@ -364,7 +364,6 @@
     @* PARCIAL ACTIVO *@
     @Html.Hidden("dtaParcialActivo", @strParcialActivo)
 
-
     @Html.Hidden("opImpEvAcumulada", "")
     @Html.Hidden("opImpEvFinal", "")
     @Html.Hidden("opImpEvRecuperacion", "")
@@ -375,10 +374,9 @@
         <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && !estadoActa)
-        {
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.43"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.43"> </script>
+        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa){
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.47"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.47"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
@@ -387,10 +385,8 @@
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
-        @if (strParcialActivo == "EF" && !estadoActa)
-        {
+        @if (strParcialActivo == "EF" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-
             <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.38"></script>
             <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.38"></script>
 
@@ -399,7 +395,7 @@
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
-        @if (strParcialActivo == "ER" && !estadoActa){
+        @if (strParcialActivo == "ER" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
             <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.14"></script>

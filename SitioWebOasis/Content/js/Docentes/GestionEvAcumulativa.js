@@ -15,6 +15,7 @@
     var gn3 = ($('#dtaParcialActivo').val() == "3") ? true : false;
 
     var blnCambiosEvAc = false;
+    var banControlImpresion = false;
 
     //  Objeto con informacion de dtaEvAcumulada
     cargarDatosEvAcumulativa($('#dtaJsonEvAcumulativa').val());
@@ -279,8 +280,17 @@
     $('#pEA_pdf, #pEA_xls, #pEA_blc').on('click', function () {
         $("#opImpEvAcumulada").val($(this).attr("id"));
 
-        //  Creo y envio el codigo de autenticacion 
-        getCodAutenticacion();
+        if (banControlImpresion == false) {
+            if (blnCambiosEvAc == true) {
+                $('#btnGuardarEvAcumulativa').trigger("click");
+            }
+
+            //  Creo y envio el codigo de autenticacion 
+            getCodAutenticacion();
+        } else if (banControlImpresion == true) {
+            imprimirActaEvAcumulada();
+        }
+        
     })
 
 
@@ -310,7 +320,13 @@
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
 
-                $.redirect("/Docentes/DownloadFile",
+                //  Cambio el grid de gestion de nota de evaluacion acumulativa a modo solo lectura
+                grdEvAcumulativaSoloLectura();
+
+                //  Actualizo la bandera de impresion
+                banControlImpresion = true;
+
+                $.redirect( "/Docentes/DownloadFile",
                             {   file: data.responseJSON.fileName },
                                 "POST")
             } else {
@@ -355,5 +371,44 @@
         //  Cierro el formulario de ingreso de codigo de impresion
         $.unblockUI();
     })
+
+
+    function grdEvAcumulativaSoloLectura() {
+        $('#grdEvAcumulativa').setColProp('bytNota1', { editable: 'False' });
+        $('#grdEvAcumulativa').setColProp('bytNota2', { editable: 'False' });
+        $('#grdEvAcumulativa').setColProp('bytNota3', { editable: 'False' });
+        $('#grdEvAcumulativa').setColProp('bytAsistencia', { editable: 'False' });
+    }
+
+
+    function imprimirActaEvAcumulada()
+    {
+        showLoadingProcess();
+
+        $.ajax({
+            type: "POST",
+            url: "/Docentes/impresionActas",
+            data: '{idActa: "' + $("#opImpEvAcumulada").val() + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json"
+        }).complete(function (data) {
+            //  Oculto el mensaje de error
+            $('#messageError').attr("hidden");
+
+            //  Cierro la ventana GIF Proceso
+            HoldOn.close();
+
+            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+                $.redirect("/Docentes/DownloadFile",
+                            {   file: data.responseJSON.fileName },
+                                "POST")
+            } else {
+                //  Si existe error, muestro el mensaje
+                $('#messageError').removeAttr("hidden");
+                $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
+            }
+        })
+    }
+
 
 })
