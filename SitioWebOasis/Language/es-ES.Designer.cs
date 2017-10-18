@@ -1087,6 +1087,24 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a GESTION DE EVALUACION ACUMULATIVA CORRECTA.
+        /// </summary>
+        public static string MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA {
+            get {
+                return ResourceManager.GetString("MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a GESTION DE EVALUACION ACUMULATIVA PRESENTO INCONVENIENTE .
+        /// </summary>
+        public static string MSG_REGISTRO_EV_ACUMULATIVA_ERROR {
+            get {
+                return ResourceManager.GetString("MSG_REGISTRO_EV_ACUMULATIVA_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ACTA_EV_ACUMULATIVA.
         /// </summary>
         public static string NF_EV_ACUMULATIVA {

@@ -103,30 +103,34 @@ namespace SitioWebOasis.Controllers
 
 
         [HttpPost]
-        public ActionResult registrarEvaluacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionAcumulativa> dtaEvAcumulativa)
+        public JsonResult registrarEvaluacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionAcumulativa> dtaEvAcumulativa)
         {
-            JsonResult rstEvAcumulativa = default(JsonResult);
-            try
-            {
+            JsonResult rstGestionEvAcumulativa = default(JsonResult);
+            try{
                 EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
                                                                                             strCodAsignatura,
                                                                                             strCodParalelo);
 
                 if( dtaEvAcumulativa.Count > 0){
                     if( evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa)){
-                        rstEvAcumulativa = Json(evAcumulativa.jsonEvAcumulativa, 
-                                                JsonRequestBehavior.AllowGet);
-                    }else{
-                        rstEvAcumulativa = Json("false", 
-                                                JsonRequestBehavior.AllowGet);
+                        rstGestionEvAcumulativa = Json(new {dtaEvAcumulativaUpd = evAcumulativa.jsonEvAcumulativa,
+                                                            MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA });
+                    }
+                    else{
+                        rstGestionEvAcumulativa = Json(new{ dtaEvAcumulativaUpd = "false",
+                                                            MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR
+                        });
                     }
                 }       
             }catch(Exception ex){
+                rstGestionEvAcumulativa = Json(new{ dtaEvAcumulativaUpd = "false",
+                                                    MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR });
+
                 Errores err = new Errores();
                 err.SetError(ex, "registrarEvaluacionAcumulativa");
             }
 
-            return rstEvAcumulativa;
+            return rstGestionEvAcumulativa;
         }
 
 

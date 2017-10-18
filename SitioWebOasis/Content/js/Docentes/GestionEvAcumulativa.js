@@ -134,11 +134,14 @@
     function cargarDatosEvAcumulativa(dtaEvAcumulada)
     {
         var dtaEvaluaciones = eval(dtaEvAcumulada);
+
         if (dtaEvaluaciones.length > 0) {
             var nee = dtaEvaluaciones.length;
             for (var x = 0; x < nee; x++) {
                 var objEvaluaciones = new EvaluacionAcumulativa();
-                objEvaluaciones.setDtaEvaluacion(dtaEvaluaciones[x], $("#dtaParcialActivo").val());
+                objEvaluaciones.setDtaEvaluacion(   dtaEvaluaciones[x],
+                                                    $("#dtaParcialActivo").val());
+
                 lstEvaluaciones.push(objEvaluaciones);
             }
         }
@@ -245,18 +248,25 @@
                     alert(thrownError);
                 }
             }).success(function (data) {
-                //  Muestro mensaje de gestion de informacion
-                $('#msmGrdEvAcumulativa').removeAttr("hidden");
+                if (data.dtaEvAcumulativaUpd != "false") {
+                    //  Actualizo el grid con la informacion gestionada a nivel BD
+                    cargarDatosEvAcumulativa(data.dtaEvAcumulativaUpd);
 
-                //  Actualizo el grid con la informacion gestionada a nivel BD
-                cargarDatosEvAcumulativa(data);
+                    //  Actualizo el grid de notas
+                    updContenidoColumnasGrid();
 
-                //  Actualizo el grid de notas
-                updContenidoColumnasGrid();
+                    //  Regreso a su valor original la variable de control de cambios en el grid de notas
+                    blnCambiosEvAc = false;
 
-                //  Regreso a su valor original la variable de control de cambios en el grid de notas
-                blnCambiosEvAc = false;
+                    //  Mostrar mensaje de estado de la transaccion
+                    getMensajeTransaccion(true, data.MessageGestion);
 
+                    $('#grdEvAcumulativa').trigger('reloadGrid');
+                } else {
+                    //  Mostrar mensaje de estado de la transaccion
+                    getMensajeTransaccion(false, data.MessageGestion);
+                }
+                
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
             })
@@ -264,8 +274,23 @@
             //  Cierro la ventana GIF Proceso
             HoldOn.close();
         }
-
     })
+
+
+    function getMensajeTransaccion( banEstado, mensaje )
+    {
+        //  Muestro mensaje de gestion de informacion
+        $('#msmGrdEvAcumulativa').removeAttr("hidden");
+
+        if (banEstado == true) {
+            $('#msmGrdEvAcumulativa').attr("class", "alert alert-success fade in");
+            $('#msmGrdEvAcumulativa').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-check' aria-hidden='true'></i> <strong>" + mensaje + "</strong>");
+        } else if( banEstado == false){
+            $('#msmGrdEvAcumulativa').attr("class", "alert alert-danger fade in");
+            $('#msmGrdEvAcumulativa').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-exclamation-circle' aria-hidden='true'></i> <strong>"+ mensaje +"</strong>");
+        }
+
+    }
 
 
     function showLoadingProcess() {
@@ -306,8 +331,7 @@
                     contentType: "application/json; charset=utf-8",
                     dataType: "json"
         }).complete(function (data) {
-
-            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+            if( data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined ){
                 //  Cambio el color del boton
                 $('#btnEA, #btnEAF').attr("class", 'btn btn-warning btn-md');
 
@@ -330,9 +354,11 @@
                             {   file: data.responseJSON.fileName },
                                 "POST")
             } else {
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+
                 //  Si existe error, muestro el mensaje
-                $('#messageError').removeAttr("hidden");
-                $('#messageError').html("<a href='' class='close'>×</a><strong>" + data.responseJSON.rstValidacionCodigo + "</strong> Favor vuelva a intentarlo");
+                alert(data.responseJSON.errorMessage);
             }
         })
 
@@ -409,6 +435,5 @@
             }
         })
     }
-
 
 })

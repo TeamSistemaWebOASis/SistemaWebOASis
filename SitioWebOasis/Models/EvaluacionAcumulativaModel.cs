@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Net;
+using System.Web.Helpers;
 
 namespace SitioWebOasis.Models
 {
@@ -32,7 +33,6 @@ namespace SitioWebOasis.Models
                                         ? JsonConvert.SerializeObject(this._dsEvAcumulativa.Acta)
                                         : "";
         }
-        
 
         private WSGestorEvaluacion.dtstEvaluacion_Acumulados _CargarNotasEvAcumulativa()
         {
@@ -127,6 +127,8 @@ namespace SitioWebOasis.Models
             }
             catch (System.Exception ex)
             {
+                rst = false;
+
                 Errores err = new Errores();
                 err.SetError(ex, "registrarEvaluacionAcumulativa");
             }
@@ -485,7 +487,6 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "cierreGestionNotasParcial");
             }
-
         }
 
 

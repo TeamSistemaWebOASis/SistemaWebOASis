@@ -235,13 +235,13 @@ namespace SitioWebOasis.Library
                 rst = correo.EnviarEmailHtml(   "oasis@espoch.edu.ec",
                                                 "Sistema académico DTIC - ESPOCH",
                                                 correoUsuario,
-                                                "Clave confirmacion impresion acta",
-                                                "La clave es: " + numCodigo,
+                                                "Número de confirmación - impresión de acta",
+                                                "Su número de confirmación es: " + numCodigo,
                                                 "Academico",
                                                 "Oasis20|3Desitel");
 
-                codAutenticacion = (rst) ? numCodigo : "false";
-
+                codAutenticacion = (rst)? numCodigo 
+                                        : "false";
             }catch(Exception ex){
                 codAutenticacion = "false";
 
