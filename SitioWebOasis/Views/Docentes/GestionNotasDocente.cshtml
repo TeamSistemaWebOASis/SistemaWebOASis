@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Gestión de Notas - ";
     var strParcialActivo = Model.strParcialActivo.ToString();
-    var estadoActa = Model.estadoActa( Model.strCodAsignatura );
+    var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
     var colorEF = "btn-success";
@@ -61,7 +61,7 @@
         <div class="col-md-12">
             <div class="contextual-summary-info">
                 <i class="fa fa-list-alt"></i>
-                <p class="pull-right"><span> @Language.es_ES.DOC_GESTION_NOTAS </span> @Model.getNombreAsignatura(Model.strCodAsignatura.ToString(), Model.strCodNivel.ToString(), Model.strCodParalelo.ToString()) </p>
+                <p class="pull-right"><span> @Language.es_ES.DOC_GESTION_NOTAS </span> @Model.getNombreAsignatura() </p>
             </div>
         </div>
     </div>
@@ -76,7 +76,7 @@
                 <span class="control-title"><i class="fa fa-calendar-check-o"></i> @Language.es_ES.LST_LBL_ASIGNATURAS_DOCENTE: &nbsp;</span>
                 @*  dropdownlist - asignaturas de un docente *@
                 @Html.DropDownList("ddlLstPeriodosEstudiante",
-                                    Model.getLstAsignaturasDocente(Model.strCodAsignatura),
+                                    Model.getLstAsignaturasDocente(),
                                     new{@class = "multiselect",
                                         @Styles = "display: none;"
                                     })
@@ -164,7 +164,7 @@
                                         </thead>
                                         <tbody>
                                             @* NOTAS EVALUACION ESTUDIANTE *@
-                                            @Html.Raw(Model.evAcumulativaModel.getHTML_EvaluacionAcumulativa())
+                                            @Html.Raw(Model.evAcumulativa.getHTML_EvaluacionAcumulativa())
                                         </tbody>
                                     </table>
                                 }
@@ -243,7 +243,7 @@
                                         </thead>
                                         <tbody>
                                             @* NOTAS EVALUACION ESTUDIANTE *@
-                                            @Html.Raw(Model.evFinalModel.getHTML_EvaluacionFinal())
+                                            @Html.Raw(Model.evFinal.getHTML_EvaluacionFinal())
                                         </tbody>
                                     </table>
                                 }
@@ -319,7 +319,7 @@
                                         </thead>
                                         <tbody>
                                             @* NOTAS EVALUACION ESTUDIANTE *@
-                                            @Html.Raw(Model.evRecuperacionModel.getHTML_EvaluacionRecuperacion())
+                                            @Html.Raw(Model.evRecuperacion.getHTML_EvaluacionRecuperacion())
                                         </tbody>
                                     </table>
                                 }

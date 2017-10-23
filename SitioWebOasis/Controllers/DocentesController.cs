@@ -19,13 +19,13 @@ namespace SitioWebOasis.Controllers
     public class DocentesController : Controller
     {
         // GET: Docentes
-        public ActionResult Index( string idRol, string idCarrera )
+        public ActionResult Index( string strCodCarrera )
         {
-            string strIdCarrera = (string.IsNullOrEmpty(idCarrera))
-                                    ? this._getCodigoCarrera()
-                                    : idCarrera;
+            string _strCodCarrera = (string.IsNullOrEmpty(strCodCarrera))
+                                        ? this._getCodigoCarrera()
+                                        : strCodCarrera;
 
-            SitioWebOasis.Models.DatosAcademicosDocente daDocente = new DatosAcademicosDocente(strIdCarrera);
+            SitioWebOasis.Models.DatosAsignaturasDocenteModel daDocente = new DatosAsignaturasDocenteModel(_strCodCarrera);
             return View("Index", daDocente);
         }
 
@@ -64,41 +64,25 @@ namespace SitioWebOasis.Controllers
 
             return idCarrera;
         }
-        
 
-        public ActionResult EvaluacionAsignatura (string strCodNivel, string strCodAsignatura, string strCodParalelo )
+
+        public ActionResult EvaluacionAsignatura(string strCodNivel, string strCodAsignatura, string strCodParalelo)
         {
             try
             {
-                //  modelo - EVALUACION ACUMULATIVA
-                EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
-                                                                                            strCodAsignatura,
-                                                                                            strCodParalelo);
+                EvaluacionesDocenteModel edm = new EvaluacionesDocenteModel(strCodNivel,
+                                                                            strCodAsignatura,
+                                                                            strCodParalelo);
 
-                //  modelo - EVALUACION FINAL
-                EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
-                                                                        strCodAsignatura,
-                                                                        strCodParalelo);
-
-                //  modelo - EVALUACION RECUPERACION
-                EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
-                                                                                                strCodAsignatura,
-                                                                                                strCodParalelo);
-
-                return View("GestionNotasDocente", new EvaluacionesDocenteModel{strCodNivel = strCodNivel,
-                                                                                strCodAsignatura = strCodAsignatura,
-                                                                                strCodParalelo = strCodParalelo,
-                                                                                evAcumulativaModel = evAcumulativa,
-                                                                                evFinalModel = evFinal,
-                                                                                evRecuperacionModel = evRecuperacion });
-            }catch(Exception ex)
+                return View("GestionNotasDocente", edm);
+            }
+            catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "EvaluacionAsignatura");
 
                 return RedirectToAction("Index", "Error");
             }
-            
         }
 
 

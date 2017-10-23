@@ -13,7 +13,7 @@ using System.Web;
 
 namespace SitioWebOasis.Models
 {
-    public class EvaluacionRecuperacionModel : DatosAcademicosDocente
+    public class EvaluacionRecuperacionModel : Asignatura
     {
         public string jsonEvRecuperacion { get; set; }
         private WSGestorEvaluacion.dtstEvaluacion_Actas _dsEvRecuperacion = new WSGestorEvaluacion.dtstEvaluacion_Actas();
@@ -272,9 +272,7 @@ namespace SitioWebOasis.Models
                                                                 out streams,
                                                                 out warnings);
 
-                    nombreAsignatura = this.getNombreAsignatura(this._strCodAsignatura,
-                                                                this._strCodNivel,
-                                                                this._strCodParalelo);
+                    nombreAsignatura = this.getNombreAsignatura();
 
                     nameFile = Language.es_ES.NF_EV_RECUPERACION + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
 

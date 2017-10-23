@@ -13,7 +13,7 @@ using System.Web;
 
 namespace SitioWebOasis.Models
 {
-    public class EvaluacionFinalModel: DatosAcademicosDocente
+    public class EvaluacionFinalModel: Asignatura
     {
         public string jsonEvFinal { get; set; }
         private WSGestorEvaluacion.dtstEvaluacion_Actas _dsEvFinal = new WSGestorEvaluacion.dtstEvaluacion_Actas();
@@ -310,10 +310,7 @@ namespace SitioWebOasis.Models
                                                         out streams,
                                                         out warnings);
 
-                    nombreAsignatura = this.getNombreAsignatura(this._strCodAsignatura, 
-                                                                this._strCodNivel, 
-                                                                this._strCodParalelo);
-
+                    nombreAsignatura = this.getNombreAsignatura();
                     nameFile = Language.es_ES.NF_EV_FINAL + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
 
                     //  Direcciono la creacion del archivo a una ubicacion temporal
@@ -401,7 +398,7 @@ namespace SitioWebOasis.Models
                                         ref fHorasTeo,
                                         ref fHorasPra);
 
-                switch (UsuarioActual.CarreraActual.TipoEntidad.ToString())
+                switch (this.UsuarioActual.CarreraActual.TipoEntidad.ToString())
                 {
                     case "CAR":
                         facultad = pc.NombreFacultad;

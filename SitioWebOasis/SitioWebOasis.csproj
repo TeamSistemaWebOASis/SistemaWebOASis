@@ -257,6 +257,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WS_URL.resx</DependentUpon>
     </Compile>
+    <Compile Include="Library\Asignatura.cs" />
     <Compile Include="Library\Catalogos.cs" />
     <Compile Include="Library\CorreoElectronico.cs" />
     <Compile Include="Library\DatosAsignaturaDocente.cs" />
@@ -269,7 +270,7 @@
     <Compile Include="Library\Nacionalidad.cs" />
     <Compile Include="Library\EvaluacionActiva.cs" />
     <Compile Include="Library\Persona.cs" />
-    <Compile Include="Models\DatosAcademicosDocente.cs" />
+    <Compile Include="Models\DatosAsignaturasDocenteModel.cs" />
     <Compile Include="Models\DatosAcademicosEstudiante.cs" />
     <Compile Include="Models\DatosPagoEstudianteModel.cs" />
     <Compile Include="Models\DatosPersonalesEstudiantes.cs" />

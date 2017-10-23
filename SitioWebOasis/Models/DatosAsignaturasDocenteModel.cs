@@ -7,17 +7,15 @@ using System.Data;
 
 namespace SitioWebOasis.Models
 {
-    public class DatosAcademicosDocente: DatosCarrera
+    public class DatosAsignaturasDocenteModel: DatosCarrera
     {
-        private string _codCarrera = string.Empty;
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
-        public DatosAcademicosDocente( string idCarrera = "" )
+        public DatosAsignaturasDocenteModel( string strCodCarrera )
         {
-            this._codCarrera = idCarrera;
-            if( !string.IsNullOrEmpty(idCarrera)){
+            if (!string.IsNullOrEmpty(strCodCarrera)){
                 this.UsuarioActual.SetRolCarreraActual( Roles.Docentes,
-                                                        idCarrera);
+                                                        strCodCarrera);
             }
 
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
@@ -166,59 +164,59 @@ namespace SitioWebOasis.Models
         }
 
 
-        public string getNombreAsignatura(string strCodAsignatura, string strCodNivel, string strCodParalelo)
-        {
-            string asignatura = string.Empty;
+        //public string getNombreAsignatura(string strCodAsignatura, string strCodNivel, string strCodParalelo)
+        //{
+        //    string asignatura = string.Empty;
 
-            try
-            {
-                if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
-                    DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '" + strCodAsignatura + "' AND strCodNivel ='" + strCodNivel + "' AND strCodParalelo = '" + strCodParalelo + "'");
-                    asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
-                                                    : string.Empty;
-                }
-            }catch (Exception ex){
-                asignatura = string.Empty;
+        //    try
+        //    {
+        //        if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
+        //            DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '" + strCodAsignatura + "' AND strCodNivel ='" + strCodNivel + "' AND strCodParalelo = '" + strCodParalelo + "'");
+        //            asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
+        //                                            : string.Empty;
+        //        }
+        //    }catch (Exception ex){
+        //        asignatura = string.Empty;
 
-                Errores err = new Errores();
-                err.SetError(ex, "getNombreAsignatura");
-            }
+        //        Errores err = new Errores();
+        //        err.SetError(ex, "getNombreAsignatura");
+        //    }
 
-            return asignatura;
-        }
+        //    return asignatura;
+        //}
 
 
-        public bool estadoActa( string strCodAsignatura )
-        {
-            bool ban = false;
-            string parcialActivo = string.Empty;
+        //public bool estadoActa( string strCodAsignatura )
+        //{
+        //    bool ban = false;
+        //    string parcialActivo = string.Empty;
 
-            try {                
-                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-                string strCodCarrera    = UsuarioActual.CarreraActual.Codigo.ToString();
-                string periodoVigente   = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
-                parcialActivo           = this.strParcialActivo;
+        //    try {                
+        //        ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+        //        string strCodCarrera    = UsuarioActual.CarreraActual.Codigo.ToString();
+        //        string periodoVigente   = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
+        //        parcialActivo           = this.strParcialActivo;
 
-                if (parcialActivo == "1" || parcialActivo == "2" || parcialActivo == "3"){
-                    ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
-                                                            periodoVigente,
-                                                            strCodAsignatura,
-                                                            parcialActivo);
-                }else if(parcialActivo == "EF" || parcialActivo == "ER"){
-                    ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
-                                                                    periodoVigente,
-                                                                    strCodAsignatura,
-                                                                    parcialActivo);
-                }
-            }
-            catch (Exception ex){
-                ban = false;
+        //        if (parcialActivo == "1" || parcialActivo == "2" || parcialActivo == "3"){
+        //            ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
+        //                                                    periodoVigente,
+        //                                                    strCodAsignatura,
+        //                                                    parcialActivo);
+        //        }else if(parcialActivo == "EF" || parcialActivo == "ER"){
+        //            ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
+        //                                                            periodoVigente,
+        //                                                            strCodAsignatura,
+        //                                                            parcialActivo);
+        //        }
+        //    }
+        //    catch (Exception ex){
+        //        ban = false;
 
-                Errores err = new Errores();
-                err.SetError(ex, "estadoActa");
-            }
+        //        Errores err = new Errores();
+        //        err.SetError(ex, "estadoActa");
+        //    }
 
-            return ban;
-        }
+        //    return ban;
+        //}
     }
 }
