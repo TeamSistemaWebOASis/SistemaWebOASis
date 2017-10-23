@@ -7,7 +7,7 @@ using System.Web;
 
 namespace SitioWebOasis.ProxySeguro
 {
-    public class GestorAdministracionGeneral:WSAdministracionGeneral.GestorAdministracionGeneral
+    public class GestorAdministracionGeneral: WSAdministracionGeneral.GestorAdministracionGeneral
     {
         private OASisLogin login;
 
@@ -26,5 +26,6 @@ namespace SitioWebOasis.ProxySeguro
 
             return req2;
         }
+
     }
 }

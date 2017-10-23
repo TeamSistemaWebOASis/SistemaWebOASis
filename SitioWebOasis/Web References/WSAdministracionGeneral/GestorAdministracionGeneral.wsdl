@@ -12,17 +12,17 @@
       <s:import namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosSeguridad" namespace="http://tempuri.org/dtstDatosSeguridad.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Permisos" namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_ReporteInstituciones" namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_HistorialEstudiante" namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Institucion" namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosEquivalencias" namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Periodos" namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Instituciones" namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_BuzonMensajes" namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Parametros" namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosInstitucionales" namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosSeguridad" namespace="http://tempuri.org/dtstDatosSeguridad.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_HistorialEstudiante" namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosInstitucionales" namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Permisos" namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Periodos" namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Instituciones" namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_ReporteInstituciones" namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Parametros" namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_BuzonMensajes" namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Institucion" namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosEquivalencias" namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
       <s:element name="GetMensajesPendientes">
         <s:complexType>
           <s:sequence>
@@ -1947,10 +1947,10 @@
   </wsdl:binding>
   <wsdl:service name="GestorAdministracionGeneral">
     <wsdl:port name="GestorAdministracionGeneralSoap" binding="tns:GestorAdministracionGeneralSoap">
-      <soap:address location="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx" />
+      <soap:address location="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx" />
     </wsdl:port>
     <wsdl:port name="GestorAdministracionGeneralSoap12" binding="tns:GestorAdministracionGeneralSoap12">
-      <soap12:address location="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx" />
+      <soap12:address location="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx" />
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

@@ -26,17 +26,6 @@ namespace SitioWebOasis.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessSe" +
-            "rvices/GestorAdministracionGeneral.asmx")]
-        public string SitioWebOasis_WSAdministracionGeneral_GestorAdministracionGeneral {
-            get {
-                return ((string)(this["SitioWebOasis_WSAdministracionGeneral_GestorAdministracionGeneral"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx")]
         public string SitioWebOasis_WSDatosUsuario_DatosUsuarios {
             get {
@@ -126,6 +115,17 @@ namespace SitioWebOasis.Properties {
         public string SitioWebOasis_WSAcademicoWCF_Academico {
             get {
                 return ((string)(this["SitioWebOasis_WSAcademicoWCF_Academico"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessSe" +
+            "rvices/GestorAdministracionGeneral.asmx")]
+        public string SitioWebOasis_WSAdministracionGeneral_GestorAdministracionGeneral {
+            get {
+                return ((string)(this["SitioWebOasis_WSAdministracionGeneral_GestorAdministracionGeneral"]));
             }
         }
     }

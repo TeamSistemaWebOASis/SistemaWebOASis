@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net;
 using System.Web;
+using OAS_Seguridad.Cliente;
 
 namespace SitioWebOasis.Library
 {
@@ -49,6 +51,7 @@ namespace SitioWebOasis.Library
             try
             {
                 ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                gag.CookieContainer = new CookieContainer();
                 WSAdministracionGeneral.dtstDatosAdminG_Parametros dsParametros = gag.getDatosParametros();
 
                 //  Obtengo informacion de los parametros generales del sistema

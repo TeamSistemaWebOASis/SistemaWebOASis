@@ -30,8 +30,7 @@ namespace SitioWebOasis.CommonClasses
 		static CacheConfig()
 		{
 			#region Load Configuration Section
-			try
-			{
+			try{
                 config = (NameValueCollection)System.Configuration.ConfigurationManager.GetSection(cacheSettingsConfigName);
 			}
 			catch (Exception ex)
@@ -108,12 +107,12 @@ namespace SitioWebOasis.CommonClasses
 
 		private static int SearchKey(string key)
 		{
-      string[] Keys = config.AllKeys;
-			for (int i=0; i<Keys.Length; i++)
-			{
+            string[] Keys = config.AllKeys;
+			for (int i=0; i<Keys.Length; i++){
 				if (key.StartsWith(Keys[i]))
 					return i;
 			}
+
 			return -1;
 		}
 
@@ -218,11 +217,13 @@ namespace SitioWebOasis.CommonClasses
 		{
 			object cacheItem = null;
 
-			if(EnableCaching)
-			{
+			if(EnableCaching){
 				VerifyCacheDuration(key);
-				cacheItem = context.Cache[key];
-			}
+                cacheItem = (context.Cache[key] != null)
+                                ? context.Cache[key] 
+                                : (object)"OASisLogin";
+            }
+
 			return cacheItem;
 		}
 

@@ -45,13 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autenticacion">
+    <Reference Include="Autenticacion, Version=1.0.6502.21218, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OASisVersionado\OAS_Seguridad\Autenticacion\bin\Autenticacion.dll</HintPath>
     </Reference>
-    <Reference Include="Cliente">
+    <Reference Include="Cliente, Version=1.0.6502.21211, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OASisVersionado\OAS_Seguridad\Cliente\bin\Debug\Cliente.dll</HintPath>
     </Reference>
-    <Reference Include="CommonServices">
+    <Reference Include="CommonServices, Version=1.0.6502.21186, Culture=neutral, PublicKeyToken=dc86e1807b5690e9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\OASisVersionado\OAS_Comun\CommonServices\bin\Debug\CommonServices.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.0.1011, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -98,6 +101,10 @@
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="Modulo, Version=1.0.6502.21215, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\OASisVersionado\OAS_Seguridad\Modulo\bin\Debug\Modulo.dll</HintPath>
     </Reference>
     <Reference Include="ReportViewerForMvc, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ReportViewerForMvc.1.0.1\lib\net45\ReportViewerForMvc.dll</HintPath>
@@ -282,9 +289,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ProxySeguro\GestorAdministracionGeneral.cs" />
     <Compile Include="ProxySeguro\DatosUsuario.cs" />
     <Compile Include="ProxySeguro\EgresamientoGraduacion.cs" />
+    <Compile Include="ProxySeguro\GestorAdministracionGeneral.cs" />
     <Compile Include="ProxySeguro\GestorDeReportesEvaluacion.cs" />
     <Compile Include="ProxySeguro\GestorDeReportesMatriculacion.cs" />
     <Compile Include="ProxySeguro\GestorEvaluacion.cs" />
@@ -468,12 +475,6 @@
     <Content Include="Views\Shared\_Navigation.cshtml" />
     <Content Include="Views\Shared\MenuRoles.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
-    <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
-    <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
-      <DependentUpon>Reference.map</DependentUpon>
-    </Content>
     <None Include="Web References\WSAcademicoWCF\Academico.wsdl" />
     <Content Include="Web References\WSAcademicoWCF\Persona.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -482,6 +483,13 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
+    <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
     <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.xsd" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_Institucion.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -522,8 +530,13 @@
     <Content Include="Web References\WSAdministracionGeneral\Estado.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
-    <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.disco" />
+    <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.wsdl" />
+    <None Include="Web References\WSAdministracionGeneral\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <None Include="Web References\WSDatosUsuario\DatosUsuarios.disco" />
+    <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.disco" />
     <Content Include="Web References\WSEgresamientoGraduacion\dsTesis.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </Content>
@@ -788,12 +801,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\SignOutCallback.cshtml" />
-    <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
-    <None Include="Web References\WSAdministracionGeneral\GestorAdministracionGeneral.wsdl" />
-    <None Include="Web References\WSAdministracionGeneral\Reference.map">
-      <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <None Include="Web References\WSDatosUsuario\DatosUsuarios.wsdl" />
     <Content Include="Web References\WSDatosUsuario\dtstCursosMateria.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -944,10 +951,10 @@
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SitioWebOasis_WSAcademicoWCF_Academico</CachedSettingsPropName>
     </WebReferenceUrl>
-    <WebReferenceUrl Include="http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx">
+    <WebReferenceUrl Include="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>
       <RelPath>Web References\WSAdministracionGeneral\</RelPath>
-      <UpdateFromURL>http://localhost/Oasis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>

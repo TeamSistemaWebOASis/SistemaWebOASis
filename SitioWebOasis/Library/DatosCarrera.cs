@@ -11,15 +11,15 @@ namespace SitioWebOasis.Library
 {
     public class DatosCarrera
     {
-        protected string _strNombreBD { get; set; }
-
-        protected string _strUbicacion { get; set; }
-
         protected string _strCodAsignatura { get; set; }
 
         protected string _strCodNivel { get; set; }
 
         protected string _strCodParalelo { get; set; }
+
+        protected string _strNombreBD { get; set; }
+
+        protected string _strUbicacion { get; set; }
 
 
         protected WSInfoCarreras.dtstPeriodoVigente _dtstPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();

@@ -1,8 +1,10 @@
 ﻿using GestorErrores;
+using OAS_Seguridad.Cliente;
 using SitioWebOasis.CommonClasses;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.WSSeguridad;
 using System;
+using System.Configuration;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -50,6 +52,10 @@ namespace SitioWebOasis.Controllers
 
                     //  Verificar si el usuario es válido
                     if (blnUsuarioValido){
+
+                        //  Add objeto seguridad a la cache del usuario
+                        this._addObjetoSeguridad();
+
                         // registrar datos del usuario en la sesión para futuras referencias
                         Usuario usr = this.RegistrarUsuarioEnSesion(dsUsuario);
 
@@ -76,14 +82,47 @@ namespace SitioWebOasis.Controllers
                         this.Session["UsuarioActual"] = new Usuario();
                     }
                 }
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
+                blnUsuarioValido = false;
+
                 Errores err = new Errores();
                 err.SetError(ex, "_existeRolUsuario");
             }
 
             return blnUsuarioValido;
+        }
+
+
+        private void _addObjetoSeguridad()
+        {
+            try
+            {
+                //  Login
+                string strClaveSeg = "#_OASis2006_#";
+                CommonServices.Seguridad seg = new CommonServices.Seguridad();
+                string fLogin = seg.Encriptar(strClaveSeg, System.Configuration.ConfigurationManager.AppSettings["OAS_SitioWebLogin"]);
+                string fPassword = seg.Encriptar(strClaveSeg, System.Configuration.ConfigurationManager.AppSettings["OAS_SitioWebPassword"]);
+                this.LoginCache = new OAS_Seguridad.Cliente.OASisLogin( fLogin,
+                                                                        fPassword,
+                                                                        false);
+
+                this.LoginCache.LoginUser();
+                if (this.LoginCache.Authorized == false){
+                    CacheConfig.Remove("OASisLogin");
+                    throw new System.Security.SecurityException("Acceso no autorizado", null as Exception);
+                }
+            }catch(Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_addObjetoSeguridad");
+            }
+        }
+
+
+        private OASisLogin LoginCache
+        {
+            get { return CacheConfig.Get("OASisLogin") as OASisLogin; }
+            set { CacheConfig.Insert("OASisLogin", value); }
         }
 
 
