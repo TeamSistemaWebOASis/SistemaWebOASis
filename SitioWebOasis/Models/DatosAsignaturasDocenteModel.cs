@@ -104,16 +104,16 @@ namespace SitioWebOasis.Models
             rst += " </tr>";
 
             if (this._dtstCursosDocente.Cursos.Count > 0){
-                int x = 0;                
-                EvaluacionActiva ea = new EvaluacionActiva();
-                evActiva = ea.getDtaEvaluacionActiva();
+                int x = 0;
+                EvaluacionActiva objEvActiva = new EvaluacionActiva();
+                evActiva = objEvActiva.getDataEvaluacionActiva().Replace("FN", "");
 
                 if( !string.IsNullOrEmpty(evActiva))
                 {
                     rst = string.Empty;
-                    parcialActivo = (evActiva != "EF" && evActiva != "ER" && evActiva != "NA")  
+                    parcialActivo = (evActiva != "FNP" && evActiva != "ER" && evActiva != "NA")  
                                         ? this._getNumOrdinal(evActiva)
-                                        : (evActiva == "EF")? Language.es_ES.DOC_TB_EV_FINAL
+                                        : (evActiva == "FNP")? Language.es_ES.DOC_TB_EV_FINAL
                                                             : Language.es_ES.DOC_TB_EV_RECUPERACION;
 
                     foreach (DataRow item in this._dtstCursosDocente.Cursos){
@@ -163,60 +163,5 @@ namespace SitioWebOasis.Models
             return lstAsignaturasDocente;
         }
 
-
-        //public string getNombreAsignatura(string strCodAsignatura, string strCodNivel, string strCodParalelo)
-        //{
-        //    string asignatura = string.Empty;
-
-        //    try
-        //    {
-        //        if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
-        //            DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '" + strCodAsignatura + "' AND strCodNivel ='" + strCodNivel + "' AND strCodParalelo = '" + strCodParalelo + "'");
-        //            asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
-        //                                            : string.Empty;
-        //        }
-        //    }catch (Exception ex){
-        //        asignatura = string.Empty;
-
-        //        Errores err = new Errores();
-        //        err.SetError(ex, "getNombreAsignatura");
-        //    }
-
-        //    return asignatura;
-        //}
-
-
-        //public bool estadoActa( string strCodAsignatura )
-        //{
-        //    bool ban = false;
-        //    string parcialActivo = string.Empty;
-
-        //    try {                
-        //        ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-        //        string strCodCarrera    = UsuarioActual.CarreraActual.Codigo.ToString();
-        //        string periodoVigente   = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
-        //        parcialActivo           = this.strParcialActivo;
-
-        //        if (parcialActivo == "1" || parcialActivo == "2" || parcialActivo == "3"){
-        //            ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
-        //                                                    periodoVigente,
-        //                                                    strCodAsignatura,
-        //                                                    parcialActivo);
-        //        }else if(parcialActivo == "EF" || parcialActivo == "ER"){
-        //            ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
-        //                                                            periodoVigente,
-        //                                                            strCodAsignatura,
-        //                                                            parcialActivo);
-        //        }
-        //    }
-        //    catch (Exception ex){
-        //        ban = false;
-
-        //        Errores err = new Errores();
-        //        err.SetError(ex, "estadoActa");
-        //    }
-
-        //    return ban;
-        //}
     }
 }

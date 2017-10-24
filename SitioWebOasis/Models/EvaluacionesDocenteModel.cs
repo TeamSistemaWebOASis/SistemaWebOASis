@@ -24,6 +24,8 @@ namespace SitioWebOasis.Models
 
         public string strCodParalelo { get { return this._strCodParalelo; } }
 
+        public string getDtaEvaluacionActiva { get { return this._evaluacion.getDataEvaluacionActiva(); } }
+
         public EvaluacionAcumulativaModel evAcumulativa;
 
         public EvaluacionFinalModel evFinal;
@@ -37,19 +39,19 @@ namespace SitioWebOasis.Models
             this._strCodParalelo = strCodParalelo;
 
             //  modelo - EVALUACION ACUMULATIVA
-            this.evAcumulativa = new EvaluacionAcumulativaModel(this._strCodNivel,
-                                                                this._strCodAsignatura,
-                                                                this._strCodParalelo);
+            this.evAcumulativa = new EvaluacionAcumulativaModel(strCodNivel,
+                                                                strCodAsignatura,
+                                                                strCodParalelo);
 
             //  modelo - EVALUACION FINAL
-            this.evFinal = new EvaluacionFinalModel(this._strCodNivel,
-                                                    this._strCodAsignatura,
-                                                    this._strCodParalelo);
+            this.evFinal = new EvaluacionFinalModel(strCodNivel,
+                                                    strCodAsignatura,
+                                                    strCodParalelo);
 
             //  modelo - EVALUACION RECUPERACION
-            this.evRecuperacion = new EvaluacionRecuperacionModel(  this._strCodNivel,
-                                                                    this._strCodAsignatura,
-                                                                    this._strCodParalelo );
+            this.evRecuperacion = new EvaluacionRecuperacionModel(  strCodNivel,
+                                                                    strCodAsignatura,
+                                                                    strCodParalelo );
         }
         
     }

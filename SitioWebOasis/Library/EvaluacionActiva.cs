@@ -25,13 +25,38 @@ namespace SitioWebOasis.Library
         private string _prmParcialTres = "FN3";
         private string _prmParcialPrincipal = "FNP";
 
-        public EvaluacionActiva() { }
+        private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
+        private DataRow[] _drDtaPeriodosEvaluacion = default(DataRow[]);
+        private string _evaluacionActiva = default(string);
+        private DateTime _fchMaximaGestion = default(DateTime);
+        private int _numDiasFaltantes = default(Int16);
+
+        public EvaluacionActiva()
+        {
+            this._cargaDatosPeriodosEvaluaciones();
+
+            this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
+            this._evaluacionActiva = this._getEvaluacionActiva().Replace("FN", "");
+            this._cargarFchMaximaGestion();
+        }
         
 
-        public EvaluacionActiva( string idCarrera, string codAsignatura )
+        private void _cargaDatosPeriodosEvaluaciones()
         {
-            this._codCarrera = idCarrera;
-            this._codAsignatura = codAsignatura;
+            try {
+                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                gag.CookieContainer = new CookieContainer();
+                WSAdministracionGeneral.dtstDatosAdminG_Parametros dsParametros = gag.getDatosParametros();
+
+                if( dsParametros.Parametros_Sistema.Rows.Count > 0){
+                    //  Obtengo informacion de los parametros generales del sistema
+                    this._drDtaPeriodosEvaluacion = dsParametros.Parametros_Sistema.Select("strCodigo IN('FN1', 'FN2', 'FN3', 'FNP')", "strCodigo");
+                }
+
+            } catch (Exception ex) {
+                Errores err = new Errores();
+                err.SetError(ex, "_getDtaParametro");
+            }
         }
 
         /// <summary>
@@ -43,84 +68,127 @@ namespace SitioWebOasis.Library
         /// 
         /// </summary>
         /// <returns> Retorna la evaluacion vigente, en caso de no existir ninguna evaluacion activa retorna un valor cero (0) </returns>
-        public string getDtaEvaluacionActiva()
+        private string _getEvaluacionActiva()
         {
-            string dtaEvaluacionActiva = "NA";
+            string evaluacionActiva = "NA";
             string evActiva = string.Empty;
 
-            try
-            {
-                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
-                gag.CookieContainer = new CookieContainer();
-                WSAdministracionGeneral.dtstDatosAdminG_Parametros dsParametros = gag.getDatosParametros();
+            try{
+                if (this._drDtaPeriodosEvaluacion.Length > 0){
+                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                        if (!string.IsNullOrEmpty(item["strValor"].ToString())){
+                            DateTime fchItem = Convert.ToDateTime(item["strValor"].ToString());
+                            DateTime fchMenorOchoDias = fchItem.Date.AddDays(-8);
+                            TimeSpan numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
 
-                //  Obtengo informacion de los parametros generales del sistema
-                DataRow[] drParametros = dsParametros.Parametros_Sistema.Select("strCodigo IN('FN1', 'FN2', 'FN3', 'FNP')", "strCodigo");
-
-                foreach(DataRow item in drParametros){
-                    if( !string.IsNullOrEmpty( item["strValor"].ToString() ) ){
-                        DateTime fchItem = Convert.ToDateTime(item["strValor"].ToString());
-                        DateTime fchMenorOchoDias = fchItem.Date.AddDays(-8);
-                        TimeSpan numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
-
-                        //  La fecha planificada debe ser menor a la fecha actual "y" 
-                        //  la fecha actual menor o igual a ocho dias
-                        if(fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8 ) { 
-                            switch (item["strCodigo"].ToString()) {
-                                case "FN1": dtaEvaluacionActiva = "1"; break;
-                                case "FN2": dtaEvaluacionActiva = "2"; break;
-                                case "FN3": dtaEvaluacionActiva = "3"; break;
-
-                                case "FNP": dtaEvaluacionActiva = "EF"; break;
+                            //  La fecha planificada debe ser menor a la fecha actual "y" 
+                            //  la fecha actual menor o igual a ocho dias
+                            if (fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
+                                evaluacionActiva = item["strCodigo"].ToString();
+                                break;
                             }
+                        }
+                    }
+                }
+            }
+            catch(Exception ex){
+                evaluacionActiva = "NA";
+
+                Errores err = new Errores();
+                err.SetError(ex, "_getDtaParametro");
+            }
+
+            return evaluacionActiva;
+        }
+        
+
+        private void _cargarFchMaximaGestion()
+        {
+            string dtFchMaximaGestion = default(string);
+            try{
+
+                if (this._drDtaPeriodosEvaluacion.Length > 0){
+                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                        if (this._evaluacionActiva == item["strCodigo"].ToString()){
+                            this._fchMaximaGestion = Convert.ToDateTime( item["strValor"].ToString() );
+                            TimeSpan numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
+                            this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16( numDiasDiff.TotalDays )
+                                                                                : 0;
 
                             break;
                         }
                     }
                 }
             }
-            catch(Exception ex){
-                dtaEvaluacionActiva = string.Empty;
-
+            catch (Exception ex) {
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaParametro");
             }
 
-            return dtaEvaluacionActiva;
         }
 
 
-
-        public string getActaImpresa( string codAsignatura, string evActiva)
+        public string getDataEvaluacionActiva()
         {
-            string numActa = "NA";
+            return this._evaluacionActiva;
+        }
+
+        public string getInfoEvaluacionActiva()
+        {
+            string msg = string.Empty;
+
+            if (this._numDiasFaltantes >= 1){
+                string msgNumDias = (this._numDiasFaltantes > 1)? "dias"
+                                                                : "dia";
+
+                msg = this._fchMaximaGestion.Date.ToString("dd/MM/yyyy") + "( Falta: " + this._numDiasFaltantes.ToString() + " " + msgNumDias + " )";
+            }
+            else if (this._numDiasFaltantes == 0){
+                msg = this._fchMaximaGestion.Date.ToString("dd/MM/yyyy") + "( Ultimo día )";
+            }else if (this._numDiasFaltantes < 0) {
+                msg = "Gestión cerrada";
+            }
+
+            return msg;
+        }
+
+
+        public int getInfoNumDiasFaltantes()
+        {
+            return this._numDiasFaltantes;
+        }
+
+
+        public bool getActaImpresa( string codAsignatura)
+        {
+            bool actaImpresa = false;
 
             try{
-                switch (evActiva)
-                {
+                switch (this._evaluacionActiva){
                     //  Parciales 1, 2 y 3
                     case "1":
                     case "2":
                     case "3":
-                        numActa = (this._getActaEvAcumulativaImpresa(codAsignatura, evActiva)) ? "NA" : evActiva;
+                        actaImpresa = (this._getActaEvAcumulativaImpresa(   codAsignatura, 
+                                                                            this._evaluacionActiva)) ? true : false;
                     break;
 
                     //  Ev. final - Ev. Recuperacion
                     case "EF":
-                        numActa = (this._getActaEvFinalImpresa(codAsignatura, evActiva) ) ? "NA" : evActiva;
+                        actaImpresa = (this._getActaEvFinalImpresa( codAsignatura, 
+                                                                    this._evaluacionActiva) ) ? true : false;
                     break;
                 }
 
             }catch (Exception ex) {
-                numActa = "NA";
+                actaImpresa = true;
+
                 Errores err = new Errores();
                 err.SetError(ex, "getActaImpresa");
             }
 
-            return numActa;
+            return actaImpresa;
         }
-
-
 
 
         private bool _getActaEvAcumulativaImpresa(string codAsignatura, string strCodParcial )
@@ -135,7 +203,6 @@ namespace SitioWebOasis.Library
                                                         this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                         codAsignatura, 
                                                         strCodParcial);
-
             }catch(Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getActaEvAcumulativaImpresa");
@@ -164,7 +231,6 @@ namespace SitioWebOasis.Library
 
             return rst;
         }
-
 
 
     }

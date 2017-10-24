@@ -201,12 +201,6 @@ namespace SitioWebOasis.Library
         }
 
 
-        public string strParcialActivo
-        {
-            get{
-                EvaluacionActiva pa = new EvaluacionActiva();
-                return pa.getDtaEvaluacionActiva();
-            }
-        }
+        
     }
 }

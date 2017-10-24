@@ -313,6 +313,5 @@ namespace SitioWebOasis.Controllers
             return Json(new { rstValidacionCodigo = ban, errorMessage = mgmImpresion });
         }
 
-
     }
 }

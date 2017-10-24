@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Gestión de Notas - ";
-    var strParcialActivo = Model.strParcialActivo.ToString();
+    var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
     var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
@@ -96,14 +96,14 @@
                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
                                     <strong> @Language.es_ES.DOC_TB_EV_ACUMULATIVA </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
-                                    <i class="fa fa-angle-up pull-right"></i>                                 
-                                    <p class="text-danger pull-right"> 
-                                        Fecha maxima de gestión:&nbsp;<strong>19/10/2017 (último día)</strong>
-                                    </p>
+                                    <i class="fa fa-angle-up pull-right"></i>
+
+                                    @*Mensaje de estado de Evaluacion acumulativa*@
+                                    @Html.Raw(@Model.getMensajeEstadoFMGEvAcumulativa())
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse @activoEA">
+                        <div id = "collapseOne" class="panel-collapse @activoEA">
                             <div class="panel-body">
 
                                 @* Area de mensajes *@
@@ -379,7 +379,7 @@
             <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.49"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
-            @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativaModel.jsonEvAcumulativa.ToString())
+            @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
         }else{
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
         }
@@ -391,7 +391,7 @@
             <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.38"></script>
 
             @* DATOS EVALUACION FINAL *@
-            @Html.Hidden("dtaJsonEvFinal", @Model.evFinalModel.jsonEvFinal.ToString())
+            @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
@@ -402,7 +402,7 @@
             <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.14"></script>
 
             @* DATOS EVALUACION RECUPERACION *@
-            @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacionModel.jsonEvRecuperacion.ToString())
+            @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
