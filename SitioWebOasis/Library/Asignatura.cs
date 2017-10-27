@@ -30,7 +30,7 @@ namespace SitioWebOasis.Library
                 this.UsuarioActual.SetRolCarreraActual( Roles.Docentes,
                                                         this._strCodCarrera);
             }
-
+            
             this._evaluacion = new EvaluacionActiva();
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
             this._dtstCursosDocente = this._dsAsignaturasDocente();
@@ -42,13 +42,11 @@ namespace SitioWebOasis.Library
         {
             WSGestorDeReportesMatriculacion.dtstCursosDocente dsCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
             WSGestorDeReportesMatriculacion.dtstCursosDocente rstCursoDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
+            ProxySeguro.GestorDeReportesMatriculacion rm = new ProxySeguro.GestorDeReportesMatriculacion();
+            rm.CookieContainer = new System.Net.CookieContainer();
+            rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
 
-            try
-            {
-                ProxySeguro.GestorDeReportesMatriculacion rm = new ProxySeguro.GestorDeReportesMatriculacion();
-                rm.CookieContainer = new System.Net.CookieContainer();
-                rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
-
+            try{
                 rstCursoDocente = rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                         this.UsuarioActual.Cedula.ToString());
 
@@ -60,6 +58,7 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "_getAsignaturasDocente");
             }
 
+            rm.Dispose();
             return dsCursosDocente;
         }
 
@@ -205,10 +204,10 @@ namespace SitioWebOasis.Library
         {
             bool ban = false;
             string evaluacionActiva = string.Empty;
+            ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
 
             try
-            {
-                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+            {                
                 string strCodCarrera = UsuarioActual.CarreraActual.Codigo.ToString();
                 string periodoVigente = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
                 evaluacionActiva = _evaluacion.getDataEvaluacionActiva();
@@ -231,6 +230,7 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "estadoActa");
             }
 
+            ne.Dispose();
             return ban;
         }
 

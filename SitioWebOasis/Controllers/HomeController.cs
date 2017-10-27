@@ -160,6 +160,7 @@ namespace SitioWebOasis.Controllers
 
                 //  DOCENTE
                 numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "080211622-8";  //  <-- Gustavo / Rol de Estudiante / Docente
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
                 //  numIdentificacion = "060190508-6";  //  <-- Patricio Moreno

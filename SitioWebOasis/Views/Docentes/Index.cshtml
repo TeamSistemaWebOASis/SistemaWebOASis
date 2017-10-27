@@ -9,8 +9,9 @@
 }
 
 @section scripts{
-    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-    <script src="~/Content/js/Docentes/DocentesCharts.js?v0.0.2"> </script>
+    @*  JAVASCRIPT DE GESTION GRAFICOS DE RENDIMIENTO ACADEMICO  *@
+    <script src="~/Content/js/Docentes/DocentesCharts.js?v0.0.4"> </script>
+    <script src="~/Content/js/Docentes/NominaEstudiantes.js?v0.0.4"> </script>
 }
 
 <div class="main-content">
@@ -39,6 +40,7 @@
 
         <div class="widget-content">
             <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                <div id="msmLstAsignaturas" hidden="hidden"></div>
 
                 @* TABLA DE ASIGNATURA DOCENTES *@
                 <table  id="asignaturasDocente" 
@@ -47,12 +49,18 @@
 
                     <thead>
                         <tr>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NUMERO </th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ASIGNATURA</th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NIVEL</th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARALELO</th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARCIAL_ACTIVO</th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="Tooltip on left" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO</th>
+                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NUMERO </th>
+                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ASIGNATURA</th>
+                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NIVEL</th>
+                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARALELO</th>
+                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARCIAL_ACTIVO</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_NUM_ESTUDIANTES_TOOLTIP" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.DOC_TB_COL_ESTUDIANTES</th>
+                            <th rowspan="2" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO</th>
+                        </tr>
+
+                        <tr role="row">
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_ESTUDIANTES_CANTIDAD_TOOLTIP" aria-describedby="tooltip840829" style="width: 90px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ESTUDIANTES_CANTIDAD</th>
+                            <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP" aria-describedby="tooltip840829" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ESTUDIANTES_NOMINA</th>
                         </tr>
                     </thead>
 

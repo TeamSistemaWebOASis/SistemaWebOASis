@@ -147,11 +147,29 @@
   <data name="DOC_TB_COL_ASIGNATURA" xml:space="preserve">
     <value>Asignatura</value>
   </data>
+  <data name="DOC_TB_COL_ESTUDIANTES" xml:space="preserve">
+    <value>Estudiantes</value>
+  </data>
+  <data name="DOC_TB_COL_ESTUDIANTES_CANTIDAD" xml:space="preserve">
+    <value>Cantidad</value>
+  </data>
+  <data name="DOC_TB_COL_ESTUDIANTES_CANTIDAD_TOOLTIP" xml:space="preserve">
+    <value>Cantidad de Estudiantes matriculados en la asignatura</value>
+  </data>
+  <data name="DOC_TB_COL_ESTUDIANTES_NOMINA" xml:space="preserve">
+    <value>Nomina</value>
+  </data>
+  <data name="DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP" xml:space="preserve">
+    <value>Opción para la descarga de la nomina de estudiantes matriculados en la asignatura</value>
+  </data>
   <data name="DOC_TB_COL_NIVEL" xml:space="preserve">
     <value>Nivel</value>
   </data>
   <data name="DOC_TB_COL_NUMERO" xml:space="preserve">
     <value>No.</value>
+  </data>
+  <data name="DOC_TB_COL_NUM_ESTUDIANTES_TOOLTIP" xml:space="preserve">
+    <value>Cantidad de estudiantes con matricula definifiva '/' Total de estudiantes matriculados</value>
   </data>
   <data name="DOC_TB_COL_PARALELO" xml:space="preserve">
     <value>Paralelo</value>
@@ -165,14 +183,17 @@
   <data name="DOC_TB_COL_RENDIMIENTO_ACADEMICO" xml:space="preserve">
     <value>Rendimiento académico</value>
   </data>
+  <data name="DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP" xml:space="preserve">
+    <value>Nota Maxima, Nota Minima, Promedio, Cantidad de Estudiantes bajo el 70%</value>
+  </data>
   <data name="DOC_TB_EV_ACUMULATIVA" xml:space="preserve">
-    <value>EVALUACIÓN ACUMULATIVA</value>
+    <value>Ev. ACUMULATIVA</value>
   </data>
   <data name="DOC_TB_EV_FINAL" xml:space="preserve">
-    <value>EVALUACIÓN FINAL</value>
+    <value>Ev. FINAL</value>
   </data>
   <data name="DOC_TB_EV_RECUPERACION" xml:space="preserve">
-    <value>EVALUACIÓN RECUPERACIÓN</value>
+    <value>Ev. RECUPERACIÓN</value>
   </data>
   <data name="DTIC" xml:space="preserve">
     <value>ESPOCH - DTIC - 2017</value>
@@ -473,6 +494,9 @@
   </data>
   <data name="NF_EV_RECUPERACION" xml:space="preserve">
     <value>ACTA_EV_RECUPERACION</value>
+  </data>
+  <data name="NF_NOMINA_ESTUDIANTES" xml:space="preserve">
+    <value>NOMINA</value>
   </data>
   <data name="NOTAS_TB_COL_CUMPLIMIENTO" xml:space="preserve">
     <value>Cumplimiento</value>

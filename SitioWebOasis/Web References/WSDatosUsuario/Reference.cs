@@ -100,6 +100,8 @@ namespace SitioWebOasis.WSDatosUsuario {
         
         private System.Threading.SendOrPostCallback getNivelEstudiantePeriodoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetNumEstudiantesMatriculadosMateriaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -242,6 +244,9 @@ namespace SitioWebOasis.WSDatosUsuario {
         
         /// <remarks/>
         public event getNivelEstudiantePeriodoCompletedEventHandler getNivelEstudiantePeriodoCompleted;
+        
+        /// <remarks/>
+        public event GetNumEstudiantesMatriculadosMateriaCompletedEventHandler GetNumEstudiantesMatriculadosMateriaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDatosDirectivoInstitucional", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1409,6 +1414,43 @@ namespace SitioWebOasis.WSDatosUsuario {
             if ((this.getNivelEstudiantePeriodoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getNivelEstudiantePeriodoCompleted(this, new getNivelEstudiantePeriodoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetNumEstudiantesMatriculadosMateria", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet GetNumEstudiantesMatriculadosMateria(string strCodCarrera, string strCodPeriodo, string strCodAsignatura, string strCodNivel, string strCodParalelo) {
+            object[] results = this.Invoke("GetNumEstudiantesMatriculadosMateria", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodAsignatura,
+                        strCodNivel,
+                        strCodParalelo});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetNumEstudiantesMatriculadosMateriaAsync(string strCodCarrera, string strCodPeriodo, string strCodAsignatura, string strCodNivel, string strCodParalelo) {
+            this.GetNumEstudiantesMatriculadosMateriaAsync(strCodCarrera, strCodPeriodo, strCodAsignatura, strCodNivel, strCodParalelo, null);
+        }
+        
+        /// <remarks/>
+        public void GetNumEstudiantesMatriculadosMateriaAsync(string strCodCarrera, string strCodPeriodo, string strCodAsignatura, string strCodNivel, string strCodParalelo, object userState) {
+            if ((this.GetNumEstudiantesMatriculadosMateriaOperationCompleted == null)) {
+                this.GetNumEstudiantesMatriculadosMateriaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetNumEstudiantesMatriculadosMateriaOperationCompleted);
+            }
+            this.InvokeAsync("GetNumEstudiantesMatriculadosMateria", new object[] {
+                        strCodCarrera,
+                        strCodPeriodo,
+                        strCodAsignatura,
+                        strCodNivel,
+                        strCodParalelo}, this.GetNumEstudiantesMatriculadosMateriaOperationCompleted, userState);
+        }
+        
+        private void OnGetNumEstudiantesMatriculadosMateriaOperationCompleted(object arg) {
+            if ((this.GetNumEstudiantesMatriculadosMateriaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetNumEstudiantesMatriculadosMateriaCompleted(this, new GetNumEstudiantesMatriculadosMateriaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -11209,6 +11251,32 @@ namespace SitioWebOasis.WSDatosUsuario {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void GetNumEstudiantesMatriculadosMateriaCompletedEventHandler(object sender, GetNumEstudiantesMatriculadosMateriaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetNumEstudiantesMatriculadosMateriaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetNumEstudiantesMatriculadosMateriaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

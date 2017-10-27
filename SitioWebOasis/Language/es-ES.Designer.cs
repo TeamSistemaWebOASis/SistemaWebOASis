@@ -151,11 +151,65 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Estudiantes.
+        /// </summary>
+        public static string DOC_TB_COL_ESTUDIANTES {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_ESTUDIANTES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cantidad.
+        /// </summary>
+        public static string DOC_TB_COL_ESTUDIANTES_CANTIDAD {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_ESTUDIANTES_CANTIDAD", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cantidad de Estudiantes matriculados en la asignatura.
+        /// </summary>
+        public static string DOC_TB_COL_ESTUDIANTES_CANTIDAD_TOOLTIP {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_ESTUDIANTES_CANTIDAD_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nomina.
+        /// </summary>
+        public static string DOC_TB_COL_ESTUDIANTES_NOMINA {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_ESTUDIANTES_NOMINA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Opción para la descarga de la nomina de estudiantes matriculados en la asignatura.
+        /// </summary>
+        public static string DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nivel.
         /// </summary>
         public static string DOC_TB_COL_NIVEL {
             get {
                 return ResourceManager.GetString("DOC_TB_COL_NIVEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Cantidad de estudiantes con matricula definifiva &apos;/&apos; Total de estudiantes matriculados.
+        /// </summary>
+        public static string DOC_TB_COL_NUM_ESTUDIANTES_TOOLTIP {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_NUM_ESTUDIANTES_TOOLTIP", resourceCulture);
             }
         }
         
@@ -205,7 +259,16 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a EVALUACIÓN ACUMULATIVA.
+        ///   Busca una cadena traducida similar a Nota Maxima, Nota Minima, Promedio, Cantidad de Estudiantes bajo el 70%.
+        /// </summary>
+        public static string DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP {
+            get {
+                return ResourceManager.GetString("DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Ev. ACUMULATIVA.
         /// </summary>
         public static string DOC_TB_EV_ACUMULATIVA {
             get {
@@ -214,7 +277,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
+        ///   Busca una cadena traducida similar a Ev. FINAL.
         /// </summary>
         public static string DOC_TB_EV_FINAL {
             get {
@@ -223,7 +286,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a EVALUACIÓN RECUPERACIÓN.
+        ///   Busca una cadena traducida similar a Ev. RECUPERACIÓN.
         /// </summary>
         public static string DOC_TB_EV_RECUPERACION {
             get {
@@ -1128,6 +1191,15 @@ namespace Language {
         public static string NF_EV_RECUPERACION {
             get {
                 return ResourceManager.GetString("NF_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a NOMINA.
+        /// </summary>
+        public static string NF_NOMINA_ESTUDIANTES {
+            get {
+                return ResourceManager.GetString("NF_NOMINA_ESTUDIANTES", resourceCulture);
             }
         }
         

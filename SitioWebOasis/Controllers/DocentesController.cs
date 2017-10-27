@@ -238,7 +238,38 @@ namespace SitioWebOasis.Controllers
             }
         }
 
-        
+
+        [HttpPost]
+        public JsonResult impresionNominaEstudiantes( string strCodAsignatura, string strCodTipoArchivo)
+        {
+            string nameFile = "-1";
+            try{
+                string[] dtaAsignatura = strCodAsignatura.Split('_');
+                string tipoArchivo = (strCodTipoArchivo.ToUpper().CompareTo("EXCEL") == 0) ? "Excel" : "pdf";
+
+                NominaEstudiantesModel NominaEstudiantes = new NominaEstudiantesModel(  dtaAsignatura[0], 
+                                                                                        dtaAsignatura[1], 
+                                                                                        dtaAsignatura[2]);
+
+                nameFile = NominaEstudiantes.getNameFileRptNominaEstudiantes(   tipoArchivo,
+                                                                                Server.MapPath("~/Reports"),
+                                                                                Server.MapPath("~/Temp"));
+
+                if (nameFile == "-1"){
+                    return Json(new { fileName = "", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
+                }else{
+                    return Json(new { fileName = nameFile, errorMessage = "" });
+                }
+            }
+            catch (Exception ex) {
+                Errores err = new Errores();
+                err.SetError(ex, "createFile");
+
+                return Json(new { fileName = "none", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
+            }
+        }
+
+
         [HttpPost]
         [DeleteFileAttribute]
         public ActionResult DownloadFile(string file)

@@ -282,6 +282,7 @@
     <Compile Include="Models\HorarioExamenes.cs" />
     <Compile Include="Models\MenuRolesModel.cs" />
     <Compile Include="Models\MenuViewModel.cs" />
+    <Compile Include="Models\NominaEstudiantesModel.cs" />
     <Compile Include="Models\NotasDocente.cs" />
     <Compile Include="Models\UsuarioCarreras.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -393,6 +394,7 @@
     <Content Include="Content\js\Docentes\GestionNotasDocente.js" />
     <Content Include="Content\js\Docentes\ImpresionActaFinal.js" />
     <Content Include="Content\js\Docentes\ImpresionActasAcumulativa.js" />
+    <Content Include="Content\js\Docentes\NominaEstudiantes.js" />
     <Content Include="Content\js\DownloadFiles.js" />
     <Content Include="Content\js\es-ES.js" />
     <Content Include="Content\js\Estudiantes\Estudiante.js" />
@@ -939,6 +941,7 @@
     <EmbeddedResource Include="Reports\rptActaExSuspensionSinNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
+    <EmbeddedResource Include="Reports\rptListadoMatriculadosMateria.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <WebReferenceUrl Include="http://academicosil.espoch.edu.ec/DiscapacitadosNegociosWCF/Academico.asmx">

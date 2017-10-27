@@ -12,8 +12,8 @@
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosEstudiante" namespace="http://www.tempuri.org/dtstDatosEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosCursosCarrera" namespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstCursosMateria" namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosDocente" namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstCursosMateria" namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
       <s:element name="GetDatosDirectivoInstitucional">
         <s:complexType>
           <s:sequence>
@@ -729,6 +729,31 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetNumEstudiantesMatriculadosMateria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodAsignatura" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNumEstudiantesMatriculadosMateriaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNumEstudiantesMatriculadosMateriaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetDatosDirectivoInstitucionalSoapIn">
@@ -941,6 +966,12 @@
   <wsdl:message name="getNivelEstudiantePeriodoSoapOut">
     <wsdl:part name="parameters" element="tns:getNivelEstudiantePeriodoResponse" />
   </wsdl:message>
+  <wsdl:message name="GetNumEstudiantesMatriculadosMateriaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNumEstudiantesMatriculadosMateria" />
+  </wsdl:message>
+  <wsdl:message name="GetNumEstudiantesMatriculadosMateriaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNumEstudiantesMatriculadosMateriaResponse" />
+  </wsdl:message>
   <wsdl:portType name="DatosUsuariosSoap">
     <wsdl:operation name="GetDatosDirectivoInstitucional">
       <wsdl:input message="tns:GetDatosDirectivoInstitucionalSoapIn" />
@@ -1081,6 +1112,10 @@
     <wsdl:operation name="getNivelEstudiantePeriodo">
       <wsdl:input message="tns:getNivelEstudiantePeriodoSoapIn" />
       <wsdl:output message="tns:getNivelEstudiantePeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNumEstudiantesMatriculadosMateria">
+      <wsdl:input message="tns:GetNumEstudiantesMatriculadosMateriaSoapIn" />
+      <wsdl:output message="tns:GetNumEstudiantesMatriculadosMateriaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="DatosUsuariosSoap" type="tns:DatosUsuariosSoap">
@@ -1400,6 +1435,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetNumEstudiantesMatriculadosMateria">
+      <soap:operation soapAction="http://tempuri.org/GetNumEstudiantesMatriculadosMateria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="DatosUsuariosSoap12" type="tns:DatosUsuariosSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1711,6 +1755,15 @@
     </wsdl:operation>
     <wsdl:operation name="getNivelEstudiantePeriodo">
       <soap12:operation soapAction="http://tempuri.org/getNivelEstudiantePeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNumEstudiantesMatriculadosMateria">
+      <soap12:operation soapAction="http://tempuri.org/GetNumEstudiantesMatriculadosMateria" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
