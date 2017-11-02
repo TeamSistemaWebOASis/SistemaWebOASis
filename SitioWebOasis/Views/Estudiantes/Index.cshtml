@@ -61,7 +61,7 @@
             <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 
                 @*TABLA DE NOTAS DEL ESTUDIANTE*@
-                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+                <table class="table" role="grid">
                     <thead>
                         <tr role="row">
                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
@@ -74,7 +74,9 @@
                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
 
+                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -82,9 +84,6 @@
                         @Html.Raw(Model.getHTMLNotasEVAcumulativa())
                     </tbody>
                 </table>
-
-                <div class="row"></div>
-            </div>
         </div>
     </div>
 </div>

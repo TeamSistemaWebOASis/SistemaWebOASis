@@ -26,12 +26,12 @@ namespace SitioWebOasis.Controllers
         //
         //  GET: Estudiantes
         //
-        public ActionResult Index(string idCarrera = "")
+        public ActionResult Index(string strCodCarrera = "")
         {
             SitioWebOasis.Models.DatosAcademicosEstudiante dtaEstudiante;
-            string strIdCarrera = (string.IsNullOrEmpty(idCarrera))
+            string strIdCarrera = (string.IsNullOrEmpty(strCodCarrera))
                                     ? this._getIdCarrera()
-                                    : idCarrera;
+                                    : strCodCarrera;
 
             if (!string.IsNullOrEmpty(strIdCarrera)) {
                 UsuarioActual.SetRolCarreraActual(  Roles.Estudiantes,

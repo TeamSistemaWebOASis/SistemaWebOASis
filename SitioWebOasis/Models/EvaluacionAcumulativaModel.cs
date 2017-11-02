@@ -155,9 +155,9 @@ namespace SitioWebOasis.Models
                         if (this._dsEvAcumulativa.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvAcumulativa[0].sintCodMatricula.ToString()){
                             this._dsEvAcumulativa.Acta.Rows[x]["bytAsistencia"] = Convert.ToByte(dtaEvAcumulativa[x].bytAsistencia.ToString());
                             switch (parcialActivo){
-                                case "FN1": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota1.ToString()); break;
-                                case "FN2": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota2.ToString()); break;
-                                case "FN3": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota3.ToString()); break;
+                                case "1": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota1.ToString()); break;
+                                case "2": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota2.ToString()); break;
+                                case "3": nota = Convert.ToByte(dtaEvAcumulativa[x].bytNota3.ToString()); break;
                             }
 
                             this._dsEvAcumulativa.Acta.Rows[x]["bytNota" + parcialActivo.Replace("FN", "")] = nota;

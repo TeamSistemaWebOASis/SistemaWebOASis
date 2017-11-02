@@ -898,6 +898,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Estado.
+        /// </summary>
+        public static string EST_TB_COL_ESTADO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_ESTADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Estudiante.
         /// </summary>
         public static string EST_TB_COL_ESTUDIANTE {
@@ -1236,6 +1245,15 @@ namespace Language {
         public static string NOTAS_TB_COL_EF_TOTAL_EV_FINAL {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_EF_TOTAL_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Equivalencia.
+        /// </summary>
+        public static string NOTAS_TB_COL_EQUIVALENCIA {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EQUIVALENCIA", resourceCulture);
             }
         }
         

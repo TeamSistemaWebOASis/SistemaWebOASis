@@ -182,7 +182,6 @@ namespace SitioWebOasis.Models
             return dtaEstMatriculados;
         }
 
-
         
         public List<System.Web.Mvc.SelectListItem> getLstAsignaturasDocente(string strCodAsignatura = "")
         {
@@ -207,6 +206,12 @@ namespace SitioWebOasis.Models
             }
 
             return lstAsignaturasDocente;
+        }
+
+
+        public string getPeriodoAcademicoVigente()
+        {
+            return this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString();
         }
 
     }

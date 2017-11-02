@@ -396,6 +396,9 @@
   <data name="EST_TB_COL_EQUIVALENCIA" xml:space="preserve">
     <value>Equivalencia</value>
   </data>
+  <data name="EST_TB_COL_ESTADO" xml:space="preserve">
+    <value>Estado</value>
+  </data>
   <data name="EST_TB_COL_ESTUDIANTE" xml:space="preserve">
     <value>Estudiante</value>
   </data>
@@ -509,6 +512,9 @@
   </data>
   <data name="NOTAS_TB_COL_EF_TOTAL_EV_FINAL" xml:space="preserve">
     <value>Total Ev. final</value>
+  </data>
+  <data name="NOTAS_TB_COL_EQUIVALENCIA" xml:space="preserve">
+    <value>Equivalencia</value>
   </data>
   <data name="NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION" xml:space="preserve">
     <value>Nota evaluación recuperación</value>

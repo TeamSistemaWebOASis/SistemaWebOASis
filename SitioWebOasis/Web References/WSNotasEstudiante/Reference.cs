@@ -847,6 +847,8 @@ namespace SitioWebOasis.WSNotasEstudiante {
             
             private global::System.Data.DataColumn columnobservaciones;
             
+            private global::System.Data.DataColumn columnRegistraEvaluacion;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public EvAcumulativaDataTable() {
@@ -962,6 +964,14 @@ namespace SitioWebOasis.WSNotasEstudiante {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RegistraEvaluacionColumn {
+                get {
+                    return this.columnRegistraEvaluacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -997,7 +1007,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public EvAcumulativaRow AddEvAcumulativaRow(string strCodMateria, string asignatura, string nivel, string numMatricula, short bytNota1, short bytNota2, short bytNota3, string acumulado, string strCodEquiv, string observaciones) {
+            public EvAcumulativaRow AddEvAcumulativaRow(string strCodMateria, string asignatura, string nivel, string numMatricula, short bytNota1, short bytNota2, short bytNota3, string acumulado, string strCodEquiv, string observaciones, string RegistraEvaluacion) {
                 EvAcumulativaRow rowEvAcumulativaRow = ((EvAcumulativaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         strCodMateria,
@@ -1009,7 +1019,8 @@ namespace SitioWebOasis.WSNotasEstudiante {
                         bytNota3,
                         acumulado,
                         strCodEquiv,
-                        observaciones};
+                        observaciones,
+                        RegistraEvaluacion};
                 rowEvAcumulativaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowEvAcumulativaRow);
                 return rowEvAcumulativaRow;
@@ -1048,6 +1059,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
                 this.columnacumulado = base.Columns["acumulado"];
                 this.columnstrCodEquiv = base.Columns["strCodEquiv"];
                 this.columnobservaciones = base.Columns["observaciones"];
+                this.columnRegistraEvaluacion = base.Columns["RegistraEvaluacion"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1073,6 +1085,8 @@ namespace SitioWebOasis.WSNotasEstudiante {
                 base.Columns.Add(this.columnstrCodEquiv);
                 this.columnobservaciones = new global::System.Data.DataColumn("observaciones", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnobservaciones);
+                this.columnRegistraEvaluacion = new global::System.Data.DataColumn("RegistraEvaluacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRegistraEvaluacion);
                 this.columnbytNota1.DefaultValue = ((short)(0));
                 this.columnbytNota2.DefaultValue = ((short)(0));
                 this.columnbytNota3.DefaultValue = ((short)(0));
@@ -2446,6 +2460,23 @@ namespace SitioWebOasis.WSNotasEstudiante {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string RegistraEvaluacion {
+                get {
+                    try {
+                        return ((string)(this[this.tableEvAcumulativa.RegistraEvaluacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'RegistraEvaluacion\' de la tabla \'EvAcumulativa\' es DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tableEvAcumulativa.RegistraEvaluacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsstrCodMateriaNull() {
                 return this.IsNull(this.tableEvAcumulativa.strCodMateriaColumn);
             }
@@ -2562,6 +2593,18 @@ namespace SitioWebOasis.WSNotasEstudiante {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetobservacionesNull() {
                 this[this.tableEvAcumulativa.observacionesColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRegistraEvaluacionNull() {
+                return this.IsNull(this.tableEvAcumulativa.RegistraEvaluacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRegistraEvaluacionNull() {
+                this[this.tableEvAcumulativa.RegistraEvaluacionColumn] = global::System.Convert.DBNull;
             }
         }
         

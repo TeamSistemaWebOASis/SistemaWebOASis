@@ -350,6 +350,9 @@
                 //  Actualizo la bandera de impresion
                 banControlImpresion = true;
 
+                //  Elimino el boton de guardar
+                $('#btnGuardarEvAcumulativa').remove();
+
                 $.redirect( "/Docentes/DownloadFile",
                             {   file: data.responseJSON.fileName },
                                 "POST")

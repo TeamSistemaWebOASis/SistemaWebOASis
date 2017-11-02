@@ -168,7 +168,6 @@ namespace SitioWebOasis.Library
         }
 
 
-       
         public string getCodigoAutenticacion(string correoUsuario)
         {
             string codAutenticacion = "false";
@@ -200,7 +199,5 @@ namespace SitioWebOasis.Library
             return codAutenticacion;
         }
 
-
-        
     }
 }

@@ -212,7 +212,7 @@ namespace SitioWebOasis.Library
                 string periodoVigente = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
                 evaluacionActiva = _evaluacion.getDataEvaluacionActiva();
 
-                if (evaluacionActiva == "FN1" || evaluacionActiva == "FN2" || evaluacionActiva == "FN3"){
+                if (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3"){
                     ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
                                                             periodoVigente,
                                                             this._strCodAsignatura,
@@ -287,6 +287,7 @@ namespace SitioWebOasis.Library
         {
             return this._evaluacion.getInfoEvaluacionActiva();
         }
+
 
         public string getMensajeEstadoFMGEvAcumulativa()
         {

@@ -109,7 +109,7 @@ namespace SitioWebOasis.Library
 
                 if (this._drDtaPeriodosEvaluacion.Length > 0){
                     foreach (DataRow item in this._drDtaPeriodosEvaluacion){
-                        if (this._evaluacionActiva == item["strCodigo"].ToString()){
+                        if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
                             this._fchMaximaGestion = Convert.ToDateTime( item["strValor"].ToString() );
                             TimeSpan numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
                             this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16( numDiasDiff.TotalDays )

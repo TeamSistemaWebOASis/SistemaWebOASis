@@ -16,6 +16,7 @@
               <xs:element minOccurs="0" name="acumulado" type="xs:string" />
               <xs:element minOccurs="0" name="strCodEquiv" type="xs:string" />
               <xs:element minOccurs="0" name="observaciones" type="xs:string" />
+              <xs:element minOccurs="0" name="RegistraEvaluacion" type="xs:string" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
