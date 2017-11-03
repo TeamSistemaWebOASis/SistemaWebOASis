@@ -225,6 +225,7 @@ namespace SitioWebOasis.Models
         public string getAlertaFila(string equivalencia, ref string alertaEquivalencia, ref string lblEquivalencia, ref string smsEquivalencia)
         {
             string rst = "even";
+            string estructura = "label label-";
 
             switch (equivalencia)
             {
@@ -269,9 +270,15 @@ namespace SitioWebOasis.Models
                     rst = alertaEquivalencia = lblEquivalencia = "default";
                     smsEquivalencia = Language.es_ES.EST_LBL_EV_FINAL.ToUpper();
                 break;
+
+                //  EN BLANCO
+                case "":
+                    rst = alertaEquivalencia = lblEquivalencia = estructura = "";
+                    smsEquivalencia = "";
+                break;
             }
 
-            return rst;
+            return estructura + rst;
         }
 
 
@@ -329,11 +336,10 @@ namespace SitioWebOasis.Models
         {
             string alertaEquivalencia = "even";
             string lblEquivalencia = "default";
-            string smsEquivalencia = "";
+            string msgEquivalencia = "---";
             string rst = string.Empty;
-            string colorRow = "odd";
 
-            rst += " <tr role='row' class='" + colorRow + "'>";
+            rst += " <tr role='row' class='success'>";
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
             
@@ -345,27 +351,33 @@ namespace SitioWebOasis.Models
                     rst = string.Empty;
                     string dtaEvActiva = this._getDataEvaluacionActiva();
                     string estadoNota = string.Empty;
+                    string colorParcial1 = (dtaEvActiva == "1") ? "info" : "";
+                    string colorParcial2 = (dtaEvActiva == "2") ? "info" : "";
+                    string colorParcial3 = (dtaEvActiva == "3") ? "info" : "";
 
                     foreach (DataRow item in this._dsDetalleNotas.EvAcumulativa){
-                        colorRow = (colorRow == "odd") ? "even" : "odd";
-                        alertaEquivalencia = (dtaEvActiva != "NA" && dtaEvActiva != "P" && Convert.ToInt16(dtaEvActiva) == '3' ) 
-                                                ? this.getAlertaFila(   item["strCodEquiv"].ToString(), 
-                                                                        ref alertaEquivalencia, 
-                                                                        ref lblEquivalencia, 
-                                                                        ref smsEquivalencia )
+                        alertaEquivalencia = (dtaEvActiva != "NA" && dtaEvActiva == "P" && Convert.ToInt16(dtaEvActiva) == '3')
+                                                ? this.getAlertaFila(   item["strCodEquiv"].ToString(),
+                                                                        ref alertaEquivalencia,
+                                                                        ref lblEquivalencia,
+                                                                        ref msgEquivalencia)
                                                 : "";
 
-                        rst += " <tr role='row' class='"+ colorRow +"'>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>"+ ++x +"</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: left;'>"+ item["strNombre"].ToString() + "</ td >";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>"+ this.getNumOrdinal(item["nivelAsignatura"].ToString(), "nivel") + "</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>"+ this.getNumOrdinal(item["numMatricula"].ToString(), "matricula") + "</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>"+ item["bytNota1"].ToString() +"</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>"+ item["bytNota2"].ToString() +"</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>"+ item["bytNota3"].ToString() +"</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'><b>"+ item["acumulado"].ToString() +"</b></td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'> "+ smsEquivalencia + "</td>";
-                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'> " + item["observaciones"].ToString() + "</span> </td>";
+                        string smsObservacion = ( !string.IsNullOrEmpty( item["observaciones"].ToString() ) ) 
+                                                    ? item["observaciones"].ToString() 
+                                                    : "---";
+
+                        rst += " <tr role='row' style='align-content: center; vertical-align: middle; text-align: center;'>";
+                        rst += "    <td>" + ++x + "</td>";
+                        rst += "    <td style='text-align: left;'>" + item["strNombre"].ToString() + "</ td >";
+                        rst += "    <td>" + this.getNumOrdinal(item["nivelAsignatura"].ToString(), "nivel") + "</td>";
+                        rst += "    <td>" + this.getNumOrdinal(item["numMatricula"].ToString(), "matricula") + "</td>";
+                        rst += "    <td class='"+ colorParcial1 +"'>" + item["bytNota1"].ToString() + "</td>";
+                        rst += "    <td class='"+ colorParcial2 +"'>" + item["bytNota2"].ToString() + "</td>";
+                        rst += "    <td class='"+ colorParcial3 +"'>" + item["bytNota3"].ToString() + "</td>";
+                        rst += "    <td><b>" + item["acumulado"].ToString() + "</b></td>";
+                        rst += "    <td> <span class='" + alertaEquivalencia + "'>" + msgEquivalencia + "</span></td>";
+                        rst += "    <td> " + smsObservacion + "</span> </td>";
                         rst += " </tr>";
                     }
                 }

@@ -156,7 +156,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060478969-3";
                 //  numIdentificacion = "180475189-7";
                 //  numIdentificacion = "131383905-0";
-                numIdentificacion = "060409091-0";
+                //  numIdentificacion = "060409091-0";
 
                 //  DOCENTE
                 //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque

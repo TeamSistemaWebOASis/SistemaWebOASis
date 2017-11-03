@@ -42,7 +42,7 @@
 
     <div class="widget widget-table">
         <div class="widget-header">
-            <h3><i class="fa fa-star"></i> @Language.es_ES.EST_LBL_NOTAS &nbsp;/&nbsp; @Language.es_ES.EST_LBL_EV_ACUMULATIVA</h3>
+            <h3><i class="fa fa-star"></i> @Language.es_ES.EST_LBL_EV_ACUMULATIVA &nbsp;/&nbsp; @Language.es_ES.EST_LBL_NOTAS</h3>
 
             <div class="btn-group widget-header-toolbar">
                 <a href="@Url.Action("NotasEstudiantes", "Estudiantes")" class="label label-default" style="color: white; font-size: small;">
@@ -61,7 +61,7 @@
             <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 
                 @*TABLA DE NOTAS DEL ESTUDIANTE*@
-                <table class="table" role="grid">
+                <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
                     <thead>
                         <tr role="row">
                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
