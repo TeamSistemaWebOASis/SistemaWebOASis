@@ -176,7 +176,7 @@ namespace SitioWebOasis.Library
             try{
 
                 Random rnd = new Random();
-                string numCodigo = Convert.ToString(rnd.Next(0, 1000));
+                string numCodigo = Convert.ToString(rnd.Next(1000, 9999));
                 
                 WSAcademicoWCF.Academico correo = new WSAcademicoWCF.Academico();
                 rst = correo.EnviarEmailHtml(   "oasis@espoch.edu.ec",

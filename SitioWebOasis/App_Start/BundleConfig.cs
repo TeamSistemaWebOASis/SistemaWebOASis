@@ -12,8 +12,6 @@ namespace SitioWebOasis
             bundles.Add(new StyleBundle("~/Content/css").Include(   "~/Content/css/bootstrap.min.css",
                                                                     "~/Content/css/font-awesome.min.css",
                                                                     "~/Content/css/main.css",
-                                                                    "~/Content/css/my-custom-styles.css",
-                                                                    "~/Content/css/skins/slategray.css",
                                                                     "~/Content/css/ui.jqgrid-bootstrap.css", 
                                                                     "~/Content/css/HoldOn.min.css"));
 

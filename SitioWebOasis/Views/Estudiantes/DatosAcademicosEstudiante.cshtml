@@ -3,6 +3,10 @@
     ViewBag.Title = "Notas Estudiantes";
 }
 
+@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
+}
+
 @section scripts{
 
     <script>
@@ -75,6 +79,7 @@
                                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
                                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
                                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
+                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
                                             <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
                                         </tr>
                                     </thead>

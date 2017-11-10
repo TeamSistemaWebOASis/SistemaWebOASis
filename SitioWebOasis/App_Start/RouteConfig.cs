@@ -13,18 +13,6 @@ namespace SitioWebOasis
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //  Redireccionamiento - DOCENTES - Nomina Estudiantes
-            //routes.MapRoute(
-            //    name: "impNominaEstudiantes",
-            //    url: "Docentes/{action}/{strCodAsignatura}/{strCodNivel}/{strCodParalelo}/{strCodTipoArchivo}",
-            //    defaults: new{  controller = "Docentes",
-            //                    action = "Index",
-            //                    strCodAsignatura = UrlParameter.Optional,
-            //                    strCodNivel = UrlParameter.Optional,
-            //                    strCodParalelo = UrlParameter.Optional,
-            //                    strCodTipoArchivo = UrlParameter.Optional }
-            //);
-
             routes.MapRoute(
                 name: "impNominaEstudiantes",
                 url: "Docentes/{action}/{strCodAsignatura}/{strCodTipoArchivo}",

@@ -4,6 +4,10 @@
     ViewBag.Title = "Datos personales de estudiante";
 }
 
+@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
+}
+
 @section scripts{
     <script src="~/Content/js/Estudiantes/Estudiante.js?v1.0.32"> </script>
     <script src="~/Content/js/Estudiantes/Vinculantes.js?v1.0.1"> </script>

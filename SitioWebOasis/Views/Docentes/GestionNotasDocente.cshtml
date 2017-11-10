@@ -2,7 +2,8 @@
 
 @{
     ViewBag.Title = "Gestión de Notas - ";
-    var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
+    //  var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
+    var strParcialActivo = "2";
     var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
@@ -19,7 +20,7 @@
             colorEA = (estadoActa)? "btn-success": "btn-warning";
             colorEF = "btn-warning";
             colorER = "btn-warning";
-        break;
+            break;
 
         case "EF":
             colorEA = "btn-warning";
@@ -28,7 +29,7 @@
             activoEA = "collapse";
             activoEF = "collapse in";
             activoER = "collapse";
-        break;
+            break;
 
         case "ER":
             colorEA = "btn-warning";
@@ -37,7 +38,7 @@
             activoEA = "collapse";
             activoEF = "collapse";
             activoER = "collapse in";
-        break;
+            break;
 
         default:
             colorEA = "btn-warning";
@@ -46,15 +47,13 @@
             activoEA = "collapse";
             activoEF = "collapse";
             activoER = "collapse";
-        break;
+            break;
     }
 }
 
-
-@*@section AddToHead{
-    <link href="@Url.Content("~/Content/css/skins/slategray.css")" rel="stylesheet" type="text/css" />
-}*@
-
+@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/docente.css")" rel="stylesheet" type="text/css" />
+}
 
 <div class="main-content">
     <div class="row">
@@ -376,8 +375,8 @@
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.49"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.49"> </script>
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.106"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.106"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
@@ -388,8 +387,8 @@
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
         @if (strParcialActivo == "EF" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.38"></script>
-            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.38"></script>
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.39"></script>
+            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.39"></script>
 
             @* DATOS EVALUACION FINAL *@
             @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())

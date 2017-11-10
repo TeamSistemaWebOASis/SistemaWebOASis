@@ -359,10 +359,10 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\HoldOn.min.css" />
     <Content Include="Content\css\main.css" />
-    <Content Include="Content\css\my-custom-styles.css" />
     <Content Include="Content\css\skins\darkblue.css" />
+    <Content Include="Content\css\skins\docente.css" />
     <Content Include="Content\css\skins\red.css" />
-    <Content Include="Content\css\skins\slategray - Copia.css" />
+    <Content Include="Content\css\skins\estudiante.css" />
     <Content Include="Content\css\skins\slategray.css" />
     <Content Include="Content\css\ui.jqgrid-bootstrap.css" />
     <Content Include="Content\ico\favicon.png" />
@@ -412,6 +412,7 @@
     <Content Include="Content\js\jquery-ui\jQueryBlockUI.min.js" />
     <Content Include="Content\js\jquery-validation\jquery-validation-v1.16.0-min.js" />
     <Content Include="Content\js\jquery.redirect.js" />
+    <Content Include="Content\js\jquery\jquery-1.11.0.min.js" />
     <Content Include="Content\js\jquery\jquery-2.1.0.min.js" />
     <Content Include="Content\js\king-chart-stat-transparent.js" />
     <Content Include="Content\js\king-chart-stat.js" />

@@ -165,6 +165,8 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
                 //  numIdentificacion = "060190508-6";  //  <-- Patricio Moreno
                 //  numIdentificacion = "175644307-1";  //  <-- Nadia Gonzales - Ciencias
+                //  numIdentificacion = "060357656-2";  //  <-- JAIME ALBERTO TAPIA SALINAS - Centro de Idiomas
+                numIdentificacion = "060402979-3";
 
             }
             catch (Exception ex)

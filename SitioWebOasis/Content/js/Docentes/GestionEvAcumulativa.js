@@ -10,9 +10,9 @@
     var parcialActivo = "bytNota" + $("#dtaParcialActivo").val();
     var selIRow = 1;
     var rowIds;
-    var gn1 = ($('#dtaParcialActivo').val() == "1") ? true : false;
-    var gn2 = ($('#dtaParcialActivo').val() == "2") ? true : false;
-    var gn3 = ($('#dtaParcialActivo').val() == "3") ? true : false;
+    var gn1 = ($('#dtaParcialActivo').val() == "1") ? "true" : "false";
+    var gn2 = ($('#dtaParcialActivo').val() == "2") ? "true" : "false";
+    var gn3 = ($('#dtaParcialActivo').val() == "3") ? "true" : "false";
 
     var blnCambiosEvAc = false;
     var banControlImpresion = false;
@@ -22,24 +22,24 @@
 
     //  Gestion de notas 
     grid.jqGrid({
-        datatype: "json",
+        datatype: "jsonstring",
         mtype: "GET",
         cache: true,
         loadonce: true,
-        colModel: [ { name: 'No', index: 'No', label: 'No', align: 'center', width: '20', sortable: false },
-                    { name: 'sintCodMatricula', key: true, hidden: true },
-                    { name: 'NombreEstudiante', label: "Nombre estudiante", align: 'left', width: '200', sortable: false },
-                    { name: 'bytNumMat', label: 'Matricula', align: 'center', width: '50', sortable: false },
+        colModel: [ { name: "No", index: "No", label: "No", align: "center", width: "20", sortable: false },
+			        { name: "sintCodMatricula", key: true, hidden: true },
+			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: false },
+			        { name: "bytNumMat", label: "Matricula", align: "center", width: "50", sortable: false },
 
-                    { name: 'bytNota1', label: 'Nota uno (1)', align: 'center', width: '50', editable: gn1, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
-                    { name: 'bytNota2', label: 'Nota dos (2)', align: 'center', width: '50', editable: gn2, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
-                    { name: 'bytNota3', label: 'Nota tres (3)', align: 'center', width: '50', editable: gn3, edittype: 'text', editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+			        { name: "bytNota1", index: "bytNota1", label: "Nota uno (1)", align: "center", width: "50", editable: false, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8, integer: true }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+                    { name: "bytNota2", index: "bytNota2", label: "Nota dos (2)", align: "center", width: "50", editable: true, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+                    { name: "bytNota3", index: "bytNota3", label: "Nota tres (3)", align: "center", width: "50", editable: false, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
 
-                    { name: 'Total', label: 'Total', align: 'center', width: '50', sortable: false },
-                    { name: 'bytAsistencia', label: 'Asistencia (%)', align: 'center', width: '50', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarAsistencia }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
-                    { name: 'ucAcumulado', label: 'Estado', width: '70', align: 'center' },
-                    { name: 'strObservaciones', label: 'Observación', align: 'left', width: '100', sortable: false }],
-        datatype: "jsonstring",
+			        { name: "Total", label: "Total", align: "center", width: "50", sortable: false },
+			        { name: "bytAsistencia", label: "Asistencia (%)", align: "center", width: "50" },
+			        { name: "ucAcumulado", label: "Estado", width: "70", align: "center" },
+			        { name: "strObservaciones", label: "Observación", align: "left", width: "100", sortable: false }],
+
         datastr: $("#dtaJsonEvAcumulativa").val(),
         viewrecords: true,
         autowidth: true,
@@ -47,39 +47,7 @@
         shrinkToFit: true,
         ignoreCase: true,
         rowNum: 100,
-        onSelectRow: function (id, status, e) {
-            if (id !== lastsel) {
-                //  Cierro edicion de la ultima fila gestionada
-                if (lastsel != undefined) {
-                    $('#grdEvAcumulativa').jqGrid('restoreRow', lastsel);
-                }
-
-                //
-                //  Recalculo Acumulado - si el docente edito la nota recalcula el acumulado total, 
-                //  cumplimiento y si esta en el ultimo parcial la equivalencia
-                //  
-                $("#grdEvAcumulativa").jqGrid("editRow", id, {
-                    keys: true,
-                    focusField: 4,
-                    aftersavefunc: function (id) {
-                        //  Registro la informacion gestionada en el JSON
-                        guardarDtaEvaluacion(id);
-
-                        //  Actualizo contenido de la fila
-                        updDtaEvaluacion(id);
-
-                        //  Obtengo el identificador de la siguiente registro de notas a gestionar
-                        var idNextRow = getIdNextRow(id);
-                        if (id != idNextRow) {
-                            $('#grdEvAcumulativa').jqGrid('setSelection', idNextRow, true);
-                        }
-                    }
-                });
-
-                lastsel = id;
-            }
-        },
-
+        onSelectRow: editRegistroNota,
         loadComplete: function (data) {
             $(this).jqGrid('setGridParam', 'rowNum', data.length);
 
@@ -89,17 +57,62 @@
     });
 
 
+    var clickedCell;
+    var banUpdRow = false;
+    $('#grdEvAcumulativa td').on('click', function (e) {
+        clickedCell = this;
+    });
+
+    function editRegistroNota(id, status, e) 
+    {
+        if (id !== lastsel) {
+            //  Cierro edicion de la ultima fila gestionada
+            if (lastsel != undefined) {
+                $('#grdEvAcumulativa').jqGrid('restoreRow', lastsel);
+            }
+
+            //
+            //  Recalculo Acumulado - si el docente edito la nota recalcula el acumulado total, 
+            //  cumplimiento y si esta en el ultimo parcial la equivalencia
+            //  
+            $("#grdEvAcumulativa").jqGrid("editRow", id, {
+                keys: true,
+                focusField: 4,
+                oneditfunc: function () {
+                    $('input, textarea', clickedCell).focus();
+                },
+                aftersavefunc: function (id) {
+                    //  Registro la informacion gestionada en el JSON
+                    guardarDtaEvaluacion(id);
+
+                    //  Actualizo contenido de la fila
+                    updDtaEvaluacion(id);
+
+                    //  Obtengo el identificador de la siguiente registro de notas a gestionar
+                    var idNextRow = getIdNextRow(id);
+                    $('#grdEvAcumulativa').jqGrid('setSelection', idNextRow, true);
+                }
+            });
+
+            lastsel = id;
+        }
+    }
+
+
+    
     function validarNotaSobre8(value, colname) {
-        if (value < 0 || value > 8)
-            return [false, "Nota de parcial '" + $("#dtaParcialActivo").val() + "' fuera de rango, la calificación es sobre '8' puntos"];
-        else
+        if (isNaN(parseInt(value)) || value < 0 || value > 8){
+            return [false,
+                    "Nota de parcial '" + $("#dtaParcialActivo").val() + "' fuera de rango(0 - 8), la calificación es sobre '8' puntos"];
+        }else{
             return [true, ""];
+        }   
     }
 
 
     function validarNotaSobre10(value, colname)
     {
-        if (value < 0 || value > 10)
+        if (isNaN(parseInt(value)) || value < 0 || value > 10)
             return [false, "Nota de parcial '" + $("#dtaParcialActivo").val() + "' fuera de rango, la calificación es sobre '10' puntos"];
         else
             return [true, ""];
@@ -209,7 +222,7 @@
                 var dtaNota = $("#grdEvAcumulativa").jqGrid("getCell", id, "bytNota" + $('#dtaParcialActivo').val());
                 var dtaAsistencia = $("#grdEvAcumulativa").jqGrid("getCell", id, "bytAsistencia");
 
-                lstEvaluaciones[x]["bytNota" + $('#dtaParcialActivo').val()] = dtaNota;
+                lstEvaluaciones[x]["bytNota" + $('#dtaParcialActivo').val()] = (dtaNota == "") ? 0 : dtaNota;
                 lstEvaluaciones[x].bytAsistencia = dtaAsistencia;
                 lstEvaluaciones[x].banEstado = 1;
 
@@ -249,6 +262,9 @@
                 }
             }).success(function (data) {
                 if (data.dtaEvAcumulativaUpd != "false") {
+                    //  Vacio la lista de notas
+                    lstEvaluaciones = new Array()
+
                     //  Actualizo el grid con la informacion gestionada a nivel BD
                     cargarDatosEvAcumulativa(data.dtaEvAcumulativaUpd);
 
