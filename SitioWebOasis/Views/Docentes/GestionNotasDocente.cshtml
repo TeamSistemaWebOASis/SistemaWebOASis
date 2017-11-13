@@ -2,8 +2,7 @@
 
 @{
     ViewBag.Title = "Gestión de Notas - ";
-    //  var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
-    var strParcialActivo = "2";
+    var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
     var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
@@ -375,8 +374,8 @@
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.109"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.109"> </script>
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.112"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.112"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())

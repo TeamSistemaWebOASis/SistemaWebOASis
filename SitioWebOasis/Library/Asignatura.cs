@@ -292,14 +292,15 @@ namespace SitioWebOasis.Library
         public string getMensajeEstadoFMGEvAcumulativa()
         {
             bool actaImpresa = this._evaluacion.getActaImpresa(this._strCodAsignatura);
-            string color = (this._evaluacion.getInfoNumDiasFaltantes() <= 1) ? "danger" : "success";
+            int numDiasTermino = this._evaluacion.getInfoNumDiasFaltantes();
+            string color = ( numDiasTermino <= 1) ? "danger" : "success";
             string  mensajeImpresion  = string.Empty;
 
-            if ( actaImpresa == false){
+            if ( numDiasTermino >= 0 && actaImpresa == false){
                 mensajeImpresion = "<p class='text-" + color + " pull-right'>";
                 mensajeImpresion += "   Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
             }
-            else if( actaImpresa == true ){
+            else if(numDiasTermino < 0 || actaImpresa == true ){
                 mensajeImpresion = "<p class='text-danger pull-right'>";
                 mensajeImpresion += "   <strong>Gestion de Notas 'Cerrada'</strong>";
             }

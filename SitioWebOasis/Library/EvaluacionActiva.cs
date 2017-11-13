@@ -29,7 +29,7 @@ namespace SitioWebOasis.Library
         private DataRow[] _drDtaPeriodosEvaluacion = default(DataRow[]);
         private string _evaluacionActiva = default(string);
         private DateTime _fchMaximaGestion = default(DateTime);
-        private int _numDiasFaltantes = default(Int16);
+        private int _numDiasFaltantes = Convert.ToInt16("-1");
 
         public EvaluacionActiva()
         {

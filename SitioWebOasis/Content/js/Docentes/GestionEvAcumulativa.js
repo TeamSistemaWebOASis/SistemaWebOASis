@@ -10,9 +10,9 @@
     var parcialActivo = "bytNota" + $("#dtaParcialActivo").val();
     var selIRow = 1;
     var rowIds;
-    var gn1 = ($('#dtaParcialActivo').val() == "1") ? "true" : "false";
-    var gn2 = ($('#dtaParcialActivo').val() == "2") ? "true" : "false";
-    var gn3 = ($('#dtaParcialActivo').val() == "3") ? "true" : "false";
+    var gn1 = ($('#dtaParcialActivo').val() == "1") ? true : false;
+    var gn2 = ($('#dtaParcialActivo').val() == "2") ? true : false;
+    var gn3 = ($('#dtaParcialActivo').val() == "3") ? true : false;
 
     var blnCambiosEvAc = false;
     var banControlImpresion = false;
@@ -31,12 +31,12 @@
 			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: false },
 			        { name: "bytNumMat", label: "Matricula", align: "center", width: "50", sortable: false },
 
-			        { name: "bytNota1", index: "bytNota1", label: "Nota uno (1)", align: "center", width: "50", editable: false, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8, integer: true }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
-                    { name: "bytNota2", index: "bytNota2", label: "Nota dos (2)", align: "center", width: "50", editable: true, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
-                    { name: "bytNota3", index: "bytNota3", label: "Nota tres (3)", align: "center", width: "50", editable: false, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+			        { name: "bytNota1", index: "bytNota1", label: "Nota uno (1)", align: "center", width: "50", editable: gn1, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8, integer: true }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+                    { name: "bytNota2", index: "bytNota2", label: "Nota dos (2)", align: "center", width: "50", editable: gn2, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+                    { name: "bytNota3", index: "bytNota3", label: "Nota tres (3)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
 
 			        { name: "Total", label: "Total", align: "center", width: "50", sortable: false },
-			        { name: "bytAsistencia", label: "Asistencia (%)", align: "center", width: "50" },
+			        { name: "bytAsistencia", label: "Asistencia (%)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarAsistencia }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
 			        { name: "ucAcumulado", label: "Estado", width: "70", align: "center" },
 			        { name: "strObservaciones", label: "Observación", align: "left", width: "100", sortable: false }],
 
@@ -62,6 +62,7 @@
     $('#grdEvAcumulativa td').on('click', function (e) {
         clickedCell = this;
     });
+
 
     function editRegistroNota(id, status, e) 
     {

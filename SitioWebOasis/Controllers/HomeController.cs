@@ -159,14 +159,14 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060409091-0";
 
                 //  DOCENTE
-                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "080211622-8";  //  <-- Gustavo / Rol de Estudiante / Docente
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
                 //  numIdentificacion = "060190508-6";  //  <-- Patricio Moreno
                 //  numIdentificacion = "175644307-1";  //  <-- Nadia Gonzales - Ciencias
                 //  numIdentificacion = "060357656-2";  //  <-- JAIME ALBERTO TAPIA SALINAS - Centro de Idiomas
-                numIdentificacion = "060402979-3";
+                //  numIdentificacion = "060402979-3";
 
             }
             catch (Exception ex)
