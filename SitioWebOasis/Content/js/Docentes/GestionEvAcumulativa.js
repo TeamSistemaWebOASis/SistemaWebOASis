@@ -36,7 +36,7 @@
                     { name: "bytNota3", index: "bytNota3", label: "Nota tres (3)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
 
 			        { name: "Total", label: "Total", align: "center", width: "50", sortable: false },
-			        { name: "bytAsistencia", label: "Asistencia (%)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarAsistencia }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+			        { name: "bytAsistencia", label: "Asistencia (%)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 3, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarAsistencia }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
 			        { name: "ucAcumulado", label: "Estado", width: "70", align: "center" },
 			        { name: "strObservaciones", label: "Observación", align: "left", width: "100", sortable: false }],
 
@@ -183,7 +183,34 @@
                                             'background-image': 'none',
                                             'text-align': 'center',
                                             'font-size': 'medium',
-                                            'font-weight': 'bold' });
+                                            'font-weight': 'bold'
+                                        });
+
+        $("#grdEvAcumulativa").jqGrid('setCell',
+                                        id,
+                                        'Total',
+                                        "",
+                                        {   'background-color': '#dff0d8',
+                                            'background-image': 'none',
+                                            'text-align': 'center',
+                                            'font-size': 'medium',
+                                            'font-weight': 'bold'
+                                        });
+
+        if ($("#dtaParcialActivo").val() == 3) {
+
+            $("#grdEvAcumulativa").jqGrid('setCell',
+                                        id,
+                                        'bytAsistencia',
+                                        "",
+                                        {   'background-color': '#dff0d8',
+                                            'background-image': 'none',
+                                            'text-align': 'center',
+                                            'font-size': 'medium',
+                                            'font-weight': 'bold'
+                                        });
+
+        }
 
         return true;
     }
@@ -278,6 +305,9 @@
 
                     //  Mostrar mensaje de estado de la transaccion
                     getMensajeTransaccion(true, data.MessageGestion);
+
+                    //  limpio el ultimo registro de notas gestionado
+                    lastsel = 0;
 
                     $('#grdEvAcumulativa').trigger('reloadGrid');
                 } else {
