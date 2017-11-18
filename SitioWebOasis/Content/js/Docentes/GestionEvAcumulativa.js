@@ -22,10 +22,9 @@
 
     //  Gestion de notas 
     grid.jqGrid({
+        url: 'data.json',
+        editurl: 'clientArray',
         datatype: "jsonstring",
-        mtype: "GET",
-        cache: true,
-        loadonce: true,
         colModel: [ { name: "No", index: "No", label: "No", align: "center", width: "20", sortable: false },
 			        { name: "sintCodMatricula", key: true, hidden: true },
 			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: false },
@@ -40,6 +39,7 @@
 			        { name: "ucAcumulado", label: "Estado", width: "70", align: "center" },
 			        { name: "strObservaciones", label: "Observación", align: "left", width: "100", sortable: false }],
 
+        loadonce: true,
         datastr: $("#dtaJsonEvAcumulativa").val(),
         viewrecords: true,
         autowidth: true,
@@ -80,7 +80,7 @@
                 keys: true,
                 focusField: 4,
                 oneditfunc: function () {
-                    $('input, textarea', clickedCell).focus();
+                    $('input, textarea', clickedCell).select();
                 },
                 aftersavefunc: function (id) {
                     //  Registro la informacion gestionada en el JSON
@@ -92,7 +92,8 @@
                     //  Obtengo el identificador de la siguiente registro de notas a gestionar
                     var idNextRow = getIdNextRow(id);
                     $('#grdEvAcumulativa').jqGrid('setSelection', idNextRow, true);
-                    $("#" + idNextRow + "_" + parcialActivo).focus();
+                    //  $("#" + idNextRow + "_" + parcialActivo).focus().select();
+                    $("#" + idNextRow + "_" + parcialActivo).select();
                 }
             });
 
@@ -408,6 +409,8 @@
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
 
+                $('#dtaNumConfirmacion').val("");
+
                 //  Si existe error, muestro el mensaje
                 alert(data.responseJSON.errorMessage);
             }
@@ -486,5 +489,13 @@
             }
         })
     }
+
+
+    $('#dtaNumConfirmacion').keypress(function (event) {
+        var $this = $(this);
+        if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
+            event.preventDefault();
+        }
+    })
 
 })

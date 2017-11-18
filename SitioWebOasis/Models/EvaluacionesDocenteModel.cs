@@ -20,17 +20,24 @@ namespace SitioWebOasis.Models
 
         public string strCodAsignatura { get { return this._strCodAsignatura; } }
 
+
         public string strCodNivel { get { return this._strCodNivel; } }
+
 
         public string strCodParalelo { get { return this._strCodParalelo; } }
 
+
         public string getDtaEvaluacionActiva { get { return this._evaluacion.getDataEvaluacionActiva(); } }
+
 
         public EvaluacionAcumulativaModel evAcumulativa;
 
+
         public EvaluacionFinalModel evFinal;
 
+
         public EvaluacionRecuperacionModel evRecuperacion;
+
 
         public EvaluacionesDocenteModel(string strCodNivel, string strCodAsignatura, string strCodParalelo)
         {
@@ -53,6 +60,5 @@ namespace SitioWebOasis.Models
                                                                     strCodAsignatura,
                                                                     strCodParalelo );
         }
-        
     }
 }

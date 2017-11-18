@@ -160,7 +160,7 @@
     <value>Nomina</value>
   </data>
   <data name="DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP" xml:space="preserve">
-    <value>Opción para la descarga de la nomina de estudiantes matriculados en la asignatura</value>
+    <value>Opción para descarga de lista de estudiantes matriculados en la asignatura</value>
   </data>
   <data name="DOC_TB_COL_NIVEL" xml:space="preserve">
     <value>Nivel</value>

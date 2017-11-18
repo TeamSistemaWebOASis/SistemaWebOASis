@@ -340,12 +340,14 @@ namespace SitioWebOasis.Models
             string rst = string.Empty;
 
             rst += " <tr role='row' class='success'>";
-            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='10'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
             
             try
             {
                 this._dsDetalleNotas = this._getDataNotasEstudiante(periodoEstudiante);
+                WSInfoCarreras.dtstPeriodoVigente periodoVigente = this._dataPeriodoAcademicoVigente();
+
                 if (this._dsDetalleNotas != null && this._dsDetalleNotas.EvAcumulativa.Rows.Count > 0){
                     int x = 0;
                     rst = string.Empty;
@@ -356,7 +358,7 @@ namespace SitioWebOasis.Models
                     string colorParcial3 = (dtaEvActiva == "3") ? "info" : "";
 
                     foreach (DataRow item in this._dsDetalleNotas.EvAcumulativa){
-                        alertaEquivalencia = (dtaEvActiva != "NA" && dtaEvActiva == "P" && Convert.ToInt16(dtaEvActiva) == '3')
+                        alertaEquivalencia = ((dtaEvActiva != "NA" && dtaEvActiva == "P" && Convert.ToInt16(dtaEvActiva) == '3') || periodoVigente.Periodos[0]["strCodigo"].ToString() != this.periodoEstudiante )
                                                 ? this.getAlertaFila(   item["strCodEquiv"].ToString(),
                                                                         ref alertaEquivalencia,
                                                                         ref lblEquivalencia,

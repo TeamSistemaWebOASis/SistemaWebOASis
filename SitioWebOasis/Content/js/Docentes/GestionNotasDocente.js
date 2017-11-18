@@ -1,4 +1,7 @@
 ﻿$(document).ready(function () {
+
+    $('#ddlLstPeriodosEstudiante').multiselect();
+
     $('#ddlLstPeriodosEstudiante').change("click", function () {
         var dtaAsignatura = $(this).val().split("|");
 

@@ -367,7 +367,6 @@ namespace SitioWebOasis.Models
             string facultad = default(string);
             string carrera = default(string);
             string escuela = default(string);
-            string strCurso = default(string);
 
             string strAsignatura = string.Empty;
             string strNivel = string.Empty;

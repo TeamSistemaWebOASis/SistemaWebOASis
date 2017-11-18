@@ -161,10 +161,9 @@ namespace SitioWebOasis.Library
                 {
                     asignatura = new System.Web.Mvc.SelectListItem();
                     asignatura.Value = item["strCodMateria"].ToString() + "|" + item["strCodNivel"].ToString() + "|" + item["strCodParalelo"].ToString();
-                    asignatura.Text = item["strNombreMateria"].ToString();
+                    asignatura.Text = item["strNombreMateria"].ToString() + " - '"+ item["strCodParalelo"].ToString() + "'";
 
-                    if (this._strCodAsignatura == item["strCodMateria"].ToString())
-                    {
+                    if (this._strCodAsignatura == item["strCodMateria"].ToString() && this._strCodNivel == item["strCodNivel"].ToString() && this._strCodParalelo == item["strCodParalelo"].ToString()){
                         asignatura.Selected = true;
                     }
 

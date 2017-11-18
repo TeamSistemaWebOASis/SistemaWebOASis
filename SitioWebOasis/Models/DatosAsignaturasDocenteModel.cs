@@ -130,14 +130,14 @@ namespace SitioWebOasis.Models
                         rst += "<tr id=" + item["strCodMateria"].ToString() + "_" + item["strCodNivel"].ToString() + "_" + item["strCodParalelo"].ToString() + " role='row' class='" + color + "'>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + posicion + "</td>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/" + item["strCodParalelo"].ToString() + "'>" + item["strNombreMateria"].ToString() + "</a></td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + parcialActivo + "</td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + cantidadEstudiantesMatriculados + "</td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' class='btn btn-danger'>PDF</button><button type='button' class='btn btn-success'>EXCEL</button></div> </td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>";
-                        rst += "	    <span id='mini-bar-chart"+ posicion + "' class='mini-bar-chart'><canvas width='53' height='25' style='display: inline-block; vertical-align: top; width: 53px; height: 25px;'></canvas></span>";
-                        rst += "    </td>";
+                        //rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>";
+                        //rst += "	    <span id='mini-bar-chart"+ posicion + "' class='mini-bar-chart'><canvas width='53' height='25' style='display: inline-block; vertical-align: top; width: 53px; height: 25px;'></canvas></span>";
+                        //rst += "    </td>";
                         rst += "</tr>";
                     }
                 }
@@ -211,7 +211,9 @@ namespace SitioWebOasis.Models
 
         public string getPeriodoAcademicoVigente()
         {
-            return this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString();
+            return (this._dtstPeriodoVigente != null)
+                        ? this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()
+                        : "";
         }
 
     }

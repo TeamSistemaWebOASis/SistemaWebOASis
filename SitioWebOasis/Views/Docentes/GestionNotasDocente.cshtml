@@ -108,25 +108,26 @@
                                 <div id="msmGrdEvAcumulativa" hidden="hidden"></div>
 
                                 @* BOTONES DE IMPRESION DE ACTAS *@
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
-                                        <div class="btn-group">
-                                            <button id="btnEA" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión Acta Acumulativa</strong> </button>
-                                            <button id="btnEAF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a id="pEA_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="pEA_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a id="pEA_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
+                                @if (strParcialActivo == "3"){
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
+                                            <div class="btn-group">
+                                                <button id="btnEA" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión Acta Acumulativa</strong> </button>
+                                                <button id="btnEAF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a id="pEA_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                    <li><a id="pEA_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a id="pEA_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                </ul>
+                                            </div>
+
                                         </div>
-
                                     </div>
-                                </div>
-
-                                <hr class="inner-separator">
-
+                                    <hr class="inner-separator">
+                                }
+                                
                                 @* GRID DE EVALUACION ACUMULATIVA *@
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
                                 @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && estadoActa ){
@@ -344,7 +345,7 @@
             Por su seguridad se ha enviado un código de confirmación a su cuenta de correo <strong> @User.Identity.Name.ToString() </strong> para continuar con la ejecución de esta tarea
         </div>
 
-        <input id="dtaNumConfirmacion" type="text" name="dtaNumConfirmacion" placeholder="NÚMERO DE CONFIRMACIÓN">
+        <input id="dtaNumConfirmacion" type="text" name="dtaNumConfirmacion" maxlength="4" placeholder="NÚMERO DE CONFIRMACIÓN">
         <p>
             <input id="btnValidarImprimir" type="button" value="Validar e imprimir" name="btnValidarImprimir">
             <input id="btnCerrarNC" type="button" value="Cerrar" name="btnCerrarNC">
@@ -370,12 +371,12 @@
     
     @section scripts{
         @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-        <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.2"> </script>
+        <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.7"> </script>
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.115"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.115"> </script>
+        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa ){
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.123"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.123"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())

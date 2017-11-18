@@ -28,7 +28,6 @@ namespace SitioWebOasis.Controllers
         //
         public ActionResult Index(string strCodCarrera = "")
         {
-            SitioWebOasis.Models.DatosAcademicosEstudiante dtaEstudiante;
             string strIdCarrera = (string.IsNullOrEmpty(strCodCarrera))
                                     ? this._getIdCarrera()
                                     : strCodCarrera;
@@ -247,14 +246,14 @@ namespace SitioWebOasis.Controllers
         #region DATOS ESTUDIANTES
         public ActionResult DatosEstudiantes()
         {
-            DatosPersonalesEstudiantes dpe = new DatosPersonalesEstudiantes();
+            DatosPersonalesUsuario dpe = new DatosPersonalesUsuario();
             return View("DatosPersonalesEstudiante", dpe);
         }
 
         [HttpPost]
         public ActionResult registrarDatosEstudiante()
         {
-            DatosPersonalesEstudiantes dpe = new DatosPersonalesEstudiantes();
+            DatosPersonalesUsuario dpe = new DatosPersonalesUsuario();
             bool rstUPD = dpe.updDatosEstudiantes(Request);
 
             if (rstUPD){

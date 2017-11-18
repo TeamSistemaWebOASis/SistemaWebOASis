@@ -187,7 +187,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Opción para la descarga de la nomina de estudiantes matriculados en la asignatura.
+        ///   Busca una cadena traducida similar a Opción para descarga de lista de estudiantes matriculados en la asignatura.
         /// </summary>
         public static string DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP {
             get {

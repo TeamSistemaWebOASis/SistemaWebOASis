@@ -68,24 +68,41 @@ namespace SitioWebOasis.Library
         /// 
         /// </summary>
         /// <returns> Retorna la evaluacion vigente, en caso de no existir ninguna evaluacion activa retorna un valor cero (0) </returns>
+        /// 
         private string _getEvaluacionActiva()
         {
             string evaluacionActiva = "NA";
             string evActiva = string.Empty;
+            DateTime fchItem = default(DateTime);
+            DateTime fchMenorOchoDias = default(DateTime);
+            TimeSpan numDiasDiff = default(TimeSpan);
 
-            try{
-                if (this._drDtaPeriodosEvaluacion.Length > 0){
-                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
-                        if (!string.IsNullOrEmpty(item["strValor"].ToString())){
-                            DateTime fchItem = Convert.ToDateTime(item["strValor"].ToString());
-                            DateTime fchMenorOchoDias = fchItem.Date.AddDays(-8);
-                            TimeSpan numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
+            try
+            {
+                string[] dtaCarreraEspecial = this._getDtaCarreraEspecial();
 
-                            //  La fecha planificada debe ser menor a la fecha actual "y" 
-                            //  la fecha actual menor o igual a ocho dias
-                            if (fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
-                                evaluacionActiva = item["strCodigo"].ToString();
-                                break;
+                if (dtaCarreraEspecial[0].Split(',').Contains(this.UsuarioActual.CarreraActual.Codigo.ToString())){
+                    fchItem = Convert.ToDateTime(dtaCarreraEspecial[1]);
+                    fchMenorOchoDias = fchItem.Date.AddDays(-8);
+                    numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
+
+                    if (fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
+                        evaluacionActiva = dtaCarreraEspecial[2];
+                    }
+                }else{
+                    if (this._drDtaPeriodosEvaluacion.Length > 0){
+                        foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                            if (!string.IsNullOrEmpty(item["strValor"].ToString())){
+                                fchItem = Convert.ToDateTime(item["strValor"].ToString());
+                                fchMenorOchoDias = fchItem.Date.AddDays(-8);
+                                numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
+
+                                //  La fecha planificada debe ser menor a la fecha actual "y" 
+                                //  la fecha actual menor o igual a ocho dias
+                                if (fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
+                                    evaluacionActiva = item["strCodigo"].ToString();
+                                    break;
+                                }
                             }
                         }
                     }
@@ -100,22 +117,52 @@ namespace SitioWebOasis.Library
 
             return evaluacionActiva;
         }
-        
+
+        private string[] _getDtaCarreraEspecial()
+        {
+            string[] dtaCarreraEspecial = new string[3];
+
+            try{
+                var appSettings = System.Configuration.ConfigurationManager.AppSettings;
+                dtaCarreraEspecial[0] = appSettings.Get("carreraEspecial").ToString();
+                dtaCarreraEspecial[1] = appSettings.Get("ceFchMaxGestion").ToString();
+                dtaCarreraEspecial[2] = appSettings.Get("ceParcialActivo").ToString();                
+            }
+            catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_getDtaCarreraEspecial");
+            }
+
+            return dtaCarreraEspecial;
+        }
 
         private void _cargarFchMaximaGestion()
         {
-            string dtFchMaximaGestion = default(string);
-            try{
+            DateTime fchItem = default(DateTime);
+            DateTime fchMenorOchoDias = default(DateTime);
+            TimeSpan numDiasDiff = default(TimeSpan);
 
-                if (this._drDtaPeriodosEvaluacion.Length > 0){
-                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
-                        if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
-                            this._fchMaximaGestion = Convert.ToDateTime( item["strValor"].ToString() );
-                            TimeSpan numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
-                            this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16( numDiasDiff.TotalDays )
-                                                                                : 0;
+            try
+            {
+                string[] dtaCarreraEspecial = this._getDtaCarreraEspecial();
 
-                            break;
+                if (dtaCarreraEspecial[0].Split(',').Contains(this.UsuarioActual.CarreraActual.Codigo.ToString()))
+                {
+                    this._fchMaximaGestion = Convert.ToDateTime(dtaCarreraEspecial[1]);
+                    numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
+                    this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16(numDiasDiff.TotalDays)
+                                                                        : 0;
+                }else{
+                    if (this._drDtaPeriodosEvaluacion.Length > 0){
+                        foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                            if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
+                                this._fchMaximaGestion = Convert.ToDateTime(item["strValor"].ToString());
+                                numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
+                                this._numDiasFaltantes = (numDiasDiff.TotalDays > 0) ? Convert.ToInt16(numDiasDiff.TotalDays)
+                                                                                    : 0;
+
+                                break;
+                            }
                         }
                     }
                 }
@@ -135,8 +182,8 @@ namespace SitioWebOasis.Library
 
         public string getInfoEvaluacionActiva()
         {
-            string msg = string.Empty;
-
+            string msg = "Gestión cerrada";
+            
             if (this._numDiasFaltantes >= 1){
                 string msgNumDias = (this._numDiasFaltantes > 1)? "dias"
                                                                 : "dia";
@@ -145,7 +192,8 @@ namespace SitioWebOasis.Library
             }
             else if (this._numDiasFaltantes == 0){
                 msg = this._fchMaximaGestion.Date.ToString("dd/MM/yyyy") + "( Ultimo día )";
-            }else if (this._numDiasFaltantes < 0) {
+            }
+            else if (this._numDiasFaltantes < 0){
                 msg = "Gestión cerrada";
             }
 

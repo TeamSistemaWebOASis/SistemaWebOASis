@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "ActualizarCuentaCorreo";
+}
+
+<h2>Información de cuenta de correo</h2>
+
+@using(Html.BeginForm("verificarNumeroCedula", "ActualizarCuentaCorreo")) {
+    @Html.TextBox("strNumCedula");
+
+    <button id="btnVerificarNumCedula"
+            type="button"
+            class="btn btn-success pull-right">
+        <i class="fa fa-floppy-o fa-1x"></i> <strong>Verificar número de cédula</strong>
+    </button>
+}
+
+
+

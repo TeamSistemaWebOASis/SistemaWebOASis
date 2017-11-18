@@ -18,8 +18,7 @@ namespace SitioWebOasis.Controllers
                 string rol = (UsuarioActual!=null)  ? UsuarioActual.RolActual.ID.ToString()
                                                     : "";
 
-                switch (rol)
-                {
+                switch (rol){
                     case "Estudiantes":
                         lstMVM = this._getMenuEstudiantes();
                         break;

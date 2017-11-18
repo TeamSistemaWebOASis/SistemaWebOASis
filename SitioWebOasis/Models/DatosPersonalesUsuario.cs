@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace SitioWebOasis.Models
 {
-    public class DatosPersonalesEstudiantes
+    public class DatosPersonalesUsuario
     {
         public string per_numCedula { get; set; }
         public string per_id = string.Empty;
@@ -21,31 +21,52 @@ namespace SitioWebOasis.Models
         public Direccion dtaDireccionEstudiante;
         public Nacionalidad dtaNacionalidadEstudiante;
 
-        public DatosPersonalesEstudiantes()
+        public DatosPersonalesUsuario()
         {
             this.per_numCedula = UsuarioActual.Cedula.ToString().Replace("-", "");
-            if ( !string.IsNullOrEmpty(this.per_numCedula.ToString() ))
+            this._cargarDatosPersonalesUsuario();
+        }
+
+        public DatosPersonalesUsuario( string strNumCedula )
+        {
+            this.per_numCedula = strNumCedula;
+            this._cargarDatosPersonalesUsuario();
+        }
+
+        private void _cargarDatosPersonalesUsuario()
+        {
+            try
             {
-                this.catalogo = new Catalogos();
+                if (!string.IsNullOrEmpty(this.per_numCedula.ToString()))
+                {
+                    this.catalogo = new Catalogos();
 
-                //  Consumo del servicio web ObtenerPorDocumento (cedula)
-                string jsonDtaPersona = ClienteServicio.ConsumirServicio( CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/ObtenerPorDocumento/" + this.per_numCedula.ToString());
-                var dtaPersona = Json.Decode(jsonDtaPersona);
+                    //  Consumo del servicio web ObtenerPorDocumento (cedula)
+                    string jsonDtaPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/ObtenerPorDocumento/" + this.per_numCedula.ToString());
+                    var dtaPersona = Json.Decode(jsonDtaPersona);
 
-                if( !string.IsNullOrEmpty( Convert.ToString( dtaPersona.per_id ) ) && Convert.ToString(dtaPersona.per_id) != "0"){
-                    this.existePersona = true;
-                    dtaEstudiante = new Persona(jsonDtaPersona);
-                    dtaDocPersonal = new DocumentoPersonal(dtaEstudiante.per_id.ToString());
-                    dtaDireccionEstudiante = new Direccion(dtaEstudiante.per_id.ToString());
-                    dtaNacionalidadEstudiante = new Nacionalidad(dtaEstudiante.per_id.ToString());
+                    if (!string.IsNullOrEmpty(Convert.ToString(dtaPersona.per_id)) && Convert.ToString(dtaPersona.per_id) != "0")
+                    {
+                        this.existePersona = true;
+                        dtaEstudiante = new Persona(jsonDtaPersona);
+                        dtaDocPersonal = new DocumentoPersonal(dtaEstudiante.per_id.ToString());
+                        dtaDireccionEstudiante = new Direccion(dtaEstudiante.per_id.ToString());
+                        dtaNacionalidadEstudiante = new Nacionalidad(dtaEstudiante.per_id.ToString());
+                    }
                 }
+            }catch(Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_cargarDatosPersonalesUsuario");
             }
         }
+
 
         public Usuario UsuarioActual
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
         }
+
 
         public bool updDatosEstudiantes(System.Web.HttpRequestBase dtaFrmEstudiante)
         {
