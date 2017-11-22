@@ -110,8 +110,7 @@ namespace SitioWebOasis.Models
                 EvaluacionActiva objEvActiva = new EvaluacionActiva();
                 evActiva = objEvActiva.getDataEvaluacionActiva().Replace("FN", "");
 
-                if( !string.IsNullOrEmpty(evActiva))
-                {
+                if( !string.IsNullOrEmpty(evActiva)){
                     rst = string.Empty;
                     parcialActivo = (evActiva != "FNP" && evActiva != "ER" && evActiva != "NA")  
                                         ? this._getNumOrdinal(evActiva)

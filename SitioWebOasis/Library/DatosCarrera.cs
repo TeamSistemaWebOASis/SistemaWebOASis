@@ -71,10 +71,10 @@ namespace SitioWebOasis.Library
 
         protected string _getNumOrdinal(string numero, string tpo="nivel")
         {
-            string[] ciclosAcademicos = new string[15] { "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo", "11vo", "12vo", "13vo", "14vo", "15vo" };
+            string[] ciclosAcademicos = new string[16] { "0", "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo", "11vo", "12vo", "13vo", "14vo", "15vo" };
             string[] matricula = new string[3] { "1ra", "2da", "3ra" };
 
-            return (tpo == "nivel") ? ciclosAcademicos[Convert.ToInt32(numero.ToString()) - 1]
+            return (tpo == "nivel") ? ciclosAcademicos[Convert.ToInt32(numero.ToString())]
                                     : matricula[Convert.ToInt32(numero.ToString()) - 1];
         }
 

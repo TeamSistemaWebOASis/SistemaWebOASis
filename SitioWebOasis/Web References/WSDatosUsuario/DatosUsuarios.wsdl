@@ -8,12 +8,12 @@
       <s:import namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
       <s:import namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosEstudiante" namespace="http://www.tempuri.org/dtstDatosEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosCursosCarrera" namespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosDocente" namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosEstudiante" namespace="http://www.tempuri.org/dtstDatosEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosUsuario" namespace="http://www.tempuri.org/dtstDatosUsuario.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosCursosCarrera" namespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstCursosMateria" namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:element name="GetDatosDirectivoInstitucional">
         <s:complexType>
           <s:sequence>
@@ -199,6 +199,33 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="SetDatosDocenteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updDatosCorreoDocente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="dsDatosDocente">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="updDatosCorreoDocenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="updDatosCorreoDocenteResult">
               <s:complexType>
                 <s:sequence>
                   <s:any namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
@@ -816,6 +843,12 @@
   <wsdl:message name="SetDatosDocenteSoapOut">
     <wsdl:part name="parameters" element="tns:SetDatosDocenteResponse" />
   </wsdl:message>
+  <wsdl:message name="updDatosCorreoDocenteSoapIn">
+    <wsdl:part name="parameters" element="tns:updDatosCorreoDocente" />
+  </wsdl:message>
+  <wsdl:message name="updDatosCorreoDocenteSoapOut">
+    <wsdl:part name="parameters" element="tns:updDatosCorreoDocenteResponse" />
+  </wsdl:message>
   <wsdl:message name="GetDatosEstudianteSoapIn">
     <wsdl:part name="parameters" element="tns:GetDatosEstudiante" />
   </wsdl:message>
@@ -1013,6 +1046,10 @@
       <wsdl:input message="tns:SetDatosDocenteSoapIn" />
       <wsdl:output message="tns:SetDatosDocenteSoapOut" />
     </wsdl:operation>
+    <wsdl:operation name="updDatosCorreoDocente">
+      <wsdl:input message="tns:updDatosCorreoDocenteSoapIn" />
+      <wsdl:output message="tns:updDatosCorreoDocenteSoapOut" />
+    </wsdl:operation>
     <wsdl:operation name="GetDatosEstudiante">
       <wsdl:input message="tns:GetDatosEstudianteSoapIn" />
       <wsdl:output message="tns:GetDatosEstudianteSoapOut" />
@@ -1203,6 +1240,15 @@
     </wsdl:operation>
     <wsdl:operation name="SetDatosDocente">
       <soap:operation soapAction="http://tempuri.org/SetDatosDocente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updDatosCorreoDocente">
+      <soap:operation soapAction="http://tempuri.org/updDatosCorreoDocente" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1530,6 +1576,15 @@
     </wsdl:operation>
     <wsdl:operation name="SetDatosDocente">
       <soap12:operation soapAction="http://tempuri.org/SetDatosDocente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updDatosCorreoDocente">
+      <soap12:operation soapAction="http://tempuri.org/updDatosCorreoDocente" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

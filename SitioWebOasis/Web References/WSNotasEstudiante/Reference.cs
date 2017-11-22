@@ -332,22 +332,23 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getActaImpresaEvAcumulativo", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool getActaImpresaEvAcumulativo(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParcial) {
+        public bool getActaImpresaEvAcumulativo(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodParcial) {
             object[] results = this.Invoke("getActaImpresaEvAcumulativo", new object[] {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         strCodParcial});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void getActaImpresaEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParcial) {
-            this.getActaImpresaEvAcumulativoAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParcial, null);
+        public void getActaImpresaEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodParcial) {
+            this.getActaImpresaEvAcumulativoAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParalelo, strCodParcial, null);
         }
         
         /// <remarks/>
-        public void getActaImpresaEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParcial, object userState) {
+        public void getActaImpresaEvAcumulativoAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodParcial, object userState) {
             if ((this.getActaImpresaEvAcumulativoOperationCompleted == null)) {
                 this.getActaImpresaEvAcumulativoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetActaImpresaEvAcumulativoOperationCompleted);
             }
@@ -355,6 +356,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         strCodParcial}, this.getActaImpresaEvAcumulativoOperationCompleted, userState);
         }
         
@@ -402,22 +404,23 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getEstadoParcialEvAcumulativa", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool getEstadoParcialEvAcumulativa(string strCodCarrera, string strCodPeriodo, string strCodMateria, string dtaParcial) {
+        public bool getEstadoParcialEvAcumulativa(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string dtaParcial) {
             object[] results = this.Invoke("getEstadoParcialEvAcumulativa", new object[] {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         dtaParcial});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string dtaParcial) {
-            this.getEstadoParcialEvAcumulativaAsync(strCodCarrera, strCodPeriodo, strCodMateria, dtaParcial, null);
+        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string dtaParcial) {
+            this.getEstadoParcialEvAcumulativaAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParalelo, dtaParcial, null);
         }
         
         /// <remarks/>
-        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string dtaParcial, object userState) {
+        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string dtaParcial, object userState) {
             if ((this.getEstadoParcialEvAcumulativaOperationCompleted == null)) {
                 this.getEstadoParcialEvAcumulativaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEstadoParcialEvAcumulativaOperationCompleted);
             }
@@ -425,6 +428,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         dtaParcial}, this.getEstadoParcialEvAcumulativaOperationCompleted, userState);
         }
         

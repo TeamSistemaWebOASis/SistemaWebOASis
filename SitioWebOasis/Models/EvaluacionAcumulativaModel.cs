@@ -432,6 +432,7 @@ namespace SitioWebOasis.Models
                 ban = ne.getEstadoParcialEvAcumulativa( UsuarioActual.CarreraActual.Codigo.ToString(),
                                                         this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                         this._strCodAsignatura,
+                                                        this._strCodParalelo,
                                                         strParcialActivo);
             } catch (Exception ex) {
                 ban = false;

@@ -215,6 +215,7 @@ namespace SitioWebOasis.Library
                     ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
                                                             periodoVigente,
                                                             this._strCodAsignatura,
+                                                            this._strCodParalelo,
                                                             evaluacionActiva);
                 }else if (evaluacionActiva == "FNP" || evaluacionActiva == "ER"){
                     ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
@@ -290,7 +291,7 @@ namespace SitioWebOasis.Library
 
         public string getMensajeEstadoFMGEvAcumulativa()
         {
-            bool actaImpresa = this._evaluacion.getActaImpresa(this._strCodAsignatura);
+            bool actaImpresa = this._evaluacion.getActaImpresa(this._strCodAsignatura, this._strCodParalelo);
             int numDiasTermino = this._evaluacion.getInfoNumDiasFaltantes();
             string color = ( numDiasTermino <= 1) ? "danger" : "success";
             string  mensajeImpresion  = string.Empty;

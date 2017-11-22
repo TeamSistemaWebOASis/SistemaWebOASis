@@ -50,6 +50,8 @@ namespace SitioWebOasis.WSDatosUsuario {
         
         private System.Threading.SendOrPostCallback SetDatosDocenteOperationCompleted;
         
+        private System.Threading.SendOrPostCallback updDatosCorreoDocenteOperationCompleted;
+        
         private System.Threading.SendOrPostCallback GetDatosEstudianteOperationCompleted;
         
         private System.Threading.SendOrPostCallback SetDatosEstudianteOperationCompleted;
@@ -169,6 +171,9 @@ namespace SitioWebOasis.WSDatosUsuario {
         
         /// <remarks/>
         public event SetDatosDocenteCompletedEventHandler SetDatosDocenteCompleted;
+        
+        /// <remarks/>
+        public event updDatosCorreoDocenteCompletedEventHandler updDatosCorreoDocenteCompleted;
         
         /// <remarks/>
         public event GetDatosEstudianteCompletedEventHandler GetDatosEstudianteCompleted;
@@ -539,6 +544,37 @@ namespace SitioWebOasis.WSDatosUsuario {
             if ((this.SetDatosDocenteCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.SetDatosDocenteCompleted(this, new SetDatosDocenteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/updDatosCorreoDocente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public dtstDatosDocente updDatosCorreoDocente(dtstDatosDocente dsDatosDocente, string strCodCarrera) {
+            object[] results = this.Invoke("updDatosCorreoDocente", new object[] {
+                        dsDatosDocente,
+                        strCodCarrera});
+            return ((dtstDatosDocente)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void updDatosCorreoDocenteAsync(dtstDatosDocente dsDatosDocente, string strCodCarrera) {
+            this.updDatosCorreoDocenteAsync(dsDatosDocente, strCodCarrera, null);
+        }
+        
+        /// <remarks/>
+        public void updDatosCorreoDocenteAsync(dtstDatosDocente dsDatosDocente, string strCodCarrera, object userState) {
+            if ((this.updDatosCorreoDocenteOperationCompleted == null)) {
+                this.updDatosCorreoDocenteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnupdDatosCorreoDocenteOperationCompleted);
+            }
+            this.InvokeAsync("updDatosCorreoDocente", new object[] {
+                        dsDatosDocente,
+                        strCodCarrera}, this.updDatosCorreoDocenteOperationCompleted, userState);
+        }
+        
+        private void OnupdDatosCorreoDocenteOperationCompleted(object arg) {
+            if ((this.updDatosCorreoDocenteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.updDatosCorreoDocenteCompleted(this, new updDatosCorreoDocenteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -10592,6 +10628,32 @@ namespace SitioWebOasis.WSDatosUsuario {
         private object[] results;
         
         internal SetDatosDocenteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public dtstDatosDocente Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((dtstDatosDocente)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void updDatosCorreoDocenteCompletedEventHandler(object sender, updDatosCorreoDocenteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class updDatosCorreoDocenteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal updDatosCorreoDocenteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

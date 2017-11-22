@@ -4,14 +4,21 @@
 
 <h2>Información de cuenta de correo</h2>
 
-@using(Html.BeginForm("verificarNumeroCedula", "ActualizarCuentaCorreo")) {
-    @Html.TextBox("strNumCedula");
+@using (Html.BeginForm("Index", "ActualizarCuentaCorreo"))
+{
 
-    <button id="btnVerificarNumCedula"
-            type="button"
-            class="btn btn-success pull-right">
-        <i class="fa fa-floppy-o fa-1x"></i> <strong>Verificar número de cédula</strong>
-    </button>
+    @Html.Label("Ingrese su numero de cedula: ", new { @class = "col-sm-3 control-label" });
+    <div class="col-sm-9">
+        @Html.TextBox(  "strNumCedula",
+                         "",
+                         new{
+                             id = "strNumCedula",
+                             @class = "form-control",
+                             @style = "font-weight: bold;"
+                         })
+    </div>
+
+    <input type="submit" value="Verificar numero cedula" />
 }
 
 

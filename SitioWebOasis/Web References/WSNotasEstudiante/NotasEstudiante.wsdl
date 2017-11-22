@@ -4,8 +4,8 @@
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
       <s:element name="GetDatosNotasEstudiante">
         <s:complexType>
           <s:sequence>
@@ -130,6 +130,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodParcial" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -164,6 +165,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="dtaParcial" type="s:string" />
           </s:sequence>
         </s:complexType>

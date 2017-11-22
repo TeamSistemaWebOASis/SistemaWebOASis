@@ -1,0 +1,65 @@
+﻿@model SitioWebOasis.Models.DatosPersonalesUsuario
+
+@{  ViewBag.Title = "ActualizarCuentaCorreo"; }
+
+@if (Model.dtaEstudiante.per_email.ToString().CompareTo(User.Identity.Name.ToString()) != 0)
+{
+    <div class="widget">
+        <div class="widget-header">
+            <h3><i class="fa fa-edit"></i> ACTUALIZAR CUENTA DE CORREO </h3>
+        </div>
+        <div class="widget-content">
+            <div class="row">
+                <div class="col-md-12">
+                    @using (Html.BeginForm( "UpdCtaCorreo",
+                                            "ActualizarCuentaCorreo",
+                                            null,
+                                            FormMethod.Post, new {
+                                                id = "frmUpdCtaCorreo",
+                                                @class = "form-horizontal",
+                                                @role = "form"
+                                            }))
+                    {
+                        @Html.Hidden("strNumCedula", Model.per_numCedula.ToString())
+                        <div class="form-group">
+                            @Html.Label("Cuenta de correo registrada en el sistema: ", new { @class = "col-sm-3 control-label" })
+                            <div class="col-sm-9">
+                                @Html.TextBox(  "ctaMailRegistrada",
+                                                Model.dtaEstudiante.per_email.ToString(),
+                                                new{id = "ctaMailRegistrada",
+                                                    @class = "form-control",
+                                                    @readonly = "readonly",
+                                                    @style = "font-weight: bold;"
+                                                })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Cuenta de acceso: ", new { @class = "col-sm-3 control-label" })
+                            <div class="col-sm-9">
+                                @Html.TextBox(  "ctaMailAcceso",
+                                                User.Identity.Name.ToString(),
+                                                new{id = "ctaMailAcceso",
+                                                    @class = "form-control",
+                                                    @readonly = "readonly",
+                                                    @style = "font-weight: bold;"
+                                                })
+                            </div>
+                        </div>
+
+                        <input id="btnUpdCtaCorreo" type="submit" class="btn btn-primary"  value="Actualizar" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}else{
+    <h3>Favor vuelva a intentar el acceso al sistema, si el problema persiste consulte al Departamento de Tecnologías de Información y Comunicación - DTIC</h3>
+    <input type="submit" value="Cerrar" />
+}
+
+@section scripts{
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/ActualizarCorreo/gestionCorreoUsuarios.js?v1.0.7"> </script>
+}

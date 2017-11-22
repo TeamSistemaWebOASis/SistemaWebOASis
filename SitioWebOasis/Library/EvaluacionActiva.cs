@@ -115,7 +115,8 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "_getDtaParametro");
             }
 
-            return evaluacionActiva;
+            //  return evaluacionActiva;
+            return "FN3";
         }
 
         private string[] _getDtaCarreraEspecial()
@@ -158,7 +159,7 @@ namespace SitioWebOasis.Library
                             if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
                                 this._fchMaximaGestion = Convert.ToDateTime(item["strValor"].ToString());
                                 numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
-                                this._numDiasFaltantes = (numDiasDiff.TotalDays > 0) ? Convert.ToInt16(numDiasDiff.TotalDays)
+                                this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16(numDiasDiff.TotalDays)
                                                                                     : 0;
 
                                 break;
@@ -207,7 +208,7 @@ namespace SitioWebOasis.Library
         }
 
 
-        public bool getActaImpresa( string codAsignatura)
+        public bool getActaImpresa( string codAsignatura, string strCodParalelo)
         {
             bool actaImpresa = false;
 
@@ -217,7 +218,8 @@ namespace SitioWebOasis.Library
                     case "1":
                     case "2":
                     case "3":
-                        actaImpresa = (this._getActaEvAcumulativaImpresa(   codAsignatura, 
+                        actaImpresa = (this._getActaEvAcumulativaImpresa(   codAsignatura,
+                                                                            strCodParalelo, 
                                                                             this._evaluacionActiva)) ? true : false;
                     break;
 
@@ -239,7 +241,7 @@ namespace SitioWebOasis.Library
         }
 
 
-        private bool _getActaEvAcumulativaImpresa(string codAsignatura, string strCodParcial )
+        private bool _getActaEvAcumulativaImpresa(string codAsignatura, string strCodParalelo, string strCodParcial )
         {
             bool rst = true;
             int numReg = default(int);
@@ -249,7 +251,8 @@ namespace SitioWebOasis.Library
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
                 rst = ne.getActaImpresaEvAcumulativo(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
                                                         this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                        codAsignatura, 
+                                                        codAsignatura,
+                                                        strCodParalelo,
                                                         strCodParcial);
             }catch(Exception ex){
                 Errores err = new Errores();

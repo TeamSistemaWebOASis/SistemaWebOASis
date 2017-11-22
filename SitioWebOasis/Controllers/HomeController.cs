@@ -16,20 +16,21 @@ namespace SitioWebOasis.Controllers
     {
         public RedirectToRouteResult Index()
         {
-            if (this._existeRolUsuario())
-            {
-                //  Interfaz para Estudiante 
-                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
-                {
-                    return RedirectToAction("Index", "Estudiantes");
-                }
+            //if (this._existeRolUsuario())
+            //{
+            //    //  Interfaz para Estudiante 
+            //    if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
+            //    {
+            //        return RedirectToAction("Index", "Estudiantes");
+            //    }
 
-                //  Interfaz para Docente
-                if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
-                {
-                    return RedirectToAction("Index", "Docentes");
-                }
-            }
+            //    //  Interfaz para Docente
+            //    if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
+            //    {
+            //        return RedirectToAction("Index", "Docentes");
+            //    }
+            //}
+            //return RedirectToAction("Index", "Error");
 
             return RedirectToAction("Index", "ActualizarCuentaCorreo");
         }
@@ -43,8 +44,8 @@ namespace SitioWebOasis.Controllers
             {
                 WSSeguridad.dtstUsuario dsUsuario = new WSSeguridad.dtstUsuario();
                 string numIdentificacionUsr = this._getNumeroIdentificacion();
-                if (!string.IsNullOrEmpty(numIdentificacionUsr))
-                {
+
+                if (!string.IsNullOrEmpty(numIdentificacionUsr)){
                     SitioWebOasis.ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
 
                     //  GESTIONA EL ROL DE UN USUARIO REGISTRADO
@@ -54,7 +55,6 @@ namespace SitioWebOasis.Controllers
 
                     //  Verificar si el usuario es válido
                     if (blnUsuarioValido){
-
                         //  Add objeto seguridad a la cache del usuario
                         this._addObjetoSeguridad();
 
@@ -137,19 +137,19 @@ namespace SitioWebOasis.Controllers
                 //  Consumo del servicio web ObtenerPorDocumento (cedula)
                 string jsonDtaPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/ObtenerPorEmail/" + User.Identity.Name.ToString());
                 var dtaPersona = System.Web.Helpers.Json.Decode(jsonDtaPersona);
-                numIdentificacion = dtaPersona.per_id.ToString();
 
-                //  Consumo del servicio web ObtenerPorDocumento (cedula)
-                string jsonDtaIdentificacion = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDocumentoPersonal.svc" + "/ObtenerPorPersona/" + numIdentificacion);
-                var _dtaIdentificacion = System.Web.Helpers.Json.Decode(jsonDtaIdentificacion);
+                if (!string.IsNullOrEmpty(dtaPersona.per_id.ToString())){
+                    //  Consumo del servicio web ObtenerPorDocumento (cedula)
+                    string jsonDtaIdentificacion = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDocumentoPersonal.svc" + "/ObtenerPorPersona/" + dtaPersona.per_id.ToString());
+                    var _dtaIdentificacion = System.Web.Helpers.Json.Decode(jsonDtaIdentificacion);
 
-                if (_dtaIdentificacion.Length > 0)
-                {
-                    foreach (var item in _dtaIdentificacion){
-                        if (item.pid_activo == true){
-                            numIdentificacion = (item.tdi_id != 1)  
-                                                    ? item.pid_valor
-                                                    : this._addGuionCedula(item.pid_valor);
+                    if (_dtaIdentificacion.Length > 0){
+                        foreach (var item in _dtaIdentificacion){
+                            if (item.pid_activo == true){
+                                numIdentificacion = (item.tdi_id != 1)
+                                                        ? item.pid_valor
+                                                        : this._addGuionCedula(item.pid_valor);
+                            }
                         }
                     }
                 }
@@ -178,6 +178,9 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060077660-3";
                 //  numIdentificacion = "095994918-1";
                 //  numIdentificacion = "171931201-7";
+                //  numIdentificacion = "060077660-3";
+
+                numIdentificacion = "060337846-4";
             }
             catch (Exception ex)
             {
