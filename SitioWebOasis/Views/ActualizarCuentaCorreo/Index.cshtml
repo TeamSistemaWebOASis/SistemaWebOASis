@@ -2,24 +2,43 @@
     ViewBag.Title = "ActualizarCuentaCorreo";
 }
 
-<h2>Información de cuenta de correo</h2>
-
-@using (Html.BeginForm("Index", "ActualizarCuentaCorreo"))
-{
-
-    @Html.Label("Ingrese su numero de cedula: ", new { @class = "col-sm-3 control-label" });
-    <div class="col-sm-9">
-        @Html.TextBox(  "strNumCedula",
-                         "",
-                         new{
-                             id = "strNumCedula",
-                             @class = "form-control",
-                             @style = "font-weight: bold;"
-                         })
+<div class="widget">
+    <div class="widget-header">
+        <h3><i class="fa fa-edit"></i> INFORMACIÓN - CUENTA DE CORREO </h3>
     </div>
+    <div class="widget-content">
+        <div class="row">
+            <div class="col-md-12">
+                @using (Html.BeginForm( "Index",
+                                        "ActualizarCuentaCorreo",
+                                        FormMethod.Post,
+                                        new {   @class = "form-horizontal",
+                                                @role = "form" })){
 
-    <input type="submit" value="Verificar numero cedula" />
+                    @Html.Label("Ingrese su número de cédula: ", new { @class = "col-sm-4 control-label" });
+
+                    <div class="col-sm-8">
+                        @Html.TextBox(  "strNumCedula",
+                                        "",
+                                        new{id = "strNumCedula",
+                                            @class = "form-control",
+                                            @style = "font-weight: bold;",
+                                            @placehorder = "número de cédula sin guion",
+                                            @maxlength = "10"
+                                        })
+                    </div>
+
+                    <hr class="inner-separator">
+
+                    <input type="submit" class="btn btn-primary right-col" value="Verificar número de cédula" />
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @*  JAVASCRIPT DE GESTION DE CUENTAS DE CORREO  *@
+    <script src="~/Content/js/ActualizarCorreo/validarCedula.js"> </script>
 }
-
-
 

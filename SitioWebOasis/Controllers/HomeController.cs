@@ -30,8 +30,7 @@ namespace SitioWebOasis.Controllers
             //        return RedirectToAction("Index", "Docentes");
             //    }
             //}
-            //return RedirectToAction("Index", "Error");
-
+            
             return RedirectToAction("Index", "ActualizarCuentaCorreo");
         }
 
@@ -180,7 +179,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "171931201-7";
                 //  numIdentificacion = "060077660-3";
 
-                numIdentificacion = "060337846-4";
+                //  numIdentificacion = "060127252-9"; // <-- no imprime acta 
             }
             catch (Exception ex)
             {

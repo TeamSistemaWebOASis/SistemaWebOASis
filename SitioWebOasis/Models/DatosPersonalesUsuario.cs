@@ -15,6 +15,7 @@ namespace SitioWebOasis.Models
         public string per_numCedula { get; set; }
         public string per_id = string.Empty;
         public bool existePersona = false;
+        public bool esUsuarioOASis = false;
 
         public Catalogos catalogo;
         public Persona dtaEstudiante;
@@ -36,6 +37,7 @@ namespace SitioWebOasis.Models
         {
             this.per_numCedula = strNumCedula;
             this._cargarDatosPersonalesUsuario();
+            this.esUsuarioOASis = this._esUsuarioOASis();
         }
 
 
@@ -207,8 +209,7 @@ namespace SitioWebOasis.Models
             bool ban = false;
 
             //  Verifico si el usuario tiene perfil en el sistema academico OASis
-            if( this._esUsuarioOASis())
-            {
+            if(this.esUsuarioOASis){
                 //  Actualizo información información de cta de correo en la BD del sistema académico  
                 this._updCorreoOASis(strCtaCorreo);
 
@@ -339,8 +340,8 @@ namespace SitioWebOasis.Models
         {
             bool ban = false;
 
-            try
-            {
+            try{
+                //  dtaEstudiante.per_email = strCtaCorreo;
                 dtaEstudiante.per_email = "miguelduquev@gmail.com";
                 ban = this._registrarDatosPersonalesEstudiante();
             }

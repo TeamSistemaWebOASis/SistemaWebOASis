@@ -25,14 +25,18 @@ namespace SitioWebOasis.Controllers
         }
 
         [HttpPost]
-        public ActionResult UpdCtaCorreo( string strNumCedula, string ctaMailAcceso)
+        public JsonResult UpdCtaCorreo( string strNumCedula, string ctaMailAcceso)
         {
             Models.DatosPersonalesUsuario dpu = new Models.DatosPersonalesUsuario(strNumCedula);
 
             //  Actualizo cta de correo 
-            dpu.updCtaCorreoSistemaAcademico(ctaMailAcceso);
+            //  bool rstUpdCtaCorreo  = dpu.updCtaCorreoSistemaAcademico(ctaMailAcceso);
 
-            return View("Index");
+            bool rstUpdCtaCorreo = false;
+            string msmResultado = (rstUpdCtaCorreo) ?""
+                                                    :"Favor volver a intentarlo, si el problema persiste consulte en la secretaria de carrera";
+
+            return Json(new { ban = rstUpdCtaCorreo, mensaje = msmResultado });
         }
 
     }

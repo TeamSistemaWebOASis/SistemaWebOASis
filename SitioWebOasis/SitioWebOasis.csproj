@@ -382,6 +382,7 @@
     <Content Include="Content\img\user-avatar_masculino.png" />
     <Content Include="Content\img\user1.png" />
     <Content Include="Content\img\userDefault.png" />
+    <Content Include="Content\js\ActualizarCorreo\validarCedula.js" />
     <Content Include="Content\js\bootstrap-multiselect\bootstrap-multiselect.js" />
     <Content Include="Content\js\bootstrap-slider\jssor.slider-22.0.15.mini.js" />
     <Content Include="Content\js\bootstrap-tour\bootstrap-tour.custom.js" />

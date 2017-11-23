@@ -92,7 +92,6 @@
                     //  Obtengo el identificador de la siguiente registro de notas a gestionar
                     var idNextRow = getIdNextRow(id);
                     $('#grdEvAcumulativa').jqGrid('setSelection', idNextRow, true);
-                    //  $("#" + idNextRow + "_" + parcialActivo).focus().select();
                     $("#" + idNextRow + "_" + parcialActivo).select();
                 }
             });
