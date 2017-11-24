@@ -30,9 +30,7 @@ namespace SitioWebOasis.Controllers
             Models.DatosPersonalesUsuario dpu = new Models.DatosPersonalesUsuario(strNumCedula);
 
             //  Actualizo cta de correo 
-            //  bool rstUpdCtaCorreo  = dpu.updCtaCorreoSistemaAcademico(ctaMailAcceso);
-
-            bool rstUpdCtaCorreo = false;
+            bool rstUpdCtaCorreo  = dpu.updCtaCorreoSistemaAcademico(ctaMailAcceso);
             string msmResultado = (rstUpdCtaCorreo) ?""
                                                     :"Favor volver a intentarlo, si el problema persiste consulte en la secretaria de carrera";
 

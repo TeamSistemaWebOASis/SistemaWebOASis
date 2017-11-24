@@ -16,21 +16,22 @@ namespace SitioWebOasis.Controllers
     {
         public RedirectToRouteResult Index()
         {
-            //if (this._existeRolUsuario())
-            //{
-            //    //  Interfaz para Estudiante 
-            //    if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
-            //    {
-            //        return RedirectToAction("Index", "Estudiantes");
-            //    }
+            if (this._existeRolUsuario())
+            {
+                //  Interfaz para Estudiante 
+                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
+                {
+                    return RedirectToAction("Index", "Estudiantes");
+                }
 
-            //    //  Interfaz para Docente
-            //    if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
-            //    {
-            //        return RedirectToAction("Index", "Docentes");
-            //    }
-            //}
-            
+                //  Interfaz para Docente
+                if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
+                {
+                    return RedirectToAction("Index", "Docentes");
+                }
+            }
+
+            ////return RedirectToAction("Index", "Error");
             return RedirectToAction("Index", "ActualizarCuentaCorreo");
         }
 
@@ -180,6 +181,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060077660-3";
 
                 //  numIdentificacion = "060127252-9"; // <-- no imprime acta 
+                //  numIdentificacion = "060315260-4"; // Myriam Sampedro
             }
             catch (Exception ex)
             {

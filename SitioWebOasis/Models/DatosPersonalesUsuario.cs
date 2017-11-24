@@ -341,8 +341,7 @@ namespace SitioWebOasis.Models
             bool ban = false;
 
             try{
-                //  dtaEstudiante.per_email = strCtaCorreo;
-                dtaEstudiante.per_email = "miguelduquev@gmail.com";
+                dtaEstudiante.per_email = strCtaCorreo;
                 ban = this._registrarDatosPersonalesEstudiante();
             }
             catch(Exception ex)

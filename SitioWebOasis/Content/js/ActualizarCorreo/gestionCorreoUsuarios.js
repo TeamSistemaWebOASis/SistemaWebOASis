@@ -35,7 +35,8 @@
                                     })
                                 } else {
                                     $('#msmUpdCtaCorreo').removeAttr("hidden");
-                                    $('#msmUpdCtaCorreo').html("<a href='' class='close'>×</a><strong>" + data.mensaje + "</strong>");
+                                    $('#msmUpdCtaCorreo').attr("class", "alert alert-danger alert-dismissable");
+                                    $('#msmUpdCtaCorreo').html("<a href='#' class='close'>×</a><strong>" + data.mensaje + "</strong>");
                                 }
                             }
                         });
