@@ -126,7 +126,7 @@ namespace SitioWebOasis.Models
                                                                                                 item["strCodNivel"].ToString(), 
                                                                                                 item["strCodParalelo"].ToString());
 
-                        rst += "<tr id=" + item["strCodMateria"].ToString() + "_" + item["strCodNivel"].ToString() + "_" + item["strCodParalelo"].ToString() + " role='row' class='" + color + "'>";
+                        rst += "<tr id=" + item["strCodMateria"].ToString().Trim() + "_" + item["strCodNivel"].ToString() + "_" + item["strCodParalelo"].ToString() + " role='row' class='" + color + "'>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + posicion + "</td>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/" + item["strCodParalelo"].ToString() + "'>" + item["strNombreMateria"].ToString() + "</a></td>";
                         rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";

@@ -1,10 +1,11 @@
 ﻿$(document).ready(function () {
 
     $('#btnUpdCtaCorreo').on('click', function (event) {
+        showLoadingProcess();
         $.confirm({
             theme: 'bootstrap',
             title: 'Actualizar cuenta de correo',
-            content: 'Compañero usuario la cuenta de correo ' + $('#ctaMailAcceso').val() + ' sera actualizada en el sistema académico la cual le va permitir acceder a los servicios que este sistema ofrece',
+            content: 'Compañero usuario la cuenta de correo "' + $('#ctaMailRegistrada').val() + '" sera actualizada por "' + $('#ctaMailAcceso').val() + '" en el sistema académico, este cambio le va permitir acceder a los servicios que este sistema ofrece',
             buttons: {
                 formSubmit: {
                     text: 'Acepto',
@@ -52,5 +53,13 @@
             }
         });
     })
+
+    function showLoadingProcess() {
+        HoldOn.open({
+            theme: 'sk-dot',
+            message: "<h4>PROCESANDO INFORMACION ...</h4>"
+        });
+    }
+
 
 })

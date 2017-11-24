@@ -31,7 +31,6 @@ namespace SitioWebOasis.Controllers
                 }
             }
 
-            ////return RedirectToAction("Index", "Error");
             return RedirectToAction("Index", "ActualizarCuentaCorreo");
         }
 

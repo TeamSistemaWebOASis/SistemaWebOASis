@@ -13,7 +13,7 @@ namespace SitioWebOasis
                                                                     "~/Content/css/font-awesome.min.css",
                                                                     "~/Content/css/main.css",
                                                                     "~/Content/css/ui.jqgrid-bootstrap.css",
-                                                                    "~/Content/css/ui.jqgrid-bootstrap.css",
+                                                                    "~/Content/css/HoldOn.min.css",
                                                                     "~/Content/css/jquery-confirm/jquery-confirm.min.css"));
 
             //  ARCHIVOS JavaScript("ScriptBundle")

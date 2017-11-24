@@ -110,7 +110,6 @@ namespace SitioWebOasis.Library
             }
             catch(Exception ex){
                 evaluacionActiva = "NA";
-
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaParametro");
             }

@@ -32,7 +32,7 @@
 
         function showLoadingProcess() {
             HoldOn.open({
-                theme: 'sk-dot',
+                theme: 'sk-bounce',
                 message: "<h4>GENERANDO ARCHIVO ...</h4>"
             });
         }
