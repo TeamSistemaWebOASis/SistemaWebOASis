@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstPeriodoNivel.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstPeriodoNivel.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstPeriodoNivel.xsd" id="dtstPeriodoNivel" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstPeriodoNivel">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Periodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaInic" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaFin" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="blnVigente" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Niveles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstPeriodoNivelKey1">
+      <xs:selector xpath=".//mstns:Periodos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstPeriodoNivelKey2">
+      <xs:selector xpath=".//mstns:Niveles" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="PeriodosNiveles" refer="mstns:dtstPeriodoNivelKey1">
+      <xs:selector xpath=".//mstns:Niveles" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

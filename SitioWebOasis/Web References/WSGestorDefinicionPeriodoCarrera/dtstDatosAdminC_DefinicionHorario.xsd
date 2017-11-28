@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" id="dtstDatosAdminC_DefinicionHorario" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_DefinicionHorario">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Cursos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strAula" type="xs:string" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dictado_Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreMateria" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Horarios_Clases">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodParalelo" type="xs:string" />
+              <xs:element name="strCodPeriodo" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strCodDia" type="xs:string" />
+              <xs:element name="strCodHora" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Horarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodDia" type="xs:string" />
+              <xs:element name="strCodHora" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Horas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="dtHoraInic" type="xs:dateTime" />
+              <xs:element name="dtHoraFin" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionHorarioKey1">
+      <xs:selector xpath=".//mstns:Cursos" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionHorarioKey2">
+      <xs:selector xpath=".//mstns:Dictado_Materias" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionHorarioKey3">
+      <xs:selector xpath=".//mstns:Horarios_Clases" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodMateria" />
+      <xs:field xpath="mstns:strCodDia" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionHorarioKey4">
+      <xs:selector xpath=".//mstns:Horarios" />
+      <xs:field xpath="mstns:strCodDia" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionHorarioKey5">
+      <xs:selector xpath=".//mstns:Dias" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionHorarioKey6">
+      <xs:selector xpath=".//mstns:Horas" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="HorasHorarios" refer="mstns:dtstDatosAdminC_DefinicionHorarioKey6">
+      <xs:selector xpath=".//mstns:Horarios" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:keyref>
+    <xs:keyref name="DiasHorarios" refer="mstns:dtstDatosAdminC_DefinicionHorarioKey5">
+      <xs:selector xpath=".//mstns:Horarios" />
+      <xs:field xpath="mstns:strCodDia" />
+    </xs:keyref>
+    <xs:keyref name="HorariosHorarios_Clases" refer="mstns:dtstDatosAdminC_DefinicionHorarioKey4">
+      <xs:selector xpath=".//mstns:Horarios_Clases" />
+      <xs:field xpath="mstns:strCodDia" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:keyref>
+    <xs:keyref name="Dictado_MateriasHorarios_Clases" refer="mstns:dtstDatosAdminC_DefinicionHorarioKey2">
+      <xs:selector xpath=".//mstns:Horarios_Clases" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:keyref>
+    <xs:keyref name="CursosDictado_Materias" refer="mstns:dtstDatosAdminC_DefinicionHorarioKey1">
+      <xs:selector xpath=".//mstns:Dictado_Materias" />
+      <xs:field xpath="mstns:strCodParalelo" />
+      <xs:field xpath="mstns:strCodPeriodo" />
+      <xs:field xpath="mstns:strCodNivel" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

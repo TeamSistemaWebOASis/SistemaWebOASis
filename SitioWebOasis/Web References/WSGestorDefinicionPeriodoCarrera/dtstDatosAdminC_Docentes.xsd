@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" id="dtstDatosAdminC_Docentes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_Docentes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strCedula" type="xs:string" />
+              <xs:element name="strNombres" type="xs:string" />
+              <xs:element name="strApellidos" type="xs:string" />
+              <xs:element minOccurs="0" name="strClave" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaMil" type="xs:string" />
+              <xs:element minOccurs="0" name="strCarnetSeg" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaNac" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaIng" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strDir" type="xs:string" />
+              <xs:element minOccurs="0" name="strTel" type="xs:string" />
+              <xs:element minOccurs="0" name="strEmail" type="xs:string" />
+              <xs:element minOccurs="0" name="strWww" type="xs:string" />
+              <xs:element minOccurs="0" name="imgFoto" type="xs:base64Binary" />
+              <xs:element minOccurs="0" name="dtFechaUltSal" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaUltIng" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strTitulos" type="xs:string" />
+              <xs:element minOccurs="0" name="strCargos" type="xs:string" />
+              <xs:element name="strLugarNac" type="xs:string" />
+              <xs:element name="strNacionalidad" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoTit" type="xs:string" />
+              <xs:element name="strCodSexo" type="xs:string" />
+              <xs:element name="strCodEstado" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoSan" type="xs:string" />
+              <xs:element name="strCodTipoDoc" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodEstCiv" type="xs:string" />
+              <xs:element name="strCodDed" type="xs:string" />
+              <xs:element name="strCodCateg" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Titulos_Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Sexos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estados_Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Sangre">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Estados_Civiles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Categorias_Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Dedicaciones_Docentes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey3">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey1">
+      <xs:selector xpath=".//mstns:Tipos_de_Titulos_Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey2">
+      <xs:selector xpath=".//mstns:Sexos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey7">
+      <xs:selector xpath=".//mstns:Estados_Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey8">
+      <xs:selector xpath=".//mstns:Tipos_de_Sangre" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey9">
+      <xs:selector xpath=".//mstns:Tipos_de_Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey10">
+      <xs:selector xpath=".//mstns:Estados_Civiles" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey11">
+      <xs:selector xpath=".//mstns:Categorias_Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_DefinicionPeriodoKey12">
+      <xs:selector xpath=".//mstns:Dedicaciones_Docentes" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="Dedicaciones_DocentesDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey12">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodDed" />
+    </xs:keyref>
+    <xs:keyref name="Categorias_DocentesDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey11">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodCateg" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_DocentesDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey9">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodTipoDoc" />
+    </xs:keyref>
+    <xs:keyref name="Estados_CivilesDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey10">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodEstCiv" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_SangreDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey8">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodTipoSan" />
+    </xs:keyref>
+    <xs:keyref name="Estados_DocentesDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey7">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodEstado" />
+    </xs:keyref>
+    <xs:keyref name="SexosDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey2">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodSexo" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_Titulos_DocentesDocentes" refer="mstns:dtstDatosAdminC_DefinicionPeriodoKey1">
+      <xs:selector xpath=".//mstns:Docentes" />
+      <xs:field xpath="mstns:strCodTipoTit" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

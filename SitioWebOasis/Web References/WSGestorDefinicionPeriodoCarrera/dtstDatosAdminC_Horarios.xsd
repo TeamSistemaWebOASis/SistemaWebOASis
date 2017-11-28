@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" id="dtstDatosAdminC_Horarios" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_Horarios">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Dias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Horas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="dtHoraInic" type="xs:dateTime" />
+              <xs:element name="dtHoraFin" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Horarios">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodDia" type="xs:string" />
+              <xs:element name="strCodHora" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcion" type="xs:string" />
+              <xs:element minOccurs="0" name="dtHoraInic" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtHoraFin" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_HorariosKey1">
+      <xs:selector xpath=".//mstns:Dias" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_HorariosKey2">
+      <xs:selector xpath=".//mstns:Horas" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_HorariosKey3">
+      <xs:selector xpath=".//mstns:Horarios" />
+      <xs:field xpath="mstns:strCodDia" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:unique>
+    <xs:keyref name="DiasHorarios" refer="mstns:dtstDatosAdminC_HorariosKey1">
+      <xs:selector xpath=".//mstns:Horarios" />
+      <xs:field xpath="mstns:strCodDia" />
+    </xs:keyref>
+    <xs:keyref name="HorasHorarios" refer="mstns:dtstDatosAdminC_HorariosKey2">
+      <xs:selector xpath=".//mstns:Horarios" />
+      <xs:field xpath="mstns:strCodHora" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1976 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_HorariosExamenes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstcarreras.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstCuposDictadoMaterias.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_SeleccionarDocente.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_DocentesInstitucion.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_Cursos.xsd" />
+      <s:import namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_PeriodosEvaluados.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_Parametros.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
+      <s:import namespace="http://tempuri.org/dtstPeriodoNivel.xsd" />
+      <s:import namespace="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DocentesInstitucion" namespace="http://tempuri.org/dtstDatosAdminC_DocentesInstitucion.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_HorariosExamenes" namespace="http://tempuri.org/dtstDatosAdminC_HorariosExamenes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Cursos" namespace="http://tempuri.org/dtstDatosAdminC_Cursos.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstcarreras" namespace="http://www.tempuri.org/dtstcarreras.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DefinicionHorario" namespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_ParametrosCarrera" namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_PeriodosEvaluados" namespace="http://tempuri.org/dtstDatosAdminC_PeriodosEvaluados.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_SeleccionarDocente" namespace="http://tempuri.org/dtstDatosAdminC_SeleccionarDocente.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstPeriodoNivel" namespace="http://tempuri.org/dtstPeriodoNivel.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Docentes" namespace="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_CargaAcademica" namespace="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DictadoMaterias" namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_ReporteHorariosExamenes" namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Periodos" namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstCuposDictadoMaterias" namespace="http://www.tempuri.org/dtstCuposDictadoMaterias.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Horarios" namespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Parametros" namespace="http://tempuri.org/dtstDatosAdminC_Parametros.xsd" />
+      <s:element name="getHorarios">
+        <s:complexType />
+      </s:element>
+      <s:element name="getHorariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHorariosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setHorarios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setHorariosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setHorariosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHorariosExamenes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHorariosExamenesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHorariosExamenesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_HorariosExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setHorariosExamenes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_HorariosExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setHorariosExamenesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setHorariosExamenesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReporteHorariosExamenes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReporteHorariosExamenesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getReporteHorariosExamenesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReporteHorariosExamenesCurso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReporteHorariosExamenesCursoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getReporteHorariosExamenesCursoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReporteHorarioExamenesDocente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCedDocente" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReporteHorarioExamenesDocenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getReporteHorarioExamenesDocenteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocentes">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDocentesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDocentesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetcarrerasSin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="basededatos" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetcarrerasSinResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetcarrerasSinResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstcarreras.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarCuposDictadoMaterias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codperiodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codnivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codparalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codmateria" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="cupos" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="codcareras" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insertarCuposDictadoMateriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="insertarCuposDictadoMateriasResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCuposDictadoMaterias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="codperiodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codnivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codparalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="codmateria" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCuposDictadoMateriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCuposDictadoMateriasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstCuposDictadoMaterias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocentesConCargaHoraria">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocentesConCargaHorariaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDocentesConCargaHorariaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_SeleccionarDocente.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDocentesInstitucion">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDocentesInstitucionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDocentesInstitucionResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_DocentesInstitucion.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDocentes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDocentesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setDocentesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setCursos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Cursos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setCursosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setCursosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCursosPeriodoVigente">
+        <s:complexType />
+      </s:element>
+      <s:element name="getCursosPeriodoVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCursosPeriodoVigenteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Cursos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDictadoMateriasPeriodoVigente">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDictadoMateriasPeriodoVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDictadoMateriasPeriodoVigenteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDictadoMateriasPeriodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDictadoMateriasPeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDictadoMateriasPeriodoResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDictadoMaterias">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDictadoMateriasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setDictadoMateriasResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getHorarioClasesPeriodoVigente">
+        <s:complexType />
+      </s:element>
+      <s:element name="getHorarioClasesPeriodoVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getHorarioClasesPeriodoVigenteResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setHorarioClases">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setHorarioClasesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setHorarioClasesResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeBorrarCurso">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeBorrarCursoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PuedeBorrarCursoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPeriodosDisponibles">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPeriodosDisponiblesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPeriodosDisponiblesResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPeriodosCarrera">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPeriodosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPeriodosCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSeleccionarPeriodos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strOpcion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getSeleccionarPeriodosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getSeleccionarPeriodosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_PeriodosEvaluados.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPeriodoVigente">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPeriodoVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPeriodoVigenteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getPeriodoAnterior">
+        <s:complexType />
+      </s:element>
+      <s:element name="getPeriodoAnteriorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getPeriodoAnteriorResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ExistePensumVigente">
+        <s:complexType />
+      </s:element>
+      <s:element name="ExistePensumVigenteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ExistePensumVigenteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeBorrarPeriodo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodigo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PuedeBorrarPeriodoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PuedeBorrarPeriodoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPeriodosCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setPeriodosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setPeriodosCarreraResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatos">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Parametros.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getParametrosCarrera">
+        <s:complexType />
+      </s:element>
+      <s:element name="getParametrosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParametrosCarreraResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_Parametros.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setDatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setDatosResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setParametrosCarrera">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ds">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="setParametrosCarreraResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="setParametrosCarreraResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCodigoUltimoEstudiante">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCodigoUltimoEstudianteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetCodigoUltimoEstudianteResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCodigoUltimoEstudiante">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Codigo" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetCodigoUltimoEstudianteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetCodigoReglamento">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCodigoReglamentoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCodigoReglamentoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPeriodosNivelesMat">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetPeriodosNivelesMatResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPeriodosNivelesMatResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstPeriodoNivel.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCargaAcademica">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCargaAcademicaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCargaAcademicaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="get_fBaseDatos">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fBaseDatosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_fBaseDatosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fBaseDatos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fBaseDatosResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fUbicacion">
+        <s:complexType />
+      </s:element>
+      <s:element name="get_fUbicacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="get_fUbicacionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fUbicacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="value" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="set_fUbicacionResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getHorariosSoapIn">
+    <wsdl:part name="parameters" element="tns:getHorarios" />
+  </wsdl:message>
+  <wsdl:message name="getHorariosSoapOut">
+    <wsdl:part name="parameters" element="tns:getHorariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="setHorariosSoapIn">
+    <wsdl:part name="parameters" element="tns:setHorarios" />
+  </wsdl:message>
+  <wsdl:message name="setHorariosSoapOut">
+    <wsdl:part name="parameters" element="tns:setHorariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHorariosExamenesSoapIn">
+    <wsdl:part name="parameters" element="tns:getHorariosExamenes" />
+  </wsdl:message>
+  <wsdl:message name="getHorariosExamenesSoapOut">
+    <wsdl:part name="parameters" element="tns:getHorariosExamenesResponse" />
+  </wsdl:message>
+  <wsdl:message name="setHorariosExamenesSoapIn">
+    <wsdl:part name="parameters" element="tns:setHorariosExamenes" />
+  </wsdl:message>
+  <wsdl:message name="setHorariosExamenesSoapOut">
+    <wsdl:part name="parameters" element="tns:setHorariosExamenesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReporteHorariosExamenesSoapIn">
+    <wsdl:part name="parameters" element="tns:getReporteHorariosExamenes" />
+  </wsdl:message>
+  <wsdl:message name="getReporteHorariosExamenesSoapOut">
+    <wsdl:part name="parameters" element="tns:getReporteHorariosExamenesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReporteHorariosExamenesCursoSoapIn">
+    <wsdl:part name="parameters" element="tns:getReporteHorariosExamenesCurso" />
+  </wsdl:message>
+  <wsdl:message name="getReporteHorariosExamenesCursoSoapOut">
+    <wsdl:part name="parameters" element="tns:getReporteHorariosExamenesCursoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReporteHorarioExamenesDocenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getReporteHorarioExamenesDocente" />
+  </wsdl:message>
+  <wsdl:message name="getReporteHorarioExamenesDocenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getReporteHorarioExamenesDocenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocentesSoapIn">
+    <wsdl:part name="parameters" element="tns:getDocentes" />
+  </wsdl:message>
+  <wsdl:message name="getDocentesSoapOut">
+    <wsdl:part name="parameters" element="tns:getDocentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetcarrerasSinSoapIn">
+    <wsdl:part name="parameters" element="tns:GetcarrerasSin" />
+  </wsdl:message>
+  <wsdl:message name="GetcarrerasSinSoapOut">
+    <wsdl:part name="parameters" element="tns:GetcarrerasSinResponse" />
+  </wsdl:message>
+  <wsdl:message name="insertarCuposDictadoMateriasSoapIn">
+    <wsdl:part name="parameters" element="tns:insertarCuposDictadoMaterias" />
+  </wsdl:message>
+  <wsdl:message name="insertarCuposDictadoMateriasSoapOut">
+    <wsdl:part name="parameters" element="tns:insertarCuposDictadoMateriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCuposDictadoMateriasSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCuposDictadoMaterias" />
+  </wsdl:message>
+  <wsdl:message name="GetCuposDictadoMateriasSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCuposDictadoMateriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocentesConCargaHorariaSoapIn">
+    <wsdl:part name="parameters" element="tns:getDocentesConCargaHoraria" />
+  </wsdl:message>
+  <wsdl:message name="getDocentesConCargaHorariaSoapOut">
+    <wsdl:part name="parameters" element="tns:getDocentesConCargaHorariaResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDocentesInstitucionSoapIn">
+    <wsdl:part name="parameters" element="tns:getDocentesInstitucion" />
+  </wsdl:message>
+  <wsdl:message name="getDocentesInstitucionSoapOut">
+    <wsdl:part name="parameters" element="tns:getDocentesInstitucionResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDocentesSoapIn">
+    <wsdl:part name="parameters" element="tns:setDocentes" />
+  </wsdl:message>
+  <wsdl:message name="setDocentesSoapOut">
+    <wsdl:part name="parameters" element="tns:setDocentesResponse" />
+  </wsdl:message>
+  <wsdl:message name="setCursosSoapIn">
+    <wsdl:part name="parameters" element="tns:setCursos" />
+  </wsdl:message>
+  <wsdl:message name="setCursosSoapOut">
+    <wsdl:part name="parameters" element="tns:setCursosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCursosPeriodoVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getCursosPeriodoVigente" />
+  </wsdl:message>
+  <wsdl:message name="getCursosPeriodoVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getCursosPeriodoVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDictadoMateriasPeriodoVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getDictadoMateriasPeriodoVigente" />
+  </wsdl:message>
+  <wsdl:message name="getDictadoMateriasPeriodoVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getDictadoMateriasPeriodoVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDictadoMateriasPeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:getDictadoMateriasPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="getDictadoMateriasPeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:getDictadoMateriasPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDictadoMateriasSoapIn">
+    <wsdl:part name="parameters" element="tns:setDictadoMaterias" />
+  </wsdl:message>
+  <wsdl:message name="setDictadoMateriasSoapOut">
+    <wsdl:part name="parameters" element="tns:setDictadoMateriasResponse" />
+  </wsdl:message>
+  <wsdl:message name="getHorarioClasesPeriodoVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getHorarioClasesPeriodoVigente" />
+  </wsdl:message>
+  <wsdl:message name="getHorarioClasesPeriodoVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getHorarioClasesPeriodoVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="setHorarioClasesSoapIn">
+    <wsdl:part name="parameters" element="tns:setHorarioClases" />
+  </wsdl:message>
+  <wsdl:message name="setHorarioClasesSoapOut">
+    <wsdl:part name="parameters" element="tns:setHorarioClasesResponse" />
+  </wsdl:message>
+  <wsdl:message name="PuedeBorrarCursoSoapIn">
+    <wsdl:part name="parameters" element="tns:PuedeBorrarCurso" />
+  </wsdl:message>
+  <wsdl:message name="PuedeBorrarCursoSoapOut">
+    <wsdl:part name="parameters" element="tns:PuedeBorrarCursoResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodosDisponiblesSoapIn">
+    <wsdl:part name="parameters" element="tns:getPeriodosDisponibles" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodosDisponiblesSoapOut">
+    <wsdl:part name="parameters" element="tns:getPeriodosDisponiblesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:getPeriodosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:getPeriodosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="getSeleccionarPeriodosSoapIn">
+    <wsdl:part name="parameters" element="tns:getSeleccionarPeriodos" />
+  </wsdl:message>
+  <wsdl:message name="getSeleccionarPeriodosSoapOut">
+    <wsdl:part name="parameters" element="tns:getSeleccionarPeriodosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodoVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:getPeriodoVigente" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodoVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:getPeriodoVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodoAnteriorSoapIn">
+    <wsdl:part name="parameters" element="tns:getPeriodoAnterior" />
+  </wsdl:message>
+  <wsdl:message name="getPeriodoAnteriorSoapOut">
+    <wsdl:part name="parameters" element="tns:getPeriodoAnteriorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ExistePensumVigenteSoapIn">
+    <wsdl:part name="parameters" element="tns:ExistePensumVigente" />
+  </wsdl:message>
+  <wsdl:message name="ExistePensumVigenteSoapOut">
+    <wsdl:part name="parameters" element="tns:ExistePensumVigenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="PuedeBorrarPeriodoSoapIn">
+    <wsdl:part name="parameters" element="tns:PuedeBorrarPeriodo" />
+  </wsdl:message>
+  <wsdl:message name="PuedeBorrarPeriodoSoapOut">
+    <wsdl:part name="parameters" element="tns:PuedeBorrarPeriodoResponse" />
+  </wsdl:message>
+  <wsdl:message name="setPeriodosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:setPeriodosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="setPeriodosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:setPeriodosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="getDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatos" />
+  </wsdl:message>
+  <wsdl:message name="getDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="getParametrosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:getParametrosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="getParametrosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:getParametrosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="setDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:setDatos" />
+  </wsdl:message>
+  <wsdl:message name="setDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:setDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="setParametrosCarreraSoapIn">
+    <wsdl:part name="parameters" element="tns:setParametrosCarrera" />
+  </wsdl:message>
+  <wsdl:message name="setParametrosCarreraSoapOut">
+    <wsdl:part name="parameters" element="tns:setParametrosCarreraResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCodigoUltimoEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCodigoUltimoEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="GetCodigoUltimoEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCodigoUltimoEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetCodigoUltimoEstudianteSoapIn">
+    <wsdl:part name="parameters" element="tns:SetCodigoUltimoEstudiante" />
+  </wsdl:message>
+  <wsdl:message name="SetCodigoUltimoEstudianteSoapOut">
+    <wsdl:part name="parameters" element="tns:SetCodigoUltimoEstudianteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCodigoReglamentoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCodigoReglamento" />
+  </wsdl:message>
+  <wsdl:message name="GetCodigoReglamentoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCodigoReglamentoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodosNivelesMatSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPeriodosNivelesMat" />
+  </wsdl:message>
+  <wsdl:message name="GetPeriodosNivelesMatSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPeriodosNivelesMatResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCargaAcademicaSoapIn">
+    <wsdl:part name="parameters" element="tns:getCargaAcademica" />
+  </wsdl:message>
+  <wsdl:message name="getCargaAcademicaSoapOut">
+    <wsdl:part name="parameters" element="tns:getCargaAcademicaResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_fBaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:get_fBaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="get_fBaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:get_fBaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_fBaseDatosSoapIn">
+    <wsdl:part name="parameters" element="tns:set_fBaseDatos" />
+  </wsdl:message>
+  <wsdl:message name="set_fBaseDatosSoapOut">
+    <wsdl:part name="parameters" element="tns:set_fBaseDatosResponse" />
+  </wsdl:message>
+  <wsdl:message name="get_fUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:get_fUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="get_fUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:get_fUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="set_fUbicacionSoapIn">
+    <wsdl:part name="parameters" element="tns:set_fUbicacion" />
+  </wsdl:message>
+  <wsdl:message name="set_fUbicacionSoapOut">
+    <wsdl:part name="parameters" element="tns:set_fUbicacionResponse" />
+  </wsdl:message>
+  <wsdl:portType name="GestorDefinicionPeriodoSoap">
+    <wsdl:operation name="getHorarios">
+      <wsdl:input message="tns:getHorariosSoapIn" />
+      <wsdl:output message="tns:getHorariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setHorarios">
+      <wsdl:input message="tns:setHorariosSoapIn" />
+      <wsdl:output message="tns:setHorariosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getHorariosExamenes">
+      <wsdl:input message="tns:getHorariosExamenesSoapIn" />
+      <wsdl:output message="tns:getHorariosExamenesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setHorariosExamenes">
+      <wsdl:input message="tns:setHorariosExamenesSoapIn" />
+      <wsdl:output message="tns:setHorariosExamenesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorariosExamenes">
+      <wsdl:input message="tns:getReporteHorariosExamenesSoapIn" />
+      <wsdl:output message="tns:getReporteHorariosExamenesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorariosExamenesCurso">
+      <wsdl:input message="tns:getReporteHorariosExamenesCursoSoapIn" />
+      <wsdl:output message="tns:getReporteHorariosExamenesCursoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorarioExamenesDocente">
+      <wsdl:input message="tns:getReporteHorarioExamenesDocenteSoapIn" />
+      <wsdl:output message="tns:getReporteHorarioExamenesDocenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocentes">
+      <wsdl:input message="tns:getDocentesSoapIn" />
+      <wsdl:output message="tns:getDocentesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetcarrerasSin">
+      <wsdl:input message="tns:GetcarrerasSinSoapIn" />
+      <wsdl:output message="tns:GetcarrerasSinSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insertarCuposDictadoMaterias">
+      <wsdl:input message="tns:insertarCuposDictadoMateriasSoapIn" />
+      <wsdl:output message="tns:insertarCuposDictadoMateriasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCuposDictadoMaterias">
+      <wsdl:input message="tns:GetCuposDictadoMateriasSoapIn" />
+      <wsdl:output message="tns:GetCuposDictadoMateriasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocentesConCargaHoraria">
+      <wsdl:input message="tns:getDocentesConCargaHorariaSoapIn" />
+      <wsdl:output message="tns:getDocentesConCargaHorariaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDocentesInstitucion">
+      <wsdl:input message="tns:getDocentesInstitucionSoapIn" />
+      <wsdl:output message="tns:getDocentesInstitucionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDocentes">
+      <wsdl:input message="tns:setDocentesSoapIn" />
+      <wsdl:output message="tns:setDocentesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setCursos">
+      <wsdl:input message="tns:setCursosSoapIn" />
+      <wsdl:output message="tns:setCursosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCursosPeriodoVigente">
+      <wsdl:input message="tns:getCursosPeriodoVigenteSoapIn" />
+      <wsdl:output message="tns:getCursosPeriodoVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDictadoMateriasPeriodoVigente">
+      <wsdl:input message="tns:getDictadoMateriasPeriodoVigenteSoapIn" />
+      <wsdl:output message="tns:getDictadoMateriasPeriodoVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDictadoMateriasPeriodo">
+      <wsdl:input message="tns:getDictadoMateriasPeriodoSoapIn" />
+      <wsdl:output message="tns:getDictadoMateriasPeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDictadoMaterias">
+      <wsdl:input message="tns:setDictadoMateriasSoapIn" />
+      <wsdl:output message="tns:setDictadoMateriasSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getHorarioClasesPeriodoVigente">
+      <wsdl:input message="tns:getHorarioClasesPeriodoVigenteSoapIn" />
+      <wsdl:output message="tns:getHorarioClasesPeriodoVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setHorarioClases">
+      <wsdl:input message="tns:setHorarioClasesSoapIn" />
+      <wsdl:output message="tns:setHorarioClasesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PuedeBorrarCurso">
+      <wsdl:input message="tns:PuedeBorrarCursoSoapIn" />
+      <wsdl:output message="tns:PuedeBorrarCursoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodosDisponibles">
+      <wsdl:input message="tns:getPeriodosDisponiblesSoapIn" />
+      <wsdl:output message="tns:getPeriodosDisponiblesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodosCarrera">
+      <wsdl:input message="tns:getPeriodosCarreraSoapIn" />
+      <wsdl:output message="tns:getPeriodosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getSeleccionarPeriodos">
+      <wsdl:input message="tns:getSeleccionarPeriodosSoapIn" />
+      <wsdl:output message="tns:getSeleccionarPeriodosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoVigente">
+      <wsdl:input message="tns:getPeriodoVigenteSoapIn" />
+      <wsdl:output message="tns:getPeriodoVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoAnterior">
+      <wsdl:input message="tns:getPeriodoAnteriorSoapIn" />
+      <wsdl:output message="tns:getPeriodoAnteriorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ExistePensumVigente">
+      <wsdl:input message="tns:ExistePensumVigenteSoapIn" />
+      <wsdl:output message="tns:ExistePensumVigenteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PuedeBorrarPeriodo">
+      <wsdl:input message="tns:PuedeBorrarPeriodoSoapIn" />
+      <wsdl:output message="tns:PuedeBorrarPeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setPeriodosCarrera">
+      <wsdl:input message="tns:setPeriodosCarreraSoapIn" />
+      <wsdl:output message="tns:setPeriodosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatos">
+      <wsdl:input message="tns:getDatosSoapIn" />
+      <wsdl:output message="tns:getDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParametrosCarrera">
+      <wsdl:input message="tns:getParametrosCarreraSoapIn" />
+      <wsdl:output message="tns:getParametrosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setDatos">
+      <wsdl:input message="tns:setDatosSoapIn" />
+      <wsdl:output message="tns:setDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="setParametrosCarrera">
+      <wsdl:input message="tns:setParametrosCarreraSoapIn" />
+      <wsdl:output message="tns:setParametrosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodigoUltimoEstudiante">
+      <wsdl:input message="tns:GetCodigoUltimoEstudianteSoapIn" />
+      <wsdl:output message="tns:GetCodigoUltimoEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetCodigoUltimoEstudiante">
+      <wsdl:input message="tns:SetCodigoUltimoEstudianteSoapIn" />
+      <wsdl:output message="tns:SetCodigoUltimoEstudianteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCodigoReglamento">
+      <wsdl:input message="tns:GetCodigoReglamentoSoapIn" />
+      <wsdl:output message="tns:GetCodigoReglamentoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodosNivelesMat">
+      <wsdl:input message="tns:GetPeriodosNivelesMatSoapIn" />
+      <wsdl:output message="tns:GetPeriodosNivelesMatSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCargaAcademica">
+      <wsdl:input message="tns:getCargaAcademicaSoapIn" />
+      <wsdl:output message="tns:getCargaAcademicaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <wsdl:input message="tns:get_fBaseDatosSoapIn" />
+      <wsdl:output message="tns:get_fBaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <wsdl:input message="tns:set_fBaseDatosSoapIn" />
+      <wsdl:output message="tns:set_fBaseDatosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <wsdl:input message="tns:get_fUbicacionSoapIn" />
+      <wsdl:output message="tns:get_fUbicacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <wsdl:input message="tns:set_fUbicacionSoapIn" />
+      <wsdl:output message="tns:set_fUbicacionSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="GestorDefinicionPeriodoSoap" type="tns:GestorDefinicionPeriodoSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getHorarios">
+      <soap:operation soapAction="http://tempuri.org/getHorarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHorarios">
+      <soap:operation soapAction="http://tempuri.org/setHorarios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHorariosExamenes">
+      <soap:operation soapAction="http://tempuri.org/getHorariosExamenes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHorariosExamenes">
+      <soap:operation soapAction="http://tempuri.org/setHorariosExamenes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorariosExamenes">
+      <soap:operation soapAction="http://tempuri.org/getReporteHorariosExamenes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorariosExamenesCurso">
+      <soap:operation soapAction="http://tempuri.org/getReporteHorariosExamenesCurso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorarioExamenesDocente">
+      <soap:operation soapAction="http://tempuri.org/getReporteHorarioExamenesDocente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocentes">
+      <soap:operation soapAction="http://tempuri.org/getDocentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcarrerasSin">
+      <soap:operation soapAction="http://tempuri.org/GetcarrerasSin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarCuposDictadoMaterias">
+      <soap:operation soapAction="http://tempuri.org/insertarCuposDictadoMaterias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCuposDictadoMaterias">
+      <soap:operation soapAction="http://tempuri.org/GetCuposDictadoMaterias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocentesConCargaHoraria">
+      <soap:operation soapAction="http://tempuri.org/getDocentesConCargaHoraria" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocentesInstitucion">
+      <soap:operation soapAction="http://tempuri.org/getDocentesInstitucion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDocentes">
+      <soap:operation soapAction="http://tempuri.org/setDocentes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCursos">
+      <soap:operation soapAction="http://tempuri.org/setCursos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCursosPeriodoVigente">
+      <soap:operation soapAction="http://tempuri.org/getCursosPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDictadoMateriasPeriodoVigente">
+      <soap:operation soapAction="http://tempuri.org/getDictadoMateriasPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDictadoMateriasPeriodo">
+      <soap:operation soapAction="http://tempuri.org/getDictadoMateriasPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDictadoMaterias">
+      <soap:operation soapAction="http://tempuri.org/setDictadoMaterias" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHorarioClasesPeriodoVigente">
+      <soap:operation soapAction="http://tempuri.org/getHorarioClasesPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHorarioClases">
+      <soap:operation soapAction="http://tempuri.org/setHorarioClases" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeBorrarCurso">
+      <soap:operation soapAction="http://tempuri.org/PuedeBorrarCurso" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodosDisponibles">
+      <soap:operation soapAction="http://tempuri.org/getPeriodosDisponibles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodosCarrera">
+      <soap:operation soapAction="http://tempuri.org/getPeriodosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSeleccionarPeriodos">
+      <soap:operation soapAction="http://tempuri.org/getSeleccionarPeriodos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoVigente">
+      <soap:operation soapAction="http://tempuri.org/getPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoAnterior">
+      <soap:operation soapAction="http://tempuri.org/getPeriodoAnterior" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistePensumVigente">
+      <soap:operation soapAction="http://tempuri.org/ExistePensumVigente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeBorrarPeriodo">
+      <soap:operation soapAction="http://tempuri.org/PuedeBorrarPeriodo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPeriodosCarrera">
+      <soap:operation soapAction="http://tempuri.org/setPeriodosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatos">
+      <soap:operation soapAction="http://tempuri.org/getDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParametrosCarrera">
+      <soap:operation soapAction="http://tempuri.org/getParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatos">
+      <soap:operation soapAction="http://tempuri.org/setDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setParametrosCarrera">
+      <soap:operation soapAction="http://tempuri.org/setParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodigoUltimoEstudiante">
+      <soap:operation soapAction="http://tempuri.org/GetCodigoUltimoEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCodigoUltimoEstudiante">
+      <soap:operation soapAction="http://tempuri.org/SetCodigoUltimoEstudiante" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodigoReglamento">
+      <soap:operation soapAction="http://tempuri.org/GetCodigoReglamento" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodosNivelesMat">
+      <soap:operation soapAction="http://tempuri.org/GetPeriodosNivelesMat" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCargaAcademica">
+      <soap:operation soapAction="http://tempuri.org/getCargaAcademica" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <soap:operation soapAction="http://tempuri.org/get_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <soap:operation soapAction="http://tempuri.org/set_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <soap:operation soapAction="http://tempuri.org/get_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <soap:operation soapAction="http://tempuri.org/set_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="GestorDefinicionPeriodoSoap12" type="tns:GestorDefinicionPeriodoSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getHorarios">
+      <soap12:operation soapAction="http://tempuri.org/getHorarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHorarios">
+      <soap12:operation soapAction="http://tempuri.org/setHorarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHorariosExamenes">
+      <soap12:operation soapAction="http://tempuri.org/getHorariosExamenes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHorariosExamenes">
+      <soap12:operation soapAction="http://tempuri.org/setHorariosExamenes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorariosExamenes">
+      <soap12:operation soapAction="http://tempuri.org/getReporteHorariosExamenes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorariosExamenesCurso">
+      <soap12:operation soapAction="http://tempuri.org/getReporteHorariosExamenesCurso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReporteHorarioExamenesDocente">
+      <soap12:operation soapAction="http://tempuri.org/getReporteHorarioExamenesDocente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocentes">
+      <soap12:operation soapAction="http://tempuri.org/getDocentes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetcarrerasSin">
+      <soap12:operation soapAction="http://tempuri.org/GetcarrerasSin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insertarCuposDictadoMaterias">
+      <soap12:operation soapAction="http://tempuri.org/insertarCuposDictadoMaterias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCuposDictadoMaterias">
+      <soap12:operation soapAction="http://tempuri.org/GetCuposDictadoMaterias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocentesConCargaHoraria">
+      <soap12:operation soapAction="http://tempuri.org/getDocentesConCargaHoraria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDocentesInstitucion">
+      <soap12:operation soapAction="http://tempuri.org/getDocentesInstitucion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDocentes">
+      <soap12:operation soapAction="http://tempuri.org/setDocentes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setCursos">
+      <soap12:operation soapAction="http://tempuri.org/setCursos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCursosPeriodoVigente">
+      <soap12:operation soapAction="http://tempuri.org/getCursosPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDictadoMateriasPeriodoVigente">
+      <soap12:operation soapAction="http://tempuri.org/getDictadoMateriasPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDictadoMateriasPeriodo">
+      <soap12:operation soapAction="http://tempuri.org/getDictadoMateriasPeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDictadoMaterias">
+      <soap12:operation soapAction="http://tempuri.org/setDictadoMaterias" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getHorarioClasesPeriodoVigente">
+      <soap12:operation soapAction="http://tempuri.org/getHorarioClasesPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setHorarioClases">
+      <soap12:operation soapAction="http://tempuri.org/setHorarioClases" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeBorrarCurso">
+      <soap12:operation soapAction="http://tempuri.org/PuedeBorrarCurso" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodosDisponibles">
+      <soap12:operation soapAction="http://tempuri.org/getPeriodosDisponibles" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/getPeriodosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSeleccionarPeriodos">
+      <soap12:operation soapAction="http://tempuri.org/getSeleccionarPeriodos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoVigente">
+      <soap12:operation soapAction="http://tempuri.org/getPeriodoVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getPeriodoAnterior">
+      <soap12:operation soapAction="http://tempuri.org/getPeriodoAnterior" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExistePensumVigente">
+      <soap12:operation soapAction="http://tempuri.org/ExistePensumVigente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PuedeBorrarPeriodo">
+      <soap12:operation soapAction="http://tempuri.org/PuedeBorrarPeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setPeriodosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/setPeriodosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatos">
+      <soap12:operation soapAction="http://tempuri.org/getDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParametrosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/getParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setDatos">
+      <soap12:operation soapAction="http://tempuri.org/setDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setParametrosCarrera">
+      <soap12:operation soapAction="http://tempuri.org/setParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodigoUltimoEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/GetCodigoUltimoEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetCodigoUltimoEstudiante">
+      <soap12:operation soapAction="http://tempuri.org/SetCodigoUltimoEstudiante" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCodigoReglamento">
+      <soap12:operation soapAction="http://tempuri.org/GetCodigoReglamento" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPeriodosNivelesMat">
+      <soap12:operation soapAction="http://tempuri.org/GetPeriodosNivelesMat" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCargaAcademica">
+      <soap12:operation soapAction="http://tempuri.org/getCargaAcademica" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fBaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/get_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fBaseDatos">
+      <soap12:operation soapAction="http://tempuri.org/set_fBaseDatos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="get_fUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/get_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="set_fUbicacion">
+      <soap12:operation soapAction="http://tempuri.org/set_fUbicacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GestorDefinicionPeriodo">
+    <wsdl:port name="GestorDefinicionPeriodoSoap" binding="tns:GestorDefinicionPeriodoSoap">
+      <soap:address location="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx" />
+    </wsdl:port>
+    <wsdl:port name="GestorDefinicionPeriodoSoap12" binding="tns:GestorDefinicionPeriodoSoap12">
+      <soap12:address location="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" id="dtstDatosAdminC_ReporteHorariosExamenes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_ReporteHorariosExamenes">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="HorariosExamenes">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="Periodo" type="xs:string" />
+              <xs:element minOccurs="0" name="intNivel" type="xs:byte" />
+              <xs:element minOccurs="0" name="CodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" name="Curso" type="xs:string" />
+              <xs:element minOccurs="0" name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="CodDocente" type="xs:string" />
+              <xs:element minOccurs="0" name="Docente" type="xs:string" />
+              <xs:element minOccurs="0" name="FechaExPrin" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="FechaExSus" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
