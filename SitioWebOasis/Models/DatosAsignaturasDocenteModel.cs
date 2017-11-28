@@ -7,22 +7,22 @@ using System.Data;
 
 namespace SitioWebOasis.Models
 {
-    public class DatosAsignaturasDocenteModel: DatosCarrera
+    public class DatosAsignaturasDocenteModel : DatosCarrera
     {
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
-        public DatosAsignaturasDocenteModel( string strCodCarrera )
+        public DatosAsignaturasDocenteModel(string strCodCarrera)
         {
-            if (!string.IsNullOrEmpty(strCodCarrera)){
-                this.UsuarioActual.SetRolCarreraActual( Roles.Docentes,
+            if (!string.IsNullOrEmpty(strCodCarrera)) {
+                this.UsuarioActual.SetRolCarreraActual(Roles.Docentes,
                                                         strCodCarrera);
             }
 
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
             this._dtstCursosDocente = this._dsAsignaturasDocente();
         }
-        
-        
+
+
         //  Lista de asignaturas por carrera
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dsAsignaturasDocente()
         {
@@ -35,14 +35,14 @@ namespace SitioWebOasis.Models
                 rm.CookieContainer = new System.Net.CookieContainer();
                 rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
 
-                rstCursoDocente = rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                rstCursoDocente = rm.GetCursosDocente(this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                         this.UsuarioActual.Cedula.ToString());
 
-                if(rstCursoDocente != null){
+                if (rstCursoDocente != null) {
                     dsCursosDocente = rstCursoDocente;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "_getAsignaturasDocente");
@@ -54,7 +54,7 @@ namespace SitioWebOasis.Models
 
         public string getNombreDocente()
         {
-            string nombreDocente = (this.UsuarioActual != null) 
+            string nombreDocente = (this.UsuarioActual != null)
                                         ? this.UsuarioActual.Nombre
                                         : string.Empty;
 
@@ -85,7 +85,7 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "getFacultadCarreraDocente");
             }
-            
+
 
             return facultadCarreraDocente;
         }
@@ -104,46 +104,65 @@ namespace SitioWebOasis.Models
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
-            if (this._dtstCursosDocente.Cursos.Count > 0){
+            if (this._dtstCursosDocente.Cursos.Count > 0) {
                 int x = 0;
                 int posicion = 0;
-                EvaluacionActiva objEvActiva = new EvaluacionActiva();
-                evActiva = objEvActiva.getDataEvaluacionActiva().Replace("FN", "");
+                rst = string.Empty;
+                parcialActivo = this._getDtaParcialActivo();
 
-                if( !string.IsNullOrEmpty(evActiva)){
-                    rst = string.Empty;
-                    parcialActivo = (evActiva != "FNP" && evActiva != "ER" && evActiva != "NA")  
-                                        ? this._getNumOrdinal(evActiva)
-                                        : (evActiva == "FNP")   ? Language.es_ES.DOC_TB_EV_FINAL
-                                                                : Language.es_ES.DOC_TB_EV_RECUPERACION;
+                foreach (DataRow item in this._dtstCursosDocente.Cursos) {
+                    posicion = ++x;
+                    color = (color == "odd") ? "even" : "odd";
+                    nivel = this._getNumOrdinal(item["strCodNivel"].ToString());
+                    cantidadEstudiantesMatriculados = this._cantidadEstudiantesMatriculados(this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                                            item["strCodMateria"].ToString(),
+                                                                                            item["strCodNivel"].ToString(),
+                                                                                            item["strCodParalelo"].ToString());
 
-                    foreach (DataRow item in this._dtstCursosDocente.Cursos){
-                        posicion = ++x;
-                        color = (color == "odd") ? "even" : "odd";
-                        nivel = this._getNumOrdinal(item["strCodNivel"].ToString());
-                        cantidadEstudiantesMatriculados = this._cantidadEstudiantesMatriculados(this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(), 
-                                                                                                item["strCodMateria"].ToString(), 
-                                                                                                item["strCodNivel"].ToString(), 
-                                                                                                item["strCodParalelo"].ToString());
-
-                        rst += "<tr id=" + item["strCodMateria"].ToString().Trim() + "_" + item["strCodNivel"].ToString() + "_" + item["strCodParalelo"].ToString() + " role='row' class='" + color + "'>";
-                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + posicion + "</td>";
-                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/" + item["strCodParalelo"].ToString() + "'>" + item["strNombreMateria"].ToString() + "</a></td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + parcialActivo + "</td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + cantidadEstudiantesMatriculados + "</td>";
-                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' class='btn btn-danger'>PDF</button><button type='button' class='btn btn-success'>EXCEL</button></div> </td>";
-                        //rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>";
-                        //rst += "	    <span id='mini-bar-chart"+ posicion + "' class='mini-bar-chart'><canvas width='53' height='25' style='display: inline-block; vertical-align: top; width: 53px; height: 25px;'></canvas></span>";
-                        //rst += "    </td>";
-                        rst += "</tr>";
-                    }
+                    rst += "<tr id=" + item["strCodMateria"].ToString().Trim() + "_" + item["strCodNivel"].ToString() + "_" + item["strCodParalelo"].ToString() + " role='row' class='" + color + "'>";
+                    rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + posicion + "</td>";
+                    rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'><a href='/Docentes/EvaluacionAsignatura/" + item["strCodNivel"].ToString() + "/" + item["strCodMateria"].ToString() + "/" + item["strCodParalelo"].ToString() + "' style='color: black;'>" + item["strNombreMateria"].ToString() + "</a></td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + parcialActivo + "</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + cantidadEstudiantesMatriculados + "</td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' class='btn btn-danger'>PDF</button><button type='button' class='btn btn-success'>EXCEL</button></div> </td>";
+                    //rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>";
+                    //rst += "	    <span id='mini-bar-chart"+ posicion + "' class='mini-bar-chart'><canvas width='53' height='25' style='display: inline-block; vertical-align: top; width: 53px; height: 25px;'></canvas></span>";
+                    //rst += "    </td>";
+                    rst += "</tr>";
                 }
             }
 
             return rst;
         }
+
+
+        private string _getDtaParcialActivo()
+        {
+            string parcialActivo = "---";
+            try{
+                EvaluacionActiva objEvActiva = new EvaluacionActiva();
+                string evActiva = objEvActiva.getDataEvaluacionActiva().Replace("FN", "");
+
+                if( !string.IsNullOrEmpty(evActiva) && evActiva != "P" && evActiva != "R"){
+                    parcialActivo = this._getNumOrdinal(evActiva);
+                }else if( evActiva == "P"){
+                    parcialActivo = Language.es_ES.DOC_TB_EV_FINAL;
+                }else if (evActiva == "R"){
+                    parcialActivo = Language.es_ES.DOC_TB_EV_RECUPERACION;
+                }
+            }catch(Exception ex){
+                parcialActivo = "---";
+
+                Errores err = new Errores();
+                err.SetError(ex, "_getParcialActivo");
+            }
+            
+            return parcialActivo;
+        }
+
+
 
 
         private string _cantidadEstudiantesMatriculados(string periodoVigente, string strCodAsignatura, string strCodNivel, string strCodParalelo)

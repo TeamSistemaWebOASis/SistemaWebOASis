@@ -211,12 +211,10 @@ namespace SitioWebOasis.Models
             //  Verifico si el usuario tiene perfil en el sistema academico OASis
             if(this.esUsuarioOASis){
                 //  Actualizo información información de cta de correo en la BD del sistema académico  
-                this._updCorreoOASis(strCtaCorreo);
-
                 //  Actualizo información de correo en la centralizada
-                this._updCorreoCentralizada(strCtaCorreo);
-
-                ban = true;                
+                ban = (this._updCorreoOASis(strCtaCorreo) && this._updCorreoCentralizada(strCtaCorreo)) 
+                            ? true 
+                            : false;
             }
             
             return ban;
@@ -343,9 +341,7 @@ namespace SitioWebOasis.Models
             try{
                 dtaEstudiante.per_email = strCtaCorreo;
                 ban = this._registrarDatosPersonalesEstudiante();
-            }
-            catch(Exception ex)
-            {
+            }catch(Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_udpCorreoEstudiante");
             }

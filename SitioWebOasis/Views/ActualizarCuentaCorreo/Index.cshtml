@@ -9,13 +9,9 @@
     <div class="widget-content">
         <div class="row">
             <div class="col-md-12">
-                @using (Html.BeginForm( "Index",
-                                        "ActualizarCuentaCorreo",
-                                        FormMethod.Post,
-                                        new {   @class = "form-horizontal",
-                                                @role = "form" })){
-
-                    @Html.Label("Ingrese su número de cédula: ", new { @class = "col-sm-4 control-label" });
+                <form id="frmValidarCedula" class="form-horizontal" role="form" action="#">
+                    @Html.Label("Ingrese su número de cédula: ", 
+                                new { @class = "col-sm-4 control-label" })
 
                     <div class="col-sm-8">
                         @Html.TextBox(  "strNumCedula",
@@ -24,16 +20,17 @@
                                             @class = "form-control",
                                             @style = "font-weight: bold;",
                                             @placehorder = "número de cédula sin guion",
-                                            @maxlength = "10"
-                                        })
+                                            @maxlength = "10" })
                     </div>
-
                     <hr class="inner-separator">
 
-                    <input  type="submit" 
-                            class="btn btn-primary right-col" 
-                            value="Verificar número de cédula"/>
-                }
+                    <button id="btnValidarCedula"
+                            type="button"
+                            class="btn btn-success">
+                        <i class="fa fa-check-circle"></i> Verificar número de cédula
+                    </button>
+
+                </form>
             </div>
         </div>
     </div>
@@ -41,6 +38,6 @@
 
 @section scripts{
     @*  JAVASCRIPT DE GESTION DE CUENTAS DE CORREO  *@
-    <script src="~/Content/js/ActualizarCorreo/validarCedula.js"> </script>
+    <script src="~/Content/js/ActualizarCorreo/validarCedula.js?v1.0.9"> </script>
 }
 

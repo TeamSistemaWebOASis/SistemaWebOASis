@@ -18,16 +18,20 @@ namespace SitioWebOasis.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult Index(string strNumCedula)
+        public ActionResult ValidarNumeroCedula(string strNumCedula)
         {
             Models.DatosPersonalesUsuario dtsPU = new Models.DatosPersonalesUsuario(strNumCedula);
+            Session["dtsPersonalesUsuario"] = dtsPU;
+
             return View("ActualizarCuentaCorreo", dtsPU );
         }
 
         [HttpPost]
         public JsonResult UpdCtaCorreo( string strNumCedula, string ctaMailAcceso)
         {
-            Models.DatosPersonalesUsuario dpu = new Models.DatosPersonalesUsuario(strNumCedula);
+            Models.DatosPersonalesUsuario dpu = (Session["dtsPersonalesUsuario"] == null) 
+                                                    ? new Models.DatosPersonalesUsuario(strNumCedula)
+                                                    : (Models.DatosPersonalesUsuario)Session["dtsPersonalesUsuario"];
 
             //  Actualizo cta de correo 
             bool rstUpdCtaCorreo  = dpu.updCtaCorreoSistemaAcademico(ctaMailAcceso);

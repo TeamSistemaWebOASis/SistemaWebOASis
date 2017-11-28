@@ -32,5 +32,8 @@
     <Setting Name="SitioWebOasis_WSSeguridad_Seguridad" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/Seguridad.asmx</Value>
     </Setting>
+    <Setting Name="SitioWebOasis_WSGestorDefinicionPeriodoCarrera_GestorDefinicionPeriodo" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

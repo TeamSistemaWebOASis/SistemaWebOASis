@@ -4,4 +4,18 @@
             return false;
         }
     })
+
+    $('#btnValidarCedula').on('click', function () {
+        showLoadingProcess();
+        $.redirect("/ActualizarCuentaCorreo/ValidarNumeroCedula",
+                    { strNumCedula: $('#strNumCedula').val() },
+                    "POST");
+    })
+
+    function showLoadingProcess() {
+        HoldOn.open({
+            theme: 'sk-dot',
+            message: "<h4>VALIDANDO USUARIO...</h4>"
+        });
+    }
 })

@@ -180,6 +180,8 @@ namespace SitioWebOasis.CommonClasses
             }
             catch (Exception ex)
             {
+                strResponse = "false";
+
                 Errores err = new Errores();
                 err.SetError(ex, "ConsumirServicioPost");
             }

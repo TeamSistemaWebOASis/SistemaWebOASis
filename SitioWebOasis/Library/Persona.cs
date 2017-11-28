@@ -39,7 +39,7 @@ namespace SitioWebOasis.Library
         public DynamicJsonArray personaPlurinacionalidad { get; set; }
         public string tipoSangre { get; set; }
 
-        public string sex_id { get; set; }
+        public short sex_id { get; set; }
 
         public string sexo { get; set; }
 
@@ -102,7 +102,7 @@ namespace SitioWebOasis.Library
                     this.personaPlurinacionalidad = dtaPersona.personaPlurinacionalidad;
                     this.tipoSangre = dtaPersona.tipoSangre;
                     this.tsa_id = dtaPersona.tsa_id;
-                    this.sex_id = dtaPersona.sex_id;
+                    this.sex_id = (short)dtaPersona.sex_id;
                     this.sexo = dtaPersona.sexo;
                 }
                 else {
@@ -139,15 +139,13 @@ namespace SitioWebOasis.Library
                     this.personaPlurinacionalidad = default(DynamicJsonArray);
                     this.tipoSangre = string.Empty;
                     this.tsa_id = default(Int32);
-                    //  this.sex_id = ;
-                    //  this.sexo = ;
                 }
 
                 this.defaultImage = (this.imagen == null) 
-                                        ? (this.sex_id == "M")
+                                        ? (this.sex_id == 1)
                                                 ? "~/Content/img/EstudianteMasculinoDefault.png"
-                                                : (this.sex_id == "F") ? "~/Content/img/EstudianteFemeninoDefault.png"
-                                                                        : "~/Content/img/userDefault.png"
+                                                : (this.sex_id == 2)? "~/Content/img/EstudianteFemeninoDefault.png"
+                                                                    : "~/Content/img/userDefault.png"
                                         : "";
             }
             catch (Exception ex)

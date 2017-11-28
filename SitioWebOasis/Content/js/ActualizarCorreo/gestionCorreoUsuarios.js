@@ -47,8 +47,10 @@
                 cancel:{
                     text: 'no acepto',
                     action: function () {
-                            $.alert('Si necesita mas informacion, favor consulte en secretaria de su carrera');
-                        }
+                        $.alert('Si necesita mas informacion, favor consulte en secretaria de su carrera');
+                        //  Cierro la ventana GIF Proceso
+                        HoldOn.close();
+                    }
                 }
             }
         });

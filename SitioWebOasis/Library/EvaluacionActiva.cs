@@ -34,7 +34,7 @@ namespace SitioWebOasis.Library
         public EvaluacionActiva()
         {
             this._cargaDatosPeriodosEvaluaciones();
-
+            
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
             this._evaluacionActiva = this._getEvaluacionActiva().Replace("FN", "");
             this._cargarFchMaximaGestion();
@@ -44,18 +44,21 @@ namespace SitioWebOasis.Library
         private void _cargaDatosPeriodosEvaluaciones()
         {
             try {
-                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
-                gag.CookieContainer = new CookieContainer();
-                WSAdministracionGeneral.dtstDatosAdminG_Parametros dsParametros = gag.getDatosParametros();
+                this._cargarInformacionCarrera();
+                ProxySeguro.GestorDefinicionPeriodo gdp = new ProxySeguro.GestorDefinicionPeriodo();
+                gdp.CookieContainer = new CookieContainer();
+                gdp.set_fBaseDatos(this._strNombreBD);
+                gdp.set_fUbicacion(this._strUbicacion);
+                WSGestorDefinicionPeriodoCarrera.dtstDatosAdminC_ParametrosCarrera dsParametrosCarrera = gdp.getParametrosCarrera();
 
-                if( dsParametros.Parametros_Sistema.Rows.Count > 0){
+                if (dsParametrosCarrera.Parametros_Carrera.Rows.Count > 0){
                     //  Obtengo informacion de los parametros generales del sistema
-                    this._drDtaPeriodosEvaluacion = dsParametros.Parametros_Sistema.Select("strCodigo IN('FN1', 'FN2', 'FN3', 'FNP')", "strCodigo");
+                    this._drDtaPeriodosEvaluacion = dsParametrosCarrera.Parametros_Carrera.Select("strCodigo IN('FN1', 'FN2', 'FN3', 'FNP')", "strCodigo");
                 }
 
             } catch (Exception ex) {
                 Errores err = new Errores();
-                err.SetError(ex, "_getDtaParametro");
+                err.SetError(ex, "_cargaDatosPeriodosEvaluaciones");
             }
         }
 
@@ -71,7 +74,7 @@ namespace SitioWebOasis.Library
         /// 
         private string _getEvaluacionActiva()
         {
-            string evaluacionActiva = "NA";
+            string evaluacionActiva = "";
             string evActiva = string.Empty;
             DateTime fchItem = default(DateTime);
             DateTime fchMenorOchoDias = default(DateTime);
@@ -107,11 +110,10 @@ namespace SitioWebOasis.Library
                         }
                     }
                 }
-            }
-            catch(Exception ex){
-                evaluacionActiva = "NA";
+            }catch(Exception ex){
+                evaluacionActiva = "";
                 Errores err = new Errores();
-                err.SetError(ex, "_getDtaParametro");
+                err.SetError(ex, "_getEvaluacionActiva");
             }
 
             return evaluacionActiva;

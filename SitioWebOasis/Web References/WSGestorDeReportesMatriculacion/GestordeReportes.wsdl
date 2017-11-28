@@ -16,20 +16,20 @@
       <s:import namespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" />
       <s:import namespace="http://tempuri.org/dtstMatriculadosCursoMateria.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosEstudiantesMatriculados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstAlumnosDocente" namespace="http://tempuri.org/dtstAlumnosDocente.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorTipos" namespace="http://tempuri.org/dtstNumDocentesPorTipos.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstListaEstudiantesMatriculados" namespace="http://tempuri.org/dtstListaEstudiantesMatriculados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasFacultadesEscuelasCarreras" namespace="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasEstudiante" namespace="http://tempuri.org/dtstMatriculasEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorCategorias" namespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstListaDocentes" namespace="http://tempuri.org/dtstListaDocentes.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstCursosCarrera" namespace="http://tempuri.org/dtstCursosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculadosCursoMateria" namespace="http://tempuri.org/dtstMatriculadosCursoMateria.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstDatosEstudiantesMatriculados" namespace="http://tempuri.org/dtstDatosEstudiantesMatriculados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorario" namespace="http://tempuri.org/dtstHorario.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstCursosDocente" namespace="http://tempuri.org/dtstCursosDocente.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstOrdenDePago" namespace="http://www.tempuri.org/dtstOrdenDePago.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculadosCursoMateria" namespace="http://tempuri.org/dtstMatriculadosCursoMateria.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorTipos" namespace="http://tempuri.org/dtstNumDocentesPorTipos.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstDatosEstudiantesMatriculados" namespace="http://tempuri.org/dtstDatosEstudiantesMatriculados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstAlumnosDocente" namespace="http://tempuri.org/dtstAlumnosDocente.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasFacultadesEscuelasCarreras" namespace="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstPeriodos" namespace="http://tempuri.org/dtstPeriodos.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorCategorias" namespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorario" namespace="http://tempuri.org/dtstHorario.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasEstudiante" namespace="http://tempuri.org/dtstMatriculasEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstCursosDocente" namespace="http://tempuri.org/dtstCursosDocente.xsd" />
       <s:element name="GetUbicacion">
         <s:complexType />
       </s:element>

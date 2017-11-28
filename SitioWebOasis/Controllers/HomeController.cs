@@ -16,17 +16,14 @@ namespace SitioWebOasis.Controllers
     {
         public RedirectToRouteResult Index()
         {
-            if (this._existeRolUsuario())
-            {
+            if (this._existeRolUsuario()){
                 //  Interfaz para Estudiante 
-                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
-                {
+                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes"){
                     return RedirectToAction("Index", "Estudiantes");
                 }
 
                 //  Interfaz para Docente
-                if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
-                {
+                if (UsuarioActual.RolActual.ID.ToString() == "Docentes"){
                     return RedirectToAction("Index", "Docentes");
                 }
             }
@@ -137,7 +134,7 @@ namespace SitioWebOasis.Controllers
                 string jsonDtaPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/ObtenerPorEmail/" + User.Identity.Name.ToString());
                 var dtaPersona = System.Web.Helpers.Json.Decode(jsonDtaPersona);
 
-                if (!string.IsNullOrEmpty(dtaPersona.per_id.ToString())){
+                if (dtaPersona != null && !string.IsNullOrEmpty(dtaPersona.per_id.ToString())){
                     //  Consumo del servicio web ObtenerPorDocumento (cedula)
                     string jsonDtaIdentificacion = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDocumentoPersonal.svc" + "/ObtenerPorPersona/" + dtaPersona.per_id.ToString());
                     var _dtaIdentificacion = System.Web.Helpers.Json.Decode(jsonDtaIdentificacion);
@@ -160,7 +157,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
 
                 //  //  DOCENTE
-                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "080211622-8";  //  <-- Gustavo / Rol de Estudiante / Docente
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
