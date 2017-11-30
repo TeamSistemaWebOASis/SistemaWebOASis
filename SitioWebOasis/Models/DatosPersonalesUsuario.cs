@@ -171,7 +171,7 @@ namespace SitioWebOasis.Models
             try
             {
                 string urlWS = CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosPersona.svc" + "/Modificar";
-                object estado = ClienteServicio.ConsumirServicioPost(urlWS, dtaEstudiante);
+                rst = Convert.ToBoolean( ClienteServicio.ConsumirServicioPost(urlWS, dtaEstudiante) );
             }
             catch( Exception ex)
             {
@@ -259,12 +259,12 @@ namespace SitioWebOasis.Models
                     foreach(DataRow item in this._dsUsuarioOASis.Carreras){
                         switch (item["strIDRol"].ToString()){
                             case "DOC":
-                                this._updDtaCtaCorreoDocente(   item["strCodigo"].ToString(), 
-                                                                strCtaCorreo);
+                                ban = this._updDtaCtaCorreoDocente( item["strCodigo"].ToString(), 
+                                                                    strCtaCorreo);
                             break;
 
                             case "EST":
-                                this._udpCorreoEstudiante(strCtaCorreo);
+                                ban = this._udpCorreoEstudiante(strCtaCorreo);
                             break;
                         }
                     }
@@ -340,8 +340,11 @@ namespace SitioWebOasis.Models
 
             try{
                 dtaEstudiante.per_email = strCtaCorreo;
+                dtaEstudiante.per_emailAlternativo = string.Empty;
+
                 ban = this._registrarDatosPersonalesEstudiante();
             }catch(Exception ex){
+                ban = false;
                 Errores err = new Errores();
                 err.SetError(ex, "_udpCorreoEstudiante");
             }

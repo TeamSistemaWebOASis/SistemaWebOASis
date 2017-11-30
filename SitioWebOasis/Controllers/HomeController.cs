@@ -16,7 +16,8 @@ namespace SitioWebOasis.Controllers
     {
         public RedirectToRouteResult Index()
         {
-            if (this._existeRolUsuario()){
+            if (this._existeRolUsuario())
+            {
                 //  Interfaz para Estudiante 
                 if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes"){
                     return RedirectToAction("Index", "Estudiantes");

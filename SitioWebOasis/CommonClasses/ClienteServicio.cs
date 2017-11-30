@@ -150,14 +150,6 @@ namespace SitioWebOasis.CommonClasses
                 Webrequest.Method = "POST";
                 Webrequest.ContentType = "application/json";
 
-                ////Para aceptar el certificado de pruebas
-                //ServicePointManager.ServerCertificateValidationCallback
-                //= delegate (Object obj, X509Certificate certificate, X509Chain
-                //chain, SslPolicyErrors errors)
-                //{
-                //    return (true);
-                //};
-
                 using (var streamWriter = new StreamWriter(Webrequest.GetRequestStream()))
                 {
 
@@ -175,8 +167,6 @@ namespace SitioWebOasis.CommonClasses
                 Stream streamResponse = response.GetResponseStream();
                 StreamReader streamReader = new StreamReader(streamResponse);
                 strResponse = streamReader.ReadToEnd();
-
-                strResponse = "true";
             }
             catch (Exception ex)
             {

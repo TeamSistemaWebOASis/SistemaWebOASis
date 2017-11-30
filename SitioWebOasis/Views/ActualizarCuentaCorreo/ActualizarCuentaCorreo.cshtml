@@ -2,7 +2,7 @@
 
 @{ ViewBag.Title = "Actualizar Cuenta de Correo"; }
 
-@if (Model.dtaEstudiante != null && Model.existePersona && Model.esUsuarioOASis && Model.dtaEstudiante.per_email.ToString().CompareTo(User.Identity.Name.ToString()) != 0)
+@if (Model.dtaEstudiante != null && Model.existePersona && Model.esUsuarioOASis && !string.IsNullOrEmpty(Model.dtaEstudiante.per_email) && Model.dtaEstudiante.per_email.ToString().CompareTo(User.Identity.Name.ToString()) != 0)
 {
     @section scripts{
         @*  JAVASCRIPT DE GESTION DE CUENTAS DE CORREO  *@
@@ -10,60 +10,72 @@
     }
 
     <div class="widget">
-        <div class="widget-header">
-            <h3><i class="fa fa-edit"></i> INCONSISTENCIA EN CUENTA DE CORREO </h3>
-        </div>
-        <div class="widget-content">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="widget-header">
+                <h3><i class="fa fa-edit"></i> INCONSISTENCIA EN CUENTA DE CORREO </h3>
+            </div>
+            <div class="widget-content">
+                <div class="row">
+                    <div class="col-md-12">
 
-                    @* Area de mensajes *@
-                    <div id="msmUpdCtaCorreo" hidden="hidden"></div>
+                        @* Area de mensajes *@
+                        <div id="msmUpdCtaCorreo" hidden="hidden"></div>
 
-                    <form id="frmUpdCtaCorreo" class="form-horizontal" role="form">
-                        @Html.Hidden("strNumCedula", Model.per_numCedula.ToString())
-                        <p>Usuario: <strong>@Model.dtaEstudiante.per_nombres&nbsp;@Model.dtaEstudiante.per_primerApellido&nbsp;@Model.dtaEstudiante.per_segundoApellido</strong></p>
+                        <form id="frmUpdCtaCorreo" class="form-horizontal" role="form">
+                            @Html.Hidden("strNumCedula", Model.per_numCedula.ToString())
+                            <p>Usuario: <strong>@Model.dtaEstudiante.per_nombres&nbsp;@Model.dtaEstudiante.per_primerApellido&nbsp;@Model.dtaEstudiante.per_segundoApellido</strong></p>
 
-                        <div class="form-group">
-                            @Html.Label("Cuenta de correo que registra el sistema académico: ", new { @class = "col-lg-4 control-label" })
-                            <div class="col-lg-8">
-                                @Html.TextBox(  "ctaMailRegistrada",
-                                                Model.dtaEstudiante.per_email.ToString(),
-                                                new{id = "ctaMailRegistrada",
-                                                    @class = "form-control",
-                                                    @readonly = "readonly",
-                                                    @style = "font-weight: bold;"
-                                                })
+                            <div class="form-group">
+                                @Html.Label("Cuenta de correo que registra el sistema académico: ", new { @class = "col-lg-4 control-label" })
+                                <div class="col-lg-8">
+                                    @Html.TextBox("ctaMailRegistrada",
+                                 Model.dtaEstudiante.per_email.ToString(),
+                                 new
+                                 {
+                                     id = "ctaMailRegistrada",
+                                     @class = "form-control",
+                                     @readonly = "readonly",
+                                     @style = "font-weight: bold;"
+                                 })
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            @Html.Label("Cuenta de acceso al sistema académico: ",
-                                        new { @class = "col-lg-4 control-label" })
-                            <div class="col-lg-8">
-                                @Html.TextBox(  "ctaMailAcceso",
-                                                User.Identity.Name.ToString(),
-                                                new{id = "ctaMailAcceso",
-                                                    @class = "form-control",
-                                                    @readonly = "readonly",
-                                                    @style = "font-weight: bold;"
-                                                })
+                            <div class="form-group">
+                                @Html.Label("Cuenta de acceso al sistema académico: ",
+                             new { @class = "col-lg-4 control-label" })
+                                <div class="col-lg-8">
+                                    @Html.TextBox("ctaMailAcceso",
+                                 User.Identity.Name.ToString(),
+                                 new
+                                 {
+                                     id = "ctaMailAcceso",
+                                     @class = "form-control",
+                                     @readonly = "readonly",
+                                     @style = "font-weight: bold;"
+                                 })
+                                </div>
                             </div>
-                        </div>
 
-                        <button id="btnUpdCtaCorreo" 
-                                type="button" 
-                                class="btn btn-warning">
+                            <button id="btnUpdCtaCorreo"
+                                    type="button"
+                                    class="btn btn-warning">
                                 <i class="fa fa-check-circle"></i> Actualizar cuenta de correo
-                        </button>
+                            </button>
 
-                    </form>
+                        </form>
 
+                    </div>
                 </div>
             </div>
         </div>
+}else if (string.IsNullOrEmpty(Model.dtaEstudiante.per_email))
+{
+    <div class="alert alert-warning alert-dismissable">
+        <strong>USUARIO: @Model.dtaEstudiante.per_primerApellido.ToString() @Model.dtaEstudiante.per_segundoApellido.ToString() @Model.dtaEstudiante.per_nombres.ToString() 'NO' REGISTRA INFORMACION DE CUENTA DE CORREO EN EL SISTEMA ACADÉMICO</strong>, favor consulte en la secretaria de su carrera.
     </div>
-}else if (Model.existePersona && !Model.esUsuarioOASis){
+}
+
+else if (Model.existePersona && !Model.esUsuarioOASis)
+{
     <div class="alert alert-warning alert-dismissable">
         <strong>USUARIO CON NÚMERO DE CÉDULA @Model.per_numCedula.ToString() 'NO' REGISTRA ROL DE USUARIO (estudiante / docente) EN EL SISTEMA ACADÉMICO</strong>, favor consulte en la secretaria de su carrera.
     </div>
