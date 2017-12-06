@@ -63,7 +63,6 @@
         clickedCell = this;
     });
 
-
     function editRegistroNota(id, status, e) 
     {
         if (id !== lastsel) {

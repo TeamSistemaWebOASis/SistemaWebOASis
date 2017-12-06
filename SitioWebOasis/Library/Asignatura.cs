@@ -19,6 +19,7 @@ namespace SitioWebOasis.Library
 
         protected string _strCodParalelo{ get; set; }
 
+        protected string _evaluacionActiva = string.Empty;
 
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
@@ -34,6 +35,7 @@ namespace SitioWebOasis.Library
             this._evaluacion = new EvaluacionActiva();
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
             this._dtstCursosDocente = this._dsAsignaturasDocente();
+            this._evaluacionActiva = _evaluacion.getDataEvaluacionActiva();
         }
 
 
@@ -205,23 +207,21 @@ namespace SitioWebOasis.Library
             string evaluacionActiva = string.Empty;
             ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
 
-            try
-            {                
+            try {                
                 string strCodCarrera = UsuarioActual.CarreraActual.Codigo.ToString();
                 string periodoVigente = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
-                evaluacionActiva = _evaluacion.getDataEvaluacionActiva();
-
-                if (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3"){
+                
+                if (this._evaluacionActiva == "1" || this._evaluacionActiva == "2" || this._evaluacionActiva == "3"){
                     ban = ne.getEstadoParcialEvAcumulativa( strCodCarrera,
                                                             periodoVigente,
                                                             this._strCodAsignatura,
                                                             this._strCodParalelo,
-                                                            evaluacionActiva);
-                }else if (evaluacionActiva == "FNP" || evaluacionActiva == "ER"){
+                                                            this._evaluacionActiva);
+                }else if (this._evaluacionActiva == "P" || this._evaluacionActiva == "ER"){
                     ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
                                                                     periodoVigente,
                                                                     this._strCodAsignatura,
-                                                                    evaluacionActiva);
+                                                                    this._evaluacionActiva);
                 }
             }catch (Exception ex){
                 ban = false;
@@ -289,14 +289,16 @@ namespace SitioWebOasis.Library
         }
 
 
-        public string getMensajeEstadoFMGEvAcumulativa()
+        public string getMensajeEstadoFMG()
         {
-            bool actaImpresa = this._evaluacion.getActaImpresa(this._strCodAsignatura, this._strCodParalelo);
+            bool actaImpresa = this._evaluacion.getActaImpresa( this._strCodAsignatura,
+                                                                this._strCodParalelo);
+
             int numDiasTermino = this._evaluacion.getInfoNumDiasFaltantes();
-            string color = ( numDiasTermino <= 1) ? "danger" : "success";
+            string color = (numDiasTermino <= 1) ? "danger" : "success";
             string  mensajeImpresion  = string.Empty;
 
-            if ( numDiasTermino >= 0 && actaImpresa == false){
+            if (numDiasTermino >= 0 && actaImpresa == false ){
                 mensajeImpresion = "<p class='text-" + color + " pull-right'>";
                 mensajeImpresion += "   Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
             }
@@ -309,6 +311,5 @@ namespace SitioWebOasis.Library
 
             return mensajeImpresion;
         }
-
     }
 }

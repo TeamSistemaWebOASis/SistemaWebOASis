@@ -18,13 +18,15 @@ namespace SitioWebOasis.Controllers
         {
             if (this._existeRolUsuario())
             {
-                //  Interfaz para Estudiante 
-                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes"){
+                //Interfaz para Estudiante
+                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
+                {
                     return RedirectToAction("Index", "Estudiantes");
                 }
 
-                //  Interfaz para Docente
-                if (UsuarioActual.RolActual.ID.ToString() == "Docentes"){
+                //Interfaz para Docente
+                if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
+                {
                     return RedirectToAction("Index", "Docentes");
                 }
             }
@@ -158,7 +160,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
 
                 //  //  DOCENTE
-                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "080211622-8";  //  <-- Gustavo / Rol de Estudiante / Docente
                 //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz

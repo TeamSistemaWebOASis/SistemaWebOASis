@@ -97,7 +97,7 @@
                                     <i class="fa fa-angle-up pull-right"></i>
 
                                     @*Mensaje de estado de Evaluacion acumulativa*@
-                                    @Html.Raw(@Model.getMensajeEstadoFMGEvAcumulativa())
+                                    @Html.Raw(@Model.getMensajeEstadoFMG())
                                 </a>
                             </h4>
                         </div>
@@ -108,7 +108,7 @@
                                 <div id="msmGrdEvAcumulativa" hidden="hidden"></div>
 
                                 @* BOTONES DE IMPRESION DE ACTAS *@
-                                @if (strParcialActivo == "3"){
+                                @if (strParcialActivo == "3" || strParcialActivo == "P" ){
                                     <div class="row">
                                         <div class="col-sm-12">
                                             @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
@@ -210,7 +210,7 @@
 
                                 <hr class="inner-separator">
 
-                                @if(strParcialActivo == "EF" && !estadoActa) {
+                                @if(strParcialActivo == "P" && !estadoActa) {
                                     @* GRID DE EVALUACION FINAL *@
                                     <table id="grdEvFinal"></table>
                                     <hr class="inner-separator">
@@ -375,8 +375,8 @@
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa ){
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.123"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.123"> </script>
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.127"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.127"> </script>
 
             @* DATOS EVALUACION ACUMULATIVA *@
             @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
@@ -385,7 +385,7 @@
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
-        @if (strParcialActivo == "EF" && estadoActa){
+        @if (strParcialActivo == "P" && !estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.39"></script>
             <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.39"></script>

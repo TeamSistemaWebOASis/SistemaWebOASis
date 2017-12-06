@@ -90,7 +90,7 @@ namespace SitioWebOasis.Models
 
                     numMatricula = this._getNumOrdinal(item["bytNumMat"].ToString(), "matricula");
                     numNivel = this._getNumOrdinal(item["strCodNivel"].ToString(), "nivel");
-                    estadoCumplimiento = (parcialActivo == "FN3" || parcialActivo == "FNP")
+                    estadoCumplimiento = (parcialActivo == "3" || parcialActivo == "P")
                                             ? this._getEstadoCumplimiento(item["Total"].ToString(), item["bytAsistencia"].ToString())
                                             : "---";
 

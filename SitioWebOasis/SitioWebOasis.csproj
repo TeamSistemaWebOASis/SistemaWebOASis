@@ -411,6 +411,7 @@
     <Content Include="Content\js\HoldOn.min.js" />
     <Content Include="Content\js\ActualizarCorreo\gestionCorreoUsuarios.js" />
     <Content Include="Content\js\jqgrid\i18n\grid.locale-en.js" />
+    <Content Include="Content\js\jqgrid\i18n\grid.locale-es.js" />
     <Content Include="Content\js\jqgrid\jquery.jqGrid.fluid.js" />
     <Content Include="Content\js\jqgrid\jquery.jqGrid.min.js" />
     <Content Include="Content\js\jqgrid\jquery.jqGrid.min_source.js" />
