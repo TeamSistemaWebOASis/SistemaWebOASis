@@ -19,23 +19,23 @@
       <s:import namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
       <s:import namespace="http://tempuri.org/dtstPeriodoNivel.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DocentesInstitucion" namespace="http://tempuri.org/dtstDatosAdminC_DocentesInstitucion.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_HorariosExamenes" namespace="http://tempuri.org/dtstDatosAdminC_HorariosExamenes.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Cursos" namespace="http://tempuri.org/dtstDatosAdminC_Cursos.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstcarreras" namespace="http://www.tempuri.org/dtstcarreras.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DefinicionHorario" namespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_ParametrosCarrera" namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_PeriodosEvaluados" namespace="http://tempuri.org/dtstDatosAdminC_PeriodosEvaluados.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_SeleccionarDocente" namespace="http://tempuri.org/dtstDatosAdminC_SeleccionarDocente.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstPeriodoNivel" namespace="http://tempuri.org/dtstPeriodoNivel.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Docentes" namespace="http://tempuri.org/dtstDatosAdminC_Docentes.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_CargaAcademica" namespace="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DictadoMaterias" namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_ReporteHorariosExamenes" namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Periodos" namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstCuposDictadoMaterias" namespace="http://www.tempuri.org/dtstCuposDictadoMaterias.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Horarios" namespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Parametros" namespace="http://tempuri.org/dtstDatosAdminC_Parametros.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstPeriodoNivel" namespace="http://tempuri.org/dtstPeriodoNivel.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_PeriodosEvaluados" namespace="http://tempuri.org/dtstDatosAdminC_PeriodosEvaluados.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstCuposDictadoMaterias" namespace="http://www.tempuri.org/dtstCuposDictadoMaterias.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_HorariosExamenes" namespace="http://tempuri.org/dtstDatosAdminC_HorariosExamenes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Horarios" namespace="http://tempuri.org/dtstDatosAdminC_Horarios.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DictadoMaterias" namespace="http://www.tempuri.org/dtstDatosAdminC_DictadoMaterias.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DefinicionHorario" namespace="http://tempuri.org/dtstDatosAdminC_DefinicionHorario.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstcarreras" namespace="http://www.tempuri.org/dtstcarreras.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_ParametrosCarrera" namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_ReporteHorariosExamenes" namespace="http://tempuri.org/dtstDatosAdminC_ReporteHorariosExamenes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Cursos" namespace="http://tempuri.org/dtstDatosAdminC_Cursos.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_DocentesInstitucion" namespace="http://tempuri.org/dtstDatosAdminC_DocentesInstitucion.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_SeleccionarDocente" namespace="http://tempuri.org/dtstDatosAdminC_SeleccionarDocente.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx?schema=dtstDatosAdminC_Periodos" namespace="http://tempuri.org/dtstDatosAdminC_Periodos.xsd" />
       <s:element name="getHorarios">
         <s:complexType />
       </s:element>
@@ -601,6 +601,22 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getParametrosCarreraFechas">
+        <s:complexType />
+      </s:element>
+      <s:element name="getParametrosCarreraFechasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getParametrosCarreraFechasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminC_ParametrosCarrera.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="setDatos">
         <s:complexType>
           <s:sequence>
@@ -945,6 +961,12 @@
   <wsdl:message name="getParametrosCarreraSoapOut">
     <wsdl:part name="parameters" element="tns:getParametrosCarreraResponse" />
   </wsdl:message>
+  <wsdl:message name="getParametrosCarreraFechasSoapIn">
+    <wsdl:part name="parameters" element="tns:getParametrosCarreraFechas" />
+  </wsdl:message>
+  <wsdl:message name="getParametrosCarreraFechasSoapOut">
+    <wsdl:part name="parameters" element="tns:getParametrosCarreraFechasResponse" />
+  </wsdl:message>
   <wsdl:message name="setDatosSoapIn">
     <wsdl:part name="parameters" element="tns:setDatos" />
   </wsdl:message>
@@ -1139,6 +1161,10 @@
     <wsdl:operation name="getParametrosCarrera">
       <wsdl:input message="tns:getParametrosCarreraSoapIn" />
       <wsdl:output message="tns:getParametrosCarreraSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getParametrosCarreraFechas">
+      <wsdl:input message="tns:getParametrosCarreraFechasSoapIn" />
+      <wsdl:output message="tns:getParametrosCarreraFechasSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="setDatos">
       <wsdl:input message="tns:setDatosSoapIn" />
@@ -1468,6 +1494,15 @@
     </wsdl:operation>
     <wsdl:operation name="getParametrosCarrera">
       <soap:operation soapAction="http://tempuri.org/getParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParametrosCarreraFechas">
+      <soap:operation soapAction="http://tempuri.org/getParametrosCarreraFechas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1858,6 +1893,15 @@
     </wsdl:operation>
     <wsdl:operation name="getParametrosCarrera">
       <soap12:operation soapAction="http://tempuri.org/getParametrosCarrera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getParametrosCarreraFechas">
+      <soap12:operation soapAction="http://tempuri.org/getParametrosCarreraFechas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

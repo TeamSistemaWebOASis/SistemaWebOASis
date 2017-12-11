@@ -2,7 +2,7 @@
 
 @{ ViewBag.Title = "Actualizar Cuenta de Correo"; }
 
-@if (Model.dtaEstudiante != null && Model.existePersona && Model.esUsuarioOASis && !string.IsNullOrEmpty(Model.dtaEstudiante.per_email) && Model.dtaEstudiante.per_email.ToString().CompareTo(User.Identity.Name.ToString()) != 0)
+@if (Model.dtaEstudiante != null && Model.existePersona && Model.esUsuarioOASis )
 {
     @section scripts{
         @*  JAVASCRIPT DE GESTION DE CUENTAS DE CORREO  *@
@@ -27,15 +27,14 @@
                             <div class="form-group">
                                 @Html.Label("Cuenta de correo que registra el sistema académico: ", new { @class = "col-lg-4 control-label" })
                                 <div class="col-lg-8">
-                                    @Html.TextBox("ctaMailRegistrada",
-                                 Model.dtaEstudiante.per_email.ToString(),
-                                 new
-                                 {
-                                     id = "ctaMailRegistrada",
-                                     @class = "form-control",
-                                     @readonly = "readonly",
-                                     @style = "font-weight: bold;"
-                                 })
+                                    @Html.TextBox(  "ctaMailRegistrada",
+                                                     ( string.IsNullOrEmpty( Model.dtaEstudiante.per_email ) ? "" : Model.dtaEstudiante.per_email.ToString() ),
+                                                     new{id = "ctaMailRegistrada",
+                                                         @class = "form-control",
+                                                         @readonly = "readonly",
+                                                         @style = "font-weight: bold;",
+                                                         @placeholder = "NO REGISTRA CUENTA DE CORREO"
+                                                     })
                                 </div>
                             </div>
 
@@ -72,23 +71,16 @@
     <div class="alert alert-warning alert-dismissable">
         <strong>USUARIO: @Model.dtaEstudiante.per_primerApellido.ToString() @Model.dtaEstudiante.per_segundoApellido.ToString() @Model.dtaEstudiante.per_nombres.ToString() 'NO' REGISTRA INFORMACION DE CUENTA DE CORREO EN EL SISTEMA ACADÉMICO</strong>, favor consulte en la secretaria de su carrera.
     </div>
-}
-
-else if (Model.existePersona && !Model.esUsuarioOASis)
-{
+}else if (Model.existePersona && !Model.esUsuarioOASis){
     <div class="alert alert-warning alert-dismissable">
         <strong>USUARIO CON NÚMERO DE CÉDULA @Model.per_numCedula.ToString() 'NO' REGISTRA ROL DE USUARIO (estudiante / docente) EN EL SISTEMA ACADÉMICO</strong>, favor consulte en la secretaria de su carrera.
     </div>
-}
-else if (!Model.existePersona && Model.esUsuarioOASis){
+}else if (!Model.existePersona && Model.esUsuarioOASis){
     <div class="alert alert-warning alert-dismissable">
         <strong>USUARIO CON NÚMERO DE CÉDULA @Model.per_numCedula.ToString() CON DATOS PERSONALES DESACTUALIZADOS</strong>, favor consulte en la Dirección de tecnologias de comunicacion DTIC - ESPOCH.
     </div>
-}
-else if (!Model.existePersona && !Model.esUsuarioOASis)
-{
+}else if (!Model.existePersona && !Model.esUsuarioOASis){
     <div class="alert alert-warning alert-dismissable">
         <strong>USUARIO CON NÚMERO DE CÉDULA @Model.per_numCedula.ToString() 'NO' REGISTRA INFORMACION EN EL SISTEMA ACADÉMICO</strong>, favor consulte en la secretaria de su carrera.
     </div>
 }
-

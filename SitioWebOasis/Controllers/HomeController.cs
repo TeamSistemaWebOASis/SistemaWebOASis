@@ -181,6 +181,9 @@ namespace SitioWebOasis.Controllers
 
                 //  numIdentificacion = "060127252-9"; // <-- no imprime acta 
                 //  numIdentificacion = "060315260-4"; // Myriam Sampedro
+                //  numIdentificacion = "060301312-9";
+
+                numIdentificacion = "060402056-0"; // prueba UPD data
             }
             catch (Exception ex)
             {

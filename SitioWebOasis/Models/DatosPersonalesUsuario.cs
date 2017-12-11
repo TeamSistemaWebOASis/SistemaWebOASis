@@ -95,8 +95,9 @@ namespace SitioWebOasis.Models
             try
             {
                 if( this._updDatosPersonalesEstudiante(dtaFrmEstudiante) && this._updDireccionEstudiante(dtaFrmEstudiante)){
-                    this._registrarDatosPersonalesEstudiante();
-                    this._registrarDireccionEstudiante();
+                    rst = (this._registrarDatosPersonalesEstudiante() && this._registrarDireccionEstudiante()) 
+                            ? true 
+                            : false;
                 }
             }catch (Exception ex){
                 Errores err = new Errores();
@@ -144,17 +145,19 @@ namespace SitioWebOasis.Models
 
             try
             {
-                string DPA_DE = dtaFrmEstudiante["ddl_DUPais"].ToString().Trim() + "|" +
-                                dtaFrmEstudiante["ddl_DUProvincias"].ToString().Trim() + "|" +
-                                dtaFrmEstudiante["ddl_DUCiudades"].ToString().Trim() + "|" +
-                                dtaFrmEstudiante["ddl_DUParroquias"].ToString().Trim();
+                string[] dpaDirEstudiante = new string[] {  dtaFrmEstudiante["ddl_DUPais"].ToString().Trim(),
+                                                            dtaFrmEstudiante["ddl_DUProvincias"].ToString().Trim(),
+                                                            dtaFrmEstudiante["ddl_DUCiudades"].ToString().Trim(),
+                                                            dtaFrmEstudiante["ddl_DUParroquias"].ToString().Trim() };
 
                 this.dtaDireccionEstudiante.dir_callePrincipal = dtaFrmEstudiante["txtDirCallePrincipal"].ToString().Trim();
-                this.dtaDireccionEstudiante.dir_numero = dtaFrmEstudiante["txtDirNumeroCasa"].ToString().Trim();
                 this.dtaDireccionEstudiante.dir_calleTransversal = dtaFrmEstudiante["txtDirCalleSecundaria"].ToString().Trim();
+                this.dtaDireccionEstudiante.dir_dpa = dpaDirEstudiante;
+                this.dtaDireccionEstudiante.dir_numero = dtaFrmEstudiante["txtDirNumeroCasa"].ToString().Trim();
+                this.dtaDireccionEstudiante.dir_procedencia = dtaFrmEstudiante["txtDirReferencia"].ToString().Trim();
                 this.dtaDireccionEstudiante.dir_referencia = dtaFrmEstudiante["txtDirReferencia"].ToString().Trim();
-                this.dtaDireccionEstudiante.dir_referencia = dtaFrmEstudiante["txtDirReferencia"].ToString().Trim();
-            }catch( Exception ex){
+            }
+            catch( Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_updDireccionEstudiante");
                 rst = false;
@@ -191,7 +194,7 @@ namespace SitioWebOasis.Models
             try
             {
                 string urlWS = CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDireccion.svc" + "/Modificar";
-                object estado = ClienteServicio.ConsumirServicioPost(urlWS, dtaDireccionEstudiante);
+                rst = Convert.ToBoolean( ClienteServicio.ConsumirServicioPost(urlWS, dtaDireccionEstudiante) );
             }
             catch (Exception ex)
             {

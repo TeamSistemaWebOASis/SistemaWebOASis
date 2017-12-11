@@ -38,32 +38,29 @@ namespace SitioWebOasis.Library
             try
             {
                 //  Consumo del servicio web ObtenerActivaSegunPersona
-                string jsonDtaDireccionPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDireccion.svc" + "/ObtenerActivaSegunPersona/" + idPersona);
+                //  string jsonDtaDireccionPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDireccion.svc" + "/ObtenerActivaSegunPersona/" + idPersona);
+                string jsonDtaDireccionPersona = ClienteServicio.ConsumirServicio(CENTRALIZADA.WS_URL.WS_PERSONAS + "ServiciosDireccion.svc" + "/ObtenerSegunPersona/" + idPersona);
                 var dtaDireccion = Json.Decode(jsonDtaDireccionPersona);
 
-                if( dtaDireccion != null)
-                {
-                    this.dir_id = dtaDireccion.dir_id;
-                    this.dir_callePrincipal = dtaDireccion.dir_callePrincipal;
-                    this.dir_calleTransversal = dtaDireccion.dir_calleTransversal;
-                    this.dir_numero = dtaDireccion.dir_numero;
-                    this.dir_procedencia = dtaDireccion.dir_procedencia;
-                    this.dir_referencia = dtaDireccion.dir_referencia;
-                    this.prq_id = dtaDireccion.prq_id;
+                if(dtaDireccion.Length > 0 && dtaDireccion != null ){
+                    this.dir_id = dtaDireccion[0]["dir_id"];
+                    this.dir_callePrincipal = dtaDireccion[0]["dir_callePrincipal"];
+                    this.dir_calleTransversal = dtaDireccion[0]["dir_calleTransversal"];
+                    this.dir_numero = dtaDireccion[0]["dir_numero"];
+                    this.dir_referencia = dtaDireccion[0]["dir_referencia"];
+                    this.prq_id = dtaDireccion[0]["prq_id"];
 
                     this.dir_dpa = this._getDirDPA();
                 }else{
                     this.dir_id = default(Int32);
                     this.dir_callePrincipal = string.Empty;
-                    this.dir_calleTransversal = string.Empty;
                     this.dir_numero = string.Empty;
-                    this.dir_procedencia = string.Empty;
+                    this.dir_calleTransversal = string.Empty;
                     this.dir_referencia = string.Empty;
+                    this.dir_procedencia = string.Empty;
                     this.prq_id = default(Int32);
-
                     this.dir_dpa = this._getDirDPA();
                 }
-
             }
             catch (Exception ex)
             {

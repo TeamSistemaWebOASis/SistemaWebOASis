@@ -49,7 +49,7 @@ namespace SitioWebOasis.Library
                 gdp.CookieContainer = new CookieContainer();
                 gdp.set_fBaseDatos(this._strNombreBD);
                 gdp.set_fUbicacion(this._strUbicacion);
-                WSGestorDefinicionPeriodoCarrera.dtstDatosAdminC_ParametrosCarrera dsParametrosCarrera = gdp.getParametrosCarrera();
+                WSGestorDefinicionPeriodoCarrera.dtstDatosAdminC_ParametrosCarrera dsParametrosCarrera = gdp.getParametrosCarreraFechas();
 
                 if (dsParametrosCarrera.Parametros_Carrera.Rows.Count > 0){
                     //  Obtengo informacion de los parametros generales del sistema

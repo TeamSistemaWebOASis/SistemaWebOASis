@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd" id="dtstDatosAdminC_CargaAcademica" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_CargaAcademica">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="en-US" name="dtstDatosAdminC_CargaAcademica">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="CargaAcademica">
@@ -11,7 +11,7 @@
               <xs:element minOccurs="0" name="Docente" type="xs:string" />
               <xs:element minOccurs="0" name="Curso" type="xs:string" />
               <xs:element minOccurs="0" name="Materia" type="xs:string" />
-              <xs:element minOccurs="0" name="Horas" type="xs:byte" />
+              <xs:element minOccurs="0" name="Horas" type="xs:float" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

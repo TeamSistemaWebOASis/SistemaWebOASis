@@ -93,6 +93,8 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
         
         private System.Threading.SendOrPostCallback getParametrosCarreraOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getParametrosCarreraFechasOperationCompleted;
+        
         private System.Threading.SendOrPostCallback setDatosOperationCompleted;
         
         private System.Threading.SendOrPostCallback setParametrosCarreraOperationCompleted;
@@ -248,6 +250,9 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
         
         /// <remarks/>
         public event getParametrosCarreraCompletedEventHandler getParametrosCarreraCompleted;
+        
+        /// <remarks/>
+        public event getParametrosCarreraFechasCompletedEventHandler getParametrosCarreraFechasCompleted;
         
         /// <remarks/>
         public event setDatosCompletedEventHandler setDatosCompleted;
@@ -1207,6 +1212,33 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
             if ((this.getParametrosCarreraCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getParametrosCarreraCompleted(this, new getParametrosCarreraCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getParametrosCarreraFechas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public dtstDatosAdminC_ParametrosCarrera getParametrosCarreraFechas() {
+            object[] results = this.Invoke("getParametrosCarreraFechas", new object[0]);
+            return ((dtstDatosAdminC_ParametrosCarrera)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getParametrosCarreraFechasAsync() {
+            this.getParametrosCarreraFechasAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getParametrosCarreraFechasAsync(object userState) {
+            if ((this.getParametrosCarreraFechasOperationCompleted == null)) {
+                this.getParametrosCarreraFechasOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetParametrosCarreraFechasOperationCompleted);
+            }
+            this.InvokeAsync("getParametrosCarreraFechas", new object[0], this.getParametrosCarreraFechasOperationCompleted, userState);
+        }
+        
+        private void OngetParametrosCarreraFechasOperationCompleted(object arg) {
+            if ((this.getParametrosCarreraFechasCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getParametrosCarreraFechasCompleted(this, new getParametrosCarreraFechasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -28089,6 +28121,7 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
             this.DataSetName = "dtstDatosAdminC_CargaAcademica";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/dtstDatosAdminC_CargaAcademica.xsd";
+            this.Locale = new global::System.Globalization.CultureInfo("en-US");
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableCargaAcademica = new CargaAcademicaDataTable();
@@ -28296,7 +28329,7 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CargaAcademicaRow AddCargaAcademicaRow(string CodPeriodo, string Periodo, string Docente, string Curso, string Materia, sbyte Horas) {
+            public CargaAcademicaRow AddCargaAcademicaRow(string CodPeriodo, string Periodo, string Docente, string Curso, string Materia, float Horas) {
                 CargaAcademicaRow rowCargaAcademicaRow = ((CargaAcademicaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CodPeriodo,
@@ -28354,7 +28387,7 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
                 base.Columns.Add(this.columnCurso);
                 this.columnMateria = new global::System.Data.DataColumn("Materia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMateria);
-                this.columnHoras = new global::System.Data.DataColumn("Horas", typeof(sbyte), null, global::System.Data.MappingType.Element);
+                this.columnHoras = new global::System.Data.DataColumn("Horas", typeof(float), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHoras);
             }
             
@@ -28578,10 +28611,10 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public sbyte Horas {
+            public float Horas {
                 get {
                     try {
-                        return ((sbyte)(this[this.tableCargaAcademica.HorasColumn]));
+                        return ((float)(this[this.tableCargaAcademica.HorasColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("El valor de la columna \'Horas\' de la tabla \'CargaAcademica\' es DBNull.", e);
@@ -29519,6 +29552,32 @@ namespace SitioWebOasis.WSGestorDefinicionPeriodoCarrera {
         private object[] results;
         
         internal getParametrosCarreraCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public dtstDatosAdminC_ParametrosCarrera Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((dtstDatosAdminC_ParametrosCarrera)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getParametrosCarreraFechasCompletedEventHandler(object sender, getParametrosCarreraFechasCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getParametrosCarreraFechasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getParametrosCarreraFechasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
