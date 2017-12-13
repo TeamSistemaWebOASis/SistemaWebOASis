@@ -7,6 +7,9 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
+
+
+
 namespace SitioWebOasis.Library
 {
     public class Asignatura: DatosCarrera
@@ -289,27 +292,76 @@ namespace SitioWebOasis.Library
         }
 
 
-        public string getMensajeEstadoFMG()
+        public string getMsgEstFMGEvAcumulativa()
         {
-            bool actaImpresa = this._evaluacion.getActaImpresa( this._strCodAsignatura,
+            string color = "danger";
+            string mensajeImpresion = string.Empty;
+
+            if ( this._evaluacionActiva == "1" || this._evaluacionActiva == "2" || this._evaluacionActiva == "3"){
+                mensajeImpresion = this._getMensajeEstadoEvaluacion();
+            }else{
+                mensajeImpresion =  "<p class='text-danger pull-right'>";
+                mensajeImpresion += "   <strong>Gestión de Notas - 'CERRADA'</strong>";
+                mensajeImpresion += "</p>";
+            }
+
+            return mensajeImpresion;
+        }
+
+
+        //  
+        public string getMsgEstFMGEvFinal()
+        {
+            string mensajeImpresion = string.Empty;
+
+            if (this._evaluacionActiva == "P"){
+                //mensajeImpresion = ( this._getEstadoEvaluacion(this._evaluacionActiva) ) 
+                //                    ? this._getMensajeEstadoEvaluacionNoActivo()
+                //                    : this._getMensajeEstadoEvaluacion();
+
+                mensajeImpresion = this._getMensajeEstadoEvaluacion();
+            }
+            else{
+                mensajeImpresion = "<p class='text-danger pull-right'>";
+                mensajeImpresion += "   <strong>Gestión de Notas - 'CERRADA'</strong>";
+                mensajeImpresion += "</p>";
+            }
+
+            return mensajeImpresion;
+        }
+
+
+        private bool _getEstadoEvaluacion( string evaluacionActiva)
+        {
+            bool rst = false;
+
+            
+
+            return rst;
+        }
+
+
+        private string _getMensajeEstadoEvaluacion()
+        {
+            bool actaImpresa = this._evaluacion.getActaImpresa(this._strCodAsignatura,
                                                                 this._strCodParalelo);
 
             int numDiasTermino = this._evaluacion.getInfoNumDiasFaltantes();
             string color = (numDiasTermino <= 1) ? "danger" : "success";
-            string  mensajeImpresion  = string.Empty;
+            string mensajeImpresion = string.Empty;
 
-            if (numDiasTermino >= 0 && actaImpresa == false ){
+            if (numDiasTermino >= 0 && actaImpresa == false){
                 mensajeImpresion = "<p class='text-" + color + " pull-right'>";
-                mensajeImpresion += "   Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
-            }
-            else if(numDiasTermino < 0 || actaImpresa == true ){
+                mensajeImpresion += "Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
+            }else if (numDiasTermino < 0 || actaImpresa == true){
                 mensajeImpresion = "<p class='text-danger pull-right'>";
-                mensajeImpresion += "   <strong>Gestion de Notas 'Cerrada'</strong>";
+                mensajeImpresion += "   <strong>Gestion de Notas - 'Cerrada'</strong>";
             }
 
             mensajeImpresion += "</p>";
 
             return mensajeImpresion;
         }
+
     }
 }

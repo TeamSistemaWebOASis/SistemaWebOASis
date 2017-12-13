@@ -183,10 +183,12 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060315260-4"; // Myriam Sampedro
                 //  numIdentificacion = "060301312-9";
 
-                numIdentificacion = "060402056-0"; // prueba UPD data
+                //  
+                //  numIdentificacion = "060402056-0"; // prueba UPD data
+
+                numIdentificacion = "030223303-6";  //  Error mecanica
             }
-            catch (Exception ex)
-            {
+            catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getNumeroIdentificacion");
             }

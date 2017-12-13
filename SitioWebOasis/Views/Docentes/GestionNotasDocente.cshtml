@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Gestión de Notas - ";
-    var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
+    var strParcialActivo = "2";
     var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
@@ -21,7 +21,7 @@
             colorER = "btn-warning";
             break;
 
-        case "EF":
+        case "P":
             colorEA = "btn-warning";
             colorEF = (estadoActa) ? "btn-success" : "btn-warning";
             colorER = "btn-warning";
@@ -97,7 +97,7 @@
                                     <i class="fa fa-angle-up pull-right"></i>
 
                                     @*Mensaje de estado de Evaluacion acumulativa*@
-                                    @Html.Raw(@Model.getMensajeEstadoFMG())
+                                    @Html.Raw(@Model.getMsgEstFMGEvAcumulativa())
                                 </a>
                             </h4>
                         </div>
@@ -181,15 +181,16 @@
                                     <strong> @Language.es_ES.DOC_TB_EV_FINAL </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
+
+                                    @* Mensaje de estado de evaluación final *@
+                                    @Html.Raw(@Model.getMsgEstFMGEvFinal())
                                 </a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
-                                <div id="msmGrdEvFinal" class="alert alert-info fade in" hidden="hidden">
-                                    <button class="close" data-dismiss="alert">×</button>
-                                    <i class="fa fa-info-circle"></i> EVALUACION FINAL - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
-                                </div>
+                                @* Area de mensajes evaluación final *@
+                                <div id="msmGrdEvFinal" hidden="hidden"></div>
 
                                 @* BOTONES DE IMPRESION DE ACTAS *@
                                 <div class="row">

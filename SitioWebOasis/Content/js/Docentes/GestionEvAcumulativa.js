@@ -286,7 +286,19 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 error: function (xhr, ajaxOptions, thrownError) {
-                    alert(thrownError);
+                    console.log(xhr.responseText);
+
+                    //  Mostrar mensaje de estado de la transaccion
+                    getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                    //  Cierro la ventana GIF Proceso
+                    HoldOn.close();
+
+                    //  Regreso a su valor original la variable de control de cambios en el grid de notas
+                    blnCambiosEvAc = false;
+
+                    //  limpio el ultimo registro de notas gestionado
+                    lastsel = 0;
                 }
             }).success(function (data) {
                 if (data.dtaEvAcumulativaUpd != "false") {
@@ -376,7 +388,18 @@
                     url: "/Docentes/ValidarCodigoImpresion",
                     data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
                     contentType: "application/json; charset=utf-8",
-                    dataType: "json"
+                    dataType: "json",
+
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log(xhr.responseText);
+
+                        //  Mostrar mensaje de estado de la transaccion
+                        getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                        //  Cierro la ventana GIF Proceso
+                        HoldOn.close();
+                    }
+            
         }).complete(function (data) {
             if( data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined ){
                 //  Cambio el color del boton
@@ -426,7 +449,16 @@
             type: "POST",
             url: "/Docentes/EnviarCorreoValidacionImpresion",
             contentType: "application/json; charset=utf-8",
-            dataType: "json"
+            dataType: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+
+                //  Mostrar mensaje de estado de la transaccion
+                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            }
         }).complete(function (data) {
             if (data.responseJSON.banEnviocodAutenticacion == true) {
                 //  Cierro la ventana GIF Proceso
@@ -468,7 +500,16 @@
             url: "/Docentes/impresionActas",
             data: '{idActa: "' + $("#opImpEvAcumulada").val() + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
             contentType: "application/json; charset=utf-8",
-            dataType: "json"
+            dataType: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+
+                //  Mostrar mensaje de estado de la transaccion
+                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            }
         }).complete(function (data) {
             //  Oculto el mensaje de error
             $('#messageError').attr("hidden");
@@ -490,6 +531,8 @@
 
 
     $('#dtaNumConfirmacion').keypress(function (event) {
+
+
         var $this = $(this);
         if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
             event.preventDefault();
