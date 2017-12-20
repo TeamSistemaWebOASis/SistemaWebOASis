@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Gestión de Notas - ";
-    var strParcialActivo = "2";
+    var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
     var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
@@ -144,6 +144,7 @@
                                         <thead>
                                             <tr role="row">
                                                 <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
+                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_CODIGO_ESTUDIANTE</th>
                                                 <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
                                                 <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
                                                 <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="3">@Language.es_ES.NOTAS_TB_COL_EV_ACUMULATIVA</th>
@@ -189,64 +190,74 @@
                         </div>
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
-                                @* Area de mensajes evaluación final *@
-                                <div id="msmGrdEvFinal" hidden="hidden"></div>
 
-                                @* BOTONES DE IMPRESION DE ACTAS *@
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        @* IMPRESION DEL ACTA - EV FINAL *@
-                                        <div class="btn-group">
-                                            <button id="btnEF" type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta final</strong> </button>
-                                            <button id="btnEFF" type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a id="pEF_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="pEF_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a id="pEF_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
+                                @if (strParcialActivo == "P" || strParcialActivo == "S")
+                                {
+                                    @* Area de mensajes evaluación final *@
+                                    <div id="msmGrdEvFinal" hidden="hidden"></div>
+
+                                    @* BOTONES DE IMPRESION DE ACTAS *@
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            @* IMPRESION DEL ACTA - EV FINAL *@
+                                            <div class="btn-group">
+                                                <button id="btnEF" type="button" class="btn @colorEF btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta final</strong> </button>
+                                                <button id="btnEFF" type="button" class="btn @colorEF btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a id="pEF_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                    <li><a id="pEF_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a id="pEF_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <hr class="inner-separator">
-
-                                @if(strParcialActivo == "P" && !estadoActa) {
-                                    @* GRID DE EVALUACION FINAL *@
-                                    <table id="grdEvFinal"></table>
                                     <hr class="inner-separator">
-                                    <button id="btnGuardarEvFinal"
-                                            type="button"
-                                            class="btn btn-success pull-right">
-                                        <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
-                                    </button>
+
+                                    if (strParcialActivo == "P" && estadoActa){
+                                        @* GRID DE EVALUACION FINAL *@
+                                        <table id="grdEvFinal"></table>
+                                        <hr class="inner-separator">
+                                        <button id="btnGuardarEvFinal"
+                                                type="button"
+                                                class="btn btn-success pull-right">
+                                            <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
+                                        </button>
+                                    }
+                                    else if (strParcialActivo == "P"){
+                                        @*TABLA DE NOTAS EVALUACION FINAL DEL ESTUDIANTE*@
+                                        <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_CODIGO_ESTUDIANTE</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
+                                                    <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADO_EV_FINAL </th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
+                                                    <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                                </tr>
+
+                                                <tr role="row">
+                                                    <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO </th>
+                                                    <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ASISTENCIA</th>
+
+                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
+                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @* NOTAS EVALUACION ESTUDIANTE *@
+                                                @Html.Raw(Model.evFinal.getHTML_EvaluacionFinal())
+                                            </tbody>
+                                        </table>
+                                    }
                                 }else{
-                                    @*TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
-                                    <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
-                                        <thead>
-                                            <tr role="row">
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
-                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADO_EV_FINAL </th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
-                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
-                                            </tr>
-
-                                            <tr role="row">
-                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO </th>
-                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ASISTENCIA</th>
-
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @* NOTAS EVALUACION ESTUDIANTE *@
-                                            @Html.Raw(Model.evFinal.getHTML_EvaluacionFinal())
-                                        </tbody>
-                                    </table>
+                                    <div class="alert alert-info">
+                                        @Language.es_ES.SMS_FCH_INICIO_EV_FINAL <strong>@Model.getFchInicioGestionEvFinal()</strong>
+                                    </div>
                                 }
 
                             </div>
@@ -262,69 +273,77 @@
                                     <strong> @Language.es_ES.DOC_TB_EV_RECUPERACION </strong>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <i class="fa fa-angle-up pull-right"></i>
+
+                                    @* Mensaje de estado de evaluación final *@
+                                    @Html.Raw(@Model.getMsgEstFMGEvRecuperacion())
                                 </a>
                             </h4>
                         </div>
+                        
                         <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
-                                @* BOTONES DE IMPRESION DE ACTAS *@
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        @* IMPRESION DEL ACTA - EV RECUPERACION *@
-                                        <div class="btn-group">
-                                            <button id="btnER" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta recuperación</strong> </button>
-                                            <button id="btnERF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a id="pER_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
-                                                <li><a id="pER_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
-                                                <li class="divider"></li>
-                                                <li><a id="pER_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
-                                            </ul>
+
+                                @if (strParcialActivo == "S"){
+                                    @* BOTONES DE IMPRESION DE ACTAS *@
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            @* IMPRESION DEL ACTA - EV RECUPERACION *@
+                                            <div class="btn-group">
+                                                <button id="btnER" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta recuperación</strong> </button>
+                                                <button id="btnERF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a id="pER_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
+                                                    <li><a id="pER_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a id="pER_blc" href="#"> @Language.es_ES.EST_DWN_PDF_BLANCO </a></li>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr class="inner-separator">
-                                @if (strParcialActivo == "ER" && estadoActa ){
-                                    <div id="msmGrdEvRecuperacion" class="alert alert-info fade in" hidden="hidden">
-                                        <button class="close" data-dismiss="alert">×</button>
-                                        <i class="fa fa-info-circle"></i> EVALUACION RECUPERACION - REGISTRADA <strong> VERSION BETA - La informacion gestionada es de prueba. </strong>
-                                    </div>
-                                    
-                                    @* GRID DE EVALUACION RECUPERACION *@
-                                    <table id="grdEvRecuperacion"></table>
+
                                     <hr class="inner-separator">
 
-                                    <button id="btnGuardarEvRecuperacion"
-                                            type="button"
-                                            class="btn btn-success pull-right">
-                                        <i class="fa fa-floppy-o fa-2x"></i> <strong> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION </strong>
-                                    </button>
+                                    if (strParcialActivo == "S" && estadoActa){
+                                        <div id="msmGrdEvRecuperacion"></div>
+                                        @* GRID DE EVALUACION RECUPERACION *@
+                                        <table id="grdEvRecuperacion"></table>
+                                        <hr class="inner-separator">
+
+                                        <button id="btnGuardarEvRecuperacion"
+                                                type="button"
+                                                class="btn btn-success pull-right">
+                                            <i class="fa fa-floppy-o fa-2x"></i> <strong> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION </strong>
+                                        </button>
+                                    }else{
+                                        @* SOLO LECTURA - TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
+                                        <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
+                                                    <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
+                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
+                                                </tr>
+
+                                                <tr role="row">
+                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
+                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @* NOTAS EVALUACION ESTUDIANTE *@
+                                                @Html.Raw(Model.evRecuperacion.getHTML_EvaluacionRecuperacion())
+                                            </tbody>
+                                        </table>
+                                    }
                                 }else{
-                                    @* SOLO LECTURA - TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
-                                    <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
-                                        <thead>
-                                            <tr role="row">
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
-                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
-                                            </tr>
-
-                                            <tr role="row">
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @* NOTAS EVALUACION ESTUDIANTE *@
-                                            @Html.Raw(Model.evRecuperacion.getHTML_EvaluacionRecuperacion())
-                                        </tbody>
-                                    </table>
+                                    <div class="alert alert-info">
+                                        @Language.es_ES.SMS_FCH_INICIO_EV_RECUPERACION <strong>@Model.getFchInicioGestionEvRecuperacion()</strong>
+                                    </div>
                                 }
-
                             </div>
                         </div>
                     </div>

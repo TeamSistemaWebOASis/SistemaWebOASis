@@ -1213,6 +1213,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Código.
+        /// </summary>
+        public static string NOTAS_TB_COL_CODIGO_ESTUDIANTE {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_CODIGO_ESTUDIANTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cumplimiento.
         /// </summary>
         public static string NOTAS_TB_COL_CUMPLIMIENTO {
@@ -1587,6 +1596,24 @@ namespace Language {
         public static string SA_VERSION {
             get {
                 return ResourceManager.GetString("SA_VERSION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gestión de evaluación final inicia el.
+        /// </summary>
+        public static string SMS_FCH_INICIO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("SMS_FCH_INICIO_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gestion de evaluacion de recuperacion inicia el.
+        /// </summary>
+        public static string SMS_FCH_INICIO_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("SMS_FCH_INICIO_EV_RECUPERACION", resourceCulture);
             }
         }
         

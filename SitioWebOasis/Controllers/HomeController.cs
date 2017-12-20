@@ -19,14 +19,12 @@ namespace SitioWebOasis.Controllers
             if (this._existeRolUsuario())
             {
                 //Interfaz para Estudiante
-                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes")
-                {
+                if (UsuarioActual.RolActual.ID.ToString() == "Estudiantes"){
                     return RedirectToAction("Index", "Estudiantes");
                 }
 
                 //Interfaz para Docente
-                if (UsuarioActual.RolActual.ID.ToString() == "Docentes")
-                {
+                if (UsuarioActual.RolActual.ID.ToString() == "Docentes"){
                     return RedirectToAction("Index", "Docentes");
                 }
             }
@@ -158,35 +156,14 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180475189-7";
                 //  numIdentificacion = "131383905-0";
                 //  numIdentificacion = "180552383-2";
+                //  numIdentificacion = "220027162-1";
+
+                //  numIdentificacion = "210093670-3";  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
 
                 //  //  DOCENTE
-                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
-                //  numIdentificacion = "080211622-8";  //  <-- Gustavo / Rol de Estudiante / Docente
-                //  numIdentificacion = "080180827-0";  //  <-- Juan Diaz
-                //  numIdentificacion = "060190508-6";  //  <-- Patricio Moreno
-                //  numIdentificacion = "175644307-1";  //  <-- Nadia Gonzales - Ciencias
-                //  numIdentificacion = "060357656-2";  //  <-- JAIME ALBERTO TAPIA SALINAS - Centro de Idiomas
-                //  numIdentificacion = "060402979-3";
-                //  numIdentificacion = "060378254-1";
-
-                //  Medicina
-                //  numIdentificacion = "170916844-5";  
-                //  numIdentificacion = "175670475-3";
-                //  numIdentificacion = "060315034-3";
-                //  numIdentificacion = "060077660-3";
-                //  numIdentificacion = "095994918-1";
-                //  numIdentificacion = "171931201-7";
-                //  numIdentificacion = "060077660-3";
-
-                //  numIdentificacion = "060127252-9"; // <-- no imprime acta 
-                //  numIdentificacion = "060315260-4"; // Myriam Sampedro
-                //  numIdentificacion = "060301312-9";
-
-                //  
-                //  numIdentificacion = "060402056-0"; // prueba UPD data
-
-                numIdentificacion = "030223303-6";  //  Error mecanica
+                //  numIdentificacion = "170929748-3"; //   CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
             }
             catch (Exception ex){
                 Errores err = new Errores();

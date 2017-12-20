@@ -27,7 +27,8 @@
         datatype: "jsonstring",
         colModel: [ { name: "No", index: "No", label: "No", align: "center", width: "20", sortable: false },
 			        { name: "sintCodMatricula", key: true, hidden: true },
-			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: false },
+                    { name: "strCodigo", label: "Codigo", align: "center", width: "30", sortable: true },
+			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: true },
 			        { name: "bytNumMat", label: "Matricula", align: "center", width: "50", sortable: false },
 
 			        { name: "bytNota1", index: "bytNota1", label: "Nota uno (1)", align: "center", width: "50", editable: gn1, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8, integer: true }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },

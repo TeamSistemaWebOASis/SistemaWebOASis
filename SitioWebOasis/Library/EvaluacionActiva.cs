@@ -53,7 +53,7 @@ namespace SitioWebOasis.Library
 
                 if (dsParametrosCarrera.Parametros_Carrera.Rows.Count > 0){
                     //  Obtengo informacion de los parametros generales del sistema
-                    this._drDtaPeriodosEvaluacion = dsParametrosCarrera.Parametros_Carrera.Select("strCodigo IN('FN1', 'FN2', 'FN3', 'FNP')", "strCodigo");
+                    this._drDtaPeriodosEvaluacion = dsParametrosCarrera.Parametros_Carrera.Select("strCodigo IN('FN1', 'FN2', 'FN3', 'FNP', 'FNS')", "strCodigo");
                 }
 
             } catch (Exception ex) {
@@ -208,6 +208,52 @@ namespace SitioWebOasis.Library
         }
 
 
+        public DataRow getProximoParcial()
+        {
+            DataRow drProximoParcial = default(DataRow);
+
+            try{
+                if(this._drDtaPeriodosEvaluacion.Length > 0){
+                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                        if (DateTime.Now.Date.CompareTo(Convert.ToDateTime(item["strValor"].ToString())) < 0){
+                            drProximoParcial = item;
+                            break;
+                        }
+                    }
+                }
+            }catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "getProximoParcial");
+            }
+
+            return drProximoParcial;
+        }
+
+
+        public string getFchInicioEvaluacion(string dtaTpoEvaluacion)
+        {
+            string strFchInicio = default(string);
+
+            try{
+                if (this._drDtaPeriodosEvaluacion.Length > 0){
+                    foreach(DataRow item in this._drDtaPeriodosEvaluacion){
+                        if ( item["strCodigo"].ToString().CompareTo(dtaTpoEvaluacion) == 0){
+                            DateTime dtFchInicio = Convert.ToDateTime(item["strValor"].ToString()).Date.AddDays(-8);
+                            strFchInicio = dtFchInicio.ToString("dd/MM/yyyy");
+                            break;
+                        }
+                    }
+                }
+            }catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "getFchInicioEvaluacion");
+            }
+
+            return strFchInicio;
+        }
+
+
+
         public bool getActaImpresa( string codAsignatura, string strCodParalelo)
         {
             bool actaImpresa = false;
@@ -224,7 +270,7 @@ namespace SitioWebOasis.Library
                     break;
 
                     //  Ev. final - Ev. Recuperacion
-                    case "EF":
+                    case "P":
                         actaImpresa = (this._getActaEvFinalImpresa( codAsignatura, 
                                                                     this._evaluacionActiva) ) ? true : false;
                     break;

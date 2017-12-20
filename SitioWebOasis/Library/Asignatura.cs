@@ -28,6 +28,8 @@ namespace SitioWebOasis.Library
 
         protected EvaluacionActiva _evaluacion = null;
 
+        private DataRow _drProximoParcial = default(DataRow);
+
         public Asignatura()
         {
             if (!string.IsNullOrEmpty(this._strCodCarrera)){
@@ -39,6 +41,7 @@ namespace SitioWebOasis.Library
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
             this._dtstCursosDocente = this._dsAsignaturasDocente();
             this._evaluacionActiva = _evaluacion.getDataEvaluacionActiva();
+            this._drProximoParcial = this._evaluacion.getProximoParcial();
         }
 
 
@@ -220,7 +223,7 @@ namespace SitioWebOasis.Library
                                                             this._strCodAsignatura,
                                                             this._strCodParalelo,
                                                             this._evaluacionActiva);
-                }else if (this._evaluacionActiva == "P" || this._evaluacionActiva == "ER"){
+                }else if (this._evaluacionActiva == "P" || this._evaluacionActiva == "S"){
                     ban = ne.getActaImpresaEvFinalesRecuperacion(   strCodCarrera,
                                                                     periodoVigente,
                                                                     this._strCodAsignatura,
@@ -300,50 +303,77 @@ namespace SitioWebOasis.Library
             if ( this._evaluacionActiva == "1" || this._evaluacionActiva == "2" || this._evaluacionActiva == "3"){
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
             }else{
-                mensajeImpresion =  "<p class='text-danger pull-right'>";
-                mensajeImpresion += "   <strong>Gestión de Notas - 'CERRADA'</strong>";
-                mensajeImpresion += "</p>";
+                string strCodPA = this._drProximoParcial["strCodigo"].ToString();
+
+                if (strCodPA == "FN1" || strCodPA == "FN2" || strCodPA == "FN3"){
+                    string dtFchInicio = this._evaluacion.getFchInicioEvaluacion(strCodPA);
+
+                    mensajeImpresion = "<p class='text-success pull-right'>";
+                    mensajeImpresion += "   Parcial <strong>'" + this._drProximoParcial["strCodigo"].ToString().Replace("FN", "") + "'</strong>, activo a partir del <strong>" + dtFchInicio + "</strong>";
+                    mensajeImpresion += "</p>";
+                }else{
+                    mensajeImpresion = "<p class='text-info pull-right'>";
+                    mensajeImpresion += "   <strong>Gestión de evaluación acumulativa - 'CERRADA'</strong>";
+                    mensajeImpresion += "</p>";
+                }
             }
 
             return mensajeImpresion;
         }
 
 
-        //  
         public string getMsgEstFMGEvFinal()
         {
             string mensajeImpresion = string.Empty;
 
             if (this._evaluacionActiva == "P"){
-                //mensajeImpresion = ( this._getEstadoEvaluacion(this._evaluacionActiva) ) 
-                //                    ? this._getMensajeEstadoEvaluacionNoActivo()
-                //                    : this._getMensajeEstadoEvaluacion();
-
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
-            }
-            else{
-                mensajeImpresion = "<p class='text-danger pull-right'>";
-                mensajeImpresion += "   <strong>Gestión de Notas - 'CERRADA'</strong>";
-                mensajeImpresion += "</p>";
             }
 
             return mensajeImpresion;
         }
 
 
-        private bool _getEstadoEvaluacion( string evaluacionActiva)
+        public string getMsgEstFMGEvRecuperacion()
         {
-            bool rst = false;
+            string mensajeImpresion = string.Empty;
 
-            
+            if (this._evaluacionActiva == "S"){
+                mensajeImpresion = this._getMensajeEstadoEvaluacion();
+            }
 
-            return rst;
+            return mensajeImpresion;
+        }
+
+        public string getFchInicioGestionEvFinal()
+        {
+            string dtFchInicio = string.Empty;
+            string strCodPA = this._drProximoParcial["strCodigo"].ToString();
+
+            if (strCodPA == "FN1" || strCodPA == "FN2" || strCodPA == "FN3"){
+                dtFchInicio = this._evaluacion.getFchInicioEvaluacion("FNP");
+            }
+
+            return dtFchInicio;
+        }
+
+
+        public string getFchInicioGestionEvRecuperacion()
+        {
+            string dtFchInicio = string.Empty;
+            string strCodPA = this._drProximoParcial["strCodigo"].ToString();
+
+            if (strCodPA == "FN1" || strCodPA == "FN2" || strCodPA == "FN3" || strCodPA == "FNP"){
+                dtFchInicio = this._evaluacion.getFchInicioEvaluacion("FNS");
+            }
+
+            return dtFchInicio;
         }
 
 
         private string _getMensajeEstadoEvaluacion()
         {
-            bool actaImpresa = this._evaluacion.getActaImpresa(this._strCodAsignatura,
+            bool actaImpresa = this._evaluacion.getActaImpresa( this._strCodAsignatura,
                                                                 this._strCodParalelo);
 
             int numDiasTermino = this._evaluacion.getInfoNumDiasFaltantes();
@@ -352,7 +382,7 @@ namespace SitioWebOasis.Library
 
             if (numDiasTermino >= 0 && actaImpresa == false){
                 mensajeImpresion = "<p class='text-" + color + " pull-right'>";
-                mensajeImpresion += "Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
+                mensajeImpresion += "Parcial activo '"+ this._evaluacionActiva + "' fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
             }else if (numDiasTermino < 0 || actaImpresa == true){
                 mensajeImpresion = "<p class='text-danger pull-right'>";
                 mensajeImpresion += "   <strong>Gestion de Notas - 'Cerrada'</strong>";

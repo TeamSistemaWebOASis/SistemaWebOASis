@@ -174,6 +174,7 @@ namespace SitioWebOasis.Models
 
                     html += " <tr id='" + item["strCodigo"] + "' role='row' class='" + colorRow + "'>";
                     html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["No"] + "</td>";
+                    html += "     <td style='width: 30px; align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["strCodigo"] + "</td>";
                     html += "     <td style='width: 300px; align-content: center; vertical-align: middle; text-align: left; font-size: 12px;'>" + item["NombreCompleto"].ToString().Trim().ToUpper() + "</td>";
                     html += "     <td style='width: 30px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + numMatricula + "</td>";
                     html += "     <td style='width: 50px;align-content: center; vertical-align: middle; text-align: center; font-size: 12px;'>" + item["bytAcumulado"] + "</td>";

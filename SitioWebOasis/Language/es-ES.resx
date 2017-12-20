@@ -501,6 +501,9 @@
   <data name="NF_NOMINA_ESTUDIANTES" xml:space="preserve">
     <value>NOMINA</value>
   </data>
+  <data name="NOTAS_TB_COL_CODIGO_ESTUDIANTE" xml:space="preserve">
+    <value>Código</value>
+  </data>
   <data name="NOTAS_TB_COL_CUMPLIMIENTO" xml:space="preserve">
     <value>Cumplimiento</value>
   </data>
@@ -626,6 +629,12 @@
   </data>
   <data name="SA_VERSION" xml:space="preserve">
     <value>Sistema académico v3.8.1</value>
+  </data>
+  <data name="SMS_FCH_INICIO_EV_FINAL" xml:space="preserve">
+    <value>Gestión de evaluación final inicia el</value>
+  </data>
+  <data name="SMS_FCH_INICIO_EV_RECUPERACION" xml:space="preserve">
+    <value>Gestion de evaluacion de recuperacion inicia el</value>
   </data>
   <data name="STR_ACCEDER_SISTEMA_ACADEMICO" xml:space="preserve">
     <value>Acceder al Sistema Académico</value>
