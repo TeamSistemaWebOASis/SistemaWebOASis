@@ -264,15 +264,16 @@ namespace SitioWebOasis.Library
                     case "1":
                     case "2":
                     case "3":
-                        actaImpresa = (this._getActaEvAcumulativaImpresa(   codAsignatura,
-                                                                            strCodParalelo, 
-                                                                            this._evaluacionActiva)) ? true : false;
+                        actaImpresa = this._getActaEvAcumulativaImpresa(codAsignatura,
+                                                                        strCodParalelo, 
+                                                                        this._evaluacionActiva);
                     break;
 
-                    //  Ev. final - Ev. Recuperacion
+                    //  Ev. final - Ev. recuperacion
                     case "P":
-                        actaImpresa = (this._getActaEvFinalImpresa( codAsignatura, 
-                                                                    this._evaluacionActiva) ) ? true : false;
+                    case "S":
+                        actaImpresa = this._getActaEvFinalImpresa(  codAsignatura, 
+                                                                    this._evaluacionActiva);
                     break;
                 }
 

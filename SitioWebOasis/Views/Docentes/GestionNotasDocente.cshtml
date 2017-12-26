@@ -405,10 +405,10 @@
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
-        @if (strParcialActivo == "P" && !estadoActa){
+        @if (strParcialActivo == "P" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.39"></script>
-            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.39"></script>
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.60"></script>
+            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.60"></script>
 
             @* DATOS EVALUACION FINAL *@
             @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())

@@ -35,11 +35,13 @@ $(document).ready(function () {
 
     //  Gestion de notas 
     grdEvFinal.jqGrid({
-        url: 'Docentes/',
-        datatype: "json",
-        colModel: [ { name: 'No', index: 'No', label: 'No', align: 'center', width:'30', sortable: false },
-                    { name: 'strCodigo', key: true, hidden: true },
-                    { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: false },
+        url: 'data.json',
+        editurl: 'clientArray',
+        datatype: "jsonstring",
+        colModel: [{ name: 'No', index: 'No', label: 'No', align: 'center', width: '30', sortable: false },
+                    { name: "sintCodMatricula", key: true, hidden: true },
+                    { name: "strCodigo", label: "Codigo", align: "center", width: "60", sortable: true },
+                    { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: true },
                     { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false },
                     { name: 'bytAcumulado', label: 'Total acumulado', width: '120', align: 'center', sortable: false },
                     { name: 'bytAsistencia', label: 'Total asistencia(%)', width: '120', align: 'center', sortable: false },
@@ -49,53 +51,68 @@ $(document).ready(function () {
                     { name: 'Total', label: 'Total Ev. final', width: '120', align: 'center', sortable: false },
                     { name: 'efAcumulado', label: 'Estado', width: '120', align: 'center' },
                     { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
-        datatype: "jsonstring",
+
+        loadonce: true,
         datastr: $("#dtaJsonEvFinal").val(),
-        viewrecords: true,
-        height: "100%",
+        autowidth: true,
+        height: "auto",
+        shrinkToFit: true,
         ignoreCase: true,
         rowNum: 100,
-        onSelectRow: function (id, status, e) {
-            if (id !== lastsel && editarFila(id)) {
-                //  Cierro edicion de la ultima fila gestionada
-                if (lastsel != undefined) {
-                    $('#grdEvFinal').jqGrid('restoreRow', lastsel);
-                }
-
-                //
-                //  Recalculo Acumulado - si el docente edito la nota recalcula el acumulado total, 
-                //  cumplimiento y si esta en el ultimo parcial la equivalencia
-                //  
-                $("#grdEvFinal").jqGrid("editRow", id, {
-                    keys: true,
-                    focusField: 4,
-                    aftersavefunc: function (id) {
-                        //  Registro la informacion gestionada en el JSON
-                        guardarDtaEvaluacionFinal(id);
-
-                        //  Actualizo contenido de la fila
-                        updDtaEvaluacionFinal(id);
-
-                        //  Obtengo el identificador de la siguiente registro de notas a gestionar
-                        var idNextRow = getIdNextRow(id);
-                        if (id != idNextRow) {
-                            $('#grdEvFinal').jqGrid('setSelection', idNextRow, true);
-                        }
-                    }
-                });
-
-                lastsel = id;
-            } else {
-                //  Si el registro del estudiante es de EXONERADO - REPROBADO
-                $('#grdEvFinal').jqGrid('setSelection', id, false);
-            }
-        },
+        onSelectRow: editarRegistroEvFinal,
 
         loadComplete: function (data) {
             //  Resaltar contenido en columnas en la pagina
-            updContenidoColumnasGrid();
+            updContenidoColumnasEvFinal();
         }
     });
+
+
+    var clickedCell;
+    var banUpdRow = false;
+    $('#grdEvFinal td').on('click', function (e) {
+        clickedCell = this;
+    });
+
+
+    function editarRegistroEvFinal(id, status, e)
+    {
+        if (id !== lastsel && editarFila(id)) {
+            //  Cierro edicion de la ultima fila gestionada
+            if (lastsel != undefined) {
+                $('#grdEvFinal').jqGrid('restoreRow', lastsel);
+            }
+
+            //
+            //  Recalculo Acumulado - si el docente edito la nota recalcula el acumulado total, 
+            //  cumplimiento y si esta en el ultimo parcial la equivalencia
+            //  
+            $("#grdEvFinal").jqGrid("editRow", id, {
+                keys: true,
+                focusField: 4,
+                oneditfunc: function () {
+                    $('input, textarea', clickedCell).select();
+                },
+                aftersavefunc: function (id) {
+                    //  Registro la informacion gestionada en el JSON
+                    guardarDtaEvaluacionFinal(id);
+
+                    //  Actualizo contenido de la fila
+                    updDtaEvaluacionFinal(id);
+
+                    //  Obtengo el identificador de la siguiente registro de notas a gestionar
+                    var idNextRow = getIdNextRow(id);
+                    $('#grdEvFinal').jqGrid('setSelection', idNextRow, true);
+                    $("#" + idNextRow + "_bytNota").select();
+                }
+            });
+
+            lastsel = id;
+        } else {
+            //  Si el registro del estudiante es de EXONERADO - REPROBADO
+            $('#grdEvFinal').jqGrid('setSelection', id, false);
+        }
+    }
 
 
     function editarFila(id)
@@ -104,7 +121,7 @@ $(document).ready(function () {
 
         numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
-            if (lstEvaluacionFinal[x].strCodigo == id) {
+            if (lstEvaluacionFinal[x].sintCodMatricula == id) {
                 ban = lstEvaluacionFinal[x].esExoneradoReprobado();
             }
         }
@@ -124,7 +141,7 @@ $(document).ready(function () {
         var ban = false;
         var numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
-            if (lstEvaluacionFinal[x].strCodigo == id) {
+            if (lstEvaluacionFinal[x].sintCodMatricula == id) {
                 var dtaNota = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");                
                 lstEvaluacionFinal[x]["bytNota"] = dtaNota;
                 lstEvaluacionFinal[x].banEstado = 1;
@@ -163,7 +180,7 @@ $(document).ready(function () {
     }
 
 
-    function updContenidoColumnasGrid() {
+    function updContenidoColumnasEvFinal() {
         rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
 
         for (i = 0; i <= rowIds.length - 1 ; i++) {
@@ -183,7 +200,7 @@ $(document).ready(function () {
     function updDtaEvaluacionFinal(id) {
         numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
-            if (lstEvaluacionFinal[x].strCodigo == id) {
+            if (lstEvaluacionFinal[x].sintCodMatricula == id) {
                 $("#grdEvFinal").jqGrid('setRowData', id, { Total: lstEvaluacionFinal[x].getTotalEvFinal() });
                 $("#grdEvFinal").jqGrid('setRowData', id, { efAcumulado: lstEvaluacionFinal[x].getEstadoEvaluacionFinal() });
 
@@ -196,6 +213,19 @@ $(document).ready(function () {
                                     'bytNota',
                                     "",
                                     {   'background-color': '#dff0d8',
+                                        'background-image': 'none',
+                                        'text-align': 'center',
+                                        'font-size': 'medium',
+                                        'font-weight': 'bold'
+                                    });
+
+
+        $("#grdEvFinal").jqGrid(    'setCell',
+                                    id,
+                                    'Total',
+                                    "",
+                                    {
+                                        'background-color': '#dff0d8',
                                         'background-image': 'none',
                                         'text-align': 'center',
                                         'font-size': 'medium',
@@ -216,7 +246,7 @@ $(document).ready(function () {
 
     function validarNotaEvFinal(value, colname) {
         if (value < 0 || value > 12)
-            return [false, "Nota fuera de rango (0, 10)"];
+            return [false, "Nota de evaluación final fuera de rango, la calificación es sobre '12' puntos"];
         else
             return [true, ""];
     }
@@ -245,7 +275,7 @@ $(document).ready(function () {
                 cargarDatosEvFinal(data);
 
                 //  Actualizo el grid de notas
-                updContenidoColumnasGrid();
+                updContenidoColumnasEvFinal();
 
                 //  Regreso a su valor original la variable de control de cambios en el grid de notas
                 blnCambiosEvFinal = false;
