@@ -281,9 +281,7 @@ namespace SitioWebOasis.Models
 
             try
             {
-
-                if (!string.IsNullOrEmpty(idTypeFile))
-                {
+                if (!string.IsNullOrEmpty(idTypeFile)){
                     reportPath = (dtaActa[1] == "pdf" || dtaActa[1] == "xls")
                                     ? Path.Combine(pathReport, "rptActaExPrincipalConNotasR1.rdlc")
                                     : Path.Combine(pathReport, "rptActaExPrincipalSinNotasR1.rdlc");
@@ -320,8 +318,9 @@ namespace SitioWebOasis.Models
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
 
-                    //  Ejecuto el proceso de cierre de notas de un parcial activo
-                    //  this.cierreGestionNotasFinal(dtaActa[0]);
+                    if (!this.estadoParcialEvFinal()){
+                        this.cierreGestionNotasFinal();
+                    }
                 }
             }
             catch (Exception ex)
@@ -474,71 +473,71 @@ namespace SitioWebOasis.Models
             return lstPrmRptEvAcumulativa;
         }
 
+
+        public bool estadoParcialEvFinal()
+        {
+            bool ban = true;
+
+            try{
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                string strParcialActivo = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
+
+                //  true: acta impresa / false: acta NO impresa
+                ban = ne.getActaImpresaEvFinalesRecuperacion(   UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this._strCodAsignatura,
+                                                                this._strCodParalelo );
+            }
+            catch (Exception ex)
+            {
+                ban = true;
+                Errores err = new Errores();
+                err.SetError(ex, "parcialActivo");
+            }
+
+            return ban;
+        }
+
+
+        public void cierreGestionNotasParcial()
+        {
+            try{
+                string dtaParcial = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
+                string tpoExamen = string.Empty;
+                
+                if (this._dsEvFinal.Acta.Rows.Count > 0){
+                    tpoExamen = ( dtaParcial == "P" )   ? "PRI" 
+                                                        : ( dtaParcial == "S" ) ? "SUS" 
+                                                                                : "";
+
+                    ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                    int numRegEF = ne.getNumRegistrosEvFinalesRecuperacion( this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                            this._strCodAsignatura.ToString(),
+                                                                            tpoExamen);
+
+                    if (dtaParcial == "1"){
+                        if (numRegEA == 0){
+                            this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
+                        }else{
+                            this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
+                        }
+                    }
+                    else if (dtaParcial == "2" || dtaParcial == "3"){
+                        if (numRegEA == 0){
+                            this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
+                        }else{
+                            this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "cierreGestionNotasParcial");
+            }
+        }
         
-        //public void cierreGestionNotasFinal(string dtaParcial)
-        //{
-        //    string parcial1 = "0";
-        //    string parcial2 = "0";
-        //    string parcial3 = "0";
-
-        //    try
-        //    {
-        //        if (this._dsEvFinal.Acta.Rows.Count > 0)
-        //        {
-        //            switch (dtaParcial)
-        //            {
-        //                case "p1":
-        //                    parcial1 = "1";
-        //                    break;
-
-        //                case "p2":
-        //                    parcial1 = "1";
-        //                    parcial2 = "1";
-        //                    break;
-
-        //                case "p3":
-        //                    parcial1 = "1";
-        //                    parcial2 = "1";
-        //                    parcial3 = "1";
-        //                    break;
-        //            }
-
-        //            ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-        //            int numRegEA = ne.getNumRegistrosEvAcumulativo(this.UsuarioActual.CarreraActual.Codigo.ToString(),
-        //                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-        //                                                            this._strCodAsignatura.ToString());
-
-        //            if (dtaParcial == "p1")
-        //            {
-        //                if (numRegEA == 0)
-        //                {
-        //                    this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
-        //                }
-        //                else
-        //                {
-        //                    this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
-        //                }
-        //            }
-        //            else if (dtaParcial == "p2" || dtaParcial == "p3" || dtaParcial == "p4")
-        //            {
-        //                if (numRegEA == 0)
-        //                {
-        //                    this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
-        //                }
-        //                else
-        //                {
-        //                    this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
-        //                }
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Errores err = new Errores();
-        //        err.SetError(ex, "cierreGestionNotasParcial");
-        //    }
-
-        //}
-
     }
 }

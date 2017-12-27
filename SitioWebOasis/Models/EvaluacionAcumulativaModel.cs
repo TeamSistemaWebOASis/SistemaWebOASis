@@ -424,20 +424,20 @@ namespace SitioWebOasis.Models
 
         public bool estadoParcialEvAcumulativa()
         {
-            bool ban = false;
+            bool ban = true;
 
             try {
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
                 string strParcialActivo = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
 
-                ban = ne.getEstadoParcialEvAcumulativa( UsuarioActual.CarreraActual.Codigo.ToString(),
+                //  true: acta impresa / false: acta NO impresa
+                ban = ne.getActaImpresaEvAcumulativo(   UsuarioActual.CarreraActual.Codigo.ToString(),
                                                         this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                         this._strCodAsignatura,
                                                         this._strCodParalelo,
-                                                        strParcialActivo);
+                                                        strParcialActivo );
             } catch (Exception ex) {
-                ban = false;
-
+                ban = true;
                 Errores err = new Errores();
                 err.SetError(ex, "parcialActivo");
             }
@@ -615,7 +615,7 @@ namespace SitioWebOasis.Models
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
 
-                    if (this.estadoParcialEvAcumulativa()){
+                    if (!this.estadoParcialEvAcumulativa()){
                         this.cierreGestionNotasParcial();
                     }
                 }

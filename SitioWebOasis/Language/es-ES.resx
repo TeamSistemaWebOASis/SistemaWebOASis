@@ -484,10 +484,16 @@
     <value>Problema al generar archivo</value>
   </data>
   <data name="MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA" xml:space="preserve">
-    <value>GESTION DE EVALUACION ACUMULATIVA CORRECTA</value>
+    <value>GESTION DE NOTAS DE EVALUACION ACUMULATIVA REALIZADA CORRECTAMENTE</value>
   </data>
   <data name="MSG_REGISTRO_EV_ACUMULATIVA_ERROR" xml:space="preserve">
-    <value>GESTION DE EVALUACION ACUMULATIVA PRESENTO INCONVENIENTE </value>
+    <value>GESTION DE NOTAS DE EVALUACION ACUMULATIVA PRESENTA PROBLEMAS, favor volver a intentarlo</value>
+  </data>
+  <data name="MSG_REGISTRO_EV_FINAL_CORRECTA" xml:space="preserve">
+    <value>GESTION DE NOTAS DE EVALUACION FINAL REALIZADA CORRECTAMENTE</value>
+  </data>
+  <data name="MSG_REGISTRO_EV_FINAL_ERROR" xml:space="preserve">
+    <value>GESTION DE NOTAS DE EVALUACION FINAL PRESENTA PROBLEMAS, favor volver a intentarlo</value>
   </data>
   <data name="NF_EV_ACUMULATIVA" xml:space="preserve">
     <value>ACTA_EV_ACUMULATIVA</value>

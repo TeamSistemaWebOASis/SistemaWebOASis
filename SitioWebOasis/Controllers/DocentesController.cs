@@ -130,11 +130,13 @@ namespace SitioWebOasis.Controllers
 
                 if (dtaEvFinal.Count > 0){
                     if (evFinal.registrarEvaluacionFinal(dtaEvFinal)){
-                        rstEvFinal = Json(  evFinal.jsonEvFinal,
-                                            JsonRequestBehavior.AllowGet);
-                    }else{
-                        rstEvFinal = Json(  "false", 
-                                            JsonRequestBehavior.AllowGet);
+                        rstEvFinal = Json(new{  dtaEvFinalUpd = evFinal.jsonEvFinal,
+                                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_CORRECTA
+                        });
+                    }
+                    else{
+                        rstEvFinal = Json(new{  dtaEvFinalUpd = "false",
+                                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_ERROR });
                     }
                 }
             }catch (Exception ex){

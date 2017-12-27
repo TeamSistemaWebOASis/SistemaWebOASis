@@ -7,13 +7,13 @@ $(document).ready(function () {
     var dtaEvFinal = $('#dtaJsonEvFinal').val();
     var grdEvFinal = $("#grdEvFinal");
     var lstEvaluacionFinal = new Array();
-
     var blnCambiosEvFinal = false;
 
     var lastsel;
     var selIRow = 1;
     var rowIds;
     var codAutenticacion = null;
+    var banControlImpresion = false;
     
 
     //  Objeto con informacion de dtaEvAcumulacionFinal
@@ -236,10 +236,13 @@ $(document).ready(function () {
     }
 
 
-    function showLoadingProcess() {
+    function showLoadingProcess( mensaje ) {
+        var msg = ( mensaje.length == 0 )   ? 'GUARDANDO INFORMACION ...' 
+                                            : mensaje;
+
         HoldOn.open({
             theme: 'sk-dot',
-            message: "<h4>GUARDANDO INFORMACION ...</h4>"
+            message: "<h4>"+ mensaje +"</h4>"
         });
     }
 
@@ -254,7 +257,7 @@ $(document).ready(function () {
     
     $('#btnGuardarEvFinal').on('click', function(){
         //  Muestro mensaje de proceso
-        showLoadingProcess();
+        showLoadingProcess('');
 
         //  Verifico si el Grid de notas a cambiado
         if (blnCambiosEvFinal == true){
@@ -268,17 +271,33 @@ $(document).ready(function () {
                     alert(thrownError);
                 }
             }).success(function (data) {
-                //  Muestro mensaje de gestion de informacion
-                $('#msmGrdEvFinal').removeAttr("hidden");
+                if (data.dtaEvFinalUpd != "false") {
+                    lstEvaluacionFinal = new Array();
 
-                //  Actualizo el grid con la informacion gestionada a nivel BD
-                cargarDatosEvFinal(data);
+                    //  Muestro mensaje de gestion de informacion
+                    $('#msmGrdEvFinal').removeAttr("hidden");
 
-                //  Actualizo el grid de notas
-                updContenidoColumnasEvFinal();
+                    //  Actualizo el grid con la informacion gestionada a nivel BD
+                    cargarDatosEvFinal(data.dtaEvFinalUpd);
 
-                //  Regreso a su valor original la variable de control de cambios en el grid de notas
-                blnCambiosEvFinal = false;
+                    //  Actualizo el grid de notas
+                    updContenidoColumnasEvFinal();
+
+                    //  Regreso a su valor original la variable de control de cambios en el grid de notas
+                    blnCambiosEvFinal = false;
+
+                    //  Mostrar mensaje de estado de la transaccion
+                    getMensajeTransaccion(true, data.MessageGestion);
+
+                    //  limpio el ultimo registro de notas gestionado
+                    lastsel = 0;
+
+                    //  recargo el grid de notas
+                    $('#grdEvFinal').trigger('reloadGrid');
+                } else {
+                    //  Mostrar mensaje de estado de la transaccion
+                    getMensajeTransaccion(false, data.MessageGestion);
+                }
 
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
@@ -287,65 +306,198 @@ $(document).ready(function () {
             //  Cierro la ventana GIF Proceso
             HoldOn.close();
         }
+
     })
+
+
+    function getMensajeTransaccion(banEstado, mensaje) {
+        //  Muestro mensaje de gestion de informacion
+        $('#msmGrdEvFinal').removeAttr("hidden");
+
+        if (banEstado == true) {
+            $('#msmGrdEvFinal').attr("class", "alert alert-success fade in");
+            $('#msmGrdEvFinal').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-check' aria-hidden='true'></i> <strong>" + mensaje + "</strong>");
+        } else if (banEstado == false) {
+            $('#msmGrdEvFinal').attr("class", "alert alert-danger fade in");
+            $('#msmGrdEvFinal').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-exclamation-circle' aria-hidden='true'></i> <strong>" + mensaje + "</strong>");
+        }
+
+    }
+
+
 
 
     //  Control de impresion de actas
     $('#pEF_pdf, #pEF_xls, #pEF_blc').on('click', function () {
         $("#opImpEvFinal").val($(this).attr("id"));
 
-        //  Envio el codigo de autenticacion al correo
-        getCodAutenticacion();
+        if (banControlImpresion == false) {
+            if (blnCambiosEvFinal == true) {
+                $('#btnGuardarEvFinal').trigger("click");
+            }
+
+            controlImpresion();
+        } else if( banControlImpresion == false ){
+            imprimirActaEvFinal();
+        }
+
     })
 
 
-    $('#btnValidarImprimir').click(function () {
-        if ($('#dtaNumConfirmacion').val() == codAutenticacion) {
-            $.unblockUI();
-            showLoadingProcess();
-            var opImpresion = $("#opImpEvFinal").val();
+    function controlImpresion()
+    {
+        //  Control de impresion
+        $.confirm({
+            columnClass: 'col-md-8',
+            title: 'Control de impresión',
+            content: '<form action="#" class="formName">' +
+                    '   <div class="alert alert-warning">' +
+                    '       Compañero docente al ejecutar está acción usted' +
+                    '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN FINAL </strong>' +
+                    '       y ninguna nota de evaluación final va a poder ser gestionada desde el modulo web del sistema académico.' +
+                    '   </div>' +
 
-            //  Ejecuto el proceso de registro de informacion
-            $('#btnGuardarEvFinal').trigger("click");
+                    '   <div class="alert alert-info">' +
+                    '       Por su seguridad se enviara un código de impresión a su cuenta de correo institucional para continuar con la ejecución de esta tarea' +
+                    '   </div>' +
+                    '</form>',
 
-            $.ajax({
-                type: "POST",
-                url: "/Docentes/impresionActas",
-                data: '{idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json"
-            }).complete(function (data) {
-                //  Cambio el color del boton
-                $('#btnEF, #btnEFF').attr("class", 'btn btn-warning btn-md');
+            escapeKey: 'cancelar',
+            buttons: {
+                formSubmit: {
+                    text: 'Enviar código de impresión',
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        showLoadingProcess('Enviando código de impresión ...');
 
-                //  Oculto el mensaje de error
-                $('#messageError').attr("hidden");
+                        $.ajax({
+                            type: "POST",
+                            url: "/Docentes/EnviarCorreoValidacionImpresion",
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                console.log(xhr.responseText);
 
-                $("opImpEvFinal").attr("value", "");
+                                //  Mostrar mensaje de estado de la transaccion
+                                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
 
-                codAutenticacion = null;
+                                //  Cierro la ventana GIF Proceso
+                                HoldOn.close();
+                            }
+                        }).complete(function (data) {
+                            if (data.responseJSON.banEnviocodAutenticacion == true) {
+                                //  Cierro la ventana GIF Proceso
+                                HoldOn.close();
 
-                if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
-                    //  Cambio el Grid a modo "soloLectura"
-                    grdEvFinalSoloLectura();
+                                //  Muestro la ventana de ingreso de codigo de impresion
+                                frmValidacionCodigoImpresion()
+                            } else {
+                                //  Si existe error, muestro el mensaje
+                                $('#messageError').removeAttr("hidden");
+                                $('#messageError').html("<a href='' class='close'>×</a><strong>" + data.responseJSON.errorMessage + "</strong>, Favor vuelva a intentarlo");
+                            }
+                        })
 
-                    //  Elimino el boton de guardar
-                    $('#btnGuardarEvFinal').remove();
+                    }
+                },
+                cancelar: function () {
+                    //close
+                },
+            },
 
-                    $.redirect("/Docentes/DownloadFile",
-                                { file: data.responseJSON.fileName },
-                                    "POST")
-                } else {
-                    //  Si existe error, muestro el mensaje
-                    $('#messageError').removeAttr("hidden");
-                    $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
-                }
+        });
+    }
+    
 
-                //  Cierro la ventana GIF Proceso
-                HoldOn.close();
-            })
-        } else {
-            alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
+
+    function frmValidacionCodigoImpresion()
+    {
+        $.confirm({
+            columnClass: 'col-md-8',
+            title: 'Control de impresión',
+            content: '<form action="#" class="formName">' +
+                    '   <div class="form-group">' +
+                    '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
+                    '   </div>' +
+                    '</form>',
+
+            escapeKey: 'cancelar',
+            buttons: {
+                formSubmit: {
+                    text: 'Validar e imprimir',
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        var opImpresion = $("#opImpEvFinal").val();
+                        var numConfirmacion = this.$content.find('#dtaNumConfirmacion').val();
+                        showLoadingProcess('Verificando código de impresión ...');
+
+                        $.ajax({
+                            type: "POST",
+                            url: "/Docentes/ValidarCodigoImpresion",
+                            data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+
+                            error: function (xhr, ajaxOptions, thrownError) {
+                                console.log(xhr.responseText);
+
+                                //  Mostrar mensaje de estado de la transaccion
+                                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                                //  Cierro la ventana GIF Proceso
+                                HoldOn.close();
+                            }
+
+                        }).complete(function (data) {
+                            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined) {
+                                //  Cambio el color del boton
+                                $('#btnEF, #btnEFF').attr("class", 'btn btn-warning btn-md');
+
+                                //  Oculto el mensaje de error
+                                $('#messageError').attr("hidden");
+
+                                //  Cierro el formulario de ingreso de codigo de impresion
+                                $.unblockUI();
+
+                                //  Cierro la ventana GIF Proceso
+                                HoldOn.close();
+
+                                //  Cambio el grid de gestion de nota de evaluacion acumulativa a modo solo lectura
+                                grdEvFinalSoloLectura();
+
+                                //  Actualizo la bandera de impresion
+                                banControlImpresion = true;
+
+                                //  Elimino el boton de guardar
+                                $('#btnGuardarEvFinal').remove();
+
+                                //  Descarga de archivo
+                                $.redirect("/Docentes/DownloadFile", { file: data.responseJSON.fileName }, "POST")
+                            } else {
+                                //  Cierro la ventana GIF Proceso
+                                HoldOn.close();
+
+                                $('#dtaNumConfirmacion').val("");
+
+                                //  Si existe error, muestro el mensaje
+                                alert(data.responseJSON.errorMessage);
+                            }
+                        })
+
+                    }
+                },
+                cancelar: function () {
+                    //close
+                },
+            },
+        });
+    }
+
+
+    $('#dtaNumConfirmacion').keypress(function (event) {
+        var $this = $(this);
+        if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
+            event.preventDefault();
         }
     })
 
@@ -354,7 +506,6 @@ $(document).ready(function () {
     {
         $('#grdEvFinal').setColProp('bytNota', { editable: 'False' });
     }
-
 
 
     function getCodAutenticacion() {
@@ -376,7 +527,6 @@ $(document).ready(function () {
     }
 
 
-
     function procesoImpresionActa(codAutenticacionCorreo)
     {
         //  Muestro ventana de autenticacion a dos factores
@@ -384,4 +534,45 @@ $(document).ready(function () {
 
         codAutenticacion = codAutenticacionCorreo;
     }
+
+
+    function imprimirActaEvFinal()
+    {
+        showLoadingProcess();
+
+        $.ajax({
+            type: "POST",
+            url: "/Docentes/impresionActas",
+            data: '{idActa: "' + $("#opImpEvFinal").val() + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+
+                //  Mostrar mensaje de estado de la transaccion
+                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            }
+        }).complete(function (data) {
+            //  Oculto el mensaje de error
+            $('#messageError').attr("hidden");
+
+            //  Cierro la ventana GIF Proceso
+            HoldOn.close();
+
+            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
+                $.redirect("/Docentes/DownloadFile",
+                            { file: data.responseJSON.fileName },
+                                "POST")
+            } else {
+                //  Si existe error, muestro el mensaje
+                $('#messageError').removeAttr("hidden");
+                $('#messageError').html("<a href='' class='close'>×</a><strong>Problemas al generar archivo</strong>, favor vuelva a intentarlo");
+            }
+        })
+    }
+
+
 })
