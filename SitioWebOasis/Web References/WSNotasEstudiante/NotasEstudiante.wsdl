@@ -4,8 +4,8 @@
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:element name="GetDatosNotasEstudiante">
         <s:complexType>
           <s:sequence>
@@ -113,6 +113,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -148,6 +149,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="strCodTipoExamen" type="s:string" />
           </s:sequence>
         </s:complexType>
@@ -159,21 +161,24 @@
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getEstadoParcialEvAcumulativa">
+      <s:element name="registrarDatosEvFinalesRecuperacion">
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
-            <s:element minOccurs="0" maxOccurs="1" name="dtaParcial" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="dsEvFinalRecuperacion">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
           </s:sequence>
         </s:complexType>
       </s:element>
-      <s:element name="getEstadoParcialEvAcumulativaResponse">
+      <s:element name="registrarDatosEvFinalesRecuperacionResponse">
         <s:complexType>
           <s:sequence>
-            <s:element minOccurs="1" maxOccurs="1" name="getEstadoParcialEvAcumulativaResult" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="registrarDatosEvFinalesRecuperacionResult" type="s:boolean" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -227,11 +232,11 @@
   <wsdl:message name="getActaImpresaEvFinalesRecuperacionSoapOut">
     <wsdl:part name="parameters" element="tns:getActaImpresaEvFinalesRecuperacionResponse" />
   </wsdl:message>
-  <wsdl:message name="getEstadoParcialEvAcumulativaSoapIn">
-    <wsdl:part name="parameters" element="tns:getEstadoParcialEvAcumulativa" />
+  <wsdl:message name="registrarDatosEvFinalesRecuperacionSoapIn">
+    <wsdl:part name="parameters" element="tns:registrarDatosEvFinalesRecuperacion" />
   </wsdl:message>
-  <wsdl:message name="getEstadoParcialEvAcumulativaSoapOut">
-    <wsdl:part name="parameters" element="tns:getEstadoParcialEvAcumulativaResponse" />
+  <wsdl:message name="registrarDatosEvFinalesRecuperacionSoapOut">
+    <wsdl:part name="parameters" element="tns:registrarDatosEvFinalesRecuperacionResponse" />
   </wsdl:message>
   <wsdl:portType name="NotasEstudianteSoap">
     <wsdl:operation name="GetDatosNotasEstudiante">
@@ -266,9 +271,9 @@
       <wsdl:input message="tns:getActaImpresaEvFinalesRecuperacionSoapIn" />
       <wsdl:output message="tns:getActaImpresaEvFinalesRecuperacionSoapOut" />
     </wsdl:operation>
-    <wsdl:operation name="getEstadoParcialEvAcumulativa">
-      <wsdl:input message="tns:getEstadoParcialEvAcumulativaSoapIn" />
-      <wsdl:output message="tns:getEstadoParcialEvAcumulativaSoapOut" />
+    <wsdl:operation name="registrarDatosEvFinalesRecuperacion">
+      <wsdl:input message="tns:registrarDatosEvFinalesRecuperacionSoapIn" />
+      <wsdl:output message="tns:registrarDatosEvFinalesRecuperacionSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NotasEstudianteSoap" type="tns:NotasEstudianteSoap">
@@ -345,8 +350,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getEstadoParcialEvAcumulativa">
-      <soap:operation soapAction="http://tempuri.org/getEstadoParcialEvAcumulativa" style="document" />
+    <wsdl:operation name="registrarDatosEvFinalesRecuperacion">
+      <soap:operation soapAction="http://tempuri.org/registrarDatosEvFinalesRecuperacion" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -429,8 +434,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getEstadoParcialEvAcumulativa">
-      <soap12:operation soapAction="http://tempuri.org/getEstadoParcialEvAcumulativa" style="document" />
+    <wsdl:operation name="registrarDatosEvFinalesRecuperacion">
+      <soap12:operation soapAction="http://tempuri.org/registrarDatosEvFinalesRecuperacion" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

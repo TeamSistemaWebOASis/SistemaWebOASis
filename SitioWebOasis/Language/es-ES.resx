@@ -483,6 +483,9 @@
   <data name="MSG_ERROR_GENERAR_ARCHIVO" xml:space="preserve">
     <value>Problema al generar archivo</value>
   </data>
+  <data name="MSG_GESTION_NOTAS_CERRADA" xml:space="preserve">
+    <value>Gestión de notas 'cerrada'</value>
+  </data>
   <data name="MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA" xml:space="preserve">
     <value>GESTION DE NOTAS DE EVALUACION ACUMULATIVA REALIZADA CORRECTAMENTE</value>
   </data>

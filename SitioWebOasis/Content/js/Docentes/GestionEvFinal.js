@@ -348,13 +348,14 @@ $(document).ready(function () {
     {
         //  Control de impresion
         $.confirm({
-            columnClass: 'col-md-8',
+            icon: 'glyphicon glyphicon-alert',
+            columnClass: 'col-md-6 col-md-offset-3',
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
                     '       Compañero docente al ejecutar está acción usted' +
-                    '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN FINAL </strong>' +
-                    '       y ninguna nota de evaluación final va a poder ser gestionada desde el modulo web del sistema académico.' +
+                    '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN FINAL DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + ' </strong>' +
+                    '       y ninguna nota va a poder ser gestionada desde el modulo web del sistema académico.' +
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
@@ -413,7 +414,8 @@ $(document).ready(function () {
     function frmValidacionCodigoImpresion()
     {
         $.confirm({
-            columnClass: 'col-md-8',
+            icon: 'glyphicon glyphicon-alert',
+            columnClass: 'col-md-6 col-md-offset-3',
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
                     '   <div class="form-group">' +
@@ -494,12 +496,19 @@ $(document).ready(function () {
     }
 
 
-    $('#dtaNumConfirmacion').keypress(function (event) {
+    $.find('#dtaNumConfirmacion').keypress(function (event) {
         var $this = $(this);
         if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
             event.preventDefault();
         }
     })
+
+    //$('#dtaNumConfirmacion').keypress(function (event) {
+    //    var $this = $(this);
+    //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
+    //        event.preventDefault();
+    //    }
+    //})
 
 
     function grdEvFinalSoloLectura()

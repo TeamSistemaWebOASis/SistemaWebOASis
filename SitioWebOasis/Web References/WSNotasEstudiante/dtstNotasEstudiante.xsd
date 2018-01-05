@@ -63,6 +63,18 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="EvFinalRecuperacion">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" default="0" name="sintCodMatricula" type="xs:short" />
+              <xs:element minOccurs="0" default="" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" default="" name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" default="" name="strCodTipoExamen" type="xs:string" />
+              <xs:element minOccurs="0" default="0" name="boolSus" type="xs:unsignedByte" />
+              <xs:element minOccurs="0" default="" name="strObservacion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>

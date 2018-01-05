@@ -45,7 +45,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         private System.Threading.SendOrPostCallback getActaImpresaEvFinalesRecuperacionOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getEstadoParcialEvAcumulativaOperationCompleted;
+        private System.Threading.SendOrPostCallback registrarDatosEvFinalesRecuperacionOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -110,7 +110,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
         public event getActaImpresaEvFinalesRecuperacionCompletedEventHandler getActaImpresaEvFinalesRecuperacionCompleted;
         
         /// <remarks/>
-        public event getEstadoParcialEvAcumulativaCompletedEventHandler getEstadoParcialEvAcumulativaCompleted;
+        public event registrarDatosEvFinalesRecuperacionCompletedEventHandler registrarDatosEvFinalesRecuperacionCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetDatosNotasEstudiante", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -297,22 +297,23 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getNumRegistrosEvFinalesRecuperacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public int getNumRegistrosEvFinalesRecuperacion(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
+        public int getNumRegistrosEvFinalesRecuperacion(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodTipoExamen) {
             object[] results = this.Invoke("getNumRegistrosEvFinalesRecuperacion", new object[] {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         strCodTipoExamen});
             return ((int)(results[0]));
         }
         
         /// <remarks/>
-        public void getNumRegistrosEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
-            this.getNumRegistrosEvFinalesRecuperacionAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodTipoExamen, null);
+        public void getNumRegistrosEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodTipoExamen) {
+            this.getNumRegistrosEvFinalesRecuperacionAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParalelo, strCodTipoExamen, null);
         }
         
         /// <remarks/>
-        public void getNumRegistrosEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen, object userState) {
+        public void getNumRegistrosEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodTipoExamen, object userState) {
             if ((this.getNumRegistrosEvFinalesRecuperacionOperationCompleted == null)) {
                 this.getNumRegistrosEvFinalesRecuperacionOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetNumRegistrosEvFinalesRecuperacionOperationCompleted);
             }
@@ -320,6 +321,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         strCodTipoExamen}, this.getNumRegistrosEvFinalesRecuperacionOperationCompleted, userState);
         }
         
@@ -369,22 +371,23 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getActaImpresaEvFinalesRecuperacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool getActaImpresaEvFinalesRecuperacion(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
+        public bool getActaImpresaEvFinalesRecuperacion(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodTipoExamen) {
             object[] results = this.Invoke("getActaImpresaEvFinalesRecuperacion", new object[] {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         strCodTipoExamen});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void getActaImpresaEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen) {
-            this.getActaImpresaEvFinalesRecuperacionAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodTipoExamen, null);
+        public void getActaImpresaEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodTipoExamen) {
+            this.getActaImpresaEvFinalesRecuperacionAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParalelo, strCodTipoExamen, null);
         }
         
         /// <remarks/>
-        public void getActaImpresaEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodTipoExamen, object userState) {
+        public void getActaImpresaEvFinalesRecuperacionAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string strCodTipoExamen, object userState) {
             if ((this.getActaImpresaEvFinalesRecuperacionOperationCompleted == null)) {
                 this.getActaImpresaEvFinalesRecuperacionOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetActaImpresaEvFinalesRecuperacionOperationCompleted);
             }
@@ -392,6 +395,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
                         strCodCarrera,
                         strCodPeriodo,
                         strCodMateria,
+                        strCodParalelo,
                         strCodTipoExamen}, this.getActaImpresaEvFinalesRecuperacionOperationCompleted, userState);
         }
         
@@ -403,39 +407,33 @@ namespace SitioWebOasis.WSNotasEstudiante {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getEstadoParcialEvAcumulativa", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool getEstadoParcialEvAcumulativa(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string dtaParcial) {
-            object[] results = this.Invoke("getEstadoParcialEvAcumulativa", new object[] {
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/registrarDatosEvFinalesRecuperacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool registrarDatosEvFinalesRecuperacion(string strCodCarrera, dtstNotasEstudiante dsEvFinalRecuperacion) {
+            object[] results = this.Invoke("registrarDatosEvFinalesRecuperacion", new object[] {
                         strCodCarrera,
-                        strCodPeriodo,
-                        strCodMateria,
-                        strCodParalelo,
-                        dtaParcial});
+                        dsEvFinalRecuperacion});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string dtaParcial) {
-            this.getEstadoParcialEvAcumulativaAsync(strCodCarrera, strCodPeriodo, strCodMateria, strCodParalelo, dtaParcial, null);
+        public void registrarDatosEvFinalesRecuperacionAsync(string strCodCarrera, dtstNotasEstudiante dsEvFinalRecuperacion) {
+            this.registrarDatosEvFinalesRecuperacionAsync(strCodCarrera, dsEvFinalRecuperacion, null);
         }
         
         /// <remarks/>
-        public void getEstadoParcialEvAcumulativaAsync(string strCodCarrera, string strCodPeriodo, string strCodMateria, string strCodParalelo, string dtaParcial, object userState) {
-            if ((this.getEstadoParcialEvAcumulativaOperationCompleted == null)) {
-                this.getEstadoParcialEvAcumulativaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetEstadoParcialEvAcumulativaOperationCompleted);
+        public void registrarDatosEvFinalesRecuperacionAsync(string strCodCarrera, dtstNotasEstudiante dsEvFinalRecuperacion, object userState) {
+            if ((this.registrarDatosEvFinalesRecuperacionOperationCompleted == null)) {
+                this.registrarDatosEvFinalesRecuperacionOperationCompleted = new System.Threading.SendOrPostCallback(this.OnregistrarDatosEvFinalesRecuperacionOperationCompleted);
             }
-            this.InvokeAsync("getEstadoParcialEvAcumulativa", new object[] {
+            this.InvokeAsync("registrarDatosEvFinalesRecuperacion", new object[] {
                         strCodCarrera,
-                        strCodPeriodo,
-                        strCodMateria,
-                        strCodParalelo,
-                        dtaParcial}, this.getEstadoParcialEvAcumulativaOperationCompleted, userState);
+                        dsEvFinalRecuperacion}, this.registrarDatosEvFinalesRecuperacionOperationCompleted, userState);
         }
         
-        private void OngetEstadoParcialEvAcumulativaOperationCompleted(object arg) {
-            if ((this.getEstadoParcialEvAcumulativaCompleted != null)) {
+        private void OnregistrarDatosEvFinalesRecuperacionOperationCompleted(object arg) {
+            if ((this.registrarDatosEvFinalesRecuperacionCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getEstadoParcialEvAcumulativaCompleted(this, new getEstadoParcialEvAcumulativaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.registrarDatosEvFinalesRecuperacionCompleted(this, new registrarDatosEvFinalesRecuperacionCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -479,6 +477,8 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         private FechasAsignaturaCarrerasDataTable tableFechasAsignaturaCarreras;
         
+        private EvFinalRecuperacionDataTable tableEvFinalRecuperacion;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -518,6 +518,9 @@ namespace SitioWebOasis.WSNotasEstudiante {
                 }
                 if ((ds.Tables["FechasAsignaturaCarreras"] != null)) {
                     base.Tables.Add(new FechasAsignaturaCarrerasDataTable(ds.Tables["FechasAsignaturaCarreras"]));
+                }
+                if ((ds.Tables["EvFinalRecuperacion"] != null)) {
+                    base.Tables.Add(new EvFinalRecuperacionDataTable(ds.Tables["EvFinalRecuperacion"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -574,6 +577,16 @@ namespace SitioWebOasis.WSNotasEstudiante {
         public FechasAsignaturaCarrerasDataTable FechasAsignaturaCarreras {
             get {
                 return this.tableFechasAsignaturaCarreras;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public EvFinalRecuperacionDataTable EvFinalRecuperacion {
+            get {
+                return this.tableEvFinalRecuperacion;
             }
         }
         
@@ -656,6 +669,9 @@ namespace SitioWebOasis.WSNotasEstudiante {
                 if ((ds.Tables["FechasAsignaturaCarreras"] != null)) {
                     base.Tables.Add(new FechasAsignaturaCarrerasDataTable(ds.Tables["FechasAsignaturaCarreras"]));
                 }
+                if ((ds.Tables["EvFinalRecuperacion"] != null)) {
+                    base.Tables.Add(new EvFinalRecuperacionDataTable(ds.Tables["EvFinalRecuperacion"]));
+                }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
                 this.Namespace = ds.Namespace;
@@ -713,6 +729,12 @@ namespace SitioWebOasis.WSNotasEstudiante {
                     this.tableFechasAsignaturaCarreras.InitVars();
                 }
             }
+            this.tableEvFinalRecuperacion = ((EvFinalRecuperacionDataTable)(base.Tables["EvFinalRecuperacion"]));
+            if ((initTable == true)) {
+                if ((this.tableEvFinalRecuperacion != null)) {
+                    this.tableEvFinalRecuperacion.InitVars();
+                }
+            }
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -731,6 +753,8 @@ namespace SitioWebOasis.WSNotasEstudiante {
             base.Tables.Add(this.tableConvalidaciones);
             this.tableFechasAsignaturaCarreras = new FechasAsignaturaCarrerasDataTable();
             base.Tables.Add(this.tableFechasAsignaturaCarreras);
+            this.tableEvFinalRecuperacion = new EvFinalRecuperacionDataTable();
+            base.Tables.Add(this.tableEvFinalRecuperacion);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -754,6 +778,12 @@ namespace SitioWebOasis.WSNotasEstudiante {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeFechasAsignaturaCarreras() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeEvFinalRecuperacion() {
             return false;
         }
         
@@ -823,6 +853,9 @@ namespace SitioWebOasis.WSNotasEstudiante {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void FechasAsignaturaCarrerasRowChangeEventHandler(object sender, FechasAsignaturaCarrerasRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void EvFinalRecuperacionRowChangeEventHandler(object sender, EvFinalRecuperacionRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -2289,6 +2322,335 @@ namespace SitioWebOasis.WSNotasEstudiante {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class EvFinalRecuperacionDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+            
+            private global::System.Data.DataColumn columnsintCodMatricula;
+            
+            private global::System.Data.DataColumn columnstrCodPeriodo;
+            
+            private global::System.Data.DataColumn columnstrCodMateria;
+            
+            private global::System.Data.DataColumn columnstrCodTipoExamen;
+            
+            private global::System.Data.DataColumn columnboolSus;
+            
+            private global::System.Data.DataColumn columnstrObservacion;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EvFinalRecuperacionDataTable() {
+                this.TableName = "EvFinalRecuperacion";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal EvFinalRecuperacionDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected EvFinalRecuperacionDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn sintCodMatriculaColumn {
+                get {
+                    return this.columnsintCodMatricula;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn strCodPeriodoColumn {
+                get {
+                    return this.columnstrCodPeriodo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn strCodMateriaColumn {
+                get {
+                    return this.columnstrCodMateria;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn strCodTipoExamenColumn {
+                get {
+                    return this.columnstrCodTipoExamen;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn boolSusColumn {
+                get {
+                    return this.columnboolSus;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn strObservacionColumn {
+                get {
+                    return this.columnstrObservacion;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EvFinalRecuperacionRow this[int index] {
+                get {
+                    return ((EvFinalRecuperacionRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event EvFinalRecuperacionRowChangeEventHandler EvFinalRecuperacionRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event EvFinalRecuperacionRowChangeEventHandler EvFinalRecuperacionRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event EvFinalRecuperacionRowChangeEventHandler EvFinalRecuperacionRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event EvFinalRecuperacionRowChangeEventHandler EvFinalRecuperacionRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddEvFinalRecuperacionRow(EvFinalRecuperacionRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EvFinalRecuperacionRow AddEvFinalRecuperacionRow(short sintCodMatricula, string strCodPeriodo, string strCodMateria, string strCodTipoExamen, byte boolSus, string strObservacion) {
+                EvFinalRecuperacionRow rowEvFinalRecuperacionRow = ((EvFinalRecuperacionRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        sintCodMatricula,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodTipoExamen,
+                        boolSus,
+                        strObservacion};
+                rowEvFinalRecuperacionRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowEvFinalRecuperacionRow);
+                return rowEvFinalRecuperacionRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+                return this.Rows.GetEnumerator();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                EvFinalRecuperacionDataTable cln = ((EvFinalRecuperacionDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new EvFinalRecuperacionDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnsintCodMatricula = base.Columns["sintCodMatricula"];
+                this.columnstrCodPeriodo = base.Columns["strCodPeriodo"];
+                this.columnstrCodMateria = base.Columns["strCodMateria"];
+                this.columnstrCodTipoExamen = base.Columns["strCodTipoExamen"];
+                this.columnboolSus = base.Columns["boolSus"];
+                this.columnstrObservacion = base.Columns["strObservacion"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnsintCodMatricula = new global::System.Data.DataColumn("sintCodMatricula", typeof(short), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnsintCodMatricula);
+                this.columnstrCodPeriodo = new global::System.Data.DataColumn("strCodPeriodo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstrCodPeriodo);
+                this.columnstrCodMateria = new global::System.Data.DataColumn("strCodMateria", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstrCodMateria);
+                this.columnstrCodTipoExamen = new global::System.Data.DataColumn("strCodTipoExamen", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstrCodTipoExamen);
+                this.columnboolSus = new global::System.Data.DataColumn("boolSus", typeof(byte), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnboolSus);
+                this.columnstrObservacion = new global::System.Data.DataColumn("strObservacion", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnstrObservacion);
+                this.columnsintCodMatricula.DefaultValue = ((short)(0));
+                this.columnstrCodPeriodo.DefaultValue = ((string)(""));
+                this.columnstrCodMateria.DefaultValue = ((string)(""));
+                this.columnstrCodTipoExamen.DefaultValue = ((string)(""));
+                this.columnboolSus.DefaultValue = ((byte)(0));
+                this.columnstrObservacion.DefaultValue = ((string)(""));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EvFinalRecuperacionRow NewEvFinalRecuperacionRow() {
+                return ((EvFinalRecuperacionRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new EvFinalRecuperacionRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(EvFinalRecuperacionRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.EvFinalRecuperacionRowChanged != null)) {
+                    this.EvFinalRecuperacionRowChanged(this, new EvFinalRecuperacionRowChangeEvent(((EvFinalRecuperacionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.EvFinalRecuperacionRowChanging != null)) {
+                    this.EvFinalRecuperacionRowChanging(this, new EvFinalRecuperacionRowChangeEvent(((EvFinalRecuperacionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.EvFinalRecuperacionRowDeleted != null)) {
+                    this.EvFinalRecuperacionRowDeleted(this, new EvFinalRecuperacionRowChangeEvent(((EvFinalRecuperacionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.EvFinalRecuperacionRowDeleting != null)) {
+                    this.EvFinalRecuperacionRowDeleting(this, new EvFinalRecuperacionRowChangeEvent(((EvFinalRecuperacionRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveEvFinalRecuperacionRow(EvFinalRecuperacionRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                dtstNotasEstudiante ds = new dtstNotasEstudiante();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "EvFinalRecuperacionDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class EvAcumulativaRow : global::System.Data.DataRow {
@@ -3371,6 +3733,194 @@ namespace SitioWebOasis.WSNotasEstudiante {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class EvFinalRecuperacionRow : global::System.Data.DataRow {
+            
+            private EvFinalRecuperacionDataTable tableEvFinalRecuperacion;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal EvFinalRecuperacionRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableEvFinalRecuperacion = ((EvFinalRecuperacionDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public short sintCodMatricula {
+                get {
+                    try {
+                        return ((short)(this[this.tableEvFinalRecuperacion.sintCodMatriculaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'sintCodMatricula\' de la tabla \'EvFinalRecuperacion\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvFinalRecuperacion.sintCodMatriculaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string strCodPeriodo {
+                get {
+                    try {
+                        return ((string)(this[this.tableEvFinalRecuperacion.strCodPeriodoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'strCodPeriodo\' de la tabla \'EvFinalRecuperacion\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvFinalRecuperacion.strCodPeriodoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string strCodMateria {
+                get {
+                    try {
+                        return ((string)(this[this.tableEvFinalRecuperacion.strCodMateriaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'strCodMateria\' de la tabla \'EvFinalRecuperacion\' es DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvFinalRecuperacion.strCodMateriaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string strCodTipoExamen {
+                get {
+                    try {
+                        return ((string)(this[this.tableEvFinalRecuperacion.strCodTipoExamenColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'strCodTipoExamen\' de la tabla \'EvFinalRecuperacion\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvFinalRecuperacion.strCodTipoExamenColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte boolSus {
+                get {
+                    try {
+                        return ((byte)(this[this.tableEvFinalRecuperacion.boolSusColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'boolSus\' de la tabla \'EvFinalRecuperacion\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvFinalRecuperacion.boolSusColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string strObservacion {
+                get {
+                    try {
+                        return ((string)(this[this.tableEvFinalRecuperacion.strObservacionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'strObservacion\' de la tabla \'EvFinalRecuperacion\' es DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableEvFinalRecuperacion.strObservacionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IssintCodMatriculaNull() {
+                return this.IsNull(this.tableEvFinalRecuperacion.sintCodMatriculaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetsintCodMatriculaNull() {
+                this[this.tableEvFinalRecuperacion.sintCodMatriculaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstrCodPeriodoNull() {
+                return this.IsNull(this.tableEvFinalRecuperacion.strCodPeriodoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstrCodPeriodoNull() {
+                this[this.tableEvFinalRecuperacion.strCodPeriodoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstrCodMateriaNull() {
+                return this.IsNull(this.tableEvFinalRecuperacion.strCodMateriaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstrCodMateriaNull() {
+                this[this.tableEvFinalRecuperacion.strCodMateriaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstrCodTipoExamenNull() {
+                return this.IsNull(this.tableEvFinalRecuperacion.strCodTipoExamenColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstrCodTipoExamenNull() {
+                this[this.tableEvFinalRecuperacion.strCodTipoExamenColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsboolSusNull() {
+                return this.IsNull(this.tableEvFinalRecuperacion.boolSusColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetboolSusNull() {
+                this[this.tableEvFinalRecuperacion.boolSusColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsstrObservacionNull() {
+                return this.IsNull(this.tableEvFinalRecuperacion.strObservacionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetstrObservacionNull() {
+                this[this.tableEvFinalRecuperacion.strObservacionColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -3492,6 +4042,40 @@ namespace SitioWebOasis.WSNotasEstudiante {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public FechasAsignaturaCarrerasRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class EvFinalRecuperacionRowChangeEvent : global::System.EventArgs {
+            
+            private EvFinalRecuperacionRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EvFinalRecuperacionRowChangeEvent(EvFinalRecuperacionRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public EvFinalRecuperacionRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -4739,17 +5323,17 @@ namespace SitioWebOasis.WSNotasEstudiante {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
-    public delegate void getEstadoParcialEvAcumulativaCompletedEventHandler(object sender, getEstadoParcialEvAcumulativaCompletedEventArgs e);
+    public delegate void registrarDatosEvFinalesRecuperacionCompletedEventHandler(object sender, registrarDatosEvFinalesRecuperacionCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getEstadoParcialEvAcumulativaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class registrarDatosEvFinalesRecuperacionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal getEstadoParcialEvAcumulativaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal registrarDatosEvFinalesRecuperacionCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

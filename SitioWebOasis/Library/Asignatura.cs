@@ -292,7 +292,7 @@ namespace SitioWebOasis.Library
                     mensajeImpresion += "</p>";
                 }else{
                     mensajeImpresion = "<p class='text-info pull-right'>";
-                    mensajeImpresion += "   <strong>Gestión de evaluación acumulativa - 'CERRADA'</strong>";
+                    mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
                     mensajeImpresion += "</p>";
                 }
             }
@@ -323,6 +323,7 @@ namespace SitioWebOasis.Library
 
             return mensajeImpresion;
         }
+
 
         public string getFchInicioGestionEvFinal()
         {
@@ -364,9 +365,9 @@ namespace SitioWebOasis.Library
                 mensajeImpresion += (this._evaluacionActiva == "P" || this._evaluacionActiva == "S") 
                                         ? "Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>"
                                         : "Parcial activo '" + this._evaluacionActiva + "', fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
-            }else if (numDiasTermino < 0 || actaImpresa == false){
+            }else if (numDiasTermino < 0 || actaImpresa == true ){
                 mensajeImpresion = "<p class='text-danger pull-right'>";
-                mensajeImpresion += "   <strong>Gestion de Notas - 'Cerrada'</strong>";
+                mensajeImpresion += "   <strong>"+ Language.es_ES.MSG_GESTION_NOTAS_CERRADA +"</strong>";
             }
 
             mensajeImpresion += "</p>";

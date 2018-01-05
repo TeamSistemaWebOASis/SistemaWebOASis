@@ -263,8 +263,6 @@ namespace SitioWebOasis.Models
         }
 
 
-
-
         public string getDtaRptEvFinal(string[] dtaActa, string[] dtaAsignatura, string pathReport, string pathTmp)
         {
             //  Creo el nombre del archivo
@@ -319,7 +317,7 @@ namespace SitioWebOasis.Models
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
 
                     if (!this.estadoParcialEvFinal()){
-                        this.cierreGestionNotasFinal();
+                        this.cierreGestionNotasEvFinal();
                     }
                 }
             }
@@ -481,12 +479,16 @@ namespace SitioWebOasis.Models
             try{
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
                 string strParcialActivo = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
+                string strTipoExamen = (strParcialActivo == "P") 
+                                            ? "PRI" 
+                                            : (strParcialActivo == "S") ? "SUS" : "";
 
                 //  true: acta impresa / false: acta NO impresa
                 ban = ne.getActaImpresaEvFinalesRecuperacion(   UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                 this._strCodAsignatura,
-                                                                this._strCodParalelo );
+                                                                this._strCodParalelo, 
+                                                                strTipoExamen);
             }
             catch (Exception ex)
             {
@@ -499,7 +501,7 @@ namespace SitioWebOasis.Models
         }
 
 
-        public void cierreGestionNotasParcial()
+        public void cierreGestionNotasEvFinal()
         {
             try{
                 string dtaParcial = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
@@ -510,26 +512,30 @@ namespace SitioWebOasis.Models
                                                         : ( dtaParcial == "S" ) ? "SUS" 
                                                                                 : "";
 
-                    ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-                    int numRegEF = ne.getNumRegistrosEvFinalesRecuperacion( this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                                            this._strCodAsignatura.ToString(),
-                                                                            tpoExamen);
+                    
 
-                    if (dtaParcial == "1"){
-                        if (numRegEA == 0){
-                            this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
-                        }else{
-                            this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
-                        }
+                    WSNotasEstudiante.dtstNotasEstudiante dsNE = new WSNotasEstudiante.dtstNotasEstudiante();
+                    string strCodPeriodo = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
+
+                    foreach (DataRow item in this._dsEvFinal.Acta){
+                        DataRow drEvFR = dsNE.EvFinalRecuperacion.NewRow();
+                        drEvFR.BeginEdit();
+
+                        drEvFR["sintCodMatricula"] = item["sintCodMatricula"].ToString();
+                        drEvFR["strCodPeriodo"] = strCodPeriodo;
+                        drEvFR["strCodMateria"] = this._strCodAsignatura;
+                        drEvFR["strCodTipoExamen"] = tpoExamen;
+                        drEvFR["boolSus"] = 0;
+                        drEvFR["strObservacion"] = "";
+
+                        dsNE.Tables["EvFinalRecuperacion"].Rows.Add(drEvFR);
+                        drEvFR.EndEdit();
                     }
-                    else if (dtaParcial == "2" || dtaParcial == "3"){
-                        if (numRegEA == 0){
-                            this._addCerrarGestionParcial(parcial1, parcial2, parcial3);
-                        }else{
-                            this._updCerrarGestionParcial(parcial1, parcial2, parcial3);
-                        }
-                    }
+
+                    ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                    ne.registrarDatosEvFinalesRecuperacion( this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                            dsNE);
+
                 }
             }
             catch (Exception ex)
@@ -538,6 +544,5 @@ namespace SitioWebOasis.Models
                 err.SetError(ex, "cierreGestionNotasParcial");
             }
         }
-        
     }
 }

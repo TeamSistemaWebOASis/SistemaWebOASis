@@ -272,7 +272,8 @@ namespace SitioWebOasis.Library
                     //  Ev. final - Ev. recuperacion
                     case "P":
                     case "S":
-                        actaImpresa = this._getActaEvFinalImpresa(  codAsignatura, 
+                        actaImpresa = this._getActaEvFinalImpresa(  codAsignatura,
+                                                                    strCodParalelo,
                                                                     this._evaluacionActiva);
                     break;
                 }
@@ -310,19 +311,20 @@ namespace SitioWebOasis.Library
         }
 
 
-        private bool _getActaEvFinalImpresa(string codAsignatura, string strCodEvaluacion )
+        private bool _getActaEvFinalImpresa(string codAsignatura, string strCodParalelo, string strTpoExamen )
         {
             bool rst = true;
             int numReg = default(int);
 
-            try
-            {
-                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+            try{
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();                
                 rst = ne.getActaImpresaEvFinalesRecuperacion(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                 codAsignatura,
-                                                                strCodEvaluacion);
-            }catch (Exception ex){
+                                                                strCodParalelo, 
+                                                                strTpoExamen );
+            }
+            catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getActaEvAcumulativaImpresa");
             }

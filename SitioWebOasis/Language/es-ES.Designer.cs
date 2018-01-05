@@ -1159,6 +1159,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Gestión de notas &apos;cerrada&apos;.
+        /// </summary>
+        public static string MSG_GESTION_NOTAS_CERRADA {
+            get {
+                return ResourceManager.GetString("MSG_GESTION_NOTAS_CERRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a GESTION DE NOTAS DE EVALUACION ACUMULATIVA REALIZADA CORRECTAMENTE.
         /// </summary>
         public static string MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA {
