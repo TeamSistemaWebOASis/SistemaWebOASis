@@ -1204,6 +1204,24 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a GESTION DE NOTAS DE EVALUACION RECUPERACION REALIZADA CORRECTAMENTE.
+        /// </summary>
+        public static string MSG_REGISTRO_EV_RECUPERACION_CORRECTA {
+            get {
+                return ResourceManager.GetString("MSG_REGISTRO_EV_RECUPERACION_CORRECTA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a GESTION DE NOTAS DE EVALUACION RECUPERACION PRESENTA PROBLEMAS, favor volver a intentarlo.
+        /// </summary>
+        public static string MSG_REGISTRO_EV_RECUPERACION_ERROR {
+            get {
+                return ResourceManager.GetString("MSG_REGISTRO_EV_RECUPERACION_ERROR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ACTA_EV_ACUMULATIVA.
         /// </summary>
         public static string NF_EV_ACUMULATIVA {

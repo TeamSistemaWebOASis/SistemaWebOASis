@@ -213,7 +213,7 @@ namespace SitioWebOasis.Library
             DataRow drProximoParcial = default(DataRow);
 
             try{
-                if(this._drDtaPeriodosEvaluacion.Length > 0){
+                if (this._drDtaPeriodosEvaluacion.Length > 0){
                     foreach (DataRow item in this._drDtaPeriodosEvaluacion){
                         if (DateTime.Now.Date.CompareTo(Convert.ToDateTime(item["strValor"].ToString())) < 0){
                             drProximoParcial = item;
@@ -221,7 +221,7 @@ namespace SitioWebOasis.Library
                         }
                     }
                 }
-            }catch(Exception ex){
+            }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "getProximoParcial");
             }

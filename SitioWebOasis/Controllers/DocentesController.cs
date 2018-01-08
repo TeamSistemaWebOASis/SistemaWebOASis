@@ -161,11 +161,12 @@ namespace SitioWebOasis.Controllers
                 if (dtaEvRecuperacion.Count > 0)
                 {
                     if (evRecuperacion.registrarEvaluacionRecuperacion(dtaEvRecuperacion)){
-                        rstEvRecuperacion = Json(   evRecuperacion.jsonEvRecuperacion,
-                                                    JsonRequestBehavior.AllowGet);
-                    }else{
-                        rstEvRecuperacion = Json(  "false",
-                                                    JsonRequestBehavior.AllowGet);
+                        rstEvRecuperacion = Json(new {  dtaEvRecuperacionUpd = evRecuperacion.jsonEvRecuperacion,
+                                                        MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_CORRECTA });
+                    }
+                    else{
+                        rstEvRecuperacion = Json(new {  dtaEvRecuperacionUpd = "false",
+                                                        MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_ERROR });
                     }
                 }
             }

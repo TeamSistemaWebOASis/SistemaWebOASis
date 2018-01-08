@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Gestión de Notas - ";
     var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
+    var strProximaEvaluacion = Model.getInfoProximaEvaluacion();
     var estadoActa = Model.estadoActa();
 
     var colorEA = "btn-success";
@@ -30,7 +31,7 @@
             activoER = "collapse";
             break;
 
-        case "ER":
+        case "S":
             colorEA = "btn-warning";
             colorEF = "btn-warning";
             colorER = (estadoActa) ? "btn-success" : "btn-warning";
@@ -108,7 +109,7 @@
                                 <div id="msmGrdEvAcumulativa" hidden="hidden"></div>
 
                                 @* BOTONES DE IMPRESION DE ACTAS *@
-                                @if (strParcialActivo == "3" || strParcialActivo == "P" ){
+                                @if (strParcialActivo == "3" || strParcialActivo == "P" || strProximaEvaluacion == "P" || strProximaEvaluacion == "S" || strProximaEvaluacion == ""){
                                     <div class="row">
                                         <div class="col-sm-12">
                                             @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
@@ -191,7 +192,7 @@
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
-                                @if (strParcialActivo == "P" || strParcialActivo == "S")
+                                @if( strParcialActivo == "P" || strParcialActivo == "S" || strProximaEvaluacion == "S" || strProximaEvaluacion == "")
                                 {
                                     @* Area de mensajes evaluación final *@
                                     <div id="msmGrdEvFinal" hidden="hidden"></div>
@@ -225,8 +226,8 @@
                                             <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
                                         </button>
                                     }
-                                    else if (strParcialActivo == "P"){
-                                        @*TABLA DE NOTAS EVALUACION FINAL DEL ESTUDIANTE*@
+                                    else if (strParcialActivo == "S" || strProximaEvaluacion == "S" || strProximaEvaluacion == ""){
+                                        @* TABLA DE NOTAS EVALUACION FINAL DEL ESTUDIANTE *@
                                         <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
                                             <thead>
                                                 <tr role="row">
@@ -283,14 +284,14 @@
                         <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
 
-                                @if (strParcialActivo == "S"){
+                                @if (strParcialActivo == "S" || strProximaEvaluacion == ""){
                                     @* BOTONES DE IMPRESION DE ACTAS *@
                                     <div class="row">
                                         <div class="col-sm-12">
                                             @* IMPRESION DEL ACTA - EV RECUPERACION *@
                                             <div class="btn-group">
-                                                <button id="btnER" type="button" class="btn @colorEA btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta recuperación</strong> </button>
-                                                <button id="btnERF" type="button" class="btn @colorEA btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
+                                                <button id="btnER" type="button" class="btn @colorER btn-md"><i class="fa fa fa-print"></i> <strong>Impresión acta recuperación</strong> </button>
+                                                <button id="btnERF" type="button" class="btn @colorER btn-md dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span></button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li><a id="pER_pdf" href="#"> @Language.es_ES.EST_DWN_PDF</a></li>
                                                     <li><a id="pER_xls" href="#"> @Language.es_ES.EST_DWN_XLS</a></li>
@@ -387,6 +388,7 @@
     @Html.Hidden("opImpEvAcumulada", "")
     @Html.Hidden("opImpEvFinal", "")
     @Html.Hidden("opImpEvRecuperacion", "")
+    @Html.Hidden("dtaCtaUsuario", User.Identity.Name.ToString());
 
     
     @section scripts{
@@ -417,11 +419,11 @@
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
-        @if (strParcialActivo == "ER" && estadoActa){
+        @if (strParcialActivo == "S" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.14"></script>
-            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.14"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.25"></script>
+            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.25"></script>
 
             @* DATOS EVALUACION RECUPERACION *@
             @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
