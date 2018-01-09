@@ -14,7 +14,7 @@ namespace SitioWebOasis.Models
         public DatosAsignaturasDocenteModel(string strCodCarrera)
         {
             if (!string.IsNullOrEmpty(strCodCarrera)) {
-                this.UsuarioActual.SetRolCarreraActual(Roles.Docentes,
+                this.UsuarioActual.SetRolCarreraActual( Roles.Docentes,
                                                         strCodCarrera);
             }
 
@@ -35,20 +35,34 @@ namespace SitioWebOasis.Models
                 rm.CookieContainer = new System.Net.CookieContainer();
                 rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
 
-                rstCursoDocente = rm.GetCursosDocente(this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                rstCursoDocente = rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                         this.UsuarioActual.Cedula.ToString());
 
                 if (rstCursoDocente != null) {
                     dsCursosDocente = rstCursoDocente;
                 }
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getAsignaturasDocente");
             }
 
             return dsCursosDocente;
+        }
+
+
+        public bool getDocenteGestionaAsignatura( string strCodNivel, string strCodAsignatura, string strCodParalelo )
+        {
+            bool ban = false;
+            try{
+                DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '"+ strCodAsignatura + "' AND strCodNivel = '"+ strCodNivel + "' AND strCodParalelo = '"+ strCodParalelo + "'" );
+                ban = (rst.Length > 0) ? true : false;
+            }
+            catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "getGestionaAsignatura");
+            }
+
+            return ban;
         }
 
 
@@ -162,9 +176,7 @@ namespace SitioWebOasis.Models
             return parcialActivo;
         }
 
-
-
-
+        
         private string _cantidadEstudiantesMatriculados(string periodoVigente, string strCodAsignatura, string strCodNivel, string strCodParalelo)
         {
             string dtaEstMatriculados = string.Empty;

@@ -277,7 +277,7 @@
 
     $('#btnGuardarEvAcumulativa').on('click', function(){
         //  Muestro mensaje de proceso
-        showLoadingProcess();
+        showLoadingProcess('');
 
         if (blnCambiosEvAc == true) {
             $.ajax({
@@ -353,10 +353,13 @@
     }
 
 
-    function showLoadingProcess() {
+    function showLoadingProcess(mensaje) {
+        var msg = (mensaje.length == 0) ? 'GUARDANDO INFORMACION ...'
+                                        : mensaje;
+
         HoldOn.open({
             theme: 'sk-dot',
-            message: "<h4>PROCESANDO INFORMACION ...</h4>"
+            message: "<h4>" + msg + "</h4>"
         });
     }
 
@@ -371,7 +374,7 @@
             }
 
             //  Creo y envio el codigo de autenticacion 
-            getCodAutenticacion();
+            controlImpresion();
         } else if (banControlImpresion == true) {
             imprimirActaEvAcumulada();
         }
@@ -379,30 +382,131 @@
     })
 
 
-    $('#btnValidarImprimir').click(function () {
-        var opImpresion = $("#opImpEvAcumulada").val();
-        var numConfirmacion = $("#dtaNumConfirmacion").val();
+    function controlImpresion() {
+        //  Control de impresion
+        $.confirm({
+            icon: 'glyphicon glyphicon-alert',
+            columnClass: 'col-md-6 col-md-offset-3',
+            title: 'Control de impresión',
+            content: '<form action="#" class="formName">' +
+                     '   <div class="alert alert-warning">' +
+                     '       Compañero docente al ejecutar está acción usted' +
+                     '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN ACUMULADA DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + ' </strong>' +
+                     '       y ninguna nota va a poder ser gestionada desde el modulo web del sistema académico.' +
+                     '   </div>' +
 
-        showLoadingProcess()
+                     '   <div class="alert alert-info">' +
+                     '       Para su seguridad se enviara un código de impresión a su cuenta de correo institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong> para continuar con la ejecución de esta tarea' +
+                     '   </div>' +
+                     '</form>',
 
-        $.ajax({    type: "POST",
-                    url: "/Docentes/ValidarCodigoImpresion",
-                    data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-
-                    error: function (xhr, ajaxOptions, thrownError) {
-                        console.log(xhr.responseText);
-
-                        //  Mostrar mensaje de estado de la transaccion
-                        getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
-
-                        //  Cierro la ventana GIF Proceso
-                        HoldOn.close();
+            escapeKey: 'cancelar',
+            buttons: {
+                formSubmit: {
+                    text: 'Enviar código de impresión',
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        showLoadingProcess('Enviando código de impresión ...');
+                        enviarCodigoImpresion();
                     }
-            
+                },
+                cancelar: function () {
+                    //close
+                },
+            },
+
+        });
+    }
+
+
+    function enviarCodigoImpresion()
+    {
+        $.ajax({
+            type: "POST",
+            url: "/Docentes/EnviarCorreoValidacionImpresion",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+
+                //  Mostrar mensaje de estado de la transaccion
+                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            }
         }).complete(function (data) {
-            if( data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined ){
+            if (data.responseJSON.banEnviocodAutenticacion == true) {
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+
+                //  Muestro la ventana de ingreso de codigo de impresion
+                frmValidacionCodigoImpresion()
+            } else {
+                //  Si existe error, muestro el mensaje
+                $('#messageError').removeAttr("hidden");
+                $('#messageError').html("<a href='' class='close'>×</a><strong>" + data.responseJSON.errorMessage + "</strong>, Favor vuelva a intentarlo");
+            }
+        })
+
+    }
+
+
+    function frmValidacionCodigoImpresion() {
+        $.confirm({
+            icon: 'glyphicon glyphicon-alert',
+            columnClass: 'col-md-6 col-md-offset-3',
+            title: 'Control de impresión',
+            content: '<form action="#" class="formName">' +
+                    '   <div class="form-group">' +
+                    '       <input id="dtaNumConfirmacion" maxlength="4" type="text" onkeypress="function(){ var $this = $(this); if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) { event.preventDefault();} }" placeholder="código de impresión" class="name form-control" required />' +
+                    '   </div>' +
+                    '</form>',
+
+            escapeKey: 'cancelar',
+            buttons: {
+                formSubmit: {
+                    text: 'Validar e imprimir',
+                    btnClass: 'btn-blue',
+                    action: function () {
+                        showLoadingProcess('Verificando código de impresión ...');
+                        validarCodigoImpresion($("#opImpEvAcumulada").val(), this.$content.find('#dtaNumConfirmacion').val())
+                    }
+                },
+                cancelar: function () {
+                    //  Close
+                },
+            },
+        });
+    }
+
+
+    function validarSoloNumero() {
+        alert("You pressed a key inside the input field");
+    }
+
+
+    function validarCodigoImpresion(opImpresion, numConfirmacion)
+    {
+        $.ajax({
+            type: "POST",
+            url: "/Docentes/ValidarCodigoImpresion",
+            data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+
+            error: function (xhr, ajaxOptions, thrownError) {
+                console.log(xhr.responseText);
+
+                //  Mostrar mensaje de estado de la transaccion
+                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+            }
+
+        }).complete(function (data) {
+            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined) {
                 //  Cambio el color del boton
                 $('#btnEA, #btnEAF').attr("class", 'btn btn-warning btn-md');
 
@@ -424,8 +528,8 @@
                 //  Elimino el boton de guardar
                 $('#btnGuardarEvAcumulativa').remove();
 
-                $.redirect( "/Docentes/DownloadFile",
-                            {   file: data.responseJSON.fileName },
+                $.redirect("/Docentes/DownloadFile",
+                            { file: data.responseJSON.fileName },
                                 "POST")
             } else {
                 //  Cierro la ventana GIF Proceso
@@ -437,44 +541,6 @@
                 alert(data.responseJSON.errorMessage);
             }
         })
-
-    })
-
-
-    function getCodAutenticacion()
-    {
-        var rst;
-        showLoadingProcess()
-
-        $.ajax({
-            type: "POST",
-            url: "/Docentes/EnviarCorreoValidacionImpresion",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr.responseText);
-
-                //  Mostrar mensaje de estado de la transaccion
-                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
-
-                //  Cierro la ventana GIF Proceso
-                HoldOn.close();
-            }
-        }).complete(function (data) {
-            if (data.responseJSON.banEnviocodAutenticacion == true) {
-                //  Cierro la ventana GIF Proceso
-                HoldOn.close();
-
-                //  Muestro ventana de autenticacion a dos factores
-                $.blockUI({ message: $('#loginForm') });
-            } else {
-                //  Si existe error, muestro el mensaje
-                $('#messageError').removeAttr("hidden");
-                $('#messageError').html("<a href='' class='close'>×</a><strong>" + data.responseJSON.errorMessage + "</strong>, Favor vuelva a intentarlo");
-            }
-        })
-
-        return rst;
     }
 
 
@@ -494,7 +560,7 @@
 
     function imprimirActaEvAcumulada()
     {
-        showLoadingProcess();
+        showLoadingProcess('PROCESANDO INFORMACIÓN ...');
 
         $.ajax({
             type: "POST",
@@ -525,19 +591,14 @@
             } else {
                 //  Si existe error, muestro el mensaje
                 $('#messageError').removeAttr("hidden");
-                $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
+                $('#messageError').html("<a href='#' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
             }
         })
     }
 
 
-    $('#dtaNumConfirmacion').keypress(function (event) {
-
-
-        var $this = $(this);
-        if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
-            event.preventDefault();
-        }
+    $('#dtaNumConfirmacion', parent.document).keypress(function (event) {
+        var $this = $(this); if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) { event.preventDefault();}
     })
 
 })

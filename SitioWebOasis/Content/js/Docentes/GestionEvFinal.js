@@ -359,7 +359,7 @@ $(document).ready(function () {
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
-                    '       Por su seguridad se enviara un código de impresión a su cuenta de correo institucional para continuar con la ejecución de esta tarea' +
+                    '       Por su seguridad se enviara un código de impresión a su cuenta de correo institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong> para continuar con la ejecución de esta tarea' +
                     '   </div>' +
                     '</form>',
 

@@ -70,11 +70,17 @@ namespace SitioWebOasis.Controllers
         {
             try
             {
-                EvaluacionesDocenteModel edm = new EvaluacionesDocenteModel(strCodNivel,
+                //  Implementamos un control de acceso con la finalidad que el usuario pueda ver solo las asignaturas
+                //  a las que tiene acceso
+                if( this._usuarioGestionaAsignatura( strCodNivel, strCodAsignatura, strCodParalelo )){
+                    EvaluacionesDocenteModel edm = new EvaluacionesDocenteModel(strCodNivel,
                                                                             strCodAsignatura,
                                                                             strCodParalelo);
 
-                return View("GestionNotasDocente", edm);
+                    return View("GestionNotasDocente", edm);
+                }else{
+                    return RedirectToAction("SignOut", "Account");
+                }
             }
             catch (Exception ex)
             {
@@ -86,26 +92,50 @@ namespace SitioWebOasis.Controllers
         }
 
 
+        private bool _usuarioGestionaAsignatura( string strCodNivel, string strCodAsignatura, string strCodParalelo)
+        {
+            bool ban = false;
+            try
+            {
+                SitioWebOasis.Models.DatosAsignaturasDocenteModel daDocente = new DatosAsignaturasDocenteModel( this.UsuarioActual.CarreraActual.Codigo.ToString() );
+                ban = daDocente.getDocenteGestionaAsignatura(   strCodNivel, 
+                                                                strCodAsignatura,   
+                                                                strCodParalelo );
+            }catch(Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "EvaluacionAsignatura");
+            }
+
+            return ban;
+        }
+
+
         [HttpPost]
-        public JsonResult registrarEvaluacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionAcumulativa> dtaEvAcumulativa)
+        public ActionResult registrarEvaluacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionAcumulativa> dtaEvAcumulativa)
         {
             JsonResult rstGestionEvAcumulativa = default(JsonResult);
             try{
-                EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
-                                                                                            strCodAsignatura,
-                                                                                            strCodParalelo);
 
-                if( dtaEvAcumulativa.Count > 0){
-                    if( evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa)){
-                        rstGestionEvAcumulativa = Json(new {dtaEvAcumulativaUpd = evAcumulativa.jsonEvAcumulativa,
-                                                            MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA });
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)){
+                    EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(  strCodNivel,
+                                                                                                strCodAsignatura,
+                                                                                                strCodParalelo);
+
+                    if (dtaEvAcumulativa.Count > 0){
+                        if (evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa)){
+                            rstGestionEvAcumulativa = Json(new{ dtaEvAcumulativaUpd = evAcumulativa.jsonEvAcumulativa,
+                                                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA
+                                                            });
+                        }else{
+                            rstGestionEvAcumulativa = Json(new{ dtaEvAcumulativaUpd = "false",
+                                                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR
+                                                            });
+                        }
                     }
-                    else{
-                        rstGestionEvAcumulativa = Json(new{ dtaEvAcumulativaUpd = "false",
-                                                            MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR
-                        });
-                    }
-                }       
+                }else{
+                    return RedirectToAction("SignOut", "Account");
+                }
             }catch(Exception ex){
                 rstGestionEvAcumulativa = Json(new{ dtaEvAcumulativaUpd = "false",
                                                     MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR });
@@ -124,20 +154,26 @@ namespace SitioWebOasis.Controllers
             JsonResult rstEvFinal = default(JsonResult);
             try
             {
-                EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
-                                                                        strCodAsignatura,
-                                                                        strCodParalelo);
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)){
+                    EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
+                                                                            strCodAsignatura,
+                                                                            strCodParalelo);
 
-                if (dtaEvFinal.Count > 0){
-                    if (evFinal.registrarEvaluacionFinal(dtaEvFinal)){
-                        rstEvFinal = Json(new{  dtaEvFinalUpd = evFinal.jsonEvFinal,
-                                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_CORRECTA
-                        });
+                    if (dtaEvFinal.Count > 0){
+                        if (evFinal.registrarEvaluacionFinal(dtaEvFinal)){
+                            rstEvFinal = Json(new{
+                                dtaEvFinalUpd = evFinal.jsonEvFinal,
+                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_CORRECTA
+                            });
+                        }else{
+                            rstEvFinal = Json(new{
+                                dtaEvFinalUpd = "false",
+                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_ERROR
+                            });
+                        }
                     }
-                    else{
-                        rstEvFinal = Json(new{  dtaEvFinalUpd = "false",
-                                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_ERROR });
-                    }
+                }else{
+                    return RedirectToAction("SignOut", "Account");
                 }
             }catch (Exception ex){
                 Errores err = new Errores();
@@ -154,20 +190,26 @@ namespace SitioWebOasis.Controllers
             JsonResult rstEvRecuperacion = default(JsonResult);
             try
             {
-                EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
-                                                                                                strCodAsignatura,
-                                                                                                strCodParalelo);
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)){
+                    EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(   strCodNivel,
+                                                                                                    strCodAsignatura,
+                                                                                                    strCodParalelo);
 
-                if (dtaEvRecuperacion.Count > 0)
-                {
-                    if (evRecuperacion.registrarEvaluacionRecuperacion(dtaEvRecuperacion)){
-                        rstEvRecuperacion = Json(new {  dtaEvRecuperacionUpd = evRecuperacion.jsonEvRecuperacion,
-                                                        MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_CORRECTA });
+                    if (dtaEvRecuperacion.Count > 0){
+                        if (evRecuperacion.registrarEvaluacionRecuperacion(dtaEvRecuperacion)){
+                            rstEvRecuperacion = Json(new{
+                                dtaEvRecuperacionUpd = evRecuperacion.jsonEvRecuperacion,
+                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_CORRECTA
+                            });
+                        }else{
+                            rstEvRecuperacion = Json(new{
+                                dtaEvRecuperacionUpd = "false",
+                                MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_ERROR
+                            });
+                        }
                     }
-                    else{
-                        rstEvRecuperacion = Json(new {  dtaEvRecuperacionUpd = "false",
-                                                        MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_ERROR });
-                    }
+                }else{
+                    return RedirectToAction("SignOut", "Account");
                 }
             }
             catch (Exception ex)
