@@ -315,7 +315,7 @@ namespace SitioWebOasis.Library
 
             if (this._evaluacionActiva == "P"){
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
-            }else{
+            }else if( this.getInfoProximaEvaluacion() == "S" ) {
                 mensajeImpresion = "<p class='text-info pull-right'>";
                 mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
                 mensajeImpresion += "</p>";
@@ -331,6 +331,10 @@ namespace SitioWebOasis.Library
 
             if (this._evaluacionActiva == "S"){
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
+            }else if( string.IsNullOrEmpty( this.getInfoProximaEvaluacion() )){
+                mensajeImpresion = "<p class='text-info pull-right'>";
+                mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
+                mensajeImpresion += "</p>";
             }
 
             return mensajeImpresion;

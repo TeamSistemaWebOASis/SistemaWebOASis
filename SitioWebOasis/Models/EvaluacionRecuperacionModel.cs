@@ -282,8 +282,9 @@ namespace SitioWebOasis.Models
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
 
-                    //  Ejecuto el proceso de cierre de notas de un parcial activo
-                    //  this.cierreGestionNotasFinal(dtaActa[0]);
+                    if (!this.estadoParcialEvRecuperacion()){
+                        this.cierreGestionNotasEvRecuperacion();
+                    }
                 }
             }catch (Exception ex){
                 nameFile = "-1";
@@ -294,6 +295,75 @@ namespace SitioWebOasis.Models
 
             return nameFile;
         }
+
+
+        public bool estadoParcialEvRecuperacion()
+        {
+            bool ban = true;
+
+            try
+            {
+                ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                string strParcialActivo = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
+
+                //  true: acta impresa / false: acta NO impresa
+                ban = ne.getActaImpresaEvFinalesRecuperacion(   UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this._strCodAsignatura,
+                                                                this._strCodParalelo,
+                                                                strParcialActivo);
+            }
+            catch (Exception ex)
+            {
+                ban = true;
+                Errores err = new Errores();
+                err.SetError(ex, "parcialActivo");
+            }
+
+            return ban;
+        }
+
+
+        public void cierreGestionNotasEvRecuperacion()
+        {
+            try
+            {
+                string dtaParcial = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
+                string tpoExamen = string.Empty;
+
+                if (this._dsEvRecuperacion.Acta.Rows.Count > 0){
+                    tpoExamen = (dtaParcial == "P") ? "PRI"
+                                                        : (dtaParcial == "S") ? "SUS"
+                                                                                : "";
+
+                    WSNotasEstudiante.dtstNotasEstudiante dsNE = new WSNotasEstudiante.dtstNotasEstudiante();
+                    string strCodPeriodo = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
+
+                    foreach (DataRow item in this._dsEvRecuperacion.Acta){
+                        DataRow drEvFR = dsNE.EvFinalRecuperacion.NewRow();
+                        drEvFR.BeginEdit();
+
+                        drEvFR["sintCodMatricula"] = item["sintCodMatricula"].ToString();
+                        drEvFR["strCodPeriodo"] = strCodPeriodo;
+                        drEvFR["strCodMateria"] = this._strCodAsignatura;
+                        drEvFR["strCodTipoExamen"] = tpoExamen;
+                        drEvFR["boolSus"] = 0;
+                        drEvFR["strObservacion"] = "";
+
+                        dsNE.Tables["EvFinalRecuperacion"].Rows.Add(drEvFR);
+                        drEvFR.EndEdit();
+                    }
+
+                    ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
+                    ne.registrarDatosEvFinalesRecuperacion( this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                            dsNE);
+                }
+            }catch (Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "cierreGestionNotasEvRecuperacion");
+            }
+        }
+
 
 
         public LocalReport getRptEvRecuperacion(string reportPath)

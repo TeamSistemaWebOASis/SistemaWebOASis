@@ -237,7 +237,7 @@ namespace SitioWebOasis.Library
             try{
                 if (this._drDtaPeriodosEvaluacion.Length > 0){
                     foreach(DataRow item in this._drDtaPeriodosEvaluacion){
-                        if ( item["strCodigo"].ToString().CompareTo(dtaTpoEvaluacion) == 0){
+                        if ( item["strCodigo"].ToString().Replace("FN", "").CompareTo(dtaTpoEvaluacion.Replace("FN", "")) == 0){
                             DateTime dtFchInicio = Convert.ToDateTime(item["strValor"].ToString()).Date.AddDays(-8);
                             strFchInicio = dtFchInicio.ToString("dd/MM/yyyy");
                             break;

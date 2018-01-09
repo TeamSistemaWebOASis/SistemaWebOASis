@@ -483,8 +483,14 @@
   <data name="MSG_ERROR_GENERAR_ARCHIVO" xml:space="preserve">
     <value>Problema al generar archivo</value>
   </data>
+  <data name="MSG_FCH_INICIO_EV_FINAL" xml:space="preserve">
+    <value>Gestión de notas para evaluación final inicia el</value>
+  </data>
+  <data name="MSG_FCH_INICIO_EV_RECUPERACION" xml:space="preserve">
+    <value>Gestión de notas para evaluación de recuperación inicia el</value>
+  </data>
   <data name="MSG_GESTION_NOTAS_CERRADA" xml:space="preserve">
-    <value>Gestión de notas 'cerrada'</value>
+    <value>Gestión de notas 'finalizada'</value>
   </data>
   <data name="MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA" xml:space="preserve">
     <value>GESTION DE NOTAS DE EVALUACION ACUMULATIVA REALIZADA CORRECTAMENTE</value>
@@ -644,12 +650,6 @@
   </data>
   <data name="SA_VERSION" xml:space="preserve">
     <value>Sistema académico v3.8.1</value>
-  </data>
-  <data name="SMS_FCH_INICIO_EV_FINAL" xml:space="preserve">
-    <value>Gestión de evaluación final inicia el</value>
-  </data>
-  <data name="SMS_FCH_INICIO_EV_RECUPERACION" xml:space="preserve">
-    <value>Gestion de evaluacion de recuperacion inicia el</value>
   </data>
   <data name="STR_ACCEDER_SISTEMA_ACADEMICO" xml:space="preserve">
     <value>Acceder al Sistema Académico</value>

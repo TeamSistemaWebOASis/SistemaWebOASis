@@ -1159,7 +1159,25 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Gestión de notas &apos;cerrada&apos;.
+        ///   Busca una cadena traducida similar a Gestión de notas para evaluación final inicia el.
+        /// </summary>
+        public static string MSG_FCH_INICIO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("MSG_FCH_INICIO_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gestión de notas para evaluación de recuperación inicia el.
+        /// </summary>
+        public static string MSG_FCH_INICIO_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("MSG_FCH_INICIO_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gestión de notas &apos;finalizada&apos;.
         /// </summary>
         public static string MSG_GESTION_NOTAS_CERRADA {
             get {
@@ -1641,24 +1659,6 @@ namespace Language {
         public static string SA_VERSION {
             get {
                 return ResourceManager.GetString("SA_VERSION", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Gestión de evaluación final inicia el.
-        /// </summary>
-        public static string SMS_FCH_INICIO_EV_FINAL {
-            get {
-                return ResourceManager.GetString("SMS_FCH_INICIO_EV_FINAL", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a Gestion de evaluacion de recuperacion inicia el.
-        /// </summary>
-        public static string SMS_FCH_INICIO_EV_RECUPERACION {
-            get {
-                return ResourceManager.GetString("SMS_FCH_INICIO_EV_RECUPERACION", resourceCulture);
             }
         }
         

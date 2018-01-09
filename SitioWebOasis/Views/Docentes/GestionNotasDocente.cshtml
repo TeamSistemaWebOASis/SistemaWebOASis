@@ -257,7 +257,7 @@
                                     }
                                 }else{
                                     <div class="alert alert-info">
-                                        @Language.es_ES.SMS_FCH_INICIO_EV_FINAL <strong>@Model.getFchInicioGestionEvFinal()</strong>
+                                        @Language.es_ES.MSG_FCH_INICIO_EV_FINAL <strong>@Model.getFchInicioGestionEvFinal()</strong>
                                     </div>
                                 }
 
@@ -342,7 +342,7 @@
                                     }
                                 }else{
                                     <div class="alert alert-info">
-                                        @Language.es_ES.SMS_FCH_INICIO_EV_RECUPERACION <strong>@Model.getFchInicioGestionEvRecuperacion()</strong>
+                                        @Language.es_ES.MSG_FCH_INICIO_EV_RECUPERACION <strong>@Model.getFchInicioGestionEvRecuperacion()</strong>
                                     </div>
                                 }
                             </div>
@@ -422,17 +422,19 @@
         @if (strParcialActivo == "S" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.25"></script>
-            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.25"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>
+            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.26"></script>
 
             @* DATOS EVALUACION RECUPERACION *@
             @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
+        }else{
+            <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js"></script>
         }
 
-        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION
         @if (strParcialActivo == "NA"){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-        }
+        } *@
     }
 
 </div>

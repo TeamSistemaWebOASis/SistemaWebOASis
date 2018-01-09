@@ -401,6 +401,7 @@
     <Content Include="Content\js\Docentes\GestionEvRecuperacion.js" />
     <Content Include="Content\js\Docentes\GestionEvAcumulativa.js" />
     <Content Include="Content\js\Docentes\GestionNotasDocente.js" />
+    <Content Include="Content\js\Docentes\ImpresionActaRecuperacion.js" />
     <Content Include="Content\js\Docentes\ImpresionActaFinal.js" />
     <Content Include="Content\js\Docentes\ImpresionActasAcumulativa.js" />
     <Content Include="Content\js\Docentes\NominaEstudiantes.js" />

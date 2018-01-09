@@ -479,16 +479,16 @@ namespace SitioWebOasis.Models
             try{
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
                 string strParcialActivo = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
-                string strTipoExamen = (strParcialActivo == "P") 
-                                            ? "PRI" 
-                                            : (strParcialActivo == "S") ? "SUS" : "";
+                //string strTipoExamen = (strParcialActivo == "P") 
+                //                            ? "PRI" 
+                //                            : (strParcialActivo == "S") ? "SUS" : "";
 
                 //  true: acta impresa / false: acta NO impresa
                 ban = ne.getActaImpresaEvFinalesRecuperacion(   UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                 this._strCodAsignatura,
-                                                                this._strCodParalelo, 
-                                                                strTipoExamen);
+                                                                this._strCodParalelo,
+                                                                strParcialActivo);
             }
             catch (Exception ex)
             {

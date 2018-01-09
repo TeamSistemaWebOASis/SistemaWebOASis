@@ -422,7 +422,7 @@ $(document).ready(function () {
                         }).complete(function (data) {
                             if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined) {
                                 //  Cambio el color del boton
-                                $('#pER_pdf, #pER_xls, #pER_blc').attr("class", 'btn btn-warning btn-md');
+                                $('#btnER, #btnERF').attr("class", 'btn btn-warning btn-md');
 
                                 //  Oculto el mensaje de error
                                 $('#messageError').attr("hidden");
@@ -466,12 +466,12 @@ $(document).ready(function () {
 
 
 
-    $.find('#dtaNumConfirmacion').keypress(function (event) {
-        var $this = $(this);
-        if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
-            event.preventDefault();
-        }
-    })
+    //$.find('#dtaNumConfirmacion').keypress(function (event) {
+    //    var $this = $(this);
+    //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
+    //        event.preventDefault();
+    //    }
+    //})
 
 
     $('#btnValidarImprimir').click(function () {
