@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace SitioWebOasis.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     public class ErrorController : Controller
     {
         // GET: Error
@@ -14,5 +14,21 @@ namespace SitioWebOasis.Controllers
         {
             return View("Index");
         }
+
+
+        public ActionResult NotFound()
+        {
+            ActionResult result;
+
+            object model = Request.Url.PathAndQuery;
+
+            if (!Request.IsAjaxRequest())
+                result = View(model);
+            else
+                result = PartialView("NotFound", model);
+
+            return result;
+        }
+
     }
 }

@@ -265,6 +265,7 @@
     <Compile Include="Library\DatosCarrera.cs" />
     <Compile Include="Library\Direccion.cs" />
     <Compile Include="Library\DocumentoPersonal.cs" />
+    <Compile Include="Library\ErrorConfig.cs" />
     <Compile Include="Library\EvaluacionAcumulativa.cs" />
     <Compile Include="Library\EvaluacionFinal.cs" />
     <Compile Include="Library\EvaluacionRecuperacion.cs" />
@@ -384,6 +385,7 @@
     <Content Include="Content\img\EstudianteMasculinoDefault.png" />
     <Content Include="Content\img\img-estudiante.jpg" />
     <Content Include="Content\img\sistema_academico-logo.png" />
+    <Content Include="Content\img\_sistema_academico-logo.png" />
     <Content Include="Content\img\user-avatar_femenino.png" />
     <Content Include="Content\img\user-avatar_masculino.png" />
     <Content Include="Content\img\user1.png" />
@@ -493,6 +495,8 @@
     <Content Include="Views\Shared\MenuRoles.cshtml" />
     <Content Include="Views\ActualizarCuentaCorreo\Index.cshtml" />
     <Content Include="Views\ActualizarCuentaCorreo\ActualizarCuentaCorreo.cshtml" />
+    <Content Include="Views\Shared\_NotFound.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>

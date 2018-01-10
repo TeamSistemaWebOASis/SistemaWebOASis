@@ -492,6 +492,9 @@
   <data name="MSG_GESTION_NOTAS_CERRADA" xml:space="preserve">
     <value>Gestión de notas 'finalizada'</value>
   </data>
+  <data name="MSG_PAGINA_NO_ENCONTRADA" xml:space="preserve">
+    <value>Página no encontrada</value>
+  </data>
   <data name="MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA" xml:space="preserve">
     <value>GESTION DE NOTAS DE EVALUACION ACUMULATIVA REALIZADA CORRECTAMENTE</value>
   </data>

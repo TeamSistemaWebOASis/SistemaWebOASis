@@ -67,7 +67,7 @@ EvaluacionFinal.prototype.getEstadoEvaluacionFinal = function () {
         break;
 
         //  Reprueba
-        case (this.Total < 15 && this.strCodEquivalencia == "R" ):
+        case (this.Total < 16 && this.strCodEquivalencia == "R" ):
             rst = "<span class='label label-danger'>REPRUEBA</span>";
         break;
 

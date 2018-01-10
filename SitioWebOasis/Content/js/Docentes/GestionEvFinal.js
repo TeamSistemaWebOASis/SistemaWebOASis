@@ -60,7 +60,7 @@ $(document).ready(function () {
         ignoreCase: true,
         rowNum: 100,
         onSelectRow: editarRegistroEvFinal,
-
+        onSortCol: custom_sort,
         loadComplete: function (data) {
             //  Resaltar contenido en columnas en la pagina
             updContenidoColumnasEvFinal();
@@ -135,6 +135,27 @@ $(document).ready(function () {
         groupHeaders: [ { startColumnName: 'bytAcumulado', numberOfColumns: 2, titleText: '<b>TOTALIZADO EVALUACIÓN FORMATIVA</b>' },
                         { startColumnName: 'Total', numberOfColumns: 2, titleText: '<b>TOTALIZADO</b>' }]
     });
+
+
+    function custom_sort(index, iCol, sortorder) {
+        //rowIds = $('#grdEvFinal').jqGrid('getRowData');
+
+        //for (i = 0; i <= rowIds.length - 1 ; i++) {
+        //    //  En funcion al parcial activo resalto el color de la columna 
+        //    $("#grdEvFinal").jqGrid('setCell',
+        //                            rowIds[i],
+        //                            'bytNota',
+        //                            "",
+        //                            { 'background-color': '#fcf8e3' });
+
+        //    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[i].getNumMatricula() });
+        //    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[i].getEstadoEvaluacionFinal() });
+        //}
+
+        $('#grdEvFinal').jqGrid('setGridParam', {
+            datatype: 'local'
+        }).trigger("reloadGrid");
+    }
 
 
     function guardarDtaEvaluacionFinal(id) {
@@ -257,7 +278,7 @@ $(document).ready(function () {
     
     $('#btnGuardarEvFinal').on('click', function(){
         //  Muestro mensaje de proceso
-        showLoadingProcess('');
+        showLoadingProcess('Guardando información');
 
         //  Verifico si el Grid de notas a cambiado
         if (blnCambiosEvFinal == true){
@@ -323,8 +344,6 @@ $(document).ready(function () {
         }
 
     }
-
-
 
 
     //  Control de impresion de actas
@@ -497,12 +516,12 @@ $(document).ready(function () {
 
 
 
-    $.find('#dtaNumConfirmacion').keypress(function (event) {
-        var $this = $(this);
-        if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
-            event.preventDefault();
-        }
-    })
+    //$.find('#dtaNumConfirmacion').keypress(function (event) {
+    //    var $this = $(this);
+    //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
+    //        event.preventDefault();
+    //    }
+    //})
 
 
     //$('#dtaNumConfirmacion').keypress(function (event) {

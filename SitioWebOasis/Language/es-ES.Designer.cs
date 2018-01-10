@@ -1186,6 +1186,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Página no encontrada.
+        /// </summary>
+        public static string MSG_PAGINA_NO_ENCONTRADA {
+            get {
+                return ResourceManager.GetString("MSG_PAGINA_NO_ENCONTRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a GESTION DE NOTAS DE EVALUACION ACUMULATIVA REALIZADA CORRECTAMENTE.
         /// </summary>
         public static string MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA {

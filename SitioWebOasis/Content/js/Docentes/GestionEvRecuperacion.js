@@ -230,7 +230,7 @@ $(document).ready(function () {
 
     $('#btnGuardarEvRecuperacion').on('click', function () {
         //  Muestro mensaje de proceso
-        showLoadingProcess('');
+        showLoadingProcess('Guardar información');
 
         if (blnCambiosEvRecuperacion == true) {
             $.ajax({
