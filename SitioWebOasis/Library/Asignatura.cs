@@ -367,17 +367,16 @@ namespace SitioWebOasis.Library
             string mensajeImpresion = string.Empty;
 
             if (numDiasTermino >= 0 && actaImpresa == false ){
-                mensajeImpresion = "<p class='text-" + color + " pull-right'>";
+                mensajeImpresion = "<p id='msgEstadoEvaluacion' class='text-" + color + " pull-right'>";
                 mensajeImpresion += (this._evaluacionActiva == "P" || this._evaluacionActiva == "S") 
                                         ? "Fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>"
                                         : "Parcial activo <strong>'" + this._evaluacionActiva + "'</strong>, fecha máxima de gestión:&nbsp;<strong> " + this._evaluacion.getInfoEvaluacionActiva() + " &nbsp;&nbsp;</strong>";
             }else if (numDiasTermino < 0 || actaImpresa == true ){
                 mensajeImpresion = "<p class='text-danger pull-right'>";
-                mensajeImpresion += "   <strong>"+ Language.es_ES.MSG_GESTION_NOTAS_CERRADA +"</strong>";
+                mensajeImpresion += "   <strong id='msgEstEvFinal'>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA +"</strong>";
             }
 
             mensajeImpresion += "</p>";
-
             return mensajeImpresion;
         }
 

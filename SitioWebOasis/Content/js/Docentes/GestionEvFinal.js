@@ -52,7 +52,6 @@ $(document).ready(function () {
                     { name: 'efAcumulado', label: 'Estado', width: '120', align: 'center' },
                     { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
 
-        loadonce: true,
         datastr: $("#dtaJsonEvFinal").val(),
         autowidth: true,
         height: "auto",
@@ -60,7 +59,6 @@ $(document).ready(function () {
         ignoreCase: true,
         rowNum: 100,
         onSelectRow: editarRegistroEvFinal,
-        onSortCol: custom_sort,
         loadComplete: function (data) {
             //  Resaltar contenido en columnas en la pagina
             updContenidoColumnasEvFinal();
@@ -137,27 +135,6 @@ $(document).ready(function () {
     });
 
 
-    function custom_sort(index, iCol, sortorder) {
-        //rowIds = $('#grdEvFinal').jqGrid('getRowData');
-
-        //for (i = 0; i <= rowIds.length - 1 ; i++) {
-        //    //  En funcion al parcial activo resalto el color de la columna 
-        //    $("#grdEvFinal").jqGrid('setCell',
-        //                            rowIds[i],
-        //                            'bytNota',
-        //                            "",
-        //                            { 'background-color': '#fcf8e3' });
-
-        //    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[i].getNumMatricula() });
-        //    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[i].getEstadoEvaluacionFinal() });
-        //}
-
-        $('#grdEvFinal').jqGrid('setGridParam', {
-            datatype: 'local'
-        }).trigger("reloadGrid");
-    }
-
-
     function guardarDtaEvaluacionFinal(id) {
         var ban = false;
         var numReg = lstEvaluacionFinal.length;
@@ -202,19 +179,28 @@ $(document).ready(function () {
 
 
     function updContenidoColumnasEvFinal() {
-        rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
+        var rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
+        var DataIds = $('#grdEvFinal').jqGrid('getRowData');
+        var numRegEF = lstEvaluacionFinal.length;
 
-        for (i = 0; i <= rowIds.length - 1 ; i++) {
-            //  En funcion al parcial activo resalto el color de la columna 
-            $("#grdEvFinal").jqGrid('setCell',
-                                    rowIds[i],
-                                    'bytNota',
-                                    "",
-                                    { 'background-color': '#fcf8e3' });
+        for (i = 0; i < rowIds.length; i++) {
+            for (j = 0; j < numRegEF; j++) {
+                if (rowIds[i] == lstEvaluacionFinal[j].sintCodMatricula) {
+                    //  En funcion al parcial activo resalto el color de la columna 
+                    $("#grdEvFinal").jqGrid('setCell',
+                                            rowIds[i],
+                                            'bytNota',
+                                            "",
+                                            { 'background-color': '#fcf8e3' });
 
-            $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[i].getNumMatricula() });
-            $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[i].getEstadoEvaluacionFinal() });
+                    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[j].getNumMatricula() });
+                    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[j].getEstadoEvaluacionFinal() });
+
+                    j = numRegEF;
+                }
+            }
         }
+
     }
 
 
@@ -372,13 +358,13 @@ $(document).ready(function () {
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
-                    '       Compañero docente al ejecutar está acción usted' +
-                    '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN FINAL DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + ' </strong>' +
-                    '       y ninguna nota va a poder ser gestionada desde el modulo web del sistema académico.' +
+                    '       <p>Compañero docente, le recordamos que luego de ejecutar esta acción' +
+                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE RECUPERACIÓN DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
+                    '       <p>Luego de esta acción ninguna nota podrá ser gestionada desde este módulo web del sistema académico.</p>' +
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
-                    '       Por su seguridad se enviara un código de impresión a su cuenta de correo institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong> para continuar con la ejecución de esta tarea' +
+                    '       Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong>' +
                     '   </div>' +
                     '</form>',
 
@@ -440,7 +426,17 @@ $(document).ready(function () {
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
-                    '</form>',
+                    '</form>'+
+                    '<script>' +
+                    '   $(document).ready(function(){' +
+                    '       $("#dtaNumConfirmacion").keypress(function (event) {' +
+                    '           var $this = $(this);' +
+                    '           if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {' +
+                    '               event.preventDefault();' +
+                    '           }' +
+                    '       })' +
+                    '   })' +
+                    '</script>',
 
             escapeKey: 'cancelar',
             buttons: {
@@ -467,6 +463,8 @@ $(document).ready(function () {
 
                                 //  Cierro la ventana GIF Proceso
                                 HoldOn.close();
+
+                                return false;
                             }
 
                         }).complete(function (data) {
@@ -477,31 +475,32 @@ $(document).ready(function () {
                                 //  Oculto el mensaje de error
                                 $('#messageError').attr("hidden");
 
-                                //  Cierro el formulario de ingreso de codigo de impresion
-                                $.unblockUI();
-
                                 //  Cierro la ventana GIF Proceso
                                 HoldOn.close();
 
                                 //  Cambio el grid de gestion de nota de evaluacion acumulativa a modo solo lectura
                                 grdEvFinalSoloLectura();
 
-                                //  Actualizo la bandera de impresion
+                                //  Actualizo la bandera de impresión
                                 banControlImpresion = true;
 
                                 //  Elimino el boton de guardar
                                 $('#btnGuardarEvFinal').remove();
 
+                                //  Actualizo mensaje de estado de evaluacion
+                                $('#msgEstadoEvaluacion').attr('class', 'text-info pull-right')
+                                $('#msgEstadoEvaluacion')[0].innerHTML = "<strong>Gestión de notas 'finalizada'</strong>"
+
                                 //  Descarga de archivo
                                 $.redirect("/Docentes/DownloadFile", { file: data.responseJSON.fileName }, "POST")
                             } else {
+                                //  Si existe error, muestro el mensaje
+                                alert(data.responseJSON.errorMessage);
+
                                 //  Cierro la ventana GIF Proceso
                                 HoldOn.close();
 
-                                $('#dtaNumConfirmacion').val("");
-
-                                //  Si existe error, muestro el mensaje
-                                alert(data.responseJSON.errorMessage);
+                                frmValidacionCodigoImpresion();
                             }
                         })
 
@@ -515,8 +514,7 @@ $(document).ready(function () {
     }
 
 
-
-    //$.find('#dtaNumConfirmacion').keypress(function (event) {
+    //this.$content.find('#dtaNumConfirmacion').keypress(function (event) {
     //    var $this = $(this);
     //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
     //        event.preventDefault();

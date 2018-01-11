@@ -415,7 +415,7 @@ namespace SitioWebOasis.Models
                 }
 
                 lstPrmRptEvAcumulativa.Add(new ReportParameter( "strInstitucion",
-                                                                "ESPOCH"));
+                                                                Language.es_ES.STR_INSTITUCION));
 
                 lstPrmRptEvAcumulativa.Add(new ReportParameter("strPeriodoAcademico",
                                                                 this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()));

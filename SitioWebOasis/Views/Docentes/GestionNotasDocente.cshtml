@@ -192,8 +192,7 @@
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
-                                @if( strParcialActivo == "P" || strParcialActivo == "S" || strProximaEvaluacion == "S" || strProximaEvaluacion == "")
-                                {
+                                @if( strParcialActivo == "P" || strParcialActivo == "S" || strProximaEvaluacion == "S" || strProximaEvaluacion == ""){
                                     @* Area de mensajes evaluación final *@
                                     <div id="msmGrdEvFinal" hidden="hidden"></div>
 
@@ -216,7 +215,7 @@
 
                                     <hr class="inner-separator">
 
-                                    if (strParcialActivo == "P" && estadoActa){
+                                    if (estadoActa){
                                         @* GRID DE EVALUACION FINAL *@
                                         <table id="grdEvFinal"></table>
                                         <hr class="inner-separator">
@@ -226,7 +225,7 @@
                                             <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
                                         </button>
                                     }
-                                    else if (strParcialActivo == "S" || strProximaEvaluacion == "S" || strProximaEvaluacion == ""){
+                                    else{
                                         @* TABLA DE NOTAS EVALUACION FINAL DEL ESTUDIANTE *@
                                         <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
                                             <thead>
@@ -390,8 +389,8 @@
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
         @if (strParcialActivo == "P" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.101"></script>
-            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.101"></script>
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.127"></script>
+            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.127"></script>
 
             @* DATOS EVALUACION FINAL *@
             @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
