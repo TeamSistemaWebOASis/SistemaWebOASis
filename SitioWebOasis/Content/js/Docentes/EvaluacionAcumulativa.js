@@ -60,7 +60,7 @@ EvaluacionAcumulativa.prototype.getEstadoEvaluacion = function () {
     var rst = "---";
     var acumulado = this.acumulado();
 
-    if (this.parcialActivo == "3") {
+    if (this.parcialActivo == "3" || this.parcialActivo == "S" || this.parcialActivo == "P" || this.parcialActivo == "") {
         switch (true) {
             //  Exonerado
             case (acumulado >= 25 && this.bytAsistencia >= 70):

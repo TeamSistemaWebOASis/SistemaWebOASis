@@ -130,45 +130,16 @@
                                 }
                                 
                                 @* GRID DE EVALUACION ACUMULATIVA *@
+                                <table id="grdEvAcumulativa"></table>
+
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
-                                @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && estadoActa ){
-                                    <table id="grdEvAcumulativa"></table>
+                                @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && estadoActa ){    
                                     <hr class="inner-separator">
                                     <button id="btnGuardarEvAcumulativa"
                                             type="button"
                                             class="btn btn-success pull-right">
                                         <i class="fa fa-floppy-o fa-2x"></i> <strong>@Language.es_ES.BTN_GUARDAR_EVALUACION_ACUMULATIVA</strong>
                                     </button>
-                                }else{
-                                    @*TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
-                                    <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
-                                        <thead>
-                                            <tr role="row">
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_CODIGO_ESTUDIANTE</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
-                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="3">@Language.es_ES.NOTAS_TB_COL_EV_ACUMULATIVA</th>
-                                                <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="3">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
-                                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
-                                            </tr>
-
-                                            <tr role="row">
-                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_01 </th>
-                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
-                                                <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
-
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_TOTAL</th>
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
-                                                <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
-
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @* NOTAS EVALUACION ESTUDIANTE *@
-                                            @Html.Raw(Model.evAcumulativa.getHTML_EvaluacionAcumulativa())
-                                        </tbody>
-                                    </table>
                                 }
                             </div>
                         </div>
@@ -214,45 +185,16 @@
                                     </div>
 
                                     <hr class="inner-separator">
+                                    @* GRID DE EVALUACION FINAL *@
+                                    <table id="grdEvFinal"></table>
 
                                     if (estadoActa){
-                                        @* GRID DE EVALUACION FINAL *@
-                                        <table id="grdEvFinal"></table>
                                         <hr class="inner-separator">
                                         <button id="btnGuardarEvFinal"
                                                 type="button"
                                                 class="btn btn-success pull-right">
                                             <i class="fa fa-floppy-o fa-2x"></i> @Language.es_ES.BTN_GUARDAR_EVALUACION_FINAL
                                         </button>
-                                    }
-                                    else{
-                                        @* TABLA DE NOTAS EVALUACION FINAL DEL ESTUDIANTE *@
-                                        <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_CODIGO_ESTUDIANTE</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
-                                                    <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADO_EV_FINAL </th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
-                                                    <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
-                                                </tr>
-
-                                                <tr role="row">
-                                                    <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO </th>
-                                                    <th style="width: 75px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ASISTENCIA</th>
-
-                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
-                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @* NOTAS EVALUACION ESTUDIANTE *@
-                                                @Html.Raw(Model.evFinal.getHTML_EvaluacionFinal())
-                                            </tbody>
-                                        </table>
                                     }
                                 }else{
                                     <div class="alert alert-info">
@@ -376,26 +318,27 @@
         <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.7"> </script>
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
-        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa ){
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.136"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.136"> </script>
+        @* DATOS EVALUACION ACUMULATIVA *@
+        @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
 
-            @* DATOS EVALUACION ACUMULATIVA *@
-            @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
+        @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa ){
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.143"> </script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.143"> </script>
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js?v1.0.163"></script>
+            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.163"> </script>
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
+        @* DATOS EVALUACION FINAL *@
+        @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
         @if (strParcialActivo == "P" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.127"></script>
             <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.127"></script>
-
-            @* DATOS EVALUACION FINAL *@
-            @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
+            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.128"></script>
+            <script src="~/Content/js/Docentes/ImpresionActaFinal.js?v1.0.10"></script>
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
@@ -409,6 +352,7 @@
             @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
         }else{
             <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION

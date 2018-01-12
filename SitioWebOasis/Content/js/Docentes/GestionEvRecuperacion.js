@@ -465,15 +465,6 @@ $(document).ready(function () {
     }
 
 
-
-    //$.find('#dtaNumConfirmacion').keypress(function (event) {
-    //    var $this = $(this);
-    //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
-    //        event.preventDefault();
-    //    }
-    //})
-
-
     $('#btnValidarImprimir').click(function () {
         if ($('#dtaNumConfirmacion').val() == "987") {
             $.unblockUI();

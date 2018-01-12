@@ -27,17 +27,17 @@
         datatype: "jsonstring",
         colModel: [ { name: "No", index: "No", label: "No", align: "center", width: "20", sortable: false },
 			        { name: "sintCodMatricula", key: true, hidden: true },
-                    { name: "strCodigo", label: "Codigo", align: "center", width: "30", sortable: true },
-			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: true },
-			        { name: "bytNumMat", label: "Matricula", align: "center", width: "50", sortable: false },
+                    { name: "strCodigo", label: "Codigo", align: "center", width: "30", sortable: true, sorttype: "number" },
+			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: true, sorttype: "string" },
+			        { name: "bytNumMat", label: "Matricula", align: "center", width: "50", sortable: true, sorttype: "number" },
 
-			        { name: "bytNota1", index: "bytNota1", label: "Nota uno (1)", align: "center", width: "50", editable: gn1, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8, integer: true }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
-                    { name: "bytNota2", index: "bytNota2", label: "Nota dos (2)", align: "center", width: "50", editable: gn2, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
-                    { name: "bytNota3", index: "bytNota3", label: "Nota tres (3)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+			        { name: "bytNota1", index: "bytNota1", label: "Nota uno (1)", align: "center", width: "50", editable: gn1, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre8, integer: true }, sortable: true, sorttype: "number", formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+                    { name: "bytNota2", index: "bytNota2", label: "Nota dos (2)", align: "center", width: "50", editable: gn2, edittype: "text", editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: true, sorttype: "number", formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+                    { name: "bytNota3", index: "bytNota3", label: "Nota tres (3)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaSobre10 }, sortable: true, sorttype: "number", formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
 
-			        { name: "Total", label: "Total", align: "center", width: "50", sortable: false },
-			        { name: "bytAsistencia", label: "Asistencia (%)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 3, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarAsistencia }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
-			        { name: "ucAcumulado", label: "Estado", width: "70", align: "center" },
+			        { name: "Total", label: "Total", align: "center", width: "50", sortable: true, sorttype: "number" },
+			        { name: "bytAsistencia", label: "Asistencia(%)", align: "center", width: "50", editable: gn3, edittype: "text", editoptions: { size: 2, maxlength: 3, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarAsistencia }, sortable: true, sorttype: "number", formatter: { integer: { thousandsSeparator: " ", defaultValue: 0 } } },
+			        { name: "ucAcumulado", label: "Estado", width: "70", align: "center", sortable: true, sorttype: "string" },
 			        { name: "strObservaciones", label: "Observación", align: "left", width: "100", sortable: false }],
 
         loadonce: true,
@@ -63,6 +63,7 @@
     $('#grdEvAcumulativa td').on('click', function (e) {
         clickedCell = this;
     });
+
 
     function editRegistroNota(id, status, e) 
     {
@@ -101,7 +102,6 @@
     }
 
 
-    
     function validarNotaSobre8(value, colname) {
         if (isNaN(parseInt(value)) || value < 0 || value > 8){
             return [false,
@@ -218,29 +218,35 @@
 
     function updContenidoColumnasGrid()
     {
-        rowIds = $('#grdEvAcumulativa').jqGrid('getDataIDs');
+        var rowIds = $('#grdEvAcumulativa').jqGrid('getDataIDs');
+        var DataIds = $('#grdEvAcumulativa').jqGrid('getRowData');
+        var numRegEA = lstEvaluaciones.length;
 
-        for (i = 0; i <= rowIds.length - 1 ; i++) {
-            //  En funcion al parcial activo resalto el color de la columna 
-            $("#grdEvAcumulativa").jqGrid(  'setCell',
-                                            rowIds[i],
-                                            parcialActivo,
-                                            "",
-                                            { 'background-color': '#fcf8e3' });
+        for (i = 0; i < rowIds.length; i++) {
+            for (j = 0; j < numRegEA; j++) {
+                if (rowIds[i] == lstEvaluaciones[j].sintCodMatricula) {
+                    //  En funcion al parcial activo resalto el color de la columna 
+                    $("#grdEvAcumulativa").jqGrid(  'setCell',
+                                                    rowIds[i],
+                                                    parcialActivo,
+                                                    "",
+                                                    { 'background-color': '#fcf8e3' });
 
-            $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluaciones[i].getNumMatricula() });
+                    $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluaciones[j].getNumMatricula() });
+                    $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { ucAcumulado: lstEvaluaciones[j].getEstadoEvaluacion() });
 
-            //  Si el parcial activo es el 3ro actualizo el cumplimiento
-            $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { ucAcumulado: lstEvaluaciones[i].getEstadoEvaluacion() });
+                    j = numRegEA;
+                }
+            }
         }
     }
 
 
-    $("#grdEvAcumulativa").jqGrid('setGroupHeaders', {
-        useColSpanStyle: true,
-        groupHeaders: [ { startColumnName: 'bytNota1', numberOfColumns: 3, titleText: '<b>EVALUACIÓN ACUMULATIVA</b>' },
-                        { startColumnName: 'Total', numberOfColumns: 3, titleText: '<b>TOTALIZADOS</b>' }]
-    });
+    //$("#grdEvAcumulativa").jqGrid('setGroupHeaders', {
+    //    useColSpanStyle: true,
+    //    groupHeaders: [ { startColumnName: 'bytNota1', numberOfColumns: 3, titleText: '<b>EVALUACIÓN ACUMULATIVA</b>' },
+    //                    { startColumnName: 'Total', numberOfColumns: 3, titleText: '<b>TOTALIZADOS</b>' }]
+    //});
 
 
     function guardarDtaEvaluacion(id)
@@ -389,16 +395,16 @@
             columnClass: 'col-md-6 col-md-offset-3',
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
-                     '   <div class="alert alert-warning">' +
-                     '       Compañero docente al ejecutar está acción usted' +
-                     '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN ACUMULADA DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + ' </strong>' +
-                     '       y ninguna nota va a poder ser gestionada desde el modulo web del sistema académico.' +
-                     '   </div>' +
+                    '   <div class="alert alert-warning">' +
+                    '       <p>Compañero docente, le recordamos que luego de ejecutar esta acción' +
+                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE ACUMULATIVA DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
+                    '       <p>Luego de esta acción ninguna nota podrá ser gestionada desde este módulo web del sistema académico.</p>' +
+                    '   </div>' +
 
-                     '   <div class="alert alert-info">' +
-                     '       Para su seguridad se enviara un código de impresión a su cuenta de correo institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong> para continuar con la ejecución de esta tarea' +
-                     '   </div>' +
-                     '</form>',
+                    '   <div class="alert alert-info">' +
+                    '       Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong>' +
+                    '   </div>' +
+                    '</form>',
 
             escapeKey: 'cancelar',
             buttons: {
@@ -459,9 +465,19 @@
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
                     '   <div class="form-group">' +
-                    '       <input id="dtaNumConfirmacion" maxlength="4" type="text" onkeypress="function(){ var $this = $(this); if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) { event.preventDefault();} }" placeholder="código de impresión" class="name form-control" required />' +
+                    '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
-                    '</form>',
+                    '</form>' +
+                    '<script>' +
+                    '   $(document).ready(function(){' +
+                    '       $("#dtaNumConfirmacion").keypress(function (event) {' +
+                    '           var $this = $(this);' +
+                    '           if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {' +
+                    '               event.preventDefault();' +
+                    '           }' +
+                    '       })' +
+                    '   })' +
+                    '</script>',
 
             escapeKey: 'cancelar',
             buttons: {
@@ -469,7 +485,6 @@
                     text: 'Validar e imprimir',
                     btnClass: 'btn-blue',
                     action: function () {
-                        showLoadingProcess('Verificando código de impresión ...');
                         validarCodigoImpresion($("#opImpEvAcumulada").val(), this.$content.find('#dtaNumConfirmacion').val())
                     }
                 },
@@ -488,6 +503,8 @@
 
     function validarCodigoImpresion(opImpresion, numConfirmacion)
     {
+        showLoadingProcess('Verificando código de impresión ...');
+
         $.ajax({
             type: "POST",
             url: "/Docentes/ValidarCodigoImpresion",
@@ -507,17 +524,13 @@
 
         }).complete(function (data) {
             if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined) {
+                showLoadingProcess('Generando archivo ...');
+
                 //  Cambio el color del boton
                 $('#btnEA, #btnEAF').attr("class", 'btn btn-warning btn-md');
 
                 //  Oculto el mensaje de error
                 $('#messageError').attr("hidden");
-
-                //  Cierro el formulario de ingreso de codigo de impresion
-                $.unblockUI();
-
-                //  Cierro la ventana GIF Proceso
-                HoldOn.close();
 
                 //  Cambio el grid de gestion de nota de evaluacion acumulativa a modo solo lectura
                 grdEvAcumulativaSoloLectura();
@@ -525,20 +538,25 @@
                 //  Actualizo la bandera de impresion
                 banControlImpresion = true;
 
+                //  Actualizo mensaje de estado de evaluacion
+                $('#msgEstadoEvaluacion').attr('class', 'text-info pull-right')
+                $('#msgEstadoEvaluacion')[0].innerHTML = "<strong>Gestión de notas 'finalizada'</strong>"
+
                 //  Elimino el boton de guardar
                 $('#btnGuardarEvAcumulativa').remove();
 
-                $.redirect("/Docentes/DownloadFile",
-                            { file: data.responseJSON.fileName },
-                                "POST")
-            } else {
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
 
-                $('#dtaNumConfirmacion').val("");
-
+                $.redirect("/Docentes/DownloadFile", { file: data.responseJSON.fileName }, "POST")
+            } else {
                 //  Si existe error, muestro el mensaje
                 alert(data.responseJSON.errorMessage);
+
+                //  Cierro la ventana GIF Proceso
+                HoldOn.close();
+
+                frmValidacionCodigoImpresion();
             }
         })
     }
@@ -595,10 +613,4 @@
             }
         })
     }
-
-
-    $('#dtaNumConfirmacion', parent.document).keypress(function (event) {
-        var $this = $(this); if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) { event.preventDefault();}
-    })
-
 })

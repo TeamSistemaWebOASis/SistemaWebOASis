@@ -14,11 +14,9 @@ $(document).ready(function () {
     var rowIds;
     var codAutenticacion = null;
     var banControlImpresion = false;
-    
 
     //  Objeto con informacion de dtaEvAcumulacionFinal
     cargarDatosEvFinal($('#dtaJsonEvFinal').val());
-
 
     function cargarDatosEvFinal(dtaEvFinal) {
         var dtaEvaluacionFinal = eval(dtaEvFinal);
@@ -40,18 +38,19 @@ $(document).ready(function () {
         datatype: "jsonstring",
         colModel: [{ name: 'No', index: 'No', label: 'No', align: 'center', width: '30', sortable: false },
                     { name: "sintCodMatricula", key: true, hidden: true },
-                    { name: "strCodigo", label: "Codigo", align: "center", width: "60", sortable: true },
+                    { name: "strCodigo", label: "Codigo", align: "center", width: "60", sortable: true, sorttype: "number" },
                     { name: 'NombreCompleto', label: "Nombre estudiante", width: '300', align: 'left', sortable: true },
-                    { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false },
-                    { name: 'bytAcumulado', label: 'Total acumulado', width: '120', align: 'center', sortable: false },
-                    { name: 'bytAsistencia', label: 'Total asistencia(%)', width: '120', align: 'center', sortable: false },
+                    { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: false, sorttype: "number" },
+                    { name: 'bytAcumulado', label: 'Total acumulado', width: '120', align: 'center', sortable: false, sorttype: "number" },
+                    { name: 'bytAsistencia', label: 'Total asistencia(%)', width: '120', align: 'center', sortable: false, sorttype: "number" },
 
-                    { name: 'bytNota', label: 'Nota evaluación final', width: '120', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaEvFinal }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+                    { name: 'bytNota', label: 'Nota evaluación final', width: '120', align: 'center', editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNotaEvFinal }, sortable: true, sorttype: "number", formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
 
-                    { name: 'Total', label: 'Total Ev. final', width: '120', align: 'center', sortable: false },
+                    { name: 'Total', label: 'Total Ev. final', width: '120', align: 'center', sortable: true, sorttype: "number" },
                     { name: 'efAcumulado', label: 'Estado', width: '120', align: 'center' },
-                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
+                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false, sorttype: "string" }],
 
+        loadonce: true,
         datastr: $("#dtaJsonEvFinal").val(),
         autowidth: true,
         height: "auto",
@@ -514,24 +513,7 @@ $(document).ready(function () {
     }
 
 
-    //this.$content.find('#dtaNumConfirmacion').keypress(function (event) {
-    //    var $this = $(this);
-    //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
-    //        event.preventDefault();
-    //    }
-    //})
-
-
-    //$('#dtaNumConfirmacion').keypress(function (event) {
-    //    var $this = $(this);
-    //    if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {
-    //        event.preventDefault();
-    //    }
-    //})
-
-
-    function grdEvFinalSoloLectura()
-    {
+    function grdEvFinalSoloLectura(){
         $('#grdEvFinal').setColProp('bytNota', { editable: 'False' });
     }
 
@@ -555,8 +537,7 @@ $(document).ready(function () {
     }
 
 
-    function procesoImpresionActa(codAutenticacionCorreo)
-    {
+    function procesoImpresionActa(codAutenticacionCorreo){
         //  Muestro ventana de autenticacion a dos factores
         $.blockUI({ message: $('#loginForm') });
 
@@ -601,6 +582,5 @@ $(document).ready(function () {
             }
         })
     }
-
 
 })
