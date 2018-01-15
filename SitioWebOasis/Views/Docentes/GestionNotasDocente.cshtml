@@ -342,14 +342,14 @@
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
+        @* DATOS EVALUACION RECUPERACION *@
+        @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
+
         @if (strParcialActivo == "S" && estadoActa){
             <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
             <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>
             <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.26"></script>
-
-            @* DATOS EVALUACION RECUPERACION *@
-            @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
         }else{
             <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js"></script>
             <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>

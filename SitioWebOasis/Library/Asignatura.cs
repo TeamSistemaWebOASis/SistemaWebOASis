@@ -312,10 +312,11 @@ namespace SitioWebOasis.Library
         public string getMsgEstFMGEvFinal()
         {
             string mensajeImpresion = string.Empty;
+            string proximaEvaluacion = this.getInfoProximaEvaluacion();
 
             if (this._evaluacionActiva == "P"){
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
-            }else if( this.getInfoProximaEvaluacion() == "S" ) {
+            }else if(proximaEvaluacion == "S" || string.IsNullOrEmpty(proximaEvaluacion) ) {
                 mensajeImpresion = "<p class='text-info pull-right'>";
                 mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
                 mensajeImpresion += "</p>";
@@ -328,10 +329,11 @@ namespace SitioWebOasis.Library
         public string getMsgEstFMGEvRecuperacion()
         {
             string mensajeImpresion = string.Empty;
+            string proximaEvaluacion = this.getInfoProximaEvaluacion();
 
             if (this._evaluacionActiva == "S"){
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
-            }else if( string.IsNullOrEmpty( this.getInfoProximaEvaluacion() )){
+            }else if( string.IsNullOrEmpty( proximaEvaluacion )){
                 mensajeImpresion = "<p class='text-info pull-right'>";
                 mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
                 mensajeImpresion += "</p>";

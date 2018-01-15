@@ -38,7 +38,7 @@
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.99688cm</Height>
+              <Height>1.15563cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -203,6 +203,7 @@
                         <PaddingBottom>2pt</PaddingBottom>
                       </Style>
                     </Textbox>
+                    <rd:Selected>true</rd:Selected>
                   </CellContents>
                 </TablixCell>
                 <TablixCell>
@@ -623,7 +624,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.75875cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1205,8 +1206,8 @@
         </TablixRowHierarchy>
         <DataSetName>dtsExamenPrincipal</DataSetName>
         <Top>0.26635cm</Top>
-        <Height>1.59688cm</Height>
-        <Width>18.54493cm</Width>
+        <Height>1.91438cm</Height>
+        <Width>18.54494cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

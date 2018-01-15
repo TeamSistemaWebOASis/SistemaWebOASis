@@ -316,8 +316,10 @@ namespace SitioWebOasis.Models
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
 
+                    //  verifico si el acta a sido impresa
                     if (!this.estadoParcialEvFinal()){
-                        this.cierreGestionNotasEvFinal();
+                        //  Registro la impresion del acta en el sistema academico
+                        this.regImpActaNotasEvFinal();
                     }
                 }
             }
@@ -478,17 +480,13 @@ namespace SitioWebOasis.Models
 
             try{
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-                string strParcialActivo = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
-                //string strTipoExamen = (strParcialActivo == "P") 
-                //                            ? "PRI" 
-                //                            : (strParcialActivo == "S") ? "SUS" : "";
 
                 //  true: acta impresa / false: acta NO impresa
                 ban = ne.getActaImpresaEvFinalesRecuperacion(   UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                 this._strCodAsignatura,
                                                                 this._strCodParalelo,
-                                                                strParcialActivo);
+                                                                "P");
             }
             catch (Exception ex)
             {
@@ -501,19 +499,13 @@ namespace SitioWebOasis.Models
         }
 
 
-        public void cierreGestionNotasEvFinal()
+        public void regImpActaNotasEvFinal()
         {
             try{
                 string dtaParcial = this._evaluacion.getDataEvaluacionActiva().Replace("FN", "");
                 string tpoExamen = string.Empty;
-                
-                if (this._dsEvFinal.Acta.Rows.Count > 0){
-                    tpoExamen = ( dtaParcial == "P" )   ? "PRI" 
-                                                        : ( dtaParcial == "S" ) ? "SUS" 
-                                                                                : "";
 
-                    
-
+                if (this._dsEvFinal.Acta.Rows.Count > 0 && (dtaParcial == "P" || string.IsNullOrEmpty(dtaParcial) )){
                     WSNotasEstudiante.dtstNotasEstudiante dsNE = new WSNotasEstudiante.dtstNotasEstudiante();
                     string strCodPeriodo = this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString();
 
@@ -524,7 +516,7 @@ namespace SitioWebOasis.Models
                         drEvFR["sintCodMatricula"] = item["sintCodMatricula"].ToString();
                         drEvFR["strCodPeriodo"] = strCodPeriodo;
                         drEvFR["strCodMateria"] = this._strCodAsignatura;
-                        drEvFR["strCodTipoExamen"] = tpoExamen;
+                        drEvFR["strCodTipoExamen"] = "PRI";
                         drEvFR["boolSus"] = 0;
                         drEvFR["strObservacion"] = "";
 
