@@ -320,45 +320,31 @@
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         @* DATOS EVALUACION ACUMULATIVA *@
         @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
-
+        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.163"> </script>
         @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa ){
             <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.0.143"> </script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.143"> </script>
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js?v1.0.163"></script>
-            <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.0.163"> </script>
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js?v1.0.163"></script>    
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
         @* DATOS EVALUACION FINAL *@
         @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
+        <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.127"></script>
         @if (strParcialActivo == "P" && estadoActa){
-            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.127"></script>
-            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.127"></script>
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.0.127"></script>    
         }else{
-            <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.0.128"></script>
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js?v1.0.10"></script>
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
         @* DATOS EVALUACION RECUPERACION *@
         @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
-
+        <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>
         @if (strParcialActivo == "S" && estadoActa){
-            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-            <script src="~/Content/js/Docentes/ImpresionActaFinal.js"></script>
             <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>
-            <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.0.26"></script>
         }else{
             <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js"></script>
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.0.26"></script>
         }
-
-        @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION
-        @if (strParcialActivo == "NA"){
-            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js"></script>
-        } *@
     }
-
 </div>

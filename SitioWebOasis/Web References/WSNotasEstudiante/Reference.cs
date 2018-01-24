@@ -466,7 +466,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstNotasEstudiante")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstNotasEstudiante : global::System.Data.DataSet {
         
         private EvAcumulativaDataTable tableEvAcumulativa;
@@ -4101,7 +4101,7 @@ namespace SitioWebOasis.WSNotasEstudiante {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosGradoEstudiante")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosGradoEstudiante : global::System.Data.DataSet {
         
         private DatosGradoEstudianteDataTable tableDatosGradoEstudiante;

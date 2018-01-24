@@ -48,6 +48,7 @@ namespace SitioWebOasis.Controllers
                     //  GESTIONA EL ROL DE UN USUARIO REGISTRADO
                     blnUsuarioValido = seg.AutenticarUsuario(   numIdentificacionUsr,
                                                                 "e",
+                                                                "P0028",
                                                                 out dsUsuario);
 
                     //  Verificar si el usuario es válido

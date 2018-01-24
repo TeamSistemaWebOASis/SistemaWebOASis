@@ -82,6 +82,12 @@ namespace SitioWebOasis.Models
         }
 
 
+        private void getPeriodoVigente()
+        {
+            ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+            string periodoVigente = gag.getPeriodoVigente();
+        }
+
         public Usuario UsuarioActual
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
@@ -232,10 +238,12 @@ namespace SitioWebOasis.Models
             try{
                 SitioWebOasis.ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
+                this.getPeriodoVigente();
 
                 //  GESTIONA EL ROL DE UN USUARIO REGISTRADO
                 bool blnUsuarioValido = seg.AutenticarUsuario(  this._addGuionCedula( this.per_numCedula ),
                                                                 "e",
+                                                                "P0028",
                                                                 out this._dsUsuarioOASis);
 
                 ban = (this._dsUsuarioOASis.Carreras.Rows.Count > 0)? true 

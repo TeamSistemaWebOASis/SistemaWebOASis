@@ -74,27 +74,29 @@ namespace SitioWebOasis.WSSeguridad {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AutenticarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool AutenticarUsuario(string strNombreUsuario, string strContrasena, out dtstUsuario UsuarioAutenticado) {
+        public bool AutenticarUsuario(string strNombreUsuario, string strContrasena, string strPeriodoVigente, out dtstUsuario UsuarioAutenticado) {
             object[] results = this.Invoke("AutenticarUsuario", new object[] {
                         strNombreUsuario,
-                        strContrasena});
+                        strContrasena,
+                        strPeriodoVigente});
             UsuarioAutenticado = ((dtstUsuario)(results[1]));
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void AutenticarUsuarioAsync(string strNombreUsuario, string strContrasena) {
-            this.AutenticarUsuarioAsync(strNombreUsuario, strContrasena, null);
+        public void AutenticarUsuarioAsync(string strNombreUsuario, string strContrasena, string strPeriodoVigente) {
+            this.AutenticarUsuarioAsync(strNombreUsuario, strContrasena, strPeriodoVigente, null);
         }
         
         /// <remarks/>
-        public void AutenticarUsuarioAsync(string strNombreUsuario, string strContrasena, object userState) {
+        public void AutenticarUsuarioAsync(string strNombreUsuario, string strContrasena, string strPeriodoVigente, object userState) {
             if ((this.AutenticarUsuarioOperationCompleted == null)) {
                 this.AutenticarUsuarioOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAutenticarUsuarioOperationCompleted);
             }
             this.InvokeAsync("AutenticarUsuario", new object[] {
                         strNombreUsuario,
-                        strContrasena}, this.AutenticarUsuarioOperationCompleted, userState);
+                        strContrasena,
+                        strPeriodoVigente}, this.AutenticarUsuarioOperationCompleted, userState);
         }
         
         private void OnAutenticarUsuarioOperationCompleted(object arg) {
@@ -133,7 +135,7 @@ namespace SitioWebOasis.WSSeguridad {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstUsuario")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstUsuario : global::System.Data.DataSet {
         
         private UsuariosDataTable tableUsuarios;

@@ -242,11 +242,11 @@
     }
 
 
-    //$("#grdEvAcumulativa").jqGrid('setGroupHeaders', {
-    //    useColSpanStyle: true,
-    //    groupHeaders: [ { startColumnName: 'bytNota1', numberOfColumns: 3, titleText: '<b>EVALUACIÓN ACUMULATIVA</b>' },
-    //                    { startColumnName: 'Total', numberOfColumns: 3, titleText: '<b>TOTALIZADOS</b>' }]
-    //});
+    $("#grdEvAcumulativa").jqGrid('setGroupHeaders', {
+        useColSpanStyle: true,
+        groupHeaders: [ { startColumnName: 'bytNota1', numberOfColumns: 3, titleText: '<b>EVALUACIÓN ACUMULATIVA</b>' },
+                        { startColumnName: 'Total', numberOfColumns: 3, titleText: '<b>TOTALIZADOS</b>' }]
+    });
 
 
     function guardarDtaEvaluacion(id)

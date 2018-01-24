@@ -1520,7 +1520,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_BuzonMensajes")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_BuzonMensajes : global::System.Data.DataSet {
         
         private Buzon_De_MensajesDataTable tableBuzon_De_Mensajes;
@@ -2186,7 +2186,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_Institucion")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_Institucion : global::System.Data.DataSet {
         
         private CarrerasDataTable tableCarreras;
@@ -7310,7 +7310,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosInstitucionales")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosInstitucionales : global::System.Data.DataSet {
         
         private UsuariosDataTable tableUsuarios;
@@ -9815,7 +9815,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <comentarios/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public enum Estado {
@@ -9843,7 +9843,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_Instituciones")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_Instituciones : global::System.Data.DataSet {
         
         private PaisesDataTable tablePaises;
@@ -13258,7 +13258,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_Parametros")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_Parametros : global::System.Data.DataSet {
         
         private Parametros_SistemaDataTable tableParametros_Sistema;
@@ -13896,7 +13896,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_Periodos")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_Periodos : global::System.Data.DataSet {
         
         private PeriodosDataTable tablePeriodos;
@@ -14770,7 +14770,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_ReporteInstituciones")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_ReporteInstituciones : global::System.Data.DataSet {
         
         private InstitucionesDataTable tableInstituciones;
@@ -16367,7 +16367,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_Permisos")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_Permisos : global::System.Data.DataSet {
         
         private Permisos_UsuarioDataTable tablePermisos_Usuario;
@@ -17002,7 +17002,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosSeguridad")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosSeguridad : global::System.Data.DataSet {
         
         private UsuariosDataTable tableUsuarios;
@@ -19558,7 +19558,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosEquivalencias")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosEquivalencias : global::System.Data.DataSet {
         
         private Equivalencias_MateriasDataTable tableEquivalencias_Materias;
@@ -22259,7 +22259,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosAdminG_HistorialEstudiante")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosAdminG_HistorialEstudiante : global::System.Data.DataSet {
         
         private EstudianteCarreraDataTable tableEstudianteCarrera;

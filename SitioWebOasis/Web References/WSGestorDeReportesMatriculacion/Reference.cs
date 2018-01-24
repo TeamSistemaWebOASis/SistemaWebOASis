@@ -1261,7 +1261,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstOrdenDePago")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstOrdenDePago : global::System.Data.DataSet {
         
         private EstudiantesDataTable tableEstudiantes;
@@ -2144,7 +2144,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstHorario")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstHorario : global::System.Data.DataSet {
         
         private HorarioDataTable tableHorario;
@@ -3473,7 +3473,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstMatriculasFacultadesEscuelasCarreras")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstMatriculasFacultadesEscuelasCarreras : global::System.Data.DataSet {
         
         private CarrerasDataTable tableCarreras;
@@ -4274,7 +4274,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstAlumnosDocente")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstAlumnosDocente : global::System.Data.DataSet {
         
         private CursosDataTable tableCursos;
@@ -5848,7 +5848,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstMatriculasEstudiante")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstMatriculasEstudiante : global::System.Data.DataSet {
         
         private Materias_AsignadasDataTable tableMaterias_Asignadas;
@@ -7888,7 +7888,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstPeriodos")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstPeriodos : global::System.Data.DataSet {
         
         private PeriodosDataTable tablePeriodos;
@@ -8516,7 +8516,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstCursosCarrera")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstCursosCarrera : global::System.Data.DataSet {
         
         private CursosDataTable tableCursos;
@@ -9283,7 +9283,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstCursosDocente")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstCursosDocente : global::System.Data.DataSet {
         
         private CursosDataTable tableCursos;
@@ -10120,7 +10120,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstListaEstudiantesMatriculados")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstListaEstudiantesMatriculados : global::System.Data.DataSet {
         
         private CarrerasDataTable tableCarreras;
@@ -12262,7 +12262,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstListaDocentes")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstListaDocentes : global::System.Data.DataSet {
         
         private CarrerasDataTable tableCarreras;
@@ -15480,7 +15480,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstNumDocentesPorTipos")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstNumDocentesPorTipos : global::System.Data.DataSet {
         
         private CarrerasDataTable tableCarreras;
@@ -16780,7 +16780,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstNumDocentesPorCategorias")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstNumDocentesPorCategorias : global::System.Data.DataSet {
         
         private CarrerasDataTable tableCarreras;
@@ -18080,7 +18080,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstMatriculadosCursoMateria")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstMatriculadosCursoMateria : global::System.Data.DataSet {
         
         private Matriculados_Curso_MateriaDataTable tableMatriculados_Curso_Materia;
@@ -19143,7 +19143,7 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("dtstDatosEstudiantesMatriculados")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2102.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     public partial class dtstDatosEstudiantesMatriculados : global::System.Data.DataSet {
         
         private EstudiantesDataTable tableEstudiantes;
