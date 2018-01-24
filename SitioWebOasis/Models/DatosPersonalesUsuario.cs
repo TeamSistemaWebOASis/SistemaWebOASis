@@ -82,10 +82,19 @@ namespace SitioWebOasis.Models
         }
 
 
-        private void getPeriodoVigente()
+        private string _getPeriodoVigente()
         {
-            ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
-            string periodoVigente = gag.getPeriodoVigente();
+            string periodoVigente = string.Empty;
+
+            try{
+                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                periodoVigente = gag.getPeriodoVigente();
+            }catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_getPeriodoVigente");
+            }
+
+            return periodoVigente;
         }
 
         public Usuario UsuarioActual
@@ -234,16 +243,16 @@ namespace SitioWebOasis.Models
         private bool _esUsuarioOASis()
         {
             bool ban = false;
-
+            
             try{
                 SitioWebOasis.ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
-                this.getPeriodoVigente();
+                string periodoVigente = this._getPeriodoVigente();
 
                 //  GESTIONA EL ROL DE UN USUARIO REGISTRADO
                 bool blnUsuarioValido = seg.AutenticarUsuario(  this._addGuionCedula( this.per_numCedula ),
                                                                 "e",
-                                                                "P0028",
+                                                                periodoVigente,
                                                                 out this._dsUsuarioOASis);
 
                 ban = (this._dsUsuarioOASis.Carreras.Rows.Count > 0)? true 

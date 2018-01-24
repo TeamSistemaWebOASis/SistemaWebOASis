@@ -33,6 +33,24 @@ namespace SitioWebOasis.Controllers
         }
 
 
+        private string _getPeriodoVigente()
+        {
+            string periodoVigente = string.Empty;
+
+            try{
+                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                periodoVigente = gag.getPeriodoVigente();
+            }catch(Exception ex){
+                periodoVigente = string.Empty;
+
+                Errores err = new Errores();
+                err.SetError(ex, "getPeriodoVigente");
+            }
+
+            return periodoVigente;
+        }
+
+
         private bool _existeRolUsuario()
         {
             bool blnUsuarioValido = false;
@@ -43,12 +61,13 @@ namespace SitioWebOasis.Controllers
                 string numIdentificacionUsr = this._getNumeroIdentificacion();
 
                 if (!string.IsNullOrEmpty(numIdentificacionUsr)){
+                    string periodoVigente = this._getPeriodoVigente();
                     SitioWebOasis.ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
 
                     //  GESTIONA EL ROL DE UN USUARIO REGISTRADO
                     blnUsuarioValido = seg.AutenticarUsuario(   numIdentificacionUsr,
                                                                 "e",
-                                                                "P0028",
+                                                                periodoVigente,
                                                                 out dsUsuario);
 
                     //  Verificar si el usuario es válido
