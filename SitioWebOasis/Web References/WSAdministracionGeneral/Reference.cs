@@ -70,6 +70,8 @@ namespace SitioWebOasis.WSAdministracionGeneral {
         
         private System.Threading.SendOrPostCallback getDatosParametrosOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getDatosParametrosMasterFechasOperationCompleted;
+        
         private System.Threading.SendOrPostCallback setDatos_ParametrosOperationCompleted;
         
         private System.Threading.SendOrPostCallback getValorParametroOperationCompleted;
@@ -211,6 +213,9 @@ namespace SitioWebOasis.WSAdministracionGeneral {
         
         /// <remarks/>
         public event getDatosParametrosCompletedEventHandler getDatosParametrosCompleted;
+        
+        /// <remarks/>
+        public event getDatosParametrosMasterFechasCompletedEventHandler getDatosParametrosMasterFechasCompleted;
         
         /// <remarks/>
         public event setDatos_ParametrosCompletedEventHandler setDatos_ParametrosCompleted;
@@ -868,6 +873,33 @@ namespace SitioWebOasis.WSAdministracionGeneral {
             if ((this.getDatosParametrosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDatosParametrosCompleted(this, new getDatosParametrosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDatosParametrosMasterFechas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public dtstDatosAdminG_Parametros getDatosParametrosMasterFechas() {
+            object[] results = this.Invoke("getDatosParametrosMasterFechas", new object[0]);
+            return ((dtstDatosAdminG_Parametros)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDatosParametrosMasterFechasAsync() {
+            this.getDatosParametrosMasterFechasAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getDatosParametrosMasterFechasAsync(object userState) {
+            if ((this.getDatosParametrosMasterFechasOperationCompleted == null)) {
+                this.getDatosParametrosMasterFechasOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDatosParametrosMasterFechasOperationCompleted);
+            }
+            this.InvokeAsync("getDatosParametrosMasterFechas", new object[0], this.getDatosParametrosMasterFechasOperationCompleted, userState);
+        }
+        
+        private void OngetDatosParametrosMasterFechasOperationCompleted(object arg) {
+            if ((this.getDatosParametrosMasterFechasCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDatosParametrosMasterFechasCompleted(this, new getDatosParametrosMasterFechasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -25270,6 +25302,32 @@ namespace SitioWebOasis.WSAdministracionGeneral {
         private object[] results;
         
         internal getDatosParametrosCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public dtstDatosAdminG_Parametros Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((dtstDatosAdminG_Parametros)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    public delegate void getDatosParametrosMasterFechasCompletedEventHandler(object sender, getDatosParametrosMasterFechasCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDatosParametrosMasterFechasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDatosParametrosMasterFechasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

@@ -61,6 +61,10 @@ namespace SitioWebOasis.Controllers
                 string numIdentificacionUsr = this._getNumeroIdentificacion();
 
                 if (!string.IsNullOrEmpty(numIdentificacionUsr)){
+
+                    //  Add objeto seguridad a la cache del usuario
+                    this._addObjetoSeguridad();
+
                     string periodoVigente = this._getPeriodoVigente();
                     SitioWebOasis.ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
 
@@ -72,8 +76,7 @@ namespace SitioWebOasis.Controllers
 
                     //  Verificar si el usuario es válido
                     if (blnUsuarioValido){
-                        //  Add objeto seguridad a la cache del usuario
-                        this._addObjetoSeguridad();
+                        
 
                         // registrar datos del usuario en la sesión para futuras referencias
                         Usuario usr = this.RegistrarUsuarioEnSesion(dsUsuario);
@@ -181,7 +184,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "210093670-3";  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
 
                 //  //  DOCENTE
-                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3"; //   CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
             }

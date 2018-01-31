@@ -388,6 +388,11 @@ namespace SitioWebOasis.Controllers
 
             return Json(new { rstValidacionCodigo = ban, errorMessage = mgmImpresion });
         }
+        public ActionResult GestionArchivoDocente()
+        {
+            DatosAsignaturasDocenteModel objAsignaturaDocente = new DatosAsignaturasDocenteModel(this.UsuarioActual.CarreraActual.Codigo.ToString());
+            return View("GestionArchivoDocente",objAsignaturaDocente);
+        }
 
     }
 }
