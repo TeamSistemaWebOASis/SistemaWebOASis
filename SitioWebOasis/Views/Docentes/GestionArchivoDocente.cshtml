@@ -1,0 +1,18 @@
+﻿@model SitioWebOasis.Models.DatosAsignaturasDocenteModel
+@{
+    ViewBag.Title = "GestionArchivoDocente";
+}
+
+<h2>GestionArchivoDocente</h2>
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="contextual-summary-info">
+                <i class="fa fa-book"></i>
+                <p class="pull-right"><span> <strong> @Model.getFacultadCarreraDocente() / @Model.UsuarioActual.CarreraActual.SedeCarrera </strong> </span> @Model.getNombreDocente() </p>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.Partial("MenuCarreras")
+
