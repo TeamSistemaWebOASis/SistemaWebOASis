@@ -13,7 +13,8 @@ namespace SitioWebOasis.Controllers
             {
                 string rol = (UsuarioActual != null) ? UsuarioActual.RolActual.ID.ToString()
                                                     : "";
-                ViewBag.rolUsuario = "";
+
+                ViewBag.rolUsuario = ( rol.CompareTo("PublicoGeneral") != 0 )? rol : "#";
                 return PartialView("_BreadCrumb");
             }
             catch (System.Exception ex)

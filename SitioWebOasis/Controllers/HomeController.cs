@@ -186,9 +186,8 @@ namespace SitioWebOasis.Controllers
                 //  //  DOCENTE
                 //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
-                //  numIdentificacion = "170929748-3"; //   CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
-
-                numIdentificacion = "180140349-2";
+                //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
+                //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
             }
             catch (Exception ex){
                 Errores err = new Errores();
