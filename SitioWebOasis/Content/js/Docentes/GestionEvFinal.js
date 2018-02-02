@@ -19,7 +19,10 @@ $(document).ready(function () {
     cargarDatosEvFinal($('#dtaJsonEvFinal').val());
 
     function cargarDatosEvFinal(dtaEvFinal) {
-        var dtaEvaluacionFinal = eval(dtaEvFinal);
+        var dtaEvaluacionFinal = (dtaEvFinal.length != 0)
+                                    ? eval(dtaEvFinal)
+                                    : new Array();
+
         if (dtaEvaluacionFinal.length > 0) {
             var nef = dtaEvaluacionFinal.length;
             for (var x = 0; x < nef; x++) {
@@ -72,8 +75,7 @@ $(document).ready(function () {
     });
 
 
-    function editarRegistroEvFinal(id, status, e)
-    {
+    function editarRegistroEvFinal(id, status, e) {
         if (id !== lastsel && editarFila(id)) {
             //  Cierro edicion de la ultima fila gestionada
             if (lastsel != undefined) {
@@ -112,8 +114,7 @@ $(document).ready(function () {
     }
 
 
-    function editarFila(id)
-    {
+    function editarFila(id) {
         var ban = true;
 
         numReg = lstEvaluacionFinal.length;
@@ -129,7 +130,7 @@ $(document).ready(function () {
 
     $("#grdEvFinal").jqGrid('setGroupHeaders', {
         useColSpanStyle: true,
-        groupHeaders: [ { startColumnName: 'bytAcumulado', numberOfColumns: 2, titleText: '<b>TOTALIZADO EVALUACIÓN FORMATIVA</b>' },
+        groupHeaders: [{ startColumnName: 'bytAcumulado', numberOfColumns: 2, titleText: '<b>TOTALIZADO EVALUACIÓN FORMATIVA</b>' },
                         { startColumnName: 'Total', numberOfColumns: 2, titleText: '<b>TOTALIZADO</b>' }]
     });
 
@@ -139,7 +140,7 @@ $(document).ready(function () {
         var numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluacionFinal[x].sintCodMatricula == id) {
-                var dtaNota = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");                
+                var dtaNota = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");
                 lstEvaluacionFinal[x]["bytNota"] = dtaNota;
                 lstEvaluacionFinal[x].banEstado = 1;
 
@@ -154,6 +155,7 @@ $(document).ready(function () {
 
 
     function getIdNextRow(idActualRow) {
+        var rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
         var num = rowIds.length;
         var idNextRow = idActualRow;
 
@@ -214,11 +216,12 @@ $(document).ready(function () {
             }
         }
 
-        $("#grdEvFinal").jqGrid(    'setCell',
+        $("#grdEvFinal").jqGrid('setCell',
                                     id,
                                     'bytNota',
                                     "",
-                                    {   'background-color': '#dff0d8',
+                                    {
+                                        'background-color': '#dff0d8',
                                         'background-image': 'none',
                                         'text-align': 'center',
                                         'font-size': 'medium',
@@ -226,7 +229,7 @@ $(document).ready(function () {
                                     });
 
 
-        $("#grdEvFinal").jqGrid(    'setCell',
+        $("#grdEvFinal").jqGrid('setCell',
                                     id,
                                     'Total',
                                     "",
@@ -242,13 +245,13 @@ $(document).ready(function () {
     }
 
 
-    function showLoadingProcess( mensaje ) {
-        var msg = ( mensaje.length == 0 )   ? 'GUARDANDO INFORMACION ...' 
+    function showLoadingProcess(mensaje) {
+        var msg = (mensaje.length == 0) ? 'GUARDANDO INFORMACION ...'
                                             : mensaje;
 
         HoldOn.open({
             theme: 'sk-dot',
-            message: "<h4>"+ mensaje +"</h4>"
+            message: "<h4>" + mensaje + "</h4>"
         });
     }
 
@@ -260,13 +263,13 @@ $(document).ready(function () {
             return [true, ""];
     }
 
-    
-    $('#btnGuardarEvFinal').on('click', function(){
+
+    $('#btnGuardarEvFinal').on('click', function () {
         //  Muestro mensaje de proceso
         showLoadingProcess('Guardando información');
 
         //  Verifico si el Grid de notas a cambiado
-        if (blnCambiosEvFinal == true){
+        if (blnCambiosEvFinal == true) {
             $.ajax({
                 type: "POST",
                 url: "/Docentes/registrarEvaluacionFinal/" + $("#nivel").val() + "/" + $("#codAsignatura").val() + "/" + $("#paralelo").val() + "/" + $('#dtaParcialActivo').val(),
@@ -341,15 +344,14 @@ $(document).ready(function () {
             }
 
             controlImpresion();
-        } else if( banControlImpresion == false ){
+        } else if (banControlImpresion == false) {
             imprimirActaEvFinal();
         }
 
     })
 
 
-    function controlImpresion()
-    {
+    function controlImpresion() {
         //  Control de impresion
         $.confirm({
             icon: 'glyphicon glyphicon-alert',
@@ -412,11 +414,10 @@ $(document).ready(function () {
 
         });
     }
-    
 
 
-    function frmValidacionCodigoImpresion()
-    {
+
+    function frmValidacionCodigoImpresion() {
         $.confirm({
             icon: 'glyphicon glyphicon-alert',
             columnClass: 'col-md-6 col-md-offset-3',
@@ -425,7 +426,7 @@ $(document).ready(function () {
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
-                    '</form>'+
+                    '</form>' +
                     '<script>' +
                     '   $(document).ready(function(){' +
                     '       $("#dtaNumConfirmacion").keypress(function (event) {' +
@@ -513,7 +514,7 @@ $(document).ready(function () {
     }
 
 
-    function grdEvFinalSoloLectura(){
+    function grdEvFinalSoloLectura() {
         $('#grdEvFinal').setColProp('bytNota', { editable: 'False' });
     }
 
@@ -537,7 +538,7 @@ $(document).ready(function () {
     }
 
 
-    function procesoImpresionActa(codAutenticacionCorreo){
+    function procesoImpresionActa(codAutenticacionCorreo) {
         //  Muestro ventana de autenticacion a dos factores
         $.blockUI({ message: $('#loginForm') });
 
@@ -545,8 +546,7 @@ $(document).ready(function () {
     }
 
 
-    function imprimirActaEvFinal()
-    {
+    function imprimirActaEvFinal() {
         showLoadingProcess();
 
         $.ajax({

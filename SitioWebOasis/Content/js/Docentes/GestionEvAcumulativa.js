@@ -25,7 +25,7 @@
         url: 'data.json',
         editurl: 'clientArray',
         datatype: "jsonstring",
-        colModel: [ { name: "No", index: "No", label: "No", align: "center", width: "20", sortable: false },
+        colModel: [{ name: "No", index: "No", label: "No", align: "center", width: "20", sortable: false },
 			        { name: "sintCodMatricula", key: true, hidden: true },
                     { name: "strCodigo", label: "Codigo", align: "center", width: "30", sortable: true, sorttype: "number" },
 			        { name: "NombreEstudiante", label: "Nombre estudiante", align: "left", width: "200", sortable: true, sorttype: "string" },
@@ -44,7 +44,7 @@
         datastr: $("#dtaJsonEvAcumulativa").val(),
         viewrecords: true,
         autowidth: true,
-        height:"auto",
+        height: "auto",
         shrinkToFit: true,
         ignoreCase: true,
         rowNum: 100,
@@ -65,8 +65,7 @@
     });
 
 
-    function editRegistroNota(id, status, e) 
-    {
+    function editRegistroNota(id, status, e) {
         if (id !== lastsel) {
             //  Cierro edicion de la ultima fila gestionada
             if (lastsel != undefined) {
@@ -103,17 +102,16 @@
 
 
     function validarNotaSobre8(value, colname) {
-        if (isNaN(parseInt(value)) || value < 0 || value > 8){
+        if (isNaN(parseInt(value)) || value < 0 || value > 8) {
             return [false,
                     "Nota de parcial '" + $("#dtaParcialActivo").val() + "' fuera de rango(0 - 8), la calificación es sobre '8' puntos"];
-        }else{
+        } else {
             return [true, ""];
-        }   
+        }
     }
 
 
-    function validarNotaSobre10(value, colname)
-    {
+    function validarNotaSobre10(value, colname) {
         if (isNaN(parseInt(value)) || value < 0 || value > 10)
             return [false, "Nota de parcial '" + $("#dtaParcialActivo").val() + "' fuera de rango, la calificación es sobre '10' puntos"];
         else
@@ -121,8 +119,7 @@
     }
 
 
-    function validarAsistencia(value, colname)
-    {
+    function validarAsistencia(value, colname) {
         if (value < 0 || value > 100) {
             return [false, "Porciento de asistencia fuera de rango (0, 100)"];
         } else {
@@ -132,6 +129,7 @@
 
 
     function getIdNextRow(idActualRow) {
+        var rowIds = $('#grdEvAcumulativa').jqGrid('getDataIDs');
         var num = rowIds.length;
         var idNextRow = idActualRow;
 
@@ -146,15 +144,14 @@
     }
 
 
-    function cargarDatosEvAcumulativa(dtaEvAcumulada)
-    {
-        var dtaEvaluaciones = eval(dtaEvAcumulada);
+    function cargarDatosEvAcumulativa(dtaEvAcumulada) {
+        var dtaEvaluaciones = ( dtaEvAcumulada.length != 0 )? eval(dtaEvAcumulada): new Array();
 
         if (dtaEvaluaciones.length > 0) {
             var nee = dtaEvaluaciones.length;
             for (var x = 0; x < nee; x++) {
                 var objEvaluaciones = new EvaluacionAcumulativa();
-                objEvaluaciones.setDtaEvaluacion(   dtaEvaluaciones[x],
+                objEvaluaciones.setDtaEvaluacion(dtaEvaluaciones[x],
                                                     $("#dtaParcialActivo").val());
 
                 lstEvaluaciones.push(objEvaluaciones);
@@ -163,8 +160,7 @@
     }
 
 
-    function updDtaEvaluacion(id)
-    {
+    function updDtaEvaluacion(id) {
         numReg = lstEvaluaciones.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluaciones[x].sintCodMatricula == id) {
@@ -175,11 +171,12 @@
             }
         }
 
-        $("#grdEvAcumulativa").jqGrid(  'setCell',
+        $("#grdEvAcumulativa").jqGrid('setCell',
                                         id,
                                         parcialActivo,
                                         "",
-                                        {   'background-color': '#dff0d8',
+                                        {
+                                            'background-color': '#dff0d8',
                                             'background-image': 'none',
                                             'text-align': 'center',
                                             'font-size': 'medium',
@@ -190,7 +187,8 @@
                                         id,
                                         'Total',
                                         "",
-                                        {   'background-color': '#dff0d8',
+                                        {
+                                            'background-color': '#dff0d8',
                                             'background-image': 'none',
                                             'text-align': 'center',
                                             'font-size': 'medium',
@@ -203,7 +201,8 @@
                                         id,
                                         'bytAsistencia',
                                         "",
-                                        {   'background-color': '#dff0d8',
+                                        {
+                                            'background-color': '#dff0d8',
                                             'background-image': 'none',
                                             'text-align': 'center',
                                             'font-size': 'medium',
@@ -216,8 +215,7 @@
     }
 
 
-    function updContenidoColumnasGrid()
-    {
+    function updContenidoColumnasGrid() {
         var rowIds = $('#grdEvAcumulativa').jqGrid('getDataIDs');
         var DataIds = $('#grdEvAcumulativa').jqGrid('getRowData');
         var numRegEA = lstEvaluaciones.length;
@@ -226,7 +224,7 @@
             for (j = 0; j < numRegEA; j++) {
                 if (rowIds[i] == lstEvaluaciones[j].sintCodMatricula) {
                     //  En funcion al parcial activo resalto el color de la columna 
-                    $("#grdEvAcumulativa").jqGrid(  'setCell',
+                    $("#grdEvAcumulativa").jqGrid('setCell',
                                                     rowIds[i],
                                                     parcialActivo,
                                                     "",
@@ -249,8 +247,7 @@
     });
 
 
-    function guardarDtaEvaluacion(id)
-    {
+    function guardarDtaEvaluacion(id) {
         numReg = lstEvaluaciones.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluaciones[x].sintCodMatricula == id) {
@@ -271,8 +268,7 @@
     }
 
 
-    function soloNumero(element)
-    {
+    function soloNumero(element) {
         $(element).keypress(function (e) {
             if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
                 return false;
@@ -281,7 +277,7 @@
     }
 
 
-    $('#btnGuardarEvAcumulativa').on('click', function(){
+    $('#btnGuardarEvAcumulativa').on('click', function () {
         //  Muestro mensaje de proceso
         showLoadingProcess('Guardar información');
 
@@ -332,7 +328,7 @@
                     //  Mostrar mensaje de estado de la transaccion
                     getMensajeTransaccion(false, data.MessageGestion);
                 }
-                
+
                 //  Cierro la ventana GIF Proceso
                 HoldOn.close();
             })
@@ -343,17 +339,16 @@
     })
 
 
-    function getMensajeTransaccion( banEstado, mensaje )
-    {
+    function getMensajeTransaccion(banEstado, mensaje) {
         //  Muestro mensaje de gestion de informacion
         $('#msmGrdEvAcumulativa').removeAttr("hidden");
 
         if (banEstado == true) {
             $('#msmGrdEvAcumulativa').attr("class", "alert alert-success fade in");
             $('#msmGrdEvAcumulativa').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-check' aria-hidden='true'></i> <strong>" + mensaje + "</strong>");
-        } else if( banEstado == false){
+        } else if (banEstado == false) {
             $('#msmGrdEvAcumulativa').attr("class", "alert alert-danger fade in");
-            $('#msmGrdEvAcumulativa').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-exclamation-circle' aria-hidden='true'></i> <strong>"+ mensaje +"</strong>");
+            $('#msmGrdEvAcumulativa').html("<button class='close' data-dismiss='alert'>×</button> <i class='fa fa-exclamation-circle' aria-hidden='true'></i> <strong>" + mensaje + "</strong>");
         }
 
     }
@@ -384,7 +379,7 @@
         } else if (banControlImpresion == true) {
             imprimirActaEvAcumulada();
         }
-        
+
     })
 
 
@@ -425,8 +420,7 @@
     }
 
 
-    function enviarCodigoImpresion()
-    {
+    function enviarCodigoImpresion() {
         $.ajax({
             type: "POST",
             url: "/Docentes/EnviarCorreoValidacionImpresion",
@@ -501,8 +495,7 @@
     }
 
 
-    function validarCodigoImpresion(opImpresion, numConfirmacion)
-    {
+    function validarCodigoImpresion(opImpresion, numConfirmacion) {
         showLoadingProcess('Verificando código de impresión ...');
 
         $.ajax({
@@ -576,8 +569,7 @@
     }
 
 
-    function imprimirActaEvAcumulada()
-    {
+    function imprimirActaEvAcumulada() {
         showLoadingProcess('PROCESANDO INFORMACIÓN ...');
 
         $.ajax({
@@ -604,7 +596,7 @@
 
             if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
                 $.redirect("/Docentes/DownloadFile",
-                            {   file: data.responseJSON.fileName },
+                            { file: data.responseJSON.fileName },
                                 "POST")
             } else {
                 //  Si existe error, muestro el mensaje

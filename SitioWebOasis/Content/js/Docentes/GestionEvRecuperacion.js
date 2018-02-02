@@ -20,7 +20,10 @@ $(document).ready(function () {
 
 
     function cargarDatosEvRecuperacion(dtaEvRecuperacion) {
-        var dtaEvaluacionRecuperacion = eval(dtaEvRecuperacion);
+        var dtaEvaluacionRecuperacion = ( dtaEvRecuperacion.length != 0 ) 
+                                            ? eval(dtaEvRecuperacion)
+                                            : new Array();
+
         if (dtaEvaluacionRecuperacion.length > 0) {
             var nef = dtaEvaluacionRecuperacion.length;
             for (var x = 0; x < nef; x++) {
@@ -140,6 +143,7 @@ $(document).ready(function () {
 
 
     function getIdNextRow(idActualRow) {
+        var rowIds = $('#grdEvRecuperacion').jqGrid('getDataIDs');
         var num = rowIds.length;
         var idNextRow = idActualRow;
 
@@ -164,18 +168,26 @@ $(document).ready(function () {
 
 
     function updContenidoColumnasGrid() {
-        rowIds = $('#grdEvRecuperacion').jqGrid('getDataIDs');
+        var rowIds = $('#grdEvRecuperacion').jqGrid('getDataIDs');
+        var DataIds = $('#grdEvRecuperacion').jqGrid('getRowData');
+        var numRegEF = lstEvaluacionRecuperacion.length;
 
-        for (i = 0; i <= rowIds.length - 1 ; i++) {
-            //  En funcion al parcial activo resalto el color de la columna 
-            $("#grdEvRecuperacion").jqGrid('setCell',
-                                    rowIds[i],
-                                    'bytNota',
-                                    "",
-                                    { 'background-color': '#fcf8e3' });
+        for (i = 0; i < rowIds.length; i++) {
+            for (j = 0; j < numRegEF; j++) {
+                if (rowIds[i] == lstEvaluacionRecuperacion[j].sintCodMatricula) {
+                    //  En funcion al parcial activo resalto el color de la columna 
+                    $("#grdEvRecuperacion").jqGrid('setCell',
+                                            rowIds[i],
+                                            'bytNota',
+                                            "",
+                                            { 'background-color': '#fcf8e3' });
 
-            $("#grdEvRecuperacion").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionRecuperacion[i].getNumMatricula() });
-            $("#grdEvRecuperacion").jqGrid('setRowData', rowIds[i], { erAcumulado: lstEvaluacionRecuperacion[i].getEstadoEvaluacionRecuperacion() });
+                    $("#grdEvRecuperacion").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionRecuperacion[j].getNumMatricula() });
+                    $("#grdEvRecuperacion").jqGrid('setRowData', rowIds[i], { erAcumulado: lstEvaluacionRecuperacion[j].getEstadoEvaluacionRecuperacion() });
+
+                    j = numRegEF;
+                }
+            }
         }
     }
 
@@ -222,7 +234,7 @@ $(document).ready(function () {
 
     function validarNota(value, colname) {
         if (value < 0 || value > 20)
-            return [false, "Nota fuera de rango (0, 20)"];
+            return [false, "Nota de evaluación de recuperación fuera de rango, la calificación es sobre '20' puntos"];
         else
             return [true, ""];
     }
@@ -390,8 +402,16 @@ $(document).ready(function () {
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
-                    '</form>',
-
+                    '</form>'+
+                    '<script>' +
+                    '   $(document).ready(function(){' +
+                    '       $("#dtaNumConfirmacion").keypress(function (event) {' +
+                    '           var $this = $(this);' +
+                    '           if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {' +
+                    '               event.preventDefault();' +
+                    '           }' +
+                    '       })' +
+                    '   })',
             escapeKey: 'cancelar',
             buttons: {
                 formSubmit: {

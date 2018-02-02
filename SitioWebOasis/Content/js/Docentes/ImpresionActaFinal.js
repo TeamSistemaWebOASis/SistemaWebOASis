@@ -10,7 +10,10 @@
     cargarDatosEvFinal($('#dtaJsonEvFinal').val());
 
     function cargarDatosEvFinal(dtaEvFinal) {
-        var dtaEvaluacionFinal = eval(dtaEvFinal);
+        var dtaEvaluacionFinal = (dtaEvFinal.length != 0)
+                                    ? eval(dtaEvFinal)
+                                    : new Array();
+
         if (dtaEvaluacionFinal.length > 0) {
             var nef = dtaEvaluacionFinal.length;
             for (var x = 0; x < nef; x++) {

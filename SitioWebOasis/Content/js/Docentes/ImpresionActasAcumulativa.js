@@ -13,7 +13,9 @@
 
 
     function cargarDatosEvAcumulativa(dtaEvAcumulada) {
-        var dtaEvaluaciones = eval(dtaEvAcumulada);
+        var dtaEvaluaciones = (dtaEvAcumulada.length != 0)
+                                ? eval(dtaEvAcumulada)
+                                : new Array();
 
         if (dtaEvaluaciones.length > 0) {
             var nee = dtaEvaluaciones.length;
