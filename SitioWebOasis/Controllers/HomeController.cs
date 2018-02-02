@@ -181,7 +181,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "210093670-3";  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
 
                 //  //  DOCENTE
-                numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3"; //   CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
             }
