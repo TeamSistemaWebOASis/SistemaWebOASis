@@ -23,7 +23,7 @@ namespace SitioWebOasis.WSInfoCarreras {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="InfoCarrerasSoap", Namespace="http://tempuri.org/")]
@@ -1797,7 +1797,7 @@ namespace SitioWebOasis.WSInfoCarreras {
         }
     }
     
-    /// <comentarios/>
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -1815,7 +1815,7 @@ namespace SitioWebOasis.WSInfoCarreras {
         
         private string nombreFacultadField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NombreInstitucion {
             get {
                 return this.nombreInstitucionField;
@@ -1825,7 +1825,7 @@ namespace SitioWebOasis.WSInfoCarreras {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodCarrera {
             get {
                 return this.codCarreraField;
@@ -1835,7 +1835,7 @@ namespace SitioWebOasis.WSInfoCarreras {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NombreCarrera {
             get {
                 return this.nombreCarreraField;
@@ -1845,7 +1845,7 @@ namespace SitioWebOasis.WSInfoCarreras {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NombreEscuela {
             get {
                 return this.nombreEscuelaField;
@@ -1855,7 +1855,7 @@ namespace SitioWebOasis.WSInfoCarreras {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NombreFacultad {
             get {
                 return this.nombreFacultadField;
@@ -2804,11 +2804,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetUbicacionCompletedEventHandler(object sender, GetUbicacionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetUbicacionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2830,15 +2830,15 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void SetUbicacionCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetCarrerasAbiertasCompletedEventHandler(object sender, GetCarrerasAbiertasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCarrerasAbiertasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2860,11 +2860,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetCarrerasCompletedEventHandler(object sender, GetCarrerasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCarrerasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2886,11 +2886,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetCarrerasEscuelaCompletedEventHandler(object sender, GetCarrerasEscuelaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCarrerasEscuelaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2912,11 +2912,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetCarreraCompletedEventHandler(object sender, GetCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2938,11 +2938,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetTodasCarrerasCompletedEventHandler(object sender, GetTodasCarrerasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetTodasCarrerasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2964,11 +2964,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetTodasCarrerasActivasCompletedEventHandler(object sender, GetTodasCarrerasActivasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetTodasCarrerasActivasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2990,11 +2990,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetParametrosCarreraCompletedEventHandler(object sender, GetParametrosCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetParametrosCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -3016,11 +3016,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetCodEscuelaCarreraCompletedEventHandler(object sender, GetCodEscuelaCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetCodEscuelaCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -3042,11 +3042,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetValorParametroCarreraCompletedEventHandler(object sender, GetValorParametroCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetValorParametroCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -3068,11 +3068,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void TieneAjusteBasicoCompletedEventHandler(object sender, TieneAjusteBasicoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class TieneAjusteBasicoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -3094,11 +3094,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetBDCarreraCompletedEventHandler(object sender, GetBDCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetBDCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -3120,11 +3120,11 @@ namespace SitioWebOasis.WSInfoCarreras {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetPeriodoVigenteCarreraCompletedEventHandler(object sender, GetPeriodoVigenteCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetPeriodoVigenteCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

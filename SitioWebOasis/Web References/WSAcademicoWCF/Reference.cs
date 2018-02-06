@@ -23,7 +23,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="AcademicoSoap", Namespace="http://tempuri.org/")]
@@ -213,7 +213,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
         }
     }
     
-    /// <comentarios/>
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -227,7 +227,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
         
         private string strnombresField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string Strcedula {
             get {
                 return this.strcedulaField;
@@ -237,7 +237,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string Strapellidos {
             get {
                 return this.strapellidosField;
@@ -247,7 +247,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string Strnombres {
             get {
                 return this.strnombresField;
@@ -258,7 +258,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
         }
     }
     
-    /// <comentarios/>
+    /// <remarks/>
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(Persona))]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
@@ -271,7 +271,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
         
         private string codigoCarreraField;
         
-        /// <comentarios/>
+        /// <remarks/>
         public string NombreRol {
             get {
                 return this.nombreRolField;
@@ -281,7 +281,7 @@ namespace SitioWebOasis.WSAcademicoWCF {
             }
         }
         
-        /// <comentarios/>
+        /// <remarks/>
         public string CodigoCarrera {
             get {
                 return this.codigoCarreraField;
@@ -293,11 +293,11 @@ namespace SitioWebOasis.WSAcademicoWCF {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void BuscarApellidoCompletedEventHandler(object sender, BuscarApellidoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class BuscarApellidoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -319,11 +319,11 @@ namespace SitioWebOasis.WSAcademicoWCF {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void EnviarEmailCompletedEventHandler(object sender, EnviarEmailCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class EnviarEmailCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -345,11 +345,11 @@ namespace SitioWebOasis.WSAcademicoWCF {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void EnviarEmailHtmlCompletedEventHandler(object sender, EnviarEmailHtmlCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class EnviarEmailHtmlCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {

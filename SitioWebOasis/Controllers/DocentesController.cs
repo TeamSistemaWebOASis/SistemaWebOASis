@@ -391,7 +391,9 @@ namespace SitioWebOasis.Controllers
         public ActionResult GestionArchivoDocente()
         {
             DatosAsignaturasDocenteModel objAsignaturaDocente = new DatosAsignaturasDocenteModel(this.UsuarioActual.CarreraActual.Codigo.ToString());
-            return View("GestionArchivoDocente",objAsignaturaDocente);
+            objAsignaturaDocente.getCarrerasPeriodosAnteriores();
+
+            return View("GestionArchivoDocente", objAsignaturaDocente);
         }
 
     }

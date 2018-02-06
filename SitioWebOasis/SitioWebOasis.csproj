@@ -938,7 +938,7 @@
     <None Include="Web References\WSGestorDeReportesEvaluacion\GestordeReportes.wsdl" />
     <None Include="Web References\WSGestorDeReportesEvaluacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+      <LastGenOutput>Reference1.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSGestorDeReportesMatriculacion\dtstAlumnosDocente.xsd" />
     <None Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosDocente.xsd" />

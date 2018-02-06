@@ -246,5 +246,19 @@ namespace SitioWebOasis.Models
                         : "";
         }
 
+
+        public void getCarrerasPeriodosAnteriores()
+        {
+            try
+            {
+                ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
+                DataSet dsCDPA = seg.carrerasDocentesPeriodosAnteriores(this.UsuarioActual.Cedula.ToString());
+            }catch(Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "getCarrerasPeriodosAnteriores");
+            }
+        }
+
     }
 }
