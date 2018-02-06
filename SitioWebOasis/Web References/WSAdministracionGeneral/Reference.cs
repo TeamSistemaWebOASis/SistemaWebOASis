@@ -24,7 +24,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="GestorAdministracionGeneralSoap", Namespace="http://tempuri.org/")]
@@ -69,6 +69,8 @@ namespace SitioWebOasis.WSAdministracionGeneral {
         private System.Threading.SendOrPostCallback getProvPaisOperationCompleted;
         
         private System.Threading.SendOrPostCallback getDatosParametrosOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback getDatosParametrosMasterFechasOperationCompleted;
         
         private System.Threading.SendOrPostCallback setDatos_ParametrosOperationCompleted;
         
@@ -211,6 +213,9 @@ namespace SitioWebOasis.WSAdministracionGeneral {
         
         /// <remarks/>
         public event getDatosParametrosCompletedEventHandler getDatosParametrosCompleted;
+        
+        /// <remarks/>
+        public event getDatosParametrosMasterFechasCompletedEventHandler getDatosParametrosMasterFechasCompleted;
         
         /// <remarks/>
         public event setDatos_ParametrosCompletedEventHandler setDatos_ParametrosCompleted;
@@ -868,6 +873,33 @@ namespace SitioWebOasis.WSAdministracionGeneral {
             if ((this.getDatosParametrosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getDatosParametrosCompleted(this, new getDatosParametrosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getDatosParametrosMasterFechas", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public dtstDatosAdminG_Parametros getDatosParametrosMasterFechas() {
+            object[] results = this.Invoke("getDatosParametrosMasterFechas", new object[0]);
+            return ((dtstDatosAdminG_Parametros)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getDatosParametrosMasterFechasAsync() {
+            this.getDatosParametrosMasterFechasAsync(null);
+        }
+        
+        /// <remarks/>
+        public void getDatosParametrosMasterFechasAsync(object userState) {
+            if ((this.getDatosParametrosMasterFechasOperationCompleted == null)) {
+                this.getDatosParametrosMasterFechasOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetDatosParametrosMasterFechasOperationCompleted);
+            }
+            this.InvokeAsync("getDatosParametrosMasterFechas", new object[0], this.getDatosParametrosMasterFechasOperationCompleted, userState);
+        }
+        
+        private void OngetDatosParametrosMasterFechasOperationCompleted(object arg) {
+            if ((this.getDatosParametrosMasterFechasCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getDatosParametrosMasterFechasCompleted(this, new getDatosParametrosMasterFechasCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -9814,22 +9846,22 @@ namespace SitioWebOasis.WSAdministracionGeneral {
         }
     }
     
-    /// <comentarios/>
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.2612.0")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
     public enum Estado {
         
-        /// <comentarios/>
+        /// <remarks/>
         Exito,
         
-        /// <comentarios/>
+        /// <remarks/>
         NoConexion,
         
-        /// <comentarios/>
+        /// <remarks/>
         NoBaseDatos,
         
-        /// <comentarios/>
+        /// <remarks/>
         ErrorDesconocido,
     }
     
@@ -24756,11 +24788,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetMensajesPendientesCompletedEventHandler(object sender, GetMensajesPendientesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetMensajesPendientesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24782,11 +24814,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetMensajesLeidosCompletedEventHandler(object sender, GetMensajesLeidosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetMensajesLeidosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24808,11 +24840,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ExistenMensajesPendientesCompletedEventHandler(object sender, ExistenMensajesPendientesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ExistenMensajesPendientesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24834,11 +24866,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getConfiguracionCarreraCompletedEventHandler(object sender, getConfiguracionCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getConfiguracionCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24860,11 +24892,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setConfiguracionCarreraCompletedEventHandler(object sender, setConfiguracionCarreraCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setConfiguracionCarreraCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24886,11 +24918,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosInstitucionCompletedEventHandler(object sender, getDatosInstitucionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosInstitucionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24912,11 +24944,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosInstitucionEstadoCompletedEventHandler(object sender, getDatosInstitucionEstadoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosInstitucionEstadoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24938,11 +24970,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setDatosInstitucionCompletedEventHandler(object sender, setDatosInstitucionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setDatosInstitucionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24964,11 +24996,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosInstitucionalesCompletedEventHandler(object sender, getDatosInstitucionalesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosInstitucionalesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -24990,11 +25022,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setDatosInstitucionalesCompletedEventHandler(object sender, setDatosInstitucionalesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setDatosInstitucionalesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25016,11 +25048,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ObtenerLogoCompletedEventHandler(object sender, ObtenerLogoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ObtenerLogoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25042,11 +25074,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ActualizarLogoCompletedEventHandler(object sender, ActualizarLogoCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ActualizarLogoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25068,11 +25100,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ObtenerLogoInstitucionCompletedEventHandler(object sender, ObtenerLogoInstitucionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ObtenerLogoInstitucionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25094,11 +25126,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ActualizarLogoInstitucionCompletedEventHandler(object sender, ActualizarLogoInstitucionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class ActualizarLogoInstitucionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25120,11 +25152,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void EsBaseDatosValidaCompletedEventHandler(object sender, EsBaseDatosValidaCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class EsBaseDatosValidaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25146,11 +25178,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getEstadosEntidadesCompletedEventHandler(object sender, getEstadosEntidadesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getEstadosEntidadesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25172,11 +25204,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosInstitucionesCompletedEventHandler(object sender, getDatosInstitucionesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosInstitucionesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25198,11 +25230,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setDatosInstitucionesCompletedEventHandler(object sender, setDatosInstitucionesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setDatosInstitucionesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25224,11 +25256,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getProvPaisCompletedEventHandler(object sender, getProvPaisCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getProvPaisCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25258,11 +25290,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosParametrosCompletedEventHandler(object sender, getDatosParametrosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosParametrosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25284,11 +25316,37 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void getDatosParametrosMasterFechasCompletedEventHandler(object sender, getDatosParametrosMasterFechasCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getDatosParametrosMasterFechasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getDatosParametrosMasterFechasCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public dtstDatosAdminG_Parametros Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((dtstDatosAdminG_Parametros)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setDatos_ParametrosCompletedEventHandler(object sender, setDatos_ParametrosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setDatos_ParametrosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25310,11 +25368,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getValorParametroCompletedEventHandler(object sender, getValorParametroCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getValorParametroCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25336,11 +25394,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosPeriodosCompletedEventHandler(object sender, getDatosPeriodosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosPeriodosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25362,11 +25420,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setDatosAdminG_PeriodosCompletedEventHandler(object sender, setDatosAdminG_PeriodosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setDatosAdminG_PeriodosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25388,11 +25446,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getPeriodoVigenteCompletedEventHandler(object sender, getPeriodoVigenteCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getPeriodoVigenteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25414,11 +25472,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosReporteInstitucionesCompletedEventHandler(object sender, getDatosReporteInstitucionesCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosReporteInstitucionesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25440,11 +25498,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void CambioClaveCompletedEventHandler(object sender, CambioClaveCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class CambioClaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25466,11 +25524,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetPermisosCompletedEventHandler(object sender, GetPermisosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetPermisosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25492,11 +25550,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void NecesitaCambioClaveCompletedEventHandler(object sender, NecesitaCambioClaveCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class NecesitaCambioClaveCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25518,19 +25576,19 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void ActualizarFechaUltIngCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setDatosSeguridadCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getDatosSeguridadCompletedEventHandler(object sender, getDatosSeguridadCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getDatosSeguridadCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25552,11 +25610,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void setEquivalenciasCompletedEventHandler(object sender, setEquivalenciasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class setEquivalenciasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25578,11 +25636,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getMateriasCompletedEventHandler(object sender, getMateriasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getMateriasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25604,11 +25662,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getEquivalenciasCompletedEventHandler(object sender, getEquivalenciasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getEquivalenciasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25630,11 +25688,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getCarrerasCompletedEventHandler(object sender, getCarrerasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getCarrerasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25656,11 +25714,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void getRptEquivalenciasCompletedEventHandler(object sender, getRptEquivalenciasCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class getRptEquivalenciasCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25682,11 +25740,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void GetHistorialEstudianteCompletedEventHandler(object sender, GetHistorialEstudianteCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class GetHistorialEstudianteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25708,11 +25766,11 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void get_fBaseDatosCompletedEventHandler(object sender, get_fBaseDatosCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class get_fBaseDatosCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25734,15 +25792,15 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void set_fBaseDatosCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void get_fUbicacionCompletedEventHandler(object sender, get_fUbicacionCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class get_fUbicacionCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -25764,7 +25822,7 @@ namespace SitioWebOasis.WSAdministracionGeneral {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void set_fUbicacionCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 

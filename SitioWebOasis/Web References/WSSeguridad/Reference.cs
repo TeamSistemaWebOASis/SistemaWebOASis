@@ -20,16 +20,19 @@ namespace SitioWebOasis.WSSeguridad {
     using System.Web.Services.Protocols;
     using System.Xml.Serialization;
     using System.ComponentModel;
+    using System.Data;
     
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Web.Services.WebServiceBindingAttribute(Name="SeguridadSoap", Namespace="http://tempuri.org/")]
     public partial class Seguridad : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback AutenticarUsuarioOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback carrerasDocentesPeriodosAnterioresOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -73,6 +76,9 @@ namespace SitioWebOasis.WSSeguridad {
         public event AutenticarUsuarioCompletedEventHandler AutenticarUsuarioCompleted;
         
         /// <remarks/>
+        public event carrerasDocentesPeriodosAnterioresCompletedEventHandler carrerasDocentesPeriodosAnterioresCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AutenticarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public bool AutenticarUsuario(string strNombreUsuario, string strContrasena, string strPeriodoVigente, out dtstUsuario UsuarioAutenticado) {
             object[] results = this.Invoke("AutenticarUsuario", new object[] {
@@ -103,6 +109,35 @@ namespace SitioWebOasis.WSSeguridad {
             if ((this.AutenticarUsuarioCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.AutenticarUsuarioCompleted(this, new AutenticarUsuarioCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/carrerasDocentesPeriodosAnteriores", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public System.Data.DataSet carrerasDocentesPeriodosAnteriores(string strCedula) {
+            object[] results = this.Invoke("carrerasDocentesPeriodosAnteriores", new object[] {
+                        strCedula});
+            return ((System.Data.DataSet)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void carrerasDocentesPeriodosAnterioresAsync(string strCedula) {
+            this.carrerasDocentesPeriodosAnterioresAsync(strCedula, null);
+        }
+        
+        /// <remarks/>
+        public void carrerasDocentesPeriodosAnterioresAsync(string strCedula, object userState) {
+            if ((this.carrerasDocentesPeriodosAnterioresOperationCompleted == null)) {
+                this.carrerasDocentesPeriodosAnterioresOperationCompleted = new System.Threading.SendOrPostCallback(this.OncarrerasDocentesPeriodosAnterioresOperationCompleted);
+            }
+            this.InvokeAsync("carrerasDocentesPeriodosAnteriores", new object[] {
+                        strCedula}, this.carrerasDocentesPeriodosAnterioresOperationCompleted, userState);
+        }
+        
+        private void OncarrerasDocentesPeriodosAnterioresOperationCompleted(object arg) {
+            if ((this.carrerasDocentesPeriodosAnterioresCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.carrerasDocentesPeriodosAnterioresCompleted(this, new carrerasDocentesPeriodosAnterioresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2328,11 +2363,11 @@ namespace SitioWebOasis.WSSeguridad {
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     public delegate void AutenticarUsuarioCompletedEventHandler(object sender, AutenticarUsuarioCompletedEventArgs e);
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2046.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     public partial class AutenticarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
@@ -2357,6 +2392,32 @@ namespace SitioWebOasis.WSSeguridad {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((dtstUsuario)(this.results[1]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void carrerasDocentesPeriodosAnterioresCompletedEventHandler(object sender, carrerasDocentesPeriodosAnterioresCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class carrerasDocentesPeriodosAnterioresCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal carrerasDocentesPeriodosAnterioresCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public System.Data.DataSet Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((System.Data.DataSet)(this.results[0]));
             }
         }
     }

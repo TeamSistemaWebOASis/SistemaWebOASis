@@ -13,16 +13,16 @@
       <s:import namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosSeguridad" namespace="http://tempuri.org/dtstDatosSeguridad.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Parametros" namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_ReporteInstituciones" namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_BuzonMensajes" namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Periodos" namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosEquivalencias" namespace="http://tempuri.org/dtstDatosEquivalencias.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Parametros" namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Institucion" namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Permisos" namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_ReporteInstituciones" namespace="http://tempuri.org/dtstDatosAdminG_ReporteInstituciones.xsd" />
+      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Instituciones" namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_HistorialEstudiante" namespace="http://tempuri.org/dtstDatosAdminG_HistorialEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosInstitucionales" namespace="http://tempuri.org/dtstDatosInstitucionales.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_BuzonMensajes" namespace="http://tempuri.org/dtstDatosAdminG_BuzonMensajes.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Institucion" namespace="http://tempuri.org/dtstDatosAdminG_Institucion.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Instituciones" namespace="http://tempuri.org/dtstDatosAdminG_Instituciones.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Periodos" namespace="http://tempuri.org/dtstDatosAdminG_Periodos.xsd" />
-      <s:import schemaLocation="http://localhost/OASis/OAS_AdministracionGeneral/AdministracionGeneral_BusinessServices/GestorAdministracionGeneral.asmx?schema=dtstDatosAdminG_Permisos" namespace="http://tempuri.org/dtstDatosAdminG_Permisos.xsd" />
       <s:element name="GetMensajesPendientes">
         <s:complexType>
           <s:sequence>
@@ -396,6 +396,22 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="getDatosParametrosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getDatosParametrosMasterFechas">
+        <s:complexType />
+      </s:element>
+      <s:element name="getDatosParametrosMasterFechasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getDatosParametrosMasterFechasResult">
               <s:complexType>
                 <s:sequence>
                   <s:any namespace="http://tempuri.org/dtstDatosAdminG_Parametros.xsd" />
@@ -881,6 +897,12 @@
   <wsdl:message name="getDatosParametrosSoapOut">
     <wsdl:part name="parameters" element="tns:getDatosParametrosResponse" />
   </wsdl:message>
+  <wsdl:message name="getDatosParametrosMasterFechasSoapIn">
+    <wsdl:part name="parameters" element="tns:getDatosParametrosMasterFechas" />
+  </wsdl:message>
+  <wsdl:message name="getDatosParametrosMasterFechasSoapOut">
+    <wsdl:part name="parameters" element="tns:getDatosParametrosMasterFechasResponse" />
+  </wsdl:message>
   <wsdl:message name="setDatos_ParametrosSoapIn">
     <wsdl:part name="parameters" element="tns:setDatos_Parametros" />
   </wsdl:message>
@@ -1093,6 +1115,10 @@
     <wsdl:operation name="getDatosParametros">
       <wsdl:input message="tns:getDatosParametrosSoapIn" />
       <wsdl:output message="tns:getDatosParametrosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getDatosParametrosMasterFechas">
+      <wsdl:input message="tns:getDatosParametrosMasterFechasSoapIn" />
+      <wsdl:output message="tns:getDatosParametrosMasterFechasSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="setDatos_Parametros">
       <wsdl:input message="tns:setDatos_ParametrosSoapIn" />
@@ -1358,6 +1384,15 @@
     </wsdl:operation>
     <wsdl:operation name="getDatosParametros">
       <soap:operation soapAction="http://tempuri.org/getDatosParametros" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosParametrosMasterFechas">
+      <soap:operation soapAction="http://tempuri.org/getDatosParametrosMasterFechas" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -1739,6 +1774,15 @@
     </wsdl:operation>
     <wsdl:operation name="getDatosParametros">
       <soap12:operation soapAction="http://tempuri.org/getDatosParametros" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDatosParametrosMasterFechas">
+      <soap12:operation soapAction="http://tempuri.org/getDatosParametrosMasterFechas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

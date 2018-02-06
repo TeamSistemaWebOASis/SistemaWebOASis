@@ -15,19 +15,19 @@
       <s:import namespace="http://tempuri.org/dtstARD.xsd" />
       <s:import namespace="http://tempuri.org/dtstARDporcentajes.xsd" />
       <s:import namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstCertificadoPromocion" namespace="http://tempuri.org/dtstCertificadoPromocion.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas" namespace="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacionesEstudiantes" namespace="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_ImprimirActas" namespace="http://tempuri.org/dtstEvaluacion_ImprimirActas.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstARDporcentajes" namespace="http://tempuri.org/dtstARDporcentajes.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstARD" namespace="http://tempuri.org/dtstARD.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMateriasNotasEstudiante" namespace="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_ImprimirAcumulados" namespace="http://tempuri.org/dtstEvaluacion_ImprimirAcumulados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacionesEstudiantes" namespace="http://tempuri.org/dtstEvaluacionesEstudiantes.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstConvalidaciones" namespace="http://tempuri.org/dtstConvalidaciones.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMejoresEstudiante" namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Acumulados" namespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstDatosEstudiantes" namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstARDporcentajes" namespace="http://tempuri.org/dtstARDporcentajes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstDatosEstudiantes" namespace="http://www.tempuri.org/dtstDatosEstudiantes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstCertificadoPromocion" namespace="http://tempuri.org/dtstCertificadoPromocion.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMateriasNotasEstudiante" namespace="http://www.tempuri.org/dtstMateriasNotasEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstARD" namespace="http://tempuri.org/dtstARD.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Acumulados" namespace="http://tempuri.org/dtstEvaluacion_Acumulados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas" namespace="http://tempuri.org/dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMejoresEstudiante" namespace="http://tempuri.org/dtstMejoresEstudiante.xsd" />
       <s:element name="crearActaArtificialEvaluaciones">
         <s:complexType>
           <s:sequence>
