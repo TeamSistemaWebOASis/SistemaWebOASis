@@ -68,12 +68,12 @@ EvaluacionAcumulativa.prototype.getEstadoEvaluacion = function () {
             break;
 
             //  Evaluacion Final
-            case (acumulado >= 12 && acumulado < 25 && this.bytAsistencia >= 70):
+            case (acumulado >= 4 && acumulado < 25 && this.bytAsistencia >= 70):
                 rst = "<span class='label label-default'>EVALUACION FINAL</span>";
             break;
 
             //  Reprobado
-            case (acumulado < 12 && this.bytAsistencia >= 70):
+            case (acumulado < 4 && this.bytAsistencia >= 70):
                 rst = "<span class='label label-danger'>REPROBADO</span>";
             break;
 

@@ -190,7 +190,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
 
                 //  numIdentificacion = "060353546-9";      //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
-                numIdentificacion = "120353525-5";          //  Vanesa Lorena Valverde Gonzales - Mecanica
+                //  numIdentificacion = "120353525-5";          //  Vanesa Lorena Valverde Gonzales - Mecanica
             }
             catch (Exception ex){
                 Errores err = new Errores();
