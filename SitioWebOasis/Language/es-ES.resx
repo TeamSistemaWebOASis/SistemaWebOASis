@@ -675,4 +675,7 @@
   <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
     <value>PERIODO ACADÉMICO</value>
   </data>
+  <data name="STR_VERSION_JS" xml:space="preserve">
+    <value>V1.1.3</value>
+  </data>
 </root>

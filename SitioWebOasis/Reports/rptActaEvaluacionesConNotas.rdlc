@@ -1228,10 +1228,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>4.67227cm</Top>
-        <Left>10.58912cm</Left>
+        <Top>5.05123cm</Top>
+        <Left>3.05674cm</Left>
         <Height>0.6cm</Height>
-        <Width>7.85799cm</Width>
+        <Width>4.89625cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1244,8 +1244,8 @@
         </Style>
       </Textbox>
       <Line Name="Line1">
-        <Top>4.67227cm</Top>
-        <Left>10.58912cm</Left>
+        <Top>5.05123cm</Top>
+        <Left>0.095cm</Left>
         <Height>0cm</Height>
         <Width>7.85799cm</Width>
         <ZIndex>2</ZIndex>
@@ -1255,8 +1255,131 @@
           </Border>
         </Style>
       </Line>
+      <Line Name="Line3">
+        <Top>5.02477cm</Top>
+        <Left>10.49494cm</Left>
+        <Height>0cm</Height>
+        <Width>7.85799cm</Width>
+        <ZIndex>3</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox3">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Firma Secretaria</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>5.02477cm</Top>
+        <Left>13.26985cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.85591cm</Width>
+        <ZIndex>4</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Line Name="Line4">
+        <Top>3.55499cm</Top>
+        <Left>3.94846cm</Left>
+        <Height>0cm</Height>
+        <Width>7.85799cm</Width>
+        <ZIndex>5</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
+      <Textbox Name="Textbox5">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Fecha de entrega acta:</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>2.95499cm</Top>
+        <Left>0.095cm</Left>
+        <Height>0.89104cm</Height>
+        <Width>3.88778cm</Width>
+        <ZIndex>6</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox7">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Firma Docente:</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox3</rd:DefaultName>
+        <Top>5.05123cm</Top>
+        <Left>0.095cm</Left>
+        <Height>0.6cm</Height>
+        <Width>2.85591cm</Width>
+        <ZIndex>7</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>2.26123in</Height>
+    <Height>2.30289in</Height>
     <Style />
   </Body>
   <Width>7.37723in</Width>
@@ -1428,7 +1551,7 @@
           <Top>4.87518cm</Top>
           <Left>0.06854cm</Left>
           <Height>0.6cm</Height>
-          <Width>10.49412cm</Width>
+          <Width>11.73791cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -1465,9 +1588,9 @@
           </Paragraphs>
           <rd:DefaultName>strCodMateria</rd:DefaultName>
           <Top>4.87518cm</Top>
-          <Left>10.72582cm</Left>
+          <Left>11.87701cm</Left>
           <Height>0.6cm</Height>
-          <Width>4.06844cm</Width>
+          <Width>3.31413cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1504,9 +1627,9 @@
           </Paragraphs>
           <rd:DefaultName>strCreditos</rd:DefaultName>
           <Top>4.87518cm</Top>
-          <Left>14.97065cm</Left>
+          <Left>15.36753cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.47646cm</Width>
+          <Width>3.07958cm</Width>
           <ZIndex>5</ZIndex>
           <Style>
             <Border>
@@ -1546,7 +1669,7 @@
           <Top>5.65157cm</Top>
           <Left>0.06854cm</Left>
           <Height>0.6cm</Height>
-          <Width>10.49412cm</Width>
+          <Width>11.73791cm</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -1583,9 +1706,9 @@
           </Paragraphs>
           <rd:DefaultName>strNivel</rd:DefaultName>
           <Top>5.65157cm</Top>
-          <Left>10.75228cm</Left>
+          <Left>11.87701cm</Left>
           <Height>0.6cm</Height>
-          <Width>4.02875cm</Width>
+          <Width>3.31413cm</Width>
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
@@ -1622,9 +1745,9 @@
           </Paragraphs>
           <rd:DefaultName>strParalelo</rd:DefaultName>
           <Top>5.65157cm</Top>
-          <Left>14.97065cm</Left>
+          <Left>15.36753cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.50292cm</Width>
+          <Width>3.10605cm</Width>
           <ZIndex>8</ZIndex>
           <Style>
             <Border>
@@ -1677,7 +1800,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>ACTA DE EVALUCIÓN ACUMULADA </Value>
+                  <Value>ACTA DE EVALUACIÓN ACUMULADA </Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontSize>12pt</FontSize>
@@ -1728,7 +1851,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>1.06729cm</Height>
+      <Height>1.01437cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

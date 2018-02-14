@@ -1733,5 +1733,14 @@ namespace Language {
                 return ResourceManager.GetString("STR_PERIODO_ACADEMICO", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a V1.1.3.
+        /// </summary>
+        public static string STR_VERSION_JS {
+            get {
+                return ResourceManager.GetString("STR_VERSION_JS", resourceCulture);
+            }
+        }
     }
 }

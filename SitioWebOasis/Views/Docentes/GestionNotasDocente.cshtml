@@ -315,36 +315,36 @@
     
     @section scripts{
         @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-        <script src="~/Content/js/Docentes/GestionNotasDocente.js?v1.0.7"> </script>
+        <script src="~/Content/js/Docentes/GestionNotasDocente.js?@Language.es_ES.STR_VERSION_JS"> </script>
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION ACUMULATIVA  *@
         @* DATOS EVALUACION ACUMULATIVA *@
         @Html.Hidden("dtaJsonEvAcumulativa", @Model.evAcumulativa.jsonEvAcumulativa.ToString())
-        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?v1.1.2"> </script>
+        <script src="~/Content/js/Docentes/EvaluacionAcumulativa.js?@Language.es_ES.STR_VERSION_JS"> </script>
         @if ((strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3") && estadoActa ){
-            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?v1.1.2"> </script>
+            <script src="~/Content/js/Docentes/GestionEvAcumulativa.js?@Language.es_ES.STR_VERSION_JS"> </script>
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js?v1.1.2"></script>    
+            <script src="~/Content/js/Docentes/ImpresionActasAcumulativa.js?@Language.es_ES.STR_VERSION_JS"></script>    
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION FINAL *@
         @* DATOS EVALUACION FINAL *@
         @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
-        <script src="~/Content/js/Docentes/EvaluacionFinal.js?v1.1.1"></script>
+        <script src="~/Content/js/Docentes/EvaluacionFinal.js?@Language.es_ES.STR_VERSION_JS"></script>
         @if (strParcialActivo == "P" && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?v1.1.1"></script>    
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?@Language.es_ES.STR_VERSION_JS"></script>    
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActaFinal.js?v1.1.1"></script>
+            <script src="~/Content/js/Docentes/ImpresionActaFinal.js?@Language.es_ES.STR_VERSION_JS"></script>
         }
 
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
         @* DATOS EVALUACION RECUPERACION *@
         @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
-        <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.1.1"></script>
+        <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?@Language.es_ES.STR_VERSION_JS"></script>
         @if (strParcialActivo == "S" && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.1.1"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?@Language.es_ES.STR_VERSION_JS"></script>
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js?v1.1.1"></script>
+            <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js?@Language.es_ES.STR_VERSION_JS"></script>
         }
     }
 </div>
