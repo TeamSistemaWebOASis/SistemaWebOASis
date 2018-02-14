@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web.Helpers;
 
 namespace SitioWebOasis.Models
@@ -337,7 +338,7 @@ namespace SitioWebOasis.Models
             try
             {
                 ReportParameter prmRptHorarioAcademico = new ReportParameter();
-                this._getDatosMateria(ref strAsignatura,
+                this._getDatosMateria(  ref strAsignatura,
                                         ref strNivel,
                                         ref strPeriodo,
                                         ref strDocente,
@@ -381,7 +382,7 @@ namespace SitioWebOasis.Models
                                                                 lblEscuela));
 
                 lstPrmRptEvAcumulativa.Add(new ReportParameter("strAsignatura",
-                                                                strAsignatura));
+                                                                Regex.Replace(strAsignatura, @"\r\n?|\n", "") ));
 
                 lstPrmRptEvAcumulativa.Add(new ReportParameter("strCodMateria",
                                                                 this._strCodAsignatura.ToString().ToUpper()));
@@ -604,8 +605,9 @@ namespace SitioWebOasis.Models
                                                             out streams,
                                                             out warnings);
 
-                    nombreAsignatura = this.getNombreAsignatura().Replace("*", "");
-                    nameFile = Language.es_ES.NF_EV_ACUMULATIVA + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
+                    //  nombreAsignatura = this.getNombreAsignatura().Replace("*", "");
+                    nombreAsignatura = this.limpiarNombreAsignatura( this.getNombreAsignatura() ).Replace("*", "");
+                    nameFile = Language.es_ES.NF_EV_ACUMULATIVA + "_" + nombreAsignatura.Replace("/", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
 
                     //  Direcciono la creacion del archivo a una ubicacion temporal
                     string fullPath = Path.Combine(pathTmp, nameFile);

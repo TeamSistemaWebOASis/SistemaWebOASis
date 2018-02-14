@@ -1717,7 +1717,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a ESCUELA SUPERIOR POLITECNICA DE CHIMBORAZO.
+        ///   Busca una cadena traducida similar a ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO.
         /// </summary>
         public static string STR_INSTITUCION {
             get {
@@ -1726,7 +1726,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a PERIODO ACADÉMICO.
+        ///   Busca una cadena traducida similar a PERÍODO ACADÉMICO.
         /// </summary>
         public static string STR_PERIODO_ACADEMICO {
             get {

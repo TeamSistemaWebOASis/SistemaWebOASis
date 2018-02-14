@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Web;
 
 
@@ -190,12 +191,10 @@ namespace SitioWebOasis.Library
         {
             string asignatura = string.Empty;
 
-            try
-            {
-                if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0)
-                {
+            try{
+                if (this._dtstCursosDocente != null && this._dtstCursosDocente.Cursos.Rows.Count > 0){
                     DataRow[] rst = this._dtstCursosDocente.Cursos.Select("strCodMateria = '" + this._strCodAsignatura + "' AND strCodNivel ='" + this._strCodNivel + "' AND strCodParalelo = '" + this._strCodParalelo + "'");
-                    asignatura = (rst.Length > 0) ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
+                    asignatura = (rst.Length > 0)   ? rst[0]["strNombreMateria"] + " / " + rst[0]["strDescripcionNivel"] + " / " + rst[0]["strCodParalelo"]
                                                     : string.Empty;
                 }
             }
@@ -208,6 +207,13 @@ namespace SitioWebOasis.Library
 
             return asignatura;
         }
+
+
+        public string limpiarNombreAsignatura(string cadena)
+        {
+            return Regex.Replace(cadena, @"(\s+|@|&|'|\(|\)|<|>|#)", "");
+        }
+
 
 
         public bool estadoActa()

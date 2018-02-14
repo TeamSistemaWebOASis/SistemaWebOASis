@@ -670,10 +670,10 @@
     <value>HORARIO EXAMENES</value>
   </data>
   <data name="STR_INSTITUCION" xml:space="preserve">
-    <value>ESCUELA SUPERIOR POLITECNICA DE CHIMBORAZO</value>
+    <value>ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO</value>
   </data>
   <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
-    <value>PERIODO ACADÉMICO</value>
+    <value>PERÍODO ACADÉMICO</value>
   </data>
   <data name="STR_VERSION_JS" xml:space="preserve">
     <value>V1.1.5</value>
