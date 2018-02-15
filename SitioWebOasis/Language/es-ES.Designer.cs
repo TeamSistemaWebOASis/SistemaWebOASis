@@ -1735,7 +1735,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a V1.1.5.
+        ///   Busca una cadena traducida similar a V1.1.6.
         /// </summary>
         public static string STR_VERSION_JS {
             get {
