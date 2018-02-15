@@ -606,7 +606,7 @@ namespace SitioWebOasis.Models
                                                             out warnings);
 
                     //  nombreAsignatura = this.getNombreAsignatura().Replace("*", "");
-                    nombreAsignatura = this.limpiarNombreAsignatura( this.getNombreAsignatura() ).Replace("*", "");
+                    nombreAsignatura = this.limpiarNombreAsignatura( this.getNombreAsignatura() ).Replace("*", "").Replace(":", "");
                     nameFile = Language.es_ES.NF_EV_ACUMULATIVA + "_" + nombreAsignatura.Replace("/", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
 
                     //  Direcciono la creacion del archivo a una ubicacion temporal

@@ -36,7 +36,7 @@
                     { name: 'bytNumMat', label: 'Matrícula', width: '80', align: 'center', sortable: true },
                     { name: 'bytAcumulado', label: 'Total evaluación formativa', width: '150', align: 'center', sortable: false },
 
-                    { name: 'bytNota', label: 'Nota evaluación recuperación', width: '170', align: 'center', sortable: true, editable: true, edittype: 'text', editoptions: { size: 1, maxlength: 2, dataInit: soloNumero }, editrules: { custom: true, custom_func: validarNota }, sortable: false, formatter: { integer: { thousandsSeparator: " ", defaultValue: '0' } } },
+                    { name: 'bytNota', label: 'Nota evaluación recuperación', width: '170', align: 'center', sortable: true },
 
                     { name: 'Total', label: 'Total', width: '120', align: 'center', sortable: true },
                     { name: 'erAcumulado', label: 'Estado', width: '120', align: 'center', sortable: true },
@@ -90,17 +90,17 @@
 
     $('#pER_pdf, #pER_xls, #pER_blc').on('click', function () {
         showLoadingProcess();
-        imprimirActaEvRecuperacion()
+        imprimirActaEvRecuperacion($(this).attr("id"))
     })
 
 
-    function imprimirActaEvRecuperacion() {
+    function imprimirActaEvRecuperacion( idActa ) {
         showLoadingProcess();
 
         $.ajax({
             type: "POST",
             url: "/Docentes/impresionActas",
-            data: '{idActa: "' + $("#opImpEvRecuperacion").val() + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+            data: '{idActa: "' + idActa + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             error: function (xhr, ajaxOptions, thrownError) {

@@ -623,7 +623,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.75875cm</Height>
+              <Height>0.6cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -1203,9 +1203,10 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
+        <RepeatRowHeaders>true</RepeatRowHeaders>
         <DataSetName>dtsExamenPrincipal</DataSetName>
         <Top>0.26635cm</Top>
-        <Height>1.91438cm</Height>
+        <Height>1.75563cm</Height>
         <Width>18.54494cm</Width>
         <Style>
           <Border>
@@ -1258,40 +1259,6 @@
           </Border>
         </Style>
       </Line>
-      <Textbox Name="Textbox15">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Parameters!strDocente.Value</Value>
-                <Style>
-                  <FontFamily>Segoe UI</FontFamily>
-                </Style>
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Center</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox15</rd:DefaultName>
-        <Top>4.68681cm</Top>
-        <Left>3.05914cm</Left>
-        <Height>0.6cm</Height>
-        <Width>4.89625cm</Width>
-        <ZIndex>3</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
       <Textbox Name="Textbox7">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -1299,7 +1266,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Firma Docente:</Value>
+                <Value>Firma Docente</Value>
                 <Style>
                   <FontFamily>Segoe UI</FontFamily>
                   <FontWeight>Bold</FontWeight>
@@ -1310,11 +1277,11 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox3</rd:DefaultName>
-        <Top>4.68681cm</Top>
-        <Left>0.0974cm</Left>
+        <Top>4.66035cm</Top>
+        <Left>2.29188cm</Left>
         <Height>0.6cm</Height>
         <Width>2.85591cm</Width>
-        <ZIndex>4</ZIndex>
+        <ZIndex>3</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1330,7 +1297,7 @@
         <Left>0.0974cm</Left>
         <Height>0cm</Height>
         <Width>7.85799cm</Width>
-        <ZIndex>5</ZIndex>
+        <ZIndex>4</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -1342,7 +1309,7 @@
         <Left>10.49734cm</Left>
         <Height>0cm</Height>
         <Width>7.85799cm</Width>
-        <ZIndex>6</ZIndex>
+        <ZIndex>5</ZIndex>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -1371,7 +1338,7 @@
         <Left>13.27225cm</Left>
         <Height>0.6cm</Height>
         <Width>2.85591cm</Width>
-        <ZIndex>7</ZIndex>
+        <ZIndex>6</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1403,8 +1370,8 @@
         <Top>2.59057cm</Top>
         <Left>9.90736cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.83632cm</Width>
-        <ZIndex>8</ZIndex>
+        <Width>4.47132cm</Width>
+        <ZIndex>7</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1415,18 +1382,6 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
-      <Line Name="Line5">
-        <Top>3.19057cm</Top>
-        <Left>13.79958cm</Left>
-        <Height>0cm</Height>
-        <Width>4.00453cm</Width>
-        <ZIndex>9</ZIndex>
-        <Style>
-          <Border>
-            <Style>Solid</Style>
-          </Border>
-        </Style>
-      </Line>
       <Textbox Name="Textbox13">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
@@ -1450,7 +1405,7 @@
         <Left>0.0974cm</Left>
         <Height>0.6cm</Height>
         <Width>18.21721cm</Width>
-        <ZIndex>10</ZIndex>
+        <ZIndex>8</ZIndex>
         <Style>
           <Border>
             <Style>None</Style>
@@ -1461,6 +1416,18 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Line Name="Line5">
+        <Top>3.11379cm</Top>
+        <Left>14.47449cm</Left>
+        <Height>0cm</Height>
+        <Width>4.00453cm</Width>
+        <ZIndex>9</ZIndex>
+        <Style>
+          <Border>
+            <Style>Solid</Style>
+          </Border>
+        </Style>
+      </Line>
     </ReportItems>
     <Height>2.4518in</Height>
     <Style />

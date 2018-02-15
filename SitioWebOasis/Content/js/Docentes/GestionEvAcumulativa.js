@@ -458,6 +458,9 @@
             columnClass: 'col-md-6 col-md-offset-3',
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
+                    '   <div class="alert alert-warning">' +
+                    '       Compañero docente le recordamos una vez mas que <strong>ingresado y validado el "código de impresión", la gestión de notas finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico</strong>' +
+                    '   </div>' +
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +

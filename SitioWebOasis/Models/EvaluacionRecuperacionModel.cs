@@ -272,9 +272,8 @@ namespace SitioWebOasis.Models
                                                                 out streams,
                                                                 out warnings);
 
-                    nombreAsignatura = this.getNombreAsignatura();
-
-                    nameFile = Language.es_ES.NF_EV_RECUPERACION + "_" + nombreAsignatura.Replace(" / ", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
+                    nombreAsignatura = this.limpiarNombreAsignatura(this.getNombreAsignatura()).Replace("*", "").Replace(":", "");
+                    nameFile = Language.es_ES.NF_EV_RECUPERACION + "_" + nombreAsignatura.Replace("/", "_").ToUpper() + ((dtaActa[1].ToUpper() == "PDF" || dtaActa[1].ToUpper() == "BLC") ? ".pdf" : ".xls");
 
                     //  Direcciono la creacion del archivo a una ubicacion temporal
                     string fullPath = Path.Combine(pathTmp, nameFile);

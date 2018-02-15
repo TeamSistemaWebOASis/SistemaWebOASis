@@ -1,4 +1,4 @@
-﻿
+﻿  
 //
 //  CLASE QUE GESTIONA INFORMACION DE EVALUACION FINAL DE UN ESTUDIANTE
 //
@@ -67,7 +67,7 @@ EvaluacionFinal.prototype.getEstadoEvaluacionFinal = function () {
         break;
 
         //  Reprueba
-        case (this.Total < 16 && this.strCodEquivalencia == "R" ):
+        case (this.Total < 16 && this.strCodEquivalencia == "R" && this.bytAsistencia > 70):
             rst = "<span class='label label-danger'>REPRUEBA</span>";
         break;
 
@@ -103,5 +103,5 @@ EvaluacionFinal.prototype.getTotalEvFinal = function () {
 
 
 EvaluacionFinal.prototype.esExoneradoReprobado = function () {
-    return (this.strCodEquivalencia == "E" || this.strCodEquivalencia == "R") ? false : true;
+    return (this.strCodEquivalencia == "E" || this.bytAsistencia < 70 ) ? false : true;
 }

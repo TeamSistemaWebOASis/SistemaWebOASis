@@ -226,6 +226,8 @@
                             <div class="panel-body">
 
                                 @if (strParcialActivo == "S" || strProximaEvaluacion == ""){
+                                    <div id="msmGrdEvRecuperacion"></div>
+
                                     @* BOTONES DE IMPRESION DE ACTAS *@
                                     <div class="row">
                                         <div class="col-sm-12">
@@ -244,42 +246,15 @@
                                     </div>
 
                                     <hr class="inner-separator">
-
-                                    if (strParcialActivo == "S" && estadoActa){
-                                        <div id="msmGrdEvRecuperacion"></div>
-                                        @* GRID DE EVALUACION RECUPERACION *@
-                                        <table id="grdEvRecuperacion"></table>
+                                    @* GRID DE EVALUACION RECUPERACION *@
+                                    <table id="grdEvRecuperacion"></table>
+                                    if (estadoActa){   
                                         <hr class="inner-separator">
-
                                         <button id="btnGuardarEvRecuperacion"
                                                 type="button"
                                                 class="btn btn-success pull-right">
                                             <i class="fa fa-floppy-o fa-2x"></i> <strong> @Language.es_ES.BTN_GUARDAR_EVALUACION_RECUPERACION </strong>
                                         </button>
-                                    }else{
-                                        @* SOLO LECTURA - TABLA DE NOTAS ACUMULATIVAS DEL ESTUDIANTE*@
-                                        <table class="table table-bordered table-hover table-striped table-responsive" role="grid">
-                                            <thead>
-                                                <tr role="row">
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOMBRE_ESTUDIANTE</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NUMERO_MATRICULA</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
-                                                    <th style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.NOTAS_TB_COL_TOTALIZADOS</th>
-                                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_OBSERVACION</th>
-                                                </tr>
-
-                                                <tr role="row">
-                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_EV_FINAL</th>
-                                                    <th style="width: 80px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ESTADO</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @* NOTAS EVALUACION ESTUDIANTE *@
-                                                @Html.Raw(Model.evRecuperacion.getHTML_EvaluacionRecuperacion())
-                                            </tbody>
-                                        </table>
                                     }
                                 }else{
                                     <div class="alert alert-info">
@@ -310,7 +285,7 @@
     @Html.Hidden("opImpEvAcumulada", "")
     @Html.Hidden("opImpEvFinal", "")
     @Html.Hidden("opImpEvRecuperacion", "")
-    @Html.Hidden("dtaCtaUsuario", User.Identity.Name.ToString());
+    @Html.Hidden("dtaCtaUsuario", User.Identity.Name.ToString())
 
     
     @section scripts{
@@ -340,11 +315,11 @@
         @*  JAVASCRIPT DE GESTION DE INFORMACION DE EVALUACION RECUPERACION *@
         @* DATOS EVALUACION RECUPERACION *@
         @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
-        <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?@Language.es_ES.STR_VERSION_JS"></script>
+        <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1003"></script>
         @if (strParcialActivo == "S" && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?@Language.es_ES.STR_VERSION_JS"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1003"></script>
         }else{
-            <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js?@Language.es_ES.STR_VERSION_JS"></script>
+            <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js?v1003"></script>
         }
     }
 </div>

@@ -360,8 +360,8 @@ $(document).ready(function () {
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
                     '       <p>Compañero docente, le recordamos que luego de ejecutar esta acción' +
-                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE RECUPERACIÓN DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
-                    '       <p>Luego de esta acción ninguna nota podrá ser gestionada desde este módulo web del sistema académico.</p>' +
+                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE FINAL DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
+                    '       <p>Luego de esta acción ninguna <strong>nota</strong> podrá ser gestionada desde este módulo web del sistema académico.</p>' +
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
@@ -423,6 +423,9 @@ $(document).ready(function () {
             columnClass: 'col-md-6 col-md-offset-3',
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
+                    '   <div class="alert alert-warning">' +
+                    '       Compañero docente le recordamos una vez mas que <strong>ingresado y validado el "código de impresión", la gestión de notas finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico</strong>' +
+                    '   </div>' +
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
@@ -547,7 +550,7 @@ $(document).ready(function () {
 
 
     function imprimirActaEvFinal() {
-        showLoadingProcess();
+        showLoadingProcess('');
 
         $.ajax({
             type: "POST",

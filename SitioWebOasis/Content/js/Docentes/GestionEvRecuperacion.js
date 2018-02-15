@@ -335,13 +335,13 @@ $(document).ready(function () {
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
-                    '       Compañero docente al ejecutar está acción usted' +
-                    '       <strong> DA POR FINALIZADA LA GESTIÓN DE NOTAS DE EVALUACIÓN DE RECUPERACIÓN DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + ' </strong>' +
-                    '       y ninguna nota va a poder ser gestionada desde el modulo web del sistema académico.' +
+                    '       <p>Compañero docente, le recordamos que luego de ejecutar esta acción' +
+                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE RECUPERACIÓN DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
+                    '       <p>Luego de esta acción ninguna <strong>nota</strong> podrá ser gestionada desde este módulo web del sistema académico.</p>' +
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
-                    '       Para su seguridad se enviara un código de impresión a su cuenta de correo institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong> para continuar con la ejecución de esta tarea' +
+                    '       Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong>' +
                     '   </div>' +
                     '</form>',
 
@@ -399,6 +399,9 @@ $(document).ready(function () {
             columnClass: 'col-md-6 col-md-offset-3',
             title: 'Control de impresión',
             content: '<form action="#" class="formName">' +
+                    '   <div class="alert alert-warning">' +
+                    '       Compañero docente le recordamos una vez mas que <strong>ingresado y validado el "código de impresión", la gestión de notas finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico</strong>' +
+                    '   </div>' +
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
@@ -459,6 +462,10 @@ $(document).ready(function () {
                                 //  Actualizo la bandera de impresion
                                 banControlImpresion = true;
 
+                                //  Actualizo mensaje de estado de evaluacion
+                                $('#msgEstadoEvaluacion').attr('class', 'text-info pull-right')
+                                $('#msgEstadoEvaluacion')[0].innerHTML = "<strong>Gestión de notas 'finalizada'</strong>"
+
                                 //  Elimino el boton de guardar
                                 $('#btnGuardarEvRecuperacion').remove();
 
@@ -492,7 +499,7 @@ $(document).ready(function () {
             //  Guardo los cambios registrados
             $('#btnGuardarEvRecuperacion').trigger("click");
 
-            showLoadingProcess();
+            showLoadingProcess('');
 
             var opImpresion = $("#opImpEvRecuperacion").val();
             
@@ -552,7 +559,7 @@ $(document).ready(function () {
 
 
     function imprimirActaEvRecuperacion() {
-        showLoadingProcess();
+        showLoadingProcess('');
 
         $.ajax({
             type: "POST",

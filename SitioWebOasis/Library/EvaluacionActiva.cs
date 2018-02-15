@@ -97,15 +97,24 @@ namespace SitioWebOasis.Library
                         foreach (DataRow item in this._drDtaPeriodosEvaluacion){
                             if (!string.IsNullOrEmpty(item["strValor"].ToString())){
                                 fchItem = Convert.ToDateTime(item["strValor"].ToString());
-                                fchMenorOchoDias = fchItem.Date.AddDays(-8);
+                                fchMenorOchoDias = (item["strCodigo"].ToString().CompareTo("FNP") != 0)  
+                                                        ? fchItem.Date.AddDays(-8) 
+                                                        : fchItem.Date.AddDays(-15);
+
                                 numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
 
                                 //  La fecha planificada debe ser menor a la fecha actual "y" 
                                 //  la fecha actual menor o igual a ocho dias
-                                if (fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
+                                if (item["strCodigo"].ToString().CompareTo("FNP") != 0 && fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
+                                    evaluacionActiva = item["strCodigo"].ToString();
+                                    break;
+                                }else if (item["strCodigo"].ToString().CompareTo("FNP") == 0 && fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 15){
+                                    //  La fecha planificada debe ser menor a la fecha actual "y" 
+                                    //  la fecha actual menor o igual a quince (15) dias
                                     evaluacionActiva = item["strCodigo"].ToString();
                                     break;
                                 }
+
                             }
                         }
                     }
