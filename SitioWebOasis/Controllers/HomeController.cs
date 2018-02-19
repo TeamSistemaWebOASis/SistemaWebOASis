@@ -182,6 +182,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "220027162-1";
 
                 //  numIdentificacion = "210093670-3";  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
+                //  numIdentificacion = "060508575-2";
 
                 //  //  DOCENTE
                 //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
@@ -189,8 +190,10 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
                 //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
 
-                //  numIdentificacion = "060353546-9";      //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
-                //  numIdentificacion = "120353525-5";          //  Vanesa Lorena Valverde Gonzales - Mecanica 
+                //  numIdentificacion = "060353546-9";  //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
+                //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
+
+                numIdentificacion = "060451060-2";  //  MARIA DEL CARMEN SAENZ
             }
             catch (Exception ex){
                 Errores err = new Errores();

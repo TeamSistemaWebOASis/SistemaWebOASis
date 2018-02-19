@@ -4,6 +4,16 @@
     ViewBag.Title = "Estudiantes";
     var promedioEstudiante = default(decimal);
     var descripcionPeriodoEstudiante = string.Empty;
+    //  var evaluacionActiva = Model.getDataEvaluacionActiva();
+    var evaluacionActiva = "P";
+    var tipoEvaluacion = (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3")
+                    ? @Language.es_ES.EST_LBL_EV_ACUMULATIVA
+                    : (evaluacionActiva == "P")
+                        ? @Language.es_ES.EST_LBL_EV_FINAL
+                        : (evaluacionActiva == "S")
+                            ? @Language.es_ES.EST_LBL_EV_RECUPERACION
+                            : "";
+
     Model.getDataAcademico(out promedioEstudiante, out descripcionPeriodoEstudiante);
 }
 
@@ -47,7 +57,7 @@
 
     <div class="widget widget-table">
         <div class="widget-header">
-            <h3><i class="fa fa-star"></i> @Language.es_ES.EST_LBL_EV_ACUMULATIVA &nbsp;/&nbsp; @Language.es_ES.EST_LBL_NOTAS</h3>
+            <h3><i class="fa fa-star"></i> @tipoEvaluacion &nbsp;/&nbsp; @Language.es_ES.EST_LBL_NOTAS</h3>
 
             <div class="btn-group widget-header-toolbar">
                 <a href="@Url.Action("NotasEstudiantes", "Estudiantes")" class="label label-default" style="color: white; font-size: small;">
@@ -65,30 +75,53 @@
         <div class="widget-content">
             <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 
-                @*TABLA DE NOTAS DEL ESTUDIANTE*@
-                <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
-                    <thead>
-                        <tr role="row">
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+                @if (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3")
+                {
+                    @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                    <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
+                        <thead>
+                            <tr role="row">
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
 
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_UNO</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_UNO</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
 
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
-                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @*NOTAS EVALUACION ESTUDIANTE*@
-                        @Html.Raw(Model.getHTMLNotasEVAcumulativa())
-                    </tbody>
-                </table>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*NOTAS EVALUACION ESTUDIANTE*@
+                            @Html.Raw(Model.getHTMLNotasEVAcumulativa())
+                        </tbody>
+                    </table>
+                }else if (evaluacionActiva == "P" || evaluacionActiva == "S"){
+                    <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+                        <thead>
+                            <tr role="row">
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_FINAL</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
+                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @Html.Raw(Model.getDtaEvFinal_EvRecuperacion(evaluacionActiva))
+                        </tbody>
+                    </table>
+                }
+
         </div>
     </div>
 </div>

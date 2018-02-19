@@ -115,7 +115,7 @@ namespace SitioWebOasis.Models
         }
 
 
-        private string _getDataEvaluacionActiva()
+        public string getDataEvaluacionActiva()
         {
             return this._evActiva.getDataEvaluacionActiva();
         }
@@ -177,7 +177,7 @@ namespace SitioWebOasis.Models
             decimal rst = default(decimal);
             try
             {
-                decimal prm = (this._dsNotasEstudiante.Estudiantes.Rows.Count > 0 )
+                decimal prm = (this._dsNotasEstudiante.Estudiantes.Rows.Count > 0 && this._dsNotasEstudiante.Estudiantes.Rows[0]["fltPromedio"].ToString() != "NaN" )
                                 ? Convert.ToDecimal(this._dsNotasEstudiante.Estudiantes.Rows[0]["fltPromedio"])
                                 : default(decimal);
 
@@ -214,10 +214,10 @@ namespace SitioWebOasis.Models
 
         public string getNumOrdinal(string numero, string tpo)
         {
-            string[] ciclosAcademicos = new string[10] { "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo" };
+            string[] ciclosAcademicos = new string[11] { "0", "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo" };
             string[] matricula = new string[3] { "1ra", "2da", "3ra" };
 
-            return (tpo == "nivel") ? ciclosAcademicos[Convert.ToInt32(numero.ToString()) - 1]
+            return (tpo == "nivel") ? ciclosAcademicos[Convert.ToInt32(numero.ToString())]
                                     : matricula[Convert.ToInt32(numero.ToString()) - 1];
         }
 
@@ -351,14 +351,14 @@ namespace SitioWebOasis.Models
                 if (this._dsDetalleNotas != null && this._dsDetalleNotas.EvAcumulativa.Rows.Count > 0){
                     int x = 0;
                     rst = string.Empty;
-                    string dtaEvActiva = this._getDataEvaluacionActiva();
+                    string dtaEvActiva = this.getDataEvaluacionActiva();
                     string estadoNota = string.Empty;
                     string colorParcial1 = (dtaEvActiva == "1") ? "info" : "";
                     string colorParcial2 = (dtaEvActiva == "2") ? "info" : "";
                     string colorParcial3 = (dtaEvActiva == "3") ? "info" : "";
 
                     foreach (DataRow item in this._dsDetalleNotas.EvAcumulativa){
-                        alertaEquivalencia = ((dtaEvActiva != "NA" && dtaEvActiva == "P" && Convert.ToInt16(dtaEvActiva) == '3') || periodoVigente.Periodos[0]["strCodigo"].ToString() != this.periodoEstudiante )
+                        alertaEquivalencia = (dtaEvActiva.ToString().CompareTo("3") == 0 || dtaEvActiva.ToString().CompareTo("P") == 0)
                                                 ? this.getAlertaFila(   item["strCodEquiv"].ToString(),
                                                                         ref alertaEquivalencia,
                                                                         ref lblEquivalencia,
@@ -399,16 +399,23 @@ namespace SitioWebOasis.Models
             string lblEquivalencia = "default";
             string smsEquivalencia = "";
             string rst = string.Empty;
+            string notaFinal = "";
             int totalEvFR = default(int);
+            string tipoExamen = (tpoExamen == "P")  ? "PRI"
+                                                    : (tpoExamen == "S")? "SUS"
+                                                                        : "";
 
             rst += " <tr role='row' class='success'>";
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
-            try
-            {
-                if (this._dsDetalleNotas != null && this._dsDetalleNotas.EvFinal_EvFormativa.Rows.Count > 0){
-                    DataRow[] drEvF_EvR = this._dsDetalleNotas.EvFinal_EvFormativa.Select("strCodTipoExamen = '" + tpoExamen + "'", "asignatura");
+            try{
+                this._dsDetalleNotas = (this._dsDetalleNotas.EvFinal_EvFormativa.Rows.Count == 0 )
+                                            ? this._getDataNotasEstudiante(periodoEstudiante)
+                                            : this._dsDetalleNotas;
+
+                if (this._dsDetalleNotas != null && this._dsDetalleNotas.EvFinal_EvFormativa.Rows.Count > 0 && !string.IsNullOrEmpty(tipoExamen)){
+                    DataRow[] drEvF_EvR = this._dsDetalleNotas.EvFinal_EvFormativa.Select("strCodTipoExamen = '" + tipoExamen + "'", "asignatura");
 
                     if (drEvF_EvR.Length > 0)
                     {
@@ -422,6 +429,10 @@ namespace SitioWebOasis.Models
                                                                     ref lblEquivalencia,
                                                                     ref smsEquivalencia);
 
+                            notaFinal = (string.IsNullOrEmpty(item["bytNota"].ToString()) || item["bytNota"].ToString().CompareTo("0") == 0)
+                                            ? "0"
+                                            : item["bytNota"].ToString();
+
                             totalEvFR = this._getTotalEvFR( item["bytAcumulado"].ToString(),
                                                             item["bytNota"].ToString());
 
@@ -431,7 +442,7 @@ namespace SitioWebOasis.Models
                             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this.getNumOrdinal(item["nivel"].ToString(), "nivel") + "</td>";
                             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this.getNumOrdinal(item["numMatricula"].ToString(), "matricula") + "</td>";
                             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["bytAcumulado"].ToString() + "</td>";
-                            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["bytNota"].ToString() + "</td>";
+                            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + notaFinal + "</td>";
                             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'><b>" + totalEvFR + "</b></td>";
                             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'> <span class='label label-" + lblEquivalencia + "'>" + smsEquivalencia + "</span> </td>";
                             rst += " </tr>";
