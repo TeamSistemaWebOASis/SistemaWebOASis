@@ -1,8 +1,5 @@
 ﻿@model SitioWebOasis.Models.DatosAsignaturasDocenteModel
-
-@{
-    ViewBag.Title = "Docente";
-}
+@{ ViewBag.Title = "Docente"; }
 
 @section AddToHead{
     <link href="@Url.Content("~/Content/css/skins/docente.css")" rel="stylesheet" type="text/css" />
@@ -12,7 +9,11 @@
     @*  JAVASCRIPT DE GESTION GRAFICOS DE RENDIMIENTO ACADEMICO  *@
     <script src="~/Content/js/Docentes/DocentesCharts.js?v0.0.4"> </script>
     <script src="~/Content/js/Docentes/NominaEstudiantes.js?v0.0.4"> </script>
+    <script src="~/Content/js/controlTiempoSession.js?v0.0.5"> </script>
 }
+
+@* TIEMPO DE SESSION *@
+@Html.Hidden("sessionTime", Session.Timeout)
 
 <div class="main-content">
     

@@ -1663,7 +1663,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sistema académico v3.8.1.
+        ///   Busca una cadena traducida similar a 3.8.1.5.
         /// </summary>
         public static string SA_VERSION {
             get {
@@ -1731,15 +1731,6 @@ namespace Language {
         public static string STR_PERIODO_ACADEMICO {
             get {
                 return ResourceManager.GetString("STR_PERIODO_ACADEMICO", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Busca una cadena traducida similar a V1.1.6.
-        /// </summary>
-        public static string STR_VERSION_JS {
-            get {
-                return ResourceManager.GetString("STR_VERSION_JS", resourceCulture);
             }
         }
     }

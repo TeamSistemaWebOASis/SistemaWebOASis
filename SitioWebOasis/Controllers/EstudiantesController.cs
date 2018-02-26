@@ -36,11 +36,7 @@ namespace SitioWebOasis.Controllers
                 UsuarioActual.SetRolCarreraActual(  Roles.Estudiantes,
                                                     strIdCarrera);
 
-                Session["objDtaEstudiante"] = ( Session["objDtaEstudiante"] == null )
-                                                ? new SitioWebOasis.Models.DatosAcademicosEstudiante()
-                                                : Session["objDtaEstudiante"];
-
-                return View("Index", (DatosAcademicosEstudiante)Session["objDtaEstudiante"]);
+                return View("Index", new SitioWebOasis.Models.DatosAcademicosEstudiante());
             }else{
                 return View("Index", "Error");
             }

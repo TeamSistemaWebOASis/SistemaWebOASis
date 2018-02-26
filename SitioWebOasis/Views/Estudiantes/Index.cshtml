@@ -4,8 +4,7 @@
     ViewBag.Title = "Estudiantes";
     var promedioEstudiante = default(decimal);
     var descripcionPeriodoEstudiante = string.Empty;
-    //  var evaluacionActiva = Model.getDataEvaluacionActiva();
-    var evaluacionActiva = "P";
+    var evaluacionActiva = Model.getDataEvaluacionActiva();
     var tipoEvaluacion = (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3")
                     ? @Language.es_ES.EST_LBL_EV_ACUMULATIVA
                     : (evaluacionActiva == "P")

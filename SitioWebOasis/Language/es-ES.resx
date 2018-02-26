@@ -652,7 +652,7 @@
     <value>LUGAR DE NACIMIENTO</value>
   </data>
   <data name="SA_VERSION" xml:space="preserve">
-    <value>Sistema académico v3.8.1</value>
+    <value>3.8.1.5</value>
   </data>
   <data name="STR_ACCEDER_SISTEMA_ACADEMICO" xml:space="preserve">
     <value>Acceder al Sistema Académico</value>
@@ -674,8 +674,5 @@
   </data>
   <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
     <value>PERÍODO ACADÉMICO</value>
-  </data>
-  <data name="STR_VERSION_JS" xml:space="preserve">
-    <value>V1.1.6</value>
   </data>
 </root>

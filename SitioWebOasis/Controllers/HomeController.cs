@@ -181,7 +181,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
                 //  numIdentificacion = "220027162-1";
 
-                //  numIdentificacion = "210093670-3";  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
+                //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
                 //  numIdentificacion = "060508575-2";
 
                 //  //  DOCENTE
@@ -192,8 +192,9 @@ namespace SitioWebOasis.Controllers
 
                 //  numIdentificacion = "060353546-9";  //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
                 //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
+                //  numIdentificacion = "060451060-2";  //  MARIA DEL CARMEN SAENZ
 
-                numIdentificacion = "060451060-2";  //  MARIA DEL CARMEN SAENZ
+                numIdentificacion = "040090150-0";
             }
             catch (Exception ex){
                 Errores err = new Errores();
@@ -232,15 +233,18 @@ namespace SitioWebOasis.Controllers
 
 
         [HttpPost]
-        public ContentResult getEstadoSesion()
+        public ActionResult sessionCheck( bool continueSession )
         {
-            //  ActionExecutingContext = 
-            JsonResult rstEstSession = default(JsonResult);
-            int dtSession = (HttpContext.Session != null)
-                                ? HttpContext.Session.Timeout
-                                : default(int);
-
-            return Content($"estado: \"1\",  tiempo: \"{dtSession.ToString()}\"");
+            if(continueSession){
+                Session.Timeout = 20;
+                return null;
+            }else{
+                return RedirectToAction("SignOut", "Account");
+            }
         }
+
+
+
+
     }
 }

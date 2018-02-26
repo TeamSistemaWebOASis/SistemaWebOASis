@@ -1781,7 +1781,7 @@
             <Paragraph>
               <TextRuns>
                 <TextRun>
-                  <Value>=Parameters!strLblFacultad.Value</Value>
+                  <Value>=Parameters!strLblEscuela.Value</Value>
                   <Style>
                     <FontFamily>Segoe UI</FontFamily>
                     <FontWeight>Bold</FontWeight>

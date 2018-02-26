@@ -410,10 +410,7 @@ namespace SitioWebOasis.Models
             rst += " </tr>";
 
             try{
-                this._dsDetalleNotas = (this._dsDetalleNotas.EvFinal_EvFormativa.Rows.Count == 0 )
-                                            ? this._getDataNotasEstudiante(periodoEstudiante)
-                                            : this._dsDetalleNotas;
-
+                this._dsDetalleNotas = this._getDataNotasEstudiante(periodoEstudiante);
                 if (this._dsDetalleNotas != null && this._dsDetalleNotas.EvFinal_EvFormativa.Rows.Count > 0 && !string.IsNullOrEmpty(tipoExamen)){
                     DataRow[] drEvF_EvR = this._dsDetalleNotas.EvFinal_EvFormativa.Select("strCodTipoExamen = '" + tipoExamen + "'", "asignatura");
 
