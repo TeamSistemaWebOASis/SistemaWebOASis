@@ -185,7 +185,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060508575-2";
 
                 //  //  DOCENTE
-                numIdentificacion = "060183490-6";  //  <-- Miguel Duque
+                //  numIdentificacion = "060183490-6";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
                 //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
