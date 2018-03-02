@@ -185,16 +185,13 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060508575-2";
 
                 //  //  DOCENTE
-                //  numIdentificacion = "060292098-5";  //  <-- Miguel Duque
+                numIdentificacion = "060183490-6";  //  <-- Miguel Duque
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
                 //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
 
                 //  numIdentificacion = "060353546-9";  //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
                 //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
-                //  numIdentificacion = "060451060-2";  //  MARIA DEL CARMEN SAENZ
-
-                numIdentificacion = "040090150-0";
             }
             catch (Exception ex){
                 Errores err = new Errores();
@@ -233,18 +230,18 @@ namespace SitioWebOasis.Controllers
 
 
         [HttpPost]
-        public ActionResult sessionCheck( bool continueSession )
+        public bool checkSession( int idleTime )
         {
-            if(continueSession){
+            bool status = true;
+
+            if(idleTime < Session.Timeout){
                 Session.Timeout = 20;
-                return null;
             }else{
-                return RedirectToAction("SignOut", "Account");
+                status = false;
             }
+
+            return status;
         }
-
-
-
 
     }
 }

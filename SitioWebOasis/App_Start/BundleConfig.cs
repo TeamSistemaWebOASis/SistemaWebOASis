@@ -42,7 +42,7 @@ namespace SitioWebOasis
                                                                     "~/Content/js/HoldOn.min.js",
                                                                     "~/Content/js/jquery-ui/jQueryBlockUI.min.js",
                                                                     "~/Content/js/jquery-confirm/jquery-confirm.min.js",
-                                                                    "~/Content/js/jquery-sparkline/jquery.sparkline.min.js"));
+                                                                    "~/Content/js/jquery-sparkline/jquery.sparkline.min.js" ));
         }
     }
 }

@@ -332,16 +332,16 @@ $(document).ready(function () {
         $.confirm({
             icon: 'glyphicon glyphicon-alert',
             columnClass: 'col-md-6 col-md-offset-3',
-            title: 'Control de impresión',
+            title: 'Control de impresión - EVALUACIÓN RECUPERACIÓN',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
-                    '       <p>Compañero docente, le recordamos que luego de ejecutar esta acción' +
-                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE RECUPERACIÓN DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
-                    '       <p>Luego de esta acción ninguna <strong>nota</strong> podrá ser gestionada desde este módulo web del sistema académico.</p>' +
+                    '       <p class="text-justify">Compañero docente, le recordamos que luego de ejecutar esta acción' +
+                    '       USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA <strong> EVALUACIÓN DE RECUPERACIÓN </strong> DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '".</p>' +
+                    '       <p class="text-justify">Luego de esta acción ninguna <strong>nota</strong> podrá ser gestionada desde este módulo web del sistema académico.</p>' +
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
-                    '       Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong>' +
+                    '       <p class="text-justify">Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong></p>' +
                     '   </div>' +
                     '</form>',
 
@@ -397,14 +397,15 @@ $(document).ready(function () {
         $.confirm({
             icon: 'glyphicon glyphicon-alert',
             columnClass: 'col-md-6 col-md-offset-3',
-            title: 'Control de impresión',
+            title: 'Control de impresión - EVALUACIÓN RECUPERACIÓN',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
-                    '       Compañero docente le recordamos una vez mas que <strong>ingresado y validado el "código de impresión", la gestión de notas finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico</strong>' +
+                    '       <p class="text-justify">Compañero docente le recordamos una vez mas que ingresado y validado el "código de impresión", la gestión de notas en <strong>EVALUACIÓN DE RECUPERACIÓN</strong> finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico </p>' +
                     '   </div>' +
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
+                    '   <div class="checkbox"><label><input type="checkbox" id="enableCheckbox"> ACEPTO Y ENTIENDO LAS ACCIONES DE ESTE ACTO EN <strong>EVALUACIÓN DE RECUPERACIÓN</strong> </label></div>' +
                     '</form>'+
                     '<script>' +
                     '   $(document).ready(function(){' +
@@ -421,67 +422,77 @@ $(document).ready(function () {
                     text: 'Validar e imprimir',
                     btnClass: 'btn-blue',
                     action: function () {
-                        var opImpresion = $("#opImpEvRecuperacion").val();
-                        var numConfirmacion = this.$content.find('#dtaNumConfirmacion').val();
-                        showLoadingProcess('Verificando código de impresión ...');
 
-                        $.ajax({
-                            type: "POST",
-                            url: "/Docentes/ValidarCodigoImpresion",
-                            data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
-                            contentType: "application/json; charset=utf-8",
-                            dataType: "json",
+                        var $checkbox = this.$content.find('#enableCheckbox');
 
-                            error: function (xhr, ajaxOptions, thrownError) {
-                                console.log(xhr.responseText);
+                        if ($checkbox.prop('checked')) {
+                            var opImpresion = $("#opImpEvRecuperacion").val();
+                            var numConfirmacion = this.$content.find('#dtaNumConfirmacion').val();
+                            showLoadingProcess('Verificando código de impresión ...');
 
-                                //  Mostrar mensaje de estado de la transaccion
-                                getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
+                            $.ajax({
+                                type: "POST",
+                                url: "/Docentes/ValidarCodigoImpresion",
+                                data: '{strCodImpresion: "' + numConfirmacion + '", idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
 
-                                //  Cierro la ventana GIF Proceso
-                                HoldOn.close();
-                            }
+                                error: function (xhr, ajaxOptions, thrownError) {
+                                    console.log(xhr.responseText);
 
-                        }).complete(function (data) {
-                            if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined) {
-                                //  Cambio el color del boton
-                                $('#btnER, #btnERF').attr("class", 'btn btn-warning btn-md');
+                                    //  Mostrar mensaje de estado de la transaccion
+                                    getMensajeTransaccion(false, "Error, favor vuelva a intentarlo, si el problema persiste consulte en la secretaria de su carrara");
 
-                                //  Oculto el mensaje de error
-                                $('#messageError').attr("hidden");
+                                    //  Cierro la ventana GIF Proceso
+                                    HoldOn.close();
+                                }
 
-                                //  Cierro el formulario de ingreso de codigo de impresion
-                                $.unblockUI();
+                            }).complete(function (data) {
+                                if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "" && data.responseJSON.fileName != undefined) {
+                                    //  Cambio el color del boton
+                                    $('#btnER, #btnERF').attr("class", 'btn btn-warning btn-md');
 
-                                //  Cierro la ventana GIF Proceso
-                                HoldOn.close();
+                                    //  Oculto el mensaje de error
+                                    $('#messageError').attr("hidden");
 
-                                //  Cambio el grid de gestion de nota de evaluacion acumulativa a modo solo lectura
-                                grdEvRecuperacionSoloLectura();
+                                    //  Cierro el formulario de ingreso de codigo de impresion
+                                    $.unblockUI();
 
-                                //  Actualizo la bandera de impresion
-                                banControlImpresion = true;
+                                    //  Cierro la ventana GIF Proceso
+                                    HoldOn.close();
 
-                                //  Actualizo mensaje de estado de evaluacion
-                                $('#msgEstadoEvaluacion').attr('class', 'text-info pull-right')
-                                $('#msgEstadoEvaluacion')[0].innerHTML = "<strong>Gestión de notas 'finalizada'</strong>"
+                                    //  Cambio el grid de gestion de nota de evaluacion acumulativa a modo solo lectura
+                                    grdEvRecuperacionSoloLectura();
 
-                                //  Elimino el boton de guardar
-                                $('#btnGuardarEvRecuperacion').remove();
+                                    //  Actualizo la bandera de impresion
+                                    banControlImpresion = true;
 
-                                //  Descarga de archivo
-                                $.redirect("/Docentes/DownloadFile", { file: data.responseJSON.fileName }, "POST")
-                            } else {
-                                //  Cierro la ventana GIF Proceso
-                                HoldOn.close();
+                                    //  Actualizo mensaje de estado de evaluacion
+                                    $('#msgEstadoEvaluacion').attr('class', 'text-info pull-right')
+                                    $('#msgEstadoEvaluacion')[0].innerHTML = "<strong>Gestión de notas 'finalizada'</strong>"
 
-                                $('#dtaNumConfirmacion').val("");
+                                    //  Elimino el boton de guardar
+                                    $('#btnGuardarEvRecuperacion').remove();
 
-                                //  Si existe error, muestro el mensaje
-                                alert(data.responseJSON.errorMessage);
-                            }
-                        })
+                                    //  Descarga de archivo
+                                    $.redirect("/Docentes/DownloadFile", { file: data.responseJSON.fileName }, "POST")
+                                } else {
+                                    //  Cierro la ventana GIF Proceso
+                                    HoldOn.close();
 
+                                    $('#dtaNumConfirmacion').val("");
+
+                                    //  Si existe error, muestro el mensaje
+                                    alert(data.responseJSON.errorMessage);
+
+                                    frmValidacionCodigoImpresion();
+                                }
+                            })
+                        } else {
+                            alert('Favor, aceptar condiciones para el proceso de impresión de acta evaluación de recuperación');
+
+                            frmValidacionCodigoImpresion();
+                        }
                     }
                 },
                 cancelar: function () {
@@ -490,58 +501,6 @@ $(document).ready(function () {
             },
         });
     }
-
-
-    $('#btnValidarImprimir').click(function () {
-        if ($('#dtaNumConfirmacion').val() == "987") {
-            $.unblockUI();
-
-            //  Guardo los cambios registrados
-            $('#btnGuardarEvRecuperacion').trigger("click");
-
-            showLoadingProcess('');
-
-            var opImpresion = $("#opImpEvRecuperacion").val();
-            
-            $.ajax({
-                type: "POST",
-                url: "/Docentes/impresionActas",
-                data: '{idActa: "' + opImpresion + '", idAsignatura: "' + $('#ddlLstPeriodosEstudiante').val() + '"}',
-                contentType: "application/json; charset=utf-8",
-                dataType: "json"
-            }).complete(function (data) {
-                //  Cambio el color del boton
-                $('#btnER, #btnERF').attr("class", 'btn btn-warning btn-md');
-
-                //  Oculto el mensaje de error
-                $('#messageError').attr("hidden");
-
-                //  Cierro la ventana GIF Proceso
-                HoldOn.close();
-
-                $("opImpEvRecuperacion").attr("value", "");
-
-                if (data.responseJSON.fileName != "none" && data.responseJSON.fileName != "") {
-                    //  Cambio el Grid a modo "soloLectura"
-                    grdEvRecuperacionSoloLectura();
-
-                    //  Elimino el boton de guardado de Ev recuperacion
-                    $('#btnGuardarEvRecuperacion').remove();
-
-                    $.redirect( "/Docentes/DownloadFile",
-                                { file: data.responseJSON.fileName },
-                                "POST")
-                } else {
-                    //  Si existe error, muestro el mensaje
-                    $('#messageError').removeAttr("hidden");
-                    $('#messageError').html("<a href='' class='close'>×</a><strong>FALLO !!!</strong> Favor vuelva a intentarlo");
-                }
-            })
-        } else {
-            alert('NUMERO DE CONFIRMACION NO VALIDO, favor vuelva a ingresarlo');
-        }
-    })
-
 
     function showLoadingProcess(mensaje) {
         var msg = (mensaje.length == 0) ? 'GUARDANDO INFORMACION ...'
@@ -594,6 +553,4 @@ $(document).ready(function () {
             }
         })
     }
-
-
 })
