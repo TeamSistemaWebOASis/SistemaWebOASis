@@ -193,8 +193,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060353546-9";  //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
                 //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
                 //  numIdentificacion = "060183490-6";
-
-                //  numIdentificacion = "230049553-4";
+                //  numIdentificacion = "060327507-4";  //  PAULA ABDO
             }
             catch (Exception ex){
                 Errores err = new Errores();

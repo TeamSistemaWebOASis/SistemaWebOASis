@@ -76,22 +76,21 @@
         <div id="main-content-wrapper" class="content-wrapper expanded">
 
             <div class="row">
-                <div class="col-md-8">
+
+                <div class="col-sm-10">
                     @*BREADCRUMB*@
                     @Html.Action("breadCrumb", "BreadCrumb")
                 </div>
 
-                <div class="col-md-4">
-                    <div class="well-sm">
-                        <div id="strSessionTime" class="text-right"></div>
-                    </div>
+                <div class="col-sm-2 alert-warning">
+                    <div id="strSessionTime"></div>
                 </div>
 
             </div>
             <!-- main -->
             <div class="content">
-                @* DATOS GENERALES DE USUARIO *@
-                @*@Html.Partial("DatosGeneralesUsuario")*@
+                @* TIEMPO DE SESSION *@
+                @Html.Hidden("sessionTime", Session.Timeout)
 
                 <div class="main-content">
                     @RenderBody()

@@ -1,5 +1,8 @@
 ﻿$(document).ready(function () {
-    sessionTime = parseInt($('#sessionTime').val()) * 60;    
+    time = ( $('#sessionTime').val() != undefined ) ? $('#sessionTime').val() 
+                                                    : 20;
+
+    sessionTime = parseInt(time) * 60;    
     startTimer(sessionTime);
     idleTime = 0;
     var timer = sessionTime, minutes, seconds;
@@ -14,8 +17,8 @@
             minutes = minutes < 10 ? "0" + minutes : minutes;
             seconds = seconds < 10 ? "0" + seconds : seconds;
 
-            $('#strSessionTime').html('<code> <strong>Tiempo de sesión:</strong> </code>' + minutes + ":" + seconds);
-
+            $('#strSessionTime').html('<i class="glyphicon glyphicon-time fa-2x"></i> Tiempo de sesión: <strong>' + minutes + ":" + seconds + '</strong>');
+            
             if( --timer < 0 ){
                 location.href = "/Account/SignOut"
             }
