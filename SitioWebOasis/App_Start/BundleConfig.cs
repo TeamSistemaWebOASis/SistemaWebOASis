@@ -43,7 +43,7 @@ namespace SitioWebOasis
                                                                     "~/Content/js/jquery-ui/jQueryBlockUI.min.js",
                                                                     "~/Content/js/jquery-confirm/jquery-confirm.min.js",
                                                                     "~/Content/js/jquery-sparkline/jquery.sparkline.min.js",
-                                                                    "~/Content/js/controlTiempoSession.js"));
+                                                                    "~/Content/js/controlTiempoSession-v3.3.8.js"));
         }
     }
 }

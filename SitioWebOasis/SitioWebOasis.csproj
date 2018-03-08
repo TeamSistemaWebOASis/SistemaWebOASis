@@ -278,7 +278,6 @@
     <Compile Include="Library\DatosCarrera.cs" />
     <Compile Include="Library\Direccion.cs" />
     <Compile Include="Library\DocumentoPersonal.cs" />
-    <Compile Include="Library\ErrorConfig.cs" />
     <Compile Include="Library\EvaluacionAcumulativa.cs" />
     <Compile Include="Library\EvaluacionFinal.cs" />
     <Compile Include="Library\EvaluacionRecuperacion.cs" />
@@ -407,7 +406,7 @@
     <Content Include="Content\js\bootstrap-slider\jssor.slider-22.0.15.mini.js" />
     <Content Include="Content\js\bootstrap-tour\bootstrap-tour.custom.js" />
     <Content Include="Content\js\bootstrap\bootstrap.min.js" />
-    <Content Include="Content\js\controlTiempoSession.js" />
+    <Content Include="Content\js\controlTiempoSession-v3.3.8.js" />
     <Content Include="Content\js\Docentes\DocentesCharts.js" />
     <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
     <Content Include="Content\js\Docentes\EvaluacionFinal.js" />

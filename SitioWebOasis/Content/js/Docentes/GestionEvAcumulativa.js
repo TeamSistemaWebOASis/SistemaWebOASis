@@ -388,16 +388,16 @@
         $.confirm({
             icon: 'glyphicon glyphicon-alert',
             columnClass: 'col-md-6 col-md-offset-3',
-            title: 'Control de impresión',
+            title: 'Control de impresión - EVALUACIÓN ACUMULATIVA',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
-                    '       <p>Compañero docente, le recordamos que luego de ejecutar esta acción' +
-                    '       <strong> USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA EVALUACIÓN DE ACUMULATIVA DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '" </strong>.</p>' +
-                    '       <p>Luego de esta acción ninguna nota podrá ser gestionada desde este módulo web del sistema académico.</p>' +
+                    '       <p class="text-justify">Compañero docente, le recordamos que luego de ejecutar esta acción' +
+                    '       USTED DA POR FINALIZADA LA "GESTIÓN DE NOTAS DE LA <strong>EVALUACIÓN ACUMULATIVA</strong> DE LA ASIGNATURA ' + $('#ddlLstPeriodosEstudiante :selected').text() + '".</p>' +
+                    '       <p class="text-justify">Luego de esta acción ninguna nota podrá ser gestionada desde este módulo web del sistema académico.</p>' +
                     '   </div>' +
 
                     '   <div class="alert alert-info">' +
-                    '       Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong>' +
+                    '       <p class="text-justify">Por su seguridad y para continuar con la ejecución de esta tarea se enviará un "código de impresión" a su cuenta de correo electrónico institucional <strong>' + $('#dtaCtaUsuario').val() + '</strong> </p>' +
                     '   </div>' +
                     '</form>',
 
@@ -456,14 +456,15 @@
         $.confirm({
             icon: 'glyphicon glyphicon-alert',
             columnClass: 'col-md-6 col-md-offset-3',
-            title: 'Control de impresión',
+            title: 'Control de impresión - EVALUACIÓN ACUMULATIVA',
             content: '<form action="#" class="formName">' +
                     '   <div class="alert alert-warning">' +
-                    '       Compañero docente le recordamos una vez mas que <strong>ingresado y validado el "código de impresión", la gestión de notas finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico</strong>' +
+                    '       <p class="text-justify">Compañero docente le recordamos una vez mas que ingresado y validado el "código de impresión", la gestión de notas en <strong>EVALUACIÓN ACUMULATIVA</strong> finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico </p>' +
                     '   </div>' +
                     '   <div class="form-group">' +
                     '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
+                    '   <div class="checkbox"><label><input type="checkbox" id="enableCheckboxEA"> ACEPTO Y ENTIENDO LAS ACCIONES DE ESTE ACTO EN <strong>EVALUACIÓN ACUMULATIVA</strong> </label></div>' +
                     '</form>' +
                     '<script>' +
                     '   $(document).ready(function(){' +
@@ -482,7 +483,15 @@
                     text: 'Validar e imprimir',
                     btnClass: 'btn-blue',
                     action: function () {
-                        validarCodigoImpresion($("#opImpEvAcumulada").val(), this.$content.find('#dtaNumConfirmacion').val())
+                        var $checkboxEA = this.$content.find('#enableCheckboxEA');
+                        if ($checkboxEA.prop('checked')) {
+                            validarCodigoImpresion( $("#opImpEvAcumulada").val(),
+                                                    this.$content.find('#dtaNumConfirmacion').val())
+                        } else {
+                            alert('Favor, aceptar condiciones para el proceso de impresión de acta EVALUACIÓN ACUMULATIVA');
+
+                            frmValidacionCodigoImpresion();
+                        }
                     }
                 },
                 cancelar: function () {
@@ -490,11 +499,6 @@
                 },
             },
         });
-    }
-
-
-    function validarSoloNumero() {
-        alert("You pressed a key inside the input field");
     }
 
 

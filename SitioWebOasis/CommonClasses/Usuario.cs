@@ -17,6 +17,7 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 		private string _Login = null;
 		private string _Nombre = null;
 		private string _Cedula = null;
+        private DateTime _dtInicioSession = default(DateTime);
 
 		private Rol[] _roles = null;
 		private Rol _RolActual = null;
@@ -59,6 +60,7 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			this._Login = drUsuario["strLogin"].ToString();
 			this._Nombre = drUsuario["strNombre"].ToString();
 			this._Cedula = drUsuario["strCedula"].ToString();
+            this._dtInicioSession = DateTime.Now;
       
 			DataRow[] drRoles = drUsuario.GetChildRows("UsuariosRoles");
 
@@ -210,6 +212,16 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			get { return this._Nombre; }
 		}
 
+        public int getIdleTime()
+        {
+            var minutes = DateTime.Now - this._dtInicioSession;
+            return Convert.ToInt32( minutes.TotalMinutes );
+        }
+
+        public void resetSessionTime()
+        {
+            this._dtInicioSession = DateTime.Now;
+        }
 		
 		private bool BuscarRol(Roles r)
 		{

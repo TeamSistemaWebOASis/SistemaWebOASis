@@ -489,7 +489,7 @@ $(document).ready(function () {
                                 }
                             })
                         } else {
-                            alert('Favor, aceptar condiciones para el proceso de impresión de acta evaluación de recuperación');
+                            alert('Favor, aceptar condiciones para el proceso de impresión de acta EVALUACIÓN DE RECUPERACIÓN');
 
                             frmValidacionCodigoImpresion();
                         }

@@ -2,6 +2,7 @@
 using OAS_Seguridad.Cliente;
 using SitioWebOasis.CommonClasses;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
+using SitioWebOasis.Library;
 using SitioWebOasis.WSSeguridad;
 using System;
 using System.Configuration;
@@ -230,16 +231,16 @@ namespace SitioWebOasis.Controllers
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
         }
 
-
         [HttpPost]
-        public bool checkSession( int idleTime )
+        public bool checkSession()
         {
             bool status = true;
+            Usuario usr = (Usuario)this.Session["UsuarioActual"];
 
-            if(idleTime < Session.Timeout){
-                Session.Timeout = 20;
-            }else{
+            if(usr.getIdleTime().CompareTo( Session.Timeout ) > 0){
                 status = false;
+            }else{
+                usr.resetSessionTime();
             }
 
             return status;
