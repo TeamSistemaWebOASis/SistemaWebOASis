@@ -79,6 +79,15 @@ namespace CENTRALIZADA {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a http://academicoseg.espoch.edu.ec/SilverlightDiscapacitadosWCF.Web/Loginwithout.aspx?cedula=.
+        /// </summary>
+        public static string WS_MATRICULACION {
+            get {
+                return ResourceManager.GetString("WS_MATRICULACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a http://servicioscentral.espoch.edu.ec/Central/.
         /// </summary>
         public static string WS_PERSONAS {

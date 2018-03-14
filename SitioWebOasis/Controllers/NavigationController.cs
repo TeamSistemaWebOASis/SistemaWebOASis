@@ -1,6 +1,7 @@
 ﻿using GestorErrores;
 using SitioWebOasis.CommonClasses.GestionUsuarios;
 using SitioWebOasis.Models;
+using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
 
@@ -8,10 +9,13 @@ namespace SitioWebOasis.Controllers
 {
     public class NavigationController : Controller
     {
+        private string _urlMA = string.Empty;
+
         // GET: Navigation
         public ActionResult Menu()
         {
             List<MenuViewModel> lstMVM = new List<MenuViewModel>();
+            
 
             try
             {
@@ -21,7 +25,8 @@ namespace SitioWebOasis.Controllers
                 switch (rol){
                     case "Estudiantes":
                         lstMVM = this._getMenuEstudiantes();
-                        break;
+                        this._urlMA = this._getUrlMatriculacionAntigua();
+                    break;
 
                     case "Docentes":
                         lstMVM = this._getMenuDocentes();
@@ -52,7 +57,9 @@ namespace SitioWebOasis.Controllers
         {
             List<MenuViewModel> lstMVM = new List<MenuViewModel>();
 
+            /////////////////////////////////////
             //  MENU INICIO
+            /////////////////////////////////////
             MenuViewModel menu = new MenuViewModel(){   MenuID = 1,
                                                         Action = "Index",
                                                         Controller = "Estudiantes",
@@ -87,7 +94,9 @@ namespace SitioWebOasis.Controllers
             //  Agrego a la lista todo el Menu y los elemento de subMenu
             lstMVM.Add(menu);
 
+            //////////////////////////////////////////
             //  MENU HORARIO ESTUDIANTES
+            //////////////////////////////////////////
             menu = new MenuViewModel(){ MenuID = 1,
                                         Action = "HorarioEstudiante",
                                         Controller = "Estudiantes",
@@ -97,7 +106,7 @@ namespace SitioWebOasis.Controllers
                                         icon = "fa fa-calendar",
                                         Title = Language.es_ES.EST_MN_HORARIO_ESTUDIANTE.ToString()};
 
-            //  Submenu Datos Estudiante
+            //  Submenu horario estudiante
             menu.SubMenu = new List<MenuViewModel>();
             subMenu = new MenuViewModel(){  Action = "HorarioEstudiante",
                                             Controller = "Estudiantes",
@@ -109,7 +118,7 @@ namespace SitioWebOasis.Controllers
 
             menu.SubMenu.Add(subMenu);
 
-            //  Submenu Notas Estudiante
+            //  Submenu horario examenes estudiante
             subMenu = new MenuViewModel(){  Action = "HorarioExamenesEstudiante",
                                             Controller = "Estudiantes",
                                             IsAction = true,
@@ -119,6 +128,19 @@ namespace SitioWebOasis.Controllers
                                             Title = Language.es_ES.EST_MN_HORARIO_EXAMENES.ToString()};
 
             menu.SubMenu.Add(subMenu);
+            lstMVM.Add(menu);
+
+            //////////////////////////////////////////
+            //  MENU MATRICULACION
+            //////////////////////////////////////////
+            menu = new MenuViewModel(){ MenuID = 1,
+                                        Action = this._getUrlMatriculacionAntigua() + UsuarioActual.Cedula,
+                                        Controller = "Estudiantes",
+                                        IsAction = true,
+                                        Class = "text",
+                                        SubMenu = null,
+                                        icon = "fa fa-file",
+                                        Title = Language.es_ES.EST_MN_MATRICULACION.ToString() };
 
             //  Agrego a la lista todo el Menu y los elemento de subMenu
             lstMVM.Add(menu);
@@ -133,5 +155,27 @@ namespace SitioWebOasis.Controllers
 
             return lstMVM;
         }
+
+
+        private string _getUrlMatriculacionAntigua()
+        {
+            string urlMA = string.Empty;
+
+            try
+            {
+                var appSettings = System.Configuration.ConfigurationManager.AppSettings;
+                urlMA = appSettings.Get("urlMatriculacionSistemaAntiguo").ToString();
+            }
+            catch(Exception ex)
+            {
+                urlMA = string.Empty;
+                Errores err = new Errores();
+                err.SetError(ex, "_getUrlMatriculacionAntigua");
+                err.setInfo("_getUrlMatriculacionAntigua", ex.Message + " - " + UsuarioActual.Cedula.ToString());
+            }
+
+            return urlMA;
+        }
+
     }
 }

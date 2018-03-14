@@ -21,6 +21,8 @@
     <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
 }
 
+@Html.Hidden("numIdentificacion", Model.UsuarioActual.Cedula.ToString())
+
 <div class="main-content">
 
     <div class="main-content">
@@ -52,7 +54,10 @@
         </div>
     </div>
 
-    <br>
+    @* MATRICULACION *@
+    <hr class="inner-separator">
+    <button id="btnMatriculacionSA" type="button" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="top" data-original-title="Acceso al modulo de matriculación del sistema académico (click)"><i class="fa fa-edit"></i>@Language.es_ES.EST_MN_MATRICULACION.ToString().ToUpper()</button>
+    <hr class="inner-separator">
 
     <div class="widget widget-table">
         <div class="widget-header">
@@ -126,3 +131,8 @@
 </div>
 
 </div>
+
+@section scripts{
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.1.1"> </script>
+}

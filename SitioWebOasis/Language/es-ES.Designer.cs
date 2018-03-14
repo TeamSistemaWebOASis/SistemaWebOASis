@@ -880,6 +880,69 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Asignatura.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_ASIGNATURA {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_ASIGNATURA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fecha aprobación.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_FCH_APROBACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_FCH_APROBACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Institución.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_INSTITUCION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_INSTITUCION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nivel.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_NIVEL {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_NIVEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Observación.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_OBSERVACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_OBSERVACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Periodo académico.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_PERIODO_ACADEMICO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_PERIODO_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resolución.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_RESOLUCION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_RESOLUCION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Domingo.
         /// </summary>
         public static string EST_TB_COL_DOMINGO {

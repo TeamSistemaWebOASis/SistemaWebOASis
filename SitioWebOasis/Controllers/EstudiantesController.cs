@@ -75,16 +75,11 @@ namespace SitioWebOasis.Controllers
 
         public ActionResult NotasEstudiantes(string periodoAcademico = "")
         {
-            //  DatosAcademicosEstudiante dtaNotasEstudiante = new DatosAcademicosEstudiante();
-            Session["objDtaEstudiante"] = (Session["objDtaEstudiante"] == null)
-                                                ? new SitioWebOasis.Models.DatosAcademicosEstudiante()
-                                                : Session["objDtaEstudiante"];
+            DatosAcademicosEstudiante dtaNotasEstudiante = (!string.IsNullOrEmpty(periodoAcademico))
+                                                                ? new DatosAcademicosEstudiante(periodoAcademico)
+                                                                : new DatosAcademicosEstudiante();
 
-            if ( !string.IsNullOrEmpty( periodoAcademico )){
-                Session["objDtaEstudiante"] = new DatosAcademicosEstudiante(periodoAcademico);
-            }
-
-            return View("DatosAcademicosEstudiante", (DatosAcademicosEstudiante)Session["objDtaEstudiante"]);
+            return View("DatosAcademicosEstudiante", dtaNotasEstudiante);
         }
 
 

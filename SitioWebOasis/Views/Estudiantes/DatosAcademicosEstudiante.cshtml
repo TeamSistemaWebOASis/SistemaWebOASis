@@ -57,6 +57,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="panel-group" id="accordion">
+
                     @*  EVALUACION ACUMULATIVA  *@
                     <div class="panel panel-default">
                         <div class="panel-heading">
@@ -160,6 +161,45 @@
                             </div>
                         </div>
                     </div>
+
+                    @*  EVALUACION RECUPERACION *@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed" aria-expanded="false">
+                                    <strong> @Language.es_ES.EST_LBL_CONVALIDA.ToUpper() </strong>
+                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                            <div class="panel-body">
+                                @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+                                    <thead>
+                                        <tr role="row">
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                            <th style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_ASIGNATURA</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_NIVEL</th>
+                                            <th style="width: 700px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_PERIODO_ACADEMICO</th>
+                                            <th style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_INSTITUCION</th>
+                                            <th style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_RESOLUCION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_FCH_APROBACION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_OBSERVACION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @Html.Raw(Model.getDtaConvalidacion())
+                                    </tbody>
+                                </table>
+                                <div class="row"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>

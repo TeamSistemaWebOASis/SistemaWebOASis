@@ -422,6 +422,7 @@
     <Content Include="Content\js\DownloadFiles.js" />
     <Content Include="Content\js\es-ES.js" />
     <Content Include="Content\js\Estudiantes\Estudiante.js" />
+    <Content Include="Content\js\Estudiantes\MatriculacionSA.js" />
     <Content Include="Content\js\Estudiantes\Vinculantes.js" />
     <Content Include="Content\js\HoldOn.min.js" />
     <Content Include="Content\js\ActualizarCorreo\gestionCorreoUsuarios.js" />

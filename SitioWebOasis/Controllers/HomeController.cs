@@ -182,8 +182,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
                 //  numIdentificacion = "220027162-1";
 
-                //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO
-                //  numIdentificacion = "060508575-2";
+                numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
                 //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
@@ -195,6 +194,9 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
                 //  numIdentificacion = "060183490-6";
                 //  numIdentificacion = "060327507-4";  //  PAULA ABDO
+                //  numIdentificacion = "120353525-5";  //  VANESA VALVERDE
+
+                //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
             }
             catch (Exception ex){
                 Errores err = new Errores();
@@ -235,12 +237,20 @@ namespace SitioWebOasis.Controllers
         public bool checkSession()
         {
             bool status = true;
-            Usuario usr = (Usuario)this.Session["UsuarioActual"];
 
-            if(usr.getIdleTime().CompareTo( Session.Timeout ) > 0){
-                status = false;
-            }else{
-                usr.resetSessionTime();
+            try
+            {
+                Usuario usr = (Usuario)this.Session["UsuarioActual"];
+
+                if (usr != null && usr.getIdleTime().CompareTo(Session.Timeout) > 0){
+                    status = false;
+                }else{
+                    usr.resetSessionTime();
+                }
+            }catch(Exception ex){
+                GestorErrores.Errores err = new Errores();
+                err.SetError(ex, "checkSession");
+                err.setInfo("homeController", "");
             }
 
             return status;

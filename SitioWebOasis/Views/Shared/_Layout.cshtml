@@ -74,24 +74,24 @@
         <!-- END LEFT SIDEBAR -->
         <!-- MAIN CONTENT WRAPPER -->
         <div id="main-content-wrapper" class="content-wrapper expanded">
-
             <div class="row">
-
                 <div class="col-sm-10">
                     @*BREADCRUMB*@
                     @Html.Action("breadCrumb", "BreadCrumb")
                 </div>
 
-                <div class="col-sm-2 alert-warning">
-                    <div id="strSessionTime"></div>
-                </div>
+                @if (!string.IsNullOrEmpty(User.Identity.Name.ToString())){
+                    <div class="col-sm-2 alert-warning">
+                        <div id="strSessionTime"></div>
+                    </div>
+                }
 
             </div>
             <!-- main -->
             <div class="content">
                 @* TIEMPO DE SESSION *@
                 @Html.Hidden("sessionTime", Session.Timeout)
-
+                
                 <div class="main-content">
                     @RenderBody()
                 </div>

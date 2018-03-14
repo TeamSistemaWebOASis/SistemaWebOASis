@@ -390,6 +390,27 @@
   <data name="EST_TB_COL_ASIGNATURA" xml:space="preserve">
     <value>Asignatura</value>
   </data>
+  <data name="EST_TB_COL_CONVALIDACION_ASIGNATURA" xml:space="preserve">
+    <value>Asignatura</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_FCH_APROBACION" xml:space="preserve">
+    <value>Fecha aprobación</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_INSTITUCION" xml:space="preserve">
+    <value>Institución</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_OBSERVACION" xml:space="preserve">
+    <value>Observación</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_PERIODO_ACADEMICO" xml:space="preserve">
+    <value>Periodo académico</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_RESOLUCION" xml:space="preserve">
+    <value>Resolución</value>
+  </data>
   <data name="EST_TB_COL_DOMINGO" xml:space="preserve">
     <value>Domingo</value>
   </data>

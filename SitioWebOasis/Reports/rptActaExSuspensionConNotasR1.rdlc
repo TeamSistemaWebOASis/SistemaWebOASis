@@ -6,31 +6,31 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>0.83995cm</Width>
+              <Width>0.8756cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.71145cm</Width>
+              <Width>1.7471cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>6.2762cm</Width>
+              <Width>6.31185cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.22822cm</Width>
+              <Width>1.26387cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.34963cm</Width>
+              <Width>1.38528cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>0.94417cm</Width>
+              <Width>0.97982cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.84399cm</Width>
+              <Width>2.87964cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>1.04404cm</Width>
+              <Width>1.07969cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.33224cm</Width>
+              <Width>2.36789cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -1045,7 +1045,7 @@
         <Top>0.17639cm</Top>
         <Left>0.21035cm</Left>
         <Height>1.80855cm</Height>
-        <Width>18.56989cm</Width>
+        <Width>18.8907cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -1290,10 +1290,10 @@
     <Height>2.53125in</Height>
     <Style />
   </Body>
-  <Width>7.43138in</Width>
+  <Width>7.5668in</Width>
   <Page>
     <PageHeader>
-      <Height>6.64104cm</Height>
+      <Height>6.79552cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1321,10 +1321,9 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>strAsignatura</rd:DefaultName>
-          <Top>5.22937cm</Top>
-          <Left>0.21035cm</Left>
+          <Top>5.24302cm</Top>
           <Height>0.6cm</Height>
-          <Width>11.3639cm</Width>
+          <Width>12.34933cm</Width>
           <Style>
             <Border>
               <Style>None</Style>
@@ -1359,10 +1358,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>strCodMateria</rd:DefaultName>
-          <Top>5.20374cm</Top>
-          <Left>11.75064cm</Left>
+          <Top>5.24302cm</Top>
+          <Left>12.3846cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.65332cm</Width>
+          <Width>3.47693cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1398,8 +1397,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>strCreditos</rd:DefaultName>
-          <Top>5.20374cm</Top>
-          <Left>15.43924cm</Left>
+          <Top>5.24302cm</Top>
+          <Left>15.93209cm</Left>
           <Height>0.6cm</Height>
           <Width>3.16896cm</Width>
           <ZIndex>2</ZIndex>
@@ -1437,10 +1436,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>strDocente</rd:DefaultName>
-          <Top>5.93521cm</Top>
-          <Left>0.21035cm</Left>
+          <Top>5.91358cm</Top>
+          <Left>0.00331cm</Left>
           <Height>0.6cm</Height>
-          <Width>11.34981cm</Width>
+          <Width>12.34602cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -1476,10 +1475,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>strNivel</rd:DefaultName>
-          <Top>5.90958cm</Top>
-          <Left>11.75064cm</Left>
+          <Top>5.91358cm</Top>
+          <Left>12.3846cm</Left>
           <Height>0.6cm</Height>
-          <Width>3.65332cm</Width>
+          <Width>3.48024cm</Width>
           <ZIndex>4</ZIndex>
           <Style>
             <Border>
@@ -1515,8 +1514,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>strParalelo</rd:DefaultName>
-          <Top>5.90957cm</Top>
-          <Left>15.43924cm</Left>
+          <Top>5.91358cm</Top>
+          <Left>15.9354cm</Left>
           <Height>0.6cm</Height>
           <Width>3.16565cm</Width>
           <ZIndex>5</ZIndex>
@@ -1562,7 +1561,7 @@
           <Top>1.88603cm</Top>
           <Left>3.23103cm</Left>
           <Height>0.73229cm</Height>
-          <Width>15.33858cm</Width>
+          <Width>15.87002cm</Width>
           <ZIndex>6</ZIndex>
           <Style>
             <Border>
@@ -1605,9 +1604,8 @@
           </Paragraphs>
           <rd:DefaultName>strFacultad</rd:DefaultName>
           <Top>3.1568cm</Top>
-          <Left>0.21035cm</Left>
           <Height>0.6cm</Height>
-          <Width>18.39785cm</Width>
+          <Width>19.10105cm</Width>
           <ZIndex>7</ZIndex>
           <Style>
             <Border>
@@ -1651,9 +1649,8 @@
           </Paragraphs>
           <rd:DefaultName>strEscuela</rd:DefaultName>
           <Top>3.82736cm</Top>
-          <Left>0.21035cm</Left>
           <Height>0.6cm</Height>
-          <Width>18.39454cm</Width>
+          <Width>19.10105cm</Width>
           <ZIndex>8</ZIndex>
           <Style>
             <Border>
@@ -1697,9 +1694,8 @@
           </Paragraphs>
           <rd:DefaultName>strCarrera</rd:DefaultName>
           <Top>4.49791cm</Top>
-          <Left>0.21035cm</Left>
           <Height>0.6cm</Height>
-          <Width>18.39785cm</Width>
+          <Width>19.10105cm</Width>
           <ZIndex>9</ZIndex>
           <Style>
             <Border>
@@ -1735,7 +1731,7 @@
           <Top>0.27179cm</Top>
           <Left>3.23103cm</Left>
           <Height>0.80257cm</Height>
-          <Width>15.33858cm</Width>
+          <Width>15.87002cm</Width>
           <ZIndex>10</ZIndex>
           <Style>
             <Border>
@@ -1771,7 +1767,7 @@
           <Top>1.18019cm</Top>
           <Left>3.23103cm</Left>
           <Height>0.6cm</Height>
-          <Width>15.33858cm</Width>
+          <Width>15.87002cm</Width>
           <ZIndex>11</ZIndex>
           <Style>
             <Border>
@@ -1845,9 +1841,9 @@
         </Textbox>
         <Line Name="Line2">
           <Top>0.17639cm</Top>
-          <Left>0.48553cm</Left>
+          <Left>0.00331cm</Left>
           <Height>0cm</Height>
-          <Width>18.29471cm</Width>
+          <Width>19.09774cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1881,9 +1877,9 @@
           </Paragraphs>
           <rd:DefaultName>Textbox17</rd:DefaultName>
           <Top>0.35278cm</Top>
-          <Left>0.31168cm</Left>
+          <Left>0.00331cm</Left>
           <Height>0.6cm</Height>
-          <Width>6.43549cm</Width>
+          <Width>6.74386cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <Border>
@@ -1916,7 +1912,7 @@
                 </TextRun>
               </TextRuns>
               <Style>
-                <TextAlign>Left</TextAlign>
+                <TextAlign>Right</TextAlign>
               </Style>
             </Paragraph>
           </Paragraphs>
@@ -1924,7 +1920,7 @@
           <Top>0.35278cm</Top>
           <Left>12.6613cm</Left>
           <Height>0.6cm</Height>
-          <Width>6.11894cm</Width>
+          <Width>6.43975cm</Width>
           <ZIndex>3</ZIndex>
           <Style>
             <Border>
@@ -1946,9 +1942,9 @@
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>0.5cm</LeftMargin>
-    <RightMargin>0.5cm</RightMargin>
+    <RightMargin>0cm</RightMargin>
     <TopMargin>0.5cm</TopMargin>
-    <BottomMargin>0.5cm</BottomMargin>
+    <BottomMargin>0cm</BottomMargin>
     <ColumnSpacing>0.13cm</ColumnSpacing>
     <Style />
   </Page>

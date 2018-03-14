@@ -222,12 +222,12 @@ namespace SitioWebOasis.Models
         }
 
 
-        public string getAlertaFila(string equivalencia, ref string alertaEquivalencia, ref string lblEquivalencia, ref string smsEquivalencia)
+        public string getAlertaFila(DataRow item, ref string alertaEquivalencia, ref string lblEquivalencia, ref string smsEquivalencia)
         {
             string rst = "even";
             string estructura = "label label-";
 
-            switch (equivalencia)
+            switch (item["strCodEquiv"].ToString())
             {
                 //  APROBADO
                 case "A":
@@ -271,15 +271,39 @@ namespace SitioWebOasis.Models
                     smsEquivalencia = Language.es_ES.EST_LBL_EV_FINAL.ToUpper();
                 break;
 
-                //  EN BLANCO
+                //  EN BLANCO - SE BUSCA VERIFICANDO SI LA ASIGNATURA ESTA CONVALIDADA
                 case "":
-                    rst = alertaEquivalencia = lblEquivalencia = estructura = "";
-                    smsEquivalencia = "";
+                    rst = ( this._asignaturaConvalidada( item ) )
+                            ? alertaEquivalencia = lblEquivalencia = "primary"
+                            : alertaEquivalencia = lblEquivalencia = estructura = "";
+
+                    smsEquivalencia = Language.es_ES.EST_LBL_CONVALIDA.ToUpper();
                 break;
             }
 
             return estructura + rst;
         }
+
+
+        private bool _asignaturaConvalidada( DataRow item )
+        {
+            bool estadoAsignatura = false;
+
+            try
+            {
+                if (this._dsDetalleNotas != null && this._dsDetalleNotas.Convalidaciones.Rows.Count > 0) {
+                    DataRow[] rst = this._dsDetalleNotas.Convalidaciones.Select("strCodMateria = '"+ item["strCodMateria"].ToString() +"'", "");
+                    estadoAsignatura = (rst.Length > 0) ? true : false;
+                }
+            }
+            catch(Exception ex){
+                estadoAsignatura = false;
+
+            }
+
+            return estadoAsignatura;
+        }
+
 
 
         private WSGestorDeReportesEvaluacion.dtstNotasPeriodoEstudiante _getNotasPeriodoEstudiante()
@@ -358,8 +382,8 @@ namespace SitioWebOasis.Models
                     string colorParcial3 = (dtaEvActiva == "3") ? "info" : "";
 
                     foreach (DataRow item in this._dsDetalleNotas.EvAcumulativa){
-                        alertaEquivalencia = (dtaEvActiva.ToString().CompareTo("3") == 0 || dtaEvActiva.ToString().CompareTo("P") == 0)
-                                                ? this.getAlertaFila(   item["strCodEquiv"].ToString(),
+                        alertaEquivalencia = (dtaEvActiva.ToString().CompareTo("3") == 0 || dtaEvActiva.ToString().CompareTo("P") == 0 || dtaEvActiva.ToString().CompareTo("S") == 0)
+                                                ? this.getAlertaFila(   item,
                                                                         ref alertaEquivalencia,
                                                                         ref lblEquivalencia,
                                                                         ref msgEquivalencia)
@@ -421,7 +445,7 @@ namespace SitioWebOasis.Models
 
                         foreach (DataRow item in drEvF_EvR)
                         {
-                            alertaEquivalencia = this.getAlertaFila(item["strCodEquiv"].ToString(),
+                            alertaEquivalencia = this.getAlertaFila(item,
                                                                     ref alertaEquivalencia,
                                                                     ref lblEquivalencia,
                                                                     ref smsEquivalencia);
@@ -450,6 +474,44 @@ namespace SitioWebOasis.Models
             }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_getHTMLNotasEVAcumulativa - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
+            }
+
+            return rst;
+        }
+
+
+        public string getDtaConvalidacion()
+        {
+            string rst = string.Empty;
+            int x = default(Int16);
+
+            rst += " <tr role='row' class='success'>";
+            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            rst += " </tr>";
+
+            try{
+                this._dsDetalleNotas = this._getDataNotasEstudiante(periodoEstudiante);
+                if( this._dsDetalleNotas != null && this._dsDetalleNotas.Convalidaciones.Rows.Count > 0){
+                    rst = string.Empty;
+
+                    foreach (DataRow item in this._dsDetalleNotas.Convalidaciones){
+                        rst += " <tr role='row'>";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + ++x + "</td>";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: left;'>" + item["asignatura"].ToString() + "</td>";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this.getNumOrdinal(item["strCodNivel"].ToString(), "nivel") + "</td>";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["periodoConvalidacion"].ToString() + "</ td >";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'><b>" + item["institucion"].ToString().ToUpper() + "</b></td>";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strResolucion"].ToString() + "</td>";
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + Convert.ToDateTime(item["fchAprobacion"].ToString()).ToString("dd/MM/yyyy") + "</td>";                        
+                        rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'><b>" + item["notaConvalidacion"].ToString().ToUpper() + "</b></td>";
+                        rst += " </tr>";
+                    }
+                }
+
+            }catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "");
+                err.setInfo("Datos Academicos Estudiante - _getHTMLNotasEVAcumulativa", "Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
 
             return rst;
