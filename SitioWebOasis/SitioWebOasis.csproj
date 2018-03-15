@@ -308,6 +308,7 @@
     <Compile Include="ProxySeguro\DatosUsuario.cs" />
     <Compile Include="ProxySeguro\EgresamientoGraduacion.cs" />
     <Compile Include="ProxySeguro\GestorAdministracionGeneral.cs" />
+    <Compile Include="ProxySeguro\GestorAdministradorCarrera.cs" />
     <Compile Include="ProxySeguro\GestorDefinicionPeriodo.cs" />
     <Compile Include="ProxySeguro\GestorDeReportesEvaluacion.cs" />
     <Compile Include="ProxySeguro\GestorDeReportesMatriculacion.cs" />
@@ -317,6 +318,11 @@
     <Compile Include="ProxySeguro\Seguridad.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Web References\WSAcademicoWCF\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+    <Compile Include="Web References\WSAdministracionCarrera\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -511,8 +517,50 @@
     <Content Include="Views\Shared\_NotFound.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CambioPensum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CambioPensum.xsd" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CierrePeriodo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CierrePeriodo.xsd" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_DatosTipoEntidad.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_ListadosAcademicos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_ListadosAcademicos.xsd" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_MallaCurricular.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_MallaCurricular.xsd" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_MallaCurricularPensum.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_MallaCurricularPensum.xsd" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_Pensums.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_Permisos.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_Permisos.xsd" />
+    <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_UnidadAcademica.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_UnidadAcademica.xsd" />
+    <None Include="Web References\WSAdministracionCarrera\GestorAdministracionCarrera.disco" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
+    </Content>
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_DatosTipoEntidad.xsd" />
+    <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_Pensums.xsd" />
+    <None Include="Web References\WSAdministracionCarrera\GestorAdministracionCarrera.wsdl" />
+    <Content Include="Web References\WSAdministracionCarrera\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </Content>
     <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
@@ -955,6 +1003,7 @@
     <None Include="Web References\WSGestorDeReportesEvaluacion\GestordeReportes.wsdl" />
     <None Include="Web References\WSGestorDeReportesEvaluacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference2.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSGestorDeReportesMatriculacion\dtstAlumnosDocente.xsd" />
     <None Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosDocente.xsd" />
@@ -1060,6 +1109,17 @@
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
       <CachedSettingsPropName>SitioWebOasis_WSAcademicoWCF_Academico</CachedSettingsPropName>
+    </WebReferenceUrl>
+    <WebReferenceUrl Include="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorAdministracionCarrera.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\WSAdministracionCarrera\</RelPath>
+      <UpdateFromURL>http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorAdministracionCarrera.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>SitioWebOasis_WSAdministracionCarrera_GestorAdministracionCarrera</CachedSettingsPropName>
     </WebReferenceUrl>
     <WebReferenceUrl Include="http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx">
       <UrlBehavior>Dynamic</UrlBehavior>

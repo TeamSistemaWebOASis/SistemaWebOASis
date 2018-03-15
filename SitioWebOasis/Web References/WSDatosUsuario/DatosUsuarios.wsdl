@@ -8,12 +8,12 @@
       <s:import namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
       <s:import namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosDocente" namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosEstudiante" namespace="http://www.tempuri.org/dtstDatosEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosDocente" namespace="http://www.tempuri.org/dtstDatosDocente.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosCursosCarrera" namespace="http://tempuri.org/dtstDatosCursosCarrera.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstCursosMateria" namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstDatosUsuario" namespace="http://www.tempuri.org/dtstDatosUsuario.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/DatosUsuarios.asmx?schema=dtstCursosMateria" namespace="http://www.tempuri.org/dtstCursosMateria.xsd" />
       <s:element name="GetDatosDirectivoInstitucional">
         <s:complexType>
           <s:sequence>

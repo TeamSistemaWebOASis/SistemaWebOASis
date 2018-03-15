@@ -139,5 +139,16 @@ namespace SitioWebOasis.Properties {
                 return ((string)(this["SitioWebOasis_WSGestorDefinicionPeriodoCarrera_GestorDefinicionPeriodo"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessSe" +
+            "rvices/GestorAdministracionCarrera.asmx")]
+        public string SitioWebOasis_WSAdministracionCarrera_GestorAdministracionCarrera {
+            get {
+                return ((string)(this["SitioWebOasis_WSAdministracionCarrera_GestorAdministracionCarrera"]));
+            }
+        }
     }
 }

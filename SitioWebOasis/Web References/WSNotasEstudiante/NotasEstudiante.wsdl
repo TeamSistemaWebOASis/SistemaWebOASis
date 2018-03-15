@@ -4,8 +4,8 @@
     <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
       <s:import namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstDatosGradoEstudiante" namespace="http://tempuri.org/dtstDatosGradoEstudiante.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/NotasEstudiante.asmx?schema=dtstNotasEstudiante" namespace="http://tempuri.org/dtstNotasEstudiante.xsd" />
       <s:element name="GetDatosNotasEstudiante">
         <s:complexType>
           <s:sequence>

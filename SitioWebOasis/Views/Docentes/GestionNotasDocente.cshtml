@@ -188,7 +188,8 @@
                                     @* GRID DE EVALUACION FINAL *@
                                     <table id="grdEvFinal"></table>
 
-                                    if (estadoActa){
+                                    if (estadoActa && strParcialActivo == "P")
+                                    {
                                         <hr class="inner-separator">
                                         <button id="btnGuardarEvFinal"
                                                 type="button"
@@ -248,7 +249,7 @@
                                     <hr class="inner-separator">
                                     @* GRID DE EVALUACION RECUPERACION *@
                                     <table id="grdEvRecuperacion"></table>
-                                    if (estadoActa){   
+                                    if (estadoActa && strParcialActivo == "S"){
                                         <hr class="inner-separator">
                                         <button id="btnGuardarEvRecuperacion"
                                                 type="button"

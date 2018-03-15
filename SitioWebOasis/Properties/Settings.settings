@@ -35,5 +35,8 @@
     <Setting Name="SitioWebOasis_WSGestorDefinicionPeriodoCarrera_GestorDefinicionPeriodo" Type="(Web Service URL)" Scope="Application">
       <Value Profile="(Default)">http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorDefinicionPeriodo.asmx</Value>
     </Setting>
+    <Setting Name="SitioWebOasis_WSAdministracionCarrera_GestorAdministracionCarrera" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessServices/GestorAdministracionCarrera.asmx</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

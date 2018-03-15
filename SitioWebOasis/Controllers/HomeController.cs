@@ -6,6 +6,7 @@ using SitioWebOasis.Library;
 using SitioWebOasis.WSSeguridad;
 using System;
 using System.Configuration;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -41,11 +42,13 @@ namespace SitioWebOasis.Controllers
             try{
                 ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
                 periodoVigente = gag.getPeriodoVigente();
-            }catch(Exception ex){
+            }
+            catch(Exception ex){
                 periodoVigente = string.Empty;
 
                 Errores err = new Errores();
                 err.SetError(ex, "getPeriodoVigente");
+                err.setInfo("HomeController", ex.Message + " - " + UsuarioActual.Cedula.ToString() + " - " + UsuarioActual.CarreraActual.Nombre.ToString());
             }
 
             return periodoVigente;
@@ -182,7 +185,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
                 //  numIdentificacion = "220027162-1";
 
-                numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
+                //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
                 //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
@@ -197,6 +200,11 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "120353525-5";  //  VANESA VALVERDE
 
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
+
+                //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
+                //  numIdentificacion = "060320137-7";
+
+                numIdentificacion = "060327507-4";
             }
             catch (Exception ex){
                 Errores err = new Errores();
