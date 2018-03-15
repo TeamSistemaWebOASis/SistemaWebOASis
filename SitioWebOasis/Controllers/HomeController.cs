@@ -38,9 +38,12 @@ namespace SitioWebOasis.Controllers
             string periodoVigente = string.Empty;
 
             try{
-                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
-                periodoVigente = gag.getPeriodoVigente();
-            }catch(Exception ex){
+                //ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                //periodoVigente = gag.getPeriodoVigente();
+
+                periodoVigente = "P0028";
+            }
+            catch(Exception ex){
                 periodoVigente = string.Empty;
 
                 Errores err = new Errores();

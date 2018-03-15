@@ -132,6 +132,15 @@
   <data name="BTN_GUARDAR_EVALUACION_RECUPERACION" xml:space="preserve">
     <value>GUARDAR EVALUACIÓN RECUPERACION</value>
   </data>
+  <data name="DOC_ARCHIVO_MENSAJE" xml:space="preserve">
+    <value>ARCHIVO DE EVALUACIONES DE PERIODOS ACADÉMICOS ANTERIORES</value>
+  </data>
+  <data name="DOC_CARRERAS" xml:space="preserve">
+    <value>CARRERAS</value>
+  </data>
+  <data name="DOC_CBX_CARRERA" xml:space="preserve">
+    <value>SELECCIONE UNA CARRERA</value>
+  </data>
   <data name="DOC_GESTION_ARCHIVOS" xml:space="preserve">
     <value>Archivos</value>
   </data>
@@ -141,8 +150,26 @@
   <data name="DOC_GRD_EVALUACION_FORMATIVA" xml:space="preserve">
     <value>EVALUACIÓN FORMATIVA</value>
   </data>
+  <data name="DOC_HORARIO_CLASE" xml:space="preserve">
+    <value>Horario Académico</value>
+  </data>
+  <data name="DOC_HORARIO_EXAMEN" xml:space="preserve">
+    <value>HORARIO DE EXÁMENES</value>
+  </data>
   <data name="DOC_LBL_ASIGNATURAS" xml:space="preserve">
     <value>ASIGNATURAS</value>
+  </data>
+  <data name="DOC_MN_HORARIO_DOCENTE" xml:space="preserve">
+    <value>Horarios del Docente</value>
+  </data>
+  <data name="DOC_MN_HORARIO_EXAMEN_DOCENTE" xml:space="preserve">
+    <value>Horario de Exámenes</value>
+  </data>
+  <data name="DOC_PERIODOS" xml:space="preserve">
+    <value>PERIODOS</value>
+  </data>
+  <data name="DOC_TB_ARCHIVO_SIN_REGISTRO" xml:space="preserve">
+    <value>SIN REGISTROS DISPONIBLES</value>
   </data>
   <data name="DOC_TB_COL_ACCION" xml:space="preserve">
     <value>Acción</value>
@@ -188,6 +215,9 @@
   </data>
   <data name="DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP" xml:space="preserve">
     <value>Nota Maxima, Nota Minima, Promedio, Cantidad de Estudiantes bajo el 70%</value>
+  </data>
+  <data name="DOC_TB_EVALUACIONES" xml:space="preserve">
+    <value>EVALUACIONES</value>
   </data>
   <data name="DOC_TB_EV_ACUMULATIVA" xml:space="preserve">
     <value>Ev. ACUMULATIVA</value>

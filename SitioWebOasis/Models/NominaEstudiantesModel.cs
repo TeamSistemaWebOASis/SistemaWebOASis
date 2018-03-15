@@ -115,7 +115,7 @@ namespace SitioWebOasis.Models
             grm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
 
             try{
-                nomina = grm.GetReporteListadoMatriculadosMateriaParalelo(  this._strCodParalelo,
+                nomina = (DataSet)grm.GetReporteListadoMatriculadosMateriaParalelo(  this._strCodParalelo,
                                                                             this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
                                                                             this._strCodNivel,
                                                                             this._strCodAsignatura );

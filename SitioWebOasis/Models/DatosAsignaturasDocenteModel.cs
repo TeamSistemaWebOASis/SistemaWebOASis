@@ -10,7 +10,6 @@ namespace SitioWebOasis.Models
     public class DatosAsignaturasDocenteModel : DatosCarrera
     {
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
-
         public DatosAsignaturasDocenteModel(string strCodCarrera)
         {
             if (!string.IsNullOrEmpty(strCodCarrera)) {
@@ -49,6 +48,34 @@ namespace SitioWebOasis.Models
             return dsCursosDocente;
         }
 
+        //  Lista de asignaturas por carrera de periodos anteriores
+        public WSGestorDeReportesMatriculacion.dtstCursosDocente _dsAsignaturasDocentePA(string strCodCarrera, string strCodPeriodo )
+        {
+            WSGestorDeReportesMatriculacion.dtstCursosDocente dsCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
+            WSGestorDeReportesMatriculacion.dtstCursosDocente rstCursoDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
+
+            try
+            {
+                ProxySeguro.GestorDeReportesMatriculacion rm = new ProxySeguro.GestorDeReportesMatriculacion();
+                rm.CookieContainer = new System.Net.CookieContainer();
+                rm.SetCodCarrera(strCodCarrera);//this.UsuarioActual.CarreraActual.Codigo
+
+                rstCursoDocente = rm.GetCursosDocente(strCodPeriodo,
+                                                        this.UsuarioActual.Cedula.ToString());//this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString()
+
+                if (rstCursoDocente != null)
+                {
+                    dsCursosDocente = rstCursoDocente;
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getAsignaturasDocente");
+            }
+
+            return dsCursosDocente;
+        }
 
         public bool getDocenteGestionaAsignatura( string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
@@ -186,7 +213,7 @@ namespace SitioWebOasis.Models
 
             try {
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
-                DataSet dsEstMatriculados = du.GetNumEstudiantesMatriculadosMateria(this.UsuarioActual.CarreraActual.Codigo.ToString(), 
+                DataSet dsEstMatriculados = (DataSet)du.GetNumEstudiantesMatriculadosMateria(this.UsuarioActual.CarreraActual.Codigo.ToString(), 
                                                                                     periodoVigente, 
                                                                                     strCodAsignatura, 
                                                                                     strCodNivel, 
@@ -245,20 +272,6 @@ namespace SitioWebOasis.Models
                         ? this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()
                         : "";
         }
-
-
-        public void getCarrerasPeriodosAnteriores()
-        {
-            try
-            {
-                ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
-                DataSet dsCDPA = seg.carrerasDocentesPeriodosAnteriores(this.UsuarioActual.Cedula.ToString());
-            }catch(Exception ex)
-            {
-                Errores err = new Errores();
-                err.SetError(ex, "getCarrerasPeriodosAnteriores");
-            }
-        }
-
+       
     }
 }

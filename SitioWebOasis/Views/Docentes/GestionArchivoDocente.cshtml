@@ -1,18 +1,92 @@
-﻿@model SitioWebOasis.Models.DatosAsignaturasDocenteModel
+﻿@model SitioWebOasis.Models.DatosArchivosDocentesModel
 @{
     ViewBag.Title = "GestionArchivoDocente";
 }
-
-<h2>GestionArchivoDocente</h2>
+@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/docente.css")" rel="stylesheet" type="text/css" />
+}
 <div class="main-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="contextual-summary-info">
-                <i class="fa fa-book"></i>
-                <p class="pull-right"><span> <strong> @Model.getFacultadCarreraDocente() / @Model.UsuarioActual.CarreraActual.SedeCarrera </strong> </span> @Model.getNombreDocente() </p>
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contextual-summary-info">
+                    <i class="fa fa-archive"></i>
+                    <p class="pull-right"><span> <strong> @Language.es_ES.DOC_ARCHIVO_MENSAJE </strong> </span> @Model.getNombreDocente() </p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@Html.Partial("MenuCarreras")
+        <br />
+        <br />
+        <div class="row">
+            @*Carreras de Periodos anteriores*@
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label><b>@Language.es_ES.DOC_CARRERAS :</b></label>
+                    @Html.DropDownList("cbCarrerasPA",
+                                    Model.getLstCarrerasPA(), " -- "+Language.es_ES.DOC_CBX_CARRERA+ " --",
+                                   new
+                                   {
+                                       @class = "form-control",
+                                       @style = "font-weight: bold;"
+                                   })
+                </div>
+            </div>
+            @*Periodos anteriores*@
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label><b>@Language.es_ES.DOC_PERIODOS :</b></label>
+                    @Html.DropDownList("cbPeriodosDPA",
+                                new List<System.Web.Mvc.SelectListItem>(),
+                                " -- " + Language.es_ES.DOC_CBX_CARRERA + " --",
+                                new
+                                {
+                                    @disabled = "disabled",
+                                    @class = "form-control",
+                                    @style = "font-weight: bold;"
+                                })
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="widget widget-table">
+            <div class="widget-header">
+                <h3><i class="fa fa-book"></i> @Language.es_ES.DOC_LBL_ASIGNATURAS &nbsp;</h3>
+            </div>
+
+            <div class="widget-content">
+                <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                    <div id="messageError" hidden="hidden"></div>
+                    @* TABLA DE ASIGNATURA DOCENTES *@
+                    <table id="asignaturasDocente"
+                           class="table table-striped table-hover"
+                           role="grid">
+                        <thead>
+                            <tr>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NUMERO </th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ASIGNATURA</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARALELO</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NIVEL</th>
+                                <th data-toggle="tooltip" data-placement="top" data-original-title="Descargar Evaluación Acumulativa,Principal, y Suspención " aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;" colspan="3">@Language.es_ES.DOC_TB_EVALUACIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @* ASIGNATURAS DOCENTE *@
+                            <tr><th colspan="5" style="align-content: center; vertical-align: middle; text-align: center;position:relative "></th></tr>
+                            <tr><th colspan="5" style="align-content: center; vertical-align: middle; text-align: center;position:relative ">@Language.es_ES.DOC_TB_ARCHIVO_SIN_REGISTRO</th></tr>
+                        </tbody>
+
+                    </table>
+
+                    <div class="row"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+@section scripts{
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/Docentes/GestionArchivoDocente.js?v1.1.01"> </script>
+}
+
+
 

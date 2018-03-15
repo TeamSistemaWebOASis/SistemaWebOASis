@@ -1,0 +1,83 @@
+﻿@model SitioWebOasis.Models.HorarioDocenteModel
+@{
+    ViewBag.Title = "Horario de Exámen";
+}
+@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/docente.css")" rel="stylesheet" type="text/css" />
+}
+<div class="main-content">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="contextual-summary-info">
+                    <i class="fa fa-calendar-check-o"></i>
+                    <p class="pull-right"><span> <strong> @Language.es_ES.DOC_HORARIO_EXAMEN </strong> </span> @Model.getNombreDocente() </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="widget">
+        <div class="widget-header">
+            <h3>@Language.es_ES.EST_LBL_HORARIOS.ToUpper()</h3>
+
+            <div class="btn-group widget-header-toolbar">
+                <button id="btnExport_HE_PDF" type="button" class="btn btn-danger" style="padding-top: 2px; height: 25px;">
+                    <i class="fa fa-download"></i>
+                    @Language.es_ES.EST_DWN_PDF
+                </button>
+            </div>
+            <div class="widget-header-toolbar">
+                <button id="btnExport_HE_XLS" type="button" class="btn btn-primary" style="padding-top: 2px; height: 25px;">
+                    <i class="fa fa-download"></i>
+                    @Language.es_ES.EST_DWN_XLS
+                </button>
+            </div>
+        </div>
+        <div class="widget-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel-group" id="accordion">
+                        @*  HORARIO ACADEMICO  *@
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+                                        <b>@Language.es_ES.EST_TB_HORARIO_EXAMENES </b>
+                                        <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="false" style="">
+                                <div class="panel-body">
+                                    <div id="messageError" hidden="hidden"></div>
+                                    @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                                    <table id="ticket-table" class="table table-bordered" role="grid">
+                                        <thead>
+                                            <tr role="row">
+                                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">Materia</th>
+                                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 90px; align-content: center; vertical-align: middle; text-align: center;">Curso</th>
+                                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 130px; align-content: center; vertical-align: middle; text-align: center;">Paralelo</th>
+                                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 130px; align-content: center; vertical-align: middle; text-align: center;">Principál</th>
+                                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 130px; align-content: center; vertical-align: middle; text-align: center;">Suspensión</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @*NOTAS EVALUACION ESTUDIANTE*@
+                                            @Html.Raw(Model.HTMLHorarioExamen())
+                                        </tbody>
+                                    </table>
+                                    <div class="row"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/Docentes/GestionArchivoDocente.js?v1.1.35"> </script>
+}
+

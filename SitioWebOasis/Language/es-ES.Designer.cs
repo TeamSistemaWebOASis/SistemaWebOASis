@@ -106,6 +106,33 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a ARCHIVO DE EVALUACIONES DE PERIODOS ACADÉMICOS ANTERIORES.
+        /// </summary>
+        public static string DOC_ARCHIVO_MENSAJE {
+            get {
+                return ResourceManager.GetString("DOC_ARCHIVO_MENSAJE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CARRERAS.
+        /// </summary>
+        public static string DOC_CARRERAS {
+            get {
+                return ResourceManager.GetString("DOC_CARRERAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a SELECCIONE UNA CARRERA.
+        /// </summary>
+        public static string DOC_CBX_CARRERA {
+            get {
+                return ResourceManager.GetString("DOC_CBX_CARRERA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Archivos.
         /// </summary>
         public static string DOC_GESTION_ARCHIVOS {
@@ -133,11 +160,65 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Horario Académico.
+        /// </summary>
+        public static string DOC_HORARIO_CLASE {
+            get {
+                return ResourceManager.GetString("DOC_HORARIO_CLASE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a HORARIO DE EXÁMENES.
+        /// </summary>
+        public static string DOC_HORARIO_EXAMEN {
+            get {
+                return ResourceManager.GetString("DOC_HORARIO_EXAMEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ASIGNATURAS.
         /// </summary>
         public static string DOC_LBL_ASIGNATURAS {
             get {
                 return ResourceManager.GetString("DOC_LBL_ASIGNATURAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Horarios del Docente.
+        /// </summary>
+        public static string DOC_MN_HORARIO_DOCENTE {
+            get {
+                return ResourceManager.GetString("DOC_MN_HORARIO_DOCENTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Horario de Exámenes.
+        /// </summary>
+        public static string DOC_MN_HORARIO_EXAMEN_DOCENTE {
+            get {
+                return ResourceManager.GetString("DOC_MN_HORARIO_EXAMEN_DOCENTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a PERIODOS.
+        /// </summary>
+        public static string DOC_PERIODOS {
+            get {
+                return ResourceManager.GetString("DOC_PERIODOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a SIN REGISTROS DISPONIBLES.
+        /// </summary>
+        public static string DOC_TB_ARCHIVO_SIN_REGISTRO {
+            get {
+                return ResourceManager.GetString("DOC_TB_ARCHIVO_SIN_REGISTRO", resourceCulture);
             }
         }
         
@@ -300,6 +381,15 @@ namespace Language {
         public static string DOC_TB_EV_RECUPERACION {
             get {
                 return ResourceManager.GetString("DOC_TB_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a EVALUACIONES.
+        /// </summary>
+        public static string DOC_TB_EVALUACIONES {
+            get {
+                return ResourceManager.GetString("DOC_TB_EVALUACIONES", resourceCulture);
             }
         }
         

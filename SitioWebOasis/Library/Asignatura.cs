@@ -23,6 +23,7 @@ namespace SitioWebOasis.Library
         protected string _strCodParalelo{ get; set; }
 
         protected string _evaluacionActiva = string.Empty;
+        protected string _strCodPeriodo = string.Empty;
 
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
@@ -249,6 +250,54 @@ namespace SitioWebOasis.Library
 
                 //Buscando los datos del pensum de la materia
                 ge.GetDatosMateriaPensum(this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
+                                            this._strCodAsignatura,
+                                            ref numCreditos,
+                                            ref fHorasTeo,
+                                            ref fHorasPra);
+
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "getDatosMateria");
+
+                strAsignatura = string.Empty;
+                strNivel = string.Empty;
+                strPeriodo = string.Empty;
+                strDocente = string.Empty;
+                strSistema = string.Empty;
+            }
+        }
+
+        protected void _getDatosMateriaPA(ref string strAsignatura,
+                                       ref string strNivel,
+                                       ref string strPeriodo,
+                                       ref string strDocente,
+                                       ref string strSistema,
+                                       ref float numCreditos,
+                                       ref byte fHorasTeo,
+                                       ref byte fHorasPra)
+        {
+            try
+            {
+                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
+                ge.CookieContainer = new CookieContainer();
+                ge.set_fBaseDatos(this._strNombreBD);
+                ge.set_fUbicacion(this._strUbicacion);
+
+                //Buscando los datos de la materia
+                ge.GetDatosMateriaActa(this._strCodPeriodo,
+                                        this._strCodAsignatura,
+                                        this._strCodNivel,
+                                        this._strCodParalelo,
+                                        ref strAsignatura,
+                                        ref strNivel,
+                                        ref strPeriodo,
+                                        ref strDocente,
+                                        ref strSistema);
+
+                //Buscando los datos del pensum de la materia
+                ge.GetDatosMateriaPensum(this._strCodPeriodo,
                                             this._strCodAsignatura,
                                             ref numCreditos,
                                             ref fHorasTeo,

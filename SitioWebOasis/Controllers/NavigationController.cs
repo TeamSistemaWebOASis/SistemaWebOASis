@@ -138,8 +138,8 @@ namespace SitioWebOasis.Controllers
                 IsAction = true,
                 Class = "text",
                 SubMenu = null,
-                icon = "fa fa-home",
-                Title = "Menú"
+                icon = "fa fa-folder-open-o",
+                Title = "Archivos del Docente"
             };
             //Submenu Archivo Docentes
             menu.SubMenu = new List<MenuViewModel>();
@@ -155,7 +155,40 @@ namespace SitioWebOasis.Controllers
             };
             menu.SubMenu.Add(subMenu);
             lstMVM.Add(menu);
-            return lstMVM;
+            //MENU HORARIO DE DOCENTE
+            menu = new MenuViewModel() {
+                                        MenuID=1,
+                                        Action="HorarioDocente",
+                                        Controller="Docentes",
+                                        IsAction=true,
+                                        Class="text",
+                                        SubMenu=null,
+                                        icon= "fa fa-calendar-plus-o",
+                                        Title= Language.es_ES.DOC_MN_HORARIO_DOCENTE.ToString()
+            };
+            menu.SubMenu = new List<MenuViewModel>();
+            subMenu = new MenuViewModel(){
+                                        Action = "HorarioDocente",
+                                        Controller = "Docentes",
+                                        IsAction = true,
+                                        Class = "text",
+                                        SubMenu = null,
+                                        icon = "fa fa-calendar",
+                                        Title = Language.es_ES.DOC_HORARIO_CLASE.ToString()
+            };
+            menu.SubMenu.Add(subMenu);
+            subMenu = new MenuViewModel() {
+                Action = "HorarioExamenDocente",
+                Controller = "Docentes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar",
+                Title = Language.es_ES.DOC_MN_HORARIO_EXAMEN_DOCENTE.ToString()
+            };
+            menu.SubMenu.Add(subMenu);
+            lstMVM.Add(menu);
+                return lstMVM;
         }
     }
 }
