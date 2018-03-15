@@ -68,6 +68,10 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
+*.wsdl
+*.map
+Reference.cs
+
 
 # Chutzpah Test files
 _Chutzpah*

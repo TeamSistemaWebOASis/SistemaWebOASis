@@ -106,6 +106,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Archivos.
+        /// </summary>
+        public static string DOC_GESTION_ARCHIVOS {
+            get {
+                return ResourceManager.GetString("DOC_GESTION_ARCHIVOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a GESTIÓN DE NOTAS.
         /// </summary>
         public static string DOC_GESTION_NOTAS {

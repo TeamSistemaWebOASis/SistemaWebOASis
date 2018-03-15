@@ -79,8 +79,7 @@ namespace SitioWebOasis.Controllers
 
                     //  Verificar si el usuario es válido
                     if (blnUsuarioValido){
-                        //  Add objeto seguridad a la cache del usuario
-                        this._addObjetoSeguridad();
+                        
 
                         // registrar datos del usuario en la sesión para futuras referencias
                         Usuario usr = this.RegistrarUsuarioEnSesion(dsUsuario);

@@ -45,17 +45,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Autenticacion, Version=1.0.6550.19448, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OASisVersionado\OAS_Seguridad\Autenticacion\bin\Autenticacion.dll</HintPath>
+    <Reference Include="Autenticacion">
+      <HintPath>..\..\OASIS-VERSIONADO\SistemaAcademico\OAS_Seguridad\Autenticacion\bin\Autenticacion.dll</HintPath>
     </Reference>
-    <Reference Include="Cliente, Version=1.0.6550.19436, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OASisVersionado\OAS_Seguridad\Cliente\bin\Debug\Cliente.dll</HintPath>
+    <Reference Include="Cliente">
+      <HintPath>..\..\OASIS-VERSIONADO\SistemaAcademico\OAS_Seguridad\Cliente\bin\Debug\Cliente.dll</HintPath>
     </Reference>
-    <Reference Include="CommonServices, Version=1.0.6550.19616, Culture=neutral, PublicKeyToken=dc86e1807b5690e9, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OASisVersionado\OAS_Comun\CommonServices\bin\Debug\CommonServices.dll</HintPath>
+    <Reference Include="CommonServices">
+      <HintPath>..\..\OASIS-VERSIONADO\SistemaAcademico\OAS_Comun\CommonServices\bin\Debug\CommonServices.dll</HintPath>
     </Reference>
     <Reference Include="Ioc.Modules, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Ioc.Modules.1.1.4\lib\net45\Ioc.Modules.dll</HintPath>
@@ -106,9 +103,8 @@
       <HintPath>..\packages\Microsoft.ReportViewer.2015.Runtime.12.0.2.2402\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Modulo, Version=1.0.6550.19685, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\OASisVersionado\OAS_Seguridad\Modulo\bin\Debug\Modulo.dll</HintPath>
+    <Reference Include="Modulo">
+      <HintPath>..\..\OASIS-VERSIONADO\SistemaAcademico\OAS_Seguridad\Modulo\bin\Debug\Modulo.dll</HintPath>
     </Reference>
     <Reference Include="OwinFramework, Version=2.5.6.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.Framework.2.5.6\lib\net45\OwinFramework.dll</HintPath>
@@ -516,6 +512,7 @@
     <Content Include="Views\ActualizarCuentaCorreo\ActualizarCuentaCorreo.cshtml" />
     <Content Include="Views\Shared\_NotFound.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Docentes\GestionArchivoDocente.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CambioPensum.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -1003,7 +1000,7 @@
     <None Include="Web References\WSGestorDeReportesEvaluacion\GestordeReportes.wsdl" />
     <None Include="Web References\WSGestorDeReportesEvaluacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference2.cs</LastGenOutput>
+      <LastGenOutput>Reference1.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSGestorDeReportesMatriculacion\dtstAlumnosDocente.xsd" />
     <None Include="Web References\WSGestorDeReportesMatriculacion\dtstCursosDocente.xsd" />

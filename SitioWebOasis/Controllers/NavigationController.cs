@@ -152,7 +152,31 @@ namespace SitioWebOasis.Controllers
         private List<MenuViewModel> _getMenuDocentes()
         {
             List<MenuViewModel> lstMVM = new List<MenuViewModel>();
-
+            MenuViewModel menu = new MenuViewModel()
+            {
+                MenuID = 1,
+                Action = "Index",
+                Controller = "Docentes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-home",
+                Title = "Menú"
+            };
+            //Submenu Archivo Docentes
+            menu.SubMenu = new List<MenuViewModel>();
+            MenuViewModel subMenu = new MenuViewModel()
+            {
+                Action = "GestionArchivoDocente",
+                Controller = "Docentes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-folder",
+                Title = Language.es_ES.DOC_GESTION_ARCHIVOS.ToString()
+            };
+            menu.SubMenu.Add(subMenu);
+            lstMVM.Add(menu);
             return lstMVM;
         }
 
