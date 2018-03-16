@@ -122,6 +122,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -272,14 +274,18 @@
     <Compile Include="Library\CorreoElectronico.cs" />
     <Compile Include="Library\DatosAsignaturaDocente.cs" />
     <Compile Include="Library\DatosCarrera.cs" />
+    <Compile Include="Library\DescargarActasPA.cs" />
     <Compile Include="Library\Direccion.cs" />
     <Compile Include="Library\DocumentoPersonal.cs" />
     <Compile Include="Library\EvaluacionAcumulativa.cs" />
     <Compile Include="Library\EvaluacionFinal.cs" />
     <Compile Include="Library\EvaluacionRecuperacion.cs" />
+    <Compile Include="Library\HorarioClaseDocente.cs" />
+    <Compile Include="Library\HorarioExamenDocente.cs" />
     <Compile Include="Library\Nacionalidad.cs" />
     <Compile Include="Library\EvaluacionActiva.cs" />
     <Compile Include="Library\Persona.cs" />
+    <Compile Include="Models\DatosArchivosDocentesModel.cs" />
     <Compile Include="Models\DatosAsignaturasDocenteModel.cs" />
     <Compile Include="Models\DatosAcademicosEstudiante.cs" />
     <Compile Include="Models\DatosPagoEstudianteModel.cs" />
@@ -288,6 +294,7 @@
     <Compile Include="Models\EvaluacionesDocenteModel.cs" />
     <Compile Include="Models\EvaluacionFinalModel.cs" />
     <Compile Include="Models\EvaluacionRecuperacionModel.cs" />
+    <Compile Include="Models\HorarioDocenteModel.cs" />
     <Compile Include="Models\HorarioEstudiante.cs" />
     <Compile Include="Models\HorarioExamenes.cs" />
     <Compile Include="Models\MenuRolesModel.cs" />
@@ -413,6 +420,7 @@
     <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
     <Content Include="Content\js\Docentes\EvaluacionFinal.js" />
     <Content Include="Content\js\Docentes\EvaluacionRecuperacion.js" />
+    <Content Include="Content\js\Docentes\GestionArchivoDocente.js" />
     <Content Include="Content\js\Docentes\GestionEvFinal.js" />
     <Content Include="Content\js\Docentes\GestionEvRecuperacion.js" />
     <Content Include="Content\js\Docentes\GestionEvAcumulativa.js" />
@@ -513,6 +521,8 @@
     <Content Include="Views\Shared\_NotFound.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Docentes\GestionArchivoDocente.cshtml" />
+    <Content Include="Views\Docentes\HorarioDocente.cshtml" />
+    <Content Include="Views\Docentes\HorarioExamenDocente.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CambioPensum.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -555,10 +565,10 @@
     <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_DatosTipoEntidad.xsd" />
     <None Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_Pensums.xsd" />
     <None Include="Web References\WSAdministracionCarrera\GestorAdministracionCarrera.wsdl" />
-    <Content Include="Web References\WSAdministracionCarrera\Reference.map">
+    <None Include="Web References\WSAdministracionCarrera\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <None Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.xsd" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_HistorialEstudiante.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -1092,6 +1102,8 @@
     <EmbeddedResource Include="Reports\rptActaExSuspensionConNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptActaExSuspensionSinNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
+    <EmbeddedResource Include="Reports\rptHorarioClaseDocente.rdlc" />
+    <EmbeddedResource Include="Reports\rptHorarioExamenDocente.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioExamenEstudiantes.rdlc" />
     <EmbeddedResource Include="Reports\rptListadoMatriculadosMateria.rdlc" />
   </ItemGroup>

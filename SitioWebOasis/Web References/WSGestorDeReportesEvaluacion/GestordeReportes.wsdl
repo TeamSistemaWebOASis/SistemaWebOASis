@@ -8,7 +8,6 @@
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstEvaluacion_Actas" namespace="http://tempuri.org/dtstEvaluacion_Actas.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstNotasPeriodoEstudiante" namespace="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorarioExamenes" namespace="http://tempuri.org/dtstHorarioExamenes.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestordeReportes.asmx?schema=dtstNotasPeriodoEstudiante" namespace="http://tempuri.org/dtstNotasPeriodoEstudiante.xsd" />
       <s:element name="get_CodCarrera">
         <s:complexType />
       </s:element>

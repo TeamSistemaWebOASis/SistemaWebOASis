@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <DiscoveryClientResultsFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Results>
+    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMejoresEstudiante" filename="dtstMejoresEstudiante.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstDatosEstudiantes" filename="dtstDatosEstudiantes.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_ImprimirAcumulados" filename="dtstEvaluacion_ImprimirAcumulados.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstCertificadoPromocion" filename="dtstCertificadoPromocion.xsd" />
@@ -11,7 +12,6 @@
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Acumulados" filename="dtstEvaluacion_Acumulados.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.ContractReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?wsdl" filename="GestorEvaluacion.wsdl" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstConvalidaciones" filename="dtstConvalidaciones.xsd" />
-    <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstMejoresEstudiante" filename="dtstMejoresEstudiante.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_Actas" filename="dtstEvaluacion_Actas.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacionesEstudiantes" filename="dtstEvaluacionesEstudiantes.xsd" />
     <DiscoveryClientResult referenceType="System.Web.Services.Discovery.SchemaReference" url="http://localhost/Oasis/OAS_Evaluacion/Evaluacion_BusinessServices/GestorEvaluacion.asmx?schema=dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas" filename="dtstEvaluacion_HistorialMateriasAprobadasNoAprobadas.xsd" />

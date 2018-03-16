@@ -40,8 +40,10 @@ namespace SitioWebOasis.Controllers
             string periodoVigente = string.Empty;
 
             try{
-                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
-                periodoVigente = gag.getPeriodoVigente();
+                //  ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                //  gag.getPeriodoVigente();
+
+                periodoVigente = "P0028";
             }
             catch(Exception ex){
                 periodoVigente = string.Empty;
@@ -187,7 +189,8 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
-                //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
+                numIdentificacion = "060324303-1";  //  <-- Miguel Duque
+
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
                 //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
@@ -202,8 +205,7 @@ namespace SitioWebOasis.Controllers
 
                 //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
                 //  numIdentificacion = "060320137-7";
-
-                numIdentificacion = "060327507-4";
+                //  numIdentificacion = "060327507-4";
             }
             catch (Exception ex){
                 Errores err = new Errores();

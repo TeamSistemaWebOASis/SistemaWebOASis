@@ -41,11 +41,29 @@ namespace SitioWebOasis.Library
 
                 //  Informacion del periodo vigente en carrera
                 this._dtstPeriodoVigente = ic.GetPeriodoVigenteCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
+                
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "_cargarInformacionCarrera");
+            }
+        }
+        protected void _cargarInformacionCarreraPA(string strCodCarrera)
+        {
+            try
+            {
+                //  Obtengo informacion de las carreras
+                ProxySeguro.InfoCarreras ic = new ProxySeguro.InfoCarreras();
+
+                WSInfoCarreras.dtstBDCarreras dsCarrera = ic.GetCarrera(strCodCarrera);
+                this._strNombreBD = dsCarrera.BDCarreras.Rows[0]["strBaseDatos"].ToString();
+                this._strUbicacion = strCodCarrera;
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_cargarInformacionCarreraPA");
             }
         }
 
@@ -157,6 +175,23 @@ namespace SitioWebOasis.Library
             try{
                 WSInfoCarreras.InfoCarreras ic = new WSInfoCarreras.InfoCarreras();
                 pc = ic.GetParametrosCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getParametrosCarrera");
+            }
+
+            return pc;
+        }
+        protected WSInfoCarreras.ParametrosCarrera _getParametrosCarreraPA(string strCodCarrera)
+        {
+            WSInfoCarreras.ParametrosCarrera pc = new WSInfoCarreras.ParametrosCarrera();
+
+            try
+            {
+                WSInfoCarreras.InfoCarreras ic = new WSInfoCarreras.InfoCarreras();
+                pc = ic.GetParametrosCarrera(strCodCarrera);
             }
             catch (Exception ex)
             {

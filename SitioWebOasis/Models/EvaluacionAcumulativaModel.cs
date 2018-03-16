@@ -569,10 +569,10 @@ namespace SitioWebOasis.Models
             string dtaParcial = dtaActa[0];
             string nombreAsignatura = string.Empty;
 
-            string idTypeFile = (dtaActa[1] == "pdf" || dtaActa[1] == "blc")
+            string idTypeFile = (dtaActa[1] == "pdf" || dtaActa[1] == "blc" )
                                     ? "pdf"
                                     : (dtaActa[1] == "xls") ? "Excel"
-                                                            : "";
+                                                            : "rar";
             string strNameFile = string.Empty;
 
             try
