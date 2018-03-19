@@ -34,6 +34,8 @@ namespace SitioWebOasis.WSSeguridad {
         
         private System.Threading.SendOrPostCallback carrerasDocentesPeriodosAnterioresOperationCompleted;
         
+        private System.Threading.SendOrPostCallback getUltimoPeriodoRegistradoOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -77,6 +79,9 @@ namespace SitioWebOasis.WSSeguridad {
         
         /// <remarks/>
         public event carrerasDocentesPeriodosAnterioresCompletedEventHandler carrerasDocentesPeriodosAnterioresCompleted;
+        
+        /// <remarks/>
+        public event getUltimoPeriodoRegistradoCompletedEventHandler getUltimoPeriodoRegistradoCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AutenticarUsuario", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -138,6 +143,35 @@ namespace SitioWebOasis.WSSeguridad {
             if ((this.carrerasDocentesPeriodosAnterioresCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.carrerasDocentesPeriodosAnterioresCompleted(this, new carrerasDocentesPeriodosAnterioresCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/getUltimoPeriodoRegistrado", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string getUltimoPeriodoRegistrado(string strCedula) {
+            object[] results = this.Invoke("getUltimoPeriodoRegistrado", new object[] {
+                        strCedula});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void getUltimoPeriodoRegistradoAsync(string strCedula) {
+            this.getUltimoPeriodoRegistradoAsync(strCedula, null);
+        }
+        
+        /// <remarks/>
+        public void getUltimoPeriodoRegistradoAsync(string strCedula, object userState) {
+            if ((this.getUltimoPeriodoRegistradoOperationCompleted == null)) {
+                this.getUltimoPeriodoRegistradoOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetUltimoPeriodoRegistradoOperationCompleted);
+            }
+            this.InvokeAsync("getUltimoPeriodoRegistrado", new object[] {
+                        strCedula}, this.getUltimoPeriodoRegistradoOperationCompleted, userState);
+        }
+        
+        private void OngetUltimoPeriodoRegistradoOperationCompleted(object arg) {
+            if ((this.getUltimoPeriodoRegistradoCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.getUltimoPeriodoRegistradoCompleted(this, new getUltimoPeriodoRegistradoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -2418,6 +2452,32 @@ namespace SitioWebOasis.WSSeguridad {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((System.Data.DataSet)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void getUltimoPeriodoRegistradoCompletedEventHandler(object sender, getUltimoPeriodoRegistradoCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class getUltimoPeriodoRegistradoCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal getUltimoPeriodoRegistradoCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }

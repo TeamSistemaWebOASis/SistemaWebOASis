@@ -48,6 +48,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getUltimoPeriodoRegistrado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getUltimoPeriodoRegistradoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getUltimoPeriodoRegistradoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="AutenticarUsuarioSoapIn">
@@ -62,6 +76,12 @@
   <wsdl:message name="carrerasDocentesPeriodosAnterioresSoapOut">
     <wsdl:part name="parameters" element="tns:carrerasDocentesPeriodosAnterioresResponse" />
   </wsdl:message>
+  <wsdl:message name="getUltimoPeriodoRegistradoSoapIn">
+    <wsdl:part name="parameters" element="tns:getUltimoPeriodoRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="getUltimoPeriodoRegistradoSoapOut">
+    <wsdl:part name="parameters" element="tns:getUltimoPeriodoRegistradoResponse" />
+  </wsdl:message>
   <wsdl:portType name="SeguridadSoap">
     <wsdl:operation name="AutenticarUsuario">
       <wsdl:input message="tns:AutenticarUsuarioSoapIn" />
@@ -70,6 +90,10 @@
     <wsdl:operation name="carrerasDocentesPeriodosAnteriores">
       <wsdl:input message="tns:carrerasDocentesPeriodosAnterioresSoapIn" />
       <wsdl:output message="tns:carrerasDocentesPeriodosAnterioresSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getUltimoPeriodoRegistrado">
+      <wsdl:input message="tns:getUltimoPeriodoRegistradoSoapIn" />
+      <wsdl:output message="tns:getUltimoPeriodoRegistradoSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SeguridadSoap" type="tns:SeguridadSoap">
@@ -92,6 +116,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getUltimoPeriodoRegistrado">
+      <soap:operation soapAction="http://tempuri.org/getUltimoPeriodoRegistrado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SeguridadSoap12" type="tns:SeguridadSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -106,6 +139,15 @@
     </wsdl:operation>
     <wsdl:operation name="carrerasDocentesPeriodosAnteriores">
       <soap12:operation soapAction="http://tempuri.org/carrerasDocentesPeriodosAnteriores" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUltimoPeriodoRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/getUltimoPeriodoRegistrado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

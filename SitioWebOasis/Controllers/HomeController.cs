@@ -37,13 +37,18 @@ namespace SitioWebOasis.Controllers
 
         private string _getPeriodoVigente()
         {
+            string strPV = string.Empty;
             string periodoVigente = string.Empty;
 
             try{
-                //  ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
-                //  gag.getPeriodoVigente();
+                ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
+                gag.CookieContainer = new CookieContainer();
+                gag.set_fUbicacion("");
 
-                periodoVigente = "P0028";
+                periodoVigente = gag.getPeriodoVigente();
+
+                periodoVigente = (!string.IsNullOrEmpty(strPV)) ? strPV
+                                                                : this.strGetUltimoPeriodoRegistrado(); 
             }
             catch(Exception ex){
                 periodoVigente = string.Empty;
@@ -55,6 +60,30 @@ namespace SitioWebOasis.Controllers
 
             return periodoVigente;
         }
+
+        private string strGetUltimoPeriodoRegistrado()
+        {
+            string ultimoPeriodoRegistrado = string.Empty;
+            string numIdentificacion = string.Empty;
+
+            try {
+                numIdentificacion = this._getNumeroIdentificacion();
+                if ( !string.IsNullOrEmpty( numIdentificacion)){
+                    ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
+                    ultimoPeriodoRegistrado = seg.getUltimoPeriodoRegistrado(numIdentificacion);
+
+                    seg.Dispose();
+                }
+            }
+            catch (Exception ex) {
+                Errores err = new Errores();
+                err.SetError(ex, "strGetUltimoPeriodoRegistrado");
+                err.setInfo("HomeController", ex.Message);
+            }
+
+            return ultimoPeriodoRegistrado;
+        }
+
 
 
         private bool _existeRolUsuario()
@@ -189,7 +218,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
-                numIdentificacion = "060324303-1";  //  <-- Miguel Duque
+                //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
 
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
@@ -198,14 +227,15 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060353546-9";  //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
                 //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
                 //  numIdentificacion = "060183490-6";
+
                 //  numIdentificacion = "060327507-4";  //  PAULA ABDO
                 //  numIdentificacion = "120353525-5";  //  VANESA VALVERDE
-
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
 
                 //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
                 //  numIdentificacion = "060320137-7";
                 //  numIdentificacion = "060327507-4";
+                //  numIdentificacion = "060229915-8";
             }
             catch (Exception ex){
                 Errores err = new Errores();
