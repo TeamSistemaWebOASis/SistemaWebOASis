@@ -4,6 +4,8 @@ using System.Collections;
 using System.Data;
 using SitioWebOasis.CommonClasses.UI;
 using OAS_SitioWeb.CommonClasses.GestionUsuarios;
+using System.Collections.Generic;
+using GestorErrores;
 
 namespace SitioWebOasis.CommonClasses.GestionUsuarios
 {
@@ -18,6 +20,7 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 		private string _Nombre = null;
 		private string _Cedula = null;
         private DateTime _dtInicioSession = default(DateTime);
+        List<Carrera> lstCarrerasUP = new List<Carrera>();
 
 		private Rol[] _roles = null;
 		private Rol _RolActual = null;
@@ -27,7 +30,7 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			this._roles = new Rol[1];
 			this._roles[0] = new Rol(Roles.PublicoGeneral,"Público General");
 			this._RolActual = this._roles[0];
-		}
+        }
 
 		public Rol[] roles
 		{
@@ -54,6 +57,28 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			return cont;
 		}
 		
+        private void _lstUltimosPeriodoVigenteCarrera(SitioWebOasis.WSSeguridad.dtstUsuario dsUsuario)
+        {
+            try{
+                if (dsUsuario.UltimosPeriodos.Rows.Count > 0){
+                    foreach (DataRow item in dsUsuario.UltimosPeriodos){
+                        Carrera objCarreras = new Carrera(item["strCodCarrera"].ToString(),
+                                                            "",
+                                                            "",
+                                                            "",
+                                                            "",
+                                                            item["strCodPeriodo"].ToString(), 
+                                                            item["strDescripcionPeriodo"].ToString());
+
+                        lstCarrerasUP.Add(objCarreras);
+                    }
+                }
+            }catch(Exception ex){
+                GestorErrores.Errores err = new GestorErrores.Errores();
+                err.SetError(ex, "CarreraEnPeriodoVigente");
+            }
+        }
+
 		public Usuario(SitioWebOasis.WSSeguridad.dtstUsuario dsUsuario)
 		{
 			DataRow drUsuario = dsUsuario.Tables["Usuarios"].Rows[0];
@@ -61,6 +86,7 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			this._Nombre = drUsuario["strNombre"].ToString();
 			this._Cedula = drUsuario["strCedula"].ToString();
             this._dtInicioSession = DateTime.Now;
+            this._lstUltimosPeriodoVigenteCarrera(dsUsuario);
       
 			DataRow[] drRoles = drUsuario.GetChildRows("UsuariosRoles");
 
@@ -102,7 +128,6 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 					if (i == 0) // asignación del rol actual
 						this._RolActual = nuevoRol;
 					i++;
-					
 				}
 			}
 		}
@@ -377,6 +402,29 @@ namespace SitioWebOasis.CommonClasses.GestionUsuarios
 			
             return listaFacultades;
 		}
+
+
+        public Carrera getUltimoPeriodoVigenteCarrera( string strCodCarrera )
+        {
+            Carrera dtaCarreraPeriodoVigente = null;
+            try{
+                if( this.lstCarrerasUP.Count > 0){
+                    foreach( Carrera item in this.lstCarrerasUP){
+                        if (item.Codigo == strCodCarrera) {
+                            dtaCarreraPeriodoVigente = item;
+                            break;
+                        }
+                    }
+                }
+            }catch (Exception ex) {
+                dtaCarreraPeriodoVigente = null;
+                Errores err = new Errores();
+                err.SetError(ex, "getCarreraPeriodoVigente");
+            }
+
+            return dtaCarreraPeriodoVigente;
+        }
+
 
 		/// <summary>
 		/// Determina los sitios a los que tiene acceso un usuario específico.

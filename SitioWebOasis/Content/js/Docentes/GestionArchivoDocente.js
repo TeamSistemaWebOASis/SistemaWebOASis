@@ -19,12 +19,14 @@
             }
         })
     });
-    $(document).on('click', '#asignaturasDocente tr', function () {
+
+
+    $(document).on('click', '.btn-info', function () {
         showLoadingProcess();
         $.ajax({
             type: "POST",
             url: "/Docentes/descargaActasPeriodosAnteriores",
-            data: '{idCarrera: "' + $('#cbCarrerasPA').val() + '", idPeriodoAcademico:"' + $('#cbPeriodosDPA').val() + '", idAsignatura:"' + $(this).attr('id') + '"}',
+            data: '{idCarrera: "' + $('#cbCarrerasPA').val() + '", idPeriodoAcademico:"' + $('#cbPeriodosDPA').val() + '", idAsignatura:"' + $(this).parents('tr').attr('id') + '"}',
             contentType: "application/json; charset=utf-8",
             dataType: "json"
         }).complete(function (data) {
@@ -40,6 +42,8 @@
         })
 
     });
+
+
     function showLoadingProcess() {
         HoldOn.open({
             theme: 'sk-bounce',

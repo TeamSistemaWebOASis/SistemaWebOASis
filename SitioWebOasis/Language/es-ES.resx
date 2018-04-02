@@ -714,6 +714,9 @@
   <data name="STR_CERRAR_SESION" xml:space="preserve">
     <value>Cerrar sesión</value>
   </data>
+  <data name="STR_DOCENTE_SIN_CARGA_ACADEMICA" xml:space="preserve">
+    <value>DOCENTE 'SIN' CARGA ACADÉMICA EN EL PERIODO ACADÉMICO </value>
+  </data>
   <data name="STR_FUENTE_REPORTE" xml:space="preserve">
     <value>Sistema academico - ESPOCH</value>
   </data>

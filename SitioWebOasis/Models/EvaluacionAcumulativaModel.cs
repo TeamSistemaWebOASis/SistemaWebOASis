@@ -20,7 +20,7 @@ namespace SitioWebOasis.Models
         public string jsonEvAcumulativa { get; set; }
         private string _dtaEvAcumulativa = string.Empty;
         private WSGestorEvaluacion.dtstEvaluacion_Acumulados _dsEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
-        //  DatosAcademicosDocente _dad;
+        private string _periodoCarrera = string.Empty;
 
         public EvaluacionAcumulativaModel( string strCodNivel, string strCodAsignatura, string strCodParalelo )
         {
@@ -198,7 +198,7 @@ namespace SitioWebOasis.Models
                                                         this._strCodNivel.ToString(),
                                                         this._strCodParalelo.ToString(),
                                                         this._dsEvAcumulativa,
-                                                        this.UsuarioActual.Nombre.ToString());
+                                                        this.UsuarioActual.Cedula.ToString());
 
                 //  Registro de fecha de ingreso de evaluaciones
                 regFchRegistro = ge.ActualizarRegistroFechaIngresoEvaluaciones(this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),

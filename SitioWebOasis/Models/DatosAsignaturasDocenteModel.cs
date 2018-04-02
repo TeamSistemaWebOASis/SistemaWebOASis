@@ -10,6 +10,8 @@ namespace SitioWebOasis.Models
     public class DatosAsignaturasDocenteModel : DatosCarrera
     {
         private WSGestorDeReportesMatriculacion.dtstCursosDocente _dtstCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
+        private string _periodoCarrera = string.Empty;
+
         public DatosAsignaturasDocenteModel(string strCodCarrera)
         {
             if (!string.IsNullOrEmpty(strCodCarrera)) {
@@ -18,7 +20,17 @@ namespace SitioWebOasis.Models
             }
 
             this._dtstPeriodoVigente = this._dataPeriodoAcademicoVigente();
+            this._periodoCarrera = this._getPeriodoAcademico();
             this._dtstCursosDocente = this._dsAsignaturasDocente();
+        }
+
+
+        private string _getPeriodoAcademico()
+        {
+            Carrera dtaCarrera = this.UsuarioActual.getUltimoPeriodoVigenteCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+            return (this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == dtaCarrera.strCodPeriodo)
+                        ? this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString()
+                        : dtaCarrera.strCodPeriodo;
         }
 
 
@@ -28,8 +40,7 @@ namespace SitioWebOasis.Models
             WSGestorDeReportesMatriculacion.dtstCursosDocente dsCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
             WSGestorDeReportesMatriculacion.dtstCursosDocente rstCursoDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
-            try
-            {
+            try{
                 ProxySeguro.GestorDeReportesMatriculacion rm = new ProxySeguro.GestorDeReportesMatriculacion();
                 rm.CookieContainer = new System.Net.CookieContainer();
                 rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
@@ -58,10 +69,10 @@ namespace SitioWebOasis.Models
             {
                 ProxySeguro.GestorDeReportesMatriculacion rm = new ProxySeguro.GestorDeReportesMatriculacion();
                 rm.CookieContainer = new System.Net.CookieContainer();
-                rm.SetCodCarrera(strCodCarrera);//this.UsuarioActual.CarreraActual.Codigo
+                rm.SetCodCarrera(strCodCarrera);
 
-                rstCursoDocente = rm.GetCursosDocente(strCodPeriodo,
-                                                        this.UsuarioActual.Cedula.ToString());//this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString()
+                rstCursoDocente = rm.GetCursosDocente(  strCodPeriodo,
+                                                        this.UsuarioActual.Cedula.ToString());
 
                 if (rstCursoDocente != null)
                 {
@@ -213,11 +224,11 @@ namespace SitioWebOasis.Models
 
             try {
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
-                DataSet dsEstMatriculados = (DataSet)du.GetNumEstudiantesMatriculadosMateria(this.UsuarioActual.CarreraActual.Codigo.ToString(), 
-                                                                                    periodoVigente, 
-                                                                                    strCodAsignatura, 
-                                                                                    strCodNivel, 
-                                                                                    strCodParalelo);
+                DataSet dsEstMatriculados = (DataSet)du.GetNumEstudiantesMatriculadosMateria(   this.UsuarioActual.CarreraActual.Codigo.ToString(), 
+                                                                                                periodoVigente, 
+                                                                                                strCodAsignatura, 
+                                                                                                strCodNivel, 
+                                                                                                strCodParalelo);
 
                 if( dsEstMatriculados.Tables[0].Rows.Count > 0){
                     tem = Convert.ToInt16(dsEstMatriculados.Tables[0].Compute("SUM(cantidad)", "").ToString());
@@ -266,12 +277,30 @@ namespace SitioWebOasis.Models
         }
 
 
+        public string getPeriodoAcademicoUtilizado()
+        {
+            Carrera rst = this.UsuarioActual.getUltimoPeriodoVigenteCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+
+            return (this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == rst.strCodPeriodo.ToString())
+                        ? this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()
+                        : rst.strDescripcionPeriodo.ToString();
+        }
+
+
+
         public string getPeriodoAcademicoVigente()
         {
             return (this._dtstPeriodoVigente != null)
                         ? this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()
-                        : "";
+                        : string.Empty;
         }
-       
+
+
+
+        public bool getCarreraEnPeriodoVigente()
+        {
+            Carrera rst = this.UsuarioActual.getUltimoPeriodoVigenteCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
+            return ( this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == rst.strCodPeriodo.ToString() );
+        }
     }
 }

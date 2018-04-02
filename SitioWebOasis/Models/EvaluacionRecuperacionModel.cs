@@ -133,7 +133,7 @@ namespace SitioWebOasis.Models
                                                         this._strCodNivel.ToString(),
                                                         this._strCodParalelo.ToString(),
                                                         this._dsEvRecuperacion,
-                                                        this.UsuarioActual.Nombre.ToString());
+                                                        this.UsuarioActual.Cedula.ToString());
 
                 //  Actualizar fecha de registro de notas
                 ge.ActualizarRegistroFechaIngresoExSuspension(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),

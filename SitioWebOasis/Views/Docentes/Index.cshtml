@@ -1,19 +1,18 @@
 ﻿@model SitioWebOasis.Models.DatosAsignaturasDocenteModel
-@{ ViewBag.Title = "Docente"; }
+@{ 
+    ViewBag.Title = "Docente";
+    var caPV = Model.getCarreraEnPeriodoVigente();
+}
 
-@section AddToHead{
+        @section AddToHead{
     <link href="@Url.Content("~/Content/css/skins/docente.css")" rel="stylesheet" type="text/css" />
 }
 
-@section scripts{
+    @section scripts{
     @*  JAVASCRIPT DE GESTION GRAFICOS DE RENDIMIENTO ACADEMICO  *@
     <script src="~/Content/js/Docentes/DocentesCharts.js?v0.0.4"> </script>
     <script src="~/Content/js/Docentes/NominaEstudiantes.js?@Language.es_ES.SA_VERSION"> </script>
-    @*<script src="~/Content/js/controlTiempoSession.js?v3.3.5"> </script>*@
 }
-
-@* TIEMPO DE SESSION
-    @Html.Hidden("sessionTime", Session.Timeout) *@
 
 <div class="main-content">
     
@@ -28,52 +27,63 @@
         </div>
     </div>
 
-    <div class="widget widget-table">
-        <div class="widget-header">
-            <h3><i class="fa fa-book"></i> @Language.es_ES.DOC_LBL_ASIGNATURAS &nbsp;</h3>
+    @if (caPV == false)
+    {
+        <div class="alert alert-warning alert-dismissable">
+            <i class="fa fa-warning fa-2x"></i>
+            <strong>@Language.es_ES.STR_DOCENTE_SIN_CARGA_ACADEMICA @Model.getPeriodoAcademicoVigente()</strong>, favor consulte en secretaria de @Model.UsuarioActual.CarreraActual.Nombre.ToString().
+        </div>
+        <div class="alert alert-info alert-dismissable">
+            <i class="fa fa-star fa-2x"></i>
+            Compañero docente si tiene la necesidad de revisar actas de periodos anteriores, puede hacer uso del modulo @Html.ActionLink("archivo", "GestionArchivoDocente", "Docentes")
+        </div>
+    }
+    else
+    {
+        <div class="widget widget-table">
+            <div class="widget-header">
+                <h3><i class="fa fa-book"></i> @Language.es_ES.DOC_LBL_ASIGNATURAS &nbsp;</h3>
+                <div class="widget-header-toolbar">
+                    <div class="label label-default" style="font-size: small;">
+                        <i class="fa fa-clock-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO: &nbsp;@Model.getPeriodoAcademicoUtilizado()
+                    </div>
+                </div>
+            </div>
 
-            <div class="widget-header-toolbar">
-                <div class="label label-default" style="font-size: small;">
-                    <i class="fa fa-clock-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO: &nbsp;@Model.getPeriodoAcademicoVigente()
+            <div class="widget-content">
+                <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                    <div id="msmLstAsignaturas" hidden="hidden"></div>
+                        @* TABLA DE ASIGNATURA DOCENTES *@
+                        <table  id="asignaturasDocente" 
+                                class="table table-striped table-hover" 
+                                role="grid">
+
+                            <thead>
+                                <tr>
+                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NUMERO </th>
+                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ASIGNATURA</th>
+                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARALELO</th>
+                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NIVEL</th>
+                                    <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARCIAL_ACTIVO</th>
+                                    <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_NUM_ESTUDIANTES_TOOLTIP" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.DOC_TB_COL_ESTUDIANTES</th>
+                                    @*<th rowspan="2" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO</th>*@
+                                </tr>
+
+                                <tr role="row">
+                                    <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_ESTUDIANTES_CANTIDAD_TOOLTIP" aria-describedby="tooltip840829" style="width: 90px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ESTUDIANTES_CANTIDAD</th>
+                                    <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP" aria-describedby="tooltip840829" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ESTUDIANTES_NOMINA</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @* ASIGNATURAS DOCENTE *@
+                                @Html.Raw(Model.getHTMLAsignaturasDocente())
+                            </tbody>
+
+                        </table>
+                    <div class="row"></div>
                 </div>
             </div>
         </div>
-
-        <div class="widget-content">
-            <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
-                <div id="msmLstAsignaturas" hidden="hidden"></div>
-
-                @* TABLA DE ASIGNATURA DOCENTES *@
-                <table  id="asignaturasDocente" 
-                        class="table table-striped table-hover" 
-                        role="grid">
-
-                    <thead>
-                        <tr>
-                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NUMERO </th>
-                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ASIGNATURA</th>
-                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARALELO</th>
-                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_NIVEL</th>
-                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_PARCIAL_ACTIVO</th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_NUM_ESTUDIANTES_TOOLTIP" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;" colspan="2">@Language.es_ES.DOC_TB_COL_ESTUDIANTES</th>
-                            @*<th rowspan="2" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP" aria-describedby="tooltip840829" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_RENDIMIENTO_ACADEMICO</th>*@
-                        </tr>
-
-                        <tr role="row">
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_ESTUDIANTES_CANTIDAD_TOOLTIP" aria-describedby="tooltip840829" style="width: 90px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ESTUDIANTES_CANTIDAD</th>
-                            <th data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.DOC_TB_COL_ESTUDIANTES_NOMINA_TOOLTIP" aria-describedby="tooltip840829" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.DOC_TB_COL_ESTUDIANTES_NOMINA</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        @* ASIGNATURAS DOCENTE *@
-                        @Html.Raw(Model.getHTMLAsignaturasDocente())
-                    </tbody>
-
-                </table>
-
-                <div class="row"></div>
-            </div>
-        </div>
-    </div>
+    }
 </div>

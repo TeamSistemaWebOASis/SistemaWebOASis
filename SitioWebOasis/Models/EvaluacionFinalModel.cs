@@ -127,7 +127,7 @@ namespace SitioWebOasis.Models
                                                     this._strCodNivel.ToString(),
                                                     this._strCodParalelo.ToString(), 
                                                     this._dsEvFinal,
-                                                    this.UsuarioActual.Nombre.ToString());
+                                                    this.UsuarioActual.Cedula.ToString());
 
                 //  Actualizar fecha de registro de notas
                 ge.ActualizarRegistroFechaIngresoExPrincipal(   this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),

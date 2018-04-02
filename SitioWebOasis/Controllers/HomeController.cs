@@ -44,8 +44,7 @@ namespace SitioWebOasis.Controllers
                 ProxySeguro.GestorAdministracionGeneral gag = new ProxySeguro.GestorAdministracionGeneral();
                 gag.CookieContainer = new CookieContainer();
                 gag.set_fUbicacion("");
-
-                periodoVigente = gag.getPeriodoVigente();
+                strPV = gag.getPeriodoVigente();
 
                 periodoVigente = (!string.IsNullOrEmpty(strPV)) ? strPV
                                                                 : this.strGetUltimoPeriodoRegistrado(); 
@@ -110,8 +109,6 @@ namespace SitioWebOasis.Controllers
 
                     //  Verificar si el usuario es válido
                     if (blnUsuarioValido){
-                        
-
                         // registrar datos del usuario en la sesión para futuras referencias
                         Usuario usr = this.RegistrarUsuarioEnSesion(dsUsuario);
 
@@ -215,7 +212,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
                 //  numIdentificacion = "220027162-1";
 
-                //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
+                numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
                 //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
@@ -231,11 +228,6 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060327507-4";  //  PAULA ABDO
                 //  numIdentificacion = "120353525-5";  //  VANESA VALVERDE
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
-
-                //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
-                //  numIdentificacion = "060320137-7";
-                //  numIdentificacion = "060327507-4";
-                //  numIdentificacion = "060229915-8";
             }
             catch (Exception ex){
                 Errores err = new Errores();

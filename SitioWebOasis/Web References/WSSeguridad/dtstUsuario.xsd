@@ -42,6 +42,17 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="UltimosPeriodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCedula" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="periodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strDescripcionPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodCarrera" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique msdata:PrimaryKey="true" name="Constraint1">

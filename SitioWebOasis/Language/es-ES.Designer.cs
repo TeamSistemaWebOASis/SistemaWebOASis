@@ -1852,6 +1852,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a DOCENTE &apos;SIN&apos; CARGA ACADÉMICA EN EL PERIODO ACADÉMICO .
+        /// </summary>
+        public static string STR_DOCENTE_SIN_CARGA_ACADEMICA {
+            get {
+                return ResourceManager.GetString("STR_DOCENTE_SIN_CARGA_ACADEMICA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Sistema academico - ESPOCH.
         /// </summary>
         public static string STR_FUENTE_REPORTE {
