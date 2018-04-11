@@ -352,10 +352,10 @@
     <value>EVALUACIÓN ACUMULATIVA</value>
   </data>
   <data name="EST_LBL_EV_FINAL" xml:space="preserve">
-    <value>EVALUACIÓN FINAL</value>
+    <value>EV. FINAL</value>
   </data>
   <data name="EST_LBL_EV_RECUPERACION" xml:space="preserve">
-    <value>EVALUACIÓN RECUPERACIÓN</value>
+    <value>EV. RECUPERACIÓN</value>
   </data>
   <data name="EST_LBL_EXONERADO" xml:space="preserve">
     <value>EXONERADO</value>
@@ -380,6 +380,9 @@
   </data>
   <data name="EST_LBL_REPROBADO" xml:space="preserve">
     <value>Reprobado</value>
+  </data>
+  <data name="EST_LBL_REPROBADO_FALTAS" xml:space="preserve">
+    <value>REP FALTAS</value>
   </data>
   <data name="EST_LBL_SIN_REGISTROS" xml:space="preserve">
     <value>SIN REGISTROS DISPONIBLES</value>
@@ -435,6 +438,9 @@
   <data name="EST_TB_COL_CONVALIDACION_NIVEL" xml:space="preserve">
     <value>Nivel</value>
   </data>
+  <data name="EST_TB_COL_CONVALIDACION_NOTA_CONVALIDACION" xml:space="preserve">
+    <value>Nota convalidación</value>
+  </data>
   <data name="EST_TB_COL_CONVALIDACION_OBSERVACION" xml:space="preserve">
     <value>Observación</value>
   </data>
@@ -443,6 +449,9 @@
   </data>
   <data name="EST_TB_COL_CONVALIDACION_RESOLUCION" xml:space="preserve">
     <value>Resolución</value>
+  </data>
+  <data name="EST_TB_COL_CONVALIDACION_TIPO_TRAMITE" xml:space="preserve">
+    <value>Tipo de trámite</value>
   </data>
   <data name="EST_TB_COL_DOMINGO" xml:space="preserve">
     <value>Domingo</value>
@@ -503,6 +512,63 @@
   </data>
   <data name="EST_TB_COL_PORCIENTO_ASISTENCIA" xml:space="preserve">
     <value>ASISTENCIA (%)</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_ASIGNATURA" xml:space="preserve">
+    <value>Asignatura</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_FCH_APROBACION" xml:space="preserve">
+    <value>Fecha aprobación</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_MATRICULA" xml:space="preserve">
+    <value>Matricula</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_NOTA_ANTERIOR" xml:space="preserve">
+    <value>Nota anterior</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_OBSERVACION" xml:space="preserve">
+    <value>Observación</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_PARALELO" xml:space="preserve">
+    <value>Paralelo</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_PERIODO_ACADEMICO" xml:space="preserve">
+    <value>Periodo académico</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_RESOLUCION" xml:space="preserve">
+    <value>Resolución</value>
+  </data>
+  <data name="EST_TB_COL_RECTIFICACION_TIPO_EXAMEN" xml:space="preserve">
+    <value>Tipo de examen</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_APROBADO_POR" xml:space="preserve">
+    <value>Autorizado por</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_ASIGNATURA" xml:space="preserve">
+    <value>Asignatura</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_FCH_APROBACION" xml:space="preserve">
+    <value>Fecha aprobación</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_MATRICULA" xml:space="preserve">
+    <value>Matricula</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_NIVEL" xml:space="preserve">
+    <value>Nivel</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_OBSERVACION" xml:space="preserve">
+    <value>Observación</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_PARALELO" xml:space="preserve">
+    <value>Paralelo</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_PERIODO_ACADEMICO" xml:space="preserve">
+    <value>Periodo académico</value>
+  </data>
+  <data name="EST_TB_COL_RETIRO_RESOLUCION" xml:space="preserve">
+    <value>Resolución</value>
   </data>
   <data name="EST_TB_COL_SABADO" xml:space="preserve">
     <value>Sabado</value>
@@ -597,8 +663,23 @@
   <data name="NOTAS_TB_COL_EQUIVALENCIA" xml:space="preserve">
     <value>Equivalencia</value>
   </data>
+  <data name="NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION" xml:space="preserve">
+    <value>Acumulado evaluación recuperación</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP" xml:space="preserve">
+    <value>( Total Acumulado + Total Ev Final ) / 2 [calculo sin redondeo]</value>
+  </data>
   <data name="NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION" xml:space="preserve">
     <value>Nota evaluación recuperación</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_TOTAL_ACUMULADO" xml:space="preserve">
+    <value>Total acumulado</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION" xml:space="preserve">
+    <value>Total evaluacion recuperación</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION_TP" xml:space="preserve">
+    <value>Acumulado evaluacion recuperación + Nota evaluación recuperación</value>
   </data>
   <data name="NOTAS_TB_COL_ER_TOTAL_EV_FORMATIVA" xml:space="preserve">
     <value>Total evaluación formativa</value>
@@ -609,6 +690,12 @@
   <data name="NOTAS_TB_COL_EV_ACUMULATIVA" xml:space="preserve">
     <value>EVALUACIÓN ACUMULATIVA</value>
   </data>
+  <data name="NOTAS_TB_COL_EV_FINAL" xml:space="preserve">
+    <value>EVALUACIÓN FINAL</value>
+  </data>
+  <data name="NOTAS_TB_COL_EV_RECUPERACION" xml:space="preserve">
+    <value>EVALUACIÓN RECUPERACIÓN</value>
+  </data>
   <data name="NOTAS_TB_COL_NIVEL" xml:space="preserve">
     <value>Nivel</value>
   </data>
@@ -617,6 +704,9 @@
   </data>
   <data name="NOTAS_TB_COL_NOTA_EV_FINAL" xml:space="preserve">
     <value>Nota evaluación final</value>
+  </data>
+  <data name="NOTAS_TB_COL_NOTA_EV_RECUPERACION" xml:space="preserve">
+    <value>AAA</value>
   </data>
   <data name="NOTAS_TB_COL_NUMERO" xml:space="preserve">
     <value>No</value>
@@ -720,6 +810,18 @@
   <data name="STR_FUENTE_REPORTE" xml:space="preserve">
     <value>Sistema academico - ESPOCH</value>
   </data>
+  <data name="STR_HISTORICO_CONSOLIDADO" xml:space="preserve">
+    <value>NOTAS CONSOLIDADO POR PERIODO</value>
+  </data>
+  <data name="STR_HISTORICO_CONVALIDACION" xml:space="preserve">
+    <value>HISTORICO CONVALIDACIONES</value>
+  </data>
+  <data name="STR_HISTORICO_RECTIFICACIONES" xml:space="preserve">
+    <value>HISTORICO RECTIFICACIONES</value>
+  </data>
+  <data name="STR_HISTORICO_RETIROS" xml:space="preserve">
+    <value>HISTORICO RETIROS</value>
+  </data>
   <data name="STR_HORARIO_ACADEMICO" xml:space="preserve">
     <value>HORARIO ACADEMICO</value>
   </data>
@@ -731,5 +833,14 @@
   </data>
   <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
     <value>PERÍODO ACADÉMICO</value>
+  </data>
+  <data name="STR_RECTIFICACION_NOTAS" xml:space="preserve">
+    <value>RECTIFICACIÓN</value>
+  </data>
+  <data name="STR_RETIRO_ASIGNATURA" xml:space="preserve">
+    <value>RETIRO DE ASIGNATURA</value>
+  </data>
+  <data name="STR_RETIRO_CONVALIDA" xml:space="preserve">
+    <value>ASIGNATURA CONVALIDADA</value>
   </data>
 </root>

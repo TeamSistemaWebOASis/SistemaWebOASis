@@ -763,7 +763,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
+        ///   Busca una cadena traducida similar a EV. FINAL.
         /// </summary>
         public static string EST_LBL_EV_FINAL {
             get {
@@ -772,7 +772,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a EVALUACIÓN RECUPERACIÓN.
+        ///   Busca una cadena traducida similar a EV. RECUPERACIÓN.
         /// </summary>
         public static string EST_LBL_EV_RECUPERACION {
             get {
@@ -849,6 +849,15 @@ namespace Language {
         public static string EST_LBL_REPROBADO {
             get {
                 return ResourceManager.GetString("EST_LBL_REPROBADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a REP FALTAS.
+        /// </summary>
+        public static string EST_LBL_REPROBADO_FALTAS {
+            get {
+                return ResourceManager.GetString("EST_LBL_REPROBADO_FALTAS", resourceCulture);
             }
         }
         
@@ -1015,6 +1024,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Nota convalidación.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_NOTA_CONVALIDACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_NOTA_CONVALIDACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Observación.
         /// </summary>
         public static string EST_TB_COL_CONVALIDACION_OBSERVACION {
@@ -1038,6 +1056,15 @@ namespace Language {
         public static string EST_TB_COL_CONVALIDACION_RESOLUCION {
             get {
                 return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_RESOLUCION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tipo de trámite.
+        /// </summary>
+        public static string EST_TB_COL_CONVALIDACION_TIPO_TRAMITE {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_CONVALIDACION_TIPO_TRAMITE", resourceCulture);
             }
         }
         
@@ -1218,6 +1245,177 @@ namespace Language {
         public static string EST_TB_COL_PORCIENTO_ASISTENCIA {
             get {
                 return ResourceManager.GetString("EST_TB_COL_PORCIENTO_ASISTENCIA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Asignatura.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_ASIGNATURA {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_ASIGNATURA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fecha aprobación.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_FCH_APROBACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_FCH_APROBACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Matricula.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_MATRICULA {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_MATRICULA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nivel.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_NIVEL {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_NIVEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nota anterior.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_NOTA_ANTERIOR {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_NOTA_ANTERIOR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Observación.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_OBSERVACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_OBSERVACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Paralelo.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_PARALELO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_PARALELO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Periodo académico.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_PERIODO_ACADEMICO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_PERIODO_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resolución.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_RESOLUCION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_RESOLUCION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Tipo de examen.
+        /// </summary>
+        public static string EST_TB_COL_RECTIFICACION_TIPO_EXAMEN {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RECTIFICACION_TIPO_EXAMEN", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Autorizado por.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_APROBADO_POR {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_APROBADO_POR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Asignatura.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_ASIGNATURA {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_ASIGNATURA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Fecha aprobación.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_FCH_APROBACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_FCH_APROBACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Matricula.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_MATRICULA {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_MATRICULA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Nivel.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_NIVEL {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_NIVEL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Observación.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_OBSERVACION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_OBSERVACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Paralelo.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_PARALELO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_PARALELO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Periodo académico.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_PERIODO_ACADEMICO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_PERIODO_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Resolución.
+        /// </summary>
+        public static string EST_TB_COL_RETIRO_RESOLUCION {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_RETIRO_RESOLUCION", resourceCulture);
             }
         }
         
@@ -1501,11 +1699,56 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Acumulado evaluación recuperación.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ( Total Acumulado + Total Ev Final ) / 2 [calculo sin redondeo].
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nota evaluación recuperación.
         /// </summary>
         public static string NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total acumulado.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_TOTAL_ACUMULADO {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_TOTAL_ACUMULADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Total evaluacion recuperación.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Acumulado evaluacion recuperación + Nota evaluación recuperación.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION_TP {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION_TP", resourceCulture);
             }
         }
         
@@ -1537,6 +1780,24 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
+        /// </summary>
+        public static string NOTAS_TB_COL_EV_FINAL {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a EVALUACIÓN RECUPERACIÓN.
+        /// </summary>
+        public static string NOTAS_TB_COL_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Nivel.
         /// </summary>
         public static string NOTAS_TB_COL_NIVEL {
@@ -1560,6 +1821,15 @@ namespace Language {
         public static string NOTAS_TB_COL_NOTA_EV_FINAL {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_NOTA_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a AAA.
+        /// </summary>
+        public static string NOTAS_TB_COL_NOTA_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_NOTA_EV_RECUPERACION", resourceCulture);
             }
         }
         
@@ -1870,6 +2140,42 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a NOTAS CONSOLIDADO POR PERIODO.
+        /// </summary>
+        public static string STR_HISTORICO_CONSOLIDADO {
+            get {
+                return ResourceManager.GetString("STR_HISTORICO_CONSOLIDADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a HISTORICO CONVALIDACIONES.
+        /// </summary>
+        public static string STR_HISTORICO_CONVALIDACION {
+            get {
+                return ResourceManager.GetString("STR_HISTORICO_CONVALIDACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a HISTORICO RECTIFICACIONES.
+        /// </summary>
+        public static string STR_HISTORICO_RECTIFICACIONES {
+            get {
+                return ResourceManager.GetString("STR_HISTORICO_RECTIFICACIONES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a HISTORICO RETIROS.
+        /// </summary>
+        public static string STR_HISTORICO_RETIROS {
+            get {
+                return ResourceManager.GetString("STR_HISTORICO_RETIROS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a HORARIO ACADEMICO.
         /// </summary>
         public static string STR_HORARIO_ACADEMICO {
@@ -1902,6 +2208,33 @@ namespace Language {
         public static string STR_PERIODO_ACADEMICO {
             get {
                 return ResourceManager.GetString("STR_PERIODO_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RECTIFICACIÓN.
+        /// </summary>
+        public static string STR_RECTIFICACION_NOTAS {
+            get {
+                return ResourceManager.GetString("STR_RECTIFICACION_NOTAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RETIRO DE ASIGNATURA.
+        /// </summary>
+        public static string STR_RETIRO_ASIGNATURA {
+            get {
+                return ResourceManager.GetString("STR_RETIRO_ASIGNATURA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ASIGNATURA CONVALIDADA.
+        /// </summary>
+        public static string STR_RETIRO_CONVALIDA {
+            get {
+                return ResourceManager.GetString("STR_RETIRO_CONVALIDA", resourceCulture);
             }
         }
     }

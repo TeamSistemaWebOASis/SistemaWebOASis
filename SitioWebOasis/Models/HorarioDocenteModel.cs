@@ -99,10 +99,9 @@ namespace SitioWebOasis.Models
             try
             {
                 var dtsHorario = _dsHorarioClase();
-                dtsHorario.Tables["Horario"].DefaultView.Sort = "strCodHora";//Ordena  la tabla del dataset
-                if (dtsHorario != null && dtsHorario.Tables["Horario"].Rows.Count > 0)
-                {
+                if (dtsHorario != null && dtsHorario.Tables["Horario"].Rows.Count > 0){
                     rst = string.Empty;
+                    dtsHorario.Tables["Horario"].DefaultView.Sort = "strCodHora";//Ordena  la tabla del dataset
                     foreach (DataRow item in dtsHorario.Tables["Horario"].Rows)
                     {
                         rst += " <tr role='row' class='even'>";

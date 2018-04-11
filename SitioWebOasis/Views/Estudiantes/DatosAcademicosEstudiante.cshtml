@@ -7,23 +7,7 @@
     <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
 }
 
-@section scripts{
 
-    <script>
-        $(function(){
-            $('#ddlLstPeriodosEstudiante').change("click", function () {
-                HoldOn.open({
-                    theme: 'sk-dot',
-                    message: "<h4>Cargado ...</h4>"
-                });
-
-                $.redirect( "@Url.Action("NotasEstudiantes", "Estudiantes")", 
-                            {   periodoAcademico: $(this).val() },    
-                                "POST" )
-            })
-        })
-    </script>
-}
 
 <div class="main-content">
     <div class="row">
@@ -58,124 +42,78 @@
             <div class="col-md-12">
                 <div class="panel-group" id="accordion">
 
-                    @*  EVALUACION ACUMULATIVA  *@
+                    @*CONSOLIDADO EVALUACIONES POR PERIODO*@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed"><b>@Language.es_ES.EST_LBL_EV_ACUMULATIVA.ToUpper() </b>
-                                <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i></a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed" aria-expanded="false">
+                                    <strong> @Language.es_ES.STR_HISTORICO_CONSOLIDADO </strong>
+                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
+                                </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse in" aria-expanded="false" style="">
+                        <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                             <div class="panel-body">
-                                @*TABLA DE NOTAS DEL ESTUDIANTE*@
-                                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+
+                                <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid" style="font-stretch: condensed;">
                                     <thead>
+
                                         <tr role="row">
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_UNO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
+                                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                            <th rowspan="2" style="width: 250px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
+                                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                                            <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+
+                                            <th colspan="5" style="border-left: 1px solid darkgray;border-top: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_ACUMULATIVA</th>
+                                            <th colspan="3" style="border-left: 1px dotted darkgray;border-top: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_FINAL</th>
+                                            <th colspan="4" style="border-left: 1px dotted darkgray;border-top: 1px solid darkgray;align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_RECUPERACION</th>
+                                            <th rowspan="2" style="border-left: 1px solid darkgray;align-content: center; vertical-align: middle; text-align: center;">OBS.</th>
                                         </tr>
+
+                                        <tr role="row">
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_01</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_TOTAL</th>
+
+                                            <th style="border-left: 1px dotted darkgray;border-top: 2px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
+
+                                            <th style="border-left: 1px dotted darkgray; align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION</th>
+                                            <th style="border-right: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
+                                        </tr>
+
                                     </thead>
+
                                     <tbody>
-                                        @*NOTAS EVALUACION ESTUDIANTE*@
-                                        @Html.Raw(Model.getHTMLNotasEVAcumulativa())
+                                        @Html.Raw(Model.getHTMLConsolidadoNotas())
                                     </tbody>
                                 </table>
+
                                 <div class="row"></div>
                             </div>
                         </div>
                     </div>
 
-                    @*  EVALUACION FINAL    *@
+
+                    @*  EVALUACION HISTORICO CONVALIDACION *@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false"><b>@Language.es_ES.EST_LBL_EV_FINAL.ToUpper()</b>
-                                <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i></a>
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="collapsed" aria-expanded="false">
+                                    <strong> @Language.es_ES.STR_HISTORICO_CONVALIDACION </strong>
+                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
+                                </a>
                             </h4>
                         </div>
                         <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
                             <div class="panel-body">
-                                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
-                                    <thead>
-                                        <tr role="row">
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_FINAL</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
-                                        </tr>
-                                    </thead>
-
-                                    <tbody>
-                                        @Html.Raw(Model.getDtaEvFinal_EvRecuperacion("P"))
-                                    </tbody>
-                                </table>
-                                <div class="row"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    @*  EVALUACION RECUPERACION *@
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false"><strong> @Language.es_ES.EST_LBL_EV_RECUPERACION.ToUpper() </strong>
-                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                            <div class="panel-body">
                                 @*TABLA DE NOTAS DEL ESTUDIANTE*@
-                                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
-                                    <thead>
-                                        <tr role="row">
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_FINAL</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
-                                            <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @Html.Raw(Model.getDtaEvFinal_EvRecuperacion("S"))
-                                    </tbody>
-                                </table>
-                                <div class="row"></div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    @*  EVALUACION RECUPERACION *@
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed" aria-expanded="false">
-                                    <strong> @Language.es_ES.EST_LBL_CONVALIDA.ToUpper() </strong>
-                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
-                                </a>
-                            </h4>
-                        </div>
-                        <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
-                            <div class="panel-body">
-                                @*TABLA DE NOTAS DEL ESTUDIANTE*@
-                                <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+                                <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
                                     <thead>
                                         <tr role="row">
                                             <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
@@ -184,8 +122,9 @@
                                             <th style="width: 700px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_PERIODO_ACADEMICO</th>
                                             <th style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_INSTITUCION</th>
                                             <th style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_RESOLUCION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_NOTA_CONVALIDACION</th>
                                             <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_FCH_APROBACION</th>
-                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_OBSERVACION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_CONVALIDACION_TIPO_TRAMITE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -199,10 +138,104 @@
                     </div>
 
 
+                    @*  EVALUACION HISTORICO RETIROS *@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="collapsed" aria-expanded="false">
+                                    <strong> @Language.es_ES.STR_HISTORICO_RETIROS </strong>
+                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                            <div class="panel-body">
+                                @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                                <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
+                                    <thead>
+                                        <tr role="row">
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                            <th style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_ASIGNATURA</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_MATRICULA</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_NIVEL</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_PARALELO</th>
+                                            <th style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_PERIODO_ACADEMICO</th>
+                                            <th style="width: 200px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_RESOLUCION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RETIRO_FCH_APROBACION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @Html.Raw(Model.getDtaRetiros())
+                                    </tbody>
+                                </table>
+                                <div class="row"></div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    @*  EVALUACION HISTORICO RECTIFICACIONES *@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="collapsed" aria-expanded="false">
+                                    <strong> @Language.es_ES.STR_HISTORICO_RECTIFICACIONES </strong>
+                                    <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                            <div class="panel-body">
+                                @*TABLA DE NOTAS DEL ESTUDIANTE*@
+                                <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
+                                    <thead>
+                                        <tr role="row">
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                            <th style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_ASIGNATURA</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_MATRICULA</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_NIVEL</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_PARALELO</th>
+                                            <th style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_PERIODO_ACADEMICO</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_RESOLUCION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_TIPO_EXAMEN</th>
+                                            <th style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_NOTA_ANTERIOR</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_FCH_APROBACION</th>
+                                            <th style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_RECTIFICACION_OBSERVACION</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @Html.Raw(Model.getDtaRectificaciones())
+                                    </tbody>
+                                </table>
+                                <div class="row"></div>
+
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
 </div>
+@section scripts{
 
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.1.16"> </script>
+
+    <script>
+        $(function(){
+            $('#ddlLstPeriodosEstudiante').change("click", function () {
+                HoldOn.open({
+                    theme: 'sk-dot',
+                    message: "<h4>Cargado ...</h4>"
+                });
+
+                $.redirect( "@Url.Action("NotasEstudiantes", "Estudiantes")",
+                            {   periodoAcademico: $(this).val() },
+                                "POST" )
+            })
+        })
+    </script>
+}

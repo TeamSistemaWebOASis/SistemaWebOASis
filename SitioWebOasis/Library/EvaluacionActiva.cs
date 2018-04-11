@@ -125,7 +125,8 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "_getEvaluacionActiva");
             }
 
-            return evaluacionActiva;
+            //  return evaluacionActiva;
+            return "FN1";
         }
 
         private string[] _getDtaCarreraEspecial()

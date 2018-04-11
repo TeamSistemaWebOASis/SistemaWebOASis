@@ -271,6 +271,7 @@
     </Compile>
     <Compile Include="Library\Asignatura.cs" />
     <Compile Include="Library\Catalogos.cs" />
+    <Compile Include="Library\ConsolidadoEvaluacionAsignatura.cs" />
     <Compile Include="Library\CorreoElectronico.cs" />
     <Compile Include="Library\DatosAsignaturaDocente.cs" />
     <Compile Include="Library\DatosCarrera.cs" />
@@ -477,6 +478,7 @@
     <Content Include="Content\fonts\lato-bol-webfont.woff" />
     <Content Include="Content\fonts\lato-lig-webfont.ttf" />
     <Content Include="Content\fonts\lato-lig-webfont.woff" />
+    <None Include="Properties\PublishProfiles\academico.espoch.edu.ec.pubxml" />
     <None Include="Properties\PublishProfiles\despligueLocal.pubxml" />
     <None Include="Properties\PublishProfiles\servicios.espoch.edu.ec.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -884,7 +886,6 @@
     <None Include="Web References\WSSeguridad\dtstUsuario.xsd" />
     <None Include="Web References\WSSeguridad\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSSeguridad\Seguridad.disco" />
     <Content Include="Web.config">
@@ -977,7 +978,7 @@
     <None Include="Web References\WSGestorDeReportesMatriculacion\GestordeReportes.wsdl" />
     <None Include="Web References\WSGestorDeReportesMatriculacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+      <LastGenOutput>Reference1.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSGestorEvaluacion\dtstARD.xsd" />
     <None Include="Web References\WSGestorEvaluacion\dtstARDporcentajes.xsd" />

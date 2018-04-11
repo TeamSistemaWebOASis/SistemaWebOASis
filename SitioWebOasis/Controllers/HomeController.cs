@@ -212,7 +212,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "180552383-2";
                 //  numIdentificacion = "220027162-1";
 
-                numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
+                //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
                 //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
@@ -228,6 +228,13 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060327507-4";  //  PAULA ABDO
                 //  numIdentificacion = "120353525-5";  //  VANESA VALVERDE
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
+
+                //  numIdentificacion = "060383835-0";
+                //  numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
+                numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
+
+                //  numIdentificacion = "015010212-7";
+                //  numIdentificacion = "060449038-3";
             }
             catch (Exception ex){
                 Errores err = new Errores();

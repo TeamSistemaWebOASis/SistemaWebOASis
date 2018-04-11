@@ -53,12 +53,7 @@
             </div>
         </div>
     </div>
-
-    @* MATRICULACION *@
-    <hr class="inner-separator">
-    <button id="btnMatriculacionSA" type="button" class="btn btn-info btn-block" data-toggle="tooltip" data-placement="top" data-original-title="Acceso al modulo de matriculación del sistema académico (click)"><i class="fa fa-edit"></i>@Language.es_ES.EST_MN_MATRICULACION.ToString().ToUpper()</button>
-    <hr class="inner-separator">
-
+    
     <div class="widget widget-table">
         <div class="widget-header">
             <h3><i class="fa fa-star"></i> @tipoEvaluacion &nbsp;/&nbsp; @Language.es_ES.EST_LBL_NOTAS</h3>
@@ -79,8 +74,7 @@
         <div class="widget-content">
             <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 
-                @if (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3")
-                {
+                @if (evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3"){
                     @*TABLA DE NOTAS DEL ESTUDIANTE*@
                     <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
                         <thead>
@@ -105,23 +99,43 @@
                             @Html.Raw(Model.getHTMLNotasEVAcumulativa())
                         </tbody>
                     </table>
-                }else if (evaluacionActiva == "P" || evaluacionActiva == "S"){
-                    <table id="ticket-table" class="table table-sorting dataTable no-footer" role="grid">
+                }else if (evaluacionActiva == "P" || evaluacionActiva == "S" || string.IsNullOrEmpty( evaluacionActiva ) ){
+                    <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid" style="font-stretch: condensed;">
                         <thead>
+                            
                             <tr role="row">
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_FINAL</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                <th rowspan="2" style="width: 250px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+
+                                <th colspan="5" style="border-left: 1px solid darkgray;border-top: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_ACUMULATIVA</th>
+                                <th colspan="3" style="border-left: 1px dotted darkgray;border-top: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_FINAL</th>
+                                <th colspan="4" style="border-left: 1px dotted darkgray;border-top: 1px solid darkgray;align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_RECUPERACION</th>
+                                <th rowspan="2" style="border-left: 1px solid darkgray;align-content: center; vertical-align: middle; text-align: center;">OBS.</th>
                             </tr>
+
+                            <tr role="row">
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_01</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_TOTAL</th>
+
+                                <th style="border-left: 1px dotted darkgray;border-top: 2px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
+
+                                <th style="border-left: 1px dotted darkgray; align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION</th>
+                                <th style="border-right: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
+                            </tr>
+
                         </thead>
 
                         <tbody>
-                            @Html.Raw(Model.getDtaEvFinal_EvRecuperacion(evaluacionActiva))
+                            @Html.Raw(Model.getHTMLConsolidadoNotas())
                         </tbody>
                     </table>
                 }
@@ -134,5 +148,5 @@
 
 @section scripts{
     @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.1.1"> </script>
+    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.1.16"> </script>
 }

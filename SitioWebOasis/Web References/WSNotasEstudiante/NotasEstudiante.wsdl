@@ -182,6 +182,29 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="getConsolidadoNotas">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCarrera" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getConsolidadoNotasResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getConsolidadoNotasResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetDatosNotasEstudianteSoapIn">
@@ -238,6 +261,12 @@
   <wsdl:message name="registrarDatosEvFinalesRecuperacionSoapOut">
     <wsdl:part name="parameters" element="tns:registrarDatosEvFinalesRecuperacionResponse" />
   </wsdl:message>
+  <wsdl:message name="getConsolidadoNotasSoapIn">
+    <wsdl:part name="parameters" element="tns:getConsolidadoNotas" />
+  </wsdl:message>
+  <wsdl:message name="getConsolidadoNotasSoapOut">
+    <wsdl:part name="parameters" element="tns:getConsolidadoNotasResponse" />
+  </wsdl:message>
   <wsdl:portType name="NotasEstudianteSoap">
     <wsdl:operation name="GetDatosNotasEstudiante">
       <wsdl:input message="tns:GetDatosNotasEstudianteSoapIn" />
@@ -274,6 +303,10 @@
     <wsdl:operation name="registrarDatosEvFinalesRecuperacion">
       <wsdl:input message="tns:registrarDatosEvFinalesRecuperacionSoapIn" />
       <wsdl:output message="tns:registrarDatosEvFinalesRecuperacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getConsolidadoNotas">
+      <wsdl:input message="tns:getConsolidadoNotasSoapIn" />
+      <wsdl:output message="tns:getConsolidadoNotasSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NotasEstudianteSoap" type="tns:NotasEstudianteSoap">
@@ -359,6 +392,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getConsolidadoNotas">
+      <soap:operation soapAction="http://tempuri.org/getConsolidadoNotas" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="NotasEstudianteSoap12" type="tns:NotasEstudianteSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -436,6 +478,15 @@
     </wsdl:operation>
     <wsdl:operation name="registrarDatosEvFinalesRecuperacion">
       <soap12:operation soapAction="http://tempuri.org/registrarDatosEvFinalesRecuperacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConsolidadoNotas">
+      <soap12:operation soapAction="http://tempuri.org/getConsolidadoNotas" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

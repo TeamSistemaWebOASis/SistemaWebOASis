@@ -75,6 +75,34 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="Retiros">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" name="strResolucion" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaAprob" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Rectificaciones">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodPeriodo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodParalelo" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodTipoExamen" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNotaAnt" type="xs:string" />
+              <xs:element minOccurs="0" name="strResolucion" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaAprob" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
   </xs:element>
