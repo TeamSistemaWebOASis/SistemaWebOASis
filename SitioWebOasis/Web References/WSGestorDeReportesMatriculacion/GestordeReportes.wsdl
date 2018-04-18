@@ -16,19 +16,19 @@
       <s:import namespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" />
       <s:import namespace="http://tempuri.org/dtstMatriculadosCursoMateria.xsd" />
       <s:import namespace="http://tempuri.org/dtstDatosEstudiantesMatriculados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstOrdenDePago" namespace="http://www.tempuri.org/dtstOrdenDePago.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstListaEstudiantesMatriculados" namespace="http://tempuri.org/dtstListaEstudiantesMatriculados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorCategorias" namespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorario" namespace="http://tempuri.org/dtstHorario.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstListaDocentes" namespace="http://tempuri.org/dtstListaDocentes.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstCursosCarrera" namespace="http://tempuri.org/dtstCursosCarrera.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstPeriodos" namespace="http://tempuri.org/dtstPeriodos.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstDatosEstudiantesMatriculados" namespace="http://tempuri.org/dtstDatosEstudiantesMatriculados.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstAlumnosDocente" namespace="http://tempuri.org/dtstAlumnosDocente.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculadosCursoMateria" namespace="http://tempuri.org/dtstMatriculadosCursoMateria.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstOrdenDePago" namespace="http://www.tempuri.org/dtstOrdenDePago.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstCursosCarrera" namespace="http://tempuri.org/dtstCursosCarrera.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstHorario" namespace="http://tempuri.org/dtstHorario.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorCategorias" namespace="http://tempuri.org/dtstNumDocentesPorCategorias.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasEstudiante" namespace="http://tempuri.org/dtstMatriculasEstudiante.xsd" />
-      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasFacultadesEscuelasCarreras" namespace="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstCursosDocente" namespace="http://tempuri.org/dtstCursosDocente.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculadosCursoMateria" namespace="http://tempuri.org/dtstMatriculadosCursoMateria.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstMatriculasFacultadesEscuelasCarreras" namespace="http://tempuri.org/dtstMatriculasFacultadesEscuelasCarreras.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstListaDocentes" namespace="http://tempuri.org/dtstListaDocentes.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstAlumnosDocente" namespace="http://tempuri.org/dtstAlumnosDocente.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstListaEstudiantesMatriculados" namespace="http://tempuri.org/dtstListaEstudiantesMatriculados.xsd" />
+      <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstDatosEstudiantesMatriculados" namespace="http://tempuri.org/dtstDatosEstudiantesMatriculados.xsd" />
       <s:import schemaLocation="http://localhost/Oasis/OAS_Matriculacion/Matriculacion_BusinessServices/GestordeReportes.asmx?schema=dtstNumDocentesPorTipos" namespace="http://tempuri.org/dtstNumDocentesPorTipos.xsd" />
       <s:element name="GetUbicacion">
         <s:complexType />
@@ -671,6 +671,30 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="GetReporteHorarioDocenteAsignatura">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strCedula" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodPeriodo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodMateria" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodNivel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strCodParalelo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetReporteHorarioDocenteAsignaturaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReporteHorarioDocenteAsignaturaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:any namespace="http://tempuri.org/dtstHorario.xsd" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="GetUbicacionSoapIn">
@@ -871,6 +895,12 @@
   <wsdl:message name="GetDescripcionPeriodoSoapOut">
     <wsdl:part name="parameters" element="tns:GetDescripcionPeriodoResponse" />
   </wsdl:message>
+  <wsdl:message name="GetReporteHorarioDocenteAsignaturaSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReporteHorarioDocenteAsignatura" />
+  </wsdl:message>
+  <wsdl:message name="GetReporteHorarioDocenteAsignaturaSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReporteHorarioDocenteAsignaturaResponse" />
+  </wsdl:message>
   <wsdl:portType name="GestordeReportesSoap">
     <wsdl:operation name="GetUbicacion">
       <wsdl:input message="tns:GetUbicacionSoapIn" />
@@ -1003,6 +1033,10 @@
     <wsdl:operation name="GetDescripcionPeriodo">
       <wsdl:input message="tns:GetDescripcionPeriodoSoapIn" />
       <wsdl:output message="tns:GetDescripcionPeriodoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteHorarioDocenteAsignatura">
+      <wsdl:input message="tns:GetReporteHorarioDocenteAsignaturaSoapIn" />
+      <wsdl:output message="tns:GetReporteHorarioDocenteAsignaturaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="GestordeReportesSoap" type="tns:GestordeReportesSoap">
@@ -1304,6 +1338,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetReporteHorarioDocenteAsignatura">
+      <soap:operation soapAction="http://tempuri.org/GetReporteHorarioDocenteAsignatura" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="GestordeReportesSoap12" type="tns:GestordeReportesSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -1597,6 +1640,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetDescripcionPeriodo">
       <soap12:operation soapAction="http://tempuri.org/GetDescripcionPeriodo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReporteHorarioDocenteAsignatura">
+      <soap12:operation soapAction="http://tempuri.org/GetReporteHorarioDocenteAsignatura" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

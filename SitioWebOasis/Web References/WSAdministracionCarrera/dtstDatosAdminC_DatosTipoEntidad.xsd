@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_DatosTipoEntidad.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_DatosTipoEntidad.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_DatosTipoEntidad.xsd" id="dtstDatosAdminC_DatosTipoEntidad" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_DatosTipoEntidad">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Entidad">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="TipoEntFac" type="xs:string" />
+              <xs:element minOccurs="0" name="TipoEntEsc" type="xs:string" />
+              <xs:element minOccurs="0" name="TipoEntCar" type="xs:string" />
+              <xs:element minOccurs="0" name="AdmiteIns" type="xs:boolean" />
+              <xs:element minOccurs="0" name="AdmiteCC" type="xs:boolean" />
+              <xs:element minOccurs="0" name="AdmiteME" type="xs:boolean" />
+              <xs:element minOccurs="0" name="CodCarreraOrigen" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

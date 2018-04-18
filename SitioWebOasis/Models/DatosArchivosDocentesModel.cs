@@ -145,7 +145,8 @@ namespace SitioWebOasis.Models
                     rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'>" + item["strNombreMateria"].ToString().Trim() +    "</td>";
                     rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</td>";
                     rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + nivel + "</td>";
-                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' id='btnImpresion'  class='btn btn-info'><span class='glyphicon glyphicon-download-alt'></span> DESCARGAR EVALUACIONES</button></div> </td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' style='padding-top: 2px;' class='btn btn-info'><span class='glyphicon glyphicon-download-alt'></span> DESCARGAR EVALUACIONES</button></div> </td>";
+                    rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' style='padding-top: 2px;' class='btn btn-success'>VER INFORMACIÓN</button></div></td>";
                     rst += "</tr>";
                 }
             }

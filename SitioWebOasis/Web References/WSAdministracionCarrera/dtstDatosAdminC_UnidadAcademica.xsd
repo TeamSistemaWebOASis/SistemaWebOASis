@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_UnidadAcademica.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_UnidadAcademica.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_UnidadAcademica.xsd" id="dtstDatosAdminC_UnidadAcademica" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_UnidadAcademica">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Facultad">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strSudDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaSubDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveSubDecano" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Escuela">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Carrera">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strCedulaDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="strClaveDirector" type="xs:string" />
+              <xs:element minOccurs="0" name="dtCreacion" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="strUbicacion" type="xs:string" />
+              <xs:element minOccurs="0" name="strSecretariaAcademica" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="dtstDatosAdminC_UnidadAcademicaKey1">
+      <xs:selector xpath=".//mstns:Facultad" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique name="dtstDatosAdminC_UnidadAcademicaKey2">
+      <xs:selector xpath=".//mstns:Escuela" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique name="dtstDatosAdminC_UnidadAcademicaKey3">
+      <xs:selector xpath=".//mstns:Carrera" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

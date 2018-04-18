@@ -358,6 +358,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Estadística.
+        /// </summary>
+        public static string DOC_TB_ESTADISTICA {
+            get {
+                return ResourceManager.GetString("DOC_TB_ESTADISTICA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Ev. ACUMULATIVA.
         /// </summary>
         public static string DOC_TB_EV_ACUMULATIVA {
@@ -385,11 +394,29 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a EVALUACIONES.
+        ///   Busca una cadena traducida similar a Evaluaciones.
         /// </summary>
         public static string DOC_TB_EVALUACIONES {
             get {
                 return ResourceManager.GetString("DOC_TB_EVALUACIONES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Evalución Final.
+        /// </summary>
+        public static string DOC_TBL_EXAMEN_EV_FINAL {
+            get {
+                return ResourceManager.GetString("DOC_TBL_EXAMEN_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Evalución Recuperación.
+        /// </summary>
+        public static string DOC_TBL_EXAMEN_EV_RECUPERACION {
+            get {
+                return ResourceManager.GetString("DOC_TBL_EXAMEN_EV_RECUPERACION", resourceCulture);
             }
         }
         
@@ -399,6 +426,15 @@ namespace Language {
         public static string DTIC {
             get {
                 return ResourceManager.GetString("DTIC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Certificado matrícula.
+        /// </summary>
+        public static string EST_CERTIFICADO_MATRICULA {
+            get {
+                return ResourceManager.GetString("EST_CERTIFICADO_MATRICULA", resourceCulture);
             }
         }
         
@@ -1884,6 +1920,24 @@ namespace Language {
         public static string STR_INSTITUCION {
             get {
                 return ResourceManager.GetString("STR_INSTITUCION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluacion de recuperación en formato PDF, dispuestas en un solo archivo ZIP.
+        /// </summary>
+        public static string STR_MSG_DESCARGA_EVALUACIONES {
+            get {
+                return ResourceManager.GetString("STR_MSG_DESCARGA_EVALUACIONES", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Esta opción le muestra la gráfica de comportamiento academico en la asignatura.
+        /// </summary>
+        public static string STR_MSG_ESTADISTICA {
+            get {
+                return ResourceManager.GetString("STR_MSG_ESTADISTICA", resourceCulture);
             }
         }
         

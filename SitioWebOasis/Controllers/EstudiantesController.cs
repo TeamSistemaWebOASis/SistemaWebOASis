@@ -35,6 +35,7 @@ namespace SitioWebOasis.Controllers
             if (!string.IsNullOrEmpty(strIdCarrera)) {
                 UsuarioActual.SetRolCarreraActual(  Roles.Estudiantes,
                                                     strIdCarrera);
+                                              
 
                 return View("Index", new SitioWebOasis.Models.DatosAcademicosEstudiante());
             }else{
@@ -226,7 +227,6 @@ namespace SitioWebOasis.Controllers
             {
                 Errores err = new Errores();
                 err.SetError(ex, "Download File");
-
                 return RedirectToAction("Index", "Error");
             }
         }
@@ -307,5 +307,55 @@ namespace SitioWebOasis.Controllers
         }
 
         #endregion
+
+        public ActionResult ArchivoMatricula()
+        {
+            DatosAcademicosEstudiante objDatosAcademico = new DatosAcademicosEstudiante();
+            return View("ArchivoMatricula",objDatosAcademico);
+        }
+        [HttpPost]
+        public JsonResult ImpresionArchivoMatricula(string strCodPeriodo) {
+            try
+            {
+                string reportPath = string.Empty;
+                reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptArchivoMatricula.rdlc");
+                ArchivoMatriculaEstudiante objArchivoMatricula = new ArchivoMatriculaEstudiante(UsuarioActual.CarreraActual.codUsuario.ToString(), UsuarioActual.Cedula.ToString(), strCodPeriodo, "M",UsuarioActual.CarreraActual.Codigo.ToString());
+                LocalReport rptMatriculaEstudiante = objArchivoMatricula.getReporteMatricula(reportPath);
+
+                string idTypeFile = "PDF";
+                string mimeType;
+                string encoding;
+                string fileNameExtension;
+                string deviceInfo = "<DeviceInfo>" +
+                                   "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
+                                   "</DeviceInfo>";
+                Warning[] warnings;
+                string[] streams;
+                byte[] renderedBytes;
+                renderedBytes = rptMatriculaEstudiante.Render(idTypeFile,
+                                                                       deviceInfo,
+                                                                       out mimeType,
+                                                                       out encoding,
+                                                                       out fileNameExtension,
+                                                                       out streams,
+                                                                       out warnings);
+                //  Creo el nombre del archivo
+                string strNombreReporte = "Archivo Matriculacion";
+                string nameFile = strNombreReporte.Replace(" ", "_") + "_" + UsuarioActual.Cedula.ToString() + ((idTypeFile == "PDF") ? ".pdf" : "");
+
+                //  Direcciono la creacion del archivo a una ubicacion temporal
+                string fullPath = Path.Combine(Server.MapPath("~/Temp"), nameFile);
+
+                //  Creo el archivo en la ubicacion temporal
+                System.IO.File.WriteAllBytes(fullPath, renderedBytes);
+                return Json(new { fileName = nameFile, errorMessage = "" });
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "createFile");
+                return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
+            }
+        }
     }
 }

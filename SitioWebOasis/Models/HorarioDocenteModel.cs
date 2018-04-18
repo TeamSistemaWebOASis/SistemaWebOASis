@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
+using SitioWebOasis.WSGestorDeReportesMatriculacion;
 
 namespace SitioWebOasis.Models
 {
@@ -16,11 +17,15 @@ namespace SitioWebOasis.Models
         private WSInfoCarreras.dtstPeriodoVigente _dsPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
         private string strCodPeriodoVigente = string.Empty;
         private string strTipoHorario = string.Empty;
+        private string strCodMateria = string.Empty;
+        private string strCodNivel = string.Empty;
+        private string strCodParalelo = string.Empty;
         public HorarioDocenteModel()
         {
             try
             {
                 this.ObtenerPeriodoVigente();
+                GetParalelo();
             }
             catch (Exception ex)
             {
@@ -32,24 +37,31 @@ namespace SitioWebOasis.Models
         {
             try
             {
+                string[] strcadena = strTipoHorario.Split('|');
                 this.ObtenerPeriodoVigente();
-                this.strTipoHorario = strTipoHorario;
+                if (strcadena.Length > 1)
+                {
+                    this.strTipoHorario = strcadena[0];
+                    this.strCodMateria= strcadena[1];
+                    this.strCodNivel= strcadena[2];
+                    this.strCodParalelo = strcadena[3];
+                }
+                else
+                    this.strTipoHorario = strTipoHorario;
+
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "HorarioDocenteModel");
             }
-
         }
-
         private void ObtenerPeriodoVigente()
         {
             _dsPeriodoVigente = _getPeriodoVigenteCarrera();
             DataRow fila = _dsPeriodoVigente.Tables["Periodos"].Rows[0];
             strCodPeriodoVigente = fila["strCodigo"].ToString();
         }
-
         public void HorarioExamenes()
         {
             GestorDeReportesEvaluacion gr = new GestorDeReportesEvaluacion();
@@ -57,16 +69,13 @@ namespace SitioWebOasis.Models
             gr.set_CodCarrera(this.UsuarioActual.CarreraActual.Codigo);
             WSGestorDeReportesEvaluacion.dtstHorarioExamenes dsHorarioExamenes = gr.GetHorarioExamenesDocente(strCodPeriodoVigente, this.UsuarioActual.Cedula);
         }
-
         public Usuario UsuarioActual
         {
             get { return (Usuario)System.Web.HttpContext.Current.Session["UsuarioActual"]; }
         }
-
         private WSInfoCarreras.dtstPeriodoVigente _getPeriodoVigenteCarrera()
         {
             WSInfoCarreras.dtstPeriodoVigente dsPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
-
             try
             {
                 ProxySeguro.InfoCarreras ic = new ProxySeguro.InfoCarreras();
@@ -77,32 +86,48 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "_getPeriodoVigenteCarrera");
             }
-
             return dsPeriodoVigente;
         }
         private WSGestorDeReportesMatriculacion.dtstHorario _dsHorarioClase()
         {
+            SitioWebOasis.WSGestorDeReportesMatriculacion.dtstHorario dtsHorario;
             GestorDeReportesMatriculacion gr = new GestorDeReportesMatriculacion();
             gr.CookieContainer = new System.Net.CookieContainer();
             gr.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
-            SitioWebOasis.WSGestorDeReportesMatriculacion.dtstHorario dtsHorario = gr.GetReporteHorarioDocente(this.UsuarioActual.Cedula, strCodPeriodoVigente);
+            if (!(this.strCodMateria.Equals("") && this.strCodNivel.Equals("") && this.strCodParalelo.Equals("")))
+                dtsHorario = gr.GetReporteHorarioDocenteAsignatura(this.UsuarioActual.Cedula, strCodPeriodoVigente, this.strCodMateria, this.strCodNivel, this.strCodParalelo);
+            else
+                dtsHorario = gr.GetReporteHorarioDocente(this.UsuarioActual.Cedula, strCodPeriodoVigente);
             return dtsHorario;
         }
         public string HTMLHorarioClases()
         {
             string rst = string.Empty;
-
             rst += " <tr role='row'>";
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS.ToUpper() + "</td>";
             rst += " </tr>";
-
             try
             {
-                var dtsHorario = _dsHorarioClase();
+                WSGestorDeReportesMatriculacion.dtstHorario dtsHorario;
+                dtsHorario = _dsHorarioClase();
                 dtsHorario.Tables["Horario"].DefaultView.Sort = "strCodHora";//Ordena  la tabla del dataset
                 if (dtsHorario != null && dtsHorario.Tables["Horario"].Rows.Count > 0)
                 {
                     rst = string.Empty;
+                    rst += "<thead>";
+                    rst += "<tr role='row'>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 50pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_NUMERO + "</th>";
+                    rst += "    <th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 90pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_HORA + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_LUNES + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_MARTES + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_MIERCOLES + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_JUEVES + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_VIERNES + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_SABADO + "</th>";
+                    rst += "	<th tabindex='0' aria-controls='ticket-table' rowspan='1' colspan='1' style='width: 130pxrst ; align-content: center; vertical-align: middle; text-align: center; '>" + @Language.es_ES.EST_TB_COL_DOMINGO + "</th>";
+                    rst += "</tr>";
+                    rst += "</thead>";
+                    rst += "<tbody>";
                     foreach (DataRow item in dtsHorario.Tables["Horario"].Rows)
                     {
                         rst += " <tr role='row' class='even'>";
@@ -117,6 +142,7 @@ namespace SitioWebOasis.Models
                         rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strDomingo"].ToString() + "</td>";
                         rst += " </tr>";
                     }
+                    rst += "</tbody>";
                 }
             }
             catch (Exception ex)
@@ -124,8 +150,15 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "HTMLHorarioCarrera");
             }
-
             return rst;
+        }
+        public void HorarioClaseMateria(string strCodigo)
+        {
+            string[] strCadenas = strCodigo.Split('|');
+            this.strCodMateria = strCadenas[0];
+            this.strCodNivel = strCadenas[1];
+            this.strCodParalelo = strCadenas[2];
+            HTMLHorarioClases();
         }
         private WSGestorDeReportesEvaluacion.dtstHorarioExamenes _dsHorarioExamenes()
         {
@@ -135,15 +168,12 @@ namespace SitioWebOasis.Models
             WSGestorDeReportesEvaluacion.dtstHorarioExamenes dsHorarioExamenes = gr.GetHorarioExamenesDocente(strCodPeriodoVigente, this.UsuarioActual.Cedula);
             return dsHorarioExamenes;
         }
-
         public string HTMLHorarioExamen()
         {
             string rst = string.Empty;
-
             rst += " <tr role='row'>";
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS.ToUpper() + "</td>";
             rst += " </tr>";
-
             try
             {
                 WSGestorDeReportesEvaluacion.dtstHorarioExamenes dsHorarioExamenes = _dsHorarioExamenes();
@@ -167,10 +197,8 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "HTMLHorarioCarrera");
             }
-
             return rst;
         }
-
         public string getNombreDocente()
         {
             string nombreDocente = (this.UsuarioActual != null)
@@ -217,19 +245,19 @@ namespace SitioWebOasis.Models
                 {
                     WSGestorDeReportesEvaluacion.dtstHorarioExamenes dsHorarioExamenes = _dsHorarioExamenes();
                     List<HorarioExamenDocente> lstHorarioExDocente = new List<HorarioExamenDocente>();
-                    foreach (DataRow item in  dsHorarioExamenes.Tables["Materias"].Rows)
+                    foreach (DataRow item in dsHorarioExamenes.Tables["Materias"].Rows)
                     {
                         HorarioExamenDocente objHorarioExamen = new HorarioExamenDocente
                         {
-                            StrCodMateria=item.ItemArray[0].ToString(),
-                            StrCodParalelo=item.ItemArray[1].ToString(),
-                            StrCodNivel= item.ItemArray[2].ToString(),
-                            StrDescripcionNivel=item.ItemArray[3].ToString(),
-                            StrNombreMateria=item.ItemArray[4].ToString(),
-                            DtFechaExPrinc= item.ItemArray[5].ToString(),
-                            DtFechaExSusp= item.ItemArray[6].ToString(),
-                            StrCedula= item.ItemArray[7].ToString(),
-                            StrKeyMateria=item.ItemArray[8].ToString()
+                            StrCodMateria = item.ItemArray[0].ToString(),
+                            StrCodParalelo = item.ItemArray[1].ToString(),
+                            StrCodNivel = item.ItemArray[2].ToString(),
+                            StrDescripcionNivel = item.ItemArray[3].ToString(),
+                            StrNombreMateria = item.ItemArray[4].ToString(),
+                            DtFechaExPrinc = item.ItemArray[5].ToString(),
+                            DtFechaExSusp = item.ItemArray[6].ToString(),
+                            StrCedula = item.ItemArray[7].ToString(),
+                            StrKeyMateria = item.ItemArray[8].ToString()
                         };
                         lstHorarioExDocente.Add(objHorarioExamen);
                     }
@@ -249,7 +277,6 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "getReporteHorarios");
             }
-
             return rptHorarioDocente;
         }
 
@@ -257,23 +284,18 @@ namespace SitioWebOasis.Models
         {
             WSInfoCarreras.ParametrosCarrera pc = this._getParametrosCarrera();
             List<ReportParameter> lstPrmRptHorarioAcademico = new List<ReportParameter>();
-
             string lblFacultad = "FACULTAD:";
             string lblCarrera = "CARRERA:";
             string lblEscuela = "ESCUELA:";
-
             string facultad = default(string);
             string carrera = default(string);
             string escuela = default(string);
             string strDocente = default(string);
-
             try
             {
                 ReportParameter prmRptHorarioAcademico = new ReportParameter();
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strPeriodoAcademico",
                                                 _dsPeriodoVigente.Periodos[0]["strDescripcion"].ToString().ToUpper()));
-
                 strDocente = getNombreDocente();
                 switch (UsuarioActual.CarreraActual.TipoEntidad.ToString())
                 {
@@ -282,51 +304,37 @@ namespace SitioWebOasis.Models
                         carrera = pc.NombreCarrera;
                         escuela = pc.NombreEscuela;
                         break;
-
                     case "CAA":
                         lblFacultad = "";
                         lblCarrera = "";
                         lblEscuela = "";
-
                         facultad = pc.NombreFacultad;
                         carrera = pc.NombreCarrera;
                         escuela = "";
                         break;
                 }
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strInstitucion",
                                                                     Language.es_ES.STR_INSTITUCION));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblHorarioAcademico",
                                                                     Language.es_ES.STR_HORARIO_ACADEMICO));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblHorarioExamenes",
                                                                     Language.es_ES.STR_HORARIO_EXAMENES));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblPeriodoAcademico",
                                                                     Language.es_ES.STR_PERIODO_ACADEMICO));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblFacultad",
                                                                     lblFacultad));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblCarrera",
                                                                     lblCarrera));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strLblEscuela",
                                                                     lblEscuela));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strFacultad",
                                                                     facultad));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strEscuela",
                                                                     carrera));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strCarrera",
                                                                     escuela));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strDocente",
                                                                     strDocente));
-
                 lstPrmRptHorarioAcademico.Add(new ReportParameter("strFuente",
                                                                     Language.es_ES.STR_FUENTE_REPORTE));
             }
@@ -335,7 +343,6 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "_getDatosGeneralesReporte");
             }
-
             return lstPrmRptHorarioAcademico;
         }
         private WSInfoCarreras.ParametrosCarrera _getParametrosCarrera()
@@ -351,10 +358,28 @@ namespace SitioWebOasis.Models
                 Errores err = new Errores();
                 err.SetError(ex, "_getParametrosCarrera");
             }
-
             return pc;
         }
-
-
+        public System.Collections.Generic.IEnumerable<System.Web.Mvc.SelectListItem> GetParalelo()
+        {
+            List<System.Web.Mvc.SelectListItem> lstParalelo = new List<System.Web.Mvc.SelectListItem>();
+            return lstParalelo;
+        }
+        public List<System.Web.Mvc.SelectListItem> getLstAsignaturasDocente()
+        {
+            try
+            {
+                List<System.Web.Mvc.SelectListItem> lstAsignaturasDocente = new List<System.Web.Mvc.SelectListItem>();
+                Asignatura obj = new Asignatura();
+                lstAsignaturasDocente = obj.getLstAsignaturasDocente();
+                return lstAsignaturasDocente;
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "getLstAsignaturasDocente");
+                return null;
+            }
+        }
     }
 }

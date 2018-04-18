@@ -216,7 +216,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IsAuthenticatedAttribute.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="CommonClasses\CacheConfig.cs" />
@@ -285,6 +284,8 @@
     <Compile Include="Library\Nacionalidad.cs" />
     <Compile Include="Library\EvaluacionActiva.cs" />
     <Compile Include="Library\Persona.cs" />
+    <Compile Include="Library\ReporteMatriculacionEstudiante.cs" />
+    <Compile Include="Models\ArchivoMatriculaEstudiante.cs" />
     <Compile Include="Models\DatosArchivosDocentesModel.cs" />
     <Compile Include="Models\DatosAsignaturasDocenteModel.cs" />
     <Compile Include="Models\DatosAcademicosEstudiante.cs" />
@@ -463,6 +464,19 @@
     <Content Include="Content\js\king-page.js" />
     <Content Include="Content\js\king-table.js" />
     <Content Include="Content\js\modernizr\modernizr.js" />
+    <Content Include="Content\js\stat\colorbrewer.js" />
+    <Content Include="Content\js\stat\d3.js" />
+    <Content Include="Content\js\stat\d3.min.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.min.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.orderBars.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.pie.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.pie.min.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.resize.min.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.selection.min.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.time.min.js" />
+    <Content Include="Content\js\stat\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="Content\js\stat\jquery.easypiechart.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -483,6 +497,8 @@
     <Content Include="Content\fonts\lato-bol-webfont.woff" />
     <Content Include="Content\fonts\lato-lig-webfont.ttf" />
     <Content Include="Content\fonts\lato-lig-webfont.woff" />
+    <Content Include="Content\js\stat\data-barchart.tsv" />
+    <Content Include="Content\js\stat\data-heatmap.tsv" />
     <None Include="Properties\PublishProfiles\despligueLocal.pubxml" />
     <None Include="Properties\PublishProfiles\servicios.espoch.edu.ec.pubxml" />
     <None Include="Properties\Settings.settings">
@@ -523,6 +539,7 @@
     <Content Include="Views\Docentes\GestionArchivoDocente.cshtml" />
     <Content Include="Views\Docentes\HorarioDocente.cshtml" />
     <Content Include="Views\Docentes\HorarioExamenDocente.cshtml" />
+    <Content Include="Views\Estudiantes\ArchivoMatricula.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CambioPensum.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -1002,7 +1019,7 @@
     <None Include="Web References\WSEgresamientoGraduacion\GestorEgresamientoGraduacion.wsdl" />
     <None Include="Web References\WSEgresamientoGraduacion\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
+      <LastGenOutput>Reference1.cs</LastGenOutput>
     </None>
     <None Include="Web References\WSGestorDeReportesEvaluacion\dtstEvaluacion_Actas.xsd" />
     <None Include="Web References\WSGestorDeReportesEvaluacion\dtstHorarioExamenes.xsd" />
@@ -1101,6 +1118,7 @@
     <EmbeddedResource Include="Reports\rptActaExPrincipalSinNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptActaExSuspensionConNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptActaExSuspensionSinNotasR1.rdlc" />
+    <EmbeddedResource Include="Reports\rptArchivoMatricula.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioClaseDocente.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioExamenDocente.rdlc" />

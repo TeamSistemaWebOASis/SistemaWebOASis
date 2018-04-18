@@ -71,6 +71,7 @@ namespace SitioWebOasis.Controllers
                     this._addObjetoSeguridad();
 
                     string periodoVigente = this._getPeriodoVigente();
+                    //string periodoVigente = "P0028";
                     SitioWebOasis.ProxySeguro.Seguridad seg = new ProxySeguro.Seguridad();
 
                     //  GESTIONA EL ROL DE UN USUARIO REGISTRADO
@@ -189,7 +190,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
                 //  //  DOCENTE
-                numIdentificacion = "060324303-1";  //  <-- Miguel Duque
+                // numIdentificacion = "060324303-1";  //  <-- Miguel Duque
 
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
@@ -206,6 +207,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
                 //  numIdentificacion = "060320137-7";
                 //  numIdentificacion = "060327507-4";
+                    numIdentificacion = "060180782-9"; //Mario Paguay
             }
             catch (Exception ex){
                 Errores err = new Errores();

@@ -96,6 +96,8 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
         
         private System.Threading.SendOrPostCallback GetDescripcionPeriodoOperationCompleted;
         
+        private System.Threading.SendOrPostCallback GetReporteHorarioDocenteAsignaturaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -232,6 +234,9 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
         
         /// <remarks/>
         public event GetDescripcionPeriodoCompletedEventHandler GetDescripcionPeriodoCompleted;
+        
+        /// <remarks/>
+        public event GetReporteHorarioDocenteAsignaturaCompletedEventHandler GetReporteHorarioDocenteAsignaturaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetUbicacion", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -1229,6 +1234,43 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
             if ((this.GetDescripcionPeriodoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.GetDescripcionPeriodoCompleted(this, new GetDescripcionPeriodoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/GetReporteHorarioDocenteAsignatura", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public dtstHorario GetReporteHorarioDocenteAsignatura(string strCedula, string strCodPeriodo, string strCodMateria, string strCodNivel, string strCodParalelo) {
+            object[] results = this.Invoke("GetReporteHorarioDocenteAsignatura", new object[] {
+                        strCedula,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodNivel,
+                        strCodParalelo});
+            return ((dtstHorario)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void GetReporteHorarioDocenteAsignaturaAsync(string strCedula, string strCodPeriodo, string strCodMateria, string strCodNivel, string strCodParalelo) {
+            this.GetReporteHorarioDocenteAsignaturaAsync(strCedula, strCodPeriodo, strCodMateria, strCodNivel, strCodParalelo, null);
+        }
+        
+        /// <remarks/>
+        public void GetReporteHorarioDocenteAsignaturaAsync(string strCedula, string strCodPeriodo, string strCodMateria, string strCodNivel, string strCodParalelo, object userState) {
+            if ((this.GetReporteHorarioDocenteAsignaturaOperationCompleted == null)) {
+                this.GetReporteHorarioDocenteAsignaturaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnGetReporteHorarioDocenteAsignaturaOperationCompleted);
+            }
+            this.InvokeAsync("GetReporteHorarioDocenteAsignatura", new object[] {
+                        strCedula,
+                        strCodPeriodo,
+                        strCodMateria,
+                        strCodNivel,
+                        strCodParalelo}, this.GetReporteHorarioDocenteAsignaturaOperationCompleted, userState);
+        }
+        
+        private void OnGetReporteHorarioDocenteAsignaturaOperationCompleted(object arg) {
+            if ((this.GetReporteHorarioDocenteAsignaturaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.GetReporteHorarioDocenteAsignaturaCompleted(this, new GetReporteHorarioDocenteAsignaturaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -20823,6 +20865,32 @@ namespace SitioWebOasis.WSGestorDeReportesMatriculacion {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void GetReporteHorarioDocenteAsignaturaCompletedEventHandler(object sender, GetReporteHorarioDocenteAsignaturaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class GetReporteHorarioDocenteAsignaturaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal GetReporteHorarioDocenteAsignaturaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public dtstHorario Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((dtstHorario)(this.results[0]));
             }
         }
     }
