@@ -26,7 +26,16 @@
 }
 
 <div id="messageError" class="alert alert-danger alert-dismissable" hidden="hidden"></div>
-
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="contextual-summary-info">
+                <i class="fa fa-calendar-check-o"></i>
+                <p class="pull-right"><span> <strong> @Language.es_ES.EST_HORARIO_CARRERA_ESTUDIANTE.ToUpper() </strong> </span> @Model.UsuarioActual.Nombre.ToUpper() </p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="widget">
     <div class="widget-header">
         <h3>@Language.es_ES.EST_LBL_HORARIOS.ToUpper()</h3>

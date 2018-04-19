@@ -540,6 +540,7 @@
     <Content Include="Views\Docentes\HorarioDocente.cshtml" />
     <Content Include="Views\Docentes\HorarioExamenDocente.cshtml" />
     <Content Include="Views\Estudiantes\ArchivoMatricula.cshtml" />
+    <Content Include="Views\Docentes\HorarioCarrera.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionCarrera\dtstDatosAdminC_CambioPensum.datasource">
       <DependentUpon>Reference.map</DependentUpon>

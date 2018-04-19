@@ -160,6 +160,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Horario Carrera.
+        /// </summary>
+        public static string DOC_HORARIO_CARRERA_DOCENTE {
+            get {
+                return ResourceManager.GetString("DOC_HORARIO_CARRERA_DOCENTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Horario Académico.
         /// </summary>
         public static string DOC_HORARIO_CLASE {
@@ -196,7 +205,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Horario de Exámenes.
+        ///   Busca una cadena traducida similar a Horario  Exámenes.
         /// </summary>
         public static string DOC_MN_HORARIO_EXAMEN_DOCENTE {
             get {
@@ -768,6 +777,15 @@ namespace Language {
         public static string EST_DWN_XLS {
             get {
                 return ResourceManager.GetString("EST_DWN_XLS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Horario carrera.
+        /// </summary>
+        public static string EST_HORARIO_CARRERA_ESTUDIANTE {
+            get {
+                return ResourceManager.GetString("EST_HORARIO_CARRERA_ESTUDIANTE", resourceCulture);
             }
         }
         
