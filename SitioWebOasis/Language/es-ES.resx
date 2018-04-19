@@ -652,7 +652,10 @@
     <value>Cumplimiento</value>
   </data>
   <data name="NOTAS_TB_COL_EF_TOTAL_ACUMULADO" xml:space="preserve">
-    <value>Total acumulado</value>
+    <value>Total evaluación final</value>
+  </data>
+  <data name="NOTAS_TB_COL_EF_TOTAL_ACUMULADO_TOOL_TIP" xml:space="preserve">
+    <value>Sumatoria entre total acumulado + nota evaluación final</value>
   </data>
   <data name="NOTAS_TB_COL_EF_TOTAL_ASISTENCIA" xml:space="preserve">
     <value>Total asistencia(%)</value>
@@ -671,6 +674,9 @@
   </data>
   <data name="NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION" xml:space="preserve">
     <value>Nota evaluación recuperación</value>
+  </data>
+  <data name="NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION_TOOP_TIP" xml:space="preserve">
+    <value>Examen suspensión - / 20pts</value>
   </data>
   <data name="NOTAS_TB_COL_ER_TOTAL_ACUMULADO" xml:space="preserve">
     <value>Total acumulado</value>
@@ -705,6 +711,9 @@
   <data name="NOTAS_TB_COL_NOTA_EV_FINAL" xml:space="preserve">
     <value>Nota evaluación final</value>
   </data>
+  <data name="NOTAS_TB_COL_NOTA_EV_FINAL_TOOL_TIP" xml:space="preserve">
+    <value>Examen principal - / 12pts</value>
+  </data>
   <data name="NOTAS_TB_COL_NOTA_EV_RECUPERACION" xml:space="preserve">
     <value>AAA</value>
   </data>
@@ -721,13 +730,13 @@
     <value>Observación</value>
   </data>
   <data name="NOTAS_TB_COL_PARCIAL_01" xml:space="preserve">
-    <value>Nota uno (1)</value>
+    <value>Nota uno (8pts)</value>
   </data>
   <data name="NOTAS_TB_COL_PARCIAL_02" xml:space="preserve">
-    <value>Nota dos (2)</value>
+    <value>Nota dos (10pts)</value>
   </data>
   <data name="NOTAS_TB_COL_PARCIAL_03" xml:space="preserve">
-    <value>Nota tres (3)</value>
+    <value>Nota tres (10pts)</value>
   </data>
   <data name="NOTAS_TB_COL_PORCIENTO_ASISTENCIA" xml:space="preserve">
     <value>Asistencia (%)</value>
@@ -738,17 +747,17 @@
   <data name="NOTAS_TB_COL_PROMEDIO_TOOL_TIP" xml:space="preserve">
     <value>Promedio: Sumatoria de la Nota uno + Nota dos + Nota tres sobre (/) el numero de parcial vigente</value>
   </data>
-  <data name="NOTAS_TB_COL_TOTAL" xml:space="preserve">
-    <value>Total Acumulado</value>
-  </data>
   <data name="NOTAS_TB_COL_TOTALIZADOS" xml:space="preserve">
     <value>TOTALIZADOS</value>
   </data>
   <data name="NOTAS_TB_COL_TOTALIZADO_EV_FINAL" xml:space="preserve">
     <value>TOTALIZADO EVALUACIÓN FORMATIVA</value>
   </data>
-  <data name="NOTAS_TB_COL_TOTAL_TOOL_TIP" xml:space="preserve">
-    <value>Sumatoria: Nota uno + Nota dos + Nota tres</value>
+  <data name="NOTAS_TB_COL_TOTAL_ACUMULADO" xml:space="preserve">
+    <value>Total Acumulado</value>
+  </data>
+  <data name="NOTAS_TB_COL_TOTAL_ACUMULADO_TOOL_TIP" xml:space="preserve">
+    <value>Sumatoria de Nota uno + Nota dos + Nota tres</value>
   </data>
   <data name="PER_CB_CIUDAD_SELECCIONE" xml:space="preserve">
     <value>SELECCIONE CIUDAD</value>
@@ -801,11 +810,26 @@
   <data name="STR_ACCEDER_SISTEMA_ACADEMICO" xml:space="preserve">
     <value>Acceder al Sistema Académico</value>
   </data>
+  <data name="STR_ART_EXONERADO" xml:space="preserve">
+    <value>RRA. Art 64 d</value>
+  </data>
+  <data name="STR_ART_REPROBADO_EV_ACUMULATIVA" xml:space="preserve">
+    <value>RRA. Art 66 b, punto uno</value>
+  </data>
+  <data name="STR_ART_REPROBADO_EV_FINAL" xml:space="preserve">
+    <value>RRA. Art 66 b, punto dos</value>
+  </data>
+  <data name="STR_ART_REPROBADO_FALTAS" xml:space="preserve">
+    <value>RRA. Art. 62</value>
+  </data>
   <data name="STR_CERRAR_SESION" xml:space="preserve">
     <value>Cerrar sesión</value>
   </data>
   <data name="STR_DOCENTE_SIN_CARGA_ACADEMICA" xml:space="preserve">
     <value>DOCENTE 'SIN' CARGA ACADÉMICA EN EL PERIODO ACADÉMICO </value>
+  </data>
+  <data name="STR_EXONERADO" xml:space="preserve">
+    <value>EXONERADO</value>
   </data>
   <data name="STR_FUENTE_REPORTE" xml:space="preserve">
     <value>Sistema academico - ESPOCH</value>
@@ -837,10 +861,31 @@
   <data name="STR_RECTIFICACION_NOTAS" xml:space="preserve">
     <value>RECTIFICACIÓN</value>
   </data>
+  <data name="STR_REPROBADO_EV_ACUMULATIVA" xml:space="preserve">
+    <value>REPROBADO</value>
+  </data>
+  <data name="STR_REPROBADO_EV_FINAL" xml:space="preserve">
+    <value>REPROBADO</value>
+  </data>
+  <data name="STR_REPRUEBA_FALTAS_NOTAS" xml:space="preserve">
+    <value>REPROBADO FALTAS</value>
+  </data>
   <data name="STR_RETIRO_ASIGNATURA" xml:space="preserve">
     <value>RETIRO DE ASIGNATURA</value>
   </data>
   <data name="STR_RETIRO_CONVALIDA" xml:space="preserve">
     <value>ASIGNATURA CONVALIDADA</value>
+  </data>
+  <data name="STR_RRA_EXONERADO" xml:space="preserve">
+    <value>...El(la) estudiante que en la evaluación acumulativa reuniera el 90% o más de la calificación correspondiente, es decir veinte y cinco (25) puntos o más, será &lt;strong&gt;exonerado &lt;/strong&gt; de rendir la evaluación final y se considerará aprobado como un estímulo a su rendimiento académico; para lo cual se sumará al valor de la evaluación final, doce (12) puntos.</value>
+  </data>
+  <data name="STR_RRA_REPROBADO_EV_ACUMULATIVA" xml:space="preserve">
+    <value>... Para presentarse a la evaluación final el(la) estudiante &lt;strong&gt;deberá tener una calificación minima de cuatro (4) puntos en la evaluación acumulativa&lt;strong&gt;.</value>
+  </data>
+  <data name="STR_RRA_REPROBADO_EV_FINAL" xml:space="preserve">
+    <value>... Si en la suma de las calificaciones de las evaluaciones acumulativa y final, el(la) estudiante no acumulare dieciseis sobre cuarenta (16/40) puntos, &lt;strong&gt;no aprobara&lt;/strong&gt; la asignatura</value>
+  </data>
+  <data name="STR_RRA_REPRUEBA_FALTAS" xml:space="preserve">
+    <value>... Para aprobar una asignatura, el (la) estudiante deberá obtener como minimo el 70% del máximo puntaje establecido; es decir; veintiocho sobre 40 (28/40) puntos y &lt;strong&gt;una asistencia minima del 70%&lt;strong&gt;</value>
   </data>
 </root>

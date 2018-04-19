@@ -1663,11 +1663,20 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Total acumulado.
+        ///   Busca una cadena traducida similar a Total evaluación final.
         /// </summary>
         public static string NOTAS_TB_COL_EF_TOTAL_ACUMULADO {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_EF_TOTAL_ACUMULADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Sumatoria entre total acumulado + nota evaluación final.
+        /// </summary>
+        public static string NOTAS_TB_COL_EF_TOTAL_ACUMULADO_TOOL_TIP {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_EF_TOTAL_ACUMULADO_TOOL_TIP", resourceCulture);
             }
         }
         
@@ -1722,6 +1731,15 @@ namespace Language {
         public static string NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION {
             get {
                 return ResourceManager.GetString("NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Examen suspensión - / 20pts.
+        /// </summary>
+        public static string NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION_TOOP_TIP {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION_TOOP_TIP", resourceCulture);
             }
         }
         
@@ -1825,6 +1843,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Examen principal - / 12pts.
+        /// </summary>
+        public static string NOTAS_TB_COL_NOTA_EV_FINAL_TOOL_TIP {
+            get {
+                return ResourceManager.GetString("NOTAS_TB_COL_NOTA_EV_FINAL_TOOL_TIP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a AAA.
         /// </summary>
         public static string NOTAS_TB_COL_NOTA_EV_RECUPERACION {
@@ -1870,7 +1897,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nota uno (1).
+        ///   Busca una cadena traducida similar a Nota uno (8pts).
         /// </summary>
         public static string NOTAS_TB_COL_PARCIAL_01 {
             get {
@@ -1879,7 +1906,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nota dos (2).
+        ///   Busca una cadena traducida similar a Nota dos (10pts).
         /// </summary>
         public static string NOTAS_TB_COL_PARCIAL_02 {
             get {
@@ -1888,7 +1915,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Nota tres (3).
+        ///   Busca una cadena traducida similar a Nota tres (10pts).
         /// </summary>
         public static string NOTAS_TB_COL_PARCIAL_03 {
             get {
@@ -1926,18 +1953,18 @@ namespace Language {
         /// <summary>
         ///   Busca una cadena traducida similar a Total Acumulado.
         /// </summary>
-        public static string NOTAS_TB_COL_TOTAL {
+        public static string NOTAS_TB_COL_TOTAL_ACUMULADO {
             get {
-                return ResourceManager.GetString("NOTAS_TB_COL_TOTAL", resourceCulture);
+                return ResourceManager.GetString("NOTAS_TB_COL_TOTAL_ACUMULADO", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Sumatoria: Nota uno + Nota dos + Nota tres.
+        ///   Busca una cadena traducida similar a Sumatoria de Nota uno + Nota dos + Nota tres.
         /// </summary>
-        public static string NOTAS_TB_COL_TOTAL_TOOL_TIP {
+        public static string NOTAS_TB_COL_TOTAL_ACUMULADO_TOOL_TIP {
             get {
-                return ResourceManager.GetString("NOTAS_TB_COL_TOTAL_TOOL_TIP", resourceCulture);
+                return ResourceManager.GetString("NOTAS_TB_COL_TOTAL_ACUMULADO_TOOL_TIP", resourceCulture);
             }
         }
         
@@ -2113,6 +2140,42 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a RRA. Art 64 d.
+        /// </summary>
+        public static string STR_ART_EXONERADO {
+            get {
+                return ResourceManager.GetString("STR_ART_EXONERADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RRA. Art 66 b, punto uno.
+        /// </summary>
+        public static string STR_ART_REPROBADO_EV_ACUMULATIVA {
+            get {
+                return ResourceManager.GetString("STR_ART_REPROBADO_EV_ACUMULATIVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RRA. Art 66 b, punto dos.
+        /// </summary>
+        public static string STR_ART_REPROBADO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("STR_ART_REPROBADO_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a RRA. Art. 62.
+        /// </summary>
+        public static string STR_ART_REPROBADO_FALTAS {
+            get {
+                return ResourceManager.GetString("STR_ART_REPROBADO_FALTAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Cerrar sesión.
         /// </summary>
         public static string STR_CERRAR_SESION {
@@ -2127,6 +2190,15 @@ namespace Language {
         public static string STR_DOCENTE_SIN_CARGA_ACADEMICA {
             get {
                 return ResourceManager.GetString("STR_DOCENTE_SIN_CARGA_ACADEMICA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a EXONERADO.
+        /// </summary>
+        public static string STR_EXONERADO {
+            get {
+                return ResourceManager.GetString("STR_EXONERADO", resourceCulture);
             }
         }
         
@@ -2221,6 +2293,33 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a REPROBADO.
+        /// </summary>
+        public static string STR_REPROBADO_EV_ACUMULATIVA {
+            get {
+                return ResourceManager.GetString("STR_REPROBADO_EV_ACUMULATIVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a REPROBADO.
+        /// </summary>
+        public static string STR_REPROBADO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("STR_REPROBADO_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a REPROBADO FALTAS.
+        /// </summary>
+        public static string STR_REPRUEBA_FALTAS_NOTAS {
+            get {
+                return ResourceManager.GetString("STR_REPRUEBA_FALTAS_NOTAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a RETIRO DE ASIGNATURA.
         /// </summary>
         public static string STR_RETIRO_ASIGNATURA {
@@ -2235,6 +2334,42 @@ namespace Language {
         public static string STR_RETIRO_CONVALIDA {
             get {
                 return ResourceManager.GetString("STR_RETIRO_CONVALIDA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ...El(la) estudiante que en la evaluación acumulativa reuniera el 90% o más de la calificación correspondiente, es decir veinte y cinco (25) puntos o más, será &lt;strong&gt;exonerado &lt;/strong&gt; de rendir la evaluación final y se considerará aprobado como un estímulo a su rendimiento académico; para lo cual se sumará al valor de la evaluación final, doce (12) puntos..
+        /// </summary>
+        public static string STR_RRA_EXONERADO {
+            get {
+                return ResourceManager.GetString("STR_RRA_EXONERADO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ... Para presentarse a la evaluación final el(la) estudiante &lt;strong&gt;deberá tener una calificación minima de cuatro (4) puntos en la evaluación acumulativa&lt;strong&gt;..
+        /// </summary>
+        public static string STR_RRA_REPROBADO_EV_ACUMULATIVA {
+            get {
+                return ResourceManager.GetString("STR_RRA_REPROBADO_EV_ACUMULATIVA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ... Si en la suma de las calificaciones de las evaluaciones acumulativa y final, el(la) estudiante no acumulare dieciseis sobre cuarenta (16/40) puntos, &lt;strong&gt;no aprobara&lt;/strong&gt; la asignatura.
+        /// </summary>
+        public static string STR_RRA_REPROBADO_EV_FINAL {
+            get {
+                return ResourceManager.GetString("STR_RRA_REPROBADO_EV_FINAL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a ... Para aprobar una asignatura, el (la) estudiante deberá obtener como minimo el 70% del máximo puntaje establecido; es decir; veintiocho sobre 40 (28/40) puntos y &lt;strong&gt;una asistencia minima del 70%&lt;strong&gt;.
+        /// </summary>
+        public static string STR_RRA_REPRUEBA_FALTAS {
+            get {
+                return ResourceManager.GetString("STR_RRA_REPRUEBA_FALTAS", resourceCulture);
             }
         }
     }

@@ -231,10 +231,13 @@ namespace SitioWebOasis.Controllers
 
                 //  numIdentificacion = "060383835-0";
                 //  numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
-                numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
+                //  numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
 
                 //  numIdentificacion = "015010212-7";
                 //  numIdentificacion = "060449038-3";
+                //  numIdentificacion = "230023884-3";
+
+                numIdentificacion = "155000450-9";
             }
             catch (Exception ex){
                 Errores err = new Errores();

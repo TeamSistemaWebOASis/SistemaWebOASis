@@ -73,8 +73,7 @@ namespace SitioWebOasis.Models
                 err.SetError(ex, "_getUltimoPeriodoEstudiante - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
 
-            //  return ultimoPeriodo;
-            return "P0014";
+            return ultimoPeriodo;
         }
 
 
@@ -753,7 +752,7 @@ namespace SitioWebOasis.Models
             int x = default(Int16);
 
             rst += " <tr role='row' class='success'>";
-            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='11'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
             try
@@ -791,12 +790,17 @@ namespace SitioWebOasis.Models
             {
                 Errores err = new Errores();
                 err.SetError(ex, "");
-                err.setInfo("Datos Academicos Estudiante - _getHTMLNotasEVAcumulativa", "Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
+                err.setInfo("getDtaRectificaciones", "Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
 
             return rst;
         }
 
+
+        public bool estudianteEnPeriodoVigente()
+        {
+            return (periodoEstudiante.ToString().CompareTo(periodoVigente.Periodos[0]["strCodigo"].ToString()) == 0);
+        }
 
     }
 }

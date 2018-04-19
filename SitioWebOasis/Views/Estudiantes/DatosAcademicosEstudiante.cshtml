@@ -57,7 +57,6 @@
 
                                 <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid" style="font-stretch: condensed;">
                                     <thead>
-
                                         <tr role="row">
                                             <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
                                             <th rowspan="2" style="width: 250px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
@@ -75,20 +74,20 @@
                                             <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
                                             <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
                                             <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
-                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_TOTAL</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_TOTAL_ACUMULADO_TOOL_TIP">@Language.es_ES.NOTAS_TB_COL_TOTAL_ACUMULADO</th>
 
-                                            <th style="border-left: 1px dotted darkgray;border-top: 2px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
-                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO</th>
+                                            <th style="border-left: 1px dotted darkgray;border-top: 2px solid darkgray; align-content: center; vertical-align: middle; text-align: center;"  data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL_TOOL_TIP">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO_TOOL_TIP">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO</th>
                                             <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
 
                                             <th style="border-left: 1px dotted darkgray; align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION</th>
-                                            <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
+                                            <th style="align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION_TOOP_TIP">@Language.es_ES.NOTAS_TB_COL_ER_NOTA_EV_RECUPERACION</th>
                                             <th style="align-content: center; vertical-align: middle; text-align: center;" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_TOTAL_ACUMULADO_EV_RECUPERACION</th>
                                             <th style="border-right: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
                                         </tr>
 
                                     </thead>
-
+                                    
                                     <tbody>
                                         @Html.Raw(Model.getHTMLConsolidadoNotas())
                                     </tbody>
