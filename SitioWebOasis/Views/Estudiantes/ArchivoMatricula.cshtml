@@ -1,0 +1,45 @@
+﻿@model  SitioWebOasis.Models.DatosAcademicosEstudiante
+@{
+    ViewBag.Title = "ArchivoMatricula";
+}
+
+@section AddToHead{
+    <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="main-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="contextual-summary-info">
+                <i class="fa fa-user"></i>
+                <p class="pull-right"><span>CERTIFICADOS DE MATRÍCULAS </span> @Model.UsuarioActual.Nombre.ToString() </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading">PERIODOS CRUZADOS POR EL ESTUDIANTE</div>
+    <div class="panel-body">
+        <div id="messageError" hidden="hidden"></div>
+        @*TABLA DE NOTAS DEL ESTUDIANTE*@
+        <table id="tblPeriodos" class="table table-hover" role="grid">
+            <thead>
+                <tr role="row">
+                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">Predios</th>
+                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">Descargar</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @*NOTAS EVALUACION ESTUDIANTE*@
+                @Html.Raw(Model.getHTMLPeriodosAcademicos())
+            </tbody>
+        </table>
+        <div class="row"></div>
+    </div>
+</div>
+@section scripts{
+    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
+    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.2.3"> </script>
+}

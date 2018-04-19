@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_CierrePeriodo.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_CierrePeriodo.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_CierrePeriodo.xsd" id="dtstDatosAdminC_CierrePeriodo" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_CierrePeriodo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_MateriasCursos_A_Ser_Evaluadas_Principal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodNivel" type="xs:string" />
+              <xs:element name="Nivel" type="xs:string" />
+              <xs:element name="CodParalelo" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element name="Materia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="v_MateriasCursos_Con_Notas_Principal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodNivel" type="xs:string" />
+              <xs:element name="Nivel" type="xs:string" />
+              <xs:element name="CodParalelo" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element name="Materia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Periodos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+              <xs:element name="dtFechaInic" type="xs:dateTime" />
+              <xs:element name="dtFechaFin" type="xs:dateTime" />
+              <xs:element name="sintUltNumMat" type="xs:short" />
+              <xs:element name="strCodPensum" type="xs:string" />
+              <xs:element name="blnTransicion" type="xs:boolean" />
+              <xs:element name="blnVigente" type="xs:boolean" />
+              <xs:element minOccurs="0" name="dtFechaTopeMatOrd" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeMatExt" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeMatPro" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaTopeRetMat" type="xs:dateTime" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MateriasCursos_Sin_EvaluacionPrincipal">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Paralelo" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="v_MateriasCursos_A_Ser_Evaluadas_Suspension">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodNivel" type="xs:string" />
+              <xs:element name="Nivel" type="xs:string" />
+              <xs:element name="CodParalelo" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element name="Materia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="v_MateriasCursos_Con_Notas_Suspension">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodNivel" type="xs:string" />
+              <xs:element name="Nivel" type="xs:string" />
+              <xs:element name="CodParalelo" type="xs:string" />
+              <xs:element name="CodMateria" type="xs:string" />
+              <xs:element name="Materia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MateriasCursos_Sin_EvaluacionSuspension">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Paralelo" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_CierrePeriodoKey2">
+      <xs:selector xpath=".//mstns:v_MateriasCursos_A_Ser_Evaluadas_Principal" />
+      <xs:field xpath="mstns:CodNivel" />
+      <xs:field xpath="mstns:CodParalelo" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_CierrePeriodoKey3">
+      <xs:selector xpath=".//mstns:v_MateriasCursos_Con_Notas_Principal" />
+      <xs:field xpath="mstns:CodNivel" />
+      <xs:field xpath="mstns:CodParalelo" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_CierrePeriodoKey1">
+      <xs:selector xpath=".//mstns:Periodos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_CierrePeriodoKey4">
+      <xs:selector xpath=".//mstns:v_MateriasCursos_A_Ser_Evaluadas_Suspension" />
+      <xs:field xpath="mstns:CodNivel" />
+      <xs:field xpath="mstns:CodParalelo" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_CierrePeriodoKey5">
+      <xs:selector xpath=".//mstns:v_MateriasCursos_Con_Notas_Suspension" />
+      <xs:field xpath="mstns:CodNivel" />
+      <xs:field xpath="mstns:CodParalelo" />
+      <xs:field xpath="mstns:CodMateria" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

@@ -43,14 +43,20 @@ namespace SitioWebOasis.Controllers
             {
                 ArrayList CarrerasEstudiante = UsuarioActual.GetCarreras(Roles.Docentes);
 
-                foreach (Carrera item in CarrerasEstudiante) {
-                    if (item.TipoEntidad == "CAR") {
+                foreach (Carrera item in CarrerasEstudiante)
+                {
+                    if (item.TipoEntidad == "CAR")
+                    {
                         idCarrera = item.Codigo;
                         break;
-                    } else if (item.TipoEntidad == "CAA") {
+                    }
+                    else if (item.TipoEntidad == "CAA")
+                    {
                         idCarrera = item.Codigo;
                         break;
-                    } else {
+                    }
+                    else
+                    {
                         idCarrera = item.Codigo;
                     }
                 }
@@ -71,13 +77,16 @@ namespace SitioWebOasis.Controllers
             {
                 //  Implementamos un control de acceso con la finalidad que el usuario pueda ver solo las asignaturas
                 //  a las que tiene acceso
-                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)) {
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo))
+                {
                     EvaluacionesDocenteModel edm = new EvaluacionesDocenteModel(strCodNivel,
                                                                             strCodAsignatura,
                                                                             strCodParalelo);
 
                     return View("GestionNotasDocente", edm);
-                } else {
+                }
+                else
+                {
                     return RedirectToAction("SignOut", "Account");
                 }
             }
@@ -100,7 +109,8 @@ namespace SitioWebOasis.Controllers
                 ban = daDocente.getDocenteGestionaAsignatura(strCodNivel,
                                                                 strCodAsignatura,
                                                                 strCodParalelo);
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "EvaluacionAsignatura");
@@ -114,30 +124,47 @@ namespace SitioWebOasis.Controllers
         public ActionResult registrarEvaluacion(string strCodNivel, string strCodAsignatura, string strCodParalelo, string strParcialActivo, List<EvaluacionAcumulativa> dtaEvAcumulativa)
         {
             JsonResult rstGestionEvAcumulativa = default(JsonResult);
-            try {
+            try
+            {
 
-                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)) {
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo))
+                {
                     EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(strCodNivel,
                                                                                                 strCodAsignatura,
                                                                                                 strCodParalelo);
 
-                    if (dtaEvAcumulativa.Count > 0) {
-                        if (evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa)) {
-                            rstGestionEvAcumulativa = Json(new { dtaEvAcumulativaUpd = evAcumulativa.jsonEvAcumulativa,
+                    if (dtaEvAcumulativa.Count > 0)
+                    {
+                        if (evAcumulativa.registrarEvaluacionAcumulativa(dtaEvAcumulativa))
+                        {
+                            rstGestionEvAcumulativa = Json(new
+                            {
+                                dtaEvAcumulativaUpd = evAcumulativa.jsonEvAcumulativa,
                                 MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_CORRECTA
                             });
-                        } else {
-                            rstGestionEvAcumulativa = Json(new { dtaEvAcumulativaUpd = "false",
+                        }
+                        else
+                        {
+                            rstGestionEvAcumulativa = Json(new
+                            {
+                                dtaEvAcumulativaUpd = "false",
                                 MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR
                             });
                         }
                     }
-                } else {
+                }
+                else
+                {
                     return RedirectToAction("SignOut", "Account");
                 }
-            } catch (Exception ex) {
-                rstGestionEvAcumulativa = Json(new { dtaEvAcumulativaUpd = "false",
-                    MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR });
+            }
+            catch (Exception ex)
+            {
+                rstGestionEvAcumulativa = Json(new
+                {
+                    dtaEvAcumulativaUpd = "false",
+                    MessageGestion = Language.es_ES.MSG_REGISTRO_EV_ACUMULATIVA_ERROR
+                });
 
                 Errores err = new Errores();
                 err.SetError(ex, "registrarEvaluacionAcumulativa");
@@ -153,28 +180,39 @@ namespace SitioWebOasis.Controllers
             JsonResult rstEvFinal = default(JsonResult);
             try
             {
-                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)) {
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo))
+                {
                     EvaluacionFinalModel evFinal = new EvaluacionFinalModel(strCodNivel,
                                                                             strCodAsignatura,
                                                                             strCodParalelo);
 
-                    if (dtaEvFinal.Count > 0) {
-                        if (evFinal.registrarEvaluacionFinal(dtaEvFinal)) {
-                            rstEvFinal = Json(new {
+                    if (dtaEvFinal.Count > 0)
+                    {
+                        if (evFinal.registrarEvaluacionFinal(dtaEvFinal))
+                        {
+                            rstEvFinal = Json(new
+                            {
                                 dtaEvFinalUpd = evFinal.jsonEvFinal,
                                 MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_CORRECTA
                             });
-                        } else {
-                            rstEvFinal = Json(new {
+                        }
+                        else
+                        {
+                            rstEvFinal = Json(new
+                            {
                                 dtaEvFinalUpd = "false",
                                 MessageGestion = Language.es_ES.MSG_REGISTRO_EV_FINAL_ERROR
                             });
                         }
                     }
-                } else {
+                }
+                else
+                {
                     return RedirectToAction("SignOut", "Account");
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "registrarEvaluacionFinal");
             }
@@ -189,25 +227,34 @@ namespace SitioWebOasis.Controllers
             JsonResult rstEvRecuperacion = default(JsonResult);
             try
             {
-                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo)) {
+                if (this._usuarioGestionaAsignatura(strCodNivel, strCodAsignatura, strCodParalelo))
+                {
                     EvaluacionRecuperacionModel evRecuperacion = new EvaluacionRecuperacionModel(strCodNivel,
                                                                                                     strCodAsignatura,
                                                                                                     strCodParalelo);
 
-                    if (dtaEvRecuperacion.Count > 0) {
-                        if (evRecuperacion.registrarEvaluacionRecuperacion(dtaEvRecuperacion)) {
-                            rstEvRecuperacion = Json(new {
+                    if (dtaEvRecuperacion.Count > 0)
+                    {
+                        if (evRecuperacion.registrarEvaluacionRecuperacion(dtaEvRecuperacion))
+                        {
+                            rstEvRecuperacion = Json(new
+                            {
                                 dtaEvRecuperacionUpd = evRecuperacion.jsonEvRecuperacion,
                                 MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_CORRECTA
                             });
-                        } else {
-                            rstEvRecuperacion = Json(new {
+                        }
+                        else
+                        {
+                            rstEvRecuperacion = Json(new
+                            {
                                 dtaEvRecuperacionUpd = "false",
                                 MessageGestion = Language.es_ES.MSG_REGISTRO_EV_RECUPERACION_ERROR
                             });
                         }
                     }
-                } else {
+                }
+                else
+                {
                     return RedirectToAction("SignOut", "Account");
                 }
             }
@@ -224,12 +271,14 @@ namespace SitioWebOasis.Controllers
         [HttpPost]
         public JsonResult impresionActas(string idActa, string idAsignatura)
         {
-            try {
+            try
+            {
                 string[] dtaActa = idActa.Split('_');
                 string[] dtaAsignatura = idAsignatura.Split('|');
 
                 string nameFile = string.Empty;
-                switch (dtaActa[0].ToString().ToUpper()) {
+                switch (dtaActa[0].ToString().ToUpper())
+                {
                     //  EVALUACION ACUMULATIVA ( Parcial 1 / Parcial 2 / Parcial 3 )
                     case "PEA":
                         EvaluacionAcumulativaModel evAcumulativa = new EvaluacionAcumulativaModel(dtaAsignatura[1],
@@ -267,9 +316,12 @@ namespace SitioWebOasis.Controllers
                         break;
                 }
 
-                if (nameFile == "-1") {
+                if (nameFile == "-1")
+                {
                     return Json(new { fileName = "", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
-                } else {
+                }
+                else
+                {
                     return Json(new { fileName = nameFile, errorMessage = "" });
                 }
             }
@@ -305,13 +357,15 @@ namespace SitioWebOasis.Controllers
                                                            dtaAsignatura,
                                                            Server.MapPath("~/Reports"),
                                                            Server.MapPath("~/Temp"));
-                if (nameFileAcumulada == "-1")
+
+                if (nameFileAcumulada == "-1" || nameFilePrincipal == "-1" || nameFileSuspencion == "-1")
                 {
                     return Json(new { fileName = "", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
                 }
                 else
                 {
-                    return Json(new { fileName = nameFileAcumulada, errorMessage = "" });
+
+                    return Json(new { fileName = nameFileAcumulada + "|" + nameFilePrincipal + "|" + nameFileSuspencion, errorMessage = "" });
                 }
             }
             catch (Exception ex)
@@ -327,7 +381,8 @@ namespace SitioWebOasis.Controllers
         public JsonResult impresionNominaEstudiantes(string strCodAsignatura, string strCodTipoArchivo)
         {
             string nameFile = "-1";
-            try {
+            try
+            {
                 string[] dtaAsignatura = strCodAsignatura.Split('_');
                 string tipoArchivo = (strCodTipoArchivo.ToUpper().CompareTo("EXCEL") == 0) ? "Excel" : "pdf";
 
@@ -339,13 +394,17 @@ namespace SitioWebOasis.Controllers
                                                                                 Server.MapPath("~/Reports"),
                                                                                 Server.MapPath("~/Temp"));
 
-                if (nameFile == "-1") {
+                if (nameFile == "-1")
+                {
                     return Json(new { fileName = "", errorMessage = Language.es_ES.MSG_ERROR_GENERAR_ARCHIVO });
-                } else {
+                }
+                else
+                {
                     return Json(new { fileName = nameFile, errorMessage = "" });
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "createFile");
 
@@ -358,18 +417,23 @@ namespace SitioWebOasis.Controllers
         [DeleteFileAttribute]
         public ActionResult DownloadFile(string file)
         {
-            try {
-                if (!string.IsNullOrEmpty(file) && file != "-1") {
+            try
+            {
+                if (!string.IsNullOrEmpty(file) && file != "-1")
+                {
                     //  get the temp folder and file path in server
                     string fullPath = Path.Combine(Server.MapPath("~/temp"), file);
-
                     //return the file for download, this is an Excel 
                     //so I set the file content type to "application/vnd.ms-excel"
                     return File(fullPath, "application/vnd.ms-excel", file);
-                } else {
+                }
+                else
+                {
                     return RedirectToAction("Index", "Error");
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "Download File");
 
@@ -385,18 +449,24 @@ namespace SitioWebOasis.Controllers
             string rst = "false";
             string msgError = string.Empty;
 
-            try {
+            try
+            {
                 DatosCarrera dc = new DatosCarrera();
                 rst = dc.getCodigoAutenticacion(User.Identity.Name.ToString());
 
-                if (rst != "false") {
+                if (rst != "false")
+                {
                     Session["codImpresionActa"] = rst;
                     ban = true;
-                } else {
+                }
+                else
+                {
                     msgError = "Problema el enviar codigo de autenticación";
                 }
 
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ban = false;
                 Errores err = new Errores();
                 err.SetError(ex, "EnviarCorreoValidacionImpresion");
@@ -413,12 +483,17 @@ namespace SitioWebOasis.Controllers
 
             try
             {
-                if (string.Compare(Session["codImpresionActa"].ToString(), strCodImpresion) == 0) {
+                if (string.Compare(Session["codImpresionActa"].ToString(), strCodImpresion) == 0)
+                {
                     return this.impresionActas(idActa, idAsignatura);
-                } else {
+                }
+                else
+                {
                     return Json(new { rstValidacionCodigo = ban, errorMessage = "Codigo 'no' valido, favor vuelva a intentarlo" });
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 ban = false;
                 Errores err = new Errores();
                 err.SetError(ex, "ValidarCodigoImpresion");
@@ -442,7 +517,8 @@ namespace SitioWebOasis.Controllers
                 DatosArchivosDocentesModel objDatosPA = (DatosArchivosDocentesModel)Session["objDatosPA"];
                 rstPA = Json(objDatosPA.getLstPeriodos(strCodCarrera));
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 message = "Error, favor volver a intentarlo";
                 Errores err = new Errores();
                 err.SetError(ex, "GetPeriodosCarreraDocente");
@@ -457,12 +533,15 @@ namespace SitioWebOasis.Controllers
             SitioWebOasis.Models.DatosArchivosDocentesModel objDocente = new DatosArchivosDocentesModel();
             return objDocente.getHTMLAsignaturasDocentePorPeriodoAcademico(strCodCarrera, strCodPeriodo);
         }
-        public ActionResult DownloadEvaluacionesFiles()
+
+        //METODO PARA DESACARGAR LAS ACTAS DE PERIODEOS ANTERIORES 
+        [HttpPost]
+        public ActionResult DownloadEvaluacionesFiles(string strNombreArchivos)
         {
             string message = string.Empty;
             try
             {
-                FileDownload obj = new FileDownload();
+                FileDownload obj = new FileDownload(strNombreArchivos);
                 var filesCol = obj.GetFile().ToList();
                 using (var memoryStream = new MemoryStream())
                 {
@@ -474,10 +553,13 @@ namespace SitioWebOasis.Controllers
                         }
                     }
                     //Elimino los archivos creado en TEMP
-                    string[] List = Directory.GetFiles(filesCol[0].FilePathOrigen, "*.pdf");
-                    foreach (string f in List)
+                    for (int i = 0; i < filesCol.Count; i++)
                     {
-                        System.IO.File.Delete(f);
+                        string[] List = Directory.GetFiles(filesCol[i].FilePathOrigen, filesCol[i].FileName);
+                        foreach (string f in List)
+                        {
+                            System.IO.File.Delete(f);
+                        }
                     }
                     return File(memoryStream.ToArray(), "application/zip", "Evaluaciones.zip");
                 }
@@ -493,8 +575,17 @@ namespace SitioWebOasis.Controllers
 
         public ActionResult HorarioDocente(string strCursoParalelo = "")
         {
-            HorarioDocenteModel objHorario = new Models.HorarioDocenteModel();
-            return View("HorarioDocente", objHorario);
+            //HorarioDocenteModel objHorario = new Models.HorarioDocenteModel();
+            //return View("HorarioDocente", objHorario);
+            Session["objHorario"] = new HorarioDocenteModel();
+            return View("HorarioDocente", (HorarioDocenteModel)Session["objHorario"]);
+        }
+        [HttpPost]//CREA HORARIO POR ASIGANTURA
+        public string HorarioDocenteAsignatura(string strCodMateria)
+        {
+            HorarioDocenteModel objHoario = new HorarioDocenteModel();
+            objHoario.HorarioClaseMateria(strCodMateria);
+            return objHoario.HTMLHorarioClases();
         }
 
         public ActionResult HorarioExamenDocente(string strCursoParalelo = "")
@@ -502,36 +593,38 @@ namespace SitioWebOasis.Controllers
             HorarioDocenteModel objHorario = new Models.HorarioDocenteModel();
             return View("HorarioExamenDocente", objHorario);
         }
-        [HttpPost]
-        public JsonResult CrearFileHorarioAcademico(string idTypeFile,string strHorario)
+        [HttpPost]//CREAR HORARIO ACADEMICO
+        public JsonResult CrearFileHorarioAcademico(string idTypeFile, string strHorario)
         {
             try
             {
                 string reportPath = string.Empty;
                 string strNombreReporte = string.Empty;
+                string[] strCadenas = idTypeFile.Split('|');
+
                 if (strHorario.Equals("Clase"))
                 {
-                     reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioClaseDocente.rdlc");
+                    reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioClaseDocente.rdlc");
                     strNombreReporte = Language.es_ES.EST_TB_HORARIO_ACADEMICO;
                 }
                 else
                 {
-                     reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioExamenDocente.rdlc");
+                    reportPath = Path.Combine(Server.MapPath("~/Reports"), "rptHorarioExamenDocente.rdlc");
                     strNombreReporte = Language.es_ES.EST_TB_HORARIO_EXAMENES;
                 }
+                if (strCadenas.Length > 1) { strHorario = strHorario + "|" + strCadenas[1] + "|" + strCadenas[2] + "|" + strCadenas[3]; }
                 HorarioDocenteModel objHorarioDocente = new Models.HorarioDocenteModel(strHorario);
                 LocalReport rptHorarioClaseDocente = objHorarioDocente.getReporteHorarios(reportPath);
                 string mimeType;
                 string encoding;
                 string fileNameExtension;
                 string deviceInfo = "<DeviceInfo>" +
-                                   "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
+                                   "   <OutputFormat>" + strCadenas[0] + "</OutputFormat>" +
                                    "</DeviceInfo>";
-
                 Warning[] warnings;
                 string[] streams;
                 byte[] renderedBytes;
-                renderedBytes = rptHorarioClaseDocente.Render(idTypeFile,
+                renderedBytes = rptHorarioClaseDocente.Render(strCadenas[0],
                                                                        deviceInfo,
                                                                        out mimeType,
                                                                        out encoding,
@@ -539,14 +632,11 @@ namespace SitioWebOasis.Controllers
                                                                        out streams,
                                                                        out warnings);
                 //  Creo el nombre del archivo
-                string nameFile = strNombreReporte.Replace(" ", "_") + "_" + objHorarioDocente.UsuarioActual.Cedula.ToString() + ((idTypeFile == "PDF") ? ".pdf" : ".xls");
-
+                string nameFile = strNombreReporte.Replace(" ", "_") + "_" + objHorarioDocente.UsuarioActual.CarreraActual.Nombre.ToString() + ((strCadenas[0] == "PDF") ? ".pdf" : ".xls");
                 //  Direcciono la creacion del archivo a una ubicacion temporal
                 string fullPath = Path.Combine(Server.MapPath("~/Temp"), nameFile);
-
                 //  Creo el archivo en la ubicacion temporal
                 System.IO.File.WriteAllBytes(fullPath, renderedBytes);
-
                 return Json(new { fileName = nameFile, errorMessage = "" });
             }
             catch (Exception ex)
@@ -556,5 +646,23 @@ namespace SitioWebOasis.Controllers
                 return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
             }
         }
+        //Mostrar Estadisticas de Acta Acumula
+        [HttpPost]
+        public JsonResult MostrarEstadisticas(string strIdCarrera, string strIdPeriodoAcademico, string strIdAsignatura)
+        {
+            try
+            {
+                DescargarActasPA evaluaciones = new DescargarActasPA(strIdCarrera, strIdPeriodoAcademico, strIdAsignatura);
+                dynamic strEstadistica = evaluaciones.EstadisticaEvaluacionAcumulada();
+                return Json(new { strEstadistica, errorMessage = "" });
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "MostrarEstadisticas");
+                return Json(new { fileName = "none", errorMessage = "Problema al momento de crear estadisticas" });
+            }
+        }
+
     }
 }

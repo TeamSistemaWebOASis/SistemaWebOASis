@@ -34,14 +34,11 @@ namespace SitioWebOasis.Library
             {
                 //  Obtengo informacion de las carreras
                 ProxySeguro.InfoCarreras ic = new ProxySeguro.InfoCarreras();
-
                 WSInfoCarreras.dtstBDCarreras dsCarrera = ic.GetCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
                 this._strNombreBD = dsCarrera.BDCarreras.Rows[0]["strBaseDatos"].ToString();
                 this._strUbicacion = UsuarioActual.CarreraActual.Codigo.ToString();
-
                 //  Informacion del periodo vigente en carrera
                 this._dtstPeriodoVigente = ic.GetPeriodoVigenteCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
-                
             }
             catch (Exception ex)
             {
@@ -55,7 +52,6 @@ namespace SitioWebOasis.Library
             {
                 //  Obtengo informacion de las carreras
                 ProxySeguro.InfoCarreras ic = new ProxySeguro.InfoCarreras();
-
                 WSInfoCarreras.dtstBDCarreras dsCarrera = ic.GetCarrera(strCodCarrera);
                 this._strNombreBD = dsCarrera.BDCarreras.Rows[0]["strBaseDatos"].ToString();
                 this._strUbicacion = strCodCarrera;
@@ -66,8 +62,7 @@ namespace SitioWebOasis.Library
                 err.SetError(ex, "_cargarInformacionCarreraPA");
             }
         }
-
-
+        
         public WSInfoCarreras.dtstPeriodoVigente _dataPeriodoAcademicoVigente()
         {
             WSInfoCarreras.dtstPeriodoVigente dsPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();

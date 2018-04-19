@@ -10,35 +10,38 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.IO;
+using System.Web.Script.Serialization;
+
 namespace SitioWebOasis.Library
 {
     public class DescargarActasPA : Asignatura
     {
-       
+
 
         private WSGestorEvaluacion.dtstEvaluacion_Acumulados _dsEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_Acumulados();
         private WSGestorEvaluacion.dtstEvaluacion_Actas _dsEvFinal = new WSGestorEvaluacion.dtstEvaluacion_Actas();
         private WSGestorEvaluacion.dtstEvaluacion_Actas _dsEvRecuperacion = new WSGestorEvaluacion.dtstEvaluacion_Actas();
         string strAsignatura = string.Empty;
-        public DescargarActasPA(string strCodCarrera, string strCodPeriodoAcademico, string strCodAsignatura) {
+        private ProxySeguro.GestorEvaluacion ge;
+        public DescargarActasPA(string strCodCarrera, string strCodPeriodoAcademico, string strCodAsignatura)
+        {
             this._strCodCarrera = strCodCarrera;
-            this._strCodPeriodo= strCodPeriodoAcademico;
+            this._strCodPeriodo = strCodPeriodoAcademico;
             var cadena = strCodAsignatura.Split('_');
             this._strCodAsignatura = cadena[0];
             this._strCodNivel = cadena[1];
             this._strCodParalelo = cadena[2];
-            this._cargarInformacionCarreraPA(_strCodCarrera);
+            this._cargarInformacionCarreraPA(this._strCodCarrera);
         }
 
-        public string getActaEvaluacionAcumulativa(string[] dtaActa, string[] dtaAsignatura, string pathReport, string pathTmp) {
+        public string getActaEvaluacionAcumulativa(string[] dtaActa, string[] dtaAsignatura, string pathReport, string pathTmp)
+        {
             //  Creo el nombre del archivo
             string nameFile = string.Empty;
             string reportPath = string.Empty;
             string nombreAsignatura = string.Empty;
-
             string idTypeFile = dtaActa[0];
             string strNameFile = string.Empty;
-
             try
             {
                 if (!string.IsNullOrEmpty(idTypeFile))
@@ -46,14 +49,11 @@ namespace SitioWebOasis.Library
                     reportPath = (dtaActa[0] == "pdf")
                                     ? Path.Combine(pathReport, "rptActaEvaluacionesConNotas.rdlc")
                                     : "";
-
                     LocalReport rptEvAcumulativa = this.getRptEvAcumulativa(reportPath);
-
                     string reportType = idTypeFile;
                     string mimeType;
                     string encoding;
                     string fileNameExtension;
-
                     string deviceInfo = "<DeviceInfo>" +
                                         "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
                                         "</DeviceInfo>";
@@ -69,13 +69,10 @@ namespace SitioWebOasis.Library
                                                             out fileNameExtension,
                                                             out streams,
                                                             out warnings);
-
                     nombreAsignatura = this.strAsignatura;
-                    nameFile = Language.es_ES.NF_EV_ACUMULATIVA+"_" + nombreAsignatura+".pdf";
-
+                    nameFile = Language.es_ES.NF_EV_ACUMULATIVA + "_" + nombreAsignatura + "_" + this._strCodCarrera + ".pdf";
                     //  Direcciono la creacion del archivo a una ubicacion temporal
                     string fullPath = Path.Combine(pathTmp, nameFile);
-
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
                 }
@@ -98,13 +95,10 @@ namespace SitioWebOasis.Library
             string reportPath = string.Empty;
             string dtaParcial = dtaActa[0];
             string nombreAsignatura = string.Empty;
-         
-
             string idTypeFile = (dtaActa[0] == "pdf")
                                     ? "pdf"
                                     : "";
             string strNameFile = string.Empty;
-
             try
             {
                 if (!string.IsNullOrEmpty(idTypeFile))
@@ -112,22 +106,17 @@ namespace SitioWebOasis.Library
                     reportPath = (dtaActa[0] == "pdf")
                                     ? Path.Combine(pathReport, "rptActaExPrincipalConNotasR1.rdlc")
                                     : Path.Combine(pathReport, "rptActaExPrincipalSinNotasR1.rdlc");
-
                     LocalReport rptEvFinal = this.getRptEvFinal(reportPath);
-
                     string reportType = idTypeFile;
                     string mimeType;
                     string encoding;
                     string fileNameExtension;
-
                     string deviceInfo = "<DeviceInfo>" +
                                         "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
                                         "</DeviceInfo>";
-
                     Warning[] warnings;
                     string[] streams;
                     byte[] renderedBytes;
-
                     renderedBytes = rptEvFinal.Render(reportType,
                                                         deviceInfo,
                                                         out mimeType,
@@ -135,27 +124,20 @@ namespace SitioWebOasis.Library
                                                         out fileNameExtension,
                                                         out streams,
                                                         out warnings);
-
-                    nameFile = Language.es_ES.NF_EV_FINAL + "_" + this.strAsignatura + ".pdf";
-
+                    nameFile = Language.es_ES.NF_EV_FINAL + "_" + this.strAsignatura + "_" + this._strCodCarrera + ".pdf";
                     //  Direcciono la creacion del archivo a una ubicacion temporal
                     string fullPath = Path.Combine(pathTmp, nameFile);
-
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
-
                     //  verifico si el acta a sido impresa
-
                 }
             }
             catch (Exception ex)
             {
                 nameFile = "-1";
-
                 Errores err = new Errores();
                 err.SetError(ex, "getDtaRptEvFinal");
             }
-
             return nameFile;
         }
         public string getActaEvaluacionSuspencion(string[] dtaActa, string[] dtaAsignatura, string pathReport, string pathTmp)
@@ -164,36 +146,28 @@ namespace SitioWebOasis.Library
             string nameFile = string.Empty;
             string reportPath = string.Empty;
             //string nombreAsignatura = string.Empty;
-
             string idTypeFile = (dtaActa[0] == "pdf")
                                     ? "pdf"
                                     : "";
             string strNameFile = string.Empty;
-
             try
             {
-
                 if (!string.IsNullOrEmpty(idTypeFile))
                 {
                     reportPath = (dtaActa[0] == "pdf")
                                     ? Path.Combine(pathReport, "rptActaExSuspensionConNotasR1.rdlc")
                                     : Path.Combine(pathReport, "rptActaExSuspensionSinNotasR1.rdlc");
-
                     LocalReport rptEvRecuperacion = this.getRptEvRecuperacion(reportPath);
-
                     string reportType = idTypeFile;
                     string mimeType;
                     string encoding;
                     string fileNameExtension;
-
                     string deviceInfo = "<DeviceInfo>" +
                                         "   <OutputFormat>" + idTypeFile + "</OutputFormat>" +
                                         "</DeviceInfo>";
-
                     Warning[] warnings;
                     string[] streams;
                     byte[] renderedBytes;
-
                     renderedBytes = rptEvRecuperacion.Render(reportType,
                                                                 deviceInfo,
                                                                 out mimeType,
@@ -201,11 +175,9 @@ namespace SitioWebOasis.Library
                                                                 out fileNameExtension,
                                                                 out streams,
                                                                 out warnings);
-                    nameFile = Language.es_ES.NF_EV_RECUPERACION + "_" + this.strAsignatura + ".pdf";
-
+                    nameFile = Language.es_ES.NF_EV_RECUPERACION + "_" + this.strAsignatura + "_" + this._strCodCarrera + ".pdf";
                     //  Direcciono la creacion del archivo a una ubicacion temporal
                     string fullPath = Path.Combine(pathTmp, nameFile);
-
                     //  Creo el archivo en la ubicacion temporal
                     System.IO.File.WriteAllBytes(fullPath, renderedBytes);
                 }
@@ -220,88 +192,80 @@ namespace SitioWebOasis.Library
 
             return nameFile;
         }
-       
+
         //Metodos para  Evaluacion Acumulativa
         public LocalReport getRptEvAcumulativa(string reportPath)
         {
             LocalReport rptEvAcumulativa = new LocalReport();
-
             try
             {
                 WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados dtaEvAcumulativa = this._getDtaImpresionEvAcumulativa();
                 ReportDataSource rds = new ReportDataSource();
-                rds.Value = dtaEvAcumulativa.Acta;
-                rds.Name = "dtsActasAcumuladas";
-
-                rptEvAcumulativa.DataSources.Clear();
-                rptEvAcumulativa.DataSources.Add(rds);
-                rptEvAcumulativa.ReportPath = reportPath;
-
-                rptEvAcumulativa.SetParameters(this._getParametrosGeneralesReporte());
-                rptEvAcumulativa.Refresh();
+                if (dtaEvAcumulativa.Acta != null && dtaEvAcumulativa.Tables["Acta"].Rows.Count > 0)
+                {
+                    rds.Value = dtaEvAcumulativa.Acta;
+                    rds.Name = "dtsActasAcumuladas";
+                    rptEvAcumulativa.DataSources.Clear();
+                    rptEvAcumulativa.DataSources.Add(rds);
+                    rptEvAcumulativa.ReportPath = reportPath;
+                    rptEvAcumulativa.SetParameters(this._getParametrosGeneralesReporte());
+                    rptEvAcumulativa.Refresh();
+                }
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "getReporteHorarios");
             }
-
             return rptEvAcumulativa;
         }
         private WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados _getDtaImpresionEvAcumulativa()
         {
             WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados rstEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
             WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados dsEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
-
             try
             {
-                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
-                ge.CookieContainer = new CookieContainer();
-                ge.set_fBaseDatos(this._strNombreBD);
-                ge.set_fUbicacion(this._strUbicacion);
-
+                UsarBaseDatos();
                 rstEvAcumulativa = ge.getImprimirActaEvaluaciones(this._strCodPeriodo,
                                                                     this._strCodAsignatura,
                                                                     this._strCodNivel,
                                                                     this._strCodParalelo);
-
                 dsEvAcumulativa = (rstEvAcumulativa != null)
                                     ? rstEvAcumulativa
                                     : new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
+                ge.Dispose();
             }
             catch (System.Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaImpresionEvAcumulativa");
             }
-
             return dsEvAcumulativa;
         }
         //Metodos para  Evaluacion  Principal
         public LocalReport getRptEvFinal(string reportPath)
         {
             LocalReport rptEvAcumulativa = new LocalReport();
-
             try
             {
                 dtstEvaluacion_ImprimirActas dtaEvFinal = this.getReporteActasExPrincipal();
                 ReportDataSource rds = new ReportDataSource();
-                rds.Value = dtaEvFinal.Acta;
-                rds.Name = "dtsExamenPrincipal";
-
-                rptEvAcumulativa.DataSources.Clear();
-                rptEvAcumulativa.DataSources.Add(rds);
-                rptEvAcumulativa.ReportPath = reportPath;
-
-                rptEvAcumulativa.SetParameters(this._getParametrosGeneralesReporte());
-                rptEvAcumulativa.Refresh();
+                if (dtaEvFinal.Acta != null && dtaEvFinal.Tables["Acta"].Rows.Count > 0)
+                {
+                    rds.Value = dtaEvFinal.Acta;
+                    rds.Name = "dtsExamenPrincipal";
+                    rptEvAcumulativa.DataSources.Clear();
+                    rptEvAcumulativa.DataSources.Add(rds);
+                    rptEvAcumulativa.ReportPath = reportPath;
+                    rptEvAcumulativa.SetParameters(this._getParametrosGeneralesReporte());
+                    rptEvAcumulativa.Refresh();
+                }
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "getReporteHorarios");
             }
-
             return rptEvAcumulativa;
         }
         public dtstEvaluacion_ImprimirActas getReporteActasExPrincipal()
@@ -309,19 +273,14 @@ namespace SitioWebOasis.Library
             //  DataSet
             dtstEvaluacion_ImprimirActas dsActa = new dtstEvaluacion_ImprimirActas();
             dtstEvaluacion_ImprimirActas ds = new dtstEvaluacion_ImprimirActas();
-
             try
             {
-                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
-                ge.CookieContainer = new CookieContainer();
-                ge.set_fBaseDatos(this._strNombreBD);
-                ge.set_fUbicacion(this._strUbicacion);
-
+                UsarBaseDatos();
                 ds = ge.getImprimirActaExPrincipal(this._strCodPeriodo,
                                                     this._strCodAsignatura,
                                                     this._strCodNivel,
                                                     this._strCodParalelo);
-
+                ge.Dispose();
                 dsActa = (ds != null && ds.Acta.Rows.Count > 0)
                             ? ds
                             : new dtstEvaluacion_ImprimirActas();
@@ -331,65 +290,63 @@ namespace SitioWebOasis.Library
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaImpresionEvAcumulativa");
             }
-
             return dsActa;
         }
         //Metodos para  Evaluacion de Recuperacion o Suspencion
         public LocalReport getRptEvRecuperacion(string reportPath)
         {
             LocalReport rptEvRecuperacion = new LocalReport();
-
             try
             {
                 dtstEvaluacion_ImprimirActas dtaEvRecuperacion = this._getDtaImpresionEvRecuperacion();
-
-                ReportDataSource rds = new ReportDataSource();
-                rds.Value = dtaEvRecuperacion.Acta;
-                rds.Name = "dtsExamenPrincipal";
-
-                rptEvRecuperacion.DataSources.Clear();
-                rptEvRecuperacion.DataSources.Add(rds);
-                rptEvRecuperacion.ReportPath = reportPath;
-
-                rptEvRecuperacion.SetParameters(this._getParametrosGeneralesReporte());
-                rptEvRecuperacion.Refresh();
+                if (dtaEvRecuperacion.Acta != null && dtaEvRecuperacion.Tables["Acta"].Rows.Count > 0)
+                {
+                    ReportDataSource rds = new ReportDataSource();
+                    rds.Value = dtaEvRecuperacion.Acta;
+                    rds.Name = "dtsExamenPrincipal";
+                    rptEvRecuperacion.DataSources.Clear();
+                    rptEvRecuperacion.DataSources.Add(rds);
+                    rptEvRecuperacion.ReportPath = reportPath;
+                    rptEvRecuperacion.SetParameters(this._getParametrosGeneralesReporte());
+                    rptEvRecuperacion.Refresh();
+                }
             }
             catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "getRptEvRecuperacion");
             }
-
             return rptEvRecuperacion;
         }
+        private void UsarBaseDatos()
+        {
+            ge = new ProxySeguro.GestorEvaluacion();
+            ge.CookieContainer = new CookieContainer();
+            ge.set_fBaseDatos(this._strNombreBD);
+            ge.set_fUbicacion(this._strUbicacion);
+        }
+
         private WSGestorEvaluacion.dtstEvaluacion_ImprimirActas _getDtaImpresionEvRecuperacion()
         {
             dtstEvaluacion_ImprimirActas rstEvRecuperacion = new dtstEvaluacion_ImprimirActas();
             dtstEvaluacion_ImprimirActas dsEvRecuperacion = new dtstEvaluacion_ImprimirActas();
-
             try
             {
-                ProxySeguro.GestorEvaluacion ge = new ProxySeguro.GestorEvaluacion();
-                ge.CookieContainer = new CookieContainer();
-                ge.set_fBaseDatos(this._strNombreBD);
-                ge.set_fUbicacion(this._strUbicacion);
-
+                this.UsarBaseDatos();
                 rstEvRecuperacion = ge.getImprimirActaExSuspension(this._strCodPeriodo,
                                                                     this._strCodAsignatura,
                                                                     this._strCodNivel,
                                                                     this._strCodParalelo);
-
                 dsEvRecuperacion = (rstEvRecuperacion != null)
                                         ? rstEvRecuperacion
                                         : new dtstEvaluacion_ImprimirActas();
-
+                ge.Dispose();
             }
             catch (System.Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaImpresionEvRecuperacion");
             }
-
             return dsEvRecuperacion;
         }
         //Parametros para el reporte
@@ -405,7 +362,6 @@ namespace SitioWebOasis.Library
             string facultad = default(string);
             string carrera = default(string);
             string escuela = default(string);
-
             // string strAsignatura = string.Empty;
             string strNivel = string.Empty;
             string strPeriodo = string.Empty;
@@ -445,7 +401,6 @@ namespace SitioWebOasis.Library
                         escuela = "";
                         break;
                 }
-
                 lstPrmRptEvAcumulativa.Add(new ReportParameter("strInstitucion",
                                                                 Language.es_ES.STR_INSTITUCION));
 
@@ -499,33 +454,117 @@ namespace SitioWebOasis.Library
                 Errores err = new Errores();
                 err.SetError(ex, "_getDatosGeneralesReporte");
             }
-
             return lstPrmRptEvAcumulativa;
         }
+        public dynamic EstadisticaEvaluacionAcumulada()
+        {
+            // WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados rstEvAcumulativa = new WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados();
+            dynamic json = string.Empty;
+            try
+            {
+                //Para Actas Acumuladas
+                int intExonerados = 0;
+                int intReprovadosFaltas = 0;
+                int intDarPrincipal = 0;
+                int intReprovadoBajaNota = 0;
+                //Para Actas Final
+                int intFinalReprobados = 0;
+                int intFinalAprovados = 0;
+                int intFinalSuspension = 0;
+                //Para Actas Recuperacion
+                int intSuspensionReprobados = 0;
+                int intSuspensionAprovados = 0;
 
+                UsarBaseDatos();
+
+                WSGestorEvaluacion.dtstEvaluacion_ImprimirAcumulados rstEvAcumulativa = this._getDtaImpresionEvAcumulativa();
+                dtstEvaluacion_ImprimirActas dtaEvFinal = this.getReporteActasExPrincipal();
+                dtstEvaluacion_ImprimirActas dtaEvRecuperacion = this._getDtaImpresionEvRecuperacion();
+            
+                if (dtaEvFinal != null && dtaEvFinal.Tables["Acta"].Rows.Count > 0)
+                {
+                    intReprovadosFaltas = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAsistencia<70"));
+                    intExonerados = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "strCodEquiv='E'"));
+                    intDarPrincipal = Convert.ToInt16(rstEvAcumulativa.Tables["Acta"].Compute("Count(Total)", "Total<25 and Total>=6"));
+                    intReprovadoBajaNota = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado<6 and strCodEquiv='R' and bytAsistencia>=70"));
+
+                    intFinalAprovados = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "strCodEquiv ='A'"));
+                    intFinalReprobados= Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado>=6 and strCodEquiv ='R'and bytAsistencia>=70 "));
+                    intFinalSuspension= Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "strCodEquiv ='S'"));
+                    
+                }
+                if (dtaEvRecuperacion != null && dtaEvRecuperacion.Tables["Acta"].Rows.Count > 0)
+                {
+                    intSuspensionAprovados= Convert.ToInt16(dtaEvRecuperacion.Tables["Acta"].Compute("Count(Total)", "strCodEquiv ='A'"));
+                    intSuspensionReprobados= Convert.ToInt16(dtaEvRecuperacion.Tables["Acta"].Compute("Count(Total)", "strCodEquiv ='R'"));
+                   
+                }
+                int TotalEstudiantes = Convert.ToInt16(rstEvAcumulativa.Tables["Acta"].Compute("Count(Total)", ""));
+                int TotalAprovados = intFinalAprovados + intSuspensionAprovados;
+                int TotalReprovados = intFinalReprobados + intSuspensionReprobados;
+                json = new JavaScriptSerializer().Serialize(new
+                {
+                    PerdidosFalta = intReprovadosFaltas,
+                    Exonerados = intExonerados,
+                    DarPrincipal = intDarPrincipal,
+                    NotaBaja = intReprovadoBajaNota,
+                    TotalEstudiantes = TotalEstudiantes,
+                    PrincipalAprovados = intFinalAprovados,
+                    PrincipalReprovados = intFinalReprobados,
+                    PrincipalDarSuspension = intFinalSuspension,
+                    SuspensionAprovados = intSuspensionAprovados,
+                    SuspensionReprovados = intSuspensionReprobados
+                });
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "EstadisticaEvaluacionAcumulada");
+            }
+            return json;
+        }
     }
-    public class FileDownload {
-
+    public class FileDownload
+    {
+        private List<string> strVecNombreActas;
+        private string[] strNombreActas;
+        public FileDownload(string strActas)
+        {
+            this.strNombreActas = strActas.Split('|');
+        }
         public List<FileInfo> GetFile()
         {
             List<FileInfo> listFiles = new List<FileInfo>();
-            string fileSavePath = System.Web.Hosting.HostingEnvironment.MapPath("~/Temp");
-            DirectoryInfo dirInfo = new DirectoryInfo(fileSavePath);
-            int i = 0;
-            foreach (var item in dirInfo.GetFiles())
+            try
             {
-                listFiles.Add(new FileInfo()
+                string fileSavePath = System.Web.Hosting.HostingEnvironment.MapPath("~/Temp");
+                DirectoryInfo dirInfo = new DirectoryInfo(fileSavePath);
+                int i = 0;
+                for (int j = 0; j <= this.strNombreActas.Count(); j++)
                 {
-                    FileId = i + 1,
-                    FileName = item.Name,
-                    FilePath = dirInfo.FullName  + @"\" + item.Name,
-                    FilePathOrigen= dirInfo.FullName
-                });
-                i = i + 1;
+                    foreach (var item in dirInfo.GetFiles())
+                    {
+                        if (item.Name.Equals(strNombreActas[j]))
+                        {
+                            listFiles.Add(new FileInfo()
+                            {
+                                FileId = i + 1,
+                                FileName = item.Name,
+                                FilePath = dirInfo.FullName + @"\" + item.Name,
+                                FilePathOrigen = dirInfo.FullName
+                            });
+                            i = i + 1;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "GetFile");
             }
             return listFiles;
         }
-
     }
     public class FileInfo
     {
@@ -533,7 +572,5 @@ namespace SitioWebOasis.Library
         public string FileName { get; set; }
         public string FilePath { get; set; }
         public string FilePathOrigen { get; set; }
-    } 
-
-
+    }
 }

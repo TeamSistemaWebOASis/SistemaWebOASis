@@ -168,6 +168,12 @@
   <data name="DOC_PERIODOS" xml:space="preserve">
     <value>PERIODOS</value>
   </data>
+  <data name="DOC_TBL_EXAMEN_EV_FINAL" xml:space="preserve">
+    <value>Evalución Final</value>
+  </data>
+  <data name="DOC_TBL_EXAMEN_EV_RECUPERACION" xml:space="preserve">
+    <value>Evalución Recuperación</value>
+  </data>
   <data name="DOC_TB_ARCHIVO_SIN_REGISTRO" xml:space="preserve">
     <value>SIN REGISTROS DISPONIBLES</value>
   </data>
@@ -216,8 +222,11 @@
   <data name="DOC_TB_COL_RENDIMIENTO_ACADEMICO_TOOLTIP" xml:space="preserve">
     <value>Nota Maxima, Nota Minima, Promedio, Cantidad de Estudiantes bajo el 70%</value>
   </data>
+  <data name="DOC_TB_ESTADISTICA" xml:space="preserve">
+    <value>Estadística</value>
+  </data>
   <data name="DOC_TB_EVALUACIONES" xml:space="preserve">
-    <value>EVALUACIONES</value>
+    <value>Evaluaciones</value>
   </data>
   <data name="DOC_TB_EV_ACUMULATIVA" xml:space="preserve">
     <value>Ev. ACUMULATIVA</value>
@@ -230,6 +239,9 @@
   </data>
   <data name="DTIC" xml:space="preserve">
     <value>ESPOCH - DTIC - 2017</value>
+  </data>
+  <data name="EST_CERTIFICADO_MATRICULA" xml:space="preserve">
+    <value>Certificado matrícula</value>
   </data>
   <data name="EST_DE_DATOS_USUARIO_NO_DISPONIBLE" xml:space="preserve">
     <value>Información 'no' disponible</value>
@@ -854,6 +866,12 @@
   </data>
   <data name="STR_INSTITUCION" xml:space="preserve">
     <value>ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO</value>
+  </data>
+  <data name="STR_MSG_DESCARGA_EVALUACIONES" xml:space="preserve">
+    <value>Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluacion de recuperación en formato PDF, dispuestas en un solo archivo ZIP</value>
+  </data>
+  <data name="STR_MSG_ESTADISTICA" xml:space="preserve">
+    <value>Esta opción le muestra la gráfica de comportamiento academico en la asignatura</value>
   </data>
   <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
     <value>PERÍODO ACADÉMICO</value>

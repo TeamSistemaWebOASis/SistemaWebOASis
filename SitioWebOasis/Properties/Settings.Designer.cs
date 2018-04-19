@@ -122,16 +122,6 @@ namespace SitioWebOasis.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/Seguridad.asmx")]
-        public string SitioWebOasis_WSSeguridad_Seguridad {
-            get {
-                return ((string)(this["SitioWebOasis_WSSeguridad_Seguridad"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
         [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/OASis/OAS_AdministracionCarrera/AdministracionCarrera_BusinessSe" +
             "rvices/GestorDefinicionPeriodo.asmx")]
         public string SitioWebOasis_WSGestorDefinicionPeriodoCarrera_GestorDefinicionPeriodo {
@@ -148,6 +138,16 @@ namespace SitioWebOasis.Properties {
         public string SitioWebOasis_WSAdministracionCarrera_GestorAdministracionCarrera {
             get {
                 return ((string)(this["SitioWebOasis_WSAdministracionCarrera_GestorAdministracionCarrera"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost/Oasis/OAS_SitioWeb/SitioWeb_BusinessServices/Seguridad.asmx")]
+        public string SitioWebOasis_WSSeguridad_Seguridad {
+            get {
+                return ((string)(this["SitioWebOasis_WSSeguridad_Seguridad"]));
             }
         }
     }

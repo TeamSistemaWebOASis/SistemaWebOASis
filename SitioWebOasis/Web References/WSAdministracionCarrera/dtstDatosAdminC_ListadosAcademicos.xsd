@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_ListadosAcademicos.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_ListadosAcademicos.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_ListadosAcademicos.xsd" id="dtstDatosAdminC_ListadosAcademicos" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:UseCurrentLocale="true" name="dtstDatosAdminC_ListadosAcademicos">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaCreada" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaElim" type="xs:dateTime" />
+              <xs:element default="false" name="blnActiva" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Areas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strCoordinador" type="xs:string" />
+              <xs:element default="false" name="blnActiva" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Titulos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element minOccurs="0" name="strTipo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Niveles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Titulos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_ListadosAcademicosKey1">
+      <xs:selector xpath=".//mstns:Materias" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_ListadosAcademicosKey2">
+      <xs:selector xpath=".//mstns:Areas" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_ListadosAcademicosKey3">
+      <xs:selector xpath=".//mstns:Titulos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_ListadosAcademicosKey4">
+      <xs:selector xpath=".//mstns:Niveles" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_ListadosAcademicosKey5">
+      <xs:selector xpath=".//mstns:Tipos_de_Titulos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:keyref name="Tipos_de_TitulosTitulos" refer="mstns:dtstDatosAdminC_ListadosAcademicosKey5">
+      <xs:selector xpath=".//mstns:Titulos" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -237,7 +237,10 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060449038-3";
                 //  numIdentificacion = "230023884-3";
 
-                numIdentificacion = "155000450-9";
+                //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
+                //  numIdentificacion = "060320137-7";
+                //  numIdentificacion = "060327507-4";
+                    numIdentificacion = "060180782-9"; //Mario Paguay
             }
             catch (Exception ex){
                 Errores err = new Errores();

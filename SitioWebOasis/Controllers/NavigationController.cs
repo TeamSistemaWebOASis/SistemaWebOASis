@@ -139,12 +139,22 @@ namespace SitioWebOasis.Controllers
                                         IsAction = true,
                                         Class = "text",
                                         SubMenu = null,
-                                        icon = "fa fa-file",
+                                        icon = "fa fa-pencil-square-o",
                                         Title = Language.es_ES.EST_MN_MATRICULACION.ToString() };
-
-            //  Agrego a la lista todo el Menu y los elemento de subMenu
+            menu.SubMenu = new List<MenuViewModel>();
+            subMenu = new MenuViewModel()
+            {
+                Action = "ArchivoMatricula",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-file-pdf-o",
+                Title = Language.es_ES.EST_CERTIFICADO_MATRICULA.ToString()
+            };
+            menu.SubMenu.Add(subMenu);
+            //Agrego a la lista todo el Menu y los elemento de subMenu
             lstMVM.Add(menu);
-
             return lstMVM;
         }
 

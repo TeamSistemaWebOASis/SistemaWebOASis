@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_Pensums.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_Pensums.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_Pensums.xsd" id="dtstDatosAdminC_Pensums" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="en-US" name="dtstDatosAdminC_Pensums">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Tipos_de_Titulos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Niveles">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Pensums">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="dtFechaInic" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaFin" type="xs:dateTime" />
+              <xs:element name="blnActivo" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="dtFechaCreada" type="xs:dateTime" />
+              <xs:element minOccurs="0" name="dtFechaElim" type="xs:dateTime" />
+              <xs:element name="blnActiva" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Materias_Pensum">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodPensum" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element name="strCodArea" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element name="strCodFormaDict" type="xs:string" />
+              <xs:element minOccurs="0" name="fltCreditos" type="xs:float" />
+              <xs:element minOccurs="0" name="bytHorasTeo" type="xs:float" />
+              <xs:element minOccurs="0" name="bytHorasPrac" type="xs:float" />
+              <xs:element minOccurs="0" name="bytHorasAut" type="xs:float" />
+              <xs:element minOccurs="0" name="strNombreMateria" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Areas">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element minOccurs="0" name="strCoordinador" type="xs:string" />
+              <xs:element name="blnActiva" type="xs:boolean" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Materias">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Formas_Dictado">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Prerrequisitos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodPensum" type="xs:string" />
+              <xs:element name="strCodMateria" type="xs:string" />
+              <xs:element name="strCodMatPre" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+              <xs:element minOccurs="0" name="strTipoPrerrequisito" type="xs:string" />
+              <xs:element minOccurs="0" name="strMateriaPre" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Tipos_de_Prerrequisitos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strDescripcion" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Titulos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodigo" type="xs:string" />
+              <xs:element name="strNombre" type="xs:string" />
+              <xs:element name="strCodTipo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Titulos_Dado_Carrera">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="strCodTitulo" type="xs:string" />
+              <xs:element name="strCodPensum" type="xs:string" />
+              <xs:element minOccurs="0" name="fltCreditosEgre" type="xs:double" />
+              <xs:element minOccurs="0" name="fltCreditosGrado" type="xs:double" />
+              <xs:element name="strCodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strNombreTitulo" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey1">
+      <xs:selector xpath=".//mstns:Tipos_de_Titulos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey4">
+      <xs:selector xpath=".//mstns:Niveles" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey5">
+      <xs:selector xpath=".//mstns:Pensums" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey6">
+      <xs:selector xpath=".//mstns:Materias" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey7">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodPensum" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey8">
+      <xs:selector xpath=".//mstns:Areas" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey9">
+      <xs:selector xpath=".//mstns:Tipos_de_Materias" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey10">
+      <xs:selector xpath=".//mstns:Formas_Dictado" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey11">
+      <xs:selector xpath=".//mstns:Prerrequisitos" />
+      <xs:field xpath="mstns:strCodPensum" />
+      <xs:field xpath="mstns:strCodMateria" />
+      <xs:field xpath="mstns:strCodMatPre" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey12">
+      <xs:selector xpath=".//mstns:Tipos_de_Prerrequisitos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey2">
+      <xs:selector xpath=".//mstns:Titulos" />
+      <xs:field xpath="mstns:strCodigo" />
+    </xs:unique>
+    <xs:unique msdata:PrimaryKey="true" name="dtstDatosAdminC_PensumsKey3">
+      <xs:selector xpath=".//mstns:Titulos_Dado_Carrera" />
+      <xs:field xpath="mstns:strCodTitulo" />
+      <xs:field xpath="mstns:strCodPensum" />
+    </xs:unique>
+    <xs:keyref name="TitulosTitulos_Dado_Carrera" refer="mstns:dtstDatosAdminC_PensumsKey2">
+      <xs:selector xpath=".//mstns:Titulos_Dado_Carrera" />
+      <xs:field xpath="mstns:strCodTitulo" />
+    </xs:keyref>
+    <xs:keyref name="NivelesTitulos_Dado_Carrera" refer="mstns:dtstDatosAdminC_PensumsKey4">
+      <xs:selector xpath=".//mstns:Titulos_Dado_Carrera" />
+      <xs:field xpath="mstns:strCodNivel" />
+    </xs:keyref>
+    <xs:keyref name="PensumsTitulos_Dado_Carrera" refer="mstns:dtstDatosAdminC_PensumsKey5">
+      <xs:selector xpath=".//mstns:Titulos_Dado_Carrera" />
+      <xs:field xpath="mstns:strCodPensum" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_TitulosTitulos" refer="mstns:dtstDatosAdminC_PensumsKey1">
+      <xs:selector xpath=".//mstns:Titulos" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_PrerrequisitosPrerrequisitos" refer="mstns:dtstDatosAdminC_PensumsKey12">
+      <xs:selector xpath=".//mstns:Prerrequisitos" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+    <xs:keyref name="Materias_PensumPrerrequisitos" refer="mstns:dtstDatosAdminC_PensumsKey7">
+      <xs:selector xpath=".//mstns:Prerrequisitos" />
+      <xs:field xpath="mstns:strCodPensum" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:keyref>
+    <xs:keyref name="MateriasPrerrequisitos" refer="mstns:dtstDatosAdminC_PensumsKey6">
+      <xs:selector xpath=".//mstns:Prerrequisitos" />
+      <xs:field xpath="mstns:strCodMatPre" />
+    </xs:keyref>
+    <xs:keyref name="NivelesMaterias_Pensum" refer="mstns:dtstDatosAdminC_PensumsKey4">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodNivel" />
+    </xs:keyref>
+    <xs:keyref name="PensumsMaterias_Pensum" refer="mstns:dtstDatosAdminC_PensumsKey5">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodPensum" />
+    </xs:keyref>
+    <xs:keyref name="AreasMaterias_Pensum" refer="mstns:dtstDatosAdminC_PensumsKey8">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodArea" />
+    </xs:keyref>
+    <xs:keyref name="Tipos_de_MateriasMaterias_Pensum" refer="mstns:dtstDatosAdminC_PensumsKey9">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodTipo" />
+    </xs:keyref>
+    <xs:keyref name="Formas_DictadoMaterias_Pensum" refer="mstns:dtstDatosAdminC_PensumsKey10">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodFormaDict" />
+    </xs:keyref>
+    <xs:keyref name="MateriasMaterias_Pensum" refer="mstns:dtstDatosAdminC_PensumsKey6">
+      <xs:selector xpath=".//mstns:Materias_Pensum" />
+      <xs:field xpath="mstns:strCodMateria" />
+    </xs:keyref>
+  </xs:element>
+</xs:schema>

@@ -14,7 +14,8 @@ namespace SitioWebOasis
                                                                     "~/Content/css/main.css",
                                                                     "~/Content/css/ui.jqgrid-bootstrap.css",
                                                                     "~/Content/css/HoldOn.min.css",
-                                                                    "~/Content/css/jquery-confirm/jquery-confirm.min.css"));
+                                                                    "~/Content/css/jquery-confirm/jquery-confirm.min.css"
+                                                                    ));
 
             //  ARCHIVOS JavaScript("ScriptBundle")
             bundles.Add(new ScriptBundle("~/bundles/js").Include(   "~/Content/js/es-ES.js",
@@ -43,7 +44,9 @@ namespace SitioWebOasis
                                                                     "~/Content/js/jquery-ui/jQueryBlockUI.min.js",
                                                                     "~/Content/js/jquery-confirm/jquery-confirm.min.js",
                                                                     "~/Content/js/jquery-sparkline/jquery.sparkline.min.js",
-                                                                    "~/Content/js/controlTiempoSession-v3.3.8.js"));
+                                                                    "~/Content/js/controlTiempoSession-v3.3.8.js",
+                                                                    "~/Content/js/jquery-ui/jquery-ui-1.10.4.custom.min.js"
+                                                                    ));
         }
     }
 }

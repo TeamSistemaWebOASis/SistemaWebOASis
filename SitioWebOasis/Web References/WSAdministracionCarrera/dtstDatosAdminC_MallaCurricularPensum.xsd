@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns="http://tempuri.org/dtstDatosAdminC_MallaCurricularPensum.xsd" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:mstns="http://tempuri.org/dtstDatosAdminC_MallaCurricularPensum.xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://tempuri.org/dtstDatosAdminC_MallaCurricularPensum.xsd" id="dtstDatosAdminC_MallaCurricularPensum" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element msdata:IsDataSet="true" msdata:Locale="en-US" name="dtstDatosAdminC_MallaCurricularPensum">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="MallaCurricular">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" name="CodPensum" type="xs:string" />
+              <xs:element minOccurs="0" name="Pensum" type="xs:string" />
+              <xs:element minOccurs="0" name="CodMateria" type="xs:string" />
+              <xs:element minOccurs="0" name="Materia" type="xs:string" />
+              <xs:element minOccurs="0" name="CodMateriaPre" type="xs:string" />
+              <xs:element minOccurs="0" name="MateriaPre" type="xs:string" />
+              <xs:element minOccurs="0" name="CodTipo" type="xs:string" />
+              <xs:element minOccurs="0" name="Tipo" type="xs:string" />
+              <xs:element minOccurs="0" name="CodNivel" type="xs:string" />
+              <xs:element minOccurs="0" name="Nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="CodArea" type="xs:string" />
+              <xs:element minOccurs="0" name="Area" type="xs:string" />
+              <xs:element minOccurs="0" name="Creditos" type="xs:float" />
+              <xs:element minOccurs="0" name="HorasTeoricas" type="xs:float" />
+              <xs:element minOccurs="0" name="HorasPracticas" type="xs:float" />
+              <xs:element minOccurs="0" name="HorasAutonomas" type="xs:float" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

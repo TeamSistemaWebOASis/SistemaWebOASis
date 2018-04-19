@@ -444,6 +444,38 @@ namespace SitioWebOasis.Models
             return rst;
         }
 
+        public string getHTMLPeriodosAcademicos()
+        {
+            string rst = string.Empty;
+            rst += " <tr role='row' class='success'>";
+            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='10'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            rst += " </tr>";
+            try
+            {
+                dtaPeriodosEstudiante = this._periodosMatriculasEstudiante();
+
+                if (dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Tables["Periodos"].Rows.Count > 0)
+                {
+                    int x = 0;
+                    rst = string.Empty;
+                    foreach (DataRow item in dtaPeriodosEstudiante.Tables["Periodos"].Rows)
+                    {
+                        rst += " <tr role='row' id='" + item["strCodigo"].ToString().Trim()+"' style ='align-content: center; vertical-align: middle; text-align: center;'>";
+                        rst += "    <td>" + ++x + "</td>";
+                        rst += "    <td style='text-align: left;'>" + item["strDescripcion"].ToString() + "</ td >";
+                        rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' id='btnImpresion'  class='btn btn-success'><span class='glyphicon glyphicon-download-alt'></span> DESCARGAR MATRÍCULA</button></div> </td>";//btn btn-success esta hecho referencia MatriculacionSA.js
+                        rst += " </tr>";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "_getHTMLNotasEVAcumulativa - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
+            }
+
+            return rst;
+        }
 
         public string getDtaEvFinal_EvRecuperacion(string tpoExamen)
         {
