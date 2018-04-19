@@ -646,6 +646,17 @@ namespace SitioWebOasis.Controllers
                 return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
             }
         }
+        public ActionResult HorarioCarrera(string strCursoParalelo = "")
+        {
+            HorarioEstudiante he = new Models.HorarioEstudiante();
+
+            if (!string.IsNullOrEmpty(strCursoParalelo))
+            {
+                he = new Models.HorarioEstudiante(strCursoParalelo);
+            }
+
+            return View("HorarioCarrera", he);
+        }
         //Mostrar Estadisticas de Acta Acumula
         [HttpPost]
         public JsonResult MostrarEstadisticas(string strIdCarrera, string strIdPeriodoAcademico, string strIdAsignatura)

@@ -150,6 +150,9 @@
   <data name="DOC_GRD_EVALUACION_FORMATIVA" xml:space="preserve">
     <value>EVALUACIÓN FORMATIVA</value>
   </data>
+  <data name="DOC_HORARIO_CARRERA_DOCENTE" xml:space="preserve">
+    <value>Horario Carrera</value>
+  </data>
   <data name="DOC_HORARIO_CLASE" xml:space="preserve">
     <value>Horario Académico</value>
   </data>
@@ -163,7 +166,7 @@
     <value>Horarios del Docente</value>
   </data>
   <data name="DOC_MN_HORARIO_EXAMEN_DOCENTE" xml:space="preserve">
-    <value>Horario de Exámenes</value>
+    <value>Horario  Exámenes</value>
   </data>
   <data name="DOC_PERIODOS" xml:space="preserve">
     <value>PERIODOS</value>
@@ -353,6 +356,9 @@
   </data>
   <data name="EST_DWN_XLS" xml:space="preserve">
     <value>EXCEL</value>
+  </data>
+  <data name="EST_HORARIO_CARRERA_ESTUDIANTE" xml:space="preserve">
+    <value>Horario carrera</value>
   </data>
   <data name="EST_LBL_APROBADO" xml:space="preserve">
     <value>Aprobado</value>

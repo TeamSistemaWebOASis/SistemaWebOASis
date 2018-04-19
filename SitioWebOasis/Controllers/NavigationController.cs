@@ -15,18 +15,19 @@ namespace SitioWebOasis.Controllers
         public ActionResult Menu()
         {
             List<MenuViewModel> lstMVM = new List<MenuViewModel>();
-            
+
 
             try
             {
-                string rol = (UsuarioActual!=null)  ? UsuarioActual.RolActual.ID.ToString()
+                string rol = (UsuarioActual != null) ? UsuarioActual.RolActual.ID.ToString()
                                                     : "";
 
-                switch (rol){
+                switch (rol)
+                {
                     case "Estudiantes":
                         lstMVM = this._getMenuEstudiantes();
                         this._urlMA = this._getUrlMatriculacionAntigua();
-                    break;
+                        break;
 
                     case "Docentes":
                         lstMVM = this._getMenuDocentes();
@@ -34,11 +35,13 @@ namespace SitioWebOasis.Controllers
 
                     default:
                         lstMVM = new List<MenuViewModel>();
-                    break;
+                        break;
                 }
 
                 return PartialView("_Navigation", lstMVM);
-            }catch(System.Exception ex){
+            }
+            catch (System.Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "NavigationController - Menu");
 
@@ -60,34 +63,43 @@ namespace SitioWebOasis.Controllers
             /////////////////////////////////////
             //  MENU INICIO
             /////////////////////////////////////
-            MenuViewModel menu = new MenuViewModel(){   MenuID = 1,
-                                                        Action = "Index",
-                                                        Controller = "Estudiantes",
-                                                        IsAction = true,
-                                                        Class = "text",
-                                                        SubMenu = null,
-                                                        icon = "fa fa-home",
-                                                        Title = Language.es_ES.EST_MN_INICIO.ToString()};
+            MenuViewModel menu = new MenuViewModel()
+            {
+                MenuID = 1,
+                Action = "Index",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-home",
+                Title = Language.es_ES.EST_MN_INICIO.ToString()
+            };
 
             //  Submenu Datos Estudiante
             menu.SubMenu = new List<MenuViewModel>();
-            MenuViewModel subMenu = new MenuViewModel(){    Action = "DatosEstudiantes",
-                                                            Controller = "Estudiantes",
-                                                            IsAction = true,
-                                                            Class = "text",
-                                                            SubMenu = null,
-                                                            icon = "fa fa-user",
-                                                            Title = Language.es_ES.EST_MN_DATOS_ESTUDIANTE.ToString()};
+            MenuViewModel subMenu = new MenuViewModel()
+            {
+                Action = "DatosEstudiantes",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-user",
+                Title = Language.es_ES.EST_MN_DATOS_ESTUDIANTE.ToString()
+            };
             menu.SubMenu.Add(subMenu);
 
             //  Submenu Notas Estudiante
-            subMenu = new MenuViewModel(){  Action = "NotasEstudiantes",
-                                            Controller = "Estudiantes",
-                                            IsAction = true,
-                                            Class = "text",
-                                            SubMenu = null,
-                                            icon = "fa fa-list",
-                                            Title = Language.es_ES.EST_MN_NOTAS_ESTUDIANTE.ToString()};
+            subMenu = new MenuViewModel()
+            {
+                Action = "NotasEstudiantes",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-list",
+                Title = Language.es_ES.EST_MN_NOTAS_ESTUDIANTE.ToString()
+            };
 
             menu.SubMenu.Add(subMenu);
 
@@ -97,35 +109,44 @@ namespace SitioWebOasis.Controllers
             //////////////////////////////////////////
             //  MENU HORARIO ESTUDIANTES
             //////////////////////////////////////////
-            menu = new MenuViewModel(){ MenuID = 1,
-                                        Action = "HorarioEstudiante",
-                                        Controller = "Estudiantes",
-                                        IsAction = true,
-                                        Class = "text",
-                                        SubMenu = null,
-                                        icon = "fa fa-calendar",
-                                        Title = Language.es_ES.EST_MN_HORARIO_ESTUDIANTE.ToString()};
+            menu = new MenuViewModel()
+            {
+                MenuID = 1,
+                Action = "HorarioEstudiante",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar",
+                Title = Language.es_ES.EST_MN_HORARIO_ESTUDIANTE.ToString()
+            };
 
             //  Submenu horario estudiante
             menu.SubMenu = new List<MenuViewModel>();
-            subMenu = new MenuViewModel(){  Action = "HorarioEstudiante",
-                                            Controller = "Estudiantes",
-                                            IsAction = true,
-                                            Class = "text",
-                                            SubMenu = null,
-                                            icon = "fa fa-calendar",
-                                            Title = Language.es_ES.EST_MN_HORARIO_ESTUDIANTE.ToString()};
+            subMenu = new MenuViewModel()
+            {
+                Action = "HorarioEstudiante",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar",
+                Title = Language.es_ES.EST_MN_HORARIO_ESTUDIANTE.ToString()
+            };
 
             menu.SubMenu.Add(subMenu);
 
             //  Submenu horario examenes estudiante
-            subMenu = new MenuViewModel(){  Action = "HorarioExamenesEstudiante",
-                                            Controller = "Estudiantes",
-                                            IsAction = true,
-                                            Class = "text",
-                                            SubMenu = null,
-                                            icon = "fa fa-calendar-o",
-                                            Title = Language.es_ES.EST_MN_HORARIO_EXAMENES.ToString()};
+            subMenu = new MenuViewModel()
+            {
+                Action = "HorarioExamenesEstudiante",
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar-o",
+                Title = Language.es_ES.EST_MN_HORARIO_EXAMENES.ToString()
+            };
 
             menu.SubMenu.Add(subMenu);
             lstMVM.Add(menu);
@@ -133,14 +154,17 @@ namespace SitioWebOasis.Controllers
             //////////////////////////////////////////
             //  MENU MATRICULACION
             //////////////////////////////////////////
-            menu = new MenuViewModel(){ MenuID = 1,
-                                        Action = this._getUrlMatriculacionAntigua() + UsuarioActual.Cedula,
-                                        Controller = "Estudiantes",
-                                        IsAction = true,
-                                        Class = "text",
-                                        SubMenu = null,
-                                        icon = "fa fa-pencil-square-o",
-                                        Title = Language.es_ES.EST_MN_MATRICULACION.ToString() };
+            menu = new MenuViewModel()
+            {
+                MenuID = 1,
+                Action = this._getUrlMatriculacionAntigua() + UsuarioActual.Cedula,
+                Controller = "Estudiantes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-pencil-square-o",
+                Title = Language.es_ES.EST_MN_MATRICULACION.ToString()
+            };
             menu.SubMenu = new List<MenuViewModel>();
             subMenu = new MenuViewModel()
             {
@@ -188,28 +212,31 @@ namespace SitioWebOasis.Controllers
             menu.SubMenu.Add(subMenu);
             lstMVM.Add(menu);
             //MENU HORARIO DE DOCENTE
-            menu = new MenuViewModel() {
-                                        MenuID=1,
-                                        Action="HorarioDocente",
-                                        Controller="Docentes",
-                                        IsAction=true,
-                                        Class="text",
-                                        SubMenu=null,
-                                        icon= "fa fa-calendar-plus-o",
-                                        Title= Language.es_ES.DOC_MN_HORARIO_DOCENTE.ToString()
+            menu = new MenuViewModel()
+            {
+                MenuID = 1,
+                Action = "HorarioDocente",
+                Controller = "Docentes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar-plus-o",
+                Title = Language.es_ES.DOC_MN_HORARIO_DOCENTE.ToString()
             };
             menu.SubMenu = new List<MenuViewModel>();
-            subMenu = new MenuViewModel(){
-                                        Action = "HorarioDocente",
-                                        Controller = "Docentes",
-                                        IsAction = true,
-                                        Class = "text",
-                                        SubMenu = null,
-                                        icon = "fa fa-calendar",
-                                        Title = Language.es_ES.DOC_HORARIO_CLASE.ToString()
+            subMenu = new MenuViewModel()
+            {
+                Action = "HorarioDocente",
+                Controller = "Docentes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar",
+                Title = Language.es_ES.DOC_HORARIO_CLASE.ToString()
             };
             menu.SubMenu.Add(subMenu);
-            subMenu = new MenuViewModel() {
+            subMenu = new MenuViewModel()
+            {
                 Action = "HorarioExamenDocente",
                 Controller = "Docentes",
                 IsAction = true,
@@ -219,8 +246,19 @@ namespace SitioWebOasis.Controllers
                 Title = Language.es_ES.DOC_MN_HORARIO_EXAMEN_DOCENTE.ToString()
             };
             menu.SubMenu.Add(subMenu);
+            subMenu = new MenuViewModel()
+            {
+                Action = "HorarioCarrera",
+                Controller = "Docentes",
+                IsAction = true,
+                Class = "text",
+                SubMenu = null,
+                icon = "fa fa-calendar",
+                Title = Language.es_ES.DOC_HORARIO_CARRERA_DOCENTE.ToString()
+            };
+            menu.SubMenu.Add(subMenu);
             lstMVM.Add(menu);
-                return lstMVM;
+            return lstMVM;
         }
 
 
@@ -233,7 +271,7 @@ namespace SitioWebOasis.Controllers
                 var appSettings = System.Configuration.ConfigurationManager.AppSettings;
                 urlMA = appSettings.Get("urlMatriculacionSistemaAntiguo").ToString();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 urlMA = string.Empty;
                 Errores err = new Errores();
