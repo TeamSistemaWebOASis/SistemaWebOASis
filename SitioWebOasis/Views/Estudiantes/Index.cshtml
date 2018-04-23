@@ -79,19 +79,17 @@
                     <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
                         <thead>
                             <tr role="row">
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 150px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
-
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_UNO</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
-
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
-                                <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
-
+                                <th rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
+                                <th rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
+                                <th rowspan="1" colspan="1" style="width: 90px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+                                <th rowspan="1" colspan="1" style="width: 60px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                                <th rowspan="1" colspan="1" style="width: 60px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_PARALELO</th>
+                                <th rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_UNO</th>
+                                <th rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_DOS</th>
+                                <th rowspan="1" colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NOTA_TRES</th>
+                                <th colspan="1" style="width: 125px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ACUMULADO</th>
+                                <th style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_EQUIVALENCIA</th>
+                                <th style="width: 100px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_OBSERVACION</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,15 +97,16 @@
                             @Html.Raw(Model.getHTMLNotasEVAcumulativa())
                         </tbody>
                     </table>
-                }else if (evaluacionActiva == "P" || evaluacionActiva == "S" || string.IsNullOrEmpty( evaluacionActiva ) ){
+                }else if (evaluacionActiva == "P" || evaluacionActiva == "S" || string.IsNullOrEmpty( evaluacionActiva ) || !Model.estudianteEnPeriodoVigente()){
                     <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid" style="font-stretch: condensed;">
                         <thead>
                             
                             <tr role="row">
                                 <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
                                 <th rowspan="2" style="width: 250px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
-                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
                                 <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_MATRICULA</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NIVEL</th>
+                                <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_PARALELO</th>
 
                                 <th colspan="5" style="border-left: 1px solid darkgray;border-top: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_ACUMULATIVA</th>
                                 <th colspan="3" style="border-left: 1px dotted darkgray;border-top: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EV_FINAL</th>

@@ -93,7 +93,7 @@ namespace SitioWebOasis.Library
                         evaluacionActiva = dtaCarreraEspecial[2];
                     }
                 }else{
-                    if (this._drDtaPeriodosEvaluacion.Length > 0){
+                    if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
                         foreach (DataRow item in this._drDtaPeriodosEvaluacion){
                             if (!string.IsNullOrEmpty(item["strValor"].ToString())){
                                 fchItem = Convert.ToDateTime(item["strValor"].ToString());
@@ -164,7 +164,7 @@ namespace SitioWebOasis.Library
                     this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16(numDiasDiff.TotalDays)
                                                                         : 0;
                 }else{
-                    if (this._drDtaPeriodosEvaluacion.Length > 0){
+                    if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
                         foreach (DataRow item in this._drDtaPeriodosEvaluacion){
                             if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
                                 this._fchMaximaGestion = Convert.ToDateTime(item["strValor"].ToString());
@@ -223,7 +223,7 @@ namespace SitioWebOasis.Library
             DataRow drProximoParcial = default(DataRow);
 
             try{
-                if (this._drDtaPeriodosEvaluacion.Length > 0){
+                if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
                     foreach (DataRow item in this._drDtaPeriodosEvaluacion){
                         if (DateTime.Now.Date.CompareTo(Convert.ToDateTime(item["strValor"].ToString())) < 0){
                             drProximoParcial = item;
@@ -245,7 +245,7 @@ namespace SitioWebOasis.Library
             string strFchInicio = default(string);
 
             try{
-                if (this._drDtaPeriodosEvaluacion.Length > 0){
+                if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
                     foreach(DataRow item in this._drDtaPeriodosEvaluacion){
                         if ( item["strCodigo"].ToString().Replace("FN", "").CompareTo(dtaTpoEvaluacion.Replace("FN", "")) == 0){
                             DateTime dtFchInicio = Convert.ToDateTime(item["strValor"].ToString()).Date.AddDays(-8);

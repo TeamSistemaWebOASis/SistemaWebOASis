@@ -60,8 +60,9 @@ namespace SitioWebOasis.Library
             rst += " <tr role='row' style='align-content: center; vertical-align: middle; text-align: center;'>";
             rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this._numElemento + "</td>";
             rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'>" + this._item["strNombre"].ToString() + "</td>";
-            rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this._getNumOrdinal(this._item["strCodNivel"].ToString(), "nivel") + "</td>";
             rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this._getNumOrdinal(this._item["bytNumMat"].ToString(), "") + "</td>";
+            rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this._getNumOrdinal(this._item["strCodNivel"].ToString(), "nivel") + "</td>";
+            rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this._item["strCodParalelo"].ToString() + "</td>";
 
             //  notas acumulado
             rst += "    <td style='border-left: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;'>" + this._item["bytNota1"].ToString() + "</td>";
@@ -235,13 +236,8 @@ namespace SitioWebOasis.Library
 
                 //  EXONERADO
                 case "E":
-                    rst = alertaEquivalencia = lblEquivalencia = "success";
-                    smsEquivalencia = Language.es_ES.EST_LBL_EXONERADO.ToUpper();
-                    break;
-
-                //  EXONERADO
                 case "EX":
-                    rst = alertaEquivalencia = lblEquivalencia = "success";
+                    rst = alertaEquivalencia = lblEquivalencia = "primary";
                     smsEquivalencia = Language.es_ES.EST_LBL_EXONERADO.ToUpper();
                     break;
 

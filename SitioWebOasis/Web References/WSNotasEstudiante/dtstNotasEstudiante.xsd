@@ -9,10 +9,11 @@
               <xs:element minOccurs="0" name="strCodMateria" type="xs:string" />
               <xs:element minOccurs="0" name="asignatura" type="xs:string" />
               <xs:element minOccurs="0" name="nivel" type="xs:string" />
+              <xs:element minOccurs="0" name="strCodParalelo" type="xs:string" />
               <xs:element minOccurs="0" name="numMatricula" type="xs:string" />
-              <xs:element minOccurs="0" default="0" name="bytNota1" type="xs:short" />
-              <xs:element minOccurs="0" default="0" name="bytNota2" type="xs:short" />
-              <xs:element minOccurs="0" default="0" name="bytNota3" type="xs:short" />
+              <xs:element minOccurs="0" name="bytNota1" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNota2" type="xs:string" />
+              <xs:element minOccurs="0" name="bytNota3" type="xs:string" />
               <xs:element minOccurs="0" name="acumulado" type="xs:string" />
               <xs:element minOccurs="0" name="strCodEquiv" type="xs:string" />
               <xs:element minOccurs="0" name="observaciones" type="xs:string" />

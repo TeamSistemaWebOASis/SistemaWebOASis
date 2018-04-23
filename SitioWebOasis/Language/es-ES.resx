@@ -528,6 +528,9 @@
   <data name="EST_TB_COL_OBSERVACION" xml:space="preserve">
     <value>Observación</value>
   </data>
+  <data name="EST_TB_COL_PARALELO" xml:space="preserve">
+    <value>Paralelo</value>
+  </data>
   <data name="EST_TB_COL_PORCIENTO_ASISTENCIA" xml:space="preserve">
     <value>ASISTENCIA (%)</value>
   </data>

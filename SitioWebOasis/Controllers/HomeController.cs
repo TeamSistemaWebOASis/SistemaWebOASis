@@ -241,7 +241,8 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060320137-7";
                 //  numIdentificacion = "060327507-4";
 
-                numIdentificacion = "060180782-9"; //Mario Paguay
+                //  numIdentificacion = "060180782-9"; //   Mario Paguay
+                numIdentificacion = "010648405-8";
             }
             catch (Exception ex){
                 Errores err = new Errores();

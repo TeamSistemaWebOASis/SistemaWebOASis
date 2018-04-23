@@ -1294,6 +1294,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Paralelo.
+        /// </summary>
+        public static string EST_TB_COL_PARALELO {
+            get {
+                return ResourceManager.GetString("EST_TB_COL_PARALELO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a ASISTENCIA (%).
         /// </summary>
         public static string EST_TB_COL_PORCIENTO_ASISTENCIA {

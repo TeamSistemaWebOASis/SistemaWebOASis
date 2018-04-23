@@ -205,7 +205,7 @@ namespace SitioWebOasis.Models
             try{
                 WSGestorDeReportesMatriculacion.dtstPeriodos dtaPeriodosEstudiante = this._periodosMatriculasEstudiante();
 
-                if( dtaPeriodosEstudiante.Periodos.Rows.Count > 0){
+                if(dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Periodos.Rows.Count > 0){
                     rst = dtaPeriodosEstudiante.Periodos.Select("strCodigo = '"+ this.periodoEstudiante + "'", "");
                     periodo = (rst.Length > 0) 
                                 ? rst[0]["strDescripcion"].ToString()
@@ -423,8 +423,9 @@ namespace SitioWebOasis.Models
                         rst += " <tr role='row' style='align-content: center; vertical-align: middle; text-align: center;'>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + ++x + "</td>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: left;'>" + item["strNombre"].ToString() + "</ td >";
-                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this.getNumOrdinal(item["nivelAsignatura"].ToString(), "nivel") + "</td>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this.getNumOrdinal(item["numMatricula"].ToString(), "matricula") + "</td>";
+                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + this.getNumOrdinal(item["nivelAsignatura"].ToString(), "nivel") + "</td>";
+                        rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;'>" + item["strCodParalelo"].ToString() + "</ td >";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;' class='" + colorParcial1 + "'>" + item["bytNota1"].ToString() + "</td>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;' class='" + colorParcial2 + "'>" + item["bytNota2"].ToString() + "</td>";
                         rst += "    <td style='align-content: center; vertical-align: middle; text-align: center;' class='" + colorParcial3 + "'>" + item["bytNota3"].ToString() + "</td>";
