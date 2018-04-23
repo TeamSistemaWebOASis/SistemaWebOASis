@@ -46,13 +46,13 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="collapsed" aria-expanded="false">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="" aria-expanded="true">
                                     <strong> @Language.es_ES.STR_HISTORICO_CONSOLIDADO </strong>
                                     <i class="fa fa-angle-down pull-right"></i><i class="fa fa-angle-up pull-right"></i>
                                 </a>
                             </h4>
                         </div>
-                        <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                        <div id="collapseOne" class="panel-collapse collapse in">
                             <div class="panel-body">
 
                                 <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid" style="font-stretch: condensed;">
@@ -218,8 +218,8 @@
         </div>
     </div>
 </div>
-@section scripts{
 
+@section scripts{
     @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
     <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.1.16"> </script>
 

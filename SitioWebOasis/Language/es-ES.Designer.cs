@@ -2176,7 +2176,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a 3.8.1.5.
+        ///   Busca una cadena traducida similar a 3.8.1.6.
         /// </summary>
         public static string SA_VERSION {
             get {
@@ -2235,6 +2235,24 @@ namespace Language {
         public static string STR_CERRAR_SESION {
             get {
                 return ResourceManager.GetString("STR_CERRAR_SESION", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CERTIFICADO DE MATRÍCULA.
+        /// </summary>
+        public static string STR_CERTIFICADO_MATRICULA {
+            get {
+                return ResourceManager.GetString("STR_CERTIFICADO_MATRICULA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Descarga.
+        /// </summary>
+        public static string STR_DESCARGA {
+            get {
+                return ResourceManager.GetString("STR_DESCARGA", resourceCulture);
             }
         }
         
@@ -2329,7 +2347,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluacion de recuperación en formato PDF, dispuestas en un solo archivo ZIP.
+        ///   Busca una cadena traducida similar a Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluación de recuperación en formato PDF, dispuestas en un solo archivo ZIP.
         /// </summary>
         public static string STR_MSG_DESCARGA_EVALUACIONES {
             get {
@@ -2352,6 +2370,24 @@ namespace Language {
         public static string STR_PERIODO_ACADEMICO {
             get {
                 return ResourceManager.GetString("STR_PERIODO_ACADEMICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Periodos.
+        /// </summary>
+        public static string STR_PERIODOS {
+            get {
+                return ResourceManager.GetString("STR_PERIODOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a PERIODOS ESTUDIANTE.
+        /// </summary>
+        public static string STR_PERIODOS_ESTUDIANTE {
+            get {
+                return ResourceManager.GetString("STR_PERIODOS_ESTUDIANTE", resourceCulture);
             }
         }
         

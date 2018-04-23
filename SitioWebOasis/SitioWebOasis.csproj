@@ -286,6 +286,8 @@
     <Compile Include="Library\Nacionalidad.cs" />
     <Compile Include="Library\EvaluacionActiva.cs" />
     <Compile Include="Library\Persona.cs" />
+    <Compile Include="Library\ReporteMatriculacionEstudiante.cs" />
+    <Compile Include="Models\ArchivoMatriculaEstudiante.cs" />
     <Compile Include="Models\DatosArchivosDocentesModel.cs" />
     <Compile Include="Models\DatosAsignaturasDocenteModel.cs" />
     <Compile Include="Models\DatosAcademicosEstudiante.cs" />
@@ -519,6 +521,9 @@
     <Content Include="Views\Docentes\GestionArchivoDocente.cshtml" />
     <Content Include="Views\Docentes\HorarioDocente.cshtml" />
     <Content Include="Views\Docentes\HorarioExamenDocente.cshtml" />
+    <Content Include="Views\Estudiantes\ArchivoMatricula.cshtml" />
+    <Content Include="Views\Docentes\HorarioExamenesView.cshtml" />
+    <Content Include="Views\Docentes\HorarioClasesView.cshtml" />
     <None Include="Web References\WSAcademicoWCF\Academico.disco" />
     <Content Include="Web References\WSAdministracionGeneral\dtstDatosAdminG_BuzonMensajes.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -1054,6 +1059,7 @@
     <EmbeddedResource Include="Reports\rptActaExPrincipalSinNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptActaExSuspensionConNotasR1.rdlc" />
     <EmbeddedResource Include="Reports\rptActaExSuspensionSinNotasR1.rdlc" />
+    <EmbeddedResource Include="Reports\rptArchivoMatricula.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioAcademico.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioClaseDocente.rdlc" />
     <EmbeddedResource Include="Reports\rptHorarioExamenDocente.rdlc" />

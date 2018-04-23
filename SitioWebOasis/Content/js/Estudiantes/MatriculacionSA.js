@@ -2,7 +2,10 @@
     var popOverSettings = { container: 'body',
                             placement: 'left',
                             toggle: 'popover', 
-                            html: true }
+                            html: true,
+                            trigger: "hover" }
+
+    $("button[rel=popover]").popover(popOverSettings);
 
     $('#btnMatriculacionSA').on('click', function () {
         var numCedula = $('#numIdentificacion').val();
@@ -50,6 +53,7 @@
             message: "<h4>GENERANDO ARCHIVO ...</h4>"
         });
     }
+
     function getMensajeTransaccion(banEstado, mensaje) {
         //  Muestro mensaje de gestion de informacion
         $('#messageError').removeAttr("hidden");

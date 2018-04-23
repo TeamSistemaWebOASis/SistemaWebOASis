@@ -823,7 +823,7 @@
     <value>LUGAR DE NACIMIENTO</value>
   </data>
   <data name="SA_VERSION" xml:space="preserve">
-    <value>3.8.1.5</value>
+    <value>3.8.1.6</value>
   </data>
   <data name="STR_ACCEDER_SISTEMA_ACADEMICO" xml:space="preserve">
     <value>Acceder al Sistema Académico</value>
@@ -842,6 +842,12 @@
   </data>
   <data name="STR_CERRAR_SESION" xml:space="preserve">
     <value>Cerrar sesión</value>
+  </data>
+  <data name="STR_CERTIFICADO_MATRICULA" xml:space="preserve">
+    <value>CERTIFICADO DE MATRÍCULA</value>
+  </data>
+  <data name="STR_DESCARGA" xml:space="preserve">
+    <value>Descarga</value>
   </data>
   <data name="STR_DOCENTE_SIN_CARGA_ACADEMICA" xml:space="preserve">
     <value>DOCENTE 'SIN' CARGA ACADÉMICA EN EL PERIODO ACADÉMICO </value>
@@ -874,10 +880,16 @@
     <value>ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO</value>
   </data>
   <data name="STR_MSG_DESCARGA_EVALUACIONES" xml:space="preserve">
-    <value>Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluacion de recuperación en formato PDF, dispuestas en un solo archivo ZIP</value>
+    <value>Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluación de recuperación en formato PDF, dispuestas en un solo archivo ZIP</value>
   </data>
   <data name="STR_MSG_ESTADISTICA" xml:space="preserve">
     <value>Esta opción le muestra la gráfica de comportamiento academico en la asignatura</value>
+  </data>
+  <data name="STR_PERIODOS" xml:space="preserve">
+    <value>Periodos</value>
+  </data>
+  <data name="STR_PERIODOS_ESTUDIANTE" xml:space="preserve">
+    <value>PERIODOS ESTUDIANTE</value>
   </data>
   <data name="STR_PERIODO_ACADEMICO" xml:space="preserve">
     <value>PERÍODO ACADÉMICO</value>

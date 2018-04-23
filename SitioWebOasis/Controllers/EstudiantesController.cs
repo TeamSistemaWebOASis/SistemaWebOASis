@@ -311,8 +311,9 @@ namespace SitioWebOasis.Controllers
         public ActionResult ArchivoMatricula()
         {
             DatosAcademicosEstudiante objDatosAcademico = new DatosAcademicosEstudiante();
-            return View("ArchivoMatricula",objDatosAcademico);
+            return View("ArchivoMatricula", objDatosAcademico);
         }
+
         [HttpPost]
         public JsonResult ImpresionArchivoMatricula(string strCodPeriodo) {
             try

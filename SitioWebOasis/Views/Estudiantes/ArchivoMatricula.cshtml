@@ -12,13 +12,13 @@
         <div class="col-md-12">
             <div class="contextual-summary-info">
                 <i class="fa fa-user"></i>
-                <p class="pull-right"><span>CERTIFICADOS DE MATRÍCULAS </span> @Model.UsuarioActual.Nombre.ToString() </p>
+                <p class="pull-right"><span> @Language.es_ES.STR_CERTIFICADO_MATRICULA </span> @Model.UsuarioActual.Nombre.ToString() </p>
             </div>
         </div>
     </div>
 </div>
 <div class="panel panel-success">
-    <div class="panel-heading">PERIODOS CRUZADOS POR EL ESTUDIANTE</div>
+    <div class="panel-heading"> @Language.es_ES.STR_PERIODOS_ESTUDIANTE </div>
     <div class="panel-body">
         <div id="messageError" hidden="hidden"></div>
         @*TABLA DE NOTAS DEL ESTUDIANTE*@
@@ -26,9 +26,8 @@
             <thead>
                 <tr role="row">
                     <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 50px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
-                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">Predios</th>
-                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;">Descargar</th>
-
+                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;"> @Language.es_ES.STR_PERIODOS </th>
+                    <th tabindex="0" aria-controls="ticket-table" rowspan="1" colspan="1" style="width: 600px; align-content: center; vertical-align: middle; text-align: center;"> @Language.es_ES.STR_DESCARGA </th>
                 </tr>
             </thead>
             <tbody>
@@ -41,5 +40,5 @@
 </div>
 @section scripts{
     @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.2.3"> </script>
+    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?@Language.es_ES.SA_VERSION"> </script>
 }
