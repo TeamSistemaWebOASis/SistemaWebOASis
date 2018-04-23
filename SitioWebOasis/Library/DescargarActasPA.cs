@@ -485,13 +485,10 @@ namespace SitioWebOasis.Library
                 {
                     intReprovadosFaltas = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAsistencia<70"));
                     intExonerados = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "strCodEquiv='E'"));
-                    intDarPrincipal = Convert.ToInt16(rstEvAcumulativa.Tables["Acta"].Compute("Count(Total)", "Total<25 and Total>=6"));
-                    intReprovadoBajaNota = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado<6 and strCodEquiv='R' and bytAsistencia>=70"));
+                    intReprovadoBajaNota = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado<4 and bytAsistencia>=70"));
 
-                    intFinalAprovados = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "strCodEquiv ='A'"));
-                    intFinalReprobados= Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado>=6 and strCodEquiv ='R'and bytAsistencia>=70 "));
-                    intFinalSuspension= Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "strCodEquiv ='S'"));
-                    
+                    intFinalAprovados = Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado>=16 and strCodEquiv ='A'and bytAsistencia>=70"));
+                    intFinalReprobados= Convert.ToInt16(dtaEvFinal.Tables["Acta"].Compute("Count(Total)", "bytAcumulado>=4 and Total<16 and strCodEquiv ='R'and bytAsistencia>=70 "));//acum>=6
                 }
                 if (dtaEvRecuperacion != null && dtaEvRecuperacion.Tables["Acta"].Rows.Count > 0)
                 {
@@ -500,19 +497,17 @@ namespace SitioWebOasis.Library
                    
                 }
                 int TotalEstudiantes = Convert.ToInt16(rstEvAcumulativa.Tables["Acta"].Compute("Count(Total)", ""));
-                int TotalAprovados = intFinalAprovados + intSuspensionAprovados;
-                int TotalReprovados = intFinalReprobados + intSuspensionReprobados;
                 json = new JavaScriptSerializer().Serialize(new
                 {
                     PerdidosFalta = intReprovadosFaltas,
                     Exonerados = intExonerados,
-                    DarPrincipal = intDarPrincipal,
+                    ReprobadosPrincipal = intFinalReprobados,
                     NotaBaja = intReprovadoBajaNota,
                     TotalEstudiantes = TotalEstudiantes,
-                    PrincipalAprovados = intFinalAprovados,
-                    PrincipalReprovados = intFinalReprobados,
+                    PrincipalAprobados = intFinalAprovados,
+                    PrincipalReprobados = intFinalReprobados,
                     PrincipalDarSuspension = intFinalSuspension,
-                    SuspensionAprovados = intSuspensionAprovados,
+                    SuspensionAprobados = intSuspensionAprovados,
                     SuspensionReprovados = intSuspensionReprobados
                 });
             }

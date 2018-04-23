@@ -58,27 +58,28 @@
                 var datos = JSON.parse(data.responseJSON.strEstadistica);
                 var darPrincipal = datos.DarPrincipal;
 
-                var aprobados = (datos.PrincipalAprovados) + (datos.SuspensionAprovados);
+                var aprobados = (datos.PrincipalAprobados) + (datos.SuspensionAprobados);
                 var reprovados = (datos.PrincipalReprovados) + (datos.SuspensionReprovados);
-                if (aprobados != 0 || reprovados != 0 || datos.Exonerados != 0 || datos.PerdidosFalta != 0 || datos.NotaBaja) {
+                if (aprobados != 0 || datos.ReprobadosPrincipal != 0 || datos.SuspensionReprovados != 0 || datos.Exonerados != 0 || datos.PerdidosFalta != 0 || datos.NotaBaja) {
                     $("#dialog,.ui-dialog-title").css("color", "#f3f3f3");
                     MostarDialogo();
-                    google.charts.load('current', { 'packages': ['corechart'] });
+                    google.charts.load('current', { packages: ['corechart'] });
                     google.charts.setOnLoadCallback(drawChart);
                     function drawChart() {
                         var data = google.visualization.arrayToDataTable([
                           ['acumulado', 'Porcentaje'],
                           ['Exonerados', datos.Exonerados],
                           ['Aprobados', aprobados],
-                          ['Reprobados', reprovados],
+                          ['Reprobados Principal', datos.ReprobadosPrincipal],
+                          ['Reprobados Suspención', datos.SuspensionReprovados],
                           ['ReprobadosFalta', datos.PerdidosFalta],
-                          ['Reprobados(Nota<6)', datos.NotaBaja]
+                          ['Reprobados(Nota<4)', datos.NotaBaja]
                         ]);
                         var materia = $('#asignaturasDocente tr:eq(' + idFila + ') td:eq(1)').text();
                         var options = {
                             title: materia + ' / ' + $('#cbCarrerasPA option:selected').text() + ' / ' + $('#cbPeriodosDPA option:selected').text(),
                             is3D: true,
-                            colors: ['#4ba84b', '#6024d2', '#e60909', '#3f78a5', '#fc9826', '#87da1d']
+                            colors: ['#337AB7', '#5CB85C', '#D9534F', '#F56421', '#777', '#5bc0de', '#0e6156']
                         };
                         var chart = new google.visualization.PieChart(document.getElementById('acumulado'));
                         chart.draw(data, options);

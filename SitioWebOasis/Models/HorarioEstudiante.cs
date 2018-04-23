@@ -142,13 +142,6 @@ namespace SitioWebOasis.Models
 
             if (_dtCursosCarrera.CursosCarrera.Rows.Count > 0)
             {
-                curso = new System.Web.Mvc.SelectListItem();
-                curso.Value = "-2";
-                curso.Text = "Mi Horario de Clase";
-                curso.Selected = true;
-
-                lstCursosCarrera.Add(curso);
-
                 foreach (DataRow item in _dtCursosCarrera.CursosCarrera)
                 {
                     curso = new System.Web.Mvc.SelectListItem();
