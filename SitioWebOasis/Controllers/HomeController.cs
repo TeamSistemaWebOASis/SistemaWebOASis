@@ -230,7 +230,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
 
                 //  numIdentificacion = "060383835-0";
-                numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
+                //  numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
 
                 //  numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
 
