@@ -170,9 +170,10 @@ namespace SitioWebOasis.Library
             rst += " <tr class='danger' role='row' style='align-content: center; vertical-align: middle; text-align: center;'>";
             rst += "    <td>" + this._numElemento + "</td>";
             rst += "    <td style='text-align: left;'>" + this._item["strNombre"].ToString() + "</td>";
-
-            rst += "    <td>" + this._getNumOrdinal(this._item["strCodNivel"].ToString(), "nivel") + "</td>";
             rst += "    <td>" + this._getNumOrdinal(this._item["bytNumMat"].ToString(), "") + "</td>";
+            rst += "    <td>" + this._getNumOrdinal(this._item["strCodNivel"].ToString(), "nivel") + "</td>";
+            rst += "    <td>" + this._item["strCodParalelo"].ToString() + "</td>";
+
             rst += "    <td colspan='12' style='border-left: 1px solid darkgray; border-right: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;'><strong>" + Language.es_ES.STR_RETIRO_ASIGNATURA + "</strong></td>";
 
             if (!string.IsNullOrEmpty(this._item["strResolucion"].ToString())){
@@ -194,8 +195,10 @@ namespace SitioWebOasis.Library
             rst += " <tr class='success' role='row' style='align-content: center; vertical-align: middle; text-align: center;'>";
             rst += "    <td>" + this._numElemento + "</td>";
             rst += "    <td style='text-align: left;'>" + this._item["asignatura"].ToString() + "</td>";
-            rst += "    <td>" + this._getNumOrdinal(this._item["strCodNivel"].ToString(), "nivel") + "</td>";
             rst += "    <td>" + this._getNumOrdinal(this._item["bytNumMat"].ToString(), "") + "</td>";
+            rst += "    <td>" + this._getNumOrdinal(this._item["strCodNivel"].ToString(), "nivel") + "</td>";
+            rst += "    <td>" + this._item["strCodParalelo"].ToString() + "</td>";
+
             rst += "    <td colspan='12' style='border-left: 1px solid darkgray; border-right: 1px solid darkgray; align-content: center; vertical-align: middle; text-align: center;'><strong>" + Language.es_ES.STR_RETIRO_CONVALIDA + "</strong></td>";
 
             if (!string.IsNullOrEmpty(this._item["strResolucion"].ToString())){

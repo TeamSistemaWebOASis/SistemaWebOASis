@@ -230,7 +230,8 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
 
                 //  numIdentificacion = "060383835-0";
-                //  numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
+                numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
+
                 //  numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
 
                 //  numIdentificacion = "015010212-7";
@@ -239,9 +240,11 @@ namespace SitioWebOasis.Controllers
 
                 //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
                 //  numIdentificacion = "060320137-7";
-                //  numIdentificacion = "060327507-4";
 
-                  numIdentificacion = "060180782-9"; //Mario Paguay
+                //  numIdentificacion = "060180782-9"; //Mario Paguay
+                
+                //  numIdentificacion = "136326830-1";
+                //  numIdentificacion = "136326830-1";
             }
             catch (Exception ex){
                 Errores err = new Errores();

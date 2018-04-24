@@ -20,11 +20,15 @@ namespace SitioWebOasis.Controllers
         [HttpPost]
         public ActionResult ValidarNumeroCedula(string strNumCedula)
         {
-            Models.DatosPersonalesUsuario dtsPU = new Models.DatosPersonalesUsuario(strNumCedula);
-            Session["dtsPersonalesUsuario"] = dtsPU;
-
-            return View("ActualizarCuentaCorreo", dtsPU );
+            if( !string.IsNullOrEmpty(strNumCedula)){
+                Models.DatosPersonalesUsuario dtsPU = new Models.DatosPersonalesUsuario(strNumCedula);
+                Session["dtsPersonalesUsuario"] = dtsPU;
+                return View("ActualizarCuentaCorreo", dtsPU);
+            }else{
+                return View("error");
+            }
         }
+
 
         [HttpPost]
         public JsonResult UpdCtaCorreo( string strNumCedula, string ctaMailAcceso)

@@ -374,7 +374,7 @@ namespace SitioWebOasis.Models
             string rst = string.Empty;
 
             rst += " <tr role='row' class='success'>";
-            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='10'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='11'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
             try
