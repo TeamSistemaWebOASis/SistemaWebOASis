@@ -82,51 +82,60 @@ namespace SitioWebOasis.Library
 
             try
             {
-                string[] dtaCarreraEspecial = this._getDtaCarreraEspecial();
+                if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
+                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                        if(!string.IsNullOrEmpty(item["strValor"].ToString()) && this._fchRangoPeriodoAcademico(item["strValor"].ToString()) ){
+                            fchItem = Convert.ToDateTime(item["strValor"].ToString());
+                            fchMenorOchoDias = (item["strCodigo"].ToString().CompareTo("FNP") != 0)  
+                                                    ? fchItem.Date.AddDays(-8) 
+                                                    : fchItem.Date.AddDays(-15);
 
-                if (dtaCarreraEspecial[0].Split(',').Contains(this.UsuarioActual.CarreraActual.Codigo.ToString())){
-                    fchItem = Convert.ToDateTime(dtaCarreraEspecial[1]);
-                    fchMenorOchoDias = fchItem.Date.AddDays(-8);
-                    numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
+                            numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
 
-                    if (fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
-                        evaluacionActiva = dtaCarreraEspecial[2];
-                    }
-                }else{
-                    if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
-                        foreach (DataRow item in this._drDtaPeriodosEvaluacion){
-                            if (!string.IsNullOrEmpty(item["strValor"].ToString())){
-                                fchItem = Convert.ToDateTime(item["strValor"].ToString());
-                                fchMenorOchoDias = (item["strCodigo"].ToString().CompareTo("FNP") != 0)  
-                                                        ? fchItem.Date.AddDays(-8) 
-                                                        : fchItem.Date.AddDays(-15);
-
-                                numDiasDiff = DateTime.Now.Date - fchMenorOchoDias.Date;
-
+                            //  La fecha planificada debe ser menor a la fecha actual "y" 
+                            //  la fecha actual menor o igual a ocho dias
+                            if (item["strCodigo"].ToString().CompareTo("FNP") != 0 && fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
+                                evaluacionActiva = item["strCodigo"].ToString();
+                                break;
+                            }else if (item["strCodigo"].ToString().CompareTo("FNP") == 0 && fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 15){
                                 //  La fecha planificada debe ser menor a la fecha actual "y" 
-                                //  la fecha actual menor o igual a ocho dias
-                                if (item["strCodigo"].ToString().CompareTo("FNP") != 0 && fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 8){
-                                    evaluacionActiva = item["strCodigo"].ToString();
-                                    break;
-                                }else if (item["strCodigo"].ToString().CompareTo("FNP") == 0 && fchMenorOchoDias.CompareTo(DateTime.Now.Date) <= 0 && numDiasDiff.TotalDays <= 15){
-                                    //  La fecha planificada debe ser menor a la fecha actual "y" 
-                                    //  la fecha actual menor o igual a quince (15) dias
-                                    evaluacionActiva = item["strCodigo"].ToString();
-                                    break;
-                                }
-
+                                //  la fecha actual menor o igual a quince (15) dias
+                                evaluacionActiva = item["strCodigo"].ToString();
+                                break;
                             }
+
                         }
                     }
                 }
+
             }catch(Exception ex){
                 evaluacionActiva = "";
                 Errores err = new Errores();
                 err.SetError(ex, "_getEvaluacionActiva");
             }
 
-            //  return evaluacionActiva;
-            return "FN1";
+            return evaluacionActiva;
+        }
+
+        private bool _fchRangoPeriodoAcademico(string fechaValidar)
+        {
+            bool ban = false;
+
+            try{
+                if (this._dtstPeriodoVigente.Periodos.Rows.Count > 0){
+                    DateTime fchInicio = Convert.ToDateTime( this._dtstPeriodoVigente.Periodos[0]["dtFechaInic"] );
+                    DateTime fchFin = Convert.ToDateTime(this._dtstPeriodoVigente.Periodos[0]["dtFechaFin"]);
+                    DateTime fchValidar = Convert.ToDateTime(fechaValidar);
+
+                    ban = (fchValidar.CompareTo(fchInicio) >= 0 && fchValidar.CompareTo(fchFin) <= 0);
+                }
+            }
+            catch(Exception ex){
+                Errores err = new Errores();
+                err.SetError(ex, "_fchRangoPeriodoAcademico");
+            }
+
+            return ban;
         }
 
         private string[] _getDtaCarreraEspecial()
@@ -147,6 +156,7 @@ namespace SitioWebOasis.Library
             return dtaCarreraEspecial;
         }
 
+
         private void _cargarFchMaximaGestion()
         {
             DateTime fchItem = default(DateTime);
@@ -155,25 +165,15 @@ namespace SitioWebOasis.Library
 
             try
             {
-                string[] dtaCarreraEspecial = this._getDtaCarreraEspecial();
+                if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
+                    foreach (DataRow item in this._drDtaPeriodosEvaluacion){
+                        if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
+                            this._fchMaximaGestion = Convert.ToDateTime(item["strValor"].ToString());
+                            numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
+                            this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16(numDiasDiff.TotalDays)
+                                                                                : -1;
 
-                if (dtaCarreraEspecial[0].Split(',').Contains(this.UsuarioActual.CarreraActual.Codigo.ToString()))
-                {
-                    this._fchMaximaGestion = Convert.ToDateTime(dtaCarreraEspecial[1]);
-                    numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
-                    this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16(numDiasDiff.TotalDays)
-                                                                        : 0;
-                }else{
-                    if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
-                        foreach (DataRow item in this._drDtaPeriodosEvaluacion){
-                            if (this._evaluacionActiva == item["strCodigo"].ToString().Replace("FN", "")){
-                                this._fchMaximaGestion = Convert.ToDateTime(item["strValor"].ToString());
-                                numDiasDiff = this._fchMaximaGestion.Date - DateTime.Now.Date;
-                                this._numDiasFaltantes = (numDiasDiff.TotalDays > 0)? Convert.ToInt16(numDiasDiff.TotalDays)
-                                                                                    : 0;
-
-                                break;
-                            }
+                            break;
                         }
                     }
                 }
@@ -190,6 +190,7 @@ namespace SitioWebOasis.Library
         {
             return this._evaluacionActiva;
         }
+
 
         public string getInfoEvaluacionActiva()
         {
@@ -223,9 +224,9 @@ namespace SitioWebOasis.Library
             DataRow drProximoParcial = default(DataRow);
 
             try{
-                if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
+                if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0 ){
                     foreach (DataRow item in this._drDtaPeriodosEvaluacion){
-                        if (DateTime.Now.Date.CompareTo(Convert.ToDateTime(item["strValor"].ToString())) < 0){
+                        if (this._fchRangoPeriodoAcademico(item["strValor"].ToString()) && DateTime.Now.Date.CompareTo(Convert.ToDateTime(item["strValor"].ToString())) < 0 ){
                             drProximoParcial = item;
                             break;
                         }
@@ -242,12 +243,12 @@ namespace SitioWebOasis.Library
 
         public string getFchInicioEvaluacion(string dtaTpoEvaluacion)
         {
-            string strFchInicio = default(string);
+            string strFchInicio = "por definir";
 
             try{
                 if (this._drDtaPeriodosEvaluacion != null && this._drDtaPeriodosEvaluacion.Length > 0){
-                    foreach(DataRow item in this._drDtaPeriodosEvaluacion){
-                        if ( item["strCodigo"].ToString().Replace("FN", "").CompareTo(dtaTpoEvaluacion.Replace("FN", "")) == 0){
+                    foreach(DataRow item in this._drDtaPeriodosEvaluacion ){
+                        if ( this._fchRangoPeriodoAcademico(item["strValor"].ToString()) && item["strCodigo"].ToString().Replace("FN", "").CompareTo(dtaTpoEvaluacion.Replace("FN", "")) == 0){
                             DateTime dtFchInicio = Convert.ToDateTime(item["strValor"].ToString()).Date.AddDays(-8);
                             strFchInicio = dtFchInicio.ToString("dd/MM/yyyy");
                             break;
@@ -261,7 +262,6 @@ namespace SitioWebOasis.Library
 
             return strFchInicio;
         }
-
 
 
         public bool getActaImpresa( string codAsignatura, string strCodParalelo)
@@ -307,12 +307,16 @@ namespace SitioWebOasis.Library
             try
             {
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
-                rst = ne.getActaImpresaEvAcumulativo(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                        this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                        codAsignatura,
-                                                        strCodParalelo,
-                                                        strCodParcial);
+                rst = (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 )
+                        ?  ne.getActaImpresaEvAcumulativo(  this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                            this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                            codAsignatura,
+                                                            strCodParalelo,
+                                                            strCodParcial)
+                        : true;
             }catch(Exception ex){
+                rst = true;
+
                 Errores err = new Errores();
                 err.SetError(ex, "_getActaEvAcumulativaImpresa");
             }
@@ -328,13 +332,17 @@ namespace SitioWebOasis.Library
 
             try{
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();                
-                rst = ne.getActaImpresaEvFinalesRecuperacion(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
-                                                                this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                                codAsignatura,
-                                                                strCodParalelo, 
-                                                                strTpoExamen );
+                rst = (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 ) 
+                            ? ne.getActaImpresaEvFinalesRecuperacion(   this.UsuarioActual.CarreraActual.Codigo.ToString(),
+                                                                        this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                        codAsignatura,
+                                                                        strCodParalelo, 
+                                                                        strTpoExamen ) 
+                            : true;
             }
             catch (Exception ex){
+                rst = true;
+
                 Errores err = new Errores();
                 err.SetError(ex, "_getActaEvAcumulativaImpresa");
             }

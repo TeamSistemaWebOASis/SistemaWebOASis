@@ -37,6 +37,7 @@ namespace SitioWebOasis.Library
                 WSInfoCarreras.dtstBDCarreras dsCarrera = ic.GetCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
                 this._strNombreBD = dsCarrera.BDCarreras.Rows[0]["strBaseDatos"].ToString();
                 this._strUbicacion = UsuarioActual.CarreraActual.Codigo.ToString();
+
                 //  Informacion del periodo vigente en carrera
                 this._dtstPeriodoVigente = ic.GetPeriodoVigenteCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
             }
@@ -66,14 +67,18 @@ namespace SitioWebOasis.Library
         public WSInfoCarreras.dtstPeriodoVigente _dataPeriodoAcademicoVigente()
         {
             WSInfoCarreras.dtstPeriodoVigente dsPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
+            WSInfoCarreras.dtstPeriodoVigente rst = new WSInfoCarreras.dtstPeriodoVigente();
 
             try
             {
                 ProxySeguro.InfoCarreras ic = new ProxySeguro.InfoCarreras();
-                dsPeriodoVigente = ic.GetPeriodoVigenteCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
-            }
-            catch (Exception ex)
-            {
+                rst = ic.GetPeriodoVigenteCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
+                dsPeriodoVigente = (rst != null) 
+                                        ? rst
+                                        : new WSInfoCarreras.dtstPeriodoVigente();
+            }catch (Exception ex){
+                dsPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
+
                 Errores err = new Errores();
                 err.SetError(ex, "_dataPeriodoAcademicoVigente");
             }

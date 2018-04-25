@@ -1582,7 +1582,16 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Gestión de notas para evaluación final inicia el.
+        ///   Busca una cadena traducida similar a Gestión de evaluación parcial inicia: .
+        /// </summary>
+        public static string MSG_FCH_INICIO_EV_ACUMULADA {
+            get {
+                return ResourceManager.GetString("MSG_FCH_INICIO_EV_ACUMULADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gestión de notas de evaluación final inicia:.
         /// </summary>
         public static string MSG_FCH_INICIO_EV_FINAL {
             get {
@@ -1591,7 +1600,7 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Gestión de notas para evaluación de recuperación inicia el.
+        ///   Busca una cadena traducida similar a Gestión de notas de evaluación de recuperación inicia:.
         /// </summary>
         public static string MSG_FCH_INICIO_EV_RECUPERACION {
             get {
@@ -1605,6 +1614,15 @@ namespace Language {
         public static string MSG_GESTION_NOTAS_CERRADA {
             get {
                 return ResourceManager.GetString("MSG_GESTION_NOTAS_CERRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Gestión notas por definir.
+        /// </summary>
+        public static string MSG_GESTION_NOTAS_DEFINIR {
+            get {
+                return ResourceManager.GetString("MSG_GESTION_NOTAS_DEFINIR", resourceCulture);
             }
         }
         
@@ -2235,6 +2253,15 @@ namespace Language {
         public static string STR_ART_REPROBADO_FALTAS {
             get {
                 return ResourceManager.GetString("STR_ART_REPROBADO_FALTAS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a CARRERA &apos;SIN&apos; PERIODO ACADEMICO VIGENTE.
+        /// </summary>
+        public static string STR_CARRERA_SIN_PERIODO_VIGENTE {
+            get {
+                return ResourceManager.GetString("STR_CARRERA_SIN_PERIODO_VIGENTE", resourceCulture);
             }
         }
         

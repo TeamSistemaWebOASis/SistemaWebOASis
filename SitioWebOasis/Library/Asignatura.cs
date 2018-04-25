@@ -60,13 +60,17 @@ namespace SitioWebOasis.Library
             rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
 
             try{
-                rstCursoDocente = rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                        this.UsuarioActual.Cedula.ToString());
+                rstCursoDocente = (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 ) 
+                                        ? rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this.UsuarioActual.Cedula.ToString())
+                                        : new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
                 if (rstCursoDocente != null){
                     dsCursosDocente = rstCursoDocente;
                 }
             }catch (Exception ex){
+                dsCursosDocente = new WSGestorDeReportesMatriculacion.dtstCursosDocente();
+
                 Errores err = new Errores();
                 err.SetError(ex, "_getAsignaturasDocente");
             }
@@ -243,24 +247,25 @@ namespace SitioWebOasis.Library
                 ge.set_fBaseDatos(this._strNombreBD);
                 ge.set_fUbicacion(this._strUbicacion);
 
-                //Buscando los datos de la materia
-                ge.GetDatosMateriaActa(this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
-                                        this._strCodAsignatura,
-                                        this._strCodNivel,
-                                        this._strCodParalelo,
-                                        ref strAsignatura,
-                                        ref strNivel,
-                                        ref strPeriodo,
-                                        ref strDocente,
-                                        ref strSistema);
-
-                //Buscando los datos del pensum de la materia
-                ge.GetDatosMateriaPensum(this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
+                if (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 ){
+                    //  Buscando los datos de la materia
+                    ge.GetDatosMateriaActa( this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
                                             this._strCodAsignatura,
-                                            ref numCreditos,
-                                            ref fHorasTeo,
-                                            ref fHorasPra);
+                                            this._strCodNivel,
+                                            this._strCodParalelo,
+                                            ref strAsignatura,
+                                            ref strNivel,
+                                            ref strPeriodo,
+                                            ref strDocente,
+                                            ref strSistema);
 
+                    //  Buscando los datos del pensum de la materia
+                    ge.GetDatosMateriaPensum(   this._dtstPeriodoVigente.Periodos.Rows[0]["strCodigo"].ToString(),
+                                                this._strCodAsignatura,
+                                                ref numCreditos,
+                                                ref fHorasTeo,
+                                                ref fHorasPra);
+                }
             }
             catch (Exception ex)
             {
@@ -353,7 +358,12 @@ namespace SitioWebOasis.Library
                     mensajeImpresion = "<p class='text-success pull-right'>";
                     mensajeImpresion += "   Parcial <strong>'" + strCodPA + "'</strong>, activo a partir del <strong>" + dtFchInicio + "</strong>";
                     mensajeImpresion += "</p>";
-                }else{
+                }else if(this._evaluacionActiva.CompareTo("") == 0 && strCodPA.CompareTo("") == 0 ){
+                    mensajeImpresion = "<p class='text-info pull-right'>";
+                    mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_DEFINIR + "</strong>";
+                    mensajeImpresion += "</p>";
+                }
+                else {
                     mensajeImpresion = "<p class='text-info pull-right'>";
                     mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
                     mensajeImpresion += "</p>";
@@ -371,9 +381,14 @@ namespace SitioWebOasis.Library
 
             if (this._evaluacionActiva == "P"){
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
-            }else if(proximaEvaluacion == "S" || string.IsNullOrEmpty(proximaEvaluacion) ) {
+            }else if(proximaEvaluacion == "S" ) {
                 mensajeImpresion = "<p class='text-info pull-right'>";
                 mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
+                mensajeImpresion += "</p>";
+            }else if (proximaEvaluacion.CompareTo("") == 0)
+            {
+                mensajeImpresion = "<p class='text-info pull-right'>";
+                mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_DEFINIR + "</strong>";
                 mensajeImpresion += "</p>";
             }
 
@@ -390,11 +405,20 @@ namespace SitioWebOasis.Library
                 mensajeImpresion = this._getMensajeEstadoEvaluacion();
             }else if( string.IsNullOrEmpty( proximaEvaluacion )){
                 mensajeImpresion = "<p class='text-info pull-right'>";
-                mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_CERRADA + "</strong>";
+                mensajeImpresion += "   <strong>" + Language.es_ES.MSG_GESTION_NOTAS_DEFINIR + "</strong>";
                 mensajeImpresion += "</p>";
             }
+            
 
             return mensajeImpresion;
+        }
+
+
+        public string getFchInicioGestionEvAcumulado()
+        {
+            return (this._evaluacion != null)
+                        ? this._evaluacion.getFchInicioEvaluacion("FN1")
+                        : string.Empty;
         }
 
 

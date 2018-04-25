@@ -28,7 +28,9 @@ namespace SitioWebOasis.Models
         private string _getPeriodoAcademico()
         {
             Carrera dtaCarrera = this.UsuarioActual.getUltimoPeriodoVigenteCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
-            return (this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == dtaCarrera.strCodPeriodo)
+            string rst = string.Empty;
+            
+            return (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 && this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == dtaCarrera.strCodPeriodo)
                         ? this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString()
                         : dtaCarrera.strCodPeriodo;
         }
@@ -45,8 +47,10 @@ namespace SitioWebOasis.Models
                 rm.CookieContainer = new System.Net.CookieContainer();
                 rm.SetCodCarrera(this.UsuarioActual.CarreraActual.Codigo);
 
-                rstCursoDocente = rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
-                                                        this.UsuarioActual.Cedula.ToString());
+                rstCursoDocente = (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 ) 
+                                        ? rm.GetCursosDocente(  this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString(),
+                                                                this.UsuarioActual.Cedula.ToString()) 
+                                        : new WSGestorDeReportesMatriculacion.dtstCursosDocente();
 
                 if (rstCursoDocente != null) {
                     dsCursosDocente = rstCursoDocente;
@@ -156,7 +160,7 @@ namespace SitioWebOasis.Models
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='9'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
-            if (this._dtstCursosDocente.Cursos.Count > 0) {
+            if (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 && this._dtstCursosDocente.Cursos.Count > 0) {
                 int x = 0;
                 int posicion = 0;
                 rst = string.Empty;
@@ -179,9 +183,6 @@ namespace SitioWebOasis.Models
                     rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + parcialActivo + "</td>";
                     rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>" + cantidadEstudiantesMatriculados + "</td>";
                     rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'> <div class='btn-group btn-group-xs'><button type='button' class='btn btn-danger'>PDF</button><button type='button' class='btn btn-success'>EXCEL</button></div> </td>";
-                    //rst += "	<td style='align-content: center; vertical-align: middle; text-align: center;'>";
-                    //rst += "	    <span id='mini-bar-chart"+ posicion + "' class='mini-bar-chart'><canvas width='53' height='25' style='display: inline-block; vertical-align: top; width: 53px; height: 25px;'></canvas></span>";
-                    //rst += "    </td>";
                     rst += "</tr>";
                 }
             }
@@ -281,7 +282,7 @@ namespace SitioWebOasis.Models
         {
             Carrera rst = this.UsuarioActual.getUltimoPeriodoVigenteCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
 
-            return (this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == rst.strCodPeriodo.ToString())
+            return (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 && this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == rst.strCodPeriodo.ToString())
                         ? this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()
                         : rst.strDescripcionPeriodo.ToString();
         }
@@ -290,7 +291,7 @@ namespace SitioWebOasis.Models
 
         public string getPeriodoAcademicoVigente()
         {
-            return (this._dtstPeriodoVigente != null)
+            return (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 )
                         ? this._dtstPeriodoVigente.Periodos[0]["strDescripcion"].ToString()
                         : string.Empty;
         }
@@ -300,7 +301,14 @@ namespace SitioWebOasis.Models
         public bool getCarreraEnPeriodoVigente()
         {
             Carrera rst = this.UsuarioActual.getUltimoPeriodoVigenteCarrera(this.UsuarioActual.CarreraActual.Codigo.ToString());
-            return ( this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == rst.strCodPeriodo.ToString() );
+            return (this._dtstPeriodoVigente.Periodos.Rows.Count > 0 && this._dtstPeriodoVigente.Periodos[0]["strCodigo"].ToString() == rst.strCodPeriodo.ToString() );
         }
+
+
+        public bool existePeriodoVigente()
+        {
+            return (this._dtstPeriodoVigente.Periodos.Rows.Count > 0);
+        }
+
     }
 }

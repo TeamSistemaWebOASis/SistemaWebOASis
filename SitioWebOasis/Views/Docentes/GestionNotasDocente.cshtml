@@ -109,7 +109,7 @@
                                 <div id="msmGrdEvAcumulativa" hidden="hidden"></div>
 
                                 @* BOTONES DE IMPRESION DE ACTAS *@
-                                @if (strParcialActivo == "3" || strParcialActivo == "P" || strProximaEvaluacion == "P" || strProximaEvaluacion == "S" || strProximaEvaluacion == ""){
+                                @if (strParcialActivo == "3" || strParcialActivo == "P" || strProximaEvaluacion == "P" || strProximaEvaluacion == "S"){
                                     <div class="row">
                                         <div class="col-sm-12">
                                             @* IMPRESION DEL ACTA - EV ACUMULATIVA *@
@@ -128,9 +128,17 @@
                                     </div>
                                     <hr class="inner-separator">
                                 }
-                                
-                                @* GRID DE EVALUACION ACUMULATIVA *@
-                                <table id="grdEvAcumulativa"></table>
+
+                                @if (strParcialActivo == "3" || strParcialActivo == "P" || strProximaEvaluacion == "P" || strProximaEvaluacion == "S")
+                                {
+                                    @* GRID DE EVALUACION ACUMULATIVA *@
+                                    <table id="grdEvAcumulativa"></table>
+                                }else{
+                                    <div class="alert alert-info">
+                                        @Language.es_ES.MSG_FCH_INICIO_EV_ACUMULADA<strong> @Model.getFchInicioGestionEvAcumulado()</strong>
+                                    </div>
+                                }
+
 
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
                                 @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && estadoActa ){    
@@ -163,7 +171,7 @@
                         <div id="collapseTwo" class="panel-collapse @activoEF">
                             <div class="panel-body">
 
-                                @if( strParcialActivo == "P" || strParcialActivo == "S" || strProximaEvaluacion == "S" || strProximaEvaluacion == ""){
+                                @if( strParcialActivo == "P" || strParcialActivo == "S" || strProximaEvaluacion == "S"){
                                     @* Area de mensajes evaluación final *@
                                     <div id="msmGrdEvFinal" hidden="hidden"></div>
 
@@ -226,7 +234,7 @@
                         <div id="collapseThree" class="panel-collapse @activoER">
                             <div class="panel-body">
 
-                                @if (strParcialActivo == "S" || strProximaEvaluacion == ""){
+                                @if( strParcialActivo == "S" ){
                                     <div id="msmGrdEvRecuperacion"></div>
 
                                     @* BOTONES DE IMPRESION DE ACTAS *@

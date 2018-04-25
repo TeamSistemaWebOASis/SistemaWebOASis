@@ -419,7 +419,6 @@
     <Content Include="Content\js\bootstrap-tour\bootstrap-tour.custom.js" />
     <Content Include="Content\js\bootstrap\bootstrap.min.js" />
     <Content Include="Content\js\controlTiempoSession-v3.3.8.js" />
-    <Content Include="Content\js\Docentes\DocentesCharts.js" />
     <Content Include="Content\js\Docentes\EvaluacionAcumulativa.js" />
     <Content Include="Content\js\Docentes\EvaluacionFinal.js" />
     <Content Include="Content\js\Docentes\EvaluacionRecuperacion.js" />
