@@ -197,7 +197,7 @@ namespace SitioWebOasis.Controllers
                     if (_dtaIdentificacion.Length > 0){
                         foreach (var item in _dtaIdentificacion){
                             if (item.pid_activo == true){
-                                numIdentificacion = (item.tdi_id != 1)
+                                numIdentificacion = (item.tdi_id.ToString().Contains("-"))
                                                         ? item.pid_valor
                                                         : this._addGuionCedula(item.pid_valor);
                             }
@@ -242,9 +242,10 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060320137-7";
 
                 //  numIdentificacion = "060180782-9"; //Mario Paguay
-                
+
                 //  numIdentificacion = "136326830-1";
                 //  numIdentificacion = "136326830-1";
+                //  numIdentificacion = "137160901-1";
             }
             catch (Exception ex){
                 Errores err = new Errores();

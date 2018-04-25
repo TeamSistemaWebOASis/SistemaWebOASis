@@ -575,8 +575,6 @@ namespace SitioWebOasis.Controllers
 
         public ActionResult HorarioDocente(string strCursoParalelo = "")
         {
-            //HorarioDocenteModel objHorario = new Models.HorarioDocenteModel();
-            //return View("HorarioDocente", objHorario);
             Session["objHorario"] = new HorarioDocenteModel();
             return View("HorarioDocente", (HorarioDocenteModel)Session["objHorario"]);
         }

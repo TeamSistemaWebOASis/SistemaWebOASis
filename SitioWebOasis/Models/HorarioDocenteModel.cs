@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using SitioWebOasis.WSGestorDeReportesMatriculacion;
+using System.Web.Mvc;
 
 namespace SitioWebOasis.Models
 {
@@ -39,8 +40,7 @@ namespace SitioWebOasis.Models
             {
                 string[] strcadena = strTipoHorario.Split('|');
                 this.ObtenerPeriodoVigente();
-                if (strcadena.Length > 1)
-                {
+                if (strcadena.Length > 1){
                     this.strTipoHorario = strcadena[0];
                     this.strCodMateria= strcadena[1];
                     this.strCodNivel= strcadena[2];
@@ -58,9 +58,18 @@ namespace SitioWebOasis.Models
         }
         private void ObtenerPeriodoVigente()
         {
-            _dsPeriodoVigente = _getPeriodoVigenteCarrera();
-            DataRow fila = _dsPeriodoVigente.Tables["Periodos"].Rows[0];
-            strCodPeriodoVigente = fila["strCodigo"].ToString();
+            try
+            {
+                _dsPeriodoVigente = _getPeriodoVigenteCarrera();
+                DataRow fila = _dsPeriodoVigente.Tables["Periodos"].Rows[0];
+                strCodPeriodoVigente = fila["strCodigo"].ToString();
+            }catch(Exception ex)
+            {
+                strCodPeriodoVigente = string.Empty;
+
+                Errores err = new Errores();
+                err.SetError(ex, "ObtenerPeriodoVigente");
+            }
         }
         public void HorarioExamenes()
         {
@@ -360,26 +369,29 @@ namespace SitioWebOasis.Models
             }
             return pc;
         }
-        public System.Collections.Generic.IEnumerable<System.Web.Mvc.SelectListItem> GetParalelo()
+        public System.Collections.Generic.IEnumerable<SelectListItem> GetParalelo()
         {
-            List<System.Web.Mvc.SelectListItem> lstParalelo = new List<System.Web.Mvc.SelectListItem>();
+            List<SelectListItem> lstParalelo = new List<SelectListItem>();
             return lstParalelo;
         }
-        public List<System.Web.Mvc.SelectListItem> getLstAsignaturasDocente()
+        public List<SelectListItem> getLstAsignaturasDocente()
         {
+            List<System.Web.Mvc.SelectListItem> lstAsignaturasDocente = new List<SelectListItem>();
+
             try
             {
-                List<System.Web.Mvc.SelectListItem> lstAsignaturasDocente = new List<System.Web.Mvc.SelectListItem>();
                 Asignatura obj = new Asignatura();
-                lstAsignaturasDocente = obj.getLstAsignaturasDocente();
-                return lstAsignaturasDocente;
-            }
-            catch (Exception ex)
-            {
+                lstAsignaturasDocente = obj.getLstAsignaturasDocente();   
+            }catch (Exception ex){
+                //  Create the select list item you want to add
+                SelectListItem selListItem = new SelectListItem() { Value = "0", Text = Language.es_ES.EST_LBL_SIN_REGISTROS };
+                lstAsignaturasDocente.Add(selListItem);
+
                 Errores err = new Errores();
                 err.SetError(ex, "getLstAsignaturasDocente");
-                return null;
             }
+
+            return lstAsignaturasDocente;
         }
     }
 }
