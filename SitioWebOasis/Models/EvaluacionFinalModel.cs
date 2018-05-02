@@ -96,6 +96,12 @@ namespace SitioWebOasis.Models
                     for (int x = 0; x < numReg; x++){
                         if (this._dsEvFinal.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvFinal[0].sintCodMatricula.ToString()){
                             this._dsEvFinal.Acta.Rows[x]["bytNota"] = Convert.ToByte(dtaEvFinal[x].bytNota.ToString());
+
+                            string msgObs = (dtaEvFinal[x].strObservaciones != null)
+                                                ? dtaEvFinal[x].strObservaciones.ToString().ToUpper()
+                                                : string.Empty;
+
+                            this._dsEvFinal.Acta.Rows[x]["strObservaciones"] = msgObs.ToUpper();
                         }
                     }
 

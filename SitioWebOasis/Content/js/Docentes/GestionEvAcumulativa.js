@@ -67,8 +67,21 @@
 
     function editRegistroNota(id, status, e) {
         if (id !== lastsel) {
-            //  Cierro edicion de la ultima fila gestionada
+            //  Cierro edicion de la ultima fila gestionada si existio algun cambio registro el cambio
             if (lastsel != undefined) {
+
+                $('#grdEvAcumulativa').jqGrid('saveRow', lastsel, {
+                    aftersavefunc: function (response) {
+                        //  Registro la informacion gestionada en el JSON
+                        guardarDtaEvaluacion(lastsel);
+
+                        //  Actualizo contenido de la fila
+                        updDtaEvaluacion(lastsel);
+
+                        return true;
+                    }
+                });
+
                 $('#grdEvAcumulativa').jqGrid('restoreRow', lastsel);
             }
 
@@ -162,10 +175,12 @@
 
     function updDtaEvaluacion(id) {
         numReg = lstEvaluaciones.length;
+        var porcientoAsistencia = 0;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluaciones[x].sintCodMatricula == id) {
                 $("#grdEvAcumulativa").jqGrid('setRowData', id, { Total: lstEvaluaciones[x].acumulado() });
                 $("#grdEvAcumulativa").jqGrid('setRowData', id, { ucAcumulado: lstEvaluaciones[x].getEstadoEvaluacion() });
+                porcientoAsistencia = lstEvaluaciones[x].bytAsistencia;
 
                 break;
             }
@@ -196,19 +211,20 @@
                                         });
 
         if ($("#dtaParcialActivo").val() == 3) {
+            var colorCell = ( parseInt( porcientoAsistencia ) < 70 )
+                                ? '#f2dede'
+                                : '#dff0d8';
 
-            $("#grdEvAcumulativa").jqGrid('setCell',
-                                        id,
-                                        'bytAsistencia',
-                                        "",
-                                        {
-                                            'background-color': '#dff0d8',
-                                            'background-image': 'none',
-                                            'text-align': 'center',
-                                            'font-size': 'medium',
-                                            'font-weight': 'bold'
-                                        });
-
+            $("#grdEvAcumulativa").jqGrid(  'setCell',
+                                            id,
+                                            'bytAsistencia',
+                                            "",
+                                            {   'background-color': colorCell,
+                                                'background-image': 'none',
+                                                'text-align': 'center',
+                                                'font-size': 'medium',
+                                                'font-weight': 'bold'
+                                            });
         }
 
         return true;
@@ -223,16 +239,37 @@
         for (i = 0; i < rowIds.length; i++) {
             for (j = 0; j < numRegEA; j++) {
                 if (rowIds[i] == lstEvaluaciones[j].sintCodMatricula) {
+                    $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluaciones[j].getNumMatricula() });
+                    $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { ucAcumulado: lstEvaluaciones[j].getEstadoEvaluacion() });
+
                     //  En funcion al parcial activo resalto el color de la columna 
                     $("#grdEvAcumulativa").jqGrid('setCell',
                                                     rowIds[i],
                                                     parcialActivo,
                                                     "",
-                                                    { 'background-color': '#fcf8e3' });
+                                                    {   'background-color': '#fcf8e3',
+                                                        'text-align': 'center',
+                                                        'font-size': 'medium',
+                                                        'font-weight': 'bold'
+                                                    });
 
-                    $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluaciones[j].getNumMatricula() });
-                    $("#grdEvAcumulativa").jqGrid('setRowData', rowIds[i], { ucAcumulado: lstEvaluaciones[j].getEstadoEvaluacion() });
+                    //  En caso que sea el parcial 003 resalto columna porciento asistencia
+                    if ($("#dtaParcialActivo").val() == 3) {
+                        var colorCell = (parseInt(lstEvaluaciones[j].bytAsistencia) < 70)
+                                            ? '#f2dede'
+                                            : '#dff0d8';
 
+                        $("#grdEvAcumulativa").jqGrid(  'setCell',
+                                                        rowIds[i],
+                                                        'bytAsistencia',
+                                                        "",
+                                                        {   'background-color': colorCell,
+                                                            'text-align': 'center',
+                                                            'font-size': 'medium',
+                                                            'font-weight': 'bold'
+                                                        });
+                    }
+                    
                     j = numRegEA;
                 }
             }

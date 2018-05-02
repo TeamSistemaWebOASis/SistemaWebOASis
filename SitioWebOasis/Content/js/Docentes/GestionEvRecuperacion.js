@@ -51,7 +51,8 @@ $(document).ready(function () {
 
                     { name: 'Total', label: 'Total', width: '120', align: 'center', sortable: true },
                     { name: 'erAcumulado', label: 'Estado', width: '120', align: 'center', sortable: true },
-                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false }],
+
+                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', editable: true, edittype: 'text', editoptions: { maxlength: 25, placeholder: "25 CARACTERES", dataInit: soloCaracteresAlfaNumericos }, sorttype: "string" }],
 
         loadonce: true,
         datastr: $("#dtaJsonEvRecuperacion").val(),
@@ -81,6 +82,19 @@ $(document).ready(function () {
         if (id !== lastsel) {
             //  Cierro edicion de la ultima fila gestionada
             if (lastsel != undefined) {
+
+                $('#grdEvRecuperacion').jqGrid('saveRow', lastsel, {
+                    aftersavefunc: function (response) {
+                        //  Registro la informacion gestionada en el JSON
+                        guardarDtaEvRecuperacion(lastsel);
+
+                        //  Actualizo contenido de la fila
+                        updDtaEvRecuperacion(lastsel);
+
+                        return true;
+                    }
+                });
+
                 $('#grdEvRecuperacion').jqGrid('restoreRow', lastsel);
             }
 
@@ -129,6 +143,8 @@ $(document).ready(function () {
             if (lstEvaluacionRecuperacion[x].sintCodMatricula == id) {
                 var dtaNota = $("#grdEvRecuperacion").jqGrid("getCell", id, "bytNota");
                 lstEvaluacionRecuperacion[x]["bytNota"] = dtaNota;
+                lstEvaluacionRecuperacion[x]["strObservaciones"] = $("#grdEvRecuperacion").jqGrid("getCell", id, "strObservaciones");
+
                 lstEvaluacionRecuperacion[x].banEstado = 1;
 
                 //  Registro un cambio
@@ -167,6 +183,15 @@ $(document).ready(function () {
     }
 
 
+    function soloCaracteresAlfaNumericos(element) {
+        $(element).keypress(function (e) {
+            if (e.which != 8 && e.which != 32 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 65 || e.which > 90) && (e.which < 97 || e.which > 122)) {
+                return false;
+            }
+        });
+    }
+
+
     function updContenidoColumnasGrid() {
         var rowIds = $('#grdEvRecuperacion').jqGrid('getDataIDs');
         var DataIds = $('#grdEvRecuperacion').jqGrid('getRowData');
@@ -180,7 +205,18 @@ $(document).ready(function () {
                                             rowIds[i],
                                             'bytNota',
                                             "",
-                                            { 'background-color': '#fcf8e3' });
+                                            {   'background-color': '#fcf8e3',
+                                                'text-align': 'center',
+                                                'font-size': 'medium',
+                                                'font-weight': 'bold'
+                                            });
+
+                    //  En funcion al parcial activo resalto el color de la columna 
+                    $("#grdEvRecuperacion").jqGrid( 'setCell',
+                                                    rowIds[i],
+                                                    'strObservaciones',
+                                                    "",
+                                                    { 'font-weight': 'bold' });
 
                     $("#grdEvRecuperacion").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionRecuperacion[j].getNumMatricula() });
                     $("#grdEvRecuperacion").jqGrid('setRowData', rowIds[i], { erAcumulado: lstEvaluacionRecuperacion[j].getEstadoEvaluacionRecuperacion() });
@@ -403,13 +439,13 @@ $(document).ready(function () {
                     '       <p class="text-justify">Compañero docente le recordamos una vez mas que ingresado y validado el "código de impresión", la gestión de notas en <strong>EVALUACIÓN DE RECUPERACIÓN</strong> finalizara y no se podrá cambiar ninguna nota desde el modulo web del sistema académico </p>' +
                     '   </div>' +
                     '   <div class="form-group">' +
-                    '       <input id="dtaNumConfirmacion" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
+                    '       <input id="dtaNumConfirmacionER" maxlength="4" type="text" placeholder="código de impresión" class="name form-control" required />' +
                     '   </div>' +
                     '   <div class="checkbox"><label><input type="checkbox" id="enableCheckbox"> ACEPTO Y ENTIENDO LAS ACCIONES DE ESTE ACTO EN <strong>EVALUACIÓN DE RECUPERACIÓN</strong> </label></div>' +
                     '</form>'+
                     '<script>' +
                     '   $(document).ready(function(){' +
-                    '       $("#dtaNumConfirmacion").keypress(function (event) {' +
+                    '       $("#dtaNumConfirmacionER").keypress(function (event) {' +
                     '           var $this = $(this);' +
                     '           if (((event.which < 48 || event.which > 57) && (event.which != 0 && event.which != 8))) {' +
                     '               event.preventDefault();' +
@@ -427,7 +463,7 @@ $(document).ready(function () {
 
                         if ($checkbox.prop('checked')) {
                             var opImpresion = $("#opImpEvRecuperacion").val();
-                            var numConfirmacion = this.$content.find('#dtaNumConfirmacion').val();
+                            var numConfirmacion = this.$content.find('#dtaNumConfirmacionER').val();
                             showLoadingProcess('Verificando código de impresión ...');
 
                             $.ajax({
@@ -502,6 +538,7 @@ $(document).ready(function () {
         });
     }
 
+
     function showLoadingProcess(mensaje) {
         var msg = (mensaje.length == 0) ? 'GUARDANDO INFORMACION ...'
                                         : mensaje;
@@ -512,8 +549,10 @@ $(document).ready(function () {
         });
     }
 
+
     function grdEvRecuperacionSoloLectura(){
         $('#grdEvRecuperacion').setColProp('bytNota', { editable: 'False' });
+        $('#grdEvRecuperacion').setColProp('strObservaciones', { editable: 'False' });
     }
 
 

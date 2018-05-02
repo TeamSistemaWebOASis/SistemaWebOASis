@@ -100,15 +100,16 @@ namespace SitioWebOasis.Models
                     for (int x = 0; x < numReg; x++){
                         if (this._dsEvRecuperacion.Acta.Rows[0]["sintCodMatricula"].ToString() == dtaEvRecuperacion[0].sintCodMatricula.ToString()){
                             this._dsEvRecuperacion.Acta.Rows[x]["bytNota"] = Convert.ToByte(dtaEvRecuperacion[x].bytNota.ToString());
+                            this._dsEvRecuperacion.Acta.Rows[x]["strObservaciones"] = (dtaEvRecuperacion[x].strObservaciones != null) 
+                                                                                            ? dtaEvRecuperacion[x].strObservaciones.ToString().ToUpper() 
+                                                                                            : string.Empty;
                         }
                     }
 
                     this._dsEvRecuperacion.AcceptChanges();
                     rst = true;
                 }
-            }
-            catch (Exception ex)
-            {
+            }catch (Exception ex){
                 Errores err = new Errores();
                 err.SetError(ex, "_updEvRecuperacion");
             }

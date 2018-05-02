@@ -5,6 +5,7 @@
     var strParcialActivo = Model.getDtaEvaluacionActiva.Replace("FN", "");
     var strProximaEvaluacion = Model.getInfoProximaEvaluacion();
     var estadoActa = Model.estadoActa();
+    string[] lstParciales = { "1", "2", "3", "P", "S" };
 
     var colorEA = "btn-success";
     var colorEF = "btn-success";
@@ -129,8 +130,7 @@
                                     <hr class="inner-separator">
                                 }
 
-                                @if (strParcialActivo == "3" || strParcialActivo == "P" || strProximaEvaluacion == "P" || strProximaEvaluacion == "S")
-                                {
+                                @if (Array.FindAll(lstParciales, s => s.Equals(strParcialActivo)).Length > 0){
                                     @* GRID DE EVALUACION ACUMULATIVA *@
                                     <table id="grdEvAcumulativa"></table>
                                 }else{
@@ -138,7 +138,6 @@
                                         @Language.es_ES.MSG_FCH_INICIO_EV_ACUMULADA<strong> @Model.getFchInicioGestionEvAcumulado()</strong>
                                     </div>
                                 }
-
 
                                 @* Si no existe parcial activo (P1, P2, P3) muestro el grid solo de lectura *@
                                 @if ( ( strParcialActivo == "1" || strParcialActivo == "2" || strParcialActivo == "3" ) && estadoActa ){    
@@ -319,7 +318,7 @@
         @Html.Hidden("dtaJsonEvFinal", @Model.evFinal.jsonEvFinal.ToString())
         <script src="~/Content/js/Docentes/EvaluacionFinal.js?@Language.es_ES.SA_VERSION"></script>
         @if (strParcialActivo == "P" && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvFinal.js?@Language.es_ES.SA_VERSION"></script>    
+            <script src="~/Content/js/Docentes/GestionEvFinal.js?v3.1.19"></script>    
         }else{
             <script src="~/Content/js/Docentes/ImpresionActaFinal.js?@Language.es_ES.SA_VERSION"></script>
         }
@@ -329,7 +328,7 @@
         @Html.Hidden("dtaJsonEvRecuperacion", @Model.evRecuperacion.jsonEvRecuperacion.ToString())
         <script src="~/Content/js/Docentes/EvaluacionRecuperacion.js?v1.1.105"></script>
         @if (strParcialActivo == "S" && estadoActa){
-            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.1.105"></script>
+            <script src="~/Content/js/Docentes/GestionEvRecuperacion.js?v1.2.4"></script>
         }else{
             <script src="~/Content/js/Docentes/ImpresionActaRecuperacion.js?v1.1.105"></script>
         }

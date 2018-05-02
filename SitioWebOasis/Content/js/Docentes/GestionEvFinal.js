@@ -51,7 +51,8 @@ $(document).ready(function () {
 
                     { name: 'Total', label: 'Total Ev. final', width: '120', align: 'center', sortable: true, sorttype: "number" },
                     { name: 'efAcumulado', label: 'Estado', width: '120', align: 'center' },
-                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', sortable: false, sorttype: "string" }],
+
+                    { name: 'strObservaciones', label: 'Observación', width: '170', align: 'center', editable: true, edittype: 'text', editoptions: { maxlength: 25, placeholder: "25 CARACTERES", dataInit: soloCaracteresAlfaNumericos }, sorttype: "string" }],
 
         loadonce: true,
         datastr: $("#dtaJsonEvFinal").val(),
@@ -76,9 +77,24 @@ $(document).ready(function () {
 
 
     function editarRegistroEvFinal(id, status, e) {
-        if (id !== lastsel && editarFila(id)) {
+        var edtFila = editarFila(id);
+
+        if (id !== lastsel && edtFila) {
             //  Cierro edicion de la ultima fila gestionada
-            if (lastsel != undefined) {
+            if (lastsel != undefined && edtFila) {
+
+                $('#grdEvFinal').jqGrid('saveRow', lastsel, {
+                    aftersavefunc: function (response) {
+                        //  Registro la informacion gestionada en el JSON
+                        guardarDtaEvaluacionFinal(lastsel);
+
+                        //  Actualizo contenido de la fila
+                        updDtaEvaluacionFinal(lastsel);
+
+                        return true;
+                    }
+                });
+
                 $('#grdEvFinal').jqGrid('restoreRow', lastsel);
             }
 
@@ -140,12 +156,11 @@ $(document).ready(function () {
         var numReg = lstEvaluacionFinal.length;
         for (var x = 0; x < numReg; x++) {
             if (lstEvaluacionFinal[x].sintCodMatricula == id) {
-                var dtaNota = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");
-                lstEvaluacionFinal[x]["bytNota"] = dtaNota;
+                lstEvaluacionFinal[x]["bytNota"] = $("#grdEvFinal").jqGrid("getCell", id, "bytNota");
+                lstEvaluacionFinal[x]["strObservaciones"] = $("#grdEvFinal").jqGrid("getCell", id, "strObservaciones");
                 lstEvaluacionFinal[x].banEstado = 1;
 
                 blnCambiosEvFinal = true;
-
                 ban = true;
             }
         }
@@ -179,6 +194,15 @@ $(document).ready(function () {
     }
 
 
+    function soloCaracteresAlfaNumericos(element){
+        $(element).keypress(function (e) {
+            if (e.which != 8 && e.which != 32 && e.which != 0 && (e.which < 48 || e.which > 57) && (e.which < 65 || e.which > 90) && (e.which < 97 || e.which > 122)) {
+                return false;
+            }
+        });
+    }
+
+
     function updContenidoColumnasEvFinal() {
         var rowIds = $('#grdEvFinal').jqGrid('getDataIDs');
         var DataIds = $('#grdEvFinal').jqGrid('getRowData');
@@ -187,21 +211,32 @@ $(document).ready(function () {
         for (i = 0; i < rowIds.length; i++) {
             for (j = 0; j < numRegEF; j++) {
                 if (rowIds[i] == lstEvaluacionFinal[j].sintCodMatricula) {
+                    
+                    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[j].getNumMatricula() });
+                    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[j].getEstadoEvaluacionFinal() });
+
                     //  En funcion al parcial activo resalto el color de la columna 
                     $("#grdEvFinal").jqGrid('setCell',
                                             rowIds[i],
                                             'bytNota',
                                             "",
-                                            { 'background-color': '#fcf8e3' });
+                                            {   'background-color': '#fcf8e3',
+                                                'text-align': 'center',
+                                                'font-size': 'medium',
+                                                'font-weight': 'bold'
+                                            });
 
-                    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { bytNumMat: lstEvaluacionFinal[j].getNumMatricula() });
-                    $("#grdEvFinal").jqGrid('setRowData', rowIds[i], { efAcumulado: lstEvaluacionFinal[j].getEstadoEvaluacionFinal() });
+                    //  En funcion al parcial activo resalto el color de la columna 
+                    $("#grdEvFinal").jqGrid('setCell',
+                                            rowIds[i],
+                                            'strObservaciones',
+                                            "",
+                                            { 'font-weight': 'bold' });
 
                     j = numRegEF;
                 }
             }
         }
-
     }
 
 
@@ -222,7 +257,6 @@ $(document).ready(function () {
                                     "",
                                     {
                                         'background-color': '#dff0d8',
-                                        'background-image': 'none',
                                         'text-align': 'center',
                                         'font-size': 'medium',
                                         'font-weight': 'bold'
@@ -527,8 +561,10 @@ $(document).ready(function () {
     }
 
 
-    function grdEvFinalSoloLectura() {
-        $('#grdEvFinal').setColProp('bytNota', { editable: 'False' });
+    function grdEvFinalSoloLectura()
+    {
+        $('#grdEvFinal').setColProp( 'bytNota', { editable: 'False' });
+        $('#grdEvFinal').setColProp( 'strObservaciones', { editable: 'False' });
     }
 
 
