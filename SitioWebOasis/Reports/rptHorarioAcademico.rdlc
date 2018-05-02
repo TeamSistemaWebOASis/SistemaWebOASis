@@ -618,8 +618,8 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>dsHorarioAcademico</DataSetName>
-        <Top>5.65891cm</Top>
-        <Left>0.65828cm</Left>
+        <Top>6.71862cm</Top>
+        <Left>0.65825cm</Left>
         <Height>1.2cm</Height>
         <Width>23.9335cm</Width>
         <Style>
@@ -681,9 +681,9 @@
         </Paragraphs>
         <rd:DefaultName>strFacultad</rd:DefaultName>
         <Top>3.26001cm</Top>
-        <Left>5.32787cm</Left>
+        <Left>5.32789cm</Left>
         <Height>0.6cm</Height>
-        <Width>19.26388cm</Width>
+        <Width>19.33446cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -716,7 +716,7 @@
         <Top>3.93056cm</Top>
         <Left>5.32787cm</Left>
         <Height>0.6cm</Height>
-        <Width>19.26388cm</Width>
+        <Width>19.33448cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <Border>
@@ -749,7 +749,7 @@
         <Top>4.60112cm</Top>
         <Left>5.32787cm</Left>
         <Height>0.6cm</Height>
-        <Width>19.22861cm</Width>
+        <Width>19.33448cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <Border>
@@ -779,7 +779,7 @@
         </Paragraphs>
         <rd:DefaultName>strLblFacultad</rd:DefaultName>
         <Top>3.26001cm</Top>
-        <Left>0.65828cm</Left>
+        <Left>0.69358cm</Left>
         <Height>0.6cm</Height>
         <Width>4.4932cm</Width>
         <ZIndex>5</ZIndex>
@@ -811,7 +811,7 @@
         </Paragraphs>
         <rd:DefaultName>strLblEscuela</rd:DefaultName>
         <Top>3.93056cm</Top>
-        <Left>0.65828cm</Left>
+        <Left>0.69358cm</Left>
         <Height>0.6cm</Height>
         <Width>4.4932cm</Width>
         <ZIndex>6</ZIndex>
@@ -843,7 +843,7 @@
         </Paragraphs>
         <rd:DefaultName>strLblCarrera</rd:DefaultName>
         <Top>4.60112cm</Top>
-        <Left>0.65828cm</Left>
+        <Left>0.69358cm</Left>
         <Height>0.6cm</Height>
         <Width>4.4932cm</Width>
         <ZIndex>7</ZIndex>
@@ -1013,8 +1013,138 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="strLblCedula">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!strLblCedula.Value</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>strLblCedula</rd:DefaultName>
+        <Top>5.27168cm</Top>
+        <Left>0.69358cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.4932cm</Width>
+        <ZIndex>13</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="strLblNombres">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!strLblNombres.Value</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>strLblNombres</rd:DefaultName>
+        <Top>5.94223cm</Top>
+        <Left>0.69358cm</Left>
+        <Height>0.6cm</Height>
+        <Width>4.4932cm</Width>
+        <ZIndex>14</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="strNombresUsuario">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!strNombresUsuario.Value</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>strNombresUsuario</rd:DefaultName>
+        <Top>5.94223cm</Top>
+        <Left>5.32789cm</Left>
+        <Height>0.6cm</Height>
+        <Width>19.29918cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="strCedula">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Parameters!strCedula.Value</Value>
+                <Style>
+                  <FontFamily>Segoe UI</FontFamily>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>strCedula</rd:DefaultName>
+        <Top>5.27168cm</Top>
+        <Left>5.32789cm</Left>
+        <Height>0.6cm</Height>
+        <Width>19.33443cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>3.34375in</Height>
+    <Height>4.32292in</Height>
     <Style />
   </Body>
   <Width>9.99243in</Width>
@@ -1030,7 +1160,7 @@
       </Style>
     </PageHeader>
     <PageFooter>
-      <Height>0.73794cm</Height>
+      <Height>3.48961cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1325,6 +1455,30 @@
     </ReportParameter>
     <ReportParameter Name="strLblHorarioExamenes">
       <DataType>String</DataType>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="strCedula">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="strNombresUsuario">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="strLblCedula">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="strLblNombres">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
       <AllowBlank>true</AllowBlank>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>

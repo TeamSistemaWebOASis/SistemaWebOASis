@@ -241,11 +241,15 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
                 //  numIdentificacion = "060320137-7";
 
-                numIdentificacion = "060180782-9"; //   Mario Paguay
+                //  numIdentificacion = "060180782-9"; //   Mario Paguay
 
                 //  numIdentificacion = "136326830-1";
                 //  numIdentificacion = "136326830-1";
                 //  numIdentificacion = "137160901-1";
+
+                numIdentificacion = "070658854-8";
+
+                //  numIdentificacion = "175754227-7";  //  <---  DR. MELONASINA - BioTecnologiaAmbiental
             }
             catch (Exception ex){
                 Errores err = new Errores();

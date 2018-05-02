@@ -891,6 +891,9 @@
   <data name="STR_INSTITUCION" xml:space="preserve">
     <value>ESCUELA SUPERIOR POLITÉCNICA DE CHIMBORAZO</value>
   </data>
+  <data name="STR_MI_HORARIO" xml:space="preserve">
+    <value>Mi Horario de Clase</value>
+  </data>
   <data name="STR_MSG_DESCARGA_EVALUACIONES" xml:space="preserve">
     <value>Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluación de recuperación en formato PDF, dispuestas en un solo archivo ZIP</value>
   </data>

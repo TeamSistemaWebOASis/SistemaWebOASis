@@ -2383,6 +2383,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Mi Horario de Clase.
+        /// </summary>
+        public static string STR_MI_HORARIO {
+            get {
+                return ResourceManager.GetString("STR_MI_HORARIO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Esta opción le permite descargar las actas de evaluación acumulativa, evaluación final y evaluación de recuperación en formato PDF, dispuestas en un solo archivo ZIP.
         /// </summary>
         public static string STR_MSG_DESCARGA_EVALUACIONES {

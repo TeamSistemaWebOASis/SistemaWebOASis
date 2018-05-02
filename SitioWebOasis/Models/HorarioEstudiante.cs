@@ -140,10 +140,17 @@ namespace SitioWebOasis.Models
             List<System.Web.Mvc.SelectListItem> lstCursosCarrera = new List<System.Web.Mvc.SelectListItem>();
             System.Web.Mvc.SelectListItem curso = new System.Web.Mvc.SelectListItem();
 
-            if (_dtCursosCarrera.CursosCarrera.Rows.Count > 0)
-            {
-                foreach (DataRow item in _dtCursosCarrera.CursosCarrera)
-                {
+            if (_dtCursosCarrera.CursosCarrera.Rows.Count > 0){
+                if (UsuarioActual.RolActual.ID.ToString().CompareTo("Estudiantes") == 0){
+                    curso = new System.Web.Mvc.SelectListItem();
+                    curso.Value = "-2";
+                    curso.Text = Language.es_ES.STR_MI_HORARIO.ToString();
+                    curso.Selected = true;
+
+                    lstCursosCarrera.Add(curso);
+                }
+
+                foreach (DataRow item in _dtCursosCarrera.CursosCarrera){
                     curso = new System.Web.Mvc.SelectListItem();
                     curso.Value = item["strCodNivelParalelo"].ToString();
                     curso.Text = item["strDescripcionNivel"].ToString();
@@ -386,6 +393,33 @@ namespace SitioWebOasis.Models
 
                 lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strLblPeriodoAcademico",
                                                                     Language.es_ES.STR_PERIODO_ACADEMICO));
+
+
+                if(this._strCodNivel == "-2"){
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strLblCedula",
+                                                                        "Cedula"));
+
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strLblNombres",
+                                                                        "Nombres"));
+
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strCedula",
+                                                                        UsuarioActual.Cedula.ToString()));
+
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strNombresUsuario",
+                                                                        UsuarioActual.Nombre.ToString()));
+                }else{
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strLblCedula",
+                                                                        string.Empty));
+
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strLblNombres",
+                                                                        string.Empty));
+
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strCedula",
+                                                                        string.Empty));
+
+                    lstPrmRptHorarioAcademico.Add(new ReportParameter("strNombresUsuario",
+                                                                        string.Empty));
+                }
 
                 lstPrmRptHorarioAcademico.Add(new ReportParameter(  "strLblFacultad",
                                                                     lblFacultad));
