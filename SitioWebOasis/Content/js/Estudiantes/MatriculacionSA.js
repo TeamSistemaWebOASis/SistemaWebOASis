@@ -6,7 +6,6 @@
         html: true,
         trigger: "hover"
     }
-
     $("button[rel=popover]").popover(popOverSettings);
 
     $('#btnMatriculacionSA').on('click', function () {
@@ -42,7 +41,6 @@
                 //  Mostrar mensaje de estado de la transaccion
                 getMensajeTransaccion(false, data.MessageGestion);
             }
-
             //  Cierro la ventana GIF Proceso
             HoldOn.close();
         })
@@ -67,10 +65,7 @@
     }
     //MUESTRA ESTADISTICAS DEL ESTUDIANTE
     $('#btnEstadistica,#btnEstadisticaPA').on('click', function () {
-        showLoadingProcess();
         var idPeriodo = ($(this).attr("id") == "btnEstadistica") ? "" : $('#ddlLstPeriodosEstudiante option:selected').val();
-        
-       
         $.ajax({
             type: "POST",
             url: "/Estudiantes/MostrarEstadisticas/",
@@ -81,51 +76,68 @@
                 alert(thrownError);
             }
         }).success(function (data) {
-            if (data.fileName != "") {
-                    MostarDialogo();
-                     //Load Charts and the corechart and barchart packages.
-                    google.charts.load('current', { 'packages': ['corechart'] });
-                     //Draw the pie chart and bar chart when Charts is loaded.
-                    google.charts.setOnLoadCallback(drawChart);
-                    var dataArray = [['Nombre', 'Parcial1', 'Parcial2', 'Parcial3','Acumulado']];
-                    for (i in JSON.constructor(data).strEstadistica) {
-                        if (JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1!=0) {
-                            dataArray.push([JSON.parse(JSON.constructor(data).strEstadistica[i]).Materia,
-                                            parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1),
-                                            parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial2),
-                                            parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial3),
-                                            parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Acumulado)])
-                        }
+            if (data.strEstadistica.length != 0) {
+                //Load Charts and the corechart and barchart packages.
+                google.charts.load('current', { 'packages': ['corechart'] });
+                //Draw the pie chart and bar chart when Charts is loaded.
+                google.charts.setOnLoadCallback(drawChart);
+                var dataArray = [['Nombre',
+                                    'Parcial 1', { role: 'annotation' },
+                                    'Parcial 2', { role: 'annotation' },
+                                    'Parcial 3', { role: 'annotation' },
+                                    'Evaluación Final', { role: 'annotation' },
+                                    'Evaluación Recuperación', { role: 'annotation' },
+                                    'Equivalencia', { role: 'annotation' }]];
+
+                for (i in JSON.constructor(data).strEstadistica) {
+                    
+                    if (JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1 != 0) {
+                        MostrarDialogo();
+                        dataArray.push([JSON.parse(JSON.constructor(data).strEstadistica[i]).Materia,
+                                        parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1), JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1,
+                                        parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial2), JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial2,
+                                        parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial3), JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial3,
+                                        parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).ExamenPrincipal), JSON.parse(JSON.constructor(data).strEstadistica[i]).ExamenPrincipal,
+                                        parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).ExamenSuspension), (JSON.parse(JSON.constructor(data).strEstadistica[i]).ExamenSuspension) == 0 ? '' : (JSON.parse(JSON.constructor(data).strEstadistica[i]).ExamenSuspension),
+                                        0, JSON.parse(JSON.constructor(data).strEstadistica[i]).Equivalencia])
+                    } else {
+                        $.alert({
+                            title: 'Notificación',
+                            content: 'Periodo Académico sin registros disponibles, favor consulte en secretaria de carrera.'
+                        })
                     }
-                    function drawChart() {
-                        var data = new google.visualization.arrayToDataTable(dataArray);
-                        var options = {
-                                            width: 600,
-                                            height: 300,
-                                            legend: { position: 'top', maxLines: 3 },
-                                            bar: { groupWidth: '75%' },
-                                            isStacked: true
-                                        };
-                        var barchart = new google.visualization.BarChart(document.getElementById('consolidado'));
-                        barchart.draw(data, options);
-                    }
+                }
+                
+                function drawChart() {
+                    var data = new google.visualization.arrayToDataTable(dataArray);
+                    var options = {
+                        title: ($('#txtPeriodoA').text() == "") ? 'EVALUACIONES DEL PERIODO ACADÉMICO:' + " " + $('#ddlLstPeriodosEstudiante option:selected').text() : 'EVALUACIONES DEL' + $('#txtPeriodoA').text().toUpperCase(),
+                        width: 920,
+                        height: 400,
+                        legend: { position: 'top', maxLines: 3 },
+                        bar: { groupWidth: '75%' },
+                        isStacked: true,
+                        hAxis: {
+                            title: 'Notas',
+                            minValue: 0,
+                            ticks: [0, 8, 18, 28, 40]
+                        },
+                        vAxis: { title: 'Materias' },
+                        colors: ['#337AB7', '#337AB7', '#337AB7', '#F56421', '#777', '#000']
+                    };
+                    var barchart = new google.visualization.BarChart(document.getElementById('consolidado'));
+                    barchart.draw(data, options);
+                }
             } else {
-                alert("Hola Mundo 2");
+                $.alert({
+                    title: 'Notificación',
+                    content: 'Periodo Académico sin registros disponibles, favor consulte en secretaria de carrera.'
+                })
             }
-            //  Cierro la ventana GIF Proceso
-            HoldOn.close();
         })
-
-
-
-
-
-
-
-       
     })
     //ABRE EL DIALOGO DE LA ESTADISTICAS
-    function MostarDialogo() {
+    function MostrarDialogo() {
         $("#dialog").dialog({
             title: "-- COMPORTAMIENTO ACADÉMICO --",
             position: { my: "center", att: "center" },
@@ -144,6 +156,4 @@
             }
         }).prev("#dialog,.ui-dialog-titlebar").css("background", "#6FBC85");
     }
-
-
 })

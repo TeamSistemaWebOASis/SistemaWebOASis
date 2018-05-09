@@ -230,7 +230,7 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
 
                 //  numIdentificacion = "060383835-0";
-                numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
+                //numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
 
                 //  numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
 
@@ -242,9 +242,11 @@ namespace SitioWebOasis.Controllers
                 //  numIdentificacion = "060320137-7";
 
                 //  numIdentificacion = "060180782-9"; //Mario Paguay
-                
+
                 //  numIdentificacion = "136326830-1";
                 //  numIdentificacion = "136326830-1";
+               numIdentificacion = "060413046-8";//Verificar estudiante no aprece notas
+                //numIdentificacion = "123794080-0";//Estudiante estrangera no pudo ingresar al sistema  
             }
             catch (Exception ex){
                 Errores err = new Errores();

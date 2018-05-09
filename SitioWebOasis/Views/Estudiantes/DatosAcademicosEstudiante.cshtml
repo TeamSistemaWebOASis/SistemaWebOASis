@@ -7,8 +7,6 @@
     <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
 }
 
-
-
 <div class="main-content">
     <div class="row">
         <div class="col-md-12">
@@ -25,7 +23,7 @@
         <h3> <i class="fa fa-star"></i> @Language.es_ES.EST_LBL_NOTAS.ToUpper()</h3>
         <div class="widget-header-toolbar">
             <div class="btn-group widget-header-toolbar">
-                <button id="btnEstadisticaPA" type='button' style='padding-top: 0.5px;background-color: #777' class='btn btn-primary'><span class="glyphicon glyphicon-picture"></span>  Estadistica</button>
+                <button id="btnEstadisticaPA" type='button' style='padding-top: 0.5px;background-color: #777' class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Comportamiento académico"><i class="fa fa-bar-chart-o"></i> @Language.es_ES.EST_TBL_BTN_GRAFICA </button>
             </div>
             <div class="control-inline toolbar-item-group">
                 <span class="control-title"><i class="fa fa-calendar-check-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO &nbsp;</span>
@@ -225,7 +223,7 @@
     </div>
     <div class="ui-dialog-titlebar" id="dialog" style="display: none;">
         <div div class="modal-body">
-            <div id="consolidado" style="width:900px;height:300px; align-content:center; "></div>
+            <div id="consolidado" style="width:900px;height:400px; align-content:center; "></div>
         </div>
     </div>
 

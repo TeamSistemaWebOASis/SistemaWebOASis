@@ -47,11 +47,13 @@ namespace SitioWebOasis.Models
         {
             WSInfoCarreras.dtstPeriodoVigente dsPeriodoVigente = new WSInfoCarreras.dtstPeriodoVigente();
 
-            try {
+            try
+            {
                 ProxySeguro.InfoCarreras ic = new ProxySeguro.InfoCarreras();
                 dsPeriodoVigente = ic.GetPeriodoVigenteCarrera(UsuarioActual.CarreraActual.Codigo.ToString());
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "_dataPeriodoAcademicoVigente - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
@@ -64,12 +66,14 @@ namespace SitioWebOasis.Models
         {
             string ultimoPeriodo = "";
 
-            try {
+            try
+            {
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
                 ultimoPeriodo = du.getUltimoPeriodoEstudiante(this.UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 this.UsuarioActual.Cedula.ToString());
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "_getUltimoPeriodoEstudiante - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
@@ -83,7 +87,8 @@ namespace SitioWebOasis.Models
             string nivel = "Sin Nivel";
             string rstNivel = "-1";
 
-            try {
+            try
+            {
                 ProxySeguro.DatosUsuario du = new ProxySeguro.DatosUsuario();
                 nivel = du.getNivelEstudiantePeriodo(this.UsuarioActual.CarreraActual.Codigo.ToString(),
                                                         this.UsuarioActual.CarreraActual.codUsuario.ToString(),
@@ -109,7 +114,9 @@ namespace SitioWebOasis.Models
                 this._dsNotasEstudiante = this._getNotasPeriodoEstudiante();
                 promedioEstudiante = this._getPromedioEstudiante();
                 descripcionPeriodoEstudiante = this._getDescripcionPeriodoEstudiante();
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 promedioEstudiante = default(decimal);
                 descripcionPeriodoEstudiante = default(string);
 
@@ -134,7 +141,8 @@ namespace SitioWebOasis.Models
                 ProxySeguro.NotasEstudiante ne = new ProxySeguro.NotasEstudiante();
                 dtaGradoEstudiante = ne.GetDatosGradoEstudiante(UsuarioActual.CarreraActual.Codigo.ToString(),
                                                                 UsuarioActual.Cedula.ToString());
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaGraduado - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
@@ -159,7 +167,8 @@ namespace SitioWebOasis.Models
                 eg.set_BaseDatos("");
                 eg.set_Ubicacion("");
 
-                if (eg.EsEgresado(UsuarioActual.Cedula.ToString(), UsuarioActual.CarreraActual.Codigo.ToString())) {
+                if (eg.EsEgresado(UsuarioActual.Cedula.ToString(), UsuarioActual.CarreraActual.Codigo.ToString()))
+                {
                     eg.getDatosEgresamiento(Convert.ToInt32(UsuarioActual.CarreraActual.Codigo.ToString()),
                                             ref CodEstudiante,
                                             ref CodTitulo,
@@ -168,7 +177,8 @@ namespace SitioWebOasis.Models
                                             ref fltPrmNotas,
                                             ref fltNumCreditos);
                 }
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Errores err = new Errores();
                 err.SetError(ex, "_getDtaEgresamiento - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
@@ -203,16 +213,20 @@ namespace SitioWebOasis.Models
             DataRow[] rst = null;
             string periodo = string.Empty;
 
-            try {
+            try
+            {
                 WSGestorDeReportesMatriculacion.dtstPeriodos dtaPeriodosEstudiante = this._periodosMatriculasEstudiante();
 
-                if (dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Periodos.Rows.Count > 0) {
+                if (dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Periodos.Rows.Count > 0)
+                {
                     rst = dtaPeriodosEstudiante.Periodos.Select("strCodigo = '" + this.periodoEstudiante + "'", "");
                     periodo = (rst.Length > 0)
                                 ? rst[0]["strDescripcion"].ToString()
                                 : string.Empty;
                 }
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 periodo = string.Empty;
                 Errores err = new Errores();
                 err.SetError(ex, "_getDescripcionPeriodoEstudiante - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
@@ -302,12 +316,14 @@ namespace SitioWebOasis.Models
 
             try
             {
-                if (this._dsDetalleNotas != null && this._dsDetalleNotas.Convalidaciones.Rows.Count > 0) {
+                if (this._dsDetalleNotas != null && this._dsDetalleNotas.Convalidaciones.Rows.Count > 0)
+                {
                     DataRow[] rst = this._dsDetalleNotas.Convalidaciones.Select("strCodMateria = '" + strCodMateria + "'", "");
                     estadoAsignatura = (rst.Length > 0) ? true : false;
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 estadoAsignatura = false;
 
             }
@@ -573,7 +589,9 @@ namespace SitioWebOasis.Models
 
                 lstPeridosEstudiante = gr.GetPeriodosDeMatriculaEstudiante(this.UsuarioActual.Cedula,
                                                                             "");
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "periodosMatriculasEstudiante - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
@@ -590,13 +608,16 @@ namespace SitioWebOasis.Models
 
             try
             {
-                if (dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Periodos.Rows.Count > 0) {
-                    foreach (DataRow item in dtaPeriodosEstudiante.Periodos) {
+                if (dtaPeriodosEstudiante != null && dtaPeriodosEstudiante.Periodos.Rows.Count > 0)
+                {
+                    foreach (DataRow item in dtaPeriodosEstudiante.Periodos)
+                    {
                         periodo = new System.Web.Mvc.SelectListItem();
                         periodo.Value = item["strCodigo"].ToString();
                         periodo.Text = item["strDescripcion"].ToString();
 
-                        if (periodoEstudiante == item["strCodigo"].ToString()) {
+                        if (periodoEstudiante == item["strCodigo"].ToString())
+                        {
                             periodo.Selected = true;
                         }
 
@@ -631,7 +652,9 @@ namespace SitioWebOasis.Models
                 dsConsolidadoNotas = ne.getConsolidadoNotas(this.UsuarioActual.CarreraActual.Codigo.ToString(),
                                                             this.UsuarioActual.Cedula.ToString(),
                                                             periodoEstudiante);
-            } catch (Exception ex) {
+            }
+            catch (Exception ex)
+            {
                 Errores err = new Errores();
                 err.SetError(ex, "_dsConsolidadoNotas - Usuario: " + UsuarioActual.Cedula.ToString() + " / " + UsuarioActual.CarreraActual.ToString() + " / " + UsuarioActual.CarreraActual.Codigo.ToString());
             }
@@ -657,17 +680,22 @@ namespace SitioWebOasis.Models
             rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='17'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
-            if (this._dsConsolidadoNotas.Tables["notas"].Rows.Count > 0) {
+            if (this._dsConsolidadoNotas.Tables["notas"].Rows.Count > 0)
+            {
                 int x = 0;
                 rst = "";
 
                 //  Asignaturas
-                foreach (DataRow item in this._dsConsolidadoNotas.Tables["notas"].Rows) {
+                foreach (DataRow item in this._dsConsolidadoNotas.Tables["notas"].Rows)
+                {
                     DataRow[] rectificaciones = this._dsConsolidadoNotas.Tables["rectificaciones"].Select("strCodPeriodo = '" + this.periodoEstudiante + "' AND strCodMateria = '" + item["strCodMateria"] + "'", "");
 
-                    if (rectificaciones.Length > 0) {
+                    if (rectificaciones.Length > 0)
+                    {
                         dtaRowConsolidado = new ConsolidadoEvaluacionAsignatura(++x, item, rectificaciones);
-                    } else {
+                    }
+                    else
+                    {
                         dtaRowConsolidado = new ConsolidadoEvaluacionAsignatura(++x, item);
                     }
 
@@ -675,16 +703,20 @@ namespace SitioWebOasis.Models
                 }
 
                 //  Convalidaciones
-                foreach (DataRow item in this._dsConsolidadoNotas.Tables["convalidaciones"].Rows) {
-                    if (item["strCodPeriodo"].ToString().CompareTo(this.periodoEstudiante) == 0) {
+                foreach (DataRow item in this._dsConsolidadoNotas.Tables["convalidaciones"].Rows)
+                {
+                    if (item["strCodPeriodo"].ToString().CompareTo(this.periodoEstudiante) == 0)
+                    {
                         ConsolidadoEvaluacionAsignatura dtaRowConvalidaciones = new ConsolidadoEvaluacionAsignatura(++x, item);
                         rst += dtaRowConvalidaciones.getRowConvalidado();
                     }
                 }
 
                 //  Retiros
-                foreach (DataRow item in this._dsConsolidadoNotas.Tables["retiros"].Rows) {
-                    if (item["strCodPeriodo"].ToString().CompareTo(this.periodoEstudiante) == 0) {
+                foreach (DataRow item in this._dsConsolidadoNotas.Tables["retiros"].Rows)
+                {
+                    if (item["strCodPeriodo"].ToString().CompareTo(this.periodoEstudiante) == 0)
+                    {
                         ConsolidadoEvaluacionAsignatura dtaRowRetiro = new ConsolidadoEvaluacionAsignatura(++x, item);
                         rst += dtaRowRetiro.getRowRetiroConsolidado();
                     }
@@ -841,19 +873,37 @@ namespace SitioWebOasis.Models
             List<dynamic> lstJson = new List<dynamic>();
             try
             {
-                this._dsDetalleNotas = this._getDataNotasEstudiante(this.periodoEstudiante);
-
-                if (this._dsDetalleNotas != null && this._dsDetalleNotas.EvAcumulativa.Rows.Count > 0)
+                this._dsConsolidadoNotas = this._dsConsolidadoNotasPeriodo();
+                if (this._dsConsolidadoNotas != null && this._dsConsolidadoNotas.Tables["notas"].Rows.Count > 0)
                 {
-                    foreach (DataRow item in this._dsDetalleNotas.EvAcumulativa.Rows)
+                    foreach (DataRow item in this._dsConsolidadoNotas.Tables["notas"].Rows)
                     {
+                        string strEquivalencia = string.Empty;
+                        if ((Convert.ToInt16(item["acumulado_EP"])) >= 25)
+                            strEquivalencia = "Exonerado con " +item["TOTAL_EP"].ToString() + " " + "pts.";
+                        else
+                        {
+                            if ((Convert.ToInt16(item["TOTAL_EP"])) >= 28 && (Convert.ToInt16(item["acumulado_EP"])) < 25)
+                                strEquivalencia = "Aprobado con "+ item["TOTAL_EP"].ToString() + " " + "pts.";
+                            else
+                            {
+                                if ((Convert.ToInt16(item["TOTAL_EP"])) < 28 && (Convert.ToInt16(item["TOTAL_ES"])) >= 28)
+                                    strEquivalencia = "Aprobado con "+ item["TOTAL_ES"].ToString() + " " + "pts.";
+                                else
+                                    if ((Convert.ToInt16(item["TOTAL_EP"])) < 28 && (Convert.ToInt16(item["TOTAL_ES"])) < 28)
+                                    strEquivalencia = "Reprobado con "+ item["TOTAL_ES"].ToString() +" "+ "pts.";
+                            }
+                        }
                         json = new JavaScriptSerializer().Serialize(new
                         {
                             Materia = item["strNombre"].ToString(),
                             Parcial1 = item["bytNota1"].ToString(),
                             Parcial2 = item["bytNota2"].ToString(),
                             Parcial3 = item["bytNota3"].ToString(),
-                            Acumulado = item["acumulado"].ToString()
+                            Acumulado = item["acumulado_EP"].ToString(),
+                            ExamenPrincipal = item["nota_EP"].ToString(),
+                            ExamenSuspension = item["nota_ES"].ToString(),
+                            Equivalencia = strEquivalencia
                         });
                         lstJson.Add(json);
                     }
@@ -865,7 +915,6 @@ namespace SitioWebOasis.Models
                 err.SetError(ex, "");
                 err.setInfo("EstadisticaEvaluacionAcumulada", "");
             }
-           
             return lstJson;
         }
 

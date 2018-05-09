@@ -364,7 +364,7 @@ namespace SitioWebOasis.Controllers
             {
                 DatosAcademicosEstudiante objDatosAcademicos = new DatosAcademicosEstudiante(strCodPeriodoA);
                 dynamic strEstadistica = objDatosAcademicos.EstadisticaEvaluacionAcumulada();
-                return Json(new { strEstadistica, errorMessage = "" });
+                return Json(new { strEstadistica });
 
             }
             catch (Exception ex)
