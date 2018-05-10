@@ -1528,6 +1528,15 @@ namespace Language {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Gráfica.
+        /// </summary>
+        public static string EST_TBL_BTN_GRAFICA {
+            get {
+                return ResourceManager.GetString("EST_TBL_BTN_GRAFICA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a EVALUACIÓN FINAL.
         /// </summary>
         public static string LBL_CUMPLIMIENTO_EV_FINAL {
@@ -2383,7 +2392,16 @@ namespace Language {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a Mi Horario de Clase.
+        ///   Busca una cadena traducida similar a Histórico.
+        /// </summary>
+        public static string STR_LBL_VER_HISTORICO {
+            get {
+                return ResourceManager.GetString("STR_LBL_VER_HISTORICO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Mi horario.
         /// </summary>
         public static string STR_MI_HORARIO {
             get {

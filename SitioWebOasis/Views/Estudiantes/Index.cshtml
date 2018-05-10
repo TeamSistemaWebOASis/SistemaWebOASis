@@ -20,7 +20,6 @@
 @section AddToHead{
     <link href="@Url.Content("~/Content/css/skins/estudiante.css")" rel="stylesheet" type="text/css" />
 }
-
 @Html.Hidden("numIdentificacion", Model.UsuarioActual.Cedula.ToString())
 
 <div class="main-content">
@@ -53,30 +52,36 @@
             </div>
         </div>
     </div>
-    
+
     <br>
 
     <div class="widget widget-table">
         <div class="widget-header">
             <h3><i class="fa fa-star"></i> @tipoEvaluacion &nbsp;/&nbsp; @Language.es_ES.EST_LBL_NOTAS</h3>
-
             <div class="btn-group widget-header-toolbar">
-                <a href="@Url.Action("NotasEstudiantes", "Estudiantes")" class="label label-default" style="color: white; font-size: small;">
-                    <i class="fa fa-eye"></i> @Language.es_ES.EST_LBL_VER_MAS
+                <button id="btnEstadistica" type='button' style='padding-top: 0.5px;background-color: #777' class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="top" data-original-title="Comportamiento académico"><i class="fa fa-bar-chart-o"></i> @Language.es_ES.EST_TBL_BTN_GRAFICA </button>
+            </div>
+            <div class="btn-group widget-header-toolbar">
+                <a href="@Url.Action("NotasEstudiantes", "Estudiantes")" class="label label-default" style="color: white; font-size: small;" data-toggle="tooltip" data-placement="top" data-original-title="Ver record académico">
+                    <i class="fa fa-eye"></i> @Language.es_ES.STR_LBL_VER_HISTORICO
                 </a>
             </div>
 
             <div class="widget-header-toolbar">
-                <div class="label label-default" style="font-size: small;">
-                    <i class="fa fa-clock-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO: &nbsp;@descripcionPeriodoEstudiante 
+                <div id="txtPeriodoA" class="label label-default" style="font-size: small;">
+                    <i class="fa fa-clock-o"></i> @Language.es_ES.EST_LBL_PERIODO_ACADEMICO: &nbsp;@descripcionPeriodoEstudiante
                 </div>
             </div>
+
+
+
         </div>
 
         <div class="widget-content">
             <div id="ticket-table_wrapper" class="dataTables_wrapper form-inline no-footer">
 
-                @if ( Model.estudianteEnPeriodoVigente() && evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3"){
+                @if (Model.estudianteEnPeriodoVigente() && evaluacionActiva == "1" || evaluacionActiva == "2" || evaluacionActiva == "3")
+                {
                     @*TABLA DE NOTAS DEL ESTUDIANTE*@
                     <table class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid">
                         <thead>
@@ -102,7 +107,7 @@
                 }else if (evaluacionActiva == "P" || evaluacionActiva == "S" || !Model.estudianteEnPeriodoVigente()){
                     <table id="ticket-table" class="table table-hover table-responsive{-sm|-md|-lg|-xl}" role="grid" style="font-stretch: condensed;">
                         <thead>
-                            
+
                             <tr role="row">
                                 <th rowspan="2" style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_NUMERO</th>
                                 <th rowspan="2" style="width: 250px; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.EST_TB_COL_ASIGNATURA</th>
@@ -121,10 +126,10 @@
                                 <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_02</th>
                                 <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PARCIAL_03</th>
                                 <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_PORCIENTO_ASISTENCIA</th>
-                                <th style="align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_TOTAL_ACUMULADO_TOOL_TIP" >@Language.es_ES.NOTAS_TB_COL_TOTAL_ACUMULADO</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_TOTAL_ACUMULADO_TOOL_TIP">@Language.es_ES.NOTAS_TB_COL_TOTAL_ACUMULADO</th>
 
                                 <th style="border-left: 1px dotted darkgray;border-top: 2px solid darkgray; align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_NOTA_EV_FINAL</th>
-                                <th style="align-content: center; vertical-align: middle; text-align: center;"data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO_TOOL_TIP">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO</th>
+                                <th style="align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO_TOOL_TIP">@Language.es_ES.NOTAS_TB_COL_EF_TOTAL_ACUMULADO</th>
                                 <th style="align-content: center; vertical-align: middle; text-align: center;">@Language.es_ES.NOTAS_TB_COL_EQUIVALENCIA</th>
 
                                 <th style="border-left: 1px dotted darkgray; align-content: center; vertical-align: middle; text-align: center;" data-toggle="tooltip" data-placement="top" data-original-title="@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION_TP">@Language.es_ES.NOTAS_TB_COL_ER_ACUMULADO_EV_RECUPERACION</th>
@@ -166,13 +171,20 @@
                     </table>
                 }
 
+            </div>
         </div>
     </div>
-</div>
+    <div class="ui-dialog-titlebar" id="dialog" style="display: none;">
+        <div div class="modal-body">
+            <div id="consolidado" style="width:900px;height:350px; align-content:center; "></div>
+        </div>
+    </div>
 
 </div>
 
-@section scripts{
-    @*  JAVASCRIPT DE GESTION NOTAS DOCENTE  *@
-    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v1.1.17"> </script>
+@section scripts{ 
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script src="~/Content/js/jquery-ui/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="~/Content/js/Estudiantes/MatriculacionSA.js?v5.1.3"></script>
 }

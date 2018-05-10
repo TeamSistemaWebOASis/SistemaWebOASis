@@ -358,5 +358,22 @@ namespace SitioWebOasis.Controllers
                 return Json(new { fileName = "none", errorMessage = "Problema al momento de crear el archivo" });
             }
         }
+        public JsonResult MostrarEstadisticas(string strCodPeriodoA)
+        {
+            try
+            {
+                DatosAcademicosEstudiante objDatosAcademicos = new DatosAcademicosEstudiante(strCodPeriodoA);
+                dynamic strEstadistica = objDatosAcademicos.EstadisticaEvaluacionAcumulada();
+                return Json(new { strEstadistica });
+
+            }
+            catch (Exception ex)
+            {
+                Errores err = new Errores();
+                err.SetError(ex, "MostrarEstadisticas");
+                return Json(new { fileName = "none", errorMessage = "Problema al momento de crear estadisticas" });
+            }
+            
+        }
     }
 }
