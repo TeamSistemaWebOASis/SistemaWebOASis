@@ -223,7 +223,7 @@ namespace SitioWebOasis.Models
 
         public string getNumOrdinal(string numero, string tpo)
         {
-            string[] ciclosAcademicos = new string[11] { "0", "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo" };
+            string[] ciclosAcademicos = new string[16] { "NIV", "1er", "2do", "3er", "4to", "5to", "6to", "7mo", "8vo", "9no", "10mo", "11vo", "12vo", "13vo", "14vo", "15vo" };
             string[] matricula = new string[3] { "1ra", "2da", "3ra" };
 
             return (tpo == "nivel") ? ciclosAcademicos[Convert.ToInt32(numero.ToString())]
@@ -653,7 +653,7 @@ namespace SitioWebOasis.Models
             string alertaEquivalencia_ES = string.Empty;
 
             rst += " <tr role='row' class='success'>";
-            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='17'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
+            rst += "     <td style='align-content: center; vertical-align: middle; text-align: center;' colspan='18'>" + Language.es_ES.EST_LBL_SIN_REGISTROS + "</td>";
             rst += " </tr>";
 
             if (this._dsConsolidadoNotas.Tables["notas"].Rows.Count > 0){

@@ -206,50 +206,17 @@ namespace SitioWebOasis.Controllers
                 }
 
                 ////  ESTUDIANTE
-                //numIdentificacion = "060478969-3";
-                //  numIdentificacion = "180475189-7";
-                //  numIdentificacion = "131383905-0";
-                //  numIdentificacion = "180552383-2";
-                //  numIdentificacion = "220027162-1";
-
+                //  numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
                 //  numIdentificacion = "210093670-3";  //  <-- NO LE APARECE NOTAS EN QUIMICA EN EL SISTEMA NUEVO - CASO CONVALIDACIONES
 
-                //  //  DOCENTE
+                //  DOCENTE
                 //  numIdentificacion = "060324303-1";  //  <-- Miguel Duque
-
                 //  numIdentificacion = "060356996-3";  //  <-- Pilar Hidalgo UAN - Docente
                 //  numIdentificacion = "170929748-3";  //  CASO VINCULACION, PARALELOS EN FORMATO CON CARACTERES ESPECIALES
-                //  numIdentificacion = "060399007-8";  //  <-- Bladimir Urgiles
-
-                //  numIdentificacion = "060353546-9";  //  AIDA ADRIANA MIRANDA BARROS - Bioquimica Farmacia
                 //  numIdentificacion = "120353525-5";  //  Vanesa Lorena Valverde Gonzales - Mecanica 
-                //  numIdentificacion = "060183490-6";
-
                 //  numIdentificacion = "060327507-4";  //  PAULA ABDO
-                //  numIdentificacion = "120353525-5";  //  VANESA VALVERDE
-                //  numIdentificacion = "060301137-0"; //<------------------------------ caso pecuarias
-
-                //  numIdentificacion = "060383835-0";
                 //  numIdentificacion = "020212381-6";  //  Estudiante con retiro de asignatura y convalidaciones
-
-                //  numIdentificacion = "060463268-7";  //  Estudiante con Rectificacion en el periodo P0014
-
-                //  numIdentificacion = "015010212-7";
-                //  numIdentificacion = "060449038-3";
-                //  numIdentificacion = "230023884-3";
-
-                //  numIdentificacion = "060312365-4";  //  099 28 38 93 4  -   Bolivar Hidalgo Ponce
-                //  numIdentificacion = "060320137-7";
-
-                //  numIdentificacion = "060180782-9"; //   Mario Paguay
-
-                //  numIdentificacion = "136326830-1";
-                //  numIdentificacion = "136326830-1";
-                //  numIdentificacion = "137160901-1";
-
-                numIdentificacion = "070658854-8";
-
-                //  numIdentificacion = "175754227-7";  //  <---  DR. MELONASINA - BioTecnologiaAmbiental
+                //  numIdentificacion = "060180782-9";  //  Dr. Mario Paguay
             }
             catch (Exception ex){
                 Errores err = new Errores();
