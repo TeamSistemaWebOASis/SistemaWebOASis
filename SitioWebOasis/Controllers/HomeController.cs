@@ -245,8 +245,9 @@ namespace SitioWebOasis.Controllers
 
                 //  numIdentificacion = "136326830-1";
                 //  numIdentificacion = "136326830-1";
-               numIdentificacion = "060413046-8";//Verificar estudiante no aprece notas
-                //numIdentificacion = "123794080-0";//Estudiante estrangera no pudo ingresar al sistema  
+               //numIdentificacion = "060413046-8";//Verificar estudiante no aprece notas
+               // numIdentificacion = "123794080-0";//Estudiante estrangera no pudo ingresar al sistema  
+                //numIdentificacion = "060326930-9";
             }
             catch (Exception ex){
                 Errores err = new Errores();

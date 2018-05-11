@@ -91,7 +91,10 @@
 
                 for (i in JSON.constructor(data).strEstadistica) {
                     
-                    if (JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1 != 0) {
+                    if (JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1 != 0 || 
+                        JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial2 != 0 ||
+                        JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial3 != 0 ||
+                        JSON.parse(JSON.constructor(data).strEstadistica[i]).Acumulado != 0 ) {
                         MostrarDialogo();
                         dataArray.push([JSON.parse(JSON.constructor(data).strEstadistica[i]).Materia,
                                         parseInt(JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1), JSON.parse(JSON.constructor(data).strEstadistica[i]).Parcial1,
